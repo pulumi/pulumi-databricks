@@ -15,15 +15,24 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKey? ApiKey;
         public readonly string? BaseUrl;
+        /// <summary>
+        /// Header-based API-key auth: the secret is forwarded on outbound requests
+        /// under a caller-chosen HTTP header rather than as an `Authorization`
+        /// bearer token. Set this instead of `ApiKey` for header auth
+        /// </summary>
+        public readonly Outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth? HeaderAuth;
 
         [OutputConstructor]
         private AiGatewayModelProviderServiceConfigCustomDirect(
             Outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKey? apiKey,
 
-            string? baseUrl)
+            string? baseUrl,
+
+            Outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth? headerAuth)
         {
             ApiKey = apiKey;
             BaseUrl = baseUrl;
+            HeaderAuth = headerAuth;
         }
     }
 }

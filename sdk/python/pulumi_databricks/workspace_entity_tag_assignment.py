@@ -30,7 +30,7 @@ class WorkspaceEntityTagAssignmentArgs:
         The set of arguments for constructing a WorkspaceEntityTagAssignment resource.
 
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
@@ -59,7 +59,7 @@ class WorkspaceEntityTagAssignmentArgs:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 
@@ -116,7 +116,7 @@ class _WorkspaceEntityTagAssignmentState:
         Input properties used for looking up and filtering WorkspaceEntityTagAssignment resources.
 
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         :param pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
@@ -148,7 +148,7 @@ class _WorkspaceEntityTagAssignmentState:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 
@@ -244,7 +244,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
@@ -354,7 +354,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
@@ -382,7 +382,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 

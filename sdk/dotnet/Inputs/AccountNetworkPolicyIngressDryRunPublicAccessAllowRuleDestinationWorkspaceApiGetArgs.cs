@@ -12,6 +12,20 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("excludedScopes")]
+        private InputList<string>? _excludedScopes;
+
+        /// <summary>
+        /// Inverse of `Scopes`: matches every API scope EXCEPT those listed here
+        /// ("allow all except"). Mutually exclusive with `Scopes` — a single
+        /// destination may set at most one of the two
+        /// </summary>
+        public InputList<string> ExcludedScopes
+        {
+            get => _excludedScopes ?? (_excludedScopes = new InputList<string>());
+            set => _excludedScopes = value;
+        }
+
         [Input("scopeQualifier")]
         public Input<string>? ScopeQualifier { get; set; }
 

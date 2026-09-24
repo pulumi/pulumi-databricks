@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult? DeltaTableSource;
         /// <summary>
+        /// (FeatureViewSource) - A data source composed from registered upstream Features
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureSourceFeatureViewSourceResult? FeatureViewSource;
+        /// <summary>
         /// (KafkaSource) - A Kafka stream data source
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult? KafkaSource;
@@ -39,6 +43,8 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeatureSourceResult(
             Outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult? deltaTableSource,
 
+            Outputs.GetFeatureEngineeringFeatureSourceFeatureViewSourceResult? featureViewSource,
+
             Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult? kafkaSource,
 
             Outputs.GetFeatureEngineeringFeatureSourceLatenessResult? lateness,
@@ -48,6 +54,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetFeatureEngineeringFeatureSourceStreamSourceResult? streamSource)
         {
             DeltaTableSource = deltaTableSource;
+            FeatureViewSource = featureViewSource;
             KafkaSource = kafkaSource;
             Lateness = lateness;
             RequestSource = requestSource;

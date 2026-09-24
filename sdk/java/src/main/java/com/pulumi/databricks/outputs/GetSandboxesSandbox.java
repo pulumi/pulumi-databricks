@@ -21,12 +21,13 @@ public final class GetSandboxesSandbox {
      */
     private String createTime;
     /**
-     * @return (string) - Human-readable display label for the sandbox. At most 256 bytes
+     * @return (string) - Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     private String displayName;
     /**
-     * @return (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * @return (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     private String name;
@@ -60,14 +61,15 @@ public final class GetSandboxesSandbox {
         return this.createTime;
     }
     /**
-     * @return (string) - Human-readable display label for the sandbox. At most 256 bytes
+     * @return (string) - Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     public String displayName() {
         return this.displayName;
     }
     /**
-     * @return (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * @return (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     public String name() {

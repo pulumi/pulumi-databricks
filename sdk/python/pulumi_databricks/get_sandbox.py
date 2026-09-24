@@ -63,7 +63,7 @@ class GetSandboxResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
         """
-        (string) - Human-readable display label for the sandbox. At most 256 bytes
+        (string) - Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
 
@@ -71,7 +71,8 @@ class GetSandboxResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+        `sandbox_id`; any value supplied in a create or update request body is ignored
         """
         return pulumi.get(self, "name")
 
@@ -141,7 +142,8 @@ def get_sandbox(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+    :param _builtins.str name: The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+           `sandbox_id`; any value supplied in a create or update request body is ignored
     :param Union['GetSandboxProviderConfigArgs', 'GetSandboxProviderConfigArgsDict', 'outputs.GetSandboxProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -179,7 +181,8 @@ def get_sandbox_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str name: The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+    :param _builtins.str name: The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+           `sandbox_id`; any value supplied in a create or update request body is ignored
     :param Union['GetSandboxProviderConfigArgs', 'GetSandboxProviderConfigArgsDict', 'outputs.GetSandboxProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

@@ -15,21 +15,30 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-        /// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-        /// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-        /// window timing and fills it in on the response
+        /// schedule is interpreted in TimezoneId (defaults to UTC). Required when mode is MANUAL (or
+        /// unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+        /// the features' window timing and fills it in on the response
         /// </summary>
         public readonly string? CronExpression;
         public readonly string? Mode;
+        /// <summary>
+        /// A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+        /// when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+        /// to UTC
+        /// </summary>
+        public readonly string? TimezoneId;
 
         [OutputConstructor]
         private FeatureEngineeringMaterializedFeatureCronScheduleTrigger(
             string? cronExpression,
 
-            string? mode)
+            string? mode,
+
+            string? timezoneId)
         {
             CronExpression = cronExpression;
             Mode = mode;
+            TimezoneId = timezoneId;
         }
     }
 }

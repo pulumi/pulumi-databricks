@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("avroOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsGetArgs>? AvroOptions { get; set; }
+
         [Input("format")]
         public Input<string>? Format { get; set; }
 
@@ -23,6 +26,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("outputColumn")]
         public Input<string>? OutputColumn { get; set; }
+
+        [Input("protobufOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsGetArgs>? ProtobufOptions { get; set; }
 
         public PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerGetArgs()
         {

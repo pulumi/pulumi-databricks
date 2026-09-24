@@ -34770,6 +34770,44 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
+     * This data source retrieves the snapshot schedule for a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve a Branch&#39;s Snapshot Schedule
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs.builder()
+     *             .name("projects/my-project/branches/production/snapshot-schedule")
+     *             .build());
+     * 
+     *         ctx.export("cadences", this_.schedules());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs args) {
         return getPostgresSnapshotSchedule(args, InvokeOptions.Empty);
@@ -34778,6 +34816,44 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the snapshot schedule for a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve a Branch&#39;s Snapshot Schedule
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs.builder()
+     *             .name("projects/my-project/branches/production/snapshot-schedule")
+     *             .build());
+     * 
+     *         ctx.export("cadences", this_.schedules());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedulePlain(GetPostgresSnapshotSchedulePlainArgs args) {
@@ -34788,6 +34864,44 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
+     * This data source retrieves the snapshot schedule for a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve a Branch&#39;s Snapshot Schedule
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs.builder()
+     *             .name("projects/my-project/branches/production/snapshot-schedule")
+     *             .build());
+     * 
+     *         ctx.export("cadences", this_.schedules());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
@@ -34797,6 +34911,44 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
+     * This data source retrieves the snapshot schedule for a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve a Branch&#39;s Snapshot Schedule
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs.builder()
+     *             .name("projects/my-project/branches/production/snapshot-schedule")
+     *             .build());
+     * 
+     *         ctx.export("cadences", this_.schedules());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
@@ -34805,6 +34957,44 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the snapshot schedule for a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve a Branch&#39;s Snapshot Schedule
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs.builder()
+     *             .name("projects/my-project/branches/production/snapshot-schedule")
+     *             .build());
+     * 
+     *         ctx.export("cadences", this_.schedules());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedulePlain(GetPostgresSnapshotSchedulePlainArgs args, InvokeOptions options) {

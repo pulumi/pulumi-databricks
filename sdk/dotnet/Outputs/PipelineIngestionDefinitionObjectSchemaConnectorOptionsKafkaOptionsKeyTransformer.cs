@@ -13,25 +13,33 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions? AvroOptions;
         public readonly string? Format;
         public readonly string? InputColumn;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions? JsonOptions;
         public readonly string? OutputColumn;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions? ProtobufOptions;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer(
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions? avroOptions,
+
             string? format,
 
             string? inputColumn,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions? jsonOptions,
 
-            string? outputColumn)
+            string? outputColumn,
+
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions? protobufOptions)
         {
+            AvroOptions = avroOptions;
             Format = format;
             InputColumn = inputColumn;
             JsonOptions = jsonOptions;
             OutputColumn = outputColumn;
+            ProtobufOptions = protobufOptions;
         }
     }
 }

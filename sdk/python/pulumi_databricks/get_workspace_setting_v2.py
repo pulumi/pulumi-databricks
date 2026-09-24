@@ -28,7 +28,7 @@ class GetWorkspaceSettingV2Result:
     """
     A collection of values returned by getWorkspaceSettingV2.
     """
-    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, collaboration_platform_connectivity=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_collaboration_platform_connectivity=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, provider_config=None, restrict_workspace_admins=None, string_val=None):
+    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, collaboration_platform_connectivity=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_collaboration_platform_connectivity=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, effective_workspace_label=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, provider_config=None, restrict_workspace_admins=None, string_val=None, workspace_label=None):
         if aibi_dashboard_embedding_access_policy and not isinstance(aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -80,6 +80,9 @@ class GetWorkspaceSettingV2Result:
         if effective_string_val and not isinstance(effective_string_val, dict):
             raise TypeError("Expected argument 'effective_string_val' to be a dict")
         pulumi.set(__self__, "effective_string_val", effective_string_val)
+        if effective_workspace_label and not isinstance(effective_workspace_label, dict):
+            raise TypeError("Expected argument 'effective_workspace_label' to be a dict")
+        pulumi.set(__self__, "effective_workspace_label", effective_workspace_label)
         if integer_val and not isinstance(integer_val, dict):
             raise TypeError("Expected argument 'integer_val' to be a dict")
         pulumi.set(__self__, "integer_val", integer_val)
@@ -101,6 +104,9 @@ class GetWorkspaceSettingV2Result:
         if string_val and not isinstance(string_val, dict):
             raise TypeError("Expected argument 'string_val' to be a dict")
         pulumi.set(__self__, "string_val", string_val)
+        if workspace_label and not isinstance(workspace_label, dict):
+            raise TypeError("Expected argument 'workspace_label' to be a dict")
+        pulumi.set(__self__, "workspace_label", workspace_label)
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
@@ -239,6 +245,14 @@ class GetWorkspaceSettingV2Result:
         return pulumi.get(self, "effective_string_val")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveWorkspaceLabel")
+    def effective_workspace_label(self) -> 'outputs.GetWorkspaceSettingV2EffectiveWorkspaceLabelResult':
+        """
+        (WorkspaceLabelMessage) - Effective setting value for workspace_label setting. This is the final effective value of setting. To set a value use workspace_label
+        """
+        return pulumi.get(self, "effective_workspace_label")
+
+    @_builtins.property
     @pulumi.getter(name="integerVal")
     def integer_val(self) -> 'outputs.GetWorkspaceSettingV2IntegerValResult':
         """
@@ -291,6 +305,14 @@ class GetWorkspaceSettingV2Result:
         """
         return pulumi.get(self, "string_val")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceLabel")
+    def workspace_label(self) -> 'outputs.GetWorkspaceSettingV2WorkspaceLabelResult':
+        """
+        (WorkspaceLabelMessage) - Setting value for workspace_label setting. This is the setting value set by consumers, check effective_workspace_label for final setting value
+        """
+        return pulumi.get(self, "workspace_label")
+
 
 class AwaitableGetWorkspaceSettingV2Result(GetWorkspaceSettingV2Result):
     # pylint: disable=using-constant-test
@@ -315,13 +337,15 @@ class AwaitableGetWorkspaceSettingV2Result(GetWorkspaceSettingV2Result):
             effective_personal_compute=self.effective_personal_compute,
             effective_restrict_workspace_admins=self.effective_restrict_workspace_admins,
             effective_string_val=self.effective_string_val,
+            effective_workspace_label=self.effective_workspace_label,
             integer_val=self.integer_val,
             name=self.name,
             operational_email_custom_recipient=self.operational_email_custom_recipient,
             personal_compute=self.personal_compute,
             provider_config=self.provider_config,
             restrict_workspace_admins=self.restrict_workspace_admins,
-            string_val=self.string_val)
+            string_val=self.string_val,
+            workspace_label=self.workspace_label)
 
 
 def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
@@ -366,13 +390,15 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
         effective_personal_compute=pulumi.get(__ret__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__ret__, 'effective_restrict_workspace_admins'),
         effective_string_val=pulumi.get(__ret__, 'effective_string_val'),
+        effective_workspace_label=pulumi.get(__ret__, 'effective_workspace_label'),
         integer_val=pulumi.get(__ret__, 'integer_val'),
         name=pulumi.get(__ret__, 'name'),
         operational_email_custom_recipient=pulumi.get(__ret__, 'operational_email_custom_recipient'),
         personal_compute=pulumi.get(__ret__, 'personal_compute'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         restrict_workspace_admins=pulumi.get(__ret__, 'restrict_workspace_admins'),
-        string_val=pulumi.get(__ret__, 'string_val'))
+        string_val=pulumi.get(__ret__, 'string_val'),
+        workspace_label=pulumi.get(__ret__, 'workspace_label'))
 def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict', 'outputs.GetWorkspaceSettingV2ProviderConfigResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceSettingV2Result]:
@@ -414,10 +440,12 @@ def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] 
         effective_personal_compute=pulumi.get(__response__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__response__, 'effective_restrict_workspace_admins'),
         effective_string_val=pulumi.get(__response__, 'effective_string_val'),
+        effective_workspace_label=pulumi.get(__response__, 'effective_workspace_label'),
         integer_val=pulumi.get(__response__, 'integer_val'),
         name=pulumi.get(__response__, 'name'),
         operational_email_custom_recipient=pulumi.get(__response__, 'operational_email_custom_recipient'),
         personal_compute=pulumi.get(__response__, 'personal_compute'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         restrict_workspace_admins=pulumi.get(__response__, 'restrict_workspace_admins'),
-        string_val=pulumi.get(__response__, 'string_val')))
+        string_val=pulumi.get(__response__, 'string_val'),
+        workspace_label=pulumi.get(__response__, 'workspace_label')))

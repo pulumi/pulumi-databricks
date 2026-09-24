@@ -19,6 +19,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.FeatureEngineeringFeatureSourceDeltaTableSourceGetArgs>? DeltaTableSource { get; set; }
 
         /// <summary>
+        /// A data source composed from registered upstream Features
+        /// </summary>
+        [Input("featureViewSource")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceFeatureViewSourceGetArgs>? FeatureViewSource { get; set; }
+
+        /// <summary>
         /// A Kafka stream data source
         /// </summary>
         [Input("kafkaSource")]

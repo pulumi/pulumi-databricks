@@ -87,28 +87,30 @@ public class Sandbox extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Human-readable display label for the sandbox. At most 256 bytes
+     * Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return Human-readable display label for the sandbox. At most 256 bytes
+     * @return Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
     /**
-     * (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * @return (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     public Output<String> name() {

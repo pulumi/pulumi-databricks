@@ -129,6 +129,10 @@ export class AccountSettingV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveStringVal: pulumi.Output<outputs.AccountSettingV2EffectiveStringVal>;
     /**
+     * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     */
+    declare public readonly effectiveWorkspaceLabel: pulumi.Output<outputs.AccountSettingV2EffectiveWorkspaceLabel | undefined>;
+    /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
     declare public readonly integerVal: pulumi.Output<outputs.AccountSettingV2IntegerVal | undefined>;
@@ -152,6 +156,10 @@ export class AccountSettingV2 extends pulumi.CustomResource {
      * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
     declare public readonly stringVal: pulumi.Output<outputs.AccountSettingV2StringVal | undefined>;
+    /**
+     * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     */
+    declare public readonly workspaceLabel: pulumi.Output<outputs.AccountSettingV2WorkspaceLabel | undefined>;
 
     /**
      * Create a AccountSettingV2 resource with the given unique name, arguments, and options.
@@ -183,12 +191,14 @@ export class AccountSettingV2 extends pulumi.CustomResource {
             resourceInputs["effectivePersonalCompute"] = state?.effectivePersonalCompute;
             resourceInputs["effectiveRestrictWorkspaceAdmins"] = state?.effectiveRestrictWorkspaceAdmins;
             resourceInputs["effectiveStringVal"] = state?.effectiveStringVal;
+            resourceInputs["effectiveWorkspaceLabel"] = state?.effectiveWorkspaceLabel;
             resourceInputs["integerVal"] = state?.integerVal;
             resourceInputs["name"] = state?.name;
             resourceInputs["operationalEmailCustomRecipient"] = state?.operationalEmailCustomRecipient;
             resourceInputs["personalCompute"] = state?.personalCompute;
             resourceInputs["restrictWorkspaceAdmins"] = state?.restrictWorkspaceAdmins;
             resourceInputs["stringVal"] = state?.stringVal;
+            resourceInputs["workspaceLabel"] = state?.workspaceLabel;
         } else {
             const args = argsOrState as AccountSettingV2Args | undefined;
             resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = args?.aibiDashboardEmbeddingAccessPolicy;
@@ -202,12 +212,14 @@ export class AccountSettingV2 extends pulumi.CustomResource {
             resourceInputs["effectiveAutomaticClusterUpdateWorkspace"] = args?.effectiveAutomaticClusterUpdateWorkspace;
             resourceInputs["effectivePersonalCompute"] = args?.effectivePersonalCompute;
             resourceInputs["effectiveRestrictWorkspaceAdmins"] = args?.effectiveRestrictWorkspaceAdmins;
+            resourceInputs["effectiveWorkspaceLabel"] = args?.effectiveWorkspaceLabel;
             resourceInputs["integerVal"] = args?.integerVal;
             resourceInputs["name"] = args?.name;
             resourceInputs["operationalEmailCustomRecipient"] = args?.operationalEmailCustomRecipient;
             resourceInputs["personalCompute"] = args?.personalCompute;
             resourceInputs["restrictWorkspaceAdmins"] = args?.restrictWorkspaceAdmins;
             resourceInputs["stringVal"] = args?.stringVal;
+            resourceInputs["workspaceLabel"] = args?.workspaceLabel;
             resourceInputs["effectiveAllowedAppsUserApiScopes"] = undefined /*out*/;
             resourceInputs["effectiveBooleanVal"] = undefined /*out*/;
             resourceInputs["effectiveCollaborationPlatformConnectivity"] = undefined /*out*/;
@@ -293,6 +305,10 @@ export interface AccountSettingV2State {
      */
     effectiveStringVal?: pulumi.Input<inputs.AccountSettingV2EffectiveStringVal | undefined>;
     /**
+     * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     */
+    effectiveWorkspaceLabel?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceLabel | undefined>;
+    /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
     integerVal?: pulumi.Input<inputs.AccountSettingV2IntegerVal | undefined>;
@@ -316,6 +332,10 @@ export interface AccountSettingV2State {
      * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
     stringVal?: pulumi.Input<inputs.AccountSettingV2StringVal | undefined>;
+    /**
+     * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     */
+    workspaceLabel?: pulumi.Input<inputs.AccountSettingV2WorkspaceLabel | undefined>;
 }
 
 /**
@@ -367,6 +387,10 @@ export interface AccountSettingV2Args {
      */
     effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.AccountSettingV2EffectiveRestrictWorkspaceAdmins | undefined>;
     /**
+     * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     */
+    effectiveWorkspaceLabel?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceLabel | undefined>;
+    /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
     integerVal?: pulumi.Input<inputs.AccountSettingV2IntegerVal | undefined>;
@@ -390,4 +414,8 @@ export interface AccountSettingV2Args {
      * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
     stringVal?: pulumi.Input<inputs.AccountSettingV2StringVal | undefined>;
+    /**
+     * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     */
+    workspaceLabel?: pulumi.Input<inputs.AccountSettingV2WorkspaceLabel | undefined>;
 }

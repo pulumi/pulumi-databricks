@@ -16,6 +16,25 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWor
 
     public static final AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs Empty = new AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs();
 
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     * 
+     */
+    @Import(name="excludedScopes")
+    private @Nullable Output<List<String>> excludedScopes;
+
+    /**
+     * @return Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     * 
+     */
+    public Optional<Output<List<String>>> excludedScopes() {
+        return Optional.ofNullable(this.excludedScopes);
+    }
+
     @Import(name="scopeQualifier")
     private @Nullable Output<String> scopeQualifier;
 
@@ -33,6 +52,7 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWor
     private AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs() {}
 
     private AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs(AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs $) {
+        this.excludedScopes = $.excludedScopes;
         this.scopeQualifier = $.scopeQualifier;
         this.scopes = $.scopes;
     }
@@ -53,6 +73,43 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWor
 
         public Builder(AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs defaults) {
             $ = new AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param excludedScopes Inverse of `scopes`: matches every API scope EXCEPT those listed here
+         * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+         * destination may set at most one of the two
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedScopes(@Nullable Output<List<String>> excludedScopes) {
+            $.excludedScopes = excludedScopes;
+            return this;
+        }
+
+        /**
+         * @param excludedScopes Inverse of `scopes`: matches every API scope EXCEPT those listed here
+         * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+         * destination may set at most one of the two
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedScopes(List<String> excludedScopes) {
+            return excludedScopes(Output.of(excludedScopes));
+        }
+
+        /**
+         * @param excludedScopes Inverse of `scopes`: matches every API scope EXCEPT those listed here
+         * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+         * destination may set at most one of the two
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedScopes(String... excludedScopes) {
+            return excludedScopes(List.of(excludedScopes));
         }
 
         public Builder scopeQualifier(@Nullable Output<String> scopeQualifier) {

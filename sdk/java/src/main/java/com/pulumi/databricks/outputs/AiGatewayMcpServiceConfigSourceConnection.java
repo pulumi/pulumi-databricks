@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +30,14 @@ public final class AiGatewayMcpServiceConfigSourceConnection {
      * 
      */
     private String name;
+    /**
+     * @return (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     * 
+     */
+    private @Nullable Map<String,String> options;
 
     private AiGatewayMcpServiceConfigSourceConnection() {}
     /**
@@ -51,6 +60,16 @@ public final class AiGatewayMcpServiceConfigSourceConnection {
     public String name() {
         return this.name;
     }
+    /**
+     * @return (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     * 
+     */
+    public Map<String,String> options() {
+        return this.options == null ? Map.of() : this.options;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,11 +82,13 @@ public final class AiGatewayMcpServiceConfigSourceConnection {
     public static final class Builder {
         private @Nullable Boolean isDeleted;
         private String name;
+        private @Nullable Map<String,String> options;
         public Builder() {}
         public Builder(AiGatewayMcpServiceConfigSourceConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isDeleted = defaults.isDeleted;
     	      this.name = defaults.name;
+    	      this.options = defaults.options;
         }
 
         @CustomType.Setter
@@ -84,10 +105,17 @@ public final class AiGatewayMcpServiceConfigSourceConnection {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder options(@Nullable Map<String,String> options) {
+
+            this.options = options;
+            return this;
+        }
         public AiGatewayMcpServiceConfigSourceConnection build() {
             final var _resultValue = new AiGatewayMcpServiceConfigSourceConnection();
             _resultValue.isDeleted = isDeleted;
             _resultValue.name = name;
+            _resultValue.options = options;
             return _resultValue;
         }
     }

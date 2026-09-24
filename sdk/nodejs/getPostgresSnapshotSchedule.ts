@@ -10,6 +10,22 @@ import * as utilities from "./utilities";
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+ *
+ * This data source retrieves the snapshot schedule for a branch.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve a Branch's Snapshot Schedule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresSnapshotSchedule({
+ *     name: "projects/my-project/branches/production/snapshot-schedule",
+ * });
+ * export const cadences = _this.then(_this => _this.schedules);
+ * ```
  */
 export function getPostgresSnapshotSchedule(args: GetPostgresSnapshotScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSnapshotScheduleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,6 +72,22 @@ export interface GetPostgresSnapshotScheduleResult {
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+ *
+ * This data source retrieves the snapshot schedule for a branch.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve a Branch's Snapshot Schedule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresSnapshotSchedule({
+ *     name: "projects/my-project/branches/production/snapshot-schedule",
+ * });
+ * export const cadences = _this.then(_this => _this.schedules);
+ * ```
  */
 export function getPostgresSnapshotScheduleOutput(args: GetPostgresSnapshotScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresSnapshotScheduleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

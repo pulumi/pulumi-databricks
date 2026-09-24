@@ -264,6 +264,12 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestina
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -357,6 +363,12 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinat
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -470,6 +482,12 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleD
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -563,6 +581,12 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDe
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -662,6 +686,12 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinat
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -772,6 +802,12 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinati
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -888,6 +924,12 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinati
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -995,6 +1037,12 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinatio
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -1108,6 +1156,12 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationLak
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -1218,6 +1272,12 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationLake
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -1334,6 +1394,12 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLake
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -1441,6 +1507,12 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakeb
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     scopeQualifier?: string;
     scopes?: string[];
 }
@@ -1662,6 +1734,11 @@ export interface AccountSettingV2EffectiveStringVal {
     value?: string;
 }
 
+export interface AccountSettingV2EffectiveWorkspaceLabel {
+    color?: string;
+    label?: string;
+}
+
 export interface AccountSettingV2IntegerVal {
     value?: number;
 }
@@ -1688,6 +1765,11 @@ export interface AccountSettingV2RestrictWorkspaceAdmins {
 
 export interface AccountSettingV2StringVal {
     value?: string;
+}
+
+export interface AccountSettingV2WorkspaceLabel {
+    color?: string;
+    label?: string;
 }
 
 export interface AiGatewayMcpServiceConfig {
@@ -1753,6 +1835,13 @@ export interface AiGatewayMcpServiceConfigSourceConnection {
      * `mcpServiceId`; required and immutable on Update/Get/Delete
      */
     name: string;
+    /**
+     * (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     */
+    options: {[key: string]: string};
 }
 
 export interface AiGatewayMcpServiceProviderConfig {
@@ -1963,9 +2052,38 @@ export interface AiGatewayModelProviderServiceConfigCustom {
 export interface AiGatewayModelProviderServiceConfigCustomDirect {
     apiKey?: outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKey;
     baseUrl?: string;
+    /**
+     * Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     */
+    headerAuth?: outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth;
 }
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+    /**
+     * HTTP header name that carries the API key on outbound requests (e.g.,
+     * `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+     * supplied via `apiKeyValue`
+     */
+    apiKeyName?: string;
+    /**
+     * Secret value forwarded under the `apiKeyName` header on outbound
+     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    apiKeyValue?: outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the enclosing secret
@@ -5811,6 +5929,10 @@ export interface FeatureEngineeringFeatureSource {
      */
     deltaTableSource?: outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
     /**
+     * A data source composed from registered upstream Features
+     */
+    featureViewSource?: outputs.FeatureEngineeringFeatureSourceFeatureViewSource;
+    /**
      * A Kafka stream data source
      */
     kafkaSource?: outputs.FeatureEngineeringFeatureSourceKafkaSource;
@@ -5844,6 +5966,20 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     timeseriesColumn?: string;
     transformationSql?: string;
+}
+
+export interface FeatureEngineeringFeatureSourceFeatureViewSource {
+    /**
+     * The upstream Features this source reads. Must include at least one feature
+     */
+    featureReferences?: outputs.FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference[];
+}
+
+export interface FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference {
+    /**
+     * The three-part full name of the upstream Feature
+     */
+    feature: string;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
@@ -6270,12 +6406,18 @@ export interface FeatureEngineeringKafkaConfigValueSchemaProtoSchema {
 export interface FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     /**
      * The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-     * window timing and fills it in on the response
+     * schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+     * unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+     * the features' window timing and fills it in on the response
      */
     cronExpression?: string;
     mode?: string;
+    /**
+     * A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+     * when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+     * to UTC
+     */
+    timezoneId?: string;
 }
 
 export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
@@ -6890,6 +7032,12 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRu
 
 export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -7042,6 +7190,12 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRul
 }
 
 export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -7228,6 +7382,12 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessA
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -7380,6 +7540,12 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessD
 }
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -7549,6 +7715,12 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRul
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -7715,6 +7887,12 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRule
 }
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -7898,6 +8076,12 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRule
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -8061,6 +8245,12 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleD
 }
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -8241,6 +8431,12 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDesti
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -8407,6 +8603,12 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestin
 }
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -8590,6 +8792,12 @@ export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestin
 
 export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -8753,6 +8961,12 @@ export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestina
 }
 
 export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -9053,6 +9267,12 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDest
 
 export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -9205,6 +9425,12 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDesti
 }
 
 export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -9391,6 +9617,12 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRu
 
 export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -9543,6 +9775,12 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRul
 }
 
 export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -9712,6 +9950,12 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDesti
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -9878,6 +10122,12 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestin
 }
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -10061,6 +10311,12 @@ export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestin
 
 export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -10224,6 +10480,12 @@ export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestina
 }
 
 export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -10404,6 +10666,12 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestination
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -10570,6 +10838,12 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationL
 }
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -10753,6 +11027,12 @@ export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationL
 
 export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
+    /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
     scopeQualifier?: string;
@@ -10916,6 +11196,12 @@ export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLa
 }
 
 export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: string[];
     /**
      * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      */
@@ -11242,6 +11528,17 @@ export interface GetAccountSettingV2EffectiveStringVal {
     value?: string;
 }
 
+export interface GetAccountSettingV2EffectiveWorkspaceLabel {
+    /**
+     * (string)
+     */
+    color?: string;
+    /**
+     * (string)
+     */
+    label?: string;
+}
+
 export interface GetAccountSettingV2IntegerVal {
     /**
      * (string) - Represents a generic string value
@@ -11280,6 +11577,17 @@ export interface GetAccountSettingV2StringVal {
      * (string) - Represents a generic string value
      */
     value?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceLabel {
+    /**
+     * (string)
+     */
+    color?: string;
+    /**
+     * (string)
+     */
+    label?: string;
 }
 
 export interface GetAiGatewayMcpServiceConfig {
@@ -11345,6 +11653,13 @@ export interface GetAiGatewayMcpServiceConfigSourceConnection {
      * `mcpServiceId`; required and immutable on Update/Get/Delete
      */
     name: string;
+    /**
+     * (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     */
+    options: {[key: string]: string};
 }
 
 export interface GetAiGatewayMcpServiceProviderConfig {
@@ -11467,6 +11782,13 @@ export interface GetAiGatewayMcpServicesMcpServiceConfigSourceConnection {
      * server, in the form `connections/{catalog}.{schema}.{connection}`
      */
     name: string;
+    /**
+     * (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     */
+    options: {[key: string]: string};
 }
 
 export interface GetAiGatewayMcpServicesMcpServiceProviderConfig {
@@ -11762,9 +12084,38 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirect {
      * OpenAI-API-compatible third-party endpoints or in-network proxies
      */
     baseUrl?: string;
+    /**
+     * (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     */
+    headerAuth?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+    /**
+     * (string) - HTTP header name that carries the API key on outbound requests (e.g.,
+     * `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+     * supplied via `apiKeyValue`
+     */
+    apiKeyName?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Secret value forwarded under the `apiKeyName` header on outbound
+     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    apiKeyValue?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the enclosing secret
@@ -12330,9 +12681,38 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCust
      * OpenAI-API-compatible third-party endpoints or in-network proxies
      */
     baseUrl?: string;
+    /**
+     * (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     */
+    headerAuth?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth {
+    /**
+     * (string) - HTTP header name that carries the API key on outbound requests (e.g.,
+     * `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+     * supplied via `apiKeyValue`
+     */
+    apiKeyName?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Secret value forwarded under the `apiKeyName` header on outbound
+     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    apiKeyValue?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the enclosing secret
@@ -20241,6 +20621,10 @@ export interface GetFeatureEngineeringFeatureSource {
      */
     deltaTableSource?: outputs.GetFeatureEngineeringFeatureSourceDeltaTableSource;
     /**
+     * (FeatureViewSource) - A data source composed from registered upstream Features
+     */
+    featureViewSource?: outputs.GetFeatureEngineeringFeatureSourceFeatureViewSource;
+    /**
      * (KafkaSource) - A Kafka stream data source
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeatureSourceKafkaSource;
@@ -20289,6 +20673,20 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      * the schema specified on the Stream object
      */
     transformationSql?: string;
+}
+
+export interface GetFeatureEngineeringFeatureSourceFeatureViewSource {
+    /**
+     * (list of FeatureReference) - The upstream Features this source reads. Must include at least one feature
+     */
+    featureReferences?: outputs.GetFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference[];
+}
+
+export interface GetFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference {
+    /**
+     * (string) - The three-part full name of the upstream Feature
+     */
+    feature: string;
 }
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSource {
@@ -21044,6 +21442,10 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
      */
     deltaTableSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
     /**
+     * (FeatureViewSource) - A data source composed from registered upstream Features
+     */
+    featureViewSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource;
+    /**
      * (KafkaSource) - A Kafka stream data source
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
@@ -21090,6 +21492,20 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      * the schema specified on the Stream object
      */
     transformationSql?: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource {
+    /**
+     * (list of FeatureReference) - The upstream Features this source reads. Must include at least one feature
+     */
+    featureReferences?: outputs.GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSourceFeatureReference[];
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSourceFeatureReference {
+    /**
+     * (string) - The three-part full name of the upstream Feature
+     */
+    feature: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
@@ -22002,15 +22418,21 @@ export interface GetFeatureEngineeringKafkaConfigsProviderConfig {
 export interface GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     /**
      * (string) - The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-     * window timing and fills it in on the response
+     * schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+     * unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+     * the features' window timing and fills it in on the response
      */
     cronExpression?: string;
     /**
      * (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      */
     mode?: string;
+    /**
+     * (string) - A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+     * when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+     * to UTC
+     */
+    timezoneId?: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
@@ -22156,15 +22578,21 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger {
     /**
      * (string) - The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-     * window timing and fills it in on the response
+     * schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+     * unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+     * the features' window timing and fills it in on the response
      */
     cronExpression?: string;
     /**
      * (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      */
     mode?: string;
+    /**
+     * (string) - A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+     * when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+     * to UTC
+     */
+    timezoneId?: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
@@ -25054,7 +25482,7 @@ export interface GetPolicyInfosPolicy {
     exceptPrincipals: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
     /**
@@ -27805,7 +28233,7 @@ export interface GetRfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: string;
     /**
      * (string) - Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -27829,7 +28257,7 @@ export interface GetRfaAccessRequestDestinationsSecurable {
     providerShare?: string;
     /**
      * (string) - Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -27875,11 +28303,12 @@ export interface GetSandboxesSandbox {
      */
     createTime: string;
     /**
-     * (string) - Human-readable display label for the sandbox. At most 256 bytes
+     * (string) - Human-readable display label for the sandbox. At most 256 characters
      */
     displayName: string;
     /**
-     * (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+     * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      */
     name: string;
     /**
@@ -28439,6 +28868,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
     awsSecretAccessKeyPlaintext: string;
     bedrockProvider: string;
     instanceProfileArn?: string;
+    ucServiceCredentialName?: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
@@ -29597,7 +30027,7 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -30191,6 +30621,17 @@ export interface GetWorkspaceSettingV2EffectiveStringVal {
     value?: string;
 }
 
+export interface GetWorkspaceSettingV2EffectiveWorkspaceLabel {
+    /**
+     * (string)
+     */
+    color?: string;
+    /**
+     * (string)
+     */
+    label?: string;
+}
+
 export interface GetWorkspaceSettingV2IntegerVal {
     /**
      * (string) - Represents a generic string value
@@ -30236,6 +30677,17 @@ export interface GetWorkspaceSettingV2StringVal {
      * (string) - Represents a generic string value
      */
     value?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceLabel {
+    /**
+     * (string)
+     */
+    color?: string;
+    /**
+     * (string)
+     */
+    label?: string;
 }
 
 export interface GetZonesProviderConfig {
@@ -31479,6 +31931,8 @@ export interface JobTaskAiRuntimeTask {
     mlflowArtifactLocation?: string;
     mlflowExperimentDirectory?: string;
     mlflowRun?: string;
+    priorityClass?: string;
+    unityCatalogImagePath?: string;
 }
 
 export interface JobTaskAiRuntimeTaskDeployment {
@@ -31831,6 +32285,8 @@ export interface JobTaskForEachTaskTaskAiRuntimeTask {
     mlflowArtifactLocation?: string;
     mlflowExperimentDirectory?: string;
     mlflowRun?: string;
+    priorityClass?: string;
+    unityCatalogImagePath?: string;
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTaskDeployment {
@@ -34445,6 +34901,7 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
      */
     bedrockProvider: string;
     instanceProfileArn?: string;
+    ucServiceCredentialName?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
@@ -35128,11 +35585,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -35199,11 +35656,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -35908,10 +36365,32 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer {
+    avroOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions;
     format?: string;
     inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
     outputColumn?: string;
+    protobufOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions {
+    parseMode?: string;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaFilePath?: string;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -35925,11 +36404,51 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
     schemaHints?: string;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions {
+    descFilePath?: string;
+    messageName?: string;
+    parseMode?: string;
+    recursiveFieldsMaxDepth?: number;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformer {
+    avroOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptions;
     format?: string;
     inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions;
     outputColumn?: string;
+    protobufOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptions {
+    parseMode?: string;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaFilePath?: string;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -35941,6 +36460,24 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
     schemaEvolutionMode?: string;
     schemaFilePath?: string;
     schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptions {
+    descFilePath?: string;
+    messageName?: string;
+    parseMode?: string;
+    recursiveFieldsMaxDepth?: number;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions {
@@ -36071,10 +36608,32 @@ export interface PipelineIngestionDefinitionObjectSchemaFanoutOptions {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
+    avroOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions;
     format?: string;
     inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions;
     outputColumn?: string;
+    protobufOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions {
+    parseMode?: string;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaFilePath?: string;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions {
@@ -36086,6 +36645,24 @@ export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJs
     schemaEvolutionMode?: string;
     schemaFilePath?: string;
     schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions {
+    descFilePath?: string;
+    messageName?: string;
+    parseMode?: string;
+    recursiveFieldsMaxDepth?: number;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -36223,10 +36800,32 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer {
+    avroOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptions;
     format?: string;
     inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
     outputColumn?: string;
+    protobufOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptions {
+    parseMode?: string;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaFilePath?: string;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -36240,11 +36839,51 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
     schemaHints?: string;
 }
 
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions {
+    descFilePath?: string;
+    messageName?: string;
+    parseMode?: string;
+    recursiveFieldsMaxDepth?: number;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
+}
+
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformer {
+    avroOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptions;
     format?: string;
     inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions;
     outputColumn?: string;
+    protobufOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptions {
+    parseMode?: string;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaFilePath?: string;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -36256,6 +36895,24 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
     schemaEvolutionMode?: string;
     schemaFilePath?: string;
     schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptions {
+    descFilePath?: string;
+    messageName?: string;
+    parseMode?: string;
+    recursiveFieldsMaxDepth?: number;
+    schemaRegistry?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions;
+    connectionName?: string;
+    protobufMessageName?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions {
@@ -36563,6 +37220,7 @@ export interface PipelineRestartWindow {
 }
 
 export interface PipelineRunAs {
+    groupName?: string;
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
@@ -38123,7 +38781,7 @@ export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: string;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -38148,7 +38806,7 @@ export interface RfaAccessRequestDestinationsSecurable {
     providerShare?: string;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -39341,6 +39999,11 @@ export interface WorkspaceSettingV2EffectiveStringVal {
     value?: string;
 }
 
+export interface WorkspaceSettingV2EffectiveWorkspaceLabel {
+    color?: string;
+    label?: string;
+}
+
 export interface WorkspaceSettingV2IntegerVal {
     value?: number;
 }
@@ -39374,5 +40037,10 @@ export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
 
 export interface WorkspaceSettingV2StringVal {
     value?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceLabel {
+    color?: string;
+    label?: string;
 }
 

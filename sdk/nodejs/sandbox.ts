@@ -67,11 +67,12 @@ export class Sandbox extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Human-readable display label for the sandbox. At most 256 bytes
+     * Human-readable display label for the sandbox. At most 256 characters
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
-     * (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+     * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -144,11 +145,12 @@ export interface SandboxState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Human-readable display label for the sandbox. At most 256 bytes
+     * Human-readable display label for the sandbox. At most 256 characters
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+     * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -178,7 +180,7 @@ export interface SandboxState {
  */
 export interface SandboxArgs {
     /**
-     * Human-readable display label for the sandbox. At most 256 bytes
+     * Human-readable display label for the sandbox. At most 256 characters
      */
     displayName?: pulumi.Input<string | undefined>;
     /**

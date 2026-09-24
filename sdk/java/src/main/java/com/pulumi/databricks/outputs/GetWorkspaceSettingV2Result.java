@@ -21,12 +21,14 @@ import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveOperationalEm
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveStringVal;
+import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveWorkspaceLabel;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2IntegerVal;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2OperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2PersonalCompute;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2ProviderConfig;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2StringVal;
+import com.pulumi.databricks.outputs.GetWorkspaceSettingV2WorkspaceLabel;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -121,6 +123,11 @@ public final class GetWorkspaceSettingV2Result {
      */
     private GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal;
     /**
+     * @return (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     * 
+     */
+    private GetWorkspaceSettingV2EffectiveWorkspaceLabel effectiveWorkspaceLabel;
+    /**
      * @return (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
@@ -151,6 +158,11 @@ public final class GetWorkspaceSettingV2Result {
      * 
      */
     private GetWorkspaceSettingV2StringVal stringVal;
+    /**
+     * @return (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     * 
+     */
+    private GetWorkspaceSettingV2WorkspaceLabel workspaceLabel;
 
     private GetWorkspaceSettingV2Result() {}
     /**
@@ -273,6 +285,13 @@ public final class GetWorkspaceSettingV2Result {
         return this.effectiveStringVal;
     }
     /**
+     * @return (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     * 
+     */
+    public GetWorkspaceSettingV2EffectiveWorkspaceLabel effectiveWorkspaceLabel() {
+        return this.effectiveWorkspaceLabel;
+    }
+    /**
      * @return (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
@@ -317,6 +336,13 @@ public final class GetWorkspaceSettingV2Result {
     public GetWorkspaceSettingV2StringVal stringVal() {
         return this.stringVal;
     }
+    /**
+     * @return (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     * 
+     */
+    public GetWorkspaceSettingV2WorkspaceLabel workspaceLabel() {
+        return this.workspaceLabel;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -344,6 +370,7 @@ public final class GetWorkspaceSettingV2Result {
         private GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
         private GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
         private GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal;
+        private GetWorkspaceSettingV2EffectiveWorkspaceLabel effectiveWorkspaceLabel;
         private GetWorkspaceSettingV2IntegerVal integerVal;
         private String name;
         private GetWorkspaceSettingV2OperationalEmailCustomRecipient operationalEmailCustomRecipient;
@@ -351,6 +378,7 @@ public final class GetWorkspaceSettingV2Result {
         private @Nullable GetWorkspaceSettingV2ProviderConfig providerConfig;
         private GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
         private GetWorkspaceSettingV2StringVal stringVal;
+        private GetWorkspaceSettingV2WorkspaceLabel workspaceLabel;
         public Builder() {}
         public Builder(GetWorkspaceSettingV2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -371,6 +399,7 @@ public final class GetWorkspaceSettingV2Result {
     	      this.effectivePersonalCompute = defaults.effectivePersonalCompute;
     	      this.effectiveRestrictWorkspaceAdmins = defaults.effectiveRestrictWorkspaceAdmins;
     	      this.effectiveStringVal = defaults.effectiveStringVal;
+    	      this.effectiveWorkspaceLabel = defaults.effectiveWorkspaceLabel;
     	      this.integerVal = defaults.integerVal;
     	      this.name = defaults.name;
     	      this.operationalEmailCustomRecipient = defaults.operationalEmailCustomRecipient;
@@ -378,6 +407,7 @@ public final class GetWorkspaceSettingV2Result {
     	      this.providerConfig = defaults.providerConfig;
     	      this.restrictWorkspaceAdmins = defaults.restrictWorkspaceAdmins;
     	      this.stringVal = defaults.stringVal;
+    	      this.workspaceLabel = defaults.workspaceLabel;
         }
 
         @CustomType.Setter
@@ -517,6 +547,14 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveWorkspaceLabel(GetWorkspaceSettingV2EffectiveWorkspaceLabel effectiveWorkspaceLabel) {
+            if (effectiveWorkspaceLabel == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveWorkspaceLabel");
+            }
+            this.effectiveWorkspaceLabel = effectiveWorkspaceLabel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder integerVal(GetWorkspaceSettingV2IntegerVal integerVal) {
             if (integerVal == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "integerVal");
@@ -570,6 +608,14 @@ public final class GetWorkspaceSettingV2Result {
             this.stringVal = stringVal;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceLabel(GetWorkspaceSettingV2WorkspaceLabel workspaceLabel) {
+            if (workspaceLabel == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "workspaceLabel");
+            }
+            this.workspaceLabel = workspaceLabel;
+            return this;
+        }
         public GetWorkspaceSettingV2Result build() {
             final var _resultValue = new GetWorkspaceSettingV2Result();
             _resultValue.aibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
@@ -589,6 +635,7 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.effectivePersonalCompute = effectivePersonalCompute;
             _resultValue.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             _resultValue.effectiveStringVal = effectiveStringVal;
+            _resultValue.effectiveWorkspaceLabel = effectiveWorkspaceLabel;
             _resultValue.integerVal = integerVal;
             _resultValue.name = name;
             _resultValue.operationalEmailCustomRecipient = operationalEmailCustomRecipient;
@@ -596,6 +643,7 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.providerConfig = providerConfig;
             _resultValue.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             _resultValue.stringVal = stringVal;
+            _resultValue.workspaceLabel = workspaceLabel;
             return _resultValue;
         }
     }

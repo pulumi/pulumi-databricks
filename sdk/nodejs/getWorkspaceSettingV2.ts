@@ -112,6 +112,10 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly effectiveStringVal: outputs.GetWorkspaceSettingV2EffectiveStringVal;
     /**
+     * (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     */
+    readonly effectiveWorkspaceLabel: outputs.GetWorkspaceSettingV2EffectiveWorkspaceLabel;
+    /**
      * (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
     readonly integerVal: outputs.GetWorkspaceSettingV2IntegerVal;
@@ -136,6 +140,10 @@ export interface GetWorkspaceSettingV2Result {
      * (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
     readonly stringVal: outputs.GetWorkspaceSettingV2StringVal;
+    /**
+     * (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     */
+    readonly workspaceLabel: outputs.GetWorkspaceSettingV2WorkspaceLabel;
 }
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -72,6 +72,8 @@ type LookupAccountSettingV2Result struct {
 	EffectiveRestrictWorkspaceAdmins GetAccountSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal GetAccountSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
+	// (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel GetAccountSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal GetAccountSettingV2IntegerVal `pulumi:"integerVal"`
 	// (string) - Name of the setting
@@ -84,6 +86,8 @@ type LookupAccountSettingV2Result struct {
 	RestrictWorkspaceAdmins GetAccountSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal GetAccountSettingV2StringVal `pulumi:"stringVal"`
+	// (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel GetAccountSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
 
 func LookupAccountSettingV2Output(ctx *pulumi.Context, args LookupAccountSettingV2OutputArgs, opts ...pulumi.InvokeOption) LookupAccountSettingV2ResultOutput {
@@ -233,6 +237,13 @@ func (o LookupAccountSettingV2ResultOutput) EffectiveStringVal() GetAccountSetti
 	}).(GetAccountSettingV2EffectiveStringValOutput)
 }
 
+// (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+func (o LookupAccountSettingV2ResultOutput) EffectiveWorkspaceLabel() GetAccountSettingV2EffectiveWorkspaceLabelOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectiveWorkspaceLabel {
+		return v.EffectiveWorkspaceLabel
+	}).(GetAccountSettingV2EffectiveWorkspaceLabelOutput)
+}
+
 // (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 func (o LookupAccountSettingV2ResultOutput) IntegerVal() GetAccountSettingV2IntegerValOutput {
 	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2IntegerVal { return v.IntegerVal }).(GetAccountSettingV2IntegerValOutput)
@@ -265,6 +276,11 @@ func (o LookupAccountSettingV2ResultOutput) RestrictWorkspaceAdmins() GetAccount
 // (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o LookupAccountSettingV2ResultOutput) StringVal() GetAccountSettingV2StringValOutput {
 	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2StringVal { return v.StringVal }).(GetAccountSettingV2StringValOutput)
+}
+
+// (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+func (o LookupAccountSettingV2ResultOutput) WorkspaceLabel() GetAccountSettingV2WorkspaceLabelOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2WorkspaceLabel { return v.WorkspaceLabel }).(GetAccountSettingV2WorkspaceLabelOutput)
 }
 
 func init() {

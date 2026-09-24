@@ -431,6 +431,8 @@ __all__ = [
     'AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict',
     'AccountSettingV2EffectiveStringValArgs',
     'AccountSettingV2EffectiveStringValArgsDict',
+    'AccountSettingV2EffectiveWorkspaceLabelArgs',
+    'AccountSettingV2EffectiveWorkspaceLabelArgsDict',
     'AccountSettingV2IntegerValArgs',
     'AccountSettingV2IntegerValArgsDict',
     'AccountSettingV2OperationalEmailCustomRecipientArgs',
@@ -441,6 +443,8 @@ __all__ = [
     'AccountSettingV2RestrictWorkspaceAdminsArgsDict',
     'AccountSettingV2StringValArgs',
     'AccountSettingV2StringValArgsDict',
+    'AccountSettingV2WorkspaceLabelArgs',
+    'AccountSettingV2WorkspaceLabelArgsDict',
     'AiGatewayMcpServiceConfigArgs',
     'AiGatewayMcpServiceConfigArgsDict',
     'AiGatewayMcpServiceConfigRateLimitArgs',
@@ -487,6 +491,10 @@ __all__ = [
     'AiGatewayModelProviderServiceConfigCustomDirectArgsDict',
     'AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs',
     'AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgsDict',
+    'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs',
+    'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgsDict',
+    'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs',
+    'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgsDict',
     'AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs',
     'AiGatewayModelProviderServiceConfigGeminiEnterpriseArgsDict',
     'AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs',
@@ -1101,6 +1109,10 @@ __all__ = [
     'FeatureEngineeringFeatureSourceArgsDict',
     'FeatureEngineeringFeatureSourceDeltaTableSourceArgs',
     'FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict',
+    'FeatureEngineeringFeatureSourceFeatureViewSourceArgs',
+    'FeatureEngineeringFeatureSourceFeatureViewSourceArgsDict',
+    'FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs',
+    'FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgsDict',
     'FeatureEngineeringFeatureSourceKafkaSourceArgs',
     'FeatureEngineeringFeatureSourceKafkaSourceArgsDict',
     'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs',
@@ -2171,12 +2183,36 @@ __all__ = [
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsCustomReportOptionsArgs',
@@ -2213,8 +2249,20 @@ __all__ = [
     'PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs',
     'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgs',
     'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs',
@@ -2249,12 +2297,36 @@ __all__ = [
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsCustomReportOptionsArgs',
@@ -2821,6 +2893,8 @@ __all__ = [
     'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict',
     'WorkspaceSettingV2EffectiveStringValArgs',
     'WorkspaceSettingV2EffectiveStringValArgsDict',
+    'WorkspaceSettingV2EffectiveWorkspaceLabelArgs',
+    'WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict',
     'WorkspaceSettingV2IntegerValArgs',
     'WorkspaceSettingV2IntegerValArgsDict',
     'WorkspaceSettingV2OperationalEmailCustomRecipientArgs',
@@ -2833,6 +2907,8 @@ __all__ = [
     'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict',
     'WorkspaceSettingV2StringValArgs',
     'WorkspaceSettingV2StringValArgsDict',
+    'WorkspaceSettingV2WorkspaceLabelArgs',
+    'WorkspaceSettingV2WorkspaceLabelArgsDict',
     'GetAiGatewayMcpServiceProviderConfigArgs',
     'GetAiGatewayMcpServiceProviderConfigArgsDict',
     'GetAiGatewayMcpServicesProviderConfigArgs',
@@ -5275,18 +5351,46 @@ class AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationLakebas
 
 
 class AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -5800,18 +5904,46 @@ class AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationLakebase
 
 
 class AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -6438,18 +6570,46 @@ class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationL
 
 
 class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -6963,18 +7123,46 @@ class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLa
 
 
 class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -7533,18 +7721,46 @@ class AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationLakebase
 
 
 class AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -8125,18 +8341,46 @@ class AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationLakebaseR
 
 
 class AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -8762,18 +9006,46 @@ class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseR
 
 
 class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -9345,18 +9617,46 @@ class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRu
 
 
 class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -9973,18 +10273,46 @@ class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationLakebaseRuntim
 
 
 class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -10565,18 +10893,46 @@ class AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationLakebaseRuntime
 
 
 class AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -11202,18 +11558,46 @@ class AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRuntime
 
 
 class AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -11785,18 +12169,46 @@ class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntimeA
 
 
 class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgsDict(TypedDict):
+    excluded_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Inverse of `scopes`: matches every API scope EXCEPT those listed here
+    ("allow all except"). Mutually exclusive with `scopes` — a single
+    destination may set at most one of the two
+    """
     scope_qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs:
     def __init__(__self__, *,
+                 excluded_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scope_qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_scopes: Inverse of `scopes`: matches every API scope EXCEPT those listed here
+               ("allow all except"). Mutually exclusive with `scopes` — a single
+               destination may set at most one of the two
+        """
+        if excluded_scopes is not None:
+            pulumi.set(__self__, "excluded_scopes", excluded_scopes)
         if scope_qualifier is not None:
             pulumi.set(__self__, "scope_qualifier", scope_qualifier)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedScopes")
+    def excluded_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Inverse of `scopes`: matches every API scope EXCEPT those listed here
+        ("allow all except"). Mutually exclusive with `scopes` — a single
+        destination may set at most one of the two
+        """
+        return pulumi.get(self, "excluded_scopes")
+
+    @excluded_scopes.setter
+    def excluded_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeQualifier")
@@ -12919,6 +13331,39 @@ class AccountSettingV2EffectiveStringValArgs:
         pulumi.set(self, "value", value)
 
 
+class AccountSettingV2EffectiveWorkspaceLabelArgsDict(TypedDict):
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class AccountSettingV2EffectiveWorkspaceLabelArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+
 class AccountSettingV2IntegerValArgsDict(TypedDict):
     value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
@@ -13048,6 +13493,39 @@ class AccountSettingV2StringValArgs:
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class AccountSettingV2WorkspaceLabelArgsDict(TypedDict):
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class AccountSettingV2WorkspaceLabelArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
 
 
 class AiGatewayMcpServiceConfigArgsDict(TypedDict):
@@ -13271,12 +13749,20 @@ class AiGatewayMcpServiceConfigSourceConnectionArgsDict(TypedDict):
     the reference so callers can identify the broken dependency; tool
     invocation fails until the source connection is updated
     """
+    options: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+    includes: `authorization_endpoint` (OAuth authorize URL), `token_endpoint` (token-exchange
+    URL), `oauth_scope` (space-separated scopes to request), `client_id` (OAuth client id), and
+    `oauth_provider` (the OAuth provider)
+    """
 
 @pulumi.input_type
 class AiGatewayMcpServiceConfigSourceConnectionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 is_deleted: pulumi.Input[Optional[_builtins.bool]] = None):
+                 is_deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
                Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
@@ -13286,10 +13772,16 @@ class AiGatewayMcpServiceConfigSourceConnectionArgs:
         :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
                the reference so callers can identify the broken dependency; tool
                invocation fails until the source connection is updated
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+               includes: `authorization_endpoint` (OAuth authorize URL), `token_endpoint` (token-exchange
+               URL), `oauth_scope` (space-separated scopes to request), `client_id` (OAuth client id), and
+               `oauth_provider` (the OAuth provider)
         """
         pulumi.set(__self__, "name", name)
         if is_deleted is not None:
             pulumi.set(__self__, "is_deleted", is_deleted)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
 
     @_builtins.property
     @pulumi.getter
@@ -13320,6 +13812,21 @@ class AiGatewayMcpServiceConfigSourceConnectionArgs:
     @is_deleted.setter
     def is_deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_deleted", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+        includes: `authorization_endpoint` (OAuth authorize URL), `token_endpoint` (token-exchange
+        URL), `oauth_scope` (space-separated scopes to request), `client_id` (OAuth client id), and
+        `oauth_provider` (the OAuth provider)
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "options", value)
 
 
 class AiGatewayMcpServiceProviderConfigArgsDict(TypedDict):
@@ -14284,16 +14791,30 @@ class AiGatewayModelProviderServiceConfigCustomArgs:
 class AiGatewayModelProviderServiceConfigCustomDirectArgsDict(TypedDict):
     api_key: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgsDict']]]
     base_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    header_auth: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgsDict']]]
+    """
+    Header-based API-key auth: the secret is forwarded on outbound requests
+    under a caller-chosen HTTP header rather than as an `Authorization`
+    bearer token. Set this instead of `api_key` for header auth
+    """
 
 @pulumi.input_type
 class AiGatewayModelProviderServiceConfigCustomDirectArgs:
     def __init__(__self__, *,
                  api_key: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs']] = None,
-                 base_url: pulumi.Input[Optional[_builtins.str]] = None):
+                 base_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_auth: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs']] = None):
+        """
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs'] header_auth: Header-based API-key auth: the secret is forwarded on outbound requests
+               under a caller-chosen HTTP header rather than as an `Authorization`
+               bearer token. Set this instead of `api_key` for header auth
+        """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
+        if header_auth is not None:
+            pulumi.set(__self__, "header_auth", header_auth)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
@@ -14313,6 +14834,20 @@ class AiGatewayModelProviderServiceConfigCustomDirectArgs:
     def base_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_url", value)
 
+    @_builtins.property
+    @pulumi.getter(name="headerAuth")
+    def header_auth(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs']]:
+        """
+        Header-based API-key auth: the secret is forwarded on outbound requests
+        under a caller-chosen HTTP header rather than as an `Authorization`
+        bearer token. Set this instead of `api_key` for header auth
+        """
+        return pulumi.get(self, "header_auth")
+
+    @header_auth.setter
+    def header_auth(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs']]):
+        pulumi.set(self, "header_auth", value)
+
 
 class AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgsDict(TypedDict):
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -14324,6 +14859,99 @@ class AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgsDict(TypedDict):
 
 @pulumi.input_type
 class AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs:
+    def __init__(__self__, *,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
+        """
+        if plaintext is not None:
+            pulumi.set(__self__, "plaintext", plaintext)
+
+    @_builtins.property
+    @pulumi.getter
+    def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
+        """
+        return pulumi.get(self, "plaintext")
+
+    @plaintext.setter
+    def plaintext(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "plaintext", value)
+
+
+class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgsDict(TypedDict):
+    api_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HTTP header name that carries the API key on outbound requests (e.g.,
+    `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+    supplied via `api_key_value`
+    """
+    api_key_value: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgsDict']]]
+    """
+    Secret value forwarded under the `api_key_name` header on outbound
+    requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs:
+    def __init__(__self__, *,
+                 api_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key_name: HTTP header name that carries the API key on outbound requests (e.g.,
+               `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+               supplied via `api_key_value`
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs'] api_key_value: Secret value forwarded under the `api_key_name` header on outbound
+               requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+        """
+        if api_key_name is not None:
+            pulumi.set(__self__, "api_key_name", api_key_name)
+        if api_key_value is not None:
+            pulumi.set(__self__, "api_key_value", api_key_value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyName")
+    def api_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HTTP header name that carries the API key on outbound requests (e.g.,
+        `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+        supplied via `api_key_value`
+        """
+        return pulumi.get(self, "api_key_name")
+
+    @api_key_name.setter
+    def api_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "api_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyValue")
+    def api_key_value(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs']]:
+        """
+        Secret value forwarded under the `api_key_name` header on outbound
+        requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+        """
+        return pulumi.get(self, "api_key_value")
+
+    @api_key_value.setter
+    def api_key_value(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs']]):
+        pulumi.set(self, "api_key_value", value)
+
+
+class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgsDict(TypedDict):
+    plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs:
     def __init__(__self__, *,
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -32635,6 +33263,10 @@ class FeatureEngineeringFeatureSourceArgsDict(TypedDict):
     """
     A Delta table data source
     """
+    feature_view_source: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceFeatureViewSourceArgsDict']]]
+    """
+    A data source composed from registered upstream Features
+    """
     kafka_source: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceArgsDict']]]
     """
     A Kafka stream data source
@@ -32657,12 +33289,14 @@ class FeatureEngineeringFeatureSourceArgsDict(TypedDict):
 class FeatureEngineeringFeatureSourceArgs:
     def __init__(__self__, *,
                  delta_table_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']] = None,
+                 feature_view_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceFeatureViewSourceArgs']] = None,
                  kafka_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceArgs']] = None,
                  lateness: pulumi.Input[Optional['FeatureEngineeringFeatureSourceLatenessArgs']] = None,
                  request_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceRequestSourceArgs']] = None,
                  stream_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceStreamSourceArgs']] = None):
         """
         :param pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs'] delta_table_source: A Delta table data source
+        :param pulumi.Input['FeatureEngineeringFeatureSourceFeatureViewSourceArgs'] feature_view_source: A data source composed from registered upstream Features
         :param pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceArgs'] kafka_source: A Kafka stream data source
         :param pulumi.Input['FeatureEngineeringFeatureSourceLatenessArgs'] lateness: Completeness timing for this Feature's use of the source. This configuration is part of the
                Feature definition; it does not modify the underlying table or stream
@@ -32671,6 +33305,8 @@ class FeatureEngineeringFeatureSourceArgs:
         """
         if delta_table_source is not None:
             pulumi.set(__self__, "delta_table_source", delta_table_source)
+        if feature_view_source is not None:
+            pulumi.set(__self__, "feature_view_source", feature_view_source)
         if kafka_source is not None:
             pulumi.set(__self__, "kafka_source", kafka_source)
         if lateness is not None:
@@ -32691,6 +33327,18 @@ class FeatureEngineeringFeatureSourceArgs:
     @delta_table_source.setter
     def delta_table_source(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']]):
         pulumi.set(self, "delta_table_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="featureViewSource")
+    def feature_view_source(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceFeatureViewSourceArgs']]:
+        """
+        A data source composed from registered upstream Features
+        """
+        return pulumi.get(self, "feature_view_source")
+
+    @feature_view_source.setter
+    def feature_view_source(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceFeatureViewSourceArgs']]):
+        pulumi.set(self, "feature_view_source", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaSource")
@@ -32846,6 +33494,63 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     @transformation_sql.setter
     def transformation_sql(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transformation_sql", value)
+
+
+class FeatureEngineeringFeatureSourceFeatureViewSourceArgsDict(TypedDict):
+    feature_references: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgsDict']]]]]
+    """
+    The upstream Features this source reads. Must include at least one feature
+    """
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceFeatureViewSourceArgs:
+    def __init__(__self__, *,
+                 feature_references: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs']]] feature_references: The upstream Features this source reads. Must include at least one feature
+        """
+        if feature_references is not None:
+            pulumi.set(__self__, "feature_references", feature_references)
+
+    @_builtins.property
+    @pulumi.getter(name="featureReferences")
+    def feature_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs']]]]:
+        """
+        The upstream Features this source reads. Must include at least one feature
+        """
+        return pulumi.get(self, "feature_references")
+
+    @feature_references.setter
+    def feature_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs']]]]):
+        pulumi.set(self, "feature_references", value)
+
+
+class FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgsDict(TypedDict):
+    feature: pulumi.Input[_builtins.str]
+    """
+    The three-part full name of the upstream Feature
+    """
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs:
+    def __init__(__self__, *,
+                 feature: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] feature: The three-part full name of the upstream Feature
+        """
+        pulumi.set(__self__, "feature", feature)
+
+    @_builtins.property
+    @pulumi.getter
+    def feature(self) -> pulumi.Input[_builtins.str]:
+        """
+        The three-part full name of the upstream Feature
+        """
+        return pulumi.get(self, "feature")
+
+    @feature.setter
+    def feature(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "feature", value)
 
 
 class FeatureEngineeringFeatureSourceKafkaSourceArgsDict(TypedDict):
@@ -34838,36 +35543,48 @@ class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict(TypedDict
     cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-    schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-    empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-    window timing and fills it in on the response
+    schedule is interpreted in timezone_id (defaults to UTC). Required when mode is MANUAL (or
+    unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+    the features' window timing and fills it in on the response
     """
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    timezone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+    when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+    to UTC
+    """
 
 @pulumi.input_type
 class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs:
     def __init__(__self__, *,
                  cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
-                 mode: pulumi.Input[Optional[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cron_expression: The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-               schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-               empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-               window timing and fills it in on the response
+               schedule is interpreted in timezone_id (defaults to UTC). Required when mode is MANUAL (or
+               unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+               the features' window timing and fills it in on the response
+        :param pulumi.Input[_builtins.str] timezone_id: A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+               when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+               to UTC
         """
         if cron_expression is not None:
             pulumi.set(__self__, "cron_expression", cron_expression)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if timezone_id is not None:
+            pulumi.set(__self__, "timezone_id", timezone_id)
 
     @_builtins.property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-        schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-        empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-        window timing and fills it in on the response
+        schedule is interpreted in timezone_id (defaults to UTC). Required when mode is MANUAL (or
+        unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+        the features' window timing and fills it in on the response
         """
         return pulumi.get(self, "cron_expression")
 
@@ -34883,6 +35600,20 @@ class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs:
     @mode.setter
     def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+        when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+        to UTC
+        """
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timezone_id", value)
 
 
 class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict(TypedDict):
@@ -42742,6 +43473,8 @@ class JobTaskAiRuntimeTaskArgsDict(TypedDict):
     mlflow_artifact_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     mlflow_experiment_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     mlflow_run: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    priority_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    unity_catalog_image_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskAiRuntimeTaskArgs:
@@ -42752,7 +43485,9 @@ class JobTaskAiRuntimeTaskArgs:
                  docker_image_url: pulumi.Input[Optional[_builtins.str]] = None,
                  mlflow_artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
                  mlflow_experiment_directory: pulumi.Input[Optional[_builtins.str]] = None,
-                 mlflow_run: pulumi.Input[Optional[_builtins.str]] = None):
+                 mlflow_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 unity_catalog_image_path: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "deployments", deployments)
         pulumi.set(__self__, "experiment", experiment)
         if code_source_path is not None:
@@ -42765,6 +43500,10 @@ class JobTaskAiRuntimeTaskArgs:
             pulumi.set(__self__, "mlflow_experiment_directory", mlflow_experiment_directory)
         if mlflow_run is not None:
             pulumi.set(__self__, "mlflow_run", mlflow_run)
+        if priority_class is not None:
+            pulumi.set(__self__, "priority_class", priority_class)
+        if unity_catalog_image_path is not None:
+            pulumi.set(__self__, "unity_catalog_image_path", unity_catalog_image_path)
 
     @_builtins.property
     @pulumi.getter
@@ -42828,6 +43567,24 @@ class JobTaskAiRuntimeTaskArgs:
     @mlflow_run.setter
     def mlflow_run(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mlflow_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="priorityClass")
+    def priority_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "priority_class")
+
+    @priority_class.setter
+    def priority_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "priority_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="unityCatalogImagePath")
+    def unity_catalog_image_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "unity_catalog_image_path")
+
+    @unity_catalog_image_path.setter
+    def unity_catalog_image_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "unity_catalog_image_path", value)
 
 
 class JobTaskAiRuntimeTaskDeploymentArgsDict(TypedDict):
@@ -44636,6 +45393,8 @@ class JobTaskForEachTaskTaskAiRuntimeTaskArgsDict(TypedDict):
     mlflow_artifact_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     mlflow_experiment_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     mlflow_run: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    priority_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    unity_catalog_image_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskAiRuntimeTaskArgs:
@@ -44646,7 +45405,9 @@ class JobTaskForEachTaskTaskAiRuntimeTaskArgs:
                  docker_image_url: pulumi.Input[Optional[_builtins.str]] = None,
                  mlflow_artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
                  mlflow_experiment_directory: pulumi.Input[Optional[_builtins.str]] = None,
-                 mlflow_run: pulumi.Input[Optional[_builtins.str]] = None):
+                 mlflow_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 unity_catalog_image_path: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "deployments", deployments)
         pulumi.set(__self__, "experiment", experiment)
         if code_source_path is not None:
@@ -44659,6 +45420,10 @@ class JobTaskForEachTaskTaskAiRuntimeTaskArgs:
             pulumi.set(__self__, "mlflow_experiment_directory", mlflow_experiment_directory)
         if mlflow_run is not None:
             pulumi.set(__self__, "mlflow_run", mlflow_run)
+        if priority_class is not None:
+            pulumi.set(__self__, "priority_class", priority_class)
+        if unity_catalog_image_path is not None:
+            pulumi.set(__self__, "unity_catalog_image_path", unity_catalog_image_path)
 
     @_builtins.property
     @pulumi.getter
@@ -44722,6 +45487,24 @@ class JobTaskForEachTaskTaskAiRuntimeTaskArgs:
     @mlflow_run.setter
     def mlflow_run(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mlflow_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="priorityClass")
+    def priority_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "priority_class")
+
+    @priority_class.setter
+    def priority_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "priority_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="unityCatalogImagePath")
+    def unity_catalog_image_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "unity_catalog_image_path")
+
+    @unity_catalog_image_path.setter
+    def unity_catalog_image_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "unity_catalog_image_path", value)
 
 
 class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgsDict(TypedDict):
@@ -58845,6 +59628,7 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgsDict(Typ
     An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
     """
     instance_profile_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    uc_service_credential_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
@@ -58855,7 +59639,8 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
                  aws_access_key_id_plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                  aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  aws_secret_access_key_plaintext: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None):
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 uc_service_credential_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] aws_region: The AWS region to use. Bedrock has to be enabled there.
         :param pulumi.Input[_builtins.str] bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
@@ -58876,6 +59661,8 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
             pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if uc_service_credential_name is not None:
+            pulumi.set(__self__, "uc_service_credential_name", uc_service_credential_name)
 
     @_builtins.property
     @pulumi.getter(name="awsRegion")
@@ -58957,6 +59744,15 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
     @instance_profile_arn.setter
     def instance_profile_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ucServiceCredentialName")
+    def uc_service_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "uc_service_credential_name")
+
+    @uc_service_credential_name.setter
+    def uc_service_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uc_service_credential_name", value)
 
 
 class ModelServingConfigServedEntityExternalModelAnthropicConfigArgsDict(TypedDict):
@@ -62614,13 +63410,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -62674,7 +63470,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -62684,7 +63480,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -62942,13 +63738,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -62963,7 +63759,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -62973,7 +63769,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -67699,18 +68495,24 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgs:
 
 
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerArgsDict(TypedDict):
+    avro_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgsDict']]]
     format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     input_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     json_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgsDict']]]
     output_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgsDict']]]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerArgs:
     def __init__(__self__, *,
+                 avro_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs']] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  input_column: pulumi.Input[Optional[_builtins.str]] = None,
                  json_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgs']] = None,
-                 output_column: pulumi.Input[Optional[_builtins.str]] = None):
+                 output_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs']] = None):
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if input_column is not None:
@@ -67719,6 +68521,17 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTran
             pulumi.set(__self__, "json_options", json_options)
         if output_column is not None:
             pulumi.set(__self__, "output_column", output_column)
+        if protobuf_options is not None:
+            pulumi.set(__self__, "protobuf_options", protobuf_options)
+
+    @_builtins.property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs']]:
+        return pulumi.get(self, "avro_options")
+
+    @avro_options.setter
+    def avro_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs']]):
+        pulumi.set(self, "avro_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -67755,6 +68568,149 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTran
     @output_column.setter
     def output_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufOptions")
+    def protobuf_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs']]:
+        return pulumi.get(self, "protobuf_options")
+
+    @protobuf_options.setter
+    def protobuf_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs']]):
+        pulumi.set(self, "protobuf_options", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgsDict(TypedDict):
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+    """
+    schema_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs:
+    def __init__(__self__, *,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if schema_file_path is not None:
+            pulumi.set(__self__, "schema_file_path", schema_file_path)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaFilePath")
+    def schema_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "schema_file_path")
+
+    @schema_file_path.setter
+    def schema_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgsDict(TypedDict):
@@ -67838,19 +68794,163 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTran
         pulumi.set(self, "schema_hints", value)
 
 
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgsDict(TypedDict):
+    desc_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    recursive_fields_max_depth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs:
+    def __init__(__self__, *,
+                 desc_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 recursive_fields_max_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs']] = None):
+        if desc_file_path is not None:
+            pulumi.set(__self__, "desc_file_path", desc_file_path)
+        if message_name is not None:
+            pulumi.set(__self__, "message_name", message_name)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if recursive_fields_max_depth is not None:
+            pulumi.set(__self__, "recursive_fields_max_depth", recursive_fields_max_depth)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="descFilePath")
+    def desc_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "desc_file_path")
+
+    @desc_file_path.setter
+    def desc_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desc_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageName")
+    def message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "message_name")
+
+    @message_name.setter
+    def message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recursiveFieldsMaxDepth")
+    def recursive_fields_max_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "recursive_fields_max_depth")
+
+    @recursive_fields_max_depth.setter
+    def recursive_fields_max_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recursive_fields_max_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
+
+
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerArgsDict(TypedDict):
+    avro_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgsDict']]]
     format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     input_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     json_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgsDict']]]
     output_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgsDict']]]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerArgs:
     def __init__(__self__, *,
+                 avro_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs']] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  input_column: pulumi.Input[Optional[_builtins.str]] = None,
                  json_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgs']] = None,
-                 output_column: pulumi.Input[Optional[_builtins.str]] = None):
+                 output_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs']] = None):
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if input_column is not None:
@@ -67859,6 +68959,17 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTr
             pulumi.set(__self__, "json_options", json_options)
         if output_column is not None:
             pulumi.set(__self__, "output_column", output_column)
+        if protobuf_options is not None:
+            pulumi.set(__self__, "protobuf_options", protobuf_options)
+
+    @_builtins.property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs']]:
+        return pulumi.get(self, "avro_options")
+
+    @avro_options.setter
+    def avro_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs']]):
+        pulumi.set(self, "avro_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -67895,6 +69006,149 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTr
     @output_column.setter
     def output_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufOptions")
+    def protobuf_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs']]:
+        return pulumi.get(self, "protobuf_options")
+
+    @protobuf_options.setter
+    def protobuf_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs']]):
+        pulumi.set(self, "protobuf_options", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgsDict(TypedDict):
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+    """
+    schema_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs:
+    def __init__(__self__, *,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if schema_file_path is not None:
+            pulumi.set(__self__, "schema_file_path", schema_file_path)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaFilePath")
+    def schema_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "schema_file_path")
+
+    @schema_file_path.setter
+    def schema_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgsDict(TypedDict):
@@ -67976,6 +69230,144 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTr
     @schema_hints.setter
     def schema_hints(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_hints", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgsDict(TypedDict):
+    desc_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    recursive_fields_max_depth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs:
+    def __init__(__self__, *,
+                 desc_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 recursive_fields_max_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs']] = None):
+        if desc_file_path is not None:
+            pulumi.set(__self__, "desc_file_path", desc_file_path)
+        if message_name is not None:
+            pulumi.set(__self__, "message_name", message_name)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if recursive_fields_max_depth is not None:
+            pulumi.set(__self__, "recursive_fields_max_depth", recursive_fields_max_depth)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="descFilePath")
+    def desc_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "desc_file_path")
+
+    @desc_file_path.setter
+    def desc_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desc_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageName")
+    def message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "message_name")
+
+    @message_name.setter
+    def message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recursiveFieldsMaxDepth")
+    def recursive_fields_max_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "recursive_fields_max_depth")
+
+    @recursive_fields_max_depth.setter
+    def recursive_fields_max_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recursive_fields_max_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsArgsDict(TypedDict):
@@ -69054,18 +70446,24 @@ class PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs:
 
 
 class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgsDict(TypedDict):
+    avro_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgsDict']]]
     format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     input_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     json_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgsDict']]]
     output_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgsDict']]]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs:
     def __init__(__self__, *,
+                 avro_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgs']] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  input_column: pulumi.Input[Optional[_builtins.str]] = None,
                  json_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgs']] = None,
-                 output_column: pulumi.Input[Optional[_builtins.str]] = None):
+                 output_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgs']] = None):
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if input_column is not None:
@@ -69074,6 +70472,17 @@ class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs:
             pulumi.set(__self__, "json_options", json_options)
         if output_column is not None:
             pulumi.set(__self__, "output_column", output_column)
+        if protobuf_options is not None:
+            pulumi.set(__self__, "protobuf_options", protobuf_options)
+
+    @_builtins.property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgs']]:
+        return pulumi.get(self, "avro_options")
+
+    @avro_options.setter
+    def avro_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgs']]):
+        pulumi.set(self, "avro_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -69110,6 +70519,149 @@ class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs:
     @output_column.setter
     def output_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufOptions")
+    def protobuf_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgs']]:
+        return pulumi.get(self, "protobuf_options")
+
+    @protobuf_options.setter
+    def protobuf_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgs']]):
+        pulumi.set(self, "protobuf_options", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgsDict(TypedDict):
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+    """
+    schema_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsArgs:
+    def __init__(__self__, *,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if schema_file_path is not None:
+            pulumi.set(__self__, "schema_file_path", schema_file_path)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaFilePath")
+    def schema_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "schema_file_path")
+
+    @schema_file_path.setter
+    def schema_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgsDict(TypedDict):
@@ -69191,6 +70743,144 @@ class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsAr
     @schema_hints.setter
     def schema_hints(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_hints", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgsDict(TypedDict):
+    desc_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    recursive_fields_max_depth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsArgs:
+    def __init__(__self__, *,
+                 desc_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 recursive_fields_max_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgs']] = None):
+        if desc_file_path is not None:
+            pulumi.set(__self__, "desc_file_path", desc_file_path)
+        if message_name is not None:
+            pulumi.set(__self__, "message_name", message_name)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if recursive_fields_max_depth is not None:
+            pulumi.set(__self__, "recursive_fields_max_depth", recursive_fields_max_depth)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="descFilePath")
+    def desc_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "desc_file_path")
+
+    @desc_file_path.setter
+    def desc_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desc_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageName")
+    def message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "message_name")
+
+    @message_name.setter
+    def message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recursiveFieldsMaxDepth")
+    def recursive_fields_max_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "recursive_fields_max_depth")
+
+    @recursive_fields_max_depth.setter
+    def recursive_fields_max_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recursive_fields_max_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict(TypedDict):
@@ -70389,18 +72079,24 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgs:
 
 
 class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerArgsDict(TypedDict):
+    avro_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgsDict']]]
     format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     input_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     json_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgsDict']]]
     output_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgsDict']]]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerArgs:
     def __init__(__self__, *,
+                 avro_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs']] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  input_column: pulumi.Input[Optional[_builtins.str]] = None,
                  json_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgs']] = None,
-                 output_column: pulumi.Input[Optional[_builtins.str]] = None):
+                 output_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs']] = None):
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if input_column is not None:
@@ -70409,6 +72105,17 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTrans
             pulumi.set(__self__, "json_options", json_options)
         if output_column is not None:
             pulumi.set(__self__, "output_column", output_column)
+        if protobuf_options is not None:
+            pulumi.set(__self__, "protobuf_options", protobuf_options)
+
+    @_builtins.property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs']]:
+        return pulumi.get(self, "avro_options")
+
+    @avro_options.setter
+    def avro_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs']]):
+        pulumi.set(self, "avro_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -70445,6 +72152,149 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTrans
     @output_column.setter
     def output_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufOptions")
+    def protobuf_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs']]:
+        return pulumi.get(self, "protobuf_options")
+
+    @protobuf_options.setter
+    def protobuf_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs']]):
+        pulumi.set(self, "protobuf_options", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgsDict(TypedDict):
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+    """
+    schema_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsArgs:
+    def __init__(__self__, *,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if schema_file_path is not None:
+            pulumi.set(__self__, "schema_file_path", schema_file_path)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaFilePath")
+    def schema_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "schema_file_path")
+
+    @schema_file_path.setter
+    def schema_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptionsArgsDict(TypedDict):
@@ -70528,19 +72378,163 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTrans
         pulumi.set(self, "schema_hints", value)
 
 
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgsDict(TypedDict):
+    desc_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    recursive_fields_max_depth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsArgs:
+    def __init__(__self__, *,
+                 desc_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 recursive_fields_max_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs']] = None):
+        if desc_file_path is not None:
+            pulumi.set(__self__, "desc_file_path", desc_file_path)
+        if message_name is not None:
+            pulumi.set(__self__, "message_name", message_name)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if recursive_fields_max_depth is not None:
+            pulumi.set(__self__, "recursive_fields_max_depth", recursive_fields_max_depth)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="descFilePath")
+    def desc_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "desc_file_path")
+
+    @desc_file_path.setter
+    def desc_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desc_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageName")
+    def message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "message_name")
+
+    @message_name.setter
+    def message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recursiveFieldsMaxDepth")
+    def recursive_fields_max_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "recursive_fields_max_depth")
+
+    @recursive_fields_max_depth.setter
+    def recursive_fields_max_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recursive_fields_max_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
+
+
 class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgsDict(TypedDict):
+    avro_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgsDict']]]
     format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     input_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     json_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgsDict']]]
     output_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgsDict']]]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs:
     def __init__(__self__, *,
+                 avro_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs']] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  input_column: pulumi.Input[Optional[_builtins.str]] = None,
                  json_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgs']] = None,
-                 output_column: pulumi.Input[Optional[_builtins.str]] = None):
+                 output_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs']] = None):
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if input_column is not None:
@@ -70549,6 +72543,17 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTra
             pulumi.set(__self__, "json_options", json_options)
         if output_column is not None:
             pulumi.set(__self__, "output_column", output_column)
+        if protobuf_options is not None:
+            pulumi.set(__self__, "protobuf_options", protobuf_options)
+
+    @_builtins.property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs']]:
+        return pulumi.get(self, "avro_options")
+
+    @avro_options.setter
+    def avro_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs']]):
+        pulumi.set(self, "avro_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -70585,6 +72590,149 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTra
     @output_column.setter
     def output_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufOptions")
+    def protobuf_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs']]:
+        return pulumi.get(self, "protobuf_options")
+
+    @protobuf_options.setter
+    def protobuf_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs']]):
+        pulumi.set(self, "protobuf_options", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgsDict(TypedDict):
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+    """
+    schema_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs:
+    def __init__(__self__, *,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if schema_file_path is not None:
+            pulumi.set(__self__, "schema_file_path", schema_file_path)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaFilePath")
+    def schema_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "schema_file_path")
+
+    @schema_file_path.setter
+    def schema_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgsDict(TypedDict):
@@ -70666,6 +72814,144 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTra
     @schema_hints.setter
     def schema_hints(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_hints", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgsDict(TypedDict):
+    desc_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    parse_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    recursive_fields_max_depth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    schema_registry: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgsDict']]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs:
+    def __init__(__self__, *,
+                 desc_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parse_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 recursive_fields_max_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs']] = None):
+        if desc_file_path is not None:
+            pulumi.set(__self__, "desc_file_path", desc_file_path)
+        if message_name is not None:
+            pulumi.set(__self__, "message_name", message_name)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if recursive_fields_max_depth is not None:
+            pulumi.set(__self__, "recursive_fields_max_depth", recursive_fields_max_depth)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @_builtins.property
+    @pulumi.getter(name="descFilePath")
+    def desc_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "desc_file_path")
+
+    @desc_file_path.setter
+    def desc_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desc_file_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageName")
+    def message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "message_name")
+
+    @message_name.setter
+    def message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recursiveFieldsMaxDepth")
+    def recursive_fields_max_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "recursive_fields_max_depth")
+
+    @recursive_fields_max_depth.setter
+    def recursive_fields_max_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recursive_fields_max_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs']]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs']]):
+        pulumi.set(self, "schema_registry", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgsDict(TypedDict):
+    confluent_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict']]]
+    connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    protobuf_message_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryArgs:
+    def __init__(__self__, *,
+                 confluent_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protobuf_message_name: pulumi.Input[Optional[_builtins.str]] = None):
+        if confluent_options is not None:
+            pulumi.set(__self__, "confluent_options", confluent_options)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if protobuf_message_name is not None:
+            pulumi.set(__self__, "protobuf_message_name", protobuf_message_name)
+
+    @_builtins.property
+    @pulumi.getter(name="confluentOptions")
+    def confluent_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]:
+        return pulumi.get(self, "confluent_options")
+
+    @confluent_options.setter
+    def confluent_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs']]):
+        pulumi.set(self, "confluent_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protobufMessageName")
+    def protobuf_message_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "protobuf_message_name")
+
+    @protobuf_message_name.setter
+    def protobuf_message_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protobuf_message_name", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgsDict(TypedDict):
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptionsArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
 
 
 class PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgsDict(TypedDict):
@@ -72979,6 +75265,7 @@ class PipelineRestartWindowArgs:
 
 
 class PipelineRunAsArgsDict(TypedDict):
+    group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     service_principal_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
@@ -73002,6 +75289,7 @@ class PipelineRunAsArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineRunAsArgs:
     def __init__(__self__, *,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -73019,10 +75307,21 @@ class PipelineRunAsArgs:
                ```
         :param pulumi.Input[_builtins.str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
         """
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
         if service_principal_name is not None:
             pulumi.set(__self__, "service_principal_name", service_principal_name)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalName")
@@ -80389,7 +82688,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The type of securable (catalog/schema/table).
-    Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+    Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     """
 
 @pulumi.input_type
@@ -80403,7 +82702,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurableArgs:
         :param pulumi.Input[_builtins.str] provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param pulumi.Input[_builtins.str] type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -80442,7 +82741,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurableArgs:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -80494,7 +82793,7 @@ class RfaAccessRequestDestinationsSecurableArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The type of securable (catalog/schema/table).
-    Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+    Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     """
 
 @pulumi.input_type
@@ -80509,7 +82808,7 @@ class RfaAccessRequestDestinationsSecurableArgs:
         :param pulumi.Input[_builtins.str] provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param pulumi.Input[_builtins.str] type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -80549,7 +82848,7 @@ class RfaAccessRequestDestinationsSecurableArgs:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -86526,6 +88825,39 @@ class WorkspaceSettingV2EffectiveStringValArgs:
         pulumi.set(self, "value", value)
 
 
+class WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict(TypedDict):
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class WorkspaceSettingV2EffectiveWorkspaceLabelArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+
 class WorkspaceSettingV2IntegerValArgsDict(TypedDict):
     value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
@@ -86684,6 +89016,39 @@ class WorkspaceSettingV2StringValArgs:
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class WorkspaceSettingV2WorkspaceLabelArgsDict(TypedDict):
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class WorkspaceSettingV2WorkspaceLabelArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
 
 
 class GetAiGatewayMcpServiceProviderConfigArgsDict(TypedDict):
@@ -114721,6 +117086,7 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
     aws_access_key_id: NotRequired[_builtins.str]
     aws_secret_access_key: NotRequired[_builtins.str]
     instance_profile_arn: NotRequired[_builtins.str]
+    uc_service_credential_name: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs:
@@ -114731,7 +117097,8 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
                  bedrock_provider: _builtins.str,
                  aws_access_key_id: Optional[_builtins.str] = None,
                  aws_secret_access_key: Optional[_builtins.str] = None,
-                 instance_profile_arn: Optional[_builtins.str] = None):
+                 instance_profile_arn: Optional[_builtins.str] = None,
+                 uc_service_credential_name: Optional[_builtins.str] = None):
         pulumi.set(__self__, "aws_access_key_id_plaintext", aws_access_key_id_plaintext)
         pulumi.set(__self__, "aws_region", aws_region)
         pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
@@ -114742,6 +117109,8 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
             pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if uc_service_credential_name is not None:
+            pulumi.set(__self__, "uc_service_credential_name", uc_service_credential_name)
 
     @_builtins.property
     @pulumi.getter(name="awsAccessKeyIdPlaintext")
@@ -114805,6 +117174,15 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
     @instance_profile_arn.setter
     def instance_profile_arn(self, value: Optional[_builtins.str]):
         pulumi.set(self, "instance_profile_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ucServiceCredentialName")
+    def uc_service_credential_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "uc_service_credential_name")
+
+    @uc_service_credential_name.setter
+    def uc_service_credential_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uc_service_credential_name", value)
 
 
 class GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgsDict(TypedDict):

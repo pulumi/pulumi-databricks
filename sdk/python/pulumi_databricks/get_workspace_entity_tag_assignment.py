@@ -57,7 +57,7 @@ class GetWorkspaceEntityTagAssignmentResult:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> _builtins.str:
         """
-        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 
@@ -130,7 +130,7 @@ def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = Non
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
     :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
     """
@@ -182,7 +182,7 @@ def get_workspace_entity_tag_assignment_output(entity_id: pulumi.Input[Optional[
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
     :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
     """

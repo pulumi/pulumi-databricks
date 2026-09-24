@@ -74,6 +74,8 @@ type LookupWorkspaceSettingV2Result struct {
 	EffectiveRestrictWorkspaceAdmins GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal GetWorkspaceSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
+	// (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel GetWorkspaceSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal GetWorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// (string) - Name of the setting
@@ -87,6 +89,8 @@ type LookupWorkspaceSettingV2Result struct {
 	RestrictWorkspaceAdmins GetWorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal GetWorkspaceSettingV2StringVal `pulumi:"stringVal"`
+	// (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel GetWorkspaceSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
 
 func LookupWorkspaceSettingV2Output(ctx *pulumi.Context, args LookupWorkspaceSettingV2OutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceSettingV2ResultOutput {
@@ -238,6 +242,13 @@ func (o LookupWorkspaceSettingV2ResultOutput) EffectiveStringVal() GetWorkspaceS
 	}).(GetWorkspaceSettingV2EffectiveStringValOutput)
 }
 
+// (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+func (o LookupWorkspaceSettingV2ResultOutput) EffectiveWorkspaceLabel() GetWorkspaceSettingV2EffectiveWorkspaceLabelOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveWorkspaceLabel {
+		return v.EffectiveWorkspaceLabel
+	}).(GetWorkspaceSettingV2EffectiveWorkspaceLabelOutput)
+}
+
 // (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) IntegerVal() GetWorkspaceSettingV2IntegerValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2IntegerVal { return v.IntegerVal }).(GetWorkspaceSettingV2IntegerValOutput)
@@ -274,6 +285,11 @@ func (o LookupWorkspaceSettingV2ResultOutput) RestrictWorkspaceAdmins() GetWorks
 // (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) StringVal() GetWorkspaceSettingV2StringValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2StringVal { return v.StringVal }).(GetWorkspaceSettingV2StringValOutput)
+}
+
+// (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+func (o LookupWorkspaceSettingV2ResultOutput) WorkspaceLabel() GetWorkspaceSettingV2WorkspaceLabelOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2WorkspaceLabel { return v.WorkspaceLabel }).(GetWorkspaceSettingV2WorkspaceLabelOutput)
 }
 
 func init() {

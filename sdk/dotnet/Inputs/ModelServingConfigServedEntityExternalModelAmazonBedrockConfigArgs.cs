@@ -71,6 +71,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 
+        [Input("ucServiceCredentialName")]
+        public Input<string>? UcServiceCredentialName { get; set; }
+
         public ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs()
         {
         }

@@ -21,6 +21,8 @@ public final class JobTaskAiRuntimeTask {
     private @Nullable String mlflowArtifactLocation;
     private @Nullable String mlflowExperimentDirectory;
     private @Nullable String mlflowRun;
+    private @Nullable String priorityClass;
+    private @Nullable String unityCatalogImagePath;
 
     private JobTaskAiRuntimeTask() {}
     public Optional<String> codeSourcePath() {
@@ -44,6 +46,12 @@ public final class JobTaskAiRuntimeTask {
     public Optional<String> mlflowRun() {
         return Optional.ofNullable(this.mlflowRun);
     }
+    public Optional<String> priorityClass() {
+        return Optional.ofNullable(this.priorityClass);
+    }
+    public Optional<String> unityCatalogImagePath() {
+        return Optional.ofNullable(this.unityCatalogImagePath);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,6 +69,8 @@ public final class JobTaskAiRuntimeTask {
         private @Nullable String mlflowArtifactLocation;
         private @Nullable String mlflowExperimentDirectory;
         private @Nullable String mlflowRun;
+        private @Nullable String priorityClass;
+        private @Nullable String unityCatalogImagePath;
         public Builder() {}
         public Builder(JobTaskAiRuntimeTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,6 +81,8 @@ public final class JobTaskAiRuntimeTask {
     	      this.mlflowArtifactLocation = defaults.mlflowArtifactLocation;
     	      this.mlflowExperimentDirectory = defaults.mlflowExperimentDirectory;
     	      this.mlflowRun = defaults.mlflowRun;
+    	      this.priorityClass = defaults.priorityClass;
+    	      this.unityCatalogImagePath = defaults.unityCatalogImagePath;
         }
 
         @CustomType.Setter
@@ -122,6 +134,18 @@ public final class JobTaskAiRuntimeTask {
             this.mlflowRun = mlflowRun;
             return this;
         }
+        @CustomType.Setter
+        public Builder priorityClass(@Nullable String priorityClass) {
+
+            this.priorityClass = priorityClass;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder unityCatalogImagePath(@Nullable String unityCatalogImagePath) {
+
+            this.unityCatalogImagePath = unityCatalogImagePath;
+            return this;
+        }
         public JobTaskAiRuntimeTask build() {
             final var _resultValue = new JobTaskAiRuntimeTask();
             _resultValue.codeSourcePath = codeSourcePath;
@@ -131,6 +155,8 @@ public final class JobTaskAiRuntimeTask {
             _resultValue.mlflowArtifactLocation = mlflowArtifactLocation;
             _resultValue.mlflowExperimentDirectory = mlflowExperimentDirectory;
             _resultValue.mlflowRun = mlflowRun;
+            _resultValue.priorityClass = priorityClass;
+            _resultValue.unityCatalogImagePath = unityCatalogImagePath;
             return _resultValue;
         }
     }

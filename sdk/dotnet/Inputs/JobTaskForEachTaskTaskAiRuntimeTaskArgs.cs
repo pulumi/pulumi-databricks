@@ -38,6 +38,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("mlflowRun")]
         public Input<string>? MlflowRun { get; set; }
 
+        [Input("priorityClass")]
+        public Input<string>? PriorityClass { get; set; }
+
+        [Input("unityCatalogImagePath")]
+        public Input<string>? UnityCatalogImagePath { get; set; }
+
         public JobTaskForEachTaskTaskAiRuntimeTaskArgs()
         {
         }

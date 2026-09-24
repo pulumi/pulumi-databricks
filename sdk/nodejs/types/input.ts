@@ -264,6 +264,12 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestina
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -357,6 +363,12 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinat
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -470,6 +482,12 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleD
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -563,6 +581,12 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDe
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -662,6 +686,12 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinat
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -772,6 +802,12 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinati
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -888,6 +924,12 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinati
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -995,6 +1037,12 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinatio
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1108,6 +1156,12 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationLak
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1218,6 +1272,12 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationLake
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1334,6 +1394,12 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLake
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1441,6 +1507,12 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakeb
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * ("allow all except"). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     */
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1662,6 +1734,11 @@ export interface AccountSettingV2EffectiveStringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface AccountSettingV2EffectiveWorkspaceLabel {
+    color?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string | undefined>;
+}
+
 export interface AccountSettingV2IntegerVal {
     value?: pulumi.Input<number | undefined>;
 }
@@ -1688,6 +1765,11 @@ export interface AccountSettingV2RestrictWorkspaceAdmins {
 
 export interface AccountSettingV2StringVal {
     value?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceLabel {
+    color?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string | undefined>;
 }
 
 export interface AiGatewayMcpServiceConfig {
@@ -1753,6 +1835,13 @@ export interface AiGatewayMcpServiceConfigSourceConnection {
      * `mcpServiceId`; required and immutable on Update/Get/Delete
      */
     name: pulumi.Input<string>;
+    /**
+     * (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     */
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface AiGatewayMcpServiceProviderConfig {
@@ -1963,9 +2052,38 @@ export interface AiGatewayModelProviderServiceConfigCustom {
 export interface AiGatewayModelProviderServiceConfigCustomDirect {
     apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectApiKey | undefined>;
     baseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     */
+    headerAuth?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth | undefined>;
 }
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+    /**
+     * HTTP header name that carries the API key on outbound requests (e.g.,
+     * `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+     * supplied via `apiKeyValue`
+     */
+    apiKeyName?: pulumi.Input<string | undefined>;
+    /**
+     * Secret value forwarded under the `apiKeyName` header on outbound
+     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    apiKeyValue?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the enclosing secret
@@ -5811,6 +5929,10 @@ export interface FeatureEngineeringFeatureSource {
      */
     deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceDeltaTableSource | undefined>;
     /**
+     * A data source composed from registered upstream Features
+     */
+    featureViewSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceFeatureViewSource | undefined>;
+    /**
      * A Kafka stream data source
      */
     kafkaSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSource | undefined>;
@@ -5844,6 +5966,20 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     timeseriesColumn?: pulumi.Input<string | undefined>;
     transformationSql?: pulumi.Input<string | undefined>;
+}
+
+export interface FeatureEngineeringFeatureSourceFeatureViewSource {
+    /**
+     * The upstream Features this source reads. Must include at least one feature
+     */
+    featureReferences?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference>[] | undefined>;
+}
+
+export interface FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference {
+    /**
+     * The three-part full name of the upstream Feature
+     */
+    feature: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
@@ -6270,12 +6406,18 @@ export interface FeatureEngineeringKafkaConfigValueSchemaProtoSchema {
 export interface FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     /**
      * The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-     * window timing and fills it in on the response
+     * schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+     * unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+     * the features' window timing and fills it in on the response
      */
     cronExpression?: pulumi.Input<string | undefined>;
     mode?: pulumi.Input<string | undefined>;
+    /**
+     * A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+     * when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+     * to UTC
+     */
+    timezoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
@@ -15142,6 +15284,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
     awsSecretAccessKeyPlaintext?: string;
     bedrockProvider: string;
     instanceProfileArn?: string;
+    ucServiceCredentialName?: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs {
@@ -15152,6 +15295,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
     awsSecretAccessKeyPlaintext?: pulumi.Input<string | undefined>;
     bedrockProvider: pulumi.Input<string>;
     instanceProfileArn?: pulumi.Input<string | undefined>;
+    ucServiceCredentialName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
@@ -18320,6 +18464,8 @@ export interface JobTaskAiRuntimeTask {
     mlflowArtifactLocation?: pulumi.Input<string | undefined>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
     mlflowRun?: pulumi.Input<string | undefined>;
+    priorityClass?: pulumi.Input<string | undefined>;
+    unityCatalogImagePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskAiRuntimeTaskDeployment {
@@ -18672,6 +18818,8 @@ export interface JobTaskForEachTaskTaskAiRuntimeTask {
     mlflowArtifactLocation?: pulumi.Input<string | undefined>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
     mlflowRun?: pulumi.Input<string | undefined>;
+    priorityClass?: pulumi.Input<string | undefined>;
+    unityCatalogImagePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTaskDeployment {
@@ -21286,6 +21434,7 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
      */
     bedrockProvider: pulumi.Input<string>;
     instanceProfileArn?: pulumi.Input<string | undefined>;
+    ucServiceCredentialName?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
@@ -21969,11 +22118,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -22040,11 +22189,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.134.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -22749,10 +22898,32 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer {
+    avroOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions | undefined>;
     format?: pulumi.Input<string | undefined>;
     inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions | undefined>;
     outputColumn?: pulumi.Input<string | undefined>;
+    protobufOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions {
+    parseMode?: pulumi.Input<string | undefined>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string | undefined>;
+    schemaFilePath?: pulumi.Input<string | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -22766,11 +22937,51 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
     schemaHints?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions {
+    descFilePath?: pulumi.Input<string | undefined>;
+    messageName?: pulumi.Input<string | undefined>;
+    parseMode?: pulumi.Input<string | undefined>;
+    recursiveFieldsMaxDepth?: pulumi.Input<number | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformer {
+    avroOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptions | undefined>;
     format?: pulumi.Input<string | undefined>;
     inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions | undefined>;
     outputColumn?: pulumi.Input<string | undefined>;
+    protobufOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptions {
+    parseMode?: pulumi.Input<string | undefined>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string | undefined>;
+    schemaFilePath?: pulumi.Input<string | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -22782,6 +22993,24 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
     schemaEvolutionMode?: pulumi.Input<string | undefined>;
     schemaFilePath?: pulumi.Input<string | undefined>;
     schemaHints?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptions {
+    descFilePath?: pulumi.Input<string | undefined>;
+    messageName?: pulumi.Input<string | undefined>;
+    parseMode?: pulumi.Input<string | undefined>;
+    recursiveFieldsMaxDepth?: pulumi.Input<number | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions {
@@ -22912,10 +23141,32 @@ export interface PipelineIngestionDefinitionObjectSchemaFanoutOptions {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
+    avroOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions | undefined>;
     format?: pulumi.Input<string | undefined>;
     inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions | undefined>;
     outputColumn?: pulumi.Input<string | undefined>;
+    protobufOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions {
+    parseMode?: pulumi.Input<string | undefined>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string | undefined>;
+    schemaFilePath?: pulumi.Input<string | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions {
@@ -22927,6 +23178,24 @@ export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJs
     schemaEvolutionMode?: pulumi.Input<string | undefined>;
     schemaFilePath?: pulumi.Input<string | undefined>;
     schemaHints?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions {
+    descFilePath?: pulumi.Input<string | undefined>;
+    messageName?: pulumi.Input<string | undefined>;
+    parseMode?: pulumi.Input<string | undefined>;
+    recursiveFieldsMaxDepth?: pulumi.Input<number | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -23064,10 +23333,32 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer {
+    avroOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptions | undefined>;
     format?: pulumi.Input<string | undefined>;
     inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions | undefined>;
     outputColumn?: pulumi.Input<string | undefined>;
+    protobufOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptions {
+    parseMode?: pulumi.Input<string | undefined>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string | undefined>;
+    schemaFilePath?: pulumi.Input<string | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -23081,11 +23372,51 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
     schemaHints?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions {
+    descFilePath?: pulumi.Input<string | undefined>;
+    messageName?: pulumi.Input<string | undefined>;
+    parseMode?: pulumi.Input<string | undefined>;
+    recursiveFieldsMaxDepth?: pulumi.Input<number | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformer {
+    avroOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptions | undefined>;
     format?: pulumi.Input<string | undefined>;
     inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions | undefined>;
     outputColumn?: pulumi.Input<string | undefined>;
+    protobufOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptions {
+    parseMode?: pulumi.Input<string | undefined>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string | undefined>;
+    schemaFilePath?: pulumi.Input<string | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -23097,6 +23428,24 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
     schemaEvolutionMode?: pulumi.Input<string | undefined>;
     schemaFilePath?: pulumi.Input<string | undefined>;
     schemaHints?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptions {
+    descFilePath?: pulumi.Input<string | undefined>;
+    messageName?: pulumi.Input<string | undefined>;
+    parseMode?: pulumi.Input<string | undefined>;
+    recursiveFieldsMaxDepth?: pulumi.Input<number | undefined>;
+    schemaRegistry?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistry {
+    confluentOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions | undefined>;
+    connectionName?: pulumi.Input<string | undefined>;
+    protobufMessageName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsSchemaRegistryConfluentOptions {
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions {
@@ -23404,6 +23753,7 @@ export interface PipelineRestartWindow {
 }
 
 export interface PipelineRunAs {
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
@@ -24964,7 +25314,7 @@ export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: pulumi.Input<string | undefined>;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -24989,7 +25339,7 @@ export interface RfaAccessRequestDestinationsSecurable {
     providerShare?: pulumi.Input<string | undefined>;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -26182,6 +26532,11 @@ export interface WorkspaceSettingV2EffectiveStringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkspaceSettingV2EffectiveWorkspaceLabel {
+    color?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkspaceSettingV2IntegerVal {
     value?: pulumi.Input<number | undefined>;
 }
@@ -26215,4 +26570,9 @@ export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
 
 export interface WorkspaceSettingV2StringVal {
     value?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceLabel {
+    color?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string | undefined>;
 }

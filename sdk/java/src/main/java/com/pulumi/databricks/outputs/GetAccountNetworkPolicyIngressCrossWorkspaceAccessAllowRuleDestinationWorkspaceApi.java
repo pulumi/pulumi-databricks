@@ -13,6 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
     /**
+     * @return (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     * 
+     */
+    private @Nullable List<String> excludedScopes;
+    /**
      * @return (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      * 
      */
@@ -24,6 +31,15 @@ public final class GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDe
     private @Nullable List<String> scopes;
 
     private GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi() {}
+    /**
+     * @return (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
+     * (&#34;allow all except&#34;). Mutually exclusive with `scopes` — a single
+     * destination may set at most one of the two
+     * 
+     */
+    public List<String> excludedScopes() {
+        return this.excludedScopes == null ? List.of() : this.excludedScopes;
+    }
     /**
      * @return (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
      * 
@@ -48,15 +64,26 @@ public final class GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDe
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> excludedScopes;
         private @Nullable String scopeQualifier;
         private @Nullable List<String> scopes;
         public Builder() {}
         public Builder(GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludedScopes = defaults.excludedScopes;
     	      this.scopeQualifier = defaults.scopeQualifier;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
+        public Builder excludedScopes(@Nullable List<String> excludedScopes) {
+
+            this.excludedScopes = excludedScopes;
+            return this;
+        }
+        public Builder excludedScopes(String... excludedScopes) {
+            return excludedScopes(List.of(excludedScopes));
+        }
         @CustomType.Setter
         public Builder scopeQualifier(@Nullable String scopeQualifier) {
 
@@ -74,6 +101,7 @@ public final class GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDe
         }
         public GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi build() {
             final var _resultValue = new GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi();
+            _resultValue.excludedScopes = excludedScopes;
             _resultValue.scopeQualifier = scopeQualifier;
             _resultValue.scopes = scopes;
             return _resultValue;

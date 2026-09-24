@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceFeatureViewSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceLatenessArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceRequestSourceArgs;
@@ -32,6 +33,21 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
      */
     public Optional<Output<FeatureEngineeringFeatureSourceDeltaTableSourceArgs>> deltaTableSource() {
         return Optional.ofNullable(this.deltaTableSource);
+    }
+
+    /**
+     * A data source composed from registered upstream Features
+     * 
+     */
+    @Import(name="featureViewSource")
+    private @Nullable Output<FeatureEngineeringFeatureSourceFeatureViewSourceArgs> featureViewSource;
+
+    /**
+     * @return A data source composed from registered upstream Features
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureSourceFeatureViewSourceArgs>> featureViewSource() {
+        return Optional.ofNullable(this.featureViewSource);
     }
 
     /**
@@ -100,6 +116,7 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
 
     private FeatureEngineeringFeatureSourceArgs(FeatureEngineeringFeatureSourceArgs $) {
         this.deltaTableSource = $.deltaTableSource;
+        this.featureViewSource = $.featureViewSource;
         this.kafkaSource = $.kafkaSource;
         this.lateness = $.lateness;
         this.requestSource = $.requestSource;
@@ -143,6 +160,27 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
          */
         public Builder deltaTableSource(FeatureEngineeringFeatureSourceDeltaTableSourceArgs deltaTableSource) {
             return deltaTableSource(Output.of(deltaTableSource));
+        }
+
+        /**
+         * @param featureViewSource A data source composed from registered upstream Features
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureViewSource(@Nullable Output<FeatureEngineeringFeatureSourceFeatureViewSourceArgs> featureViewSource) {
+            $.featureViewSource = featureViewSource;
+            return this;
+        }
+
+        /**
+         * @param featureViewSource A data source composed from registered upstream Features
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureViewSource(FeatureEngineeringFeatureSourceFeatureViewSourceArgs featureViewSource) {
+            return featureViewSource(Output.of(featureViewSource));
         }
 
         /**

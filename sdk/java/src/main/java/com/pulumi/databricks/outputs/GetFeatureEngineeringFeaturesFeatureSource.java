@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceLateness;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
@@ -20,6 +21,11 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
+    /**
+     * @return (FeatureViewSource) - A data source composed from registered upstream Features
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource featureViewSource;
     /**
      * @return (KafkaSource) - A Kafka stream data source
      * 
@@ -49,6 +55,13 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource> deltaTableSource() {
         return Optional.ofNullable(this.deltaTableSource);
+    }
+    /**
+     * @return (FeatureViewSource) - A data source composed from registered upstream Features
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource> featureViewSource() {
+        return Optional.ofNullable(this.featureViewSource);
     }
     /**
      * @return (KafkaSource) - A Kafka stream data source
@@ -90,6 +103,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
+        private @Nullable GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource featureViewSource;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceLateness lateness;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceRequestSource requestSource;
@@ -98,6 +112,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
         public Builder(GetFeatureEngineeringFeaturesFeatureSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
+    	      this.featureViewSource = defaults.featureViewSource;
     	      this.kafkaSource = defaults.kafkaSource;
     	      this.lateness = defaults.lateness;
     	      this.requestSource = defaults.requestSource;
@@ -108,6 +123,12 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
         public Builder deltaTableSource(@Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource) {
 
             this.deltaTableSource = deltaTableSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder featureViewSource(@Nullable GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource featureViewSource) {
+
+            this.featureViewSource = featureViewSource;
             return this;
         }
         @CustomType.Setter
@@ -137,6 +158,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
         public GetFeatureEngineeringFeaturesFeatureSource build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
+            _resultValue.featureViewSource = featureViewSource;
             _resultValue.kafkaSource = kafkaSource;
             _resultValue.lateness = lateness;
             _resultValue.requestSource = requestSource;

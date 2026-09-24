@@ -22,11 +22,13 @@ import com.pulumi.databricks.inputs.AccountSettingV2EffectiveOperationalEmailCus
 import com.pulumi.databricks.inputs.AccountSettingV2EffectivePersonalComputeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveStringValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2EffectiveWorkspaceLabelArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2IntegerValArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2OperationalEmailCustomRecipientArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2PersonalComputeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2RestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2StringValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2WorkspaceLabelArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -293,6 +295,21 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     * 
+     */
+    @Import(name="effectiveWorkspaceLabel")
+    private @Nullable Output<AccountSettingV2EffectiveWorkspaceLabelArgs> effectiveWorkspaceLabel;
+
+    /**
+     * @return Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     * 
+     */
+    public Optional<Output<AccountSettingV2EffectiveWorkspaceLabelArgs>> effectiveWorkspaceLabel() {
+        return Optional.ofNullable(this.effectiveWorkspaceLabel);
+    }
+
+    /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
@@ -382,6 +399,21 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.stringVal);
     }
 
+    /**
+     * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     * 
+     */
+    @Import(name="workspaceLabel")
+    private @Nullable Output<AccountSettingV2WorkspaceLabelArgs> workspaceLabel;
+
+    /**
+     * @return Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     * 
+     */
+    public Optional<Output<AccountSettingV2WorkspaceLabelArgs>> workspaceLabel() {
+        return Optional.ofNullable(this.workspaceLabel);
+    }
+
     private AccountSettingV2State() {}
 
     private AccountSettingV2State(AccountSettingV2State $) {
@@ -402,12 +434,14 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         this.effectivePersonalCompute = $.effectivePersonalCompute;
         this.effectiveRestrictWorkspaceAdmins = $.effectiveRestrictWorkspaceAdmins;
         this.effectiveStringVal = $.effectiveStringVal;
+        this.effectiveWorkspaceLabel = $.effectiveWorkspaceLabel;
         this.integerVal = $.integerVal;
         this.name = $.name;
         this.operationalEmailCustomRecipient = $.operationalEmailCustomRecipient;
         this.personalCompute = $.personalCompute;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
         this.stringVal = $.stringVal;
+        this.workspaceLabel = $.workspaceLabel;
     }
 
     public static Builder builder() {
@@ -786,6 +820,27 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param effectiveWorkspaceLabel Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceLabel(@Nullable Output<AccountSettingV2EffectiveWorkspaceLabelArgs> effectiveWorkspaceLabel) {
+            $.effectiveWorkspaceLabel = effectiveWorkspaceLabel;
+            return this;
+        }
+
+        /**
+         * @param effectiveWorkspaceLabel Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceLabel(AccountSettingV2EffectiveWorkspaceLabelArgs effectiveWorkspaceLabel) {
+            return effectiveWorkspaceLabel(Output.of(effectiveWorkspaceLabel));
+        }
+
+        /**
          * @param integerVal Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
          * 
          * @return builder
@@ -909,6 +964,27 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
          */
         public Builder stringVal(AccountSettingV2StringValArgs stringVal) {
             return stringVal(Output.of(stringVal));
+        }
+
+        /**
+         * @param workspaceLabel Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceLabel(@Nullable Output<AccountSettingV2WorkspaceLabelArgs> workspaceLabel) {
+            $.workspaceLabel = workspaceLabel;
+            return this;
+        }
+
+        /**
+         * @param workspaceLabel Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceLabel(AccountSettingV2WorkspaceLabelArgs workspaceLabel) {
+            return workspaceLabel(Output.of(workspaceLabel));
         }
 
         public AccountSettingV2State build() {

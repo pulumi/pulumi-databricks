@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKey;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,6 +25,13 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigCu
      * 
      */
     private @Nullable String baseUrl;
+    /**
+     * @return (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     * 
+     */
+    private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth headerAuth;
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirect() {}
     /**
@@ -42,6 +50,15 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigCu
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
+    /**
+     * @return (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     * 
+     */
+    public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth> headerAuth() {
+        return Optional.ofNullable(this.headerAuth);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +71,13 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigCu
     public static final class Builder {
         private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKey apiKey;
         private @Nullable String baseUrl;
+        private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth headerAuth;
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.baseUrl = defaults.baseUrl;
+    	      this.headerAuth = defaults.headerAuth;
         }
 
         @CustomType.Setter
@@ -73,10 +92,17 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigCu
             this.baseUrl = baseUrl;
             return this;
         }
+        @CustomType.Setter
+        public Builder headerAuth(@Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth headerAuth) {
+
+            this.headerAuth = headerAuth;
+            return this;
+        }
         public GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirect build() {
             final var _resultValue = new GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirect();
             _resultValue.apiKey = apiKey;
             _resultValue.baseUrl = baseUrl;
+            _resultValue.headerAuth = headerAuth;
             return _resultValue;
         }
     }

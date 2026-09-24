@@ -58,9 +58,10 @@ type Sandbox struct {
 
 	// (string) - Output only. The creation time of the sandbox
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Human-readable display label for the sandbox. At most 256 bytes
+	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigOutput `pulumi:"providerConfig"`
@@ -109,9 +110,10 @@ func GetSandbox(ctx *pulumi.Context,
 type sandboxState struct {
 	// (string) - Output only. The creation time of the sandbox
 	CreateTime *string `pulumi:"createTime"`
-	// Human-readable display label for the sandbox. At most 256 bytes
+	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`
-	// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *SandboxProviderConfig `pulumi:"providerConfig"`
@@ -128,9 +130,10 @@ type sandboxState struct {
 type SandboxState struct {
 	// (string) - Output only. The creation time of the sandbox
 	CreateTime pulumi.StringPtrInput
-	// Human-readable display label for the sandbox. At most 256 bytes
+	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrInput
-	// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigPtrInput
@@ -149,7 +152,7 @@ func (SandboxState) ElementType() reflect.Type {
 }
 
 type sandboxArgs struct {
-	// Human-readable display label for the sandbox. At most 256 bytes
+	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *SandboxProviderConfig `pulumi:"providerConfig"`
@@ -161,7 +164,7 @@ type sandboxArgs struct {
 
 // The set of arguments for constructing a Sandbox resource.
 type SandboxArgs struct {
-	// Human-readable display label for the sandbox. At most 256 bytes
+	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigPtrInput
@@ -263,12 +266,13 @@ func (o SandboxOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sandbox) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Human-readable display label for the sandbox. At most 256 bytes
+// Human-readable display label for the sandbox. At most 256 characters
 func (o SandboxOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sandbox) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+// `sandboxId`; any value supplied in a create or update request body is ignored
 func (o SandboxOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sandbox) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

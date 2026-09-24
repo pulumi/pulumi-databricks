@@ -149,6 +149,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceSettingV2EffectiveStringVal> EffectiveStringVal { get; private set; } = null!;
 
         /// <summary>
+        /// Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+        /// </summary>
+        [Output("effectiveWorkspaceLabel")]
+        public Output<Outputs.WorkspaceSettingV2EffectiveWorkspaceLabel?> EffectiveWorkspaceLabel { get; private set; } = null!;
+
+        /// <summary>
         /// Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
         /// </summary>
         [Output("integerVal")]
@@ -189,6 +195,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("stringVal")]
         public Output<Outputs.WorkspaceSettingV2StringVal?> StringVal { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
+        /// </summary>
+        [Output("workspaceLabel")]
+        public Output<Outputs.WorkspaceSettingV2WorkspaceLabel?> WorkspaceLabel { get; private set; } = null!;
 
 
         /// <summary>
@@ -303,6 +315,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs>? EffectiveRestrictWorkspaceAdmins { get; set; }
 
         /// <summary>
+        /// Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+        /// </summary>
+        [Input("effectiveWorkspaceLabel")]
+        public Input<Inputs.WorkspaceSettingV2EffectiveWorkspaceLabelArgs>? EffectiveWorkspaceLabel { get; set; }
+
+        /// <summary>
         /// Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
         /// </summary>
         [Input("integerVal")]
@@ -343,6 +361,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("stringVal")]
         public Input<Inputs.WorkspaceSettingV2StringValArgs>? StringVal { get; set; }
+
+        /// <summary>
+        /// Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
+        /// </summary>
+        [Input("workspaceLabel")]
+        public Input<Inputs.WorkspaceSettingV2WorkspaceLabelArgs>? WorkspaceLabel { get; set; }
 
         public WorkspaceSettingV2Args()
         {
@@ -455,6 +479,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2EffectiveStringValGetArgs>? EffectiveStringVal { get; set; }
 
         /// <summary>
+        /// Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+        /// </summary>
+        [Input("effectiveWorkspaceLabel")]
+        public Input<Inputs.WorkspaceSettingV2EffectiveWorkspaceLabelGetArgs>? EffectiveWorkspaceLabel { get; set; }
+
+        /// <summary>
         /// Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
         /// </summary>
         [Input("integerVal")]
@@ -495,6 +525,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("stringVal")]
         public Input<Inputs.WorkspaceSettingV2StringValGetArgs>? StringVal { get; set; }
+
+        /// <summary>
+        /// Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
+        /// </summary>
+        [Input("workspaceLabel")]
+        public Input<Inputs.WorkspaceSettingV2WorkspaceLabelGetArgs>? WorkspaceLabel { get; set; }
 
         public WorkspaceSettingV2State()
         {

@@ -20,6 +20,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? MlflowArtifactLocation;
         public readonly string? MlflowExperimentDirectory;
         public readonly string? MlflowRun;
+        public readonly string? PriorityClass;
+        public readonly string? UnityCatalogImagePath;
 
         [OutputConstructor]
         private JobTaskAiRuntimeTask(
@@ -35,7 +37,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? mlflowExperimentDirectory,
 
-            string? mlflowRun)
+            string? mlflowRun,
+
+            string? priorityClass,
+
+            string? unityCatalogImagePath)
         {
             CodeSourcePath = codeSourcePath;
             Deployments = deployments;
@@ -44,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
             MlflowArtifactLocation = mlflowArtifactLocation;
             MlflowExperimentDirectory = mlflowExperimentDirectory;
             MlflowRun = mlflowRun;
+            PriorityClass = priorityClass;
+            UnityCatalogImagePath = unityCatalogImagePath;
         }
     }
 }

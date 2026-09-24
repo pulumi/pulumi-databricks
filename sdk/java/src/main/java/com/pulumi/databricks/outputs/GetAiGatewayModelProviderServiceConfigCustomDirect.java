@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigCustomDirectApiKey;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,6 +25,13 @@ public final class GetAiGatewayModelProviderServiceConfigCustomDirect {
      * 
      */
     private @Nullable String baseUrl;
+    /**
+     * @return (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     * 
+     */
+    private @Nullable GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth headerAuth;
 
     private GetAiGatewayModelProviderServiceConfigCustomDirect() {}
     /**
@@ -42,6 +50,15 @@ public final class GetAiGatewayModelProviderServiceConfigCustomDirect {
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
+    /**
+     * @return (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     * 
+     */
+    public Optional<GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth> headerAuth() {
+        return Optional.ofNullable(this.headerAuth);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +71,13 @@ public final class GetAiGatewayModelProviderServiceConfigCustomDirect {
     public static final class Builder {
         private @Nullable GetAiGatewayModelProviderServiceConfigCustomDirectApiKey apiKey;
         private @Nullable String baseUrl;
+        private @Nullable GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth headerAuth;
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServiceConfigCustomDirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.baseUrl = defaults.baseUrl;
+    	      this.headerAuth = defaults.headerAuth;
         }
 
         @CustomType.Setter
@@ -73,10 +92,17 @@ public final class GetAiGatewayModelProviderServiceConfigCustomDirect {
             this.baseUrl = baseUrl;
             return this;
         }
+        @CustomType.Setter
+        public Builder headerAuth(@Nullable GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth headerAuth) {
+
+            this.headerAuth = headerAuth;
+            return this;
+        }
         public GetAiGatewayModelProviderServiceConfigCustomDirect build() {
             final var _resultValue = new GetAiGatewayModelProviderServiceConfigCustomDirect();
             _resultValue.apiKey = apiKey;
             _resultValue.baseUrl = baseUrl;
+            _resultValue.headerAuth = headerAuth;
             return _resultValue;
         }
     }
