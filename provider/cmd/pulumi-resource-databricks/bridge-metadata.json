@@ -125,6 +125,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -168,6 +171,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -215,6 +221,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -258,6 +267,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -305,6 +317,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -355,6 +370,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -413,6 +431,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -456,6 +477,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -503,6 +527,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -546,6 +573,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -593,6 +623,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -643,6 +676,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -1815,6 +1851,13 @@
                             "delta_table_source": {
                                 "fields": {
                                     "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "feature_view_source": {
+                                "fields": {
+                                    "feature_references": {
                                         "maxItemsOne": false
                                     }
                                 }
@@ -4813,8 +4856,42 @@
                                                                                     "maxItemsOne": true,
                                                                                     "elem": {
                                                                                         "fields": {
+                                                                                            "avro_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
                                                                                             "json_options": {
                                                                                                 "maxItemsOne": true
+                                                                                            },
+                                                                                            "protobuf_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
                                                                                             }
                                                                                         }
                                                                                     }
@@ -4826,8 +4903,42 @@
                                                                                     "maxItemsOne": true,
                                                                                     "elem": {
                                                                                         "fields": {
+                                                                                            "avro_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
                                                                                             "json_options": {
                                                                                                 "maxItemsOne": true
+                                                                                            },
+                                                                                            "protobuf_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
                                                                                             }
                                                                                         }
                                                                                     }
@@ -5001,8 +5112,42 @@
                                                                         "maxItemsOne": false,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "avro_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "schema_registry": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "confluent_options": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "json_options": {
                                                                                     "maxItemsOne": true
+                                                                                },
+                                                                                "protobuf_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "schema_registry": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "confluent_options": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -5137,8 +5282,42 @@
                                                                                     "maxItemsOne": true,
                                                                                     "elem": {
                                                                                         "fields": {
+                                                                                            "avro_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
                                                                                             "json_options": {
                                                                                                 "maxItemsOne": true
+                                                                                            },
+                                                                                            "protobuf_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
                                                                                             }
                                                                                         }
                                                                                     }
@@ -5150,8 +5329,42 @@
                                                                                     "maxItemsOne": true,
                                                                                     "elem": {
                                                                                         "fields": {
+                                                                                            "avro_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
                                                                                             "json_options": {
                                                                                                 "maxItemsOne": true
+                                                                                            },
+                                                                                            "protobuf_options": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "schema_registry": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "confluent_options": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
                                                                                             }
                                                                                         }
                                                                                     }
@@ -6784,6 +6997,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -6827,6 +7043,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -6874,6 +7093,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -6917,6 +7139,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -6964,6 +7189,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7014,6 +7242,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7072,6 +7303,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7115,6 +7349,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7162,6 +7399,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7205,6 +7445,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7252,6 +7495,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7302,6 +7548,9 @@
                                                                     },
                                                                     "workspace_api": {
                                                                         "fields": {
+                                                                            "excluded_scopes": {
+                                                                                "maxItemsOne": false
+                                                                            },
                                                                             "scopes": {
                                                                                 "maxItemsOne": false
                                                                             }
@@ -7403,6 +7652,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7446,6 +7698,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7493,6 +7748,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7536,6 +7794,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7583,6 +7844,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7633,6 +7897,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7691,6 +7958,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7734,6 +8004,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7781,6 +8054,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7824,6 +8100,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7871,6 +8150,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -7921,6 +8203,9 @@
                                                         },
                                                         "workspace_api": {
                                                             "fields": {
+                                                                "excluded_scopes": {
+                                                                    "maxItemsOne": false
+                                                                },
                                                                 "scopes": {
                                                                     "maxItemsOne": false
                                                                 }
@@ -9589,6 +9874,13 @@
                                     }
                                 }
                             },
+                            "feature_view_source": {
+                                "fields": {
+                                    "feature_references": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "kafka_source": {
                                 "fields": {
                                     "entity_column_identifiers": {
@@ -9644,6 +9936,13 @@
                                         "delta_table_source": {
                                             "fields": {
                                                 "entity_columns": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "feature_view_source": {
+                                            "fields": {
+                                                "feature_references": {
                                                     "maxItemsOne": false
                                                 }
                                             }
