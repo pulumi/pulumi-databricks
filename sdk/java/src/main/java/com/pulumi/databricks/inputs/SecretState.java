@@ -93,18 +93,50 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (String) super secret sensitive value.
+     * (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      * 
      */
     @Import(name="stringValue")
     private @Nullable Output<String> stringValue;
 
     /**
-     * @return (String) super secret sensitive value.
+     * @return (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      * 
      */
     public Optional<Output<String>> stringValue() {
         return Optional.ofNullable(this.stringValue);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     * 
+     */
+    @Import(name="stringValueWo")
+    private @Nullable Output<String> stringValueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     * 
+     */
+    public Optional<Output<String>> stringValueWo() {
+        return Optional.ofNullable(this.stringValueWo);
+    }
+
+    /**
+     * Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     * 
+     */
+    @Import(name="stringValueWoVersion")
+    private @Nullable Output<Integer> stringValueWoVersion;
+
+    /**
+     * @return Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     * 
+     */
+    public Optional<Output<Integer>> stringValueWoVersion() {
+        return Optional.ofNullable(this.stringValueWoVersion);
     }
 
     private SecretState() {}
@@ -116,6 +148,8 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         this.providerConfig = $.providerConfig;
         this.scope = $.scope;
         this.stringValue = $.stringValue;
+        this.stringValueWo = $.stringValueWo;
+        this.stringValueWoVersion = $.stringValueWoVersion;
     }
 
     public static Builder builder() {
@@ -242,7 +276,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stringValue (String) super secret sensitive value.
+         * @param stringValue (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
          * 
          * @return builder
          * 
@@ -253,13 +287,57 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stringValue (String) super secret sensitive value.
+         * @param stringValue (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
          * 
          * @return builder
          * 
          */
         public Builder stringValue(String stringValue) {
             return stringValue(Output.of(stringValue));
+        }
+
+        /**
+         * @param stringValueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stringValueWo(@Nullable Output<String> stringValueWo) {
+            $.stringValueWo = stringValueWo;
+            return this;
+        }
+
+        /**
+         * @param stringValueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stringValueWo(String stringValueWo) {
+            return stringValueWo(Output.of(stringValueWo));
+        }
+
+        /**
+         * @param stringValueWoVersion Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stringValueWoVersion(@Nullable Output<Integer> stringValueWoVersion) {
+            $.stringValueWoVersion = stringValueWoVersion;
+            return this;
+        }
+
+        /**
+         * @param stringValueWoVersion Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stringValueWoVersion(Integer stringValueWoVersion) {
+            return stringValueWoVersion(Output.of(stringValueWoVersion));
         }
 
         public SecretState build() {

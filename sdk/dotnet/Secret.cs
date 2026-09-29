@@ -16,6 +16,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
+    /// &gt; **Note** Write-Only argument StringValueWo is available to use in place of string_value. Write-Only argumentss are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -94,10 +96,23 @@ namespace Pulumi.Databricks
         public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// (String) super secret sensitive value.
+        /// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `StringValueWo` is not set.
         /// </summary>
         [Output("stringValue")]
-        public Output<string> StringValue { get; private set; } = null!;
+        public Output<string?> StringValue { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Specifies text data that you want to encrypt and store in the secret. This is required if `StringValue` is not set.
+        /// </summary>
+        [Output("stringValueWo")]
+        public Output<string?> StringValueWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Use together with StringValueWo to trigger an update. Increment this value when an update to `StringValueWo` is required.
+        /// </summary>
+        [Output("stringValueWoVersion")]
+        public Output<int?> StringValueWoVersion { get; private set; } = null!;
 
 
         /// <summary>
@@ -125,6 +140,7 @@ namespace Pulumi.Databricks
                 AdditionalSecretOutputs =
                 {
                     "stringValue",
+                    "stringValueWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -167,11 +183,11 @@ namespace Pulumi.Databricks
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
-        [Input("stringValue", required: true)]
+        [Input("stringValue")]
         private Input<string>? _stringValue;
 
         /// <summary>
-        /// (String) super secret sensitive value.
+        /// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `StringValueWo` is not set.
         /// </summary>
         public Input<string>? StringValue
         {
@@ -182,6 +198,29 @@ namespace Pulumi.Databricks
                 _stringValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("stringValueWo")]
+        private Input<string>? _stringValueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Specifies text data that you want to encrypt and store in the secret. This is required if `StringValue` is not set.
+        /// </summary>
+        public Input<string>? StringValueWo
+        {
+            get => _stringValueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _stringValueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Use together with StringValueWo to trigger an update. Increment this value when an update to `StringValueWo` is required.
+        /// </summary>
+        [Input("stringValueWoVersion")]
+        public Input<int>? StringValueWoVersion { get; set; }
 
         public SecretArgs()
         {
@@ -225,7 +264,7 @@ namespace Pulumi.Databricks
         private Input<string>? _stringValue;
 
         /// <summary>
-        /// (String) super secret sensitive value.
+        /// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `StringValueWo` is not set.
         /// </summary>
         public Input<string>? StringValue
         {
@@ -236,6 +275,29 @@ namespace Pulumi.Databricks
                 _stringValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("stringValueWo")]
+        private Input<string>? _stringValueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Specifies text data that you want to encrypt and store in the secret. This is required if `StringValue` is not set.
+        /// </summary>
+        public Input<string>? StringValueWo
+        {
+            get => _stringValueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _stringValueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Use together with StringValueWo to trigger an update. Increment this value when an update to `StringValueWo` is required.
+        /// </summary>
+        [Input("stringValueWoVersion")]
+        public Input<int>? StringValueWoVersion { get; set; }
 
         public SecretState()
         {
