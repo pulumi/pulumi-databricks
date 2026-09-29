@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with a workspace-level provider!
  *
+ * > **Note** Write-Only argument stringValueWo is available to use in place of string_value. Write-Only argumentss are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,9 +92,18 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public readonly scope: pulumi.Output<string>;
     /**
-     * (String) super secret sensitive value.
+     * (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      */
-    declare public readonly stringValue: pulumi.Output<string>;
+    declare public readonly stringValue: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     */
+    declare public readonly stringValueWo: pulumi.Output<string | undefined>;
+    /**
+     * Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     */
+    declare public readonly stringValueWoVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -113,6 +124,8 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["scope"] = state?.scope;
             resourceInputs["stringValue"] = state?.stringValue;
+            resourceInputs["stringValueWo"] = state?.stringValueWo;
+            resourceInputs["stringValueWoVersion"] = state?.stringValueWoVersion;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if (args?.key === undefined && !opts.urn) {
@@ -121,18 +134,17 @@ export class Secret extends pulumi.CustomResource {
             if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            if (args?.stringValue === undefined && !opts.urn) {
-                throw new Error("Missing required property 'stringValue'");
-            }
             resourceInputs["key"] = args?.key;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["scope"] = args?.scope;
             resourceInputs["stringValue"] = args?.stringValue ? pulumi.secret(args.stringValue) : undefined;
+            resourceInputs["stringValueWo"] = args?.stringValueWo ? pulumi.secret(args.stringValueWo) : undefined;
+            resourceInputs["stringValueWoVersion"] = args?.stringValueWoVersion;
             resourceInputs["configReference"] = undefined /*out*/;
             resourceInputs["lastUpdatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["stringValue"] };
+        const secretOpts = { additionalSecretOutputs: ["stringValue", "stringValueWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
@@ -163,9 +175,18 @@ export interface SecretState {
      */
     scope?: pulumi.Input<string | undefined>;
     /**
-     * (String) super secret sensitive value.
+     * (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      */
     stringValue?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     */
+    stringValueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     */
+    stringValueWoVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -185,7 +206,16 @@ export interface SecretArgs {
      */
     scope: pulumi.Input<string>;
     /**
-     * (String) super secret sensitive value.
+     * (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      */
-    stringValue: pulumi.Input<string>;
+    stringValue?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     */
+    stringValueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     */
+    stringValueWoVersion?: pulumi.Input<number | undefined>;
 }

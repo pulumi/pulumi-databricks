@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.SecretProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -22,6 +23,8 @@ import javax.annotation.Nullable;
  * With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret&#39;s value. The server encrypts the secret using the secret scope&#39;s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
  * 
  * &gt; This resource can only be used with a workspace-level provider!
+ * 
+ * &gt; **Note** Write-Only argument stringValueWo is available to use in place of string_value. Write-Only argumentss are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
  * 
  * ## Example Usage
  * 
@@ -155,18 +158,48 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.scope;
     }
     /**
-     * (String) super secret sensitive value.
+     * (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      * 
      */
     @Export(name="stringValue", refs={String.class}, tree="[0]")
-    private Output<String> stringValue;
+    private Output</* @Nullable */ String> stringValue;
 
     /**
-     * @return (String) super secret sensitive value.
+     * @return (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
      * 
      */
-    public Output<String> stringValue() {
-        return this.stringValue;
+    public Output<Optional<String>> stringValue() {
+        return Codegen.optional(this.stringValue);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     * 
+     */
+    @Export(name="stringValueWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> stringValueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+     * 
+     */
+    public Output<Optional<String>> stringValueWo() {
+        return Codegen.optional(this.stringValueWo);
+    }
+    /**
+     * Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     * 
+     */
+    @Export(name="stringValueWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> stringValueWoVersion;
+
+    /**
+     * @return Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+     * 
+     */
+    public Output<Optional<Integer>> stringValueWoVersion() {
+        return Codegen.optional(this.stringValueWoVersion);
     }
 
     /**
@@ -209,7 +242,8 @@ public class Secret extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "stringValue"
+                "stringValue",
+                "stringValueWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

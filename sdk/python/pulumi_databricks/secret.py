@@ -23,21 +23,31 @@ class SecretArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  scope: pulumi.Input[_builtins.str],
-                 string_value: pulumi.Input[_builtins.str],
-                 provider_config: pulumi.Input[Optional['SecretProviderConfigArgs']] = None):
+                 provider_config: pulumi.Input[Optional['SecretProviderConfigArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Secret resource.
 
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
         :param pulumi.Input['SecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] string_value: (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
+        :param pulumi.Input[_builtins.str] string_value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        :param pulumi.Input[_builtins.int] string_value_wo_version: Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "scope", scope)
-        pulumi.set(__self__, "string_value", string_value)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if string_value_wo is not None:
+            pulumi.set(__self__, "string_value_wo", string_value_wo)
+        if string_value_wo_version is not None:
+            pulumi.set(__self__, "string_value_wo_version", string_value_wo_version)
 
     @_builtins.property
     @pulumi.getter
@@ -64,18 +74,6 @@ class SecretArgs:
         pulumi.set(self, "scope", value)
 
     @_builtins.property
-    @pulumi.getter(name="stringValue")
-    def string_value(self) -> pulumi.Input[_builtins.str]:
-        """
-        (String) super secret sensitive value.
-        """
-        return pulumi.get(self, "string_value")
-
-    @string_value.setter
-    def string_value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "string_value", value)
-
-    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> pulumi.Input[Optional['SecretProviderConfigArgs']]:
         """
@@ -87,6 +85,43 @@ class SecretArgs:
     def provider_config(self, value: pulumi.Input[Optional['SecretProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "string_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stringValueWo")
+    def string_value_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        """
+        return pulumi.get(self, "string_value_wo")
+
+    @string_value_wo.setter
+    def string_value_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "string_value_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stringValueWoVersion")
+    def string_value_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
+        """
+        return pulumi.get(self, "string_value_wo_version")
+
+    @string_value_wo_version.setter
+    def string_value_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "string_value_wo_version", value)
+
 
 @pulumi.input_type
 class _SecretState:
@@ -96,7 +131,9 @@ class _SecretState:
                  last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
                  provider_config: pulumi.Input[Optional['SecretProviderConfigArgs']] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
 
@@ -105,7 +142,10 @@ class _SecretState:
         :param pulumi.Input[_builtins.int] last_updated_timestamp: (Integer) time secret was updated
         :param pulumi.Input['SecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
+        :param pulumi.Input[_builtins.str] string_value: (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
+        :param pulumi.Input[_builtins.str] string_value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        :param pulumi.Input[_builtins.int] string_value_wo_version: Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
         """
         if config_reference is not None:
             pulumi.set(__self__, "config_reference", config_reference)
@@ -119,6 +159,10 @@ class _SecretState:
             pulumi.set(__self__, "scope", scope)
         if string_value is not None:
             pulumi.set(__self__, "string_value", string_value)
+        if string_value_wo is not None:
+            pulumi.set(__self__, "string_value_wo", string_value_wo)
+        if string_value_wo_version is not None:
+            pulumi.set(__self__, "string_value_wo_version", string_value_wo_version)
 
     @_builtins.property
     @pulumi.getter(name="configReference")
@@ -184,13 +228,38 @@ class _SecretState:
     @pulumi.getter(name="stringValue")
     def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (String) super secret sensitive value.
+        (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
     def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stringValueWo")
+    def string_value_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        """
+        return pulumi.get(self, "string_value_wo")
+
+    @string_value_wo.setter
+    def string_value_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "string_value_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stringValueWoVersion")
+    def string_value_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
+        """
+        return pulumi.get(self, "string_value_wo_version")
+
+    @string_value_wo_version.setter
+    def string_value_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "string_value_wo_version", value)
 
 
 @pulumi.type_token("databricks:index/secret:Secret")
@@ -203,6 +272,8 @@ class Secret(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/secrets)
@@ -210,6 +281,8 @@ class Secret(pulumi.CustomResource):
         With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret's value. The server encrypts the secret using the secret scope's encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
 
         > This resource can only be used with a workspace-level provider!
+
+        > **Note** Write-Only argument string_value_wo is available to use in place of string_value. Write-Only argumentss are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
 
         ## Example Usage
 
@@ -244,7 +317,10 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
+        :param pulumi.Input[_builtins.str] string_value: (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
+        :param pulumi.Input[_builtins.str] string_value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        :param pulumi.Input[_builtins.int] string_value_wo_version: Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
         """
         ...
     @overload
@@ -258,6 +334,8 @@ class Secret(pulumi.CustomResource):
         With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret's value. The server encrypts the secret using the secret scope's encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
 
         > This resource can only be used with a workspace-level provider!
+
+        > **Note** Write-Only argument string_value_wo is available to use in place of string_value. Write-Only argumentss are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
 
         ## Example Usage
 
@@ -306,6 +384,8 @@ class Secret(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_value_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,12 +402,12 @@ class Secret(pulumi.CustomResource):
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
             __props__.__dict__["scope"] = scope
-            if string_value is None and not opts.urn:
-                raise TypeError("Missing required property 'string_value'")
             __props__.__dict__["string_value"] = None if string_value is None else pulumi.Output.secret(string_value)
+            __props__.__dict__["string_value_wo"] = None if string_value_wo is None else pulumi.Output.secret(string_value_wo)
+            __props__.__dict__["string_value_wo_version"] = string_value_wo_version
             __props__.__dict__["config_reference"] = None
             __props__.__dict__["last_updated_timestamp"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["stringValue"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["stringValue", "stringValueWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Secret, __self__).__init__(
             'databricks:index/secret:Secret',
@@ -344,7 +424,9 @@ class Secret(pulumi.CustomResource):
             last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
             provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            string_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Secret':
+            string_value: pulumi.Input[Optional[_builtins.str]] = None,
+            string_value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            string_value_wo_version: pulumi.Input[Optional[_builtins.int]] = None) -> 'Secret':
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -357,7 +439,10 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] last_updated_timestamp: (Integer) time secret was updated
         :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
+        :param pulumi.Input[_builtins.str] string_value: (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
+        :param pulumi.Input[_builtins.str] string_value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        :param pulumi.Input[_builtins.int] string_value_wo_version: Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,6 +454,8 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["scope"] = scope
         __props__.__dict__["string_value"] = string_value
+        __props__.__dict__["string_value_wo"] = string_value_wo
+        __props__.__dict__["string_value_wo_version"] = string_value_wo_version
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -413,9 +500,26 @@ class Secret(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> pulumi.Output[_builtins.str]:
+    def string_value(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (String) super secret sensitive value.
+        (String) Specifies text data that you want to encrypt and store in the secret. This is required if `string_value_wo` is not set.
         """
         return pulumi.get(self, "string_value")
+
+    @_builtins.property
+    @pulumi.getter(name="stringValueWo")
+    def string_value_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Specifies text data that you want to encrypt and store in the secret. This is required if `string_value` is not set.
+        """
+        return pulumi.get(self, "string_value_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="stringValueWoVersion")
+    def string_value_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Use together with string_value_wo to trigger an update. Increment this value when an update to `string_value_wo` is required.
+        """
+        return pulumi.get(self, "string_value_wo_version")
 

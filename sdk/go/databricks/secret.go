@@ -18,6 +18,8 @@ import (
 //
 // > This resource can only be used with a workspace-level provider!
 //
+// > **Note** Write-Only argument stringValueWo is available to use in place of string_value. Write-Only argumentss are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+//
 // ## Example Usage
 //
 // ```go
@@ -83,8 +85,13 @@ type Secret struct {
 	ProviderConfig SecretProviderConfigOutput `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringOutput `pulumi:"scope"`
-	// (String) super secret sensitive value.
-	StringValue pulumi.StringOutput `pulumi:"stringValue"`
+	// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
+	StringValue pulumi.StringPtrOutput `pulumi:"stringValue"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+	StringValueWo pulumi.StringPtrOutput `pulumi:"stringValueWo"`
+	// Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+	StringValueWoVersion pulumi.IntPtrOutput `pulumi:"stringValueWoVersion"`
 }
 
 // NewSecret registers a new resource with the given unique name, arguments, and options.
@@ -100,14 +107,15 @@ func NewSecret(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if args.StringValue == nil {
-		return nil, errors.New("invalid value for required argument 'StringValue'")
-	}
 	if args.StringValue != nil {
-		args.StringValue = pulumi.ToSecret(args.StringValue).(pulumi.StringInput)
+		args.StringValue = pulumi.ToSecret(args.StringValue).(pulumi.StringPtrInput)
+	}
+	if args.StringValueWo != nil {
+		args.StringValueWo = pulumi.ToSecret(args.StringValueWo).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"stringValue",
+		"stringValueWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -143,8 +151,13 @@ type secretState struct {
 	ProviderConfig *SecretProviderConfig `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope *string `pulumi:"scope"`
-	// (String) super secret sensitive value.
+	// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
 	StringValue *string `pulumi:"stringValue"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+	StringValueWo *string `pulumi:"stringValueWo"`
+	// Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+	StringValueWoVersion *int `pulumi:"stringValueWoVersion"`
 }
 
 type SecretState struct {
@@ -158,8 +171,13 @@ type SecretState struct {
 	ProviderConfig SecretProviderConfigPtrInput
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringPtrInput
-	// (String) super secret sensitive value.
+	// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
 	StringValue pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+	StringValueWo pulumi.StringPtrInput
+	// Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+	StringValueWoVersion pulumi.IntPtrInput
 }
 
 func (SecretState) ElementType() reflect.Type {
@@ -173,8 +191,13 @@ type secretArgs struct {
 	ProviderConfig *SecretProviderConfig `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope string `pulumi:"scope"`
-	// (String) super secret sensitive value.
-	StringValue string `pulumi:"stringValue"`
+	// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
+	StringValue *string `pulumi:"stringValue"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+	StringValueWo *string `pulumi:"stringValueWo"`
+	// Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+	StringValueWoVersion *int `pulumi:"stringValueWoVersion"`
 }
 
 // The set of arguments for constructing a Secret resource.
@@ -185,8 +208,13 @@ type SecretArgs struct {
 	ProviderConfig SecretProviderConfigPtrInput
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringInput
-	// (String) super secret sensitive value.
-	StringValue pulumi.StringInput
+	// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
+	StringValue pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+	StringValueWo pulumi.StringPtrInput
+	// Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+	StringValueWoVersion pulumi.IntPtrInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {
@@ -301,9 +329,20 @@ func (o SecretOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
 
-// (String) super secret sensitive value.
-func (o SecretOutput) StringValue() pulumi.StringOutput {
-	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.StringValue }).(pulumi.StringOutput)
+// (String) Specifies text data that you want to encrypt and store in the secret. This is required if `stringValueWo` is not set.
+func (o SecretOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Specifies text data that you want to encrypt and store in the secret. This is required if `stringValue` is not set.
+func (o SecretOutput) StringValueWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.StringValueWo }).(pulumi.StringPtrOutput)
+}
+
+// Use together with stringValueWo to trigger an update. Increment this value when an update to `stringValueWo` is required.
+func (o SecretOutput) StringValueWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.IntPtrOutput { return v.StringValueWoVersion }).(pulumi.IntPtrOutput)
 }
 
 type SecretArrayOutput struct{ *pulumi.OutputState }
