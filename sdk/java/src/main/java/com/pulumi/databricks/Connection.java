@@ -292,6 +292,48 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Create a schema-level connection inside a Unity Catalog schema by setting `parent`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var schemaScoped = new Connection("schemaScoped", ConnectionArgs.builder()
+ *             .name("my_conn")
+ *             .connectionType("HTTP")
+ *             .parent("schemas/main.default")
+ *             .comment("This is a schema-level connection")
+ *             .options(Map.ofEntries(
+ *                 Map.entry("host", "https://example.com"),
+ *                 Map.entry("port", "8433"),
+ *                 Map.entry("base_path", "/api/"),
+ *                 Map.entry("bearer_token", "bearer_token")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="databricks:index/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
@@ -462,6 +504,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> owner() {
         return this.owner;
+    }
+    /**
+     * Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parent;
+
+    /**
+     * @return Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> parent() {
+        return Codegen.optional(this.parent);
     }
     /**
      * A map of key-value properties attached to the securable. Change forces creation of a new resource.

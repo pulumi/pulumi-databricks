@@ -149,6 +149,26 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * Create a schema-level connection inside a Unity Catalog schema by setting `parent`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const schemaScoped = new databricks.Connection("schema_scoped", {
+ *     name: "my_conn",
+ *     connectionType: "HTTP",
+ *     parent: "schemas/main.default",
+ *     comment: "This is a schema-level connection",
+ *     options: {
+ *         host: "https://example.com",
+ *         port: "8433",
+ *         base_path: "/api/",
+ *         bearer_token: "bearer_token",
+ *     },
+ * });
+ * ```
  */
 export class Connection extends pulumi.CustomResource {
     /**
@@ -227,6 +247,10 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly owner: pulumi.Output<string>;
     /**
+     * Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     */
+    declare public readonly parent: pulumi.Output<string | undefined>;
+    /**
      * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      */
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
@@ -284,6 +308,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["options"] = state?.options;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["provisioningInfos"] = state?.provisioningInfos;
@@ -300,6 +325,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readOnly"] = args?.readOnly;
@@ -375,6 +401,10 @@ export interface ConnectionState {
      */
     owner?: pulumi.Input<string | undefined>;
     /**
+     * Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     */
+    parent?: pulumi.Input<string | undefined>;
+    /**
      * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -436,6 +466,10 @@ export interface ConnectionArgs {
      * Username of current owner of the connection.
      */
     owner?: pulumi.Input<string | undefined>;
+    /**
+     * Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      */

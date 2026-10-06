@@ -27,6 +27,7 @@ class ConnectionArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional['ConnectionProviderConfigArgs']] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -39,6 +40,7 @@ class ConnectionArgs:
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
@@ -55,6 +57,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "options", options)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if provider_config is not None:
@@ -136,6 +140,18 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter
     def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value properties attached to the securable. Change forces creation of a new resource.
@@ -186,6 +202,7 @@ class _ConnectionState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional['ConnectionProviderConfigArgs']] = None,
                  provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]] = None,
@@ -209,6 +226,7 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
@@ -242,6 +260,8 @@ class _ConnectionState:
             pulumi.set(__self__, "options", options)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if provider_config is not None:
@@ -405,6 +425,18 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter
     def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value properties attached to the securable. Change forces creation of a new resource.
@@ -512,6 +544,7 @@ class Connection(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -655,6 +688,25 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
+        Create a schema-level connection inside a Unity Catalog schema by setting `parent`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_scoped = databricks.Connection("schema_scoped",
+            name="my_conn",
+            connection_type="HTTP",
+            parent="schemas/main.default",
+            comment="This is a schema-level connection",
+            options={
+                "host": "https://example.com",
+                "port": "8433",
+                "base_path": "/api/",
+                "bearer_token": "bearer_token",
+            })
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -664,6 +716,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
@@ -813,6 +866,25 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
+        Create a schema-level connection inside a Unity Catalog schema by setting `parent`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_scoped = databricks.Connection("schema_scoped",
+            name="my_conn",
+            connection_type="HTTP",
+            parent="schemas/main.default",
+            comment="This is a schema-level connection",
+            options={
+                "host": "https://example.com",
+                "port": "8433",
+                "base_path": "/api/",
+                "bearer_token": "bearer_token",
+            })
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.
@@ -835,6 +907,7 @@ class Connection(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -853,6 +926,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = None if options is None else pulumi.Output.secret(options)
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["properties"] = properties
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_only"] = read_only
@@ -891,6 +965,7 @@ class Connection(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
             provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]]] = None,
@@ -918,6 +993,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
@@ -943,6 +1019,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["properties"] = properties
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["provisioning_infos"] = provisioning_infos
@@ -1048,6 +1125,14 @@ class Connection(pulumi.CustomResource):
         Username of current owner of the connection.
         """
         return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter
