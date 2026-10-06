@@ -204,6 +204,34 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// Create a schema-level connection inside a Unity Catalog schema by setting `Parent`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schemaScoped = new Databricks.Connection("schema_scoped", new()
+    ///     {
+    ///         Name = "my_conn",
+    ///         ConnectionType = "HTTP",
+    ///         Parent = "schemas/main.default",
+    ///         Comment = "This is a schema-level connection",
+    ///         Options = 
+    ///         {
+    ///             { "host", "https://example.com" },
+    ///             { "port", "8433" },
+    ///             { "base_path", "/api/" },
+    ///             { "bearer_token", "bearer_token" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/connection:Connection")]
     public partial class Connection : global::Pulumi.CustomResource
@@ -279,6 +307,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `FullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+        /// </summary>
+        [Output("parent")]
+        public Output<string?> Parent { get; private set; } = null!;
 
         /// <summary>
         /// A map of key-value properties attached to the securable. Change forces creation of a new resource.
@@ -424,6 +458,12 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `FullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
         [Input("properties")]
         private InputMap<string>? _properties;
 
@@ -537,6 +577,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `FullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;

@@ -247,6 +247,41 @@ import (
 //	}
 //
 // ```
+//
+// Create a schema-level connection inside a Unity Catalog schema by setting `parent`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewConnection(ctx, "schema_scoped", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("my_conn"),
+//				ConnectionType: pulumi.String("HTTP"),
+//				Parent:         pulumi.String("schemas/main.default"),
+//				Comment:        pulumi.String("This is a schema-level connection"),
+//				Options: pulumi.StringMap{
+//					"host":         pulumi.String("https://example.com"),
+//					"port":         pulumi.String("8433"),
+//					"base_path":    pulumi.String("/api/"),
+//					"bearer_token": pulumi.String("bearer_token"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -274,6 +309,8 @@ type Connection struct {
 	Options pulumi.StringMapOutput `pulumi:"options"`
 	// Username of current owner of the connection.
 	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -353,6 +390,8 @@ type connectionState struct {
 	Options map[string]string `pulumi:"options"`
 	// Username of current owner of the connection.
 	Owner *string `pulumi:"owner"`
+	// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+	Parent *string `pulumi:"parent"`
 	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties map[string]string `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -396,6 +435,8 @@ type ConnectionState struct {
 	Options pulumi.StringMapInput
 	// Username of current owner of the connection.
 	Owner pulumi.StringPtrInput
+	// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+	Parent pulumi.StringPtrInput
 	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties pulumi.StringMapInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -431,6 +472,8 @@ type connectionArgs struct {
 	Options map[string]string `pulumi:"options"`
 	// Username of current owner of the connection.
 	Owner *string `pulumi:"owner"`
+	// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+	Parent *string `pulumi:"parent"`
 	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties map[string]string `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -453,6 +496,8 @@ type ConnectionArgs struct {
 	Options pulumi.StringMapInput
 	// Username of current owner of the connection.
 	Owner pulumi.StringPtrInput
+	// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+	Parent pulumi.StringPtrInput
 	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties pulumi.StringMapInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -606,6 +651,11 @@ func (o ConnectionOutput) Options() pulumi.StringMapOutput {
 // Username of current owner of the connection.
 func (o ConnectionOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+func (o ConnectionOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 // A map of key-value properties attached to the securable. Change forces creation of a new resource.

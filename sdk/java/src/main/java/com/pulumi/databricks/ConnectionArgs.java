@@ -110,6 +110,21 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
@@ -163,6 +178,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.options = $.options;
         this.owner = $.owner;
+        this.parent = $.parent;
         this.properties = $.properties;
         this.providerConfig = $.providerConfig;
         this.readOnly = $.readOnly;
@@ -310,6 +326,27 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param parent Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `fullName` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**
