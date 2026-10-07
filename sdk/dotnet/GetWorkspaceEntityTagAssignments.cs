@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceEntityTagAssignments
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceEntityTagAssignmentsResult>("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", args ?? new GetWorkspaceEntityTagAssignmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceEntityTagAssignmentsResult>("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", args ?? new GetWorkspaceEntityTagAssignmentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
         /// 
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         public string EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         [Input("entityType", required: true)]
         public string EntityType { get; set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
         public Input<string> EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EntityId;
         /// <summary>
-        /// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        /// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         public readonly string EntityType;
         public readonly int? PageSize;

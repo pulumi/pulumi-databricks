@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
@@ -17,6 +20,16 @@ public final class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey
      * 
      */
     private String plaintext;
+    /**
+     * @return (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner&#39;s access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     * 
+     */
+    private @Nullable GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference secretReference;
 
     private GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey() {}
     /**
@@ -27,6 +40,18 @@ public final class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey
      */
     public String plaintext() {
         return this.plaintext;
+    }
+    /**
+     * @return (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner&#39;s access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     * 
+     */
+    public Optional<GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference> secretReference() {
+        return Optional.ofNullable(this.secretReference);
     }
 
     public static Builder builder() {
@@ -39,10 +64,12 @@ public final class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey
     @CustomType.Builder
     public static final class Builder {
         private String plaintext;
+        private @Nullable GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference secretReference;
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.plaintext = defaults.plaintext;
+    	      this.secretReference = defaults.secretReference;
         }
 
         @CustomType.Setter
@@ -53,9 +80,16 @@ public final class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey
             this.plaintext = plaintext;
             return this;
         }
+        @CustomType.Setter
+        public Builder secretReference(@Nullable GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference secretReference) {
+
+            this.secretReference = secretReference;
+            return this;
+        }
         public GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey build() {
             final var _resultValue = new GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey();
             _resultValue.plaintext = plaintext;
+            _resultValue.secretReference = secretReference;
             return _resultValue;
         }
     }

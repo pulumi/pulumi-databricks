@@ -67,6 +67,13 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.javaDependencies);
     }
 
+    @Import(name="projectEnvironment")
+    private @Nullable Output<String> projectEnvironment;
+
+    public Optional<Output<String>> projectEnvironment() {
+        return Optional.ofNullable(this.projectEnvironment);
+    }
+
     private JobEnvironmentSpecArgs() {}
 
     private JobEnvironmentSpecArgs(JobEnvironmentSpecArgs $) {
@@ -75,6 +82,7 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
         this.javaDependencies = $.javaDependencies;
+        this.projectEnvironment = $.projectEnvironment;
     }
 
     public static Builder builder() {
@@ -176,6 +184,15 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
 
         public Builder javaDependencies(String... javaDependencies) {
             return javaDependencies(List.of(javaDependencies));
+        }
+
+        public Builder projectEnvironment(@Nullable Output<String> projectEnvironment) {
+            $.projectEnvironment = projectEnvironment;
+            return this;
+        }
+
+        public Builder projectEnvironment(String projectEnvironment) {
+            return projectEnvironment(Output.of(projectEnvironment));
         }
 
         public JobEnvironmentSpecArgs build() {

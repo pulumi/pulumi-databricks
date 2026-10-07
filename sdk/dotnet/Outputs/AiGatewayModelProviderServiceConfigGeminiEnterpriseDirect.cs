@@ -19,6 +19,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ProjectId;
         public readonly string? Region;
+        public readonly Outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential? ServiceCredential;
 
         [OutputConstructor]
         private AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect(
@@ -26,11 +27,14 @@ namespace Pulumi.Databricks.Outputs
 
             string? projectId,
 
-            string? region)
+            string? region,
+
+            Outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential? serviceCredential)
         {
             ApiKey = apiKey;
             ProjectId = projectId;
             Region = region;
+            ServiceCredential = serviceCredential;
         }
     }
 }

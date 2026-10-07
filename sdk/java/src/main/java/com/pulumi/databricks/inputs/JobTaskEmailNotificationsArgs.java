@@ -62,6 +62,20 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.onFailures);
     }
 
+    @Import(name="onMaintenanceCompletes")
+    private @Nullable Output<List<String>> onMaintenanceCompletes;
+
+    public Optional<Output<List<String>>> onMaintenanceCompletes() {
+        return Optional.ofNullable(this.onMaintenanceCompletes);
+    }
+
+    @Import(name="onMaintenanceStarts")
+    private @Nullable Output<List<String>> onMaintenanceStarts;
+
+    public Optional<Output<List<String>>> onMaintenanceStarts() {
+        return Optional.ofNullable(this.onMaintenanceStarts);
+    }
+
     /**
      * (List) list of emails to notify when the run starts.
      * 
@@ -117,6 +131,8 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
+        this.onMaintenanceCompletes = $.onMaintenanceCompletes;
+        this.onMaintenanceStarts = $.onMaintenanceStarts;
         this.onStarts = $.onStarts;
         this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
@@ -221,6 +237,32 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
          */
         public Builder onFailures(String... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+
+        public Builder onMaintenanceCompletes(@Nullable Output<List<String>> onMaintenanceCompletes) {
+            $.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+
+        public Builder onMaintenanceCompletes(List<String> onMaintenanceCompletes) {
+            return onMaintenanceCompletes(Output.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceCompletes(String... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceStarts(@Nullable Output<List<String>> onMaintenanceStarts) {
+            $.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+
+        public Builder onMaintenanceStarts(List<String> onMaintenanceStarts) {
+            return onMaintenanceStarts(Output.of(onMaintenanceStarts));
+        }
+
+        public Builder onMaintenanceStarts(String... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
 
         /**

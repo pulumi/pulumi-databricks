@@ -168,6 +168,14 @@ from .get_knowledge_assistant import *
 from .get_knowledge_assistant_knowledge_source import *
 from .get_knowledge_assistant_knowledge_sources import *
 from .get_knowledge_assistants import *
+from .get_mason_managed_memory_entries import *
+from .get_mason_managed_memory_entry import *
+from .get_mason_managed_memory_store import *
+from .get_mason_managed_memory_stores import *
+from .get_mason_session import *
+from .get_mason_session_store import *
+from .get_mason_session_stores import *
+from .get_mason_sessions import *
 from .get_materialized_features_feature_tag import *
 from .get_materialized_features_feature_tags import *
 from .get_metastore import *
@@ -206,6 +214,8 @@ from .get_postgres_role import *
 from .get_postgres_roles import *
 from .get_postgres_snapshot_schedule import *
 from .get_postgres_synced_table import *
+from .get_private_network_gateway import *
+from .get_private_network_gateways import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
 from .get_recipients import *
@@ -280,6 +290,10 @@ from .knowledge_assistant import *
 from .knowledge_assistant_knowledge_source import *
 from .lakehouse_monitor import *
 from .library import *
+from .mason_managed_memory_entry import *
+from .mason_managed_memory_store import *
+from .mason_session import *
+from .mason_session_store import *
 from .materialized_features_feature_tag import *
 from .metastore import *
 from .metastore_assignment import *
@@ -322,6 +336,7 @@ from .postgres_project import *
 from .postgres_role import *
 from .postgres_snapshot_schedule import *
 from .postgres_synced_table import *
+from .private_network_gateway import *
 from .provider import *
 from .quality_monitor import *
 from .quality_monitor_v2 import *
@@ -1016,6 +1031,38 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/masonManagedMemoryEntry",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry": "MasonManagedMemoryEntry"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/masonManagedMemoryStore",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore": "MasonManagedMemoryStore"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/masonSession",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/masonSession:MasonSession": "MasonSession"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/masonSessionStore",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/masonSessionStore:MasonSessionStore": "MasonSessionStore"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/materializedFeaturesFeatureTag",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1348,6 +1395,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/postgresSyncedTable:PostgresSyncedTable": "PostgresSyncedTable"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/privateNetworkGateway",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/privateNetworkGateway:PrivateNetworkGateway": "PrivateNetworkGateway"
   }
  },
  {

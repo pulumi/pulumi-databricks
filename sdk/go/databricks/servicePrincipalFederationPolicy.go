@@ -65,7 +65,9 @@ type ServicePrincipalFederationPolicy struct {
 	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
-	Name       pulumi.StringOutput                                 `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy ServicePrincipalFederationPolicyOidcPolicyPtrOutput `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
@@ -117,7 +119,9 @@ type servicePrincipalFederationPolicyState struct {
 	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
-	Name       *string                                     `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy *ServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId *string `pulumi:"policyId"`
@@ -140,7 +144,9 @@ type ServicePrincipalFederationPolicyState struct {
 	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy ServicePrincipalFederationPolicyOidcPolicyPtrInput
 	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringPtrInput
@@ -158,8 +164,10 @@ func (ServicePrincipalFederationPolicyState) ElementType() reflect.Type {
 
 type servicePrincipalFederationPolicyArgs struct {
 	// Description of the federation policy
-	Description *string                                     `pulumi:"description"`
-	OidcPolicy  *ServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
+	Description *string `pulumi:"description"`
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
+	OidcPolicy *ServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId *string `pulumi:"policyId"`
 	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -170,7 +178,9 @@ type servicePrincipalFederationPolicyArgs struct {
 type ServicePrincipalFederationPolicyArgs struct {
 	// Description of the federation policy
 	Description pulumi.StringPtrInput
-	OidcPolicy  ServicePrincipalFederationPolicyOidcPolicyPtrInput
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
+	OidcPolicy ServicePrincipalFederationPolicyOidcPolicyPtrInput
 	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringPtrInput
 	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -284,6 +294,8 @@ func (o ServicePrincipalFederationPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalFederationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+// policy configuration is captured in create/update audit logs (see go/auditlogs)
 func (o ServicePrincipalFederationPolicyOutput) OidcPolicy() ServicePrincipalFederationPolicyOidcPolicyPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalFederationPolicy) ServicePrincipalFederationPolicyOidcPolicyPtrOutput {
 		return v.OidcPolicy

@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.JobDbtTask;
 import com.pulumi.databricks.outputs.JobDeployment;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
 import com.pulumi.databricks.outputs.JobEnvironment;
+import com.pulumi.databricks.outputs.JobEnvironmentVariable;
 import com.pulumi.databricks.outputs.JobGitSource;
 import com.pulumi.databricks.outputs.JobHealth;
 import com.pulumi.databricks.outputs.JobJobCluster;
@@ -273,6 +274,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<JobEmailNotifications>> emailNotifications() {
         return Codegen.optional(this.emailNotifications);
+    }
+    @Export(name="environmentVariables", refs={List.class,JobEnvironmentVariable.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<JobEnvironmentVariable>> environmentVariables;
+
+    public Output<Optional<List<JobEnvironmentVariable>>> environmentVariables() {
+        return Codegen.optional(this.environmentVariables);
     }
     @Export(name="environments", refs={List.class,JobEnvironment.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobEnvironment>> environments;

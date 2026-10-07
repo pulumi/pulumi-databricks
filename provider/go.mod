@@ -1,13 +1,13 @@
 module github.com/pulumi/pulumi-databricks/provider
 
-go 1.26.6
+go 1.26.8
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b
 
 replace github.com/databricks/terraform-provider-databricks => ../upstream
 
 require (
-	github.com/databricks/databricks-sdk-go v0.182.0
+	github.com/databricks/databricks-sdk-go v0.185.0
 	github.com/databricks/terraform-provider-databricks v1.58.0
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.140.0

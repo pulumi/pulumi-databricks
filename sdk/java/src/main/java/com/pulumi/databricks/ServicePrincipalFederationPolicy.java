@@ -122,9 +122,19 @@ public class ServicePrincipalFederationPolicy extends com.pulumi.resources.Custo
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     * 
+     */
     @Export(name="oidcPolicy", refs={ServicePrincipalFederationPolicyOidcPolicy.class}, tree="[0]")
     private Output</* @Nullable */ ServicePrincipalFederationPolicyOidcPolicy> oidcPolicy;
 
+    /**
+     * @return audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     * 
+     */
     public Output<Optional<ServicePrincipalFederationPolicyOidcPolicy>> oidcPolicy() {
         return Codegen.optional(this.oidcPolicy);
     }

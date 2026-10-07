@@ -87,6 +87,7 @@ public final class JobTaskForEachTaskTask {
      * 
      */
     private @Nullable String environmentKey;
+    private @Nullable String environmentVariablesKey;
     /**
      * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      * 
@@ -241,6 +242,9 @@ public final class JobTaskForEachTaskTask {
     public Optional<String> environmentKey() {
         return Optional.ofNullable(this.environmentKey);
     }
+    public Optional<String> environmentVariablesKey() {
+        return Optional.ofNullable(this.environmentVariablesKey);
+    }
     /**
      * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      * 
@@ -391,6 +395,7 @@ public final class JobTaskForEachTaskTask {
         private @Nullable Boolean disabled;
         private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
         private @Nullable String environmentKey;
+        private @Nullable String environmentVariablesKey;
         private @Nullable String existingClusterId;
         private @Nullable JobTaskForEachTaskTaskGenAiComputeTask genAiComputeTask;
         private @Nullable JobTaskForEachTaskTaskHealth health;
@@ -433,6 +438,7 @@ public final class JobTaskForEachTaskTask {
     	      this.disabled = defaults.disabled;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.environmentKey = defaults.environmentKey;
+    	      this.environmentVariablesKey = defaults.environmentVariablesKey;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.genAiComputeTask = defaults.genAiComputeTask;
     	      this.health = defaults.health;
@@ -550,6 +556,12 @@ public final class JobTaskForEachTaskTask {
         public Builder environmentKey(@Nullable String environmentKey) {
 
             this.environmentKey = environmentKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder environmentVariablesKey(@Nullable String environmentVariablesKey) {
+
+            this.environmentVariablesKey = environmentVariablesKey;
             return this;
         }
         @CustomType.Setter
@@ -718,6 +730,7 @@ public final class JobTaskForEachTaskTask {
             _resultValue.disabled = disabled;
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.environmentKey = environmentKey;
+            _resultValue.environmentVariablesKey = environmentVariablesKey;
             _resultValue.existingClusterId = existingClusterId;
             _resultValue.genAiComputeTask = genAiComputeTask;
             _resultValue.health = health;

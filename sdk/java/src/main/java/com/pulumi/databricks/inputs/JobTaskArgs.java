@@ -212,6 +212,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.environmentKey);
     }
 
+    @Import(name="environmentVariablesKey")
+    private @Nullable Output<String> environmentVariablesKey;
+
+    public Optional<Output<String>> environmentVariablesKey() {
+        return Optional.ofNullable(this.environmentVariablesKey);
+    }
+
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      * 
@@ -511,6 +518,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.disabled = $.disabled;
         this.emailNotifications = $.emailNotifications;
         this.environmentKey = $.environmentKey;
+        this.environmentVariablesKey = $.environmentVariablesKey;
         this.existingClusterId = $.existingClusterId;
         this.forEachTask = $.forEachTask;
         this.genAiComputeTask = $.genAiComputeTask;
@@ -787,6 +795,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder environmentKey(String environmentKey) {
             return environmentKey(Output.of(environmentKey));
+        }
+
+        public Builder environmentVariablesKey(@Nullable Output<String> environmentVariablesKey) {
+            $.environmentVariablesKey = environmentVariablesKey;
+            return this;
+        }
+
+        public Builder environmentVariablesKey(String environmentVariablesKey) {
+            return environmentVariablesKey(Output.of(environmentVariablesKey));
         }
 
         /**

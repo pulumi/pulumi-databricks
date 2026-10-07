@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs;
@@ -48,6 +50,20 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
      */
     public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>>> onFailures() {
         return Optional.ofNullable(this.onFailures);
+    }
+
+    @Import(name="onMaintenanceCompletes")
+    private @Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs>> onMaintenanceCompletes;
+
+    public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs>>> onMaintenanceCompletes() {
+        return Optional.ofNullable(this.onMaintenanceCompletes);
+    }
+
+    @Import(name="onMaintenanceStarts")
+    private @Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs>> onMaintenanceStarts;
+
+    public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs>>> onMaintenanceStarts() {
+        return Optional.ofNullable(this.onMaintenanceStarts);
     }
 
     /**
@@ -108,6 +124,8 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
     private JobTaskForEachTaskTaskWebhookNotificationsArgs(JobTaskForEachTaskTaskWebhookNotificationsArgs $) {
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
+        this.onMaintenanceCompletes = $.onMaintenanceCompletes;
+        this.onMaintenanceStarts = $.onMaintenanceStarts;
         this.onStarts = $.onStarts;
         this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
@@ -191,6 +209,32 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
          */
         public Builder onFailures(JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+
+        public Builder onMaintenanceCompletes(@Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs>> onMaintenanceCompletes) {
+            $.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+
+        public Builder onMaintenanceCompletes(List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs> onMaintenanceCompletes) {
+            return onMaintenanceCompletes(Output.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceCompletes(JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceStarts(@Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs>> onMaintenanceStarts) {
+            $.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+
+        public Builder onMaintenanceStarts(List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs> onMaintenanceStarts) {
+            return onMaintenanceStarts(Output.of(onMaintenanceStarts));
+        }
+
+        public Builder onMaintenanceStarts(JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
 
         /**

@@ -13,14 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureSourceRequestSource
     {
+        public readonly string? DataframeSchema;
         /// <summary>
         /// A flat schema with scalar-typed fields only
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema? FlatSchema;
 
         [OutputConstructor]
-        private FeatureEngineeringFeatureSourceRequestSource(Outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema? flatSchema)
+        private FeatureEngineeringFeatureSourceRequestSource(
+            string? dataframeSchema,
+
+            Outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema? flatSchema)
         {
+            DataframeSchema = dataframeSchema;
             FlatSchema = flatSchema;
         }
     }

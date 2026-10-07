@@ -12,6 +12,7 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureStr
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureTableTrigger;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -47,6 +48,11 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     private Boolean isOnline;
     /**
+     * @return (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     * 
+     */
+    private Integer jobId;
+    /**
      * @return (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      * 
@@ -72,6 +78,11 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      * 
      */
     private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
+    /**
+     * @return (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     * 
+     */
+    private String pipelineId;
     /**
      * @return (string) - The schedule state of the materialization pipeline.
      * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -146,6 +157,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         return this.isOnline;
     }
     /**
+     * @return (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     * 
+     */
+    public Integer jobId() {
+        return this.jobId;
+    }
+    /**
      * @return (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      * 
@@ -180,6 +198,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     public GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig() {
         return this.onlineStoreConfig;
+    }
+    /**
+     * @return (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     * 
+     */
+    public String pipelineId() {
+        return this.pipelineId;
     }
     /**
      * @return (string) - The schedule state of the materialization pipeline.
@@ -243,11 +268,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         private GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger;
         private String featureName;
         private Boolean isOnline;
+        private Integer jobId;
         private String lastMaterializationTime;
         private String latestBackfillOperation;
         private String materializedFeatureId;
         private GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
         private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
+        private String pipelineId;
         private String pipelineScheduleState;
         private @Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig;
         private GetFeatureEngineeringMaterializedFeatureStreamingMode streamingMode;
@@ -262,11 +289,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     	      this.cronScheduleTrigger = defaults.cronScheduleTrigger;
     	      this.featureName = defaults.featureName;
     	      this.isOnline = defaults.isOnline;
+    	      this.jobId = defaults.jobId;
     	      this.lastMaterializationTime = defaults.lastMaterializationTime;
     	      this.latestBackfillOperation = defaults.latestBackfillOperation;
     	      this.materializedFeatureId = defaults.materializedFeatureId;
     	      this.offlineStoreConfig = defaults.offlineStoreConfig;
     	      this.onlineStoreConfig = defaults.onlineStoreConfig;
+    	      this.pipelineId = defaults.pipelineId;
     	      this.pipelineScheduleState = defaults.pipelineScheduleState;
     	      this.providerConfig = defaults.providerConfig;
     	      this.streamingMode = defaults.streamingMode;
@@ -316,6 +345,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             return this;
         }
         @CustomType.Setter
+        public Builder jobId(Integer jobId) {
+            if (jobId == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "jobId");
+            }
+            this.jobId = jobId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder lastMaterializationTime(String lastMaterializationTime) {
             if (lastMaterializationTime == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "lastMaterializationTime");
@@ -353,6 +390,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "onlineStoreConfig");
             }
             this.onlineStoreConfig = onlineStoreConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pipelineId(String pipelineId) {
+            if (pipelineId == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "pipelineId");
+            }
+            this.pipelineId = pipelineId;
             return this;
         }
         @CustomType.Setter
@@ -408,11 +453,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             _resultValue.cronScheduleTrigger = cronScheduleTrigger;
             _resultValue.featureName = featureName;
             _resultValue.isOnline = isOnline;
+            _resultValue.jobId = jobId;
             _resultValue.lastMaterializationTime = lastMaterializationTime;
             _resultValue.latestBackfillOperation = latestBackfillOperation;
             _resultValue.materializedFeatureId = materializedFeatureId;
             _resultValue.offlineStoreConfig = offlineStoreConfig;
             _resultValue.onlineStoreConfig = onlineStoreConfig;
+            _resultValue.pipelineId = pipelineId;
             _resultValue.pipelineScheduleState = pipelineScheduleState;
             _resultValue.providerConfig = providerConfig;
             _resultValue.streamingMode = streamingMode;

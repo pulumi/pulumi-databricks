@@ -19,11 +19,24 @@ namespace Pulumi.Databricks.Outputs
         /// object remains present to indicate that a secret is configured
         /// </summary>
         public readonly string Plaintext;
+        /// <summary>
+        /// (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        /// The value is read at invoke time under the model provider service
+        /// owner's access and is never copied onto the model provider service, so
+        /// rotating the UC Secret takes effect with no change to the model provider
+        /// service. On Create, supply `secret_reference.name` as
+        /// `secrets/{catalog}.{schema}.{secret}`
+        /// </summary>
+        public readonly Outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult? SecretReference;
 
         [OutputConstructor]
-        private GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeyResult(string plaintext)
+        private GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeyResult(
+            string plaintext,
+
+            Outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult? secretReference)
         {
             Plaintext = plaintext;
+            SecretReference = secretReference;
         }
     }
 }

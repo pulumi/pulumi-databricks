@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("serviceCredential")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialGetArgs>? ServiceCredential { get; set; }
+
         public AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectGetArgs()
         {
         }

@@ -6,6 +6,8 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess;
@@ -25,6 +27,8 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
      * 
      */
     private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnFailure> onFailures;
+    private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes;
+    private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts;
     /**
      * @return (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      * 
@@ -59,6 +63,12 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
      */
     public List<JobTaskForEachTaskTaskWebhookNotificationsOnFailure> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
+    }
+    public List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes() {
+        return this.onMaintenanceCompletes == null ? List.of() : this.onMaintenanceCompletes;
+    }
+    public List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts() {
+        return this.onMaintenanceStarts == null ? List.of() : this.onMaintenanceStarts;
     }
     /**
      * @return (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
@@ -97,6 +107,8 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     public static final class Builder {
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnFailure> onFailures;
+        private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes;
+        private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccess> onSuccesses;
@@ -105,6 +117,8 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     	      Objects.requireNonNull(defaults);
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
+    	      this.onMaintenanceCompletes = defaults.onMaintenanceCompletes;
+    	      this.onMaintenanceStarts = defaults.onMaintenanceStarts;
     	      this.onStarts = defaults.onStarts;
     	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
@@ -127,6 +141,24 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
         }
         public Builder onFailures(JobTaskForEachTaskTaskWebhookNotificationsOnFailure... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+        @CustomType.Setter
+        public Builder onMaintenanceCompletes(@Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes) {
+
+            this.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+        public Builder onMaintenanceCompletes(JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+        @CustomType.Setter
+        public Builder onMaintenanceStarts(@Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts) {
+
+            this.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+        public Builder onMaintenanceStarts(JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
         @CustomType.Setter
         public Builder onStarts(@Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts) {
@@ -159,6 +191,8 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
             final var _resultValue = new JobTaskForEachTaskTaskWebhookNotifications();
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
+            _resultValue.onMaintenanceCompletes = onMaintenanceCompletes;
+            _resultValue.onMaintenanceStarts = onMaintenanceStarts;
             _resultValue.onStarts = onStarts;
             _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;

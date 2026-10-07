@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess;
@@ -31,6 +33,20 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications extends com
 
     public Optional<List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure>> onFailures() {
         return Optional.ofNullable(this.onFailures);
+    }
+
+    @Import(name="onMaintenanceCompletes")
+    private @Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes;
+
+    public Optional<List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete>> onMaintenanceCompletes() {
+        return Optional.ofNullable(this.onMaintenanceCompletes);
+    }
+
+    @Import(name="onMaintenanceStarts")
+    private @Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts;
+
+    public Optional<List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart>> onMaintenanceStarts() {
+        return Optional.ofNullable(this.onMaintenanceStarts);
     }
 
     @Import(name="onStarts")
@@ -59,6 +75,8 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications extends com
     private GetJobJobSettingsSettingsTaskWebhookNotifications(GetJobJobSettingsSettingsTaskWebhookNotifications $) {
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
+        this.onMaintenanceCompletes = $.onMaintenanceCompletes;
+        this.onMaintenanceStarts = $.onMaintenanceStarts;
         this.onStarts = $.onStarts;
         this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
@@ -98,6 +116,24 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications extends com
 
         public Builder onFailures(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+
+        public Builder onMaintenanceCompletes(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes) {
+            $.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+
+        public Builder onMaintenanceCompletes(GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceStarts(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts) {
+            $.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+
+        public Builder onMaintenanceStarts(GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
 
         public Builder onStarts(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart> onStarts) {

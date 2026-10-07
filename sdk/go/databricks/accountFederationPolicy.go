@@ -65,7 +65,9 @@ type AccountFederationPolicy struct {
 	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
-	Name       pulumi.StringOutput                        `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy AccountFederationPolicyOidcPolicyPtrOutput `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
@@ -117,7 +119,9 @@ type accountFederationPolicyState struct {
 	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
-	Name       *string                            `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy *AccountFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId *string `pulumi:"policyId"`
@@ -140,7 +144,9 @@ type AccountFederationPolicyState struct {
 	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy AccountFederationPolicyOidcPolicyPtrInput
 	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringPtrInput
@@ -158,8 +164,10 @@ func (AccountFederationPolicyState) ElementType() reflect.Type {
 
 type accountFederationPolicyArgs struct {
 	// Description of the federation policy
-	Description *string                            `pulumi:"description"`
-	OidcPolicy  *AccountFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
+	Description *string `pulumi:"description"`
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
+	OidcPolicy *AccountFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId *string `pulumi:"policyId"`
 	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -170,7 +178,9 @@ type accountFederationPolicyArgs struct {
 type AccountFederationPolicyArgs struct {
 	// Description of the federation policy
 	Description pulumi.StringPtrInput
-	OidcPolicy  AccountFederationPolicyOidcPolicyPtrInput
+	// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
+	OidcPolicy AccountFederationPolicyOidcPolicyPtrInput
 	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringPtrInput
 	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -284,6 +294,8 @@ func (o AccountFederationPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountFederationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+// policy configuration is captured in create/update audit logs (see go/auditlogs)
 func (o AccountFederationPolicyOutput) OidcPolicy() AccountFederationPolicyOidcPolicyPtrOutput {
 	return o.ApplyT(func(v *AccountFederationPolicy) AccountFederationPolicyOidcPolicyPtrOutput { return v.OidcPolicy }).(AccountFederationPolicyOidcPolicyPtrOutput)
 }

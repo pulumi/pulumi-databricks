@@ -21,6 +21,8 @@ namespace Pulumi.Databricks.Outputs
         /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnFailure> OnFailures;
+        public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnMaintenanceComplete> OnMaintenanceCompletes;
+        public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnMaintenanceStart> OnMaintenanceStarts;
         /// <summary>
         /// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         /// </summary>
@@ -44,6 +46,10 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.JobTaskWebhookNotificationsOnFailure> onFailures,
 
+            ImmutableArray<Outputs.JobTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes,
+
+            ImmutableArray<Outputs.JobTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts,
+
             ImmutableArray<Outputs.JobTaskWebhookNotificationsOnStart> onStarts,
 
             ImmutableArray<Outputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs,
@@ -52,6 +58,8 @@ namespace Pulumi.Databricks.Outputs
         {
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
+            OnMaintenanceCompletes = onMaintenanceCompletes;
+            OnMaintenanceStarts = onMaintenanceStarts;
             OnStarts = onStarts;
             OnStreamingBacklogExceededs = onStreamingBacklogExceededs;
             OnSuccesses = onSuccesses;

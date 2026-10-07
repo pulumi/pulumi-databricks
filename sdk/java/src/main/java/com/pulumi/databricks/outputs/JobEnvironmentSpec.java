@@ -25,6 +25,7 @@ public final class JobEnvironmentSpec {
      */
     private @Nullable String environmentVersion;
     private @Nullable List<String> javaDependencies;
+    private @Nullable String projectEnvironment;
 
     private JobEnvironmentSpec() {}
     public Optional<String> baseEnvironment() {
@@ -50,6 +51,9 @@ public final class JobEnvironmentSpec {
     public List<String> javaDependencies() {
         return this.javaDependencies == null ? List.of() : this.javaDependencies;
     }
+    public Optional<String> projectEnvironment() {
+        return Optional.ofNullable(this.projectEnvironment);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,6 +69,7 @@ public final class JobEnvironmentSpec {
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
         private @Nullable List<String> javaDependencies;
+        private @Nullable String projectEnvironment;
         public Builder() {}
         public Builder(JobEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -73,6 +78,7 @@ public final class JobEnvironmentSpec {
     	      this.dependencies = defaults.dependencies;
     	      this.environmentVersion = defaults.environmentVersion;
     	      this.javaDependencies = defaults.javaDependencies;
+    	      this.projectEnvironment = defaults.projectEnvironment;
         }
 
         @CustomType.Setter
@@ -111,6 +117,12 @@ public final class JobEnvironmentSpec {
         public Builder javaDependencies(String... javaDependencies) {
             return javaDependencies(List.of(javaDependencies));
         }
+        @CustomType.Setter
+        public Builder projectEnvironment(@Nullable String projectEnvironment) {
+
+            this.projectEnvironment = projectEnvironment;
+            return this;
+        }
         public JobEnvironmentSpec build() {
             final var _resultValue = new JobEnvironmentSpec();
             _resultValue.baseEnvironment = baseEnvironment;
@@ -118,6 +130,7 @@ public final class JobEnvironmentSpec {
             _resultValue.dependencies = dependencies;
             _resultValue.environmentVersion = environmentVersion;
             _resultValue.javaDependencies = javaDependencies;
+            _resultValue.projectEnvironment = projectEnvironment;
             return _resultValue;
         }
     }

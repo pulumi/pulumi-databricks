@@ -58,7 +58,8 @@ export interface GetAccountFederationPolicyResult {
      */
     readonly name: string;
     /**
-     * (OidcFederationPolicy)
+     * (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
      */
     readonly oidcPolicy: outputs.GetAccountFederationPolicyOidcPolicy;
     /**

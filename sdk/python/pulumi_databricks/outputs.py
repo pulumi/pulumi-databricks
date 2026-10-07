@@ -240,35 +240,46 @@ __all__ = [
     'AiGatewayModelProviderServiceConfigAmazonBedrockDirect',
     'AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey',
     'AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey',
+    'AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference',
     'AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential',
     'AiGatewayModelProviderServiceConfigAnthropic',
     'AiGatewayModelProviderServiceConfigAnthropicDirect',
     'AiGatewayModelProviderServiceConfigAnthropicDirectApiKey',
+    'AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference',
     'AiGatewayModelProviderServiceConfigAnthropicRelayed',
     'AiGatewayModelProviderServiceConfigAzureOpenai',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirect',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey',
+    'AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret',
+    'AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential',
     'AiGatewayModelProviderServiceConfigCustom',
     'AiGatewayModelProviderServiceConfigCustomDirect',
     'AiGatewayModelProviderServiceConfigCustomDirectApiKey',
+    'AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference',
     'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth',
     'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue',
+    'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference',
     'AiGatewayModelProviderServiceConfigGeminiEnterprise',
     'AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect',
     'AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey',
+    'AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference',
+    'AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential',
     'AiGatewayModelProviderServiceConfigInferenceTable',
     'AiGatewayModelProviderServiceConfigMicrosoftFoundry',
     'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect',
     'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey',
+    'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference',
     'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal',
     'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret',
+    'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference',
     'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential',
     'AiGatewayModelProviderServiceConfigOpenai',
     'AiGatewayModelProviderServiceConfigOpenaiDirect',
     'AiGatewayModelProviderServiceConfigOpenaiDirectApiKey',
+    'AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference',
     'AiGatewayModelProviderServiceConfigRateLimit',
     'AiGatewayModelProviderServiceConfigTarget',
     'AiGatewayModelProviderServiceProviderConfig',
@@ -635,6 +646,8 @@ __all__ = [
     'JobEmailNotifications',
     'JobEnvironment',
     'JobEnvironmentSpec',
+    'JobEnvironmentVariable',
+    'JobEnvironmentVariableSpec',
     'JobGitSource',
     'JobGitSourceGitSnapshot',
     'JobGitSourceJobSource',
@@ -825,6 +838,8 @@ __all__ = [
     'JobTaskForEachTaskTaskWebhookNotifications',
     'JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded',
     'JobTaskForEachTaskTaskWebhookNotificationsOnFailure',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart',
     'JobTaskForEachTaskTaskWebhookNotificationsOnStart',
     'JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded',
     'JobTaskForEachTaskTaskWebhookNotificationsOnSuccess',
@@ -893,6 +908,8 @@ __all__ = [
     'JobTaskWebhookNotifications',
     'JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded',
     'JobTaskWebhookNotificationsOnFailure',
+    'JobTaskWebhookNotificationsOnMaintenanceComplete',
+    'JobTaskWebhookNotificationsOnMaintenanceStart',
     'JobTaskWebhookNotificationsOnStart',
     'JobTaskWebhookNotificationsOnStreamingBacklogExceeded',
     'JobTaskWebhookNotificationsOnSuccess',
@@ -908,6 +925,8 @@ __all__ = [
     'JobWebhookNotifications',
     'JobWebhookNotificationsOnDurationWarningThresholdExceeded',
     'JobWebhookNotificationsOnFailure',
+    'JobWebhookNotificationsOnMaintenanceComplete',
+    'JobWebhookNotificationsOnMaintenanceStart',
     'JobWebhookNotificationsOnStart',
     'JobWebhookNotificationsOnStreamingBacklogExceeded',
     'JobWebhookNotificationsOnSuccess',
@@ -930,6 +949,11 @@ __all__ = [
     'LibraryMaven',
     'LibraryProviderConfig',
     'LibraryPypi',
+    'MasonManagedMemoryEntryProviderConfig',
+    'MasonManagedMemoryStoreProviderConfig',
+    'MasonManagedMemoryStoreStorageBackend',
+    'MasonSessionProviderConfig',
+    'MasonSessionStoreProviderConfig',
     'MaterializedFeaturesFeatureTagProviderConfig',
     'MetastoreAssignmentProviderConfig',
     'MetastoreDataAccessAwsIamRole',
@@ -1283,6 +1307,13 @@ __all__ = [
     'PostgresSyncedTableStatusLastSync',
     'PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo',
     'PostgresSyncedTableStatusOngoingSyncProgress',
+    'PrivateNetworkGatewayAwsCloudConnection',
+    'PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole',
+    'PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet',
+    'PrivateNetworkGatewayAzureCloudConnection',
+    'PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet',
+    'PrivateNetworkGatewayDestination',
+    'PrivateNetworkGatewayPrivateDnsResolver',
     'QualityMonitorCustomMetric',
     'QualityMonitorDataClassificationConfig',
     'QualityMonitorInferenceLog',
@@ -1327,6 +1358,7 @@ __all__ = [
     'SandboxProviderConfig',
     'SandboxSpec',
     'SandboxSpecCompute',
+    'SandboxSpecEnvironment',
     'SandboxStatus',
     'SchemaProviderConfig',
     'SecretAclProviderConfig',
@@ -1876,35 +1908,46 @@ __all__ = [
     'GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectResult',
     'GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyResult',
     'GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyResult',
+    'GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServiceConfigAnthropicResult',
     'GetAiGatewayModelProviderServiceConfigAnthropicDirectResult',
     'GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeyResult',
+    'GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigAnthropicRelayedResult',
     'GetAiGatewayModelProviderServiceConfigAzureOpenaiResult',
     'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectResult',
     'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyResult',
+    'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalResult',
     'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretResult',
+    'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServiceConfigCustomResult',
     'GetAiGatewayModelProviderServiceConfigCustomDirectResult',
     'GetAiGatewayModelProviderServiceConfigCustomDirectApiKeyResult',
+    'GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthResult',
     'GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueResult',
+    'GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseResult',
     'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectResult',
     'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult',
+    'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult',
+    'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServiceConfigInferenceTableResult',
     'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryResult',
     'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectResult',
     'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyResult',
+    'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalResult',
     'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretResult',
+    'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServiceConfigOpenaiResult',
     'GetAiGatewayModelProviderServiceConfigOpenaiDirectResult',
     'GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeyResult',
+    'GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServiceConfigRateLimitResult',
     'GetAiGatewayModelProviderServiceConfigTargetResult',
     'GetAiGatewayModelProviderServiceProviderConfigResult',
@@ -1914,35 +1957,46 @@ __all__ = [
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicRelayedResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigInferenceTableResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredentialResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeyResult',
+    'GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigRateLimitResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceConfigTargetResult',
     'GetAiGatewayModelProviderServicesModelProviderServiceProviderConfigResult',
@@ -2703,6 +2757,8 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessResult',
@@ -2756,6 +2812,8 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskWebhookNotificationsResult',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartResult',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededResult',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult',
@@ -2766,6 +2824,8 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceCompleteResult',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStartResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult',
@@ -2785,6 +2845,24 @@ __all__ = [
     'GetKnowledgeAssistantsKnowledgeAssistantResult',
     'GetKnowledgeAssistantsKnowledgeAssistantProviderConfigResult',
     'GetKnowledgeAssistantsProviderConfigResult',
+    'GetMasonManagedMemoryEntriesManagedMemoryEntryResult',
+    'GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfigResult',
+    'GetMasonManagedMemoryEntriesProviderConfigResult',
+    'GetMasonManagedMemoryEntryProviderConfigResult',
+    'GetMasonManagedMemoryStoreProviderConfigResult',
+    'GetMasonManagedMemoryStoreStorageBackendResult',
+    'GetMasonManagedMemoryStoresManagedMemoryStoreResult',
+    'GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfigResult',
+    'GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackendResult',
+    'GetMasonManagedMemoryStoresProviderConfigResult',
+    'GetMasonSessionProviderConfigResult',
+    'GetMasonSessionStoreProviderConfigResult',
+    'GetMasonSessionStoresProviderConfigResult',
+    'GetMasonSessionStoresSessionStoreResult',
+    'GetMasonSessionStoresSessionStoreProviderConfigResult',
+    'GetMasonSessionsProviderConfigResult',
+    'GetMasonSessionsSessionResult',
+    'GetMasonSessionsSessionProviderConfigResult',
     'GetMaterializedFeaturesFeatureTagProviderConfigResult',
     'GetMaterializedFeaturesFeatureTagsFeatureTagResult',
     'GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfigResult',
@@ -2949,6 +3027,21 @@ __all__ = [
     'GetPostgresSyncedTableStatusLastSyncResult',
     'GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoResult',
     'GetPostgresSyncedTableStatusOngoingSyncProgressResult',
+    'GetPrivateNetworkGatewayAwsCloudConnectionResult',
+    'GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult',
+    'GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult',
+    'GetPrivateNetworkGatewayAzureCloudConnectionResult',
+    'GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult',
+    'GetPrivateNetworkGatewayDestinationResult',
+    'GetPrivateNetworkGatewayPrivateDnsResolverResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayDestinationResult',
+    'GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolverResult',
     'GetQualityMonitorV2AnomalyDetectionConfigResult',
     'GetQualityMonitorV2ProviderConfigResult',
     'GetQualityMonitorV2ValidityCheckConfigurationResult',
@@ -2983,12 +3076,14 @@ __all__ = [
     'GetSandboxProviderConfigResult',
     'GetSandboxSpecResult',
     'GetSandboxSpecComputeResult',
+    'GetSandboxSpecEnvironmentResult',
     'GetSandboxStatusResult',
     'GetSandboxesProviderConfigResult',
     'GetSandboxesSandboxResult',
     'GetSandboxesSandboxProviderConfigResult',
     'GetSandboxesSandboxSpecResult',
     'GetSandboxesSandboxSpecComputeResult',
+    'GetSandboxesSandboxSpecEnvironmentResult',
     'GetSandboxesSandboxStatusResult',
     'GetSchemaProviderConfigResult',
     'GetSchemaSchemaInfoResult',
@@ -13267,15 +13362,41 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13286,6 +13407,45 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAc
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -13377,15 +13537,41 @@ class AiGatewayModelProviderServiceConfigAnthropicDirect(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigAnthropicDirectApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigAnthropicDirectApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigAnthropicDirectApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigAnthropicDirectApiKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13396,6 +13582,45 @@ class AiGatewayModelProviderServiceConfigAnthropicDirectApiKey(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -13479,15 +13704,41 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirect(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13498,6 +13749,45 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -13566,15 +13856,41 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal(
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13585,6 +13901,45 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalC
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -13688,15 +14043,41 @@ class AiGatewayModelProviderServiceConfigCustomDirect(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigCustomDirectApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigCustomDirectApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigCustomDirectApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigCustomDirectApiKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13707,6 +14088,45 @@ class AiGatewayModelProviderServiceConfigCustomDirectApiKey(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -13767,15 +14187,41 @@ class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13786,6 +14232,45 @@ class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue(dict)
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -13810,6 +14295,8 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect(dict):
             suggest = "api_key"
         elif key == "projectId":
             suggest = "project_id"
+        elif key == "serviceCredential":
+            suggest = "service_credential"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect. Access the value via the '{suggest}' property getter instead.")
@@ -13825,7 +14312,8 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect(dict):
     def __init__(__self__, *,
                  api_key: Optional['outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey'] = None,
                  project_id: Optional[_builtins.str] = None,
-                 region: Optional[_builtins.str] = None):
+                 region: Optional[_builtins.str] = None,
+                 service_credential: Optional['outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential'] = None):
         """
         :param _builtins.str project_id: GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
         """
@@ -13835,6 +14323,8 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect(dict):
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_credential is not None:
+            pulumi.set(__self__, "service_credential", service_credential)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
@@ -13854,18 +14344,49 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect(dict):
     def region(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "region")
 
+    @_builtins.property
+    @pulumi.getter(name="serviceCredential")
+    def service_credential(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential']:
+        return pulumi.get(self, "service_credential")
+
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -13876,6 +14397,71 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -14044,15 +14630,41 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -14063,6 +14675,45 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -14131,15 +14782,41 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -14150,6 +14827,45 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -14249,15 +14965,41 @@ class AiGatewayModelProviderServiceConfigOpenaiDirect(dict):
 
 @pulumi.output_type
 class AiGatewayModelProviderServiceConfigOpenaiDirectApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretReference":
+            suggest = "secret_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiGatewayModelProviderServiceConfigOpenaiDirectApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiGatewayModelProviderServiceConfigOpenaiDirectApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiGatewayModelProviderServiceConfigOpenaiDirectApiKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 plaintext: Optional[_builtins.str] = None):
+                 plaintext: Optional[_builtins.str] = None,
+                 secret_reference: Optional['outputs.AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference'] = None):
         """
         :param _builtins.str plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs' secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -14268,6 +15010,45 @@ class AiGatewayModelProviderServiceConfigOpenaiDirectApiKey(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference']:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -29705,7 +30486,9 @@ class FeatureEngineeringFeatureSourceRequestSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "flatSchema":
+        if key == "dataframeSchema":
+            suggest = "dataframe_schema"
+        elif key == "flatSchema":
             suggest = "flat_schema"
 
         if suggest:
@@ -29720,12 +30503,20 @@ class FeatureEngineeringFeatureSourceRequestSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 dataframe_schema: Optional[_builtins.str] = None,
                  flat_schema: Optional['outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema'] = None):
         """
         :param 'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaArgs' flat_schema: A flat schema with scalar-typed fields only
         """
+        if dataframe_schema is not None:
+            pulumi.set(__self__, "dataframe_schema", dataframe_schema)
         if flat_schema is not None:
             pulumi.set(__self__, "flat_schema", flat_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="dataframeSchema")
+    def dataframe_schema(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
     @pulumi.getter(name="flatSchema")
@@ -32877,6 +33668,10 @@ class JobEmailNotifications(dict):
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
+        elif key == "onMaintenanceCompletes":
+            suggest = "on_maintenance_completes"
+        elif key == "onMaintenanceStarts":
+            suggest = "on_maintenance_starts"
         elif key == "onStarts":
             suggest = "on_starts"
         elif key == "onStreamingBacklogExceededs":
@@ -32899,6 +33694,8 @@ class JobEmailNotifications(dict):
                  no_alert_for_skipped_runs: Optional[_builtins.bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_completes: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_starts: Optional[Sequence[_builtins.str]] = None,
                  on_starts: Optional[Sequence[_builtins.str]] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_successes: Optional[Sequence[_builtins.str]] = None):
@@ -32918,6 +33715,10 @@ class JobEmailNotifications(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -32948,6 +33749,16 @@ class JobEmailNotifications(dict):
         (List) list of emails to notify when the run fails.
         """
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -33034,6 +33845,8 @@ class JobEnvironmentSpec(dict):
             suggest = "environment_version"
         elif key == "javaDependencies":
             suggest = "java_dependencies"
+        elif key == "projectEnvironment":
+            suggest = "project_environment"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobEnvironmentSpec. Access the value via the '{suggest}' property getter instead.")
@@ -33051,7 +33864,8 @@ class JobEnvironmentSpec(dict):
                  client: Optional[_builtins.str] = None,
                  dependencies: Optional[Sequence[_builtins.str]] = None,
                  environment_version: Optional[_builtins.str] = None,
-                 java_dependencies: Optional[Sequence[_builtins.str]] = None):
+                 java_dependencies: Optional[Sequence[_builtins.str]] = None,
+                 project_environment: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         :param _builtins.str environment_version: client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
@@ -33066,6 +33880,8 @@ class JobEnvironmentSpec(dict):
             pulumi.set(__self__, "environment_version", environment_version)
         if java_dependencies is not None:
             pulumi.set(__self__, "java_dependencies", java_dependencies)
+        if project_environment is not None:
+            pulumi.set(__self__, "project_environment", project_environment)
 
     @_builtins.property
     @pulumi.getter(name="baseEnvironment")
@@ -33097,6 +33913,75 @@ class JobEnvironmentSpec(dict):
     @pulumi.getter(name="javaDependencies")
     def java_dependencies(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "java_dependencies")
+
+    @_builtins.property
+    @pulumi.getter(name="projectEnvironment")
+    def project_environment(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "project_environment")
+
+
+@pulumi.output_type
+class JobEnvironmentVariable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVariablesKey":
+            suggest = "environment_variables_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobEnvironmentVariable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobEnvironmentVariable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobEnvironmentVariable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_variables_key: _builtins.str,
+                 spec: Optional['outputs.JobEnvironmentVariableSpec'] = None):
+        """
+        :param 'JobEnvironmentVariableSpecArgs' spec: block describing the Environment. Consists of following attributes:
+        """
+        pulumi.set(__self__, "environment_variables_key", environment_variables_key)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariablesKey")
+    def environment_variables_key(self) -> _builtins.str:
+        return pulumi.get(self, "environment_variables_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> Optional['outputs.JobEnvironmentVariableSpec']:
+        """
+        block describing the Environment. Consists of following attributes:
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class JobEnvironmentVariableSpec(dict):
+    def __init__(__self__, *,
+                 files: Optional[Sequence[_builtins.str]] = None,
+                 variables: Optional[Mapping[str, _builtins.str]] = None):
+        if files is not None:
+            pulumi.set(__self__, "files", files)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @_builtins.property
+    @pulumi.getter
+    def files(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "files")
+
+    @_builtins.property
+    @pulumi.getter
+    def variables(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "variables")
 
 
 @pulumi.output_type
@@ -37654,6 +38539,8 @@ class JobTask(dict):
             suggest = "email_notifications"
         elif key == "environmentKey":
             suggest = "environment_key"
+        elif key == "environmentVariablesKey":
+            suggest = "environment_variables_key"
         elif key == "existingClusterId":
             suggest = "existing_cluster_id"
         elif key == "forEachTask":
@@ -37727,6 +38614,7 @@ class JobTask(dict):
                  disabled: Optional[_builtins.bool] = None,
                  email_notifications: Optional['outputs.JobTaskEmailNotifications'] = None,
                  environment_key: Optional[_builtins.str] = None,
+                 environment_variables_key: Optional[_builtins.str] = None,
                  existing_cluster_id: Optional[_builtins.str] = None,
                  for_each_task: Optional['outputs.JobTaskForEachTask'] = None,
                  gen_ai_compute_task: Optional['outputs.JobTaskGenAiComputeTask'] = None,
@@ -37807,6 +38695,8 @@ class JobTask(dict):
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
             pulumi.set(__self__, "environment_key", environment_key)
+        if environment_variables_key is not None:
+            pulumi.set(__self__, "environment_variables_key", environment_variables_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if for_each_task is not None:
@@ -37962,6 +38852,11 @@ class JobTask(dict):
         identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         """
         return pulumi.get(self, "environment_key")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariablesKey")
+    def environment_variables_key(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "environment_variables_key")
 
     @_builtins.property
     @pulumi.getter(name="existingClusterId")
@@ -38244,8 +39139,8 @@ class JobTaskAiRuntimeTaskDeployment(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 command_path: _builtins.str,
                  compute: 'outputs.JobTaskAiRuntimeTaskDeploymentCompute',
+                 command_path: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None):
         """
         :param 'JobTaskAiRuntimeTaskDeploymentComputeArgs' compute: Task level compute configuration. This block is documented below.
@@ -38253,15 +39148,11 @@ class JobTaskAiRuntimeTaskDeployment(dict):
                > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         :param _builtins.str name: An optional name for the job. The default value is Untitled.
         """
-        pulumi.set(__self__, "command_path", command_path)
         pulumi.set(__self__, "compute", compute)
+        if command_path is not None:
+            pulumi.set(__self__, "command_path", command_path)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter(name="commandPath")
-    def command_path(self) -> _builtins.str:
-        return pulumi.get(self, "command_path")
 
     @_builtins.property
     @pulumi.getter
@@ -38272,6 +39163,11 @@ class JobTaskAiRuntimeTaskDeployment(dict):
         > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter(name="commandPath")
+    def command_path(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "command_path")
 
     @_builtins.property
     @pulumi.getter
@@ -39063,6 +39959,10 @@ class JobTaskEmailNotifications(dict):
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
+        elif key == "onMaintenanceCompletes":
+            suggest = "on_maintenance_completes"
+        elif key == "onMaintenanceStarts":
+            suggest = "on_maintenance_starts"
         elif key == "onStarts":
             suggest = "on_starts"
         elif key == "onStreamingBacklogExceededs":
@@ -39085,6 +39985,8 @@ class JobTaskEmailNotifications(dict):
                  no_alert_for_skipped_runs: Optional[_builtins.bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_completes: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_starts: Optional[Sequence[_builtins.str]] = None,
                  on_starts: Optional[Sequence[_builtins.str]] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_successes: Optional[Sequence[_builtins.str]] = None):
@@ -39104,6 +40006,10 @@ class JobTaskEmailNotifications(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -39134,6 +40040,16 @@ class JobTaskEmailNotifications(dict):
         (List) list of emails to notify when the run fails.
         """
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -39234,6 +40150,8 @@ class JobTaskForEachTaskTask(dict):
             suggest = "email_notifications"
         elif key == "environmentKey":
             suggest = "environment_key"
+        elif key == "environmentVariablesKey":
+            suggest = "environment_variables_key"
         elif key == "existingClusterId":
             suggest = "existing_cluster_id"
         elif key == "genAiComputeTask":
@@ -39305,6 +40223,7 @@ class JobTaskForEachTaskTask(dict):
                  disabled: Optional[_builtins.bool] = None,
                  email_notifications: Optional['outputs.JobTaskForEachTaskTaskEmailNotifications'] = None,
                  environment_key: Optional[_builtins.str] = None,
+                 environment_variables_key: Optional[_builtins.str] = None,
                  existing_cluster_id: Optional[_builtins.str] = None,
                  gen_ai_compute_task: Optional['outputs.JobTaskForEachTaskTaskGenAiComputeTask'] = None,
                  health: Optional['outputs.JobTaskForEachTaskTaskHealth'] = None,
@@ -39384,6 +40303,8 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
             pulumi.set(__self__, "environment_key", environment_key)
+        if environment_variables_key is not None:
+            pulumi.set(__self__, "environment_variables_key", environment_variables_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if gen_ai_compute_task is not None:
@@ -39537,6 +40458,11 @@ class JobTaskForEachTaskTask(dict):
         identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         """
         return pulumi.get(self, "environment_key")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariablesKey")
+    def environment_variables_key(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "environment_variables_key")
 
     @_builtins.property
     @pulumi.getter(name="existingClusterId")
@@ -39814,8 +40740,8 @@ class JobTaskForEachTaskTaskAiRuntimeTaskDeployment(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 command_path: _builtins.str,
                  compute: 'outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute',
+                 command_path: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None):
         """
         :param 'JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs' compute: Task level compute configuration. This block is documented below.
@@ -39823,15 +40749,11 @@ class JobTaskForEachTaskTaskAiRuntimeTaskDeployment(dict):
                > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         :param _builtins.str name: An optional name for the job. The default value is Untitled.
         """
-        pulumi.set(__self__, "command_path", command_path)
         pulumi.set(__self__, "compute", compute)
+        if command_path is not None:
+            pulumi.set(__self__, "command_path", command_path)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter(name="commandPath")
-    def command_path(self) -> _builtins.str:
-        return pulumi.get(self, "command_path")
 
     @_builtins.property
     @pulumi.getter
@@ -39842,6 +40764,11 @@ class JobTaskForEachTaskTaskAiRuntimeTaskDeployment(dict):
         > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter(name="commandPath")
+    def command_path(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "command_path")
 
     @_builtins.property
     @pulumi.getter
@@ -40633,6 +41560,10 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
+        elif key == "onMaintenanceCompletes":
+            suggest = "on_maintenance_completes"
+        elif key == "onMaintenanceStarts":
+            suggest = "on_maintenance_starts"
         elif key == "onStarts":
             suggest = "on_starts"
         elif key == "onStreamingBacklogExceededs":
@@ -40655,6 +41586,8 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
                  no_alert_for_skipped_runs: Optional[_builtins.bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_completes: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_starts: Optional[Sequence[_builtins.str]] = None,
                  on_starts: Optional[Sequence[_builtins.str]] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_successes: Optional[Sequence[_builtins.str]] = None):
@@ -40674,6 +41607,10 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -40704,6 +41641,16 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
         (List) list of emails to notify when the run fails.
         """
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -44241,6 +45188,10 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
+        elif key == "onMaintenanceCompletes":
+            suggest = "on_maintenance_completes"
+        elif key == "onMaintenanceStarts":
+            suggest = "on_maintenance_starts"
         elif key == "onStarts":
             suggest = "on_starts"
         elif key == "onStreamingBacklogExceededs":
@@ -44262,6 +45213,8 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
     def __init__(__self__, *,
                  on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded']] = None,
                  on_failures: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure']] = None,
+                 on_maintenance_completes: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete']] = None,
+                 on_maintenance_starts: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart']] = None,
                  on_starts: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart']] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded']] = None,
                  on_successes: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess']] = None):
@@ -44280,6 +45233,10 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -44302,6 +45259,16 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
         (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         """
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete']]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart']]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -44352,6 +45319,42 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceed
 
 @pulumi.output_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnFailure(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
@@ -47931,6 +48934,10 @@ class JobTaskWebhookNotifications(dict):
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
+        elif key == "onMaintenanceCompletes":
+            suggest = "on_maintenance_completes"
+        elif key == "onMaintenanceStarts":
+            suggest = "on_maintenance_starts"
         elif key == "onStarts":
             suggest = "on_starts"
         elif key == "onStreamingBacklogExceededs":
@@ -47952,6 +48959,8 @@ class JobTaskWebhookNotifications(dict):
     def __init__(__self__, *,
                  on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded']] = None,
                  on_failures: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnFailure']] = None,
+                 on_maintenance_completes: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnMaintenanceComplete']] = None,
+                 on_maintenance_starts: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnMaintenanceStart']] = None,
                  on_starts: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnStart']] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded']] = None,
                  on_successes: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnSuccess']] = None):
@@ -47970,6 +48979,10 @@ class JobTaskWebhookNotifications(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -47992,6 +49005,16 @@ class JobTaskWebhookNotifications(dict):
         (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         """
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnMaintenanceComplete']]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnMaintenanceStart']]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -48042,6 +49065,42 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
 
 @pulumi.output_type
 class JobTaskWebhookNotificationsOnFailure(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskWebhookNotificationsOnMaintenanceComplete(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskWebhookNotificationsOnMaintenanceStart(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
@@ -48654,6 +49713,10 @@ class JobWebhookNotifications(dict):
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
+        elif key == "onMaintenanceCompletes":
+            suggest = "on_maintenance_completes"
+        elif key == "onMaintenanceStarts":
+            suggest = "on_maintenance_starts"
         elif key == "onStarts":
             suggest = "on_starts"
         elif key == "onStreamingBacklogExceededs":
@@ -48675,6 +49738,8 @@ class JobWebhookNotifications(dict):
     def __init__(__self__, *,
                  on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded']] = None,
                  on_failures: Optional[Sequence['outputs.JobWebhookNotificationsOnFailure']] = None,
+                 on_maintenance_completes: Optional[Sequence['outputs.JobWebhookNotificationsOnMaintenanceComplete']] = None,
+                 on_maintenance_starts: Optional[Sequence['outputs.JobWebhookNotificationsOnMaintenanceStart']] = None,
                  on_starts: Optional[Sequence['outputs.JobWebhookNotificationsOnStart']] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence['outputs.JobWebhookNotificationsOnStreamingBacklogExceeded']] = None,
                  on_successes: Optional[Sequence['outputs.JobWebhookNotificationsOnSuccess']] = None):
@@ -48693,6 +49758,10 @@ class JobWebhookNotifications(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -48715,6 +49784,16 @@ class JobWebhookNotifications(dict):
         (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         """
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnMaintenanceComplete']]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnMaintenanceStart']]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -48765,6 +49844,42 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
 
 @pulumi.output_type
 class JobWebhookNotificationsOnFailure(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobWebhookNotificationsOnMaintenanceComplete(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobWebhookNotificationsOnMaintenanceStart(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
@@ -49630,6 +50745,200 @@ class LibraryPypi(dict):
         The repository where the package can be found. If not specified, the default pip index is used.
         """
         return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class MasonManagedMemoryEntryProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasonManagedMemoryEntryProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasonManagedMemoryEntryProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasonManagedMemoryEntryProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workspace_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class MasonManagedMemoryStoreProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasonManagedMemoryStoreProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasonManagedMemoryStoreProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasonManagedMemoryStoreProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workspace_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workspace_id: (integer) - Workspace that owns the memory store
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class MasonManagedMemoryStoreStorageBackend(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendId":
+            suggest = "backend_id"
+        elif key == "backendType":
+            suggest = "backend_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasonManagedMemoryStoreStorageBackend. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasonManagedMemoryStoreStorageBackend.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasonManagedMemoryStoreStorageBackend.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_id: Optional[_builtins.str] = None,
+                 backend_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str backend_id: (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        :param _builtins.str backend_type: (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        if backend_id is not None:
+            pulumi.set(__self__, "backend_id", backend_id)
+        if backend_type is not None:
+            pulumi.set(__self__, "backend_type", backend_type)
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        """
+        return pulumi.get(self, "backend_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backendType")
+    def backend_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        return pulumi.get(self, "backend_type")
+
+
+@pulumi.output_type
+class MasonSessionProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasonSessionProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasonSessionProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasonSessionProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workspace_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class MasonSessionStoreProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasonSessionStoreProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasonSessionStoreProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasonSessionStoreProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workspace_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
 
 
 @pulumi.output_type
@@ -55000,13 +56309,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -55278,13 +56587,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -70339,6 +71648,291 @@ class PostgresSyncedTableStatusOngoingSyncProgress(dict):
 
 
 @pulumi.output_type
+class PrivateNetworkGatewayAwsCloudConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crossAccountRole":
+            suggest = "cross_account_role"
+        elif key == "gatewaySubnets":
+            suggest = "gateway_subnets"
+        elif key == "securityGroupIds":
+            suggest = "security_group_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayAwsCloudConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayAwsCloudConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayAwsCloudConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cross_account_role: 'outputs.PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole',
+                 gateway_subnets: Sequence['outputs.PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet'],
+                 security_group_ids: Sequence[_builtins.str]):
+        """
+        :param 'PrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleArgs' cross_account_role: The IAM role that Databricks assumes to manage gateway resources
+        :param Sequence['PrivateNetworkGatewayAwsCloudConnectionGatewaySubnetArgs'] gateway_subnets: The subnets where the gateway establishes connectivity
+        :param Sequence[_builtins.str] security_group_ids: The security groups attached to the gateway network interface
+        """
+        pulumi.set(__self__, "cross_account_role", cross_account_role)
+        pulumi.set(__self__, "gateway_subnets", gateway_subnets)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAccountRole")
+    def cross_account_role(self) -> 'outputs.PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole':
+        """
+        The IAM role that Databricks assumes to manage gateway resources
+        """
+        return pulumi.get(self, "cross_account_role")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewaySubnets")
+    def gateway_subnets(self) -> Sequence['outputs.PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet']:
+        """
+        The subnets where the gateway establishes connectivity
+        """
+        return pulumi.get(self, "gateway_subnets")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        The security groups attached to the gateway network interface
+        """
+        return pulumi.get(self, "security_group_ids")
+
+
+@pulumi.output_type
+class PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleArn":
+            suggest = "role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 role_arn: _builtins.str):
+        """
+        :param _builtins.str role_arn: The ARN of the IAM role
+        """
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        The ARN of the IAM role
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str subnet_id: The AWS subnet ID
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        The AWS subnet ID
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class PrivateNetworkGatewayAzureCloudConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewaySubnet":
+            suggest = "gateway_subnet"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayAzureCloudConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayAzureCloudConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayAzureCloudConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gateway_subnet: 'outputs.PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet'):
+        """
+        :param 'PrivateNetworkGatewayAzureCloudConnectionGatewaySubnetArgs' gateway_subnet: The subnet where the gateway establishes connectivity
+        """
+        pulumi.set(__self__, "gateway_subnet", gateway_subnet)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewaySubnet")
+    def gateway_subnet(self) -> 'outputs.PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet':
+        """
+        The subnet where the gateway establishes connectivity
+        """
+        return pulumi.get(self, "gateway_subnet")
+
+
+@pulumi.output_type
+class PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_id: _builtins.str):
+        """
+        :param _builtins.str resource_id: The full Azure resource ID of the subnet
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        The full Azure resource ID of the subnet
+        """
+        return pulumi.get(self, "resource_id")
+
+
+@pulumi.output_type
+class PrivateNetworkGatewayDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationType":
+            suggest = "destination_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str destination_type: The destination type. Possible values are: `DNS_NAME`
+        """
+        pulumi.set(__self__, "destination_type", destination_type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationType")
+    def destination_type(self) -> _builtins.str:
+        """
+        The destination type. Possible values are: `DNS_NAME`
+        """
+        return pulumi.get(self, "destination_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PrivateNetworkGatewayPrivateDnsResolver(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resolverType":
+            suggest = "resolver_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateNetworkGatewayPrivateDnsResolver. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateNetworkGatewayPrivateDnsResolver.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateNetworkGatewayPrivateDnsResolver.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resolver_type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str resolver_type: The resolver type. Possible values are: `IP_ADDRESS`
+        """
+        pulumi.set(__self__, "resolver_type", resolver_type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resolverType")
+    def resolver_type(self) -> _builtins.str:
+        """
+        The resolver type. Possible values are: `IP_ADDRESS`
+        """
+        return pulumi.get(self, "resolver_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class QualityMonitorCustomMetric(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -72427,12 +74021,16 @@ class SandboxProviderConfig(dict):
 @pulumi.output_type
 class SandboxSpec(dict):
     def __init__(__self__, *,
-                 compute: Optional['outputs.SandboxSpecCompute'] = None):
+                 compute: Optional['outputs.SandboxSpecCompute'] = None,
+                 environment: Optional['outputs.SandboxSpecEnvironment'] = None):
         """
         :param 'SandboxSpecComputeArgs' compute: Compute configuration (size, inactivity timeout) requested for the sandbox
+        :param 'SandboxSpecEnvironmentArgs' environment: The execution environment to use for the sandbox
         """
         if compute is not None:
             pulumi.set(__self__, "compute", compute)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
 
     @_builtins.property
     @pulumi.getter
@@ -72441,6 +74039,14 @@ class SandboxSpec(dict):
         Compute configuration (size, inactivity timeout) requested for the sandbox
         """
         return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter
+    def environment(self) -> Optional['outputs.SandboxSpecEnvironment']:
+        """
+        The execution environment to use for the sandbox
+        """
+        return pulumi.get(self, "environment")
 
 
 @pulumi.output_type
@@ -72477,6 +74083,46 @@ class SandboxSpecCompute(dict):
         Idle duration after which the sandbox is automatically terminated
         """
         return pulumi.get(self, "inactivity_timeout")
+
+
+@pulumi.output_type
+class SandboxSpecEnvironment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SandboxSpecEnvironment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SandboxSpecEnvironment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SandboxSpecEnvironment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image_uri: A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+               sandbox environment. When set, this image is used as the environment instead of resolving a
+               managed image from `environment_version`
+        """
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[_builtins.str]:
+        """
+        A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+        sandbox environment. When set, this image is used as the environment instead of resolving a
+        managed image from `environment_version`
+        """
+        return pulumi.get(self, "image_uri")
 
 
 @pulumi.output_type
@@ -78058,7 +79704,8 @@ class GetAccountFederationPoliciesPolicyResult(dict):
                for Service Principal Federation Policies. Typically an output parameter, which does not need to be
                specified in create or update requests. If specified in a request, must match the value in the
                request URL
-        :param 'GetAccountFederationPoliciesPolicyOidcPolicyArgs' oidc_policy: (OidcFederationPolicy)
+        :param 'GetAccountFederationPoliciesPolicyOidcPolicyArgs' oidc_policy: (OidcFederationPolicy) - audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+               policy configuration is captured in create/update audit logs (see go/auditlogs)
         :param _builtins.str policy_id: (string) - The ID of the federation policy. Output only
         :param _builtins.int service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         :param _builtins.str uid: (string) - Unique, immutable id of the federation policy
@@ -78106,7 +79753,8 @@ class GetAccountFederationPoliciesPolicyResult(dict):
     @pulumi.getter(name="oidcPolicy")
     def oidc_policy(self) -> 'outputs.GetAccountFederationPoliciesPolicyOidcPolicyResult':
         """
-        (OidcFederationPolicy)
+        (OidcFederationPolicy) - audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        policy configuration is captured in create/update audit logs (see go/auditlogs)
         """
         return pulumi.get(self, "oidc_policy")
 
@@ -93263,13 +94911,22 @@ class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyResul
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93280,6 +94937,45 @@ class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecre
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -93367,13 +95063,22 @@ class GetAiGatewayModelProviderServiceConfigAnthropicDirectResult(dict):
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93384,6 +95089,45 @@ class GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeyResult(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -93487,13 +95231,22 @@ class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectResult(dict):
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93504,6 +95257,45 @@ class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyResult(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -93552,13 +95344,22 @@ class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincip
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93569,6 +95370,45 @@ class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincip
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -93670,13 +95510,22 @@ class GetAiGatewayModelProviderServiceConfigCustomDirectResult(dict):
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigCustomDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93687,6 +95536,45 @@ class GetAiGatewayModelProviderServiceConfigCustomDirectApiKeyResult(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -93729,13 +95617,22 @@ class GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthResult(dict):
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93746,6 +95643,45 @@ class GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueRes
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -93772,13 +95708,20 @@ class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectResult(dict):
     def __init__(__self__, *,
                  api_key: Optional['outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult'] = None,
                  project_id: Optional[_builtins.str] = None,
-                 region: Optional[_builtins.str] = None):
+                 region: Optional[_builtins.str] = None,
+                 service_credential: Optional['outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult'] = None):
         """
         :param 'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgs' api_key: (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
                `api_key.plaintext`
         :param _builtins.str project_id: (string) - GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
         :param _builtins.str region: (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
                Required on Create
+        :param 'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs' service_credential: (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+               Foundry requests. On Create, supply `service_credential.name` in the form
+               `credentials/{name}`. Required on Create when using service-credential
+               authentication; mutually exclusive with `api_key` and
+               `entra_service_principal`. The credential is referenced by name; its value
+               is not carried here. Only supported on Azure-hosted workspaces
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -93786,6 +95729,8 @@ class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectResult(dict):
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_credential is not None:
+            pulumi.set(__self__, "service_credential", service_credential)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
@@ -93813,17 +95758,39 @@ class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectResult(dict):
         """
         return pulumi.get(self, "region")
 
+    @_builtins.property
+    @pulumi.getter(name="serviceCredential")
+    def service_credential(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult']:
+        """
+        (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+        Foundry requests. On Create, supply `service_credential.name` in the form
+        `credentials/{name}`. Required on Create when using service-credential
+        authentication; mutually exclusive with `api_key` and
+        `entra_service_principal`. The credential is referenced by name; its value
+        is not carried here. Only supported on Azure-hosted workspaces
+        """
+        return pulumi.get(self, "service_credential")
+
 
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -93834,6 +95801,71 @@ class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult(d
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -94001,13 +96033,22 @@ class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectResult(dict):
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -94018,6 +96059,45 @@ class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyResult(d
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -94066,13 +96146,22 @@ class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePr
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -94083,6 +96172,45 @@ class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePr
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -94182,13 +96310,22 @@ class GetAiGatewayModelProviderServiceConfigOpenaiDirectResult(dict):
 @pulumi.output_type
 class GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -94199,6 +96336,45 @@ class GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeyResult(dict):
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -94828,13 +97004,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDi
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -94845,6 +97030,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDi
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -94930,13 +97152,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirect
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -94947,6 +97178,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirect
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95050,13 +97318,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDire
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95067,6 +97344,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDire
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95115,13 +97429,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDire
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95132,6 +97455,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDire
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95231,13 +97591,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectRes
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95248,6 +97617,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApi
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95290,13 +97696,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHea
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95307,6 +97722,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHea
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95333,13 +97785,20 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpris
     def __init__(__self__, *,
                  api_key: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult'] = None,
                  project_id: Optional[_builtins.str] = None,
-                 region: Optional[_builtins.str] = None):
+                 region: Optional[_builtins.str] = None,
+                 service_credential: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult'] = None):
         """
         :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgs' api_key: (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
                `api_key.plaintext`
         :param _builtins.str project_id: (string) - GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
         :param _builtins.str region: (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
                Required on Create
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs' service_credential: (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+               Foundry requests. On Create, supply `service_credential.name` in the form
+               `credentials/{name}`. Required on Create when using service-credential
+               authentication; mutually exclusive with `api_key` and
+               `entra_service_principal`. The credential is referenced by name; its value
+               is not carried here. Only supported on Azure-hosted workspaces
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -95347,6 +97806,8 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpris
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_credential is not None:
+            pulumi.set(__self__, "service_credential", service_credential)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
@@ -95374,17 +97835,39 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpris
         """
         return pulumi.get(self, "region")
 
+    @_builtins.property
+    @pulumi.getter(name="serviceCredential")
+    def service_credential(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult']:
+        """
+        (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+        Foundry requests. On Create, supply `service_credential.name` in the form
+        `credentials/{name}`. Required on Create when using service-credential
+        authentication; mutually exclusive with `api_key` and
+        `entra_service_principal`. The credential is referenced by name; its value
+        is not carried here. Only supported on Azure-hosted workspaces
+        """
+        return pulumi.get(self, "service_credential")
+
 
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95395,6 +97878,67 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpris
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95562,13 +98106,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundr
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95579,6 +98132,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundr
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95627,13 +98217,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundr
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95644,6 +98243,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundr
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -95741,13 +98377,22 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectRes
 @pulumi.output_type
 class GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeyResult(dict):
     def __init__(__self__, *,
-                 plaintext: _builtins.str):
+                 plaintext: _builtins.str,
+                 secret_reference: Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult'] = None):
         """
         :param _builtins.str plaintext: (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
                reads. Get and List responses omit `plaintext`; the enclosing secret
                object remains present to indicate that a secret is configured
+        :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs' secret_reference: (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
         """
         pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -95758,6 +98403,43 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApi
         object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> Optional['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult']:
+        """
+        (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+
+@pulumi.output_type
+class GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: (string) - Resource name of the bound Unity Catalog service credential, in the form
+               `credentials/{name}`. Supply this field when creating the service or
+               rebinding its credential. On read, it reflects the credential's current
+               name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -118717,12 +121399,28 @@ class GetFeatureEngineeringFeatureSourceLatenessResult(dict):
 @pulumi.output_type
 class GetFeatureEngineeringFeatureSourceRequestSourceResult(dict):
     def __init__(__self__, *,
+                 dataframe_schema: Optional[_builtins.str] = None,
                  flat_schema: Optional['outputs.GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaResult'] = None):
         """
+        :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+               JSON format (from df.schema.json()).
+               Any subsequent functions operate against this dataframe
         :param 'GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaArgs' flat_schema: (FlatSchema) - A flat schema with scalar-typed fields only
         """
+        if dataframe_schema is not None:
+            pulumi.set(__self__, "dataframe_schema", dataframe_schema)
         if flat_schema is not None:
             pulumi.set(__self__, "flat_schema", flat_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="dataframeSchema")
+    def dataframe_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+        JSON format (from df.schema.json()).
+        Any subsequent functions operate against this dataframe
+        """
+        return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
     @pulumi.getter(name="flatSchema")
@@ -120923,12 +123621,28 @@ class GetFeatureEngineeringFeaturesFeatureSourceLatenessResult(dict):
 @pulumi.output_type
 class GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult(dict):
     def __init__(__self__, *,
+                 dataframe_schema: Optional[_builtins.str] = None,
                  flat_schema: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaResult'] = None):
         """
+        :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+               JSON format (from df.schema.json()).
+               Any subsequent functions operate against this dataframe
         :param 'GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaArgs' flat_schema: (FlatSchema) - A flat schema with scalar-typed fields only
         """
+        if dataframe_schema is not None:
+            pulumi.set(__self__, "dataframe_schema", dataframe_schema)
         if flat_schema is not None:
             pulumi.set(__self__, "flat_schema", flat_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="dataframeSchema")
+    def dataframe_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+        JSON format (from df.schema.json()).
+        Any subsequent functions operate against this dataframe
+        """
+        return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
     @pulumi.getter(name="flatSchema")
@@ -123428,11 +126142,13 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
                  cron_schedule_trigger: 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerResult',
                  feature_name: _builtins.str,
                  is_online: _builtins.bool,
+                 job_id: _builtins.int,
                  last_materialization_time: _builtins.str,
                  latest_backfill_operation: _builtins.str,
                  materialized_feature_id: _builtins.str,
                  offline_store_config: 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigResult',
                  online_store_config: 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult',
+                 pipeline_id: _builtins.str,
                  pipeline_schedule_state: _builtins.str,
                  streaming_mode: 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingModeResult',
                  table_name: _builtins.str,
@@ -123446,12 +126162,14 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerArgs' cron_schedule_trigger: (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
         :param _builtins.str feature_name: Filter by feature name. If specified, only materialized features materialized from this feature will be returned
         :param _builtins.bool is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        :param _builtins.int job_id: (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
         :param _builtins.str last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param _builtins.str latest_backfill_operation: (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
         :param _builtins.str materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs' offline_store_config: (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigArgs' online_store_config: (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
+        :param _builtins.str pipeline_id: (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
         :param _builtins.str pipeline_schedule_state: (string) - The schedule state of the materialization pipeline.
                Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingModeArgs' streaming_mode: (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
@@ -123473,11 +126191,13 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         pulumi.set(__self__, "feature_name", feature_name)
         pulumi.set(__self__, "is_online", is_online)
+        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "last_materialization_time", last_materialization_time)
         pulumi.set(__self__, "latest_backfill_operation", latest_backfill_operation)
         pulumi.set(__self__, "materialized_feature_id", materialized_feature_id)
         pulumi.set(__self__, "offline_store_config", offline_store_config)
         pulumi.set(__self__, "online_store_config", online_store_config)
+        pulumi.set(__self__, "pipeline_id", pipeline_id)
         pulumi.set(__self__, "pipeline_schedule_state", pipeline_schedule_state)
         pulumi.set(__self__, "streaming_mode", streaming_mode)
         pulumi.set(__self__, "table_name", table_name)
@@ -123528,6 +126248,14 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         return pulumi.get(self, "is_online")
 
     @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> _builtins.int:
+        """
+        (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
     def last_materialization_time(self) -> _builtins.str:
         """
@@ -123567,6 +126295,14 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
         """
         return pulumi.get(self, "online_store_config")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> _builtins.str:
+        """
+        (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        """
+        return pulumi.get(self, "pipeline_id")
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleState")
@@ -125691,6 +128427,8 @@ class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
                  no_alert_for_skipped_runs: Optional[_builtins.bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_completes: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_starts: Optional[Sequence[_builtins.str]] = None,
                  on_starts: Optional[Sequence[_builtins.str]] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_successes: Optional[Sequence[_builtins.str]] = None):
@@ -125700,6 +128438,10 @@ class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -125721,6 +128463,16 @@ class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -125765,7 +128517,8 @@ class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
                  client: Optional[_builtins.str] = None,
                  dependencies: Optional[Sequence[_builtins.str]] = None,
                  environment_version: Optional[_builtins.str] = None,
-                 java_dependencies: Optional[Sequence[_builtins.str]] = None):
+                 java_dependencies: Optional[Sequence[_builtins.str]] = None,
+                 project_environment: Optional[_builtins.str] = None):
         if base_environment is not None:
             pulumi.set(__self__, "base_environment", base_environment)
         if client is not None:
@@ -125776,6 +128529,8 @@ class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
             pulumi.set(__self__, "environment_version", environment_version)
         if java_dependencies is not None:
             pulumi.set(__self__, "java_dependencies", java_dependencies)
+        if project_environment is not None:
+            pulumi.set(__self__, "project_environment", project_environment)
 
     @_builtins.property
     @pulumi.getter(name="baseEnvironment")
@@ -125801,6 +128556,11 @@ class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
     @pulumi.getter(name="javaDependencies")
     def java_dependencies(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "java_dependencies")
+
+    @_builtins.property
+    @pulumi.getter(name="projectEnvironment")
+    def project_environment(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "project_environment")
 
 
 @pulumi.output_type
@@ -128463,6 +131223,8 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsResult(dict):
                  no_alert_for_skipped_runs: Optional[_builtins.bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_completes: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_starts: Optional[Sequence[_builtins.str]] = None,
                  on_starts: Optional[Sequence[_builtins.str]] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_successes: Optional[Sequence[_builtins.str]] = None):
@@ -128472,6 +131234,10 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsResult(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -128493,6 +131259,16 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsResult(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -128971,6 +131747,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult(dict)
                  no_alert_for_skipped_runs: Optional[_builtins.bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_completes: Optional[Sequence[_builtins.str]] = None,
+                 on_maintenance_starts: Optional[Sequence[_builtins.str]] = None,
                  on_starts: Optional[Sequence[_builtins.str]] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence[_builtins.str]] = None,
                  on_successes: Optional[Sequence[_builtins.str]] = None):
@@ -128980,6 +131758,10 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult(dict)
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -129001,6 +131783,16 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult(dict)
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -130573,6 +133365,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult(dic
     def __init__(__self__, *,
                  on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededResult']] = None,
                  on_failures: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureResult']] = None,
+                 on_maintenance_completes: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteResult']] = None,
+                 on_maintenance_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartResult']] = None,
                  on_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartResult']] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededResult']] = None,
                  on_successes: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessResult']] = None):
@@ -130580,6 +133374,10 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult(dic
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -130596,6 +133394,16 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult(dic
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureResult']]:
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteResult']]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartResult']]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -130633,6 +133441,42 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDuration
 
 @pulumi.output_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
@@ -132258,6 +135102,8 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsResult(dict):
     def __init__(__self__, *,
                  on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult']] = None,
                  on_failures: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult']] = None,
+                 on_maintenance_completes: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteResult']] = None,
+                 on_maintenance_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartResult']] = None,
                  on_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult']] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededResult']] = None,
                  on_successes: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult']] = None):
@@ -132265,6 +135111,10 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsResult(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -132281,6 +135131,16 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsResult(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult']]:
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteResult']]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartResult']]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -132318,6 +135178,42 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThreshol
 
 @pulumi.output_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
@@ -132513,6 +135409,8 @@ class GetJobJobSettingsSettingsWebhookNotificationsResult(dict):
     def __init__(__self__, *,
                  on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededResult']] = None,
                  on_failures: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult']] = None,
+                 on_maintenance_completes: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceCompleteResult']] = None,
+                 on_maintenance_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStartResult']] = None,
                  on_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartResult']] = None,
                  on_streaming_backlog_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededResult']] = None,
                  on_successes: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult']] = None):
@@ -132520,6 +135418,10 @@ class GetJobJobSettingsSettingsWebhookNotificationsResult(dict):
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
+        if on_maintenance_completes is not None:
+            pulumi.set(__self__, "on_maintenance_completes", on_maintenance_completes)
+        if on_maintenance_starts is not None:
+            pulumi.set(__self__, "on_maintenance_starts", on_maintenance_starts)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_streaming_backlog_exceededs is not None:
@@ -132536,6 +135438,16 @@ class GetJobJobSettingsSettingsWebhookNotificationsResult(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult']]:
         return pulumi.get(self, "on_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceCompletes")
+    def on_maintenance_completes(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceCompleteResult']]:
+        return pulumi.get(self, "on_maintenance_completes")
+
+    @_builtins.property
+    @pulumi.getter(name="onMaintenanceStarts")
+    def on_maintenance_starts(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStartResult']]:
+        return pulumi.get(self, "on_maintenance_starts")
 
     @_builtins.property
     @pulumi.getter(name="onStarts")
@@ -132573,6 +135485,42 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExc
 
 @pulumi.output_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceCompleteResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStartResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
@@ -133259,6 +136207,745 @@ class GetKnowledgeAssistantsKnowledgeAssistantProviderConfigResult(dict):
 
 @pulumi.output_type
 class GetKnowledgeAssistantsProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryEntriesManagedMemoryEntryResult(dict):
+    def __init__(__self__, *,
+                 actor_id: _builtins.str,
+                 content: _builtins.str,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 path: _builtins.str,
+                 session_id: _builtins.str,
+                 source_type: _builtins.str,
+                 update_time: _builtins.str,
+                 provider_config: Optional['outputs.GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfigResult'] = None):
+        """
+        :param _builtins.str actor_id: Customer-provided identifier for the actor whose entries are listed
+        :param _builtins.str content: (string) - Optional free-form memory content
+        :param _builtins.str create_time: (string) - Time when the entry was created
+        :param _builtins.str description: (string) - Human-readable description of the memory entry
+        :param _builtins.str name: (string) - Resource name in the form
+               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        :param _builtins.str path: (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+               Paths must begin with `/` and must not contain empty, `.` or `..` segments
+        :param _builtins.str session_id: Optional session identifier. When set, only entries with this exact `session_id` are
+               returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+        :param _builtins.str source_type: (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        :param _builtins.str update_time: (string) - Time when the entry was last updated
+        :param 'GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfigArgs' provider_config: Configure the provider for management through account provider.
+        """
+        pulumi.set(__self__, "actor_id", actor_id)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "session_id", session_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "update_time", update_time)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter(name="actorId")
+    def actor_id(self) -> _builtins.str:
+        """
+        Customer-provided identifier for the actor whose entries are listed
+        """
+        return pulumi.get(self, "actor_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        (string) - Optional free-form memory content
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Time when the entry was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        (string) - Human-readable description of the memory entry
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name in the form
+        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        Paths must begin with `/` and must not contain empty, `.` or `..` segments
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> _builtins.str:
+        """
+        Optional session identifier. When set, only entries with this exact `session_id` are
+        returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+        """
+        return pulumi.get(self, "session_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Time when the entry was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfigResult']:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryEntriesProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryEntryProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryStoreProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: (integer) - Workspace that owns the memory store
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryStoreStorageBackendResult(dict):
+    def __init__(__self__, *,
+                 backend_id: _builtins.str,
+                 backend_type: _builtins.str):
+        """
+        :param _builtins.str backend_id: (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        :param _builtins.str backend_type: (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        pulumi.set(__self__, "backend_id", backend_id)
+        pulumi.set(__self__, "backend_type", backend_type)
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> _builtins.str:
+        """
+        (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        """
+        return pulumi.get(self, "backend_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backendType")
+    def backend_type(self) -> _builtins.str:
+        """
+        (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        return pulumi.get(self, "backend_type")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryStoresManagedMemoryStoreResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 creator_user_id: _builtins.str,
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 name: _builtins.str,
+                 owner_user_id: _builtins.str,
+                 storage_backend: 'outputs.GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackendResult',
+                 update_time: _builtins.str,
+                 workspace_id: _builtins.int,
+                 provider_config: Optional['outputs.GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfigResult'] = None):
+        """
+        :param _builtins.str create_time: (string) - Time when the store was created
+        :param _builtins.str creator_user_id: (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+               immutable server-set attribution and does not grant access; authorization is evaluated from
+               the authenticated request context
+        :param _builtins.str description: (string) - Human-readable description of the memory store
+        :param _builtins.str display_name: (string, deprecated) - Deprecated compatibility alias for the caller-provided managed memory store ID. Canonical
+               clients provide the ID through `CreateMemoryStoreRequest.managed_memory_store_id` and use
+               `name` as the resource identifier
+        :param _builtins.str name: (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
+        :param _builtins.str owner_user_id: (string, deprecated) - Deprecated alias for `creator_user_id`. This identifies the original creator, not a
+               transferable owner. Use `creator_user_id` instead
+        :param 'GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackendArgs' storage_backend: (StorageBackend) - Service-managed storage backing this memory store
+        :param _builtins.str update_time: (string) - Time when the store was last updated
+        :param _builtins.int workspace_id: (integer) - Workspace that owns the memory store
+        :param 'GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfigArgs' provider_config: Configure the provider for management through account provider.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator_user_id", creator_user_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "owner_user_id", owner_user_id)
+        pulumi.set(__self__, "storage_backend", storage_backend)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "workspace_id", workspace_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Time when the store was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="creatorUserId")
+    def creator_user_id(self) -> _builtins.str:
+        """
+        (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+        immutable server-set attribution and does not grant access; authorization is evaluated from
+        the authenticated request context
+        """
+        return pulumi.get(self, "creator_user_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        (string) - Human-readable description of the memory store
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string, deprecated) - Deprecated compatibility alias for the caller-provided managed memory store ID. Canonical
+        clients provide the ID through `CreateMemoryStoreRequest.managed_memory_store_id` and use
+        `name` as the resource identifier
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerUserId")
+    def owner_user_id(self) -> _builtins.str:
+        """
+        (string, deprecated) - Deprecated alias for `creator_user_id`. This identifies the original creator, not a
+        transferable owner. Use `creator_user_id` instead
+        """
+        return pulumi.get(self, "owner_user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="storageBackend")
+    def storage_backend(self) -> 'outputs.GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackendResult':
+        """
+        (StorageBackend) - Service-managed storage backing this memory store
+        """
+        return pulumi.get(self, "storage_backend")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Time when the store was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.int:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfigResult']:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: (integer) - Workspace that owns the memory store
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackendResult(dict):
+    def __init__(__self__, *,
+                 backend_id: _builtins.str,
+                 backend_type: _builtins.str):
+        """
+        :param _builtins.str backend_id: (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        :param _builtins.str backend_type: (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        pulumi.set(__self__, "backend_id", backend_id)
+        pulumi.set(__self__, "backend_type", backend_type)
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> _builtins.str:
+        """
+        (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        """
+        return pulumi.get(self, "backend_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backendType")
+    def backend_type(self) -> _builtins.str:
+        """
+        (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        return pulumi.get(self, "backend_type")
+
+
+@pulumi.output_type
+class GetMasonManagedMemoryStoresProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: (integer) - Workspace that owns the memory store
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonSessionProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonSessionStoreProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonSessionStoresProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonSessionStoresSessionStoreResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 creator_user_id: _builtins.str,
+                 description: _builtins.str,
+                 metadata: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 update_time: _builtins.str,
+                 provider_config: Optional['outputs.GetMasonSessionStoresSessionStoreProviderConfigResult'] = None):
+        """
+        :param _builtins.str create_time: (string) - Time when the store was created
+        :param _builtins.str creator_user_id: (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+               immutable server-set attribution and does not grant access; authorization is evaluated from
+               the authenticated request context
+        :param _builtins.str description: (string) - Human-readable description of the session store
+        :param Mapping[str, _builtins.str] metadata: (object) - Mutable caller-defined string labels
+        :param _builtins.str name: (string) - Resource name in the form `session-stores/{session_store_id}`
+        :param _builtins.str update_time: (string) - Time when the store was last updated
+        :param 'GetMasonSessionStoresSessionStoreProviderConfigArgs' provider_config: Configure the provider for management through account provider.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator_user_id", creator_user_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "update_time", update_time)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Time when the store was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="creatorUserId")
+    def creator_user_id(self) -> _builtins.str:
+        """
+        (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+        immutable server-set attribution and does not grant access; authorization is evaluated from
+        the authenticated request context
+        """
+        return pulumi.get(self, "creator_user_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        (string) - Human-readable description of the session store
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        (object) - Mutable caller-defined string labels
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name in the form `session-stores/{session_store_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Time when the store was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMasonSessionStoresSessionStoreProviderConfigResult']:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+
+@pulumi.output_type
+class GetMasonSessionStoresSessionStoreProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonSessionsProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetMasonSessionsSessionResult(dict):
+    def __init__(__self__, *,
+                 actor_id: _builtins.str,
+                 create_time: _builtins.str,
+                 last_activity_time: _builtins.str,
+                 metadata: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 parent_session_id: _builtins.str,
+                 root_session_id: _builtins.str,
+                 session_id: _builtins.str,
+                 update_time: _builtins.str,
+                 provider_config: Optional['outputs.GetMasonSessionsSessionProviderConfigResult'] = None):
+        """
+        :param _builtins.str actor_id: (string) - Opaque caller-provided identifier for the application actor associated with the session.
+        :param _builtins.str create_time: (string) - Time when the session was created
+        :param _builtins.str last_activity_time: (string) - Time when the session's item history was last mutated
+        :param Mapping[str, _builtins.str] metadata: (object) - Mutable caller-defined string labels
+        :param _builtins.str name: (string) - Resource name in the form `session-stores/{session_store_id}/sessions/{session_id}`
+        :param _builtins.str parent_session_id: (string) - Immediate parent session ID. Set only at creation for child sessions, immutable thereafter, and
+               restricted to the same store
+        :param _builtins.str root_session_id: (string) - Top-level session ID in the spawn tree. This equals `session_id` for a root or fork and is
+               inherited transitively by child sessions
+        :param _builtins.str session_id: (string) - Unique session ID. The service generates a UUID unless the caller supplies
+               `CreateSessionRequest.session_id`
+        :param _builtins.str update_time: (string) - Time when session resource fields last changed
+        :param 'GetMasonSessionsSessionProviderConfigArgs' provider_config: Configure the provider for management through account provider.
+        """
+        pulumi.set(__self__, "actor_id", actor_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "last_activity_time", last_activity_time)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent_session_id", parent_session_id)
+        pulumi.set(__self__, "root_session_id", root_session_id)
+        pulumi.set(__self__, "session_id", session_id)
+        pulumi.set(__self__, "update_time", update_time)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter(name="actorId")
+    def actor_id(self) -> _builtins.str:
+        """
+        (string) - Opaque caller-provided identifier for the application actor associated with the session.
+        """
+        return pulumi.get(self, "actor_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Time when the session was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="lastActivityTime")
+    def last_activity_time(self) -> _builtins.str:
+        """
+        (string) - Time when the session's item history was last mutated
+        """
+        return pulumi.get(self, "last_activity_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        (object) - Mutable caller-defined string labels
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Resource name in the form `session-stores/{session_store_id}/sessions/{session_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parentSessionId")
+    def parent_session_id(self) -> _builtins.str:
+        """
+        (string) - Immediate parent session ID. Set only at creation for child sessions, immutable thereafter, and
+        restricted to the same store
+        """
+        return pulumi.get(self, "parent_session_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rootSessionId")
+    def root_session_id(self) -> _builtins.str:
+        """
+        (string) - Top-level session ID in the spawn tree. This equals `session_id` for a root or fork and is
+        inherited transitively by child sessions
+        """
+        return pulumi.get(self, "root_session_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> _builtins.str:
+        """
+        (string) - Unique session ID. The service generates a UUID unless the caller supplies
+        `CreateSessionRequest.session_id`
+        """
+        return pulumi.get(self, "session_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Time when session resource fields last changed
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMasonSessionsSessionProviderConfigResult']:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+
+@pulumi.output_type
+class GetMasonSessionsSessionProviderConfigResult(dict):
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """
@@ -141515,6 +145202,489 @@ class GetPostgresSyncedTableStatusOngoingSyncProgressResult(dict):
 
 
 @pulumi.output_type
+class GetPrivateNetworkGatewayAwsCloudConnectionResult(dict):
+    def __init__(__self__, *,
+                 cross_account_role: 'outputs.GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult',
+                 gateway_subnets: Sequence['outputs.GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult'],
+                 security_group_ids: Sequence[_builtins.str]):
+        """
+        :param 'GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleArgs' cross_account_role: (PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole) - The IAM role that Databricks assumes to manage gateway resources
+        :param Sequence['GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetArgs'] gateway_subnets: (list of PrivateNetworkGatewayAwsCloudConnectionAwsGatewaySubnet) - The subnets where the gateway establishes connectivity
+        :param Sequence[_builtins.str] security_group_ids: (list of string) - The security groups attached to the gateway network interface
+        """
+        pulumi.set(__self__, "cross_account_role", cross_account_role)
+        pulumi.set(__self__, "gateway_subnets", gateway_subnets)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAccountRole")
+    def cross_account_role(self) -> 'outputs.GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult':
+        """
+        (PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole) - The IAM role that Databricks assumes to manage gateway resources
+        """
+        return pulumi.get(self, "cross_account_role")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewaySubnets")
+    def gateway_subnets(self) -> Sequence['outputs.GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult']:
+        """
+        (list of PrivateNetworkGatewayAwsCloudConnectionAwsGatewaySubnet) - The subnets where the gateway establishes connectivity
+        """
+        return pulumi.get(self, "gateway_subnets")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        (list of string) - The security groups attached to the gateway network interface
+        """
+        return pulumi.get(self, "security_group_ids")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult(dict):
+    def __init__(__self__, *,
+                 role_arn: _builtins.str):
+        """
+        :param _builtins.str role_arn: (string) - The ARN of the IAM role
+        """
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        (string) - The ARN of the IAM role
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult(dict):
+    def __init__(__self__, *,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str subnet_id: (string) - The AWS subnet ID
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        (string) - The AWS subnet ID
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewayAzureCloudConnectionResult(dict):
+    def __init__(__self__, *,
+                 gateway_subnet: 'outputs.GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult'):
+        """
+        :param 'GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetArgs' gateway_subnet: (PrivateNetworkGatewayAzureCloudConnectionAzureGatewaySubnet) - The subnet where the gateway establishes connectivity
+        """
+        pulumi.set(__self__, "gateway_subnet", gateway_subnet)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewaySubnet")
+    def gateway_subnet(self) -> 'outputs.GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult':
+        """
+        (PrivateNetworkGatewayAzureCloudConnectionAzureGatewaySubnet) - The subnet where the gateway establishes connectivity
+        """
+        return pulumi.get(self, "gateway_subnet")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult(dict):
+    def __init__(__self__, *,
+                 resource_id: _builtins.str):
+        """
+        :param _builtins.str resource_id: (string) - The full Azure resource ID of the subnet
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        (string) - The full Azure resource ID of the subnet
+        """
+        return pulumi.get(self, "resource_id")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewayDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination_type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str destination_type: (string) - The destination type. Possible values are: `DNS_NAME`
+        :param _builtins.str value: (string) - The resolver value
+        """
+        pulumi.set(__self__, "destination_type", destination_type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationType")
+    def destination_type(self) -> _builtins.str:
+        """
+        (string) - The destination type. Possible values are: `DNS_NAME`
+        """
+        return pulumi.get(self, "destination_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        (string) - The resolver value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewayPrivateDnsResolverResult(dict):
+    def __init__(__self__, *,
+                 resolver_type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str resolver_type: (string) - The resolver type. Possible values are: `IP_ADDRESS`
+        :param _builtins.str value: (string) - The resolver value
+        """
+        pulumi.set(__self__, "resolver_type", resolver_type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resolverType")
+    def resolver_type(self) -> _builtins.str:
+        """
+        (string) - The resolver type. Possible values are: `IP_ADDRESS`
+        """
+        return pulumi.get(self, "resolver_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        (string) - The resolver value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayResult(dict):
+    def __init__(__self__, *,
+                 aws_cloud_connection: 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionResult',
+                 azure_cloud_connection: 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionResult',
+                 bandwidth_tier_gigabits_per_second: _builtins.int,
+                 create_time: _builtins.str,
+                 destinations: Sequence['outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayDestinationResult'],
+                 display_name: _builtins.str,
+                 error_message: _builtins.str,
+                 name: _builtins.str,
+                 private_dns_resolvers: Sequence['outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolverResult'],
+                 state: _builtins.str,
+                 traffic_mode: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param 'GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionArgs' aws_cloud_connection: (PrivateNetworkGatewayAwsCloudConnection) - The AWS connection used by the gateway
+        :param 'GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionArgs' azure_cloud_connection: (PrivateNetworkGatewayAzureCloudConnection) - The Azure connection used by the gateway
+        :param _builtins.int bandwidth_tier_gigabits_per_second: (integer) - The provisioned bandwidth tier for an Azure gateway, in gigabits per second.
+               Required when creating an Azure gateway
+        :param _builtins.str create_time: (string) - The time when the gateway was created
+        :param Sequence['GetPrivateNetworkGatewaysPrivateNetworkGatewayDestinationArgs'] destinations: (list of PrivateNetworkGatewayDestination) - The destinations routed through this gateway
+        :param _builtins.str display_name: (string) - The human-readable name of the gateway
+        :param _builtins.str error_message: (string) - The failure reason when the gateway is in the FAILED state
+        :param _builtins.str name: (string) - The canonical resource name of the gateway, in the form
+               `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`
+        :param Sequence['GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolverArgs'] private_dns_resolvers: (list of PrivateNetworkGatewayPrivateDnsResolver) - The DNS resolvers used for private name resolution
+        :param _builtins.str state: (string) - The current lifecycle state of the gateway. Possible values are: `CREATING`, `DELETING`, `ESTABLISHED`, `FAILED`
+        :param _builtins.str traffic_mode: (string) - The traffic routed through this gateway. Possible values are: `ALL_TRAFFIC`, `SPECIFIC_DESTINATIONS`
+        :param _builtins.str update_time: (string) - The time when the gateway was last updated
+        """
+        pulumi.set(__self__, "aws_cloud_connection", aws_cloud_connection)
+        pulumi.set(__self__, "azure_cloud_connection", azure_cloud_connection)
+        pulumi.set(__self__, "bandwidth_tier_gigabits_per_second", bandwidth_tier_gigabits_per_second)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_dns_resolvers", private_dns_resolvers)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "traffic_mode", traffic_mode)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="awsCloudConnection")
+    def aws_cloud_connection(self) -> 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionResult':
+        """
+        (PrivateNetworkGatewayAwsCloudConnection) - The AWS connection used by the gateway
+        """
+        return pulumi.get(self, "aws_cloud_connection")
+
+    @_builtins.property
+    @pulumi.getter(name="azureCloudConnection")
+    def azure_cloud_connection(self) -> 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionResult':
+        """
+        (PrivateNetworkGatewayAzureCloudConnection) - The Azure connection used by the gateway
+        """
+        return pulumi.get(self, "azure_cloud_connection")
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthTierGigabitsPerSecond")
+    def bandwidth_tier_gigabits_per_second(self) -> _builtins.int:
+        """
+        (integer) - The provisioned bandwidth tier for an Azure gateway, in gigabits per second.
+        Required when creating an Azure gateway
+        """
+        return pulumi.get(self, "bandwidth_tier_gigabits_per_second")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - The time when the gateway was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence['outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayDestinationResult']:
+        """
+        (list of PrivateNetworkGatewayDestination) - The destinations routed through this gateway
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string) - The human-readable name of the gateway
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> _builtins.str:
+        """
+        (string) - The failure reason when the gateway is in the FAILED state
+        """
+        return pulumi.get(self, "error_message")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The canonical resource name of the gateway, in the form
+        `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="privateDnsResolvers")
+    def private_dns_resolvers(self) -> Sequence['outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolverResult']:
+        """
+        (list of PrivateNetworkGatewayPrivateDnsResolver) - The DNS resolvers used for private name resolution
+        """
+        return pulumi.get(self, "private_dns_resolvers")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        (string) - The current lifecycle state of the gateway. Possible values are: `CREATING`, `DELETING`, `ESTABLISHED`, `FAILED`
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficMode")
+    def traffic_mode(self) -> _builtins.str:
+        """
+        (string) - The traffic routed through this gateway. Possible values are: `ALL_TRAFFIC`, `SPECIFIC_DESTINATIONS`
+        """
+        return pulumi.get(self, "traffic_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - The time when the gateway was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionResult(dict):
+    def __init__(__self__, *,
+                 cross_account_role: 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult',
+                 gateway_subnets: Sequence['outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult'],
+                 security_group_ids: Sequence[_builtins.str]):
+        """
+        :param 'GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleArgs' cross_account_role: (PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole) - The IAM role that Databricks assumes to manage gateway resources
+        :param Sequence['GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetArgs'] gateway_subnets: (list of PrivateNetworkGatewayAwsCloudConnectionAwsGatewaySubnet) - The subnets where the gateway establishes connectivity
+        :param Sequence[_builtins.str] security_group_ids: (list of string) - The security groups attached to the gateway network interface
+        """
+        pulumi.set(__self__, "cross_account_role", cross_account_role)
+        pulumi.set(__self__, "gateway_subnets", gateway_subnets)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAccountRole")
+    def cross_account_role(self) -> 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult':
+        """
+        (PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole) - The IAM role that Databricks assumes to manage gateway resources
+        """
+        return pulumi.get(self, "cross_account_role")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewaySubnets")
+    def gateway_subnets(self) -> Sequence['outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult']:
+        """
+        (list of PrivateNetworkGatewayAwsCloudConnectionAwsGatewaySubnet) - The subnets where the gateway establishes connectivity
+        """
+        return pulumi.get(self, "gateway_subnets")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        (list of string) - The security groups attached to the gateway network interface
+        """
+        return pulumi.get(self, "security_group_ids")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRoleResult(dict):
+    def __init__(__self__, *,
+                 role_arn: _builtins.str):
+        """
+        :param _builtins.str role_arn: (string) - The ARN of the IAM role
+        """
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        (string) - The ARN of the IAM role
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnetResult(dict):
+    def __init__(__self__, *,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str subnet_id: (string) - The AWS subnet ID
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        (string) - The AWS subnet ID
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionResult(dict):
+    def __init__(__self__, *,
+                 gateway_subnet: 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult'):
+        """
+        :param 'GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetArgs' gateway_subnet: (PrivateNetworkGatewayAzureCloudConnectionAzureGatewaySubnet) - The subnet where the gateway establishes connectivity
+        """
+        pulumi.set(__self__, "gateway_subnet", gateway_subnet)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewaySubnet")
+    def gateway_subnet(self) -> 'outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult':
+        """
+        (PrivateNetworkGatewayAzureCloudConnectionAzureGatewaySubnet) - The subnet where the gateway establishes connectivity
+        """
+        return pulumi.get(self, "gateway_subnet")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnetResult(dict):
+    def __init__(__self__, *,
+                 resource_id: _builtins.str):
+        """
+        :param _builtins.str resource_id: (string) - The full Azure resource ID of the subnet
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        (string) - The full Azure resource ID of the subnet
+        """
+        return pulumi.get(self, "resource_id")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination_type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str destination_type: (string) - The destination type. Possible values are: `DNS_NAME`
+        :param _builtins.str value: (string) - The resolver value
+        """
+        pulumi.set(__self__, "destination_type", destination_type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationType")
+    def destination_type(self) -> _builtins.str:
+        """
+        (string) - The destination type. Possible values are: `DNS_NAME`
+        """
+        return pulumi.get(self, "destination_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        (string) - The resolver value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolverResult(dict):
+    def __init__(__self__, *,
+                 resolver_type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str resolver_type: (string) - The resolver type. Possible values are: `IP_ADDRESS`
+        :param _builtins.str value: (string) - The resolver value
+        """
+        pulumi.set(__self__, "resolver_type", resolver_type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resolverType")
+    def resolver_type(self) -> _builtins.str:
+        """
+        (string) - The resolver type. Possible values are: `IP_ADDRESS`
+        """
+        return pulumi.get(self, "resolver_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        (string) - The resolver value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetQualityMonitorV2AnomalyDetectionConfigResult(dict):
     def __init__(__self__, *,
                  last_run_id: _builtins.str,
@@ -142898,12 +147068,16 @@ class GetSandboxProviderConfigResult(dict):
 @pulumi.output_type
 class GetSandboxSpecResult(dict):
     def __init__(__self__, *,
-                 compute: Optional['outputs.GetSandboxSpecComputeResult'] = None):
+                 compute: Optional['outputs.GetSandboxSpecComputeResult'] = None,
+                 environment: Optional['outputs.GetSandboxSpecEnvironmentResult'] = None):
         """
         :param 'GetSandboxSpecComputeArgs' compute: (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+        :param 'GetSandboxSpecEnvironmentArgs' environment: (EnvironmentSpec) - The execution environment to use for the sandbox
         """
         if compute is not None:
             pulumi.set(__self__, "compute", compute)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
 
     @_builtins.property
     @pulumi.getter
@@ -142912,6 +147086,14 @@ class GetSandboxSpecResult(dict):
         (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
         """
         return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter
+    def environment(self) -> Optional['outputs.GetSandboxSpecEnvironmentResult']:
+        """
+        (EnvironmentSpec) - The execution environment to use for the sandbox
+        """
+        return pulumi.get(self, "environment")
 
 
 @pulumi.output_type
@@ -142931,6 +147113,29 @@ class GetSandboxSpecComputeResult(dict):
         (string) - Idle duration after which the sandbox is automatically terminated
         """
         return pulumi.get(self, "inactivity_timeout")
+
+
+@pulumi.output_type
+class GetSandboxSpecEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 image_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image_uri: (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+               sandbox environment. When set, this image is used as the environment instead of resolving a
+               managed image from `environment_version`
+        """
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[_builtins.str]:
+        """
+        (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+        sandbox environment. When set, this image is used as the environment instead of resolving a
+        managed image from `environment_version`
+        """
+        return pulumi.get(self, "image_uri")
 
 
 @pulumi.output_type
@@ -143077,12 +147282,16 @@ class GetSandboxesSandboxProviderConfigResult(dict):
 @pulumi.output_type
 class GetSandboxesSandboxSpecResult(dict):
     def __init__(__self__, *,
-                 compute: Optional['outputs.GetSandboxesSandboxSpecComputeResult'] = None):
+                 compute: Optional['outputs.GetSandboxesSandboxSpecComputeResult'] = None,
+                 environment: Optional['outputs.GetSandboxesSandboxSpecEnvironmentResult'] = None):
         """
         :param 'GetSandboxesSandboxSpecComputeArgs' compute: (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+        :param 'GetSandboxesSandboxSpecEnvironmentArgs' environment: (EnvironmentSpec) - The execution environment to use for the sandbox
         """
         if compute is not None:
             pulumi.set(__self__, "compute", compute)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
 
     @_builtins.property
     @pulumi.getter
@@ -143091,6 +147300,14 @@ class GetSandboxesSandboxSpecResult(dict):
         (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
         """
         return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter
+    def environment(self) -> Optional['outputs.GetSandboxesSandboxSpecEnvironmentResult']:
+        """
+        (EnvironmentSpec) - The execution environment to use for the sandbox
+        """
+        return pulumi.get(self, "environment")
 
 
 @pulumi.output_type
@@ -143110,6 +147327,29 @@ class GetSandboxesSandboxSpecComputeResult(dict):
         (string) - Idle duration after which the sandbox is automatically terminated
         """
         return pulumi.get(self, "inactivity_timeout")
+
+
+@pulumi.output_type
+class GetSandboxesSandboxSpecEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 image_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image_uri: (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+               sandbox environment. When set, this image is used as the environment instead of resolving a
+               managed image from `environment_version`
+        """
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[_builtins.str]:
+        """
+        (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+        sandbox environment. When set, this image is used as the environment instead of resolving a
+        managed image from `environment_version`
+        """
+        return pulumi.get(self, "image_uri")
 
 
 @pulumi.output_type
@@ -143703,7 +147943,8 @@ class GetServicePrincipalFederationPoliciesPolicyResult(dict):
                for Service Principal Federation Policies. Typically an output parameter, which does not need to be
                specified in create or update requests. If specified in a request, must match the value in the
                request URL
-        :param 'GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs' oidc_policy: (OidcFederationPolicy)
+        :param 'GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs' oidc_policy: (OidcFederationPolicy) - audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+               policy configuration is captured in create/update audit logs (see go/auditlogs)
         :param _builtins.str policy_id: (string) - The ID of the federation policy. Output only
         :param _builtins.int service_principal_id: The service principal id for the federation policy
         :param _builtins.str uid: (string) - Unique, immutable id of the federation policy
@@ -143751,7 +147992,8 @@ class GetServicePrincipalFederationPoliciesPolicyResult(dict):
     @pulumi.getter(name="oidcPolicy")
     def oidc_policy(self) -> 'outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicyResult':
         """
-        (OidcFederationPolicy)
+        (OidcFederationPolicy) - audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        policy configuration is captured in create/update audit logs (see go/auditlogs)
         """
         return pulumi.get(self, "oidc_policy")
 
@@ -148916,7 +153158,7 @@ class GetWorkspaceEntityTagAssignmentsTagAssignmentResult(dict):
                  provider_config: Optional['outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfigResult'] = None):
         """
         :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-        :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         :param _builtins.str tag_key: (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param _builtins.str tag_value: (string) - The value of the tag
         :param 'GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfigArgs' provider_config: Configure the provider for management through account provider.
@@ -148940,7 +153182,7 @@ class GetWorkspaceEntityTagAssignmentsTagAssignmentResult(dict):
     @pulumi.getter(name="entityType")
     def entity_type(self) -> _builtins.str:
         """
-        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 

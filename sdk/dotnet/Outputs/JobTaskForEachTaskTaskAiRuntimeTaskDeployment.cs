@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskAiRuntimeTaskDeployment
     {
-        public readonly string CommandPath;
+        public readonly string? CommandPath;
         /// <summary>
         /// Task level compute configuration. This block is documented below.
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskForEachTaskTaskAiRuntimeTaskDeployment(
-            string commandPath,
+            string? commandPath,
 
             Outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute compute,
 

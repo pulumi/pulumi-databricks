@@ -29,6 +29,8 @@ class AccountFederationPolicyArgs:
         The set of arguments for constructing a AccountFederationPolicy resource.
 
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
+        :param pulumi.Input['AccountFederationPolicyOidcPolicyArgs'] oidc_policy: audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+               policy configuration is captured in create/update audit logs (see go/auditlogs)
         :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
         :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
@@ -56,6 +58,10 @@ class AccountFederationPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="oidcPolicy")
     def oidc_policy(self) -> pulumi.Input[Optional['AccountFederationPolicyOidcPolicyArgs']]:
+        """
+        audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        policy configuration is captured in create/update audit logs (see go/auditlogs)
+        """
         return pulumi.get(self, "oidc_policy")
 
     @oidc_policy.setter
@@ -109,6 +115,8 @@ class _AccountFederationPolicyState:
                for Service Principal Federation Policies. Typically an output parameter, which does not need to be
                specified in create or update requests. If specified in a request, must match the value in the
                request URL
+        :param pulumi.Input['AccountFederationPolicyOidcPolicyArgs'] oidc_policy: audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+               policy configuration is captured in create/update audit logs (see go/auditlogs)
         :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
         :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         :param pulumi.Input[_builtins.str] uid: (string) - Unique, immutable id of the federation policy
@@ -175,6 +183,10 @@ class _AccountFederationPolicyState:
     @_builtins.property
     @pulumi.getter(name="oidcPolicy")
     def oidc_policy(self) -> pulumi.Input[Optional['AccountFederationPolicyOidcPolicyArgs']]:
+        """
+        audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        policy configuration is captured in create/update audit logs (see go/auditlogs)
+        """
         return pulumi.get(self, "oidc_policy")
 
     @oidc_policy.setter
@@ -272,6 +284,8 @@ class AccountFederationPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
+        :param pulumi.Input[Union['AccountFederationPolicyOidcPolicyArgs', 'AccountFederationPolicyOidcPolicyArgsDict', 'outputs.AccountFederationPolicyOidcPolicy']] oidc_policy: audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+               policy configuration is captured in create/update audit logs (see go/auditlogs)
         :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
         :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
@@ -378,6 +392,8 @@ class AccountFederationPolicy(pulumi.CustomResource):
                for Service Principal Federation Policies. Typically an output parameter, which does not need to be
                specified in create or update requests. If specified in a request, must match the value in the
                request URL
+        :param pulumi.Input[Union['AccountFederationPolicyOidcPolicyArgs', 'AccountFederationPolicyOidcPolicyArgsDict', 'outputs.AccountFederationPolicyOidcPolicy']] oidc_policy: audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+               policy configuration is captured in create/update audit logs (see go/auditlogs)
         :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
         :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         :param pulumi.Input[_builtins.str] uid: (string) - Unique, immutable id of the federation policy
@@ -429,6 +445,10 @@ class AccountFederationPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="oidcPolicy")
     def oidc_policy(self) -> pulumi.Output[Optional['outputs.AccountFederationPolicyOidcPolicy']]:
+        """
+        audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        policy configuration is captured in create/update audit logs (see go/auditlogs)
+        """
         return pulumi.get(self, "oidc_policy")
 
     @_builtins.property

@@ -51,6 +51,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         return Optional.ofNullable(this.javaDependencies);
     }
 
+    @Import(name="projectEnvironment")
+    private @Nullable Output<String> projectEnvironment;
+
+    public Optional<Output<String>> projectEnvironment() {
+        return Optional.ofNullable(this.projectEnvironment);
+    }
+
     private GetJobJobSettingsSettingsEnvironmentSpecArgs() {}
 
     private GetJobJobSettingsSettingsEnvironmentSpecArgs(GetJobJobSettingsSettingsEnvironmentSpecArgs $) {
@@ -59,6 +66,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
         this.javaDependencies = $.javaDependencies;
+        this.projectEnvironment = $.projectEnvironment;
     }
 
     public static Builder builder() {
@@ -130,6 +138,15 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
 
         public Builder javaDependencies(String... javaDependencies) {
             return javaDependencies(List.of(javaDependencies));
+        }
+
+        public Builder projectEnvironment(@Nullable Output<String> projectEnvironment) {
+            $.projectEnvironment = projectEnvironment;
+            return this;
+        }
+
+        public Builder projectEnvironment(String projectEnvironment) {
+            return projectEnvironment(Output.of(projectEnvironment));
         }
 
         public GetJobJobSettingsSettingsEnvironmentSpecArgs build() {

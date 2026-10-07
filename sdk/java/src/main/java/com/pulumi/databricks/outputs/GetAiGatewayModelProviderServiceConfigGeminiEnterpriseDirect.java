@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,16 @@ public final class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect 
      * 
      */
     private @Nullable String region;
+    /**
+     * @return (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
+     * 
+     */
+    private @Nullable GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential serviceCredential;
 
     private GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect() {}
     /**
@@ -54,6 +65,18 @@ public final class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect 
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
+     * 
+     */
+    public Optional<GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential> serviceCredential() {
+        return Optional.ofNullable(this.serviceCredential);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,12 +90,14 @@ public final class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect 
         private @Nullable GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey apiKey;
         private @Nullable String projectId;
         private @Nullable String region;
+        private @Nullable GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential serviceCredential;
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
+    	      this.serviceCredential = defaults.serviceCredential;
         }
 
         @CustomType.Setter
@@ -93,11 +118,18 @@ public final class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect 
             this.region = region;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceCredential(@Nullable GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential serviceCredential) {
+
+            this.serviceCredential = serviceCredential;
+            return this;
+        }
         public GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect build() {
             final var _resultValue = new GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect();
             _resultValue.apiKey = apiKey;
             _resultValue.projectId = projectId;
             _resultValue.region = region;
+            _resultValue.serviceCredential = serviceCredential;
             return _resultValue;
         }
     }

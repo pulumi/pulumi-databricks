@@ -97,6 +97,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly bool IsOnline;
         /// <summary>
+        /// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        /// </summary>
+        public readonly int JobId;
+        /// <summary>
         /// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
         /// If the pipeline has not run yet, this field will be null
         /// </summary>
@@ -117,6 +121,10 @@ namespace Pulumi.Databricks
         /// (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult OnlineStoreConfig;
+        /// <summary>
+        /// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        /// </summary>
+        public readonly string PipelineId;
         /// <summary>
         /// (string) - The schedule state of the materialization pipeline.
         /// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -160,6 +168,8 @@ namespace Pulumi.Databricks
 
             bool isOnline,
 
+            int jobId,
+
             string lastMaterializationTime,
 
             string latestBackfillOperation,
@@ -169,6 +179,8 @@ namespace Pulumi.Databricks
             Outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult offlineStoreConfig,
 
             Outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult onlineStoreConfig,
+
+            string pipelineId,
 
             string pipelineScheduleState,
 
@@ -187,11 +199,13 @@ namespace Pulumi.Databricks
             CronScheduleTrigger = cronScheduleTrigger;
             FeatureName = featureName;
             IsOnline = isOnline;
+            JobId = jobId;
             LastMaterializationTime = lastMaterializationTime;
             LatestBackfillOperation = latestBackfillOperation;
             MaterializedFeatureId = materializedFeatureId;
             OfflineStoreConfig = offlineStoreConfig;
             OnlineStoreConfig = onlineStoreConfig;
+            PipelineId = pipelineId;
             PipelineScheduleState = pipelineScheduleState;
             ProviderConfig = providerConfig;
             StreamingMode = streamingMode;

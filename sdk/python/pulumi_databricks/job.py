@@ -30,6 +30,7 @@ class JobArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional['JobEmailNotificationsArgs']] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentArgs']]]] = None,
                  existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -123,6 +124,8 @@ class JobArgs:
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if environments is not None:
             pulumi.set(__self__, "environments", environments)
         if existing_cluster_id is not None:
@@ -329,6 +332,15 @@ class JobArgs:
     @email_notifications.setter
     def email_notifications(self, value: pulumi.Input[Optional['JobEmailNotificationsArgs']]):
         pulumi.set(self, "email_notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]]:
+        return pulumi.get(self, "environment_variables")
+
+    @environment_variables.setter
+    def environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]]):
+        pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
@@ -727,6 +739,7 @@ class _JobState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional['JobEmailNotificationsArgs']] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentArgs']]]] = None,
                  existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -822,6 +835,8 @@ class _JobState:
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if environments is not None:
             pulumi.set(__self__, "environments", environments)
         if existing_cluster_id is not None:
@@ -1030,6 +1045,15 @@ class _JobState:
     @email_notifications.setter
     def email_notifications(self, value: pulumi.Input[Optional['JobEmailNotificationsArgs']]):
         pulumi.set(self, "email_notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]]:
+        return pulumi.get(self, "environment_variables")
+
+    @environment_variables.setter
+    def environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]]):
+        pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1443,6 +1467,7 @@ class Job(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentVariableArgs', 'JobEnvironmentVariableArgsDict', 'outputs.JobEnvironmentVariable']]]]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict', 'outputs.JobEnvironment']]]]] = None,
                  existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1690,6 +1715,7 @@ class Job(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentVariableArgs', 'JobEnvironmentVariableArgsDict', 'outputs.JobEnvironmentVariable']]]]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict', 'outputs.JobEnvironment']]]]] = None,
                  existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1743,6 +1769,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["edit_mode"] = edit_mode
             __props__.__dict__["email_notifications"] = email_notifications
+            __props__.__dict__["environment_variables"] = environment_variables
             __props__.__dict__["environments"] = environments
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
             __props__.__dict__["format"] = format
@@ -1798,6 +1825,7 @@ class Job(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
             email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
+            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentVariableArgs', 'JobEnvironmentVariableArgsDict', 'outputs.JobEnvironmentVariable']]]]] = None,
             environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict', 'outputs.JobEnvironment']]]]] = None,
             existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1886,6 +1914,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["edit_mode"] = edit_mode
         __props__.__dict__["email_notifications"] = email_notifications
+        __props__.__dict__["environment_variables"] = environment_variables
         __props__.__dict__["environments"] = environments
         __props__.__dict__["existing_cluster_id"] = existing_cluster_id
         __props__.__dict__["format"] = format
@@ -1993,6 +2022,11 @@ class Job(pulumi.CustomResource):
         (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> pulumi.Output[Optional[Sequence['outputs.JobEnvironmentVariable']]]:
+        return pulumi.get(self, "environment_variables")
 
     @_builtins.property
     @pulumi.getter

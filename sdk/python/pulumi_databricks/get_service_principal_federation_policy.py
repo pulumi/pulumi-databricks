@@ -86,7 +86,8 @@ class GetServicePrincipalFederationPolicyResult:
     @pulumi.getter(name="oidcPolicy")
     def oidc_policy(self) -> 'outputs.GetServicePrincipalFederationPolicyOidcPolicyResult':
         """
-        (OidcFederationPolicy)
+        (OidcFederationPolicy) - audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        policy configuration is captured in create/update audit logs (see go/auditlogs)
         """
         return pulumi.get(self, "oidc_policy")
 

@@ -57,7 +57,7 @@ class GetWorkspaceEntityTagAssignmentResult:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> _builtins.str:
         """
-        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 
@@ -102,7 +102,7 @@ def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = Non
                                         tag_key: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceEntityTagAssignmentResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
 
@@ -130,7 +130,7 @@ def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = Non
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
     :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
     """
@@ -154,7 +154,7 @@ def get_workspace_entity_tag_assignment_output(entity_id: pulumi.Input[Optional[
                                                tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceEntityTagAssignmentResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
 
@@ -182,7 +182,7 @@ def get_workspace_entity_tag_assignment_output(entity_id: pulumi.Input[Optional[
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
     :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
     """

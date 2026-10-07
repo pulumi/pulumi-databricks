@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchemaArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringFeatureSourceRequestSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringFeatureSourceRequestSourceArgs Empty = new FeatureEngineeringFeatureSourceRequestSourceArgs();
+
+    @Import(name="dataframeSchema")
+    private @Nullable Output<String> dataframeSchema;
+
+    public Optional<Output<String>> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
 
     /**
      * A flat schema with scalar-typed fields only
@@ -33,6 +41,7 @@ public final class FeatureEngineeringFeatureSourceRequestSourceArgs extends com.
     private FeatureEngineeringFeatureSourceRequestSourceArgs() {}
 
     private FeatureEngineeringFeatureSourceRequestSourceArgs(FeatureEngineeringFeatureSourceRequestSourceArgs $) {
+        this.dataframeSchema = $.dataframeSchema;
         this.flatSchema = $.flatSchema;
     }
 
@@ -52,6 +61,15 @@ public final class FeatureEngineeringFeatureSourceRequestSourceArgs extends com.
 
         public Builder(FeatureEngineeringFeatureSourceRequestSourceArgs defaults) {
             $ = new FeatureEngineeringFeatureSourceRequestSourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder dataframeSchema(@Nullable Output<String> dataframeSchema) {
+            $.dataframeSchema = dataframeSchema;
+            return this;
+        }
+
+        public Builder dataframeSchema(String dataframeSchema) {
+            return dataframeSchema(Output.of(dataframeSchema));
         }
 
         /**

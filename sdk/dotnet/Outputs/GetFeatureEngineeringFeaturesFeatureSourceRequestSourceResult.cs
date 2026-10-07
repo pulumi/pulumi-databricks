@@ -14,13 +14,23 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult
     {
         /// <summary>
+        /// (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+        /// JSON format (from df.schema.json()).
+        /// Any subsequent functions operate against this dataframe
+        /// </summary>
+        public readonly string? DataframeSchema;
+        /// <summary>
         /// (FlatSchema) - A flat schema with scalar-typed fields only
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaResult? FlatSchema;
 
         [OutputConstructor]
-        private GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult(Outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaResult? flatSchema)
+        private GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult(
+            string? dataframeSchema,
+
+            Outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaResult? flatSchema)
         {
+            DataframeSchema = dataframeSchema;
             FlatSchema = flatSchema;
         }
     }

@@ -1951,6 +1951,26 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccess
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
@@ -1985,6 +2005,26 @@ export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigAnthropicRelayed {
@@ -2008,6 +2048,26 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
@@ -2032,6 +2092,26 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
@@ -2067,6 +2147,26 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
@@ -2090,6 +2190,26 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKey
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigGeminiEnterprise {
@@ -2103,6 +2223,7 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
      */
     projectId?: string;
     region?: string;
+    serviceCredential?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential;
 }
 
 export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
@@ -2112,6 +2233,37 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigInferenceTable {
@@ -2160,6 +2312,26 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
@@ -2184,6 +2356,26 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraS
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
@@ -2218,6 +2410,26 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigRateLimit {
@@ -6017,6 +6229,7 @@ export interface FeatureEngineeringFeatureSourceLateness {
 }
 
 export interface FeatureEngineeringFeatureSourceRequestSource {
+    dataframeSchema?: string;
     /**
      * A flat schema with scalar-typed fields only
      */
@@ -6481,7 +6694,8 @@ export interface GetAccountFederationPoliciesPolicy {
      */
     name: string;
     /**
-     * (OidcFederationPolicy)
+     * (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
      */
     oidcPolicy: outputs.GetAccountFederationPoliciesPolicyOidcPolicy;
     /**
@@ -11941,6 +12155,26 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAcc
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
@@ -11982,6 +12216,26 @@ export interface GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigAnthropicRelayed {
@@ -12029,6 +12283,26 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
@@ -12053,6 +12327,26 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraSer
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
@@ -12099,6 +12393,26 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
@@ -12122,6 +12436,26 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApi
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigGeminiEnterprise {
@@ -12146,6 +12480,15 @@ export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
      * Required on Create
      */
     region?: string;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
@@ -12155,6 +12498,37 @@ export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApi
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigInferenceTable {
@@ -12227,6 +12601,26 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApi
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
@@ -12251,6 +12645,26 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEnt
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
@@ -12296,6 +12710,26 @@ export interface GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigRateLimit {
@@ -12540,6 +12974,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmaz
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
@@ -12580,6 +13033,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnth
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicRelayed {
@@ -12627,6 +13099,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
@@ -12651,6 +13142,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
@@ -12696,6 +13206,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCust
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuth {
@@ -12719,6 +13248,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCust
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterprise {
@@ -12743,6 +13291,15 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGemi
      * Required on Create
      */
     region?: string;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
@@ -12752,6 +13309,35 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGemi
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigInferenceTable {
@@ -12824,6 +13410,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
@@ -12848,6 +13453,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
@@ -12892,6 +13516,25 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpen
      * object remains present to indicate that a secret is configured
      */
     plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigRateLimit {
@@ -20739,6 +21382,12 @@ export interface GetFeatureEngineeringFeatureSourceLateness {
 
 export interface GetFeatureEngineeringFeatureSourceRequestSource {
     /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
      * (FlatSchema) - A flat schema with scalar-typed fields only
      */
     flatSchema?: outputs.GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema;
@@ -21557,6 +22206,12 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceLateness {
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
     /**
      * (FlatSchema) - A flat schema with scalar-typed fields only
      */
@@ -22520,6 +23175,10 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      */
     isOnline: boolean;
     /**
+     * (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     */
+    jobId: number;
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      */
@@ -22540,6 +23199,10 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      * (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
      */
     onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
+    /**
+     * (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     */
+    pipelineId: string;
     /**
      * (string) - The schedule state of the materialization pipeline.
      * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -23142,6 +23805,8 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     onStarts?: string[];
     onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
@@ -23158,6 +23823,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
     dependencies?: string[];
     environmentVersion?: string;
     javaDependencies?: string[];
+    projectEnvironment?: string;
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -23688,6 +24354,8 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     onStarts?: string[];
     onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
@@ -23774,6 +24442,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications 
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     onStarts?: string[];
     onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
@@ -24102,6 +24772,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery {
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications {
     onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart[];
     onStarts?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart[];
     onStreamingBacklogExceededs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
@@ -24115,6 +24787,20 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -24465,6 +25151,8 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
 export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
     onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart[];
     onStarts?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart[];
     onStreamingBacklogExceededs?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess[];
@@ -24478,6 +25166,20 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarn
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -24533,6 +25235,8 @@ export interface GetJobJobSettingsSettingsTriggerTableUpdate {
 export interface GetJobJobSettingsSettingsWebhookNotifications {
     onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart[];
     onStarts?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
     onStreamingBacklogExceededs?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
@@ -24546,6 +25250,20 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningT
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -24808,6 +25526,285 @@ export interface GetKnowledgeAssistantsKnowledgeAssistantProviderConfig {
 }
 
 export interface GetKnowledgeAssistantsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonManagedMemoryEntriesManagedMemoryEntry {
+    /**
+     * Customer-provided identifier for the actor whose entries are listed
+     */
+    actorId: string;
+    /**
+     * (string) - Optional free-form memory content
+     */
+    content: string;
+    /**
+     * (string) - Time when the entry was created
+     */
+    createTime: string;
+    /**
+     * (string) - Human-readable description of the memory entry
+     */
+    description: string;
+    /**
+     * (string) - Resource name in the form
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     */
+    name: string;
+    /**
+     * (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Paths must begin with `/` and must not contain empty, `.` or `..` segments
+     */
+    path: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfig;
+    /**
+     * Optional session identifier. When set, only entries with this exact `sessionId` are
+     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     */
+    sessionId: string;
+    /**
+     * (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     */
+    sourceType: string;
+    /**
+     * (string) - Time when the entry was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetMasonManagedMemoryEntriesManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonManagedMemoryEntriesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId: string;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType: string;
+}
+
+export interface GetMasonManagedMemoryStoresManagedMemoryStore {
+    /**
+     * (string) - Time when the store was created
+     */
+    createTime: string;
+    /**
+     * (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+     * immutable server-set attribution and does not grant access; authorization is evaluated from
+     * the authenticated request context
+     */
+    creatorUserId: string;
+    /**
+     * (string) - Human-readable description of the memory store
+     */
+    description: string;
+    /**
+     * (string, deprecated) - Deprecated compatibility alias for the caller-provided managed memory store ID. Canonical
+     * clients provide the ID through `CreateMemoryStoreRequest.managed_memory_store_id` and use
+     * `name` as the resource identifier
+     */
+    displayName: string;
+    /**
+     * (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
+     */
+    name: string;
+    /**
+     * (string, deprecated) - Deprecated alias for `creatorUserId`. This identifies the original creator, not a
+     * transferable owner. Use `creatorUserId` instead
+     */
+    ownerUserId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfig;
+    /**
+     * (StorageBackend) - Service-managed storage backing this memory store
+     */
+    storageBackend: outputs.GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackend;
+    /**
+     * (string) - Time when the store was last updated
+     */
+    updateTime: string;
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: number;
+}
+
+export interface GetMasonManagedMemoryStoresManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonManagedMemoryStoresManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId: string;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType: string;
+}
+
+export interface GetMasonManagedMemoryStoresProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonSessionStoresProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonSessionStoresSessionStore {
+    /**
+     * (string) - Time when the store was created
+     */
+    createTime: string;
+    /**
+     * (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+     * immutable server-set attribution and does not grant access; authorization is evaluated from
+     * the authenticated request context
+     */
+    creatorUserId: string;
+    /**
+     * (string) - Human-readable description of the session store
+     */
+    description: string;
+    /**
+     * (object) - Mutable caller-defined string labels
+     */
+    metadata: {[key: string]: string};
+    /**
+     * (string) - Resource name in the form `session-stores/{session_store_id}`
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetMasonSessionStoresSessionStoreProviderConfig;
+    /**
+     * (string) - Time when the store was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetMasonSessionStoresSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonSessionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMasonSessionsSession {
+    /**
+     * (string) - Opaque caller-provided identifier for the application actor associated with the session.
+     */
+    actorId: string;
+    /**
+     * (string) - Time when the session was created
+     */
+    createTime: string;
+    /**
+     * (string) - Time when the session's item history was last mutated
+     */
+    lastActivityTime: string;
+    /**
+     * (object) - Mutable caller-defined string labels
+     */
+    metadata: {[key: string]: string};
+    /**
+     * (string) - Resource name in the form `session-stores/{session_store_id}/sessions/{session_id}`
+     */
+    name: string;
+    /**
+     * (string) - Immediate parent session ID. Set only at creation for child sessions, immutable thereafter, and
+     * restricted to the same store
+     */
+    parentSessionId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetMasonSessionsSessionProviderConfig;
+    /**
+     * (string) - Top-level session ID in the spawn tree. This equals `sessionId` for a root or fork and is
+     * inherited transitively by child sessions
+     */
+    rootSessionId: string;
+    /**
+     * (string) - Unique session ID. The service generates a UUID unless the caller supplies
+     * `CreateSessionRequest.session_id`
+     */
+    sessionId: string;
+    /**
+     * (string) - Time when session resource fields last changed
+     */
+    updateTime: string;
+}
+
+export interface GetMasonSessionsSessionProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -27794,6 +28791,189 @@ export interface GetPostgresSyncedTableStatusOngoingSyncProgress {
     totalRowCount: number;
 }
 
+export interface GetPrivateNetworkGatewayAwsCloudConnection {
+    /**
+     * (PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole) - The IAM role that Databricks assumes to manage gateway resources
+     */
+    crossAccountRole: outputs.GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRole;
+    /**
+     * (list of PrivateNetworkGatewayAwsCloudConnectionAwsGatewaySubnet) - The subnets where the gateway establishes connectivity
+     */
+    gatewaySubnets: outputs.GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnet[];
+    /**
+     * (list of string) - The security groups attached to the gateway network interface
+     */
+    securityGroupIds: string[];
+}
+
+export interface GetPrivateNetworkGatewayAwsCloudConnectionCrossAccountRole {
+    /**
+     * (string) - The ARN of the IAM role
+     */
+    roleArn: string;
+}
+
+export interface GetPrivateNetworkGatewayAwsCloudConnectionGatewaySubnet {
+    /**
+     * (string) - The AWS subnet ID
+     */
+    subnetId: string;
+}
+
+export interface GetPrivateNetworkGatewayAzureCloudConnection {
+    /**
+     * (PrivateNetworkGatewayAzureCloudConnectionAzureGatewaySubnet) - The subnet where the gateway establishes connectivity
+     */
+    gatewaySubnet: outputs.GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnet;
+}
+
+export interface GetPrivateNetworkGatewayAzureCloudConnectionGatewaySubnet {
+    /**
+     * (string) - The full Azure resource ID of the subnet
+     */
+    resourceId: string;
+}
+
+export interface GetPrivateNetworkGatewayDestination {
+    /**
+     * (string) - The destination type. Possible values are: `DNS_NAME`
+     */
+    destinationType: string;
+    /**
+     * (string) - The resolver value
+     */
+    value: string;
+}
+
+export interface GetPrivateNetworkGatewayPrivateDnsResolver {
+    /**
+     * (string) - The resolver type. Possible values are: `IP_ADDRESS`
+     */
+    resolverType: string;
+    /**
+     * (string) - The resolver value
+     */
+    value: string;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGateway {
+    /**
+     * (PrivateNetworkGatewayAwsCloudConnection) - The AWS connection used by the gateway
+     */
+    awsCloudConnection: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnection;
+    /**
+     * (PrivateNetworkGatewayAzureCloudConnection) - The Azure connection used by the gateway
+     */
+    azureCloudConnection: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnection;
+    /**
+     * (integer) - The provisioned bandwidth tier for an Azure gateway, in gigabits per second.
+     * Required when creating an Azure gateway
+     */
+    bandwidthTierGigabitsPerSecond: number;
+    /**
+     * (string) - The time when the gateway was created
+     */
+    createTime: string;
+    /**
+     * (list of PrivateNetworkGatewayDestination) - The destinations routed through this gateway
+     */
+    destinations: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayDestination[];
+    /**
+     * (string) - The human-readable name of the gateway
+     */
+    displayName: string;
+    /**
+     * (string) - The failure reason when the gateway is in the FAILED state
+     */
+    errorMessage: string;
+    /**
+     * (string) - The canonical resource name of the gateway, in the form
+     * `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`
+     */
+    name: string;
+    /**
+     * (list of PrivateNetworkGatewayPrivateDnsResolver) - The DNS resolvers used for private name resolution
+     */
+    privateDnsResolvers: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolver[];
+    /**
+     * (string) - The current lifecycle state of the gateway. Possible values are: `CREATING`, `DELETING`, `ESTABLISHED`, `FAILED`
+     */
+    state: string;
+    /**
+     * (string) - The traffic routed through this gateway. Possible values are: `ALL_TRAFFIC`, `SPECIFIC_DESTINATIONS`
+     */
+    trafficMode: string;
+    /**
+     * (string) - The time when the gateway was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnection {
+    /**
+     * (PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole) - The IAM role that Databricks assumes to manage gateway resources
+     */
+    crossAccountRole: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRole;
+    /**
+     * (list of PrivateNetworkGatewayAwsCloudConnectionAwsGatewaySubnet) - The subnets where the gateway establishes connectivity
+     */
+    gatewaySubnets: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnet[];
+    /**
+     * (list of string) - The security groups attached to the gateway network interface
+     */
+    securityGroupIds: string[];
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionCrossAccountRole {
+    /**
+     * (string) - The ARN of the IAM role
+     */
+    roleArn: string;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayAwsCloudConnectionGatewaySubnet {
+    /**
+     * (string) - The AWS subnet ID
+     */
+    subnetId: string;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnection {
+    /**
+     * (PrivateNetworkGatewayAzureCloudConnectionAzureGatewaySubnet) - The subnet where the gateway establishes connectivity
+     */
+    gatewaySubnet: outputs.GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnet;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayAzureCloudConnectionGatewaySubnet {
+    /**
+     * (string) - The full Azure resource ID of the subnet
+     */
+    resourceId: string;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayDestination {
+    /**
+     * (string) - The destination type. Possible values are: `DNS_NAME`
+     */
+    destinationType: string;
+    /**
+     * (string) - The resolver value
+     */
+    value: string;
+}
+
+export interface GetPrivateNetworkGatewaysPrivateNetworkGatewayPrivateDnsResolver {
+    /**
+     * (string) - The resolver type. Possible values are: `IP_ADDRESS`
+     */
+    resolverType: string;
+    /**
+     * (string) - The resolver value
+     */
+    value: string;
+}
+
 export interface GetQualityMonitorV2AnomalyDetectionConfig {
     /**
      * (list of string) - List of fully qualified table names to exclude from anomaly detection
@@ -28274,6 +29454,10 @@ export interface GetSandboxSpec {
      * (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
      */
     compute?: outputs.GetSandboxSpecCompute;
+    /**
+     * (EnvironmentSpec) - The execution environment to use for the sandbox
+     */
+    environment?: outputs.GetSandboxSpecEnvironment;
 }
 
 export interface GetSandboxSpecCompute {
@@ -28281,6 +29465,15 @@ export interface GetSandboxSpecCompute {
      * (string) - Idle duration after which the sandbox is automatically terminated
      */
     inactivityTimeout?: string;
+}
+
+export interface GetSandboxSpecEnvironment {
+    /**
+     * (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+     * sandbox environment. When set, this image is used as the environment instead of resolving a
+     * managed image from `environmentVersion`
+     */
+    imageUri?: string;
 }
 
 export interface GetSandboxStatus {
@@ -28341,6 +29534,10 @@ export interface GetSandboxesSandboxSpec {
      * (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
      */
     compute?: outputs.GetSandboxesSandboxSpecCompute;
+    /**
+     * (EnvironmentSpec) - The execution environment to use for the sandbox
+     */
+    environment?: outputs.GetSandboxesSandboxSpecEnvironment;
 }
 
 export interface GetSandboxesSandboxSpecCompute {
@@ -28348,6 +29545,15 @@ export interface GetSandboxesSandboxSpecCompute {
      * (string) - Idle duration after which the sandbox is automatically terminated
      */
     inactivityTimeout?: string;
+}
+
+export interface GetSandboxesSandboxSpecEnvironment {
+    /**
+     * (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+     * sandbox environment. When set, this image is used as the environment instead of resolving a
+     * managed image from `environmentVersion`
+     */
+    imageUri?: string;
 }
 
 export interface GetSandboxesSandboxStatus {
@@ -28570,7 +29776,8 @@ export interface GetServicePrincipalFederationPoliciesPolicy {
      */
     name: string;
     /**
-     * (OidcFederationPolicy)
+     * (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
      */
     oidcPolicy: outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicy;
     /**
@@ -30027,7 +31234,7 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -30965,6 +32172,8 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run fails.
      */
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     /**
      * (List) list of emails to notify when the run starts.
      */
@@ -31004,6 +32213,20 @@ export interface JobEnvironmentSpec {
      */
     environmentVersion?: string;
     javaDependencies?: string[];
+    projectEnvironment?: string;
+}
+
+export interface JobEnvironmentVariable {
+    environmentVariablesKey: string;
+    /**
+     * block describing the Environment. Consists of following attributes:
+     */
+    spec?: outputs.JobEnvironmentVariableSpec;
+}
+
+export interface JobEnvironmentVariableSpec {
+    files?: string[];
+    variables?: {[key: string]: string};
 }
 
 export interface JobGitSource {
@@ -31856,6 +33079,7 @@ export interface JobTask {
      * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      */
     environmentKey?: string;
+    environmentVariablesKey?: string;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
@@ -31936,7 +33160,7 @@ export interface JobTaskAiRuntimeTask {
 }
 
 export interface JobTaskAiRuntimeTaskDeployment {
-    commandPath: string;
+    commandPath?: string;
     /**
      * Task level compute configuration. This block is documented below.
      *
@@ -32141,6 +33365,8 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run fails.
      */
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     /**
      * (List) list of emails to notify when the run starts.
      */
@@ -32211,6 +33437,7 @@ export interface JobTaskForEachTaskTask {
      * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      */
     environmentKey?: string;
+    environmentVariablesKey?: string;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
@@ -32290,7 +33517,7 @@ export interface JobTaskForEachTaskTaskAiRuntimeTask {
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTaskDeployment {
-    commandPath: string;
+    commandPath?: string;
     /**
      * Task level compute configuration. This block is documented below.
      *
@@ -32495,6 +33722,8 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run fails.
      */
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     /**
      * (List) list of emails to notify when the run starts.
      */
@@ -33222,6 +34451,8 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart[];
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
@@ -33248,6 +34479,20 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThre
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart {
     /**
      * ID of the job
      */
@@ -33986,6 +35231,8 @@ export interface JobTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: outputs.JobTaskWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: outputs.JobTaskWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: outputs.JobTaskWebhookNotificationsOnMaintenanceStart[];
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
@@ -34012,6 +35259,20 @@ export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobTaskWebhookNotificationsOnMaintenanceStart {
     /**
      * ID of the job
      */
@@ -34154,6 +35415,8 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: outputs.JobWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: outputs.JobWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: outputs.JobWebhookNotificationsOnMaintenanceStart[];
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
@@ -34180,6 +35443,20 @@ export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
 }
 
 export interface JobWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobWebhookNotificationsOnMaintenanceStart {
     /**
      * ID of the job
      */
@@ -34406,6 +35683,45 @@ export interface LibraryPypi {
      * The repository where the package can be found. If not specified, the default pip index is used.
      */
     repo?: string;
+}
+
+export interface MasonManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface MasonManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface MasonManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId: string;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType: string;
+}
+
+export interface MasonSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface MasonSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface MaterializedFeaturesFeatureTagProviderConfig {
@@ -35585,11 +36901,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -35656,11 +36972,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -38318,6 +39634,65 @@ export interface PostgresSyncedTableStatusOngoingSyncProgress {
     totalRowCount: number;
 }
 
+export interface PrivateNetworkGatewayAwsCloudConnection {
+    /**
+     * The IAM role that Databricks assumes to manage gateway resources
+     */
+    crossAccountRole: outputs.PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole;
+    /**
+     * The subnets where the gateway establishes connectivity
+     */
+    gatewaySubnets: outputs.PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet[];
+    /**
+     * The security groups attached to the gateway network interface
+     */
+    securityGroupIds: string[];
+}
+
+export interface PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole {
+    /**
+     * The ARN of the IAM role
+     */
+    roleArn: string;
+}
+
+export interface PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet {
+    /**
+     * The AWS subnet ID
+     */
+    subnetId: string;
+}
+
+export interface PrivateNetworkGatewayAzureCloudConnection {
+    /**
+     * The subnet where the gateway establishes connectivity
+     */
+    gatewaySubnet: outputs.PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet;
+}
+
+export interface PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet {
+    /**
+     * The full Azure resource ID of the subnet
+     */
+    resourceId: string;
+}
+
+export interface PrivateNetworkGatewayDestination {
+    /**
+     * The destination type. Possible values are: `DNS_NAME`
+     */
+    destinationType: string;
+    value: string;
+}
+
+export interface PrivateNetworkGatewayPrivateDnsResolver {
+    /**
+     * The resolver type. Possible values are: `IP_ADDRESS`
+     */
+    resolverType: string;
+    value: string;
+}
+
 export interface QualityMonitorCustomMetric {
     /**
      * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
@@ -38823,6 +40198,10 @@ export interface SandboxSpec {
      * Compute configuration (size, inactivity timeout) requested for the sandbox
      */
     compute?: outputs.SandboxSpecCompute;
+    /**
+     * The execution environment to use for the sandbox
+     */
+    environment?: outputs.SandboxSpecEnvironment;
 }
 
 export interface SandboxSpecCompute {
@@ -38830,6 +40209,15 @@ export interface SandboxSpecCompute {
      * Idle duration after which the sandbox is automatically terminated
      */
     inactivityTimeout?: string;
+}
+
+export interface SandboxSpecEnvironment {
+    /**
+     * A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+     * sandbox environment. When set, this image is used as the environment instead of resolving a
+     * managed image from `environmentVersion`
+     */
+    imageUri?: string;
 }
 
 export interface SandboxStatus {

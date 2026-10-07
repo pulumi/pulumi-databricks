@@ -17,11 +17,11 @@ public final class JobTaskAiRuntimeTaskDeploymentArgs extends com.pulumi.resourc
 
     public static final JobTaskAiRuntimeTaskDeploymentArgs Empty = new JobTaskAiRuntimeTaskDeploymentArgs();
 
-    @Import(name="commandPath", required=true)
-    private Output<String> commandPath;
+    @Import(name="commandPath")
+    private @Nullable Output<String> commandPath;
 
-    public Output<String> commandPath() {
-        return this.commandPath;
+    public Optional<Output<String>> commandPath() {
+        return Optional.ofNullable(this.commandPath);
     }
 
     /**
@@ -84,7 +84,7 @@ public final class JobTaskAiRuntimeTaskDeploymentArgs extends com.pulumi.resourc
             $ = new JobTaskAiRuntimeTaskDeploymentArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder commandPath(Output<String> commandPath) {
+        public Builder commandPath(@Nullable Output<String> commandPath) {
             $.commandPath = commandPath;
             return this;
         }
@@ -140,9 +140,6 @@ public final class JobTaskAiRuntimeTaskDeploymentArgs extends com.pulumi.resourc
         }
 
         public JobTaskAiRuntimeTaskDeploymentArgs build() {
-            if ($.commandPath == null) {
-                throw new MissingRequiredPropertyException("JobTaskAiRuntimeTaskDeploymentArgs", "commandPath");
-            }
             if ($.compute == null) {
                 throw new MissingRequiredPropertyException("JobTaskAiRuntimeTaskDeploymentArgs", "compute");
             }

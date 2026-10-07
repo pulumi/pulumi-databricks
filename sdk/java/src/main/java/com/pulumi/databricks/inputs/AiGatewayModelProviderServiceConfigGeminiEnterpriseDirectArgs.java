@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgs;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,12 +46,20 @@ public final class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs
         return Optional.ofNullable(this.region);
     }
 
+    @Import(name="serviceCredential")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs> serviceCredential;
+
+    public Optional<Output<AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs>> serviceCredential() {
+        return Optional.ofNullable(this.serviceCredential);
+    }
+
     private AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs() {}
 
     private AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs(AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs $) {
         this.apiKey = $.apiKey;
         this.projectId = $.projectId;
         this.region = $.region;
+        this.serviceCredential = $.serviceCredential;
     }
 
     public static Builder builder() {
@@ -108,6 +117,15 @@ public final class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs
 
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        public Builder serviceCredential(@Nullable Output<AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs> serviceCredential) {
+            $.serviceCredential = serviceCredential;
+            return this;
+        }
+
+        public Builder serviceCredential(AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialArgs serviceCredential) {
+            return serviceCredential(Output.of(serviceCredential));
         }
 
         public AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs build() {

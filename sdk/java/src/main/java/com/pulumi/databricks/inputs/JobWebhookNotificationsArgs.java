@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsOnDurationWarningThresholdExceededArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsOnFailureArgs;
+import com.pulumi.databricks.inputs.JobWebhookNotificationsOnMaintenanceCompleteArgs;
+import com.pulumi.databricks.inputs.JobWebhookNotificationsOnMaintenanceStartArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsOnStartArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsOnStreamingBacklogExceededArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsOnSuccessArgs;
@@ -48,6 +50,20 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<List<JobWebhookNotificationsOnFailureArgs>>> onFailures() {
         return Optional.ofNullable(this.onFailures);
+    }
+
+    @Import(name="onMaintenanceCompletes")
+    private @Nullable Output<List<JobWebhookNotificationsOnMaintenanceCompleteArgs>> onMaintenanceCompletes;
+
+    public Optional<Output<List<JobWebhookNotificationsOnMaintenanceCompleteArgs>>> onMaintenanceCompletes() {
+        return Optional.ofNullable(this.onMaintenanceCompletes);
+    }
+
+    @Import(name="onMaintenanceStarts")
+    private @Nullable Output<List<JobWebhookNotificationsOnMaintenanceStartArgs>> onMaintenanceStarts;
+
+    public Optional<Output<List<JobWebhookNotificationsOnMaintenanceStartArgs>>> onMaintenanceStarts() {
+        return Optional.ofNullable(this.onMaintenanceStarts);
     }
 
     /**
@@ -108,6 +124,8 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
     private JobWebhookNotificationsArgs(JobWebhookNotificationsArgs $) {
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
+        this.onMaintenanceCompletes = $.onMaintenanceCompletes;
+        this.onMaintenanceStarts = $.onMaintenanceStarts;
         this.onStarts = $.onStarts;
         this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
@@ -191,6 +209,32 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
          */
         public Builder onFailures(JobWebhookNotificationsOnFailureArgs... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+
+        public Builder onMaintenanceCompletes(@Nullable Output<List<JobWebhookNotificationsOnMaintenanceCompleteArgs>> onMaintenanceCompletes) {
+            $.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+
+        public Builder onMaintenanceCompletes(List<JobWebhookNotificationsOnMaintenanceCompleteArgs> onMaintenanceCompletes) {
+            return onMaintenanceCompletes(Output.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceCompletes(JobWebhookNotificationsOnMaintenanceCompleteArgs... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceStarts(@Nullable Output<List<JobWebhookNotificationsOnMaintenanceStartArgs>> onMaintenanceStarts) {
+            $.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+
+        public Builder onMaintenanceStarts(List<JobWebhookNotificationsOnMaintenanceStartArgs> onMaintenanceStarts) {
+            return onMaintenanceStarts(Output.of(onMaintenanceStarts));
+        }
+
+        public Builder onMaintenanceStarts(JobWebhookNotificationsOnMaintenanceStartArgs... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
 
         /**

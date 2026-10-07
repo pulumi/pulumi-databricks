@@ -53,7 +53,8 @@ type LookupServicePrincipalFederationPolicyResult struct {
 	// specified in create or update requests. If specified in a request, must match the value in the
 	// request URL
 	Name string `pulumi:"name"`
-	// (OidcFederationPolicy)
+	// (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+	// policy configuration is captured in create/update audit logs (see go/auditlogs)
 	OidcPolicy GetServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - The ID of the federation policy. Output only
 	PolicyId string `pulumi:"policyId"`
@@ -117,7 +118,8 @@ func (o LookupServicePrincipalFederationPolicyResultOutput) Name() pulumi.String
 	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (OidcFederationPolicy)
+// (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+// policy configuration is captured in create/update audit logs (see go/auditlogs)
 func (o LookupServicePrincipalFederationPolicyResultOutput) OidcPolicy() GetServicePrincipalFederationPolicyOidcPolicyOutput {
 	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) GetServicePrincipalFederationPolicyOidcPolicy {
 		return v.OidcPolicy

@@ -17,11 +17,19 @@ namespace Pulumi.Databricks.Outputs
         /// Compute configuration (size, inactivity timeout) requested for the sandbox
         /// </summary>
         public readonly Outputs.SandboxSpecCompute? Compute;
+        /// <summary>
+        /// The execution environment to use for the sandbox
+        /// </summary>
+        public readonly Outputs.SandboxSpecEnvironment? Environment;
 
         [OutputConstructor]
-        private SandboxSpec(Outputs.SandboxSpecCompute? compute)
+        private SandboxSpec(
+            Outputs.SandboxSpecCompute? compute,
+
+            Outputs.SandboxSpecEnvironment? environment)
         {
             Compute = compute;
+            Environment = environment;
         }
     }
 }

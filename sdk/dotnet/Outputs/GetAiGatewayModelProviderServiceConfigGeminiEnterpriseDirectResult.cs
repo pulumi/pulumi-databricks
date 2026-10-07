@@ -27,6 +27,15 @@ namespace Pulumi.Databricks.Outputs
         /// Required on Create
         /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+        /// Foundry requests. On Create, supply `service_credential.name` in the form
+        /// `credentials/{name}`. Required on Create when using service-credential
+        /// authentication; mutually exclusive with `ApiKey` and
+        /// `EntraServicePrincipal`. The credential is referenced by name; its value
+        /// is not carried here. Only supported on Azure-hosted workspaces
+        /// </summary>
+        public readonly Outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult? ServiceCredential;
 
         [OutputConstructor]
         private GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectResult(
@@ -34,11 +43,14 @@ namespace Pulumi.Databricks.Outputs
 
             string? projectId,
 
-            string? region)
+            string? region,
+
+            Outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredentialResult? serviceCredential)
         {
             ApiKey = apiKey;
             ProjectId = projectId;
             Region = region;
+            ServiceCredential = serviceCredential;
         }
     }
 }

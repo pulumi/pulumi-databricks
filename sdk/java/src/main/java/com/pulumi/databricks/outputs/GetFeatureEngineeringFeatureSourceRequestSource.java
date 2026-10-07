@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,12 +13,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeatureSourceRequestSource {
     /**
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     * 
+     */
+    private @Nullable String dataframeSchema;
+    /**
      * @return (FlatSchema) - A flat schema with scalar-typed fields only
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema flatSchema;
 
     private GetFeatureEngineeringFeatureSourceRequestSource() {}
+    /**
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     * 
+     */
+    public Optional<String> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
     /**
      * @return (FlatSchema) - A flat schema with scalar-typed fields only
      * 
@@ -35,13 +52,21 @@ public final class GetFeatureEngineeringFeatureSourceRequestSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dataframeSchema;
         private @Nullable GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema flatSchema;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureSourceRequestSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataframeSchema = defaults.dataframeSchema;
     	      this.flatSchema = defaults.flatSchema;
         }
 
+        @CustomType.Setter
+        public Builder dataframeSchema(@Nullable String dataframeSchema) {
+
+            this.dataframeSchema = dataframeSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder flatSchema(@Nullable GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema flatSchema) {
 
@@ -50,6 +75,7 @@ public final class GetFeatureEngineeringFeatureSourceRequestSource {
         }
         public GetFeatureEngineeringFeatureSourceRequestSource build() {
             final var _resultValue = new GetFeatureEngineeringFeatureSourceRequestSource();
+            _resultValue.dataframeSchema = dataframeSchema;
             _resultValue.flatSchema = flatSchema;
             return _resultValue;
         }

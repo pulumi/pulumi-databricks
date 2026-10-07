@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs : global::Pulumi.ResourceArgs
     {
-        [Input("commandPath", required: true)]
-        public Input<string> CommandPath { get; set; } = null!;
+        [Input("commandPath")]
+        public Input<string>? CommandPath { get; set; }
 
         /// <summary>
         /// Task level compute configuration. This block is documented below.

@@ -79,6 +79,10 @@ export class ServicePrincipalFederationPolicy extends pulumi.CustomResource {
      * request URL
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     */
     declare public readonly oidcPolicy: pulumi.Output<outputs.ServicePrincipalFederationPolicyOidcPolicy | undefined>;
     /**
      * (string) - The ID of the federation policy. Output only
@@ -155,6 +159,10 @@ export interface ServicePrincipalFederationPolicyState {
      * request URL
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     */
     oidcPolicy?: pulumi.Input<inputs.ServicePrincipalFederationPolicyOidcPolicy | undefined>;
     /**
      * (string) - The ID of the federation policy. Output only
@@ -182,6 +190,10 @@ export interface ServicePrincipalFederationPolicyArgs {
      * Description of the federation policy
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     */
     oidcPolicy?: pulumi.Input<inputs.ServicePrincipalFederationPolicyOidcPolicy | undefined>;
     /**
      * (string) - The ID of the federation policy. Output only

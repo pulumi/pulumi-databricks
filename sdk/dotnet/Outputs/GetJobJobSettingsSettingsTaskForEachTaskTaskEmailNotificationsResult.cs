@@ -16,6 +16,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? NoAlertForSkippedRuns;
         public readonly ImmutableArray<string> OnDurationWarningThresholdExceededs;
         public readonly ImmutableArray<string> OnFailures;
+        public readonly ImmutableArray<string> OnMaintenanceCompletes;
+        public readonly ImmutableArray<string> OnMaintenanceStarts;
         public readonly ImmutableArray<string> OnStarts;
         public readonly ImmutableArray<string> OnStreamingBacklogExceededs;
         public readonly ImmutableArray<string> OnSuccesses;
@@ -28,6 +30,10 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> onFailures,
 
+            ImmutableArray<string> onMaintenanceCompletes,
+
+            ImmutableArray<string> onMaintenanceStarts,
+
             ImmutableArray<string> onStarts,
 
             ImmutableArray<string> onStreamingBacklogExceededs,
@@ -37,6 +43,8 @@ namespace Pulumi.Databricks.Outputs
             NoAlertForSkippedRuns = noAlertForSkippedRuns;
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
+            OnMaintenanceCompletes = onMaintenanceCompletes;
+            OnMaintenanceStarts = onMaintenanceStarts;
             OnStarts = onStarts;
             OnStreamingBacklogExceededs = onStreamingBacklogExceededs;
             OnSuccesses = onSuccesses;

@@ -44,6 +44,12 @@ namespace Pulumi.Databricks
         public Output<bool> IsOnline { get; private set; } = null!;
 
         /// <summary>
+        /// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        /// </summary>
+        [Output("jobId")]
+        public Output<int> JobId { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
         /// If the pipeline has not run yet, this field will be null
         /// </summary>
@@ -73,6 +79,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("onlineStoreConfig")]
         public Output<Outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig?> OnlineStoreConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        /// </summary>
+        [Output("pipelineId")]
+        public Output<string> PipelineId { get; private set; } = null!;
 
         /// <summary>
         /// The schedule state of the materialization pipeline.
@@ -281,6 +293,12 @@ namespace Pulumi.Databricks
         public Input<bool>? IsOnline { get; set; }
 
         /// <summary>
+        /// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        /// </summary>
+        [Input("jobId")]
+        public Input<int>? JobId { get; set; }
+
+        /// <summary>
         /// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
         /// If the pipeline has not run yet, this field will be null
         /// </summary>
@@ -310,6 +328,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("onlineStoreConfig")]
         public Input<Inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfigGetArgs>? OnlineStoreConfig { get; set; }
+
+        /// <summary>
+        /// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        /// </summary>
+        [Input("pipelineId")]
+        public Input<string>? PipelineId { get; set; }
 
         /// <summary>
         /// The schedule state of the materialization pipeline.
