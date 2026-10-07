@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSandboxSpecCompute;
+import com.pulumi.databricks.outputs.GetSandboxSpecEnvironment;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class GetSandboxSpec {
      * 
      */
     private @Nullable GetSandboxSpecCompute compute;
+    /**
+     * @return (EnvironmentSpec) - The execution environment to use for the sandbox
+     * 
+     */
+    private @Nullable GetSandboxSpecEnvironment environment;
 
     private GetSandboxSpec() {}
     /**
@@ -24,6 +30,13 @@ public final class GetSandboxSpec {
      */
     public Optional<GetSandboxSpecCompute> compute() {
         return Optional.ofNullable(this.compute);
+    }
+    /**
+     * @return (EnvironmentSpec) - The execution environment to use for the sandbox
+     * 
+     */
+    public Optional<GetSandboxSpecEnvironment> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class GetSandboxSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetSandboxSpecCompute compute;
+        private @Nullable GetSandboxSpecEnvironment environment;
         public Builder() {}
         public Builder(GetSandboxSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compute = defaults.compute;
+    	      this.environment = defaults.environment;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class GetSandboxSpec {
             this.compute = compute;
             return this;
         }
+        @CustomType.Setter
+        public Builder environment(@Nullable GetSandboxSpecEnvironment environment) {
+
+            this.environment = environment;
+            return this;
+        }
         public GetSandboxSpec build() {
             final var _resultValue = new GetSandboxSpec();
             _resultValue.compute = compute;
+            _resultValue.environment = environment;
             return _resultValue;
         }
     }

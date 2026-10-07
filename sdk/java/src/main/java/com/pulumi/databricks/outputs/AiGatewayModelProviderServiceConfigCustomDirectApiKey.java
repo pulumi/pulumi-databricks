@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,16 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectApiKey {
      * 
      */
     private @Nullable String plaintext;
+    /**
+     * @return Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner&#39;s access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     * 
+     */
+    private @Nullable AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference secretReference;
 
     private AiGatewayModelProviderServiceConfigCustomDirectApiKey() {}
     /**
@@ -28,6 +39,18 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectApiKey {
      */
     public Optional<String> plaintext() {
         return Optional.ofNullable(this.plaintext);
+    }
+    /**
+     * @return Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner&#39;s access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     * 
+     */
+    public Optional<AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference> secretReference() {
+        return Optional.ofNullable(this.secretReference);
     }
 
     public static Builder builder() {
@@ -40,10 +63,12 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectApiKey {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String plaintext;
+        private @Nullable AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference secretReference;
         public Builder() {}
         public Builder(AiGatewayModelProviderServiceConfigCustomDirectApiKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.plaintext = defaults.plaintext;
+    	      this.secretReference = defaults.secretReference;
         }
 
         @CustomType.Setter
@@ -52,9 +77,16 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectApiKey {
             this.plaintext = plaintext;
             return this;
         }
+        @CustomType.Setter
+        public Builder secretReference(@Nullable AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference secretReference) {
+
+            this.secretReference = secretReference;
+            return this;
+        }
         public AiGatewayModelProviderServiceConfigCustomDirectApiKey build() {
             final var _resultValue = new AiGatewayModelProviderServiceConfigCustomDirectApiKey();
             _resultValue.plaintext = plaintext;
+            _resultValue.secretReference = secretReference;
             return _resultValue;
         }
     }

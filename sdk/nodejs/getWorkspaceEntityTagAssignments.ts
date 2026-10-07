@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
  *
@@ -56,7 +56,7 @@ export interface GetWorkspaceEntityTagAssignmentsArgs {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -78,7 +78,7 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
      */
     readonly entityId: string;
     /**
-     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     readonly entityType: string;
     readonly pageSize?: number;
@@ -86,7 +86,7 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
     readonly tagAssignments: outputs.GetWorkspaceEntityTagAssignmentsTagAssignment[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
  *
@@ -135,7 +135,7 @@ export interface GetWorkspaceEntityTagAssignmentsOutputArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: pulumi.Input<string>;
     /**

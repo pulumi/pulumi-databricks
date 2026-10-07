@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
         public Output<string> EntityId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
         public Input<string> EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Databricks
         public Input<string>? EntityId { get; set; }
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }

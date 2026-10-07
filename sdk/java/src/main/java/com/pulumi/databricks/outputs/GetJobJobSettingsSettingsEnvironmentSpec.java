@@ -17,6 +17,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     private @Nullable List<String> dependencies;
     private @Nullable String environmentVersion;
     private @Nullable List<String> javaDependencies;
+    private @Nullable String projectEnvironment;
 
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
     public Optional<String> baseEnvironment() {
@@ -34,6 +35,9 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     public List<String> javaDependencies() {
         return this.javaDependencies == null ? List.of() : this.javaDependencies;
     }
+    public Optional<String> projectEnvironment() {
+        return Optional.ofNullable(this.projectEnvironment);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,6 +53,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
         private @Nullable List<String> javaDependencies;
+        private @Nullable String projectEnvironment;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,6 +62,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     	      this.dependencies = defaults.dependencies;
     	      this.environmentVersion = defaults.environmentVersion;
     	      this.javaDependencies = defaults.javaDependencies;
+    	      this.projectEnvironment = defaults.projectEnvironment;
         }
 
         @CustomType.Setter
@@ -95,6 +101,12 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         public Builder javaDependencies(String... javaDependencies) {
             return javaDependencies(List.of(javaDependencies));
         }
+        @CustomType.Setter
+        public Builder projectEnvironment(@Nullable String projectEnvironment) {
+
+            this.projectEnvironment = projectEnvironment;
+            return this;
+        }
         public GetJobJobSettingsSettingsEnvironmentSpec build() {
             final var _resultValue = new GetJobJobSettingsSettingsEnvironmentSpec();
             _resultValue.baseEnvironment = baseEnvironment;
@@ -102,6 +114,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
             _resultValue.dependencies = dependencies;
             _resultValue.environmentVersion = environmentVersion;
             _resultValue.javaDependencies = javaDependencies;
+            _resultValue.projectEnvironment = projectEnvironment;
             return _resultValue;
         }
     }

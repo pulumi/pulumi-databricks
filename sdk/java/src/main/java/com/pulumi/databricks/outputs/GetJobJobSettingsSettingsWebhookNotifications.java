@@ -6,6 +6,8 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess;
@@ -17,6 +19,8 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsWebhookNotifications {
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures;
+    private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes;
+    private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStart> onStarts;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnSuccess> onSuccesses;
@@ -27,6 +31,12 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
     }
     public List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
+    }
+    public List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes() {
+        return this.onMaintenanceCompletes == null ? List.of() : this.onMaintenanceCompletes;
+    }
+    public List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts() {
+        return this.onMaintenanceStarts == null ? List.of() : this.onMaintenanceStarts;
     }
     public List<GetJobJobSettingsSettingsWebhookNotificationsOnStart> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
@@ -49,6 +59,8 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
     public static final class Builder {
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures;
+        private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes;
+        private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStart> onStarts;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnSuccess> onSuccesses;
@@ -57,6 +69,8 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
     	      Objects.requireNonNull(defaults);
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
+    	      this.onMaintenanceCompletes = defaults.onMaintenanceCompletes;
+    	      this.onMaintenanceStarts = defaults.onMaintenanceStarts;
     	      this.onStarts = defaults.onStarts;
     	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
@@ -79,6 +93,24 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
         }
         public Builder onFailures(GetJobJobSettingsSettingsWebhookNotificationsOnFailure... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+        @CustomType.Setter
+        public Builder onMaintenanceCompletes(@Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes) {
+
+            this.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+        public Builder onMaintenanceCompletes(GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+        @CustomType.Setter
+        public Builder onMaintenanceStarts(@Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts) {
+
+            this.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+        public Builder onMaintenanceStarts(GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
         @CustomType.Setter
         public Builder onStarts(@Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStart> onStarts) {
@@ -111,6 +143,8 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
             final var _resultValue = new GetJobJobSettingsSettingsWebhookNotifications();
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
+            _resultValue.onMaintenanceCompletes = onMaintenanceCompletes;
+            _resultValue.onMaintenanceStarts = onMaintenanceStarts;
             _resultValue.onStarts = onStarts;
             _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;

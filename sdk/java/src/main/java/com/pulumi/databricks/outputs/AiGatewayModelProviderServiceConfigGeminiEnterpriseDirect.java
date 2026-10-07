@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey;
+import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +20,7 @@ public final class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
      */
     private @Nullable String projectId;
     private @Nullable String region;
+    private @Nullable AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential serviceCredential;
 
     private AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect() {}
     public Optional<AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey> apiKey() {
@@ -34,6 +36,9 @@ public final class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    public Optional<AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential> serviceCredential() {
+        return Optional.ofNullable(this.serviceCredential);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -47,12 +52,14 @@ public final class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
         private @Nullable AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey apiKey;
         private @Nullable String projectId;
         private @Nullable String region;
+        private @Nullable AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential serviceCredential;
         public Builder() {}
         public Builder(AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
+    	      this.serviceCredential = defaults.serviceCredential;
         }
 
         @CustomType.Setter
@@ -73,11 +80,18 @@ public final class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceCredential(@Nullable AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential serviceCredential) {
+
+            this.serviceCredential = serviceCredential;
+            return this;
+        }
         public AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect build() {
             final var _resultValue = new AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect();
             _resultValue.apiKey = apiKey;
             _resultValue.projectId = projectId;
             _resultValue.region = region;
+            _resultValue.serviceCredential = serviceCredential;
             return _resultValue;
         }
     }

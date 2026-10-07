@@ -17,6 +17,7 @@ import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureProvid
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureStreamingMode;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureTableTrigger;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -93,6 +94,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return this.isOnline;
     }
     /**
+     * (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     * 
+     */
+    @Export(name="jobId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> jobId;
+
+    /**
+     * @return (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     * 
+     */
+    public Output<Integer> jobId() {
+        return this.jobId;
+    }
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      * 
@@ -163,6 +178,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      */
     public Output<Optional<FeatureEngineeringMaterializedFeatureOnlineStoreConfig>> onlineStoreConfig() {
         return Codegen.optional(this.onlineStoreConfig);
+    }
+    /**
+     * (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     * 
+     */
+    @Export(name="pipelineId", refs={String.class}, tree="[0]")
+    private Output<String> pipelineId;
+
+    /**
+     * @return (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     * 
+     */
+    public Output<String> pipelineId() {
+        return this.pipelineId;
     }
     /**
      * The schedule state of the materialization pipeline.

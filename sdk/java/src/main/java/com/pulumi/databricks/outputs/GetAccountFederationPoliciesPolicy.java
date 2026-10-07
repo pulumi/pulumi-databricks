@@ -33,7 +33,8 @@ public final class GetAccountFederationPoliciesPolicy {
      */
     private String name;
     /**
-     * @return (OidcFederationPolicy)
+     * @return (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
      * 
      */
     private GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy;
@@ -86,7 +87,8 @@ public final class GetAccountFederationPoliciesPolicy {
         return this.name;
     }
     /**
-     * @return (OidcFederationPolicy)
+     * @return (OidcFederationPolicy) - auditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
      * 
      */
     public GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy() {

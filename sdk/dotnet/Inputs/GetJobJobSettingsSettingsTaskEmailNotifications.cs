@@ -31,6 +31,22 @@ namespace Pulumi.Databricks.Inputs
             set => _onFailures = value;
         }
 
+        [Input("onMaintenanceCompletes")]
+        private List<string>? _onMaintenanceCompletes;
+        public List<string> OnMaintenanceCompletes
+        {
+            get => _onMaintenanceCompletes ?? (_onMaintenanceCompletes = new List<string>());
+            set => _onMaintenanceCompletes = value;
+        }
+
+        [Input("onMaintenanceStarts")]
+        private List<string>? _onMaintenanceStarts;
+        public List<string> OnMaintenanceStarts
+        {
+            get => _onMaintenanceStarts ?? (_onMaintenanceStarts = new List<string>());
+            set => _onMaintenanceStarts = value;
+        }
+
         [Input("onStarts")]
         private List<string>? _onStarts;
         public List<string> OnStarts

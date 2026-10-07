@@ -57,6 +57,10 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      */
     readonly isOnline: boolean;
     /**
+     * (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     */
+    readonly jobId: number;
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      */
@@ -77,6 +81,10 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      * (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
      */
     readonly onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig;
+    /**
+     * (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     */
+    readonly pipelineId: string;
     /**
      * (string) - The schedule state of the materialization pipeline.
      * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`

@@ -31,7 +31,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (OidcFederationPolicy)
+        /// (OidcFederationPolicy) - AuditMode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        /// policy configuration is captured in create/update audit logs (see go/auditlogs)
         /// </summary>
         public readonly Outputs.GetAccountFederationPoliciesPolicyOidcPolicyResult OidcPolicy;
         /// <summary>

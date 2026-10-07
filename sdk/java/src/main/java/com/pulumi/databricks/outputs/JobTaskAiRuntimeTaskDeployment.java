@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskAiRuntimeTaskDeployment {
-    private String commandPath;
+    private @Nullable String commandPath;
     /**
      * @return Task level compute configuration. This block is documented below.
      * 
@@ -28,8 +28,8 @@ public final class JobTaskAiRuntimeTaskDeployment {
     private @Nullable String name;
 
     private JobTaskAiRuntimeTaskDeployment() {}
-    public String commandPath() {
-        return this.commandPath;
+    public Optional<String> commandPath() {
+        return Optional.ofNullable(this.commandPath);
     }
     /**
      * @return Task level compute configuration. This block is documented below.
@@ -57,7 +57,7 @@ public final class JobTaskAiRuntimeTaskDeployment {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String commandPath;
+        private @Nullable String commandPath;
         private JobTaskAiRuntimeTaskDeploymentCompute compute;
         private @Nullable String name;
         public Builder() {}
@@ -69,10 +69,8 @@ public final class JobTaskAiRuntimeTaskDeployment {
         }
 
         @CustomType.Setter
-        public Builder commandPath(String commandPath) {
-            if (commandPath == null) {
-              throw new MissingRequiredPropertyException("JobTaskAiRuntimeTaskDeployment", "commandPath");
-            }
+        public Builder commandPath(@Nullable String commandPath) {
+
             this.commandPath = commandPath;
             return this;
         }

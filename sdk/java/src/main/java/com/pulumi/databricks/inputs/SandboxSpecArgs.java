@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SandboxSpecComputeArgs;
+import com.pulumi.databricks.inputs.SandboxSpecEnvironmentArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.compute);
     }
 
+    /**
+     * The execution environment to use for the sandbox
+     * 
+     */
+    @Import(name="environment")
+    private @Nullable Output<SandboxSpecEnvironmentArgs> environment;
+
+    /**
+     * @return The execution environment to use for the sandbox
+     * 
+     */
+    public Optional<Output<SandboxSpecEnvironmentArgs>> environment() {
+        return Optional.ofNullable(this.environment);
+    }
+
     private SandboxSpecArgs() {}
 
     private SandboxSpecArgs(SandboxSpecArgs $) {
         this.compute = $.compute;
+        this.environment = $.environment;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder compute(SandboxSpecComputeArgs compute) {
             return compute(Output.of(compute));
+        }
+
+        /**
+         * @param environment The execution environment to use for the sandbox
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environment(@Nullable Output<SandboxSpecEnvironmentArgs> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        /**
+         * @param environment The execution environment to use for the sandbox
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environment(SandboxSpecEnvironmentArgs environment) {
+            return environment(Output.of(environment));
         }
 
         public SandboxSpecArgs build() {

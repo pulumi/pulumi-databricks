@@ -28,7 +28,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeature.
     """
-    def __init__(__self__, budget_policy_id=None, cron_schedule=None, cron_schedule_trigger=None, feature_name=None, is_online=None, last_materialization_time=None, latest_backfill_operation=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, streaming_mode=None, table_name=None, table_trigger=None, tags=None):
+    def __init__(__self__, budget_policy_id=None, cron_schedule=None, cron_schedule_trigger=None, feature_name=None, is_online=None, job_id=None, last_materialization_time=None, latest_backfill_operation=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_id=None, pipeline_schedule_state=None, provider_config=None, streaming_mode=None, table_name=None, table_trigger=None, tags=None):
         if budget_policy_id and not isinstance(budget_policy_id, str):
             raise TypeError("Expected argument 'budget_policy_id' to be a str")
         pulumi.set(__self__, "budget_policy_id", budget_policy_id)
@@ -44,6 +44,9 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if is_online and not isinstance(is_online, bool):
             raise TypeError("Expected argument 'is_online' to be a bool")
         pulumi.set(__self__, "is_online", is_online)
+        if job_id and not isinstance(job_id, int):
+            raise TypeError("Expected argument 'job_id' to be a int")
+        pulumi.set(__self__, "job_id", job_id)
         if last_materialization_time and not isinstance(last_materialization_time, str):
             raise TypeError("Expected argument 'last_materialization_time' to be a str")
         pulumi.set(__self__, "last_materialization_time", last_materialization_time)
@@ -59,6 +62,9 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if online_store_config and not isinstance(online_store_config, dict):
             raise TypeError("Expected argument 'online_store_config' to be a dict")
         pulumi.set(__self__, "online_store_config", online_store_config)
+        if pipeline_id and not isinstance(pipeline_id, str):
+            raise TypeError("Expected argument 'pipeline_id' to be a str")
+        pulumi.set(__self__, "pipeline_id", pipeline_id)
         if pipeline_schedule_state and not isinstance(pipeline_schedule_state, str):
             raise TypeError("Expected argument 'pipeline_schedule_state' to be a str")
         pulumi.set(__self__, "pipeline_schedule_state", pipeline_schedule_state)
@@ -120,6 +126,14 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         return pulumi.get(self, "is_online")
 
     @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> _builtins.int:
+        """
+        (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
     def last_materialization_time(self) -> _builtins.str:
         """
@@ -159,6 +173,14 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
         """
         return pulumi.get(self, "online_store_config")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> _builtins.str:
+        """
+        (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        """
+        return pulumi.get(self, "pipeline_id")
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleState")
@@ -226,11 +248,13 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
             cron_schedule_trigger=self.cron_schedule_trigger,
             feature_name=self.feature_name,
             is_online=self.is_online,
+            job_id=self.job_id,
             last_materialization_time=self.last_materialization_time,
             latest_backfill_operation=self.latest_backfill_operation,
             materialized_feature_id=self.materialized_feature_id,
             offline_store_config=self.offline_store_config,
             online_store_config=self.online_store_config,
+            pipeline_id=self.pipeline_id,
             pipeline_schedule_state=self.pipeline_schedule_state,
             provider_config=self.provider_config,
             streaming_mode=self.streaming_mode,
@@ -261,11 +285,13 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
         cron_schedule_trigger=pulumi.get(__ret__, 'cron_schedule_trigger'),
         feature_name=pulumi.get(__ret__, 'feature_name'),
         is_online=pulumi.get(__ret__, 'is_online'),
+        job_id=pulumi.get(__ret__, 'job_id'),
         last_materialization_time=pulumi.get(__ret__, 'last_materialization_time'),
         latest_backfill_operation=pulumi.get(__ret__, 'latest_backfill_operation'),
         materialized_feature_id=pulumi.get(__ret__, 'materialized_feature_id'),
         offline_store_config=pulumi.get(__ret__, 'offline_store_config'),
         online_store_config=pulumi.get(__ret__, 'online_store_config'),
+        pipeline_id=pulumi.get(__ret__, 'pipeline_id'),
         pipeline_schedule_state=pulumi.get(__ret__, 'pipeline_schedule_state'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         streaming_mode=pulumi.get(__ret__, 'streaming_mode'),
@@ -293,11 +319,13 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
         cron_schedule_trigger=pulumi.get(__response__, 'cron_schedule_trigger'),
         feature_name=pulumi.get(__response__, 'feature_name'),
         is_online=pulumi.get(__response__, 'is_online'),
+        job_id=pulumi.get(__response__, 'job_id'),
         last_materialization_time=pulumi.get(__response__, 'last_materialization_time'),
         latest_backfill_operation=pulumi.get(__response__, 'latest_backfill_operation'),
         materialized_feature_id=pulumi.get(__response__, 'materialized_feature_id'),
         offline_store_config=pulumi.get(__response__, 'offline_store_config'),
         online_store_config=pulumi.get(__response__, 'online_store_config'),
+        pipeline_id=pulumi.get(__response__, 'pipeline_id'),
         pipeline_schedule_state=pulumi.get(__response__, 'pipeline_schedule_state'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         streaming_mode=pulumi.get(__response__, 'streaming_mode'),

@@ -20,6 +20,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("plaintext")]
         public Input<string>? Plaintext { get; set; }
 
+        /// <summary>
+        /// Reference to a customer-owned UC Secret that carries this secret value.
+        /// The value is read at invoke time under the model provider service
+        /// owner's access and is never copied onto the model provider service, so
+        /// rotating the UC Secret takes effect with no change to the model provider
+        /// service. On Create, supply `secret_reference.name` as
+        /// `secrets/{catalog}.{schema}.{secret}`
+        /// </summary>
+        [Input("secretReference")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReferenceArgs>? SecretReference { get; set; }
+
         public AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyArgs()
         {
         }

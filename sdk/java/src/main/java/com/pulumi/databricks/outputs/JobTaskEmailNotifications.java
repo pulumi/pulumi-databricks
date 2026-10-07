@@ -28,6 +28,8 @@ public final class JobTaskEmailNotifications {
      * 
      */
     private @Nullable List<String> onFailures;
+    private @Nullable List<String> onMaintenanceCompletes;
+    private @Nullable List<String> onMaintenanceStarts;
     /**
      * @return (List) list of emails to notify when the run starts.
      * 
@@ -68,6 +70,12 @@ public final class JobTaskEmailNotifications {
     public List<String> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
     }
+    public List<String> onMaintenanceCompletes() {
+        return this.onMaintenanceCompletes == null ? List.of() : this.onMaintenanceCompletes;
+    }
+    public List<String> onMaintenanceStarts() {
+        return this.onMaintenanceStarts == null ? List.of() : this.onMaintenanceStarts;
+    }
     /**
      * @return (List) list of emails to notify when the run starts.
      * 
@@ -104,6 +112,8 @@ public final class JobTaskEmailNotifications {
         private @Nullable Boolean noAlertForSkippedRuns;
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
+        private @Nullable List<String> onMaintenanceCompletes;
+        private @Nullable List<String> onMaintenanceStarts;
         private @Nullable List<String> onStarts;
         private @Nullable List<String> onStreamingBacklogExceededs;
         private @Nullable List<String> onSuccesses;
@@ -113,6 +123,8 @@ public final class JobTaskEmailNotifications {
     	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
+    	      this.onMaintenanceCompletes = defaults.onMaintenanceCompletes;
+    	      this.onMaintenanceStarts = defaults.onMaintenanceStarts;
     	      this.onStarts = defaults.onStarts;
     	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
@@ -141,6 +153,24 @@ public final class JobTaskEmailNotifications {
         }
         public Builder onFailures(String... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+        @CustomType.Setter
+        public Builder onMaintenanceCompletes(@Nullable List<String> onMaintenanceCompletes) {
+
+            this.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+        public Builder onMaintenanceCompletes(String... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+        @CustomType.Setter
+        public Builder onMaintenanceStarts(@Nullable List<String> onMaintenanceStarts) {
+
+            this.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+        public Builder onMaintenanceStarts(String... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
         @CustomType.Setter
         public Builder onStarts(@Nullable List<String> onStarts) {
@@ -174,6 +204,8 @@ public final class JobTaskEmailNotifications {
             _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
+            _resultValue.onMaintenanceCompletes = onMaintenanceCompletes;
+            _resultValue.onMaintenanceStarts = onMaintenanceStarts;
             _resultValue.onStarts = onStarts;
             _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;

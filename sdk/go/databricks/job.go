@@ -125,10 +125,11 @@ type Job struct {
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode pulumi.StringPtrOutput `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
-	Environments       JobEnvironmentArrayOutput      `pulumi:"environments"`
-	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
-	Format             pulumi.StringOutput            `pulumi:"format"`
+	EmailNotifications   JobEmailNotificationsPtrOutput    `pulumi:"emailNotifications"`
+	EnvironmentVariables JobEnvironmentVariableArrayOutput `pulumi:"environmentVariables"`
+	Environments         JobEnvironmentArrayOutput         `pulumi:"environments"`
+	ExistingClusterId    pulumi.StringPtrOutput            `pulumi:"existingClusterId"`
+	Format               pulumi.StringOutput               `pulumi:"format"`
 	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrOutput `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job documented below.
@@ -247,10 +248,11 @@ type jobState struct {
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode *string `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
-	Environments       []JobEnvironment       `pulumi:"environments"`
-	ExistingClusterId  *string                `pulumi:"existingClusterId"`
-	Format             *string                `pulumi:"format"`
+	EmailNotifications   *JobEmailNotifications   `pulumi:"emailNotifications"`
+	EnvironmentVariables []JobEnvironmentVariable `pulumi:"environmentVariables"`
+	Environments         []JobEnvironment         `pulumi:"environments"`
+	ExistingClusterId    *string                  `pulumi:"existingClusterId"`
+	Format               *string                  `pulumi:"format"`
 	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource *JobGitSource `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job documented below.
@@ -340,10 +342,11 @@ type JobState struct {
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode pulumi.StringPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-	EmailNotifications JobEmailNotificationsPtrInput
-	Environments       JobEnvironmentArrayInput
-	ExistingClusterId  pulumi.StringPtrInput
-	Format             pulumi.StringPtrInput
+	EmailNotifications   JobEmailNotificationsPtrInput
+	EnvironmentVariables JobEnvironmentVariableArrayInput
+	Environments         JobEnvironmentArrayInput
+	ExistingClusterId    pulumi.StringPtrInput
+	Format               pulumi.StringPtrInput
 	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrInput
 	// An optional block that specifies the health conditions for the job documented below.
@@ -437,10 +440,11 @@ type jobArgs struct {
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode *string `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
-	Environments       []JobEnvironment       `pulumi:"environments"`
-	ExistingClusterId  *string                `pulumi:"existingClusterId"`
-	Format             *string                `pulumi:"format"`
+	EmailNotifications   *JobEmailNotifications   `pulumi:"emailNotifications"`
+	EnvironmentVariables []JobEnvironmentVariable `pulumi:"environmentVariables"`
+	Environments         []JobEnvironment         `pulumi:"environments"`
+	ExistingClusterId    *string                  `pulumi:"existingClusterId"`
+	Format               *string                  `pulumi:"format"`
 	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource *JobGitSource `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job documented below.
@@ -529,10 +533,11 @@ type JobArgs struct {
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode pulumi.StringPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-	EmailNotifications JobEmailNotificationsPtrInput
-	Environments       JobEnvironmentArrayInput
-	ExistingClusterId  pulumi.StringPtrInput
-	Format             pulumi.StringPtrInput
+	EmailNotifications   JobEmailNotificationsPtrInput
+	EnvironmentVariables JobEnvironmentVariableArrayInput
+	Environments         JobEnvironmentArrayInput
+	ExistingClusterId    pulumi.StringPtrInput
+	Format               pulumi.StringPtrInput
 	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrInput
 	// An optional block that specifies the health conditions for the job documented below.
@@ -732,6 +737,10 @@ func (o JobOutput) EditMode() pulumi.StringPtrOutput {
 // (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 func (o JobOutput) EmailNotifications() JobEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v *Job) JobEmailNotificationsPtrOutput { return v.EmailNotifications }).(JobEmailNotificationsPtrOutput)
+}
+
+func (o JobOutput) EnvironmentVariables() JobEnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v *Job) JobEnvironmentVariableArrayOutput { return v.EnvironmentVariables }).(JobEnvironmentVariableArrayOutput)
 }
 
 func (o JobOutput) Environments() JobEnvironmentArrayOutput {

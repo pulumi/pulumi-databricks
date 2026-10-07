@@ -5,12 +5,14 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureSourceRequestSource {
+    private @Nullable String dataframeSchema;
     /**
      * @return A flat schema with scalar-typed fields only
      * 
@@ -18,6 +20,9 @@ public final class FeatureEngineeringFeatureSourceRequestSource {
     private @Nullable FeatureEngineeringFeatureSourceRequestSourceFlatSchema flatSchema;
 
     private FeatureEngineeringFeatureSourceRequestSource() {}
+    public Optional<String> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
     /**
      * @return A flat schema with scalar-typed fields only
      * 
@@ -35,13 +40,21 @@ public final class FeatureEngineeringFeatureSourceRequestSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dataframeSchema;
         private @Nullable FeatureEngineeringFeatureSourceRequestSourceFlatSchema flatSchema;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSourceRequestSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataframeSchema = defaults.dataframeSchema;
     	      this.flatSchema = defaults.flatSchema;
         }
 
+        @CustomType.Setter
+        public Builder dataframeSchema(@Nullable String dataframeSchema) {
+
+            this.dataframeSchema = dataframeSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder flatSchema(@Nullable FeatureEngineeringFeatureSourceRequestSourceFlatSchema flatSchema) {
 
@@ -50,6 +63,7 @@ public final class FeatureEngineeringFeatureSourceRequestSource {
         }
         public FeatureEngineeringFeatureSourceRequestSource build() {
             final var _resultValue = new FeatureEngineeringFeatureSourceRequestSource();
+            _resultValue.dataframeSchema = dataframeSchema;
             _resultValue.flatSchema = flatSchema;
             return _resultValue;
         }

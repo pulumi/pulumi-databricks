@@ -226,11 +226,13 @@ class _FeatureEngineeringMaterializedFeatureState:
                  cron_schedule_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs']] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_online: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.int]] = None,
                  last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
                  latest_backfill_operation: pulumi.Input[Optional[_builtins.str]] = None,
                  materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
                  online_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None,
                  streaming_mode: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureStreamingModeArgs']] = None,
@@ -245,12 +247,14 @@ class _FeatureEngineeringMaterializedFeatureState:
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        :param pulumi.Input[_builtins.int] job_id: (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param pulumi.Input[_builtins.str] latest_backfill_operation: (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs'] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs'] online_store_config: Destination for writing feature values to an online Lakebase table
+        :param pulumi.Input[_builtins.str] pipeline_id: (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
                Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -277,6 +281,8 @@ class _FeatureEngineeringMaterializedFeatureState:
             pulumi.set(__self__, "feature_name", feature_name)
         if is_online is not None:
             pulumi.set(__self__, "is_online", is_online)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
         if last_materialization_time is not None:
             pulumi.set(__self__, "last_materialization_time", last_materialization_time)
         if latest_backfill_operation is not None:
@@ -287,6 +293,8 @@ class _FeatureEngineeringMaterializedFeatureState:
             pulumi.set(__self__, "offline_store_config", offline_store_config)
         if online_store_config is not None:
             pulumi.set(__self__, "online_store_config", online_store_config)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
         if pipeline_schedule_state is not None:
             pulumi.set(__self__, "pipeline_schedule_state", pipeline_schedule_state)
         if provider_config is not None:
@@ -359,6 +367,18 @@ class _FeatureEngineeringMaterializedFeatureState:
         pulumi.set(self, "is_online", value)
 
     @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "job_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
     def last_materialization_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -418,6 +438,18 @@ class _FeatureEngineeringMaterializedFeatureState:
     @online_store_config.setter
     def online_store_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]):
         pulumi.set(self, "online_store_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pipeline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleState")
@@ -605,9 +637,11 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             __props__.__dict__["table_trigger"] = table_trigger
             __props__.__dict__["tags"] = tags
             __props__.__dict__["is_online"] = None
+            __props__.__dict__["job_id"] = None
             __props__.__dict__["last_materialization_time"] = None
             __props__.__dict__["latest_backfill_operation"] = None
             __props__.__dict__["materialized_feature_id"] = None
+            __props__.__dict__["pipeline_id"] = None
             __props__.__dict__["table_name"] = None
         super(FeatureEngineeringMaterializedFeature, __self__).__init__(
             'databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature',
@@ -624,11 +658,13 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']]] = None,
             feature_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_online: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_id: pulumi.Input[Optional[_builtins.int]] = None,
             last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
             latest_backfill_operation: pulumi.Input[Optional[_builtins.str]] = None,
             materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
             offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']]] = None,
             online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']]] = None,
+            pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
             pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']]] = None,
             streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureStreamingMode']]] = None,
@@ -647,12 +683,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        :param pulumi.Input[_builtins.int] job_id: (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param pulumi.Input[_builtins.str] latest_backfill_operation: (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']] online_store_config: Destination for writing feature values to an online Lakebase table
+        :param pulumi.Input[_builtins.str] pipeline_id: (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
                Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
@@ -678,11 +716,13 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         __props__.__dict__["cron_schedule_trigger"] = cron_schedule_trigger
         __props__.__dict__["feature_name"] = feature_name
         __props__.__dict__["is_online"] = is_online
+        __props__.__dict__["job_id"] = job_id
         __props__.__dict__["last_materialization_time"] = last_materialization_time
         __props__.__dict__["latest_backfill_operation"] = latest_backfill_operation
         __props__.__dict__["materialized_feature_id"] = materialized_feature_id
         __props__.__dict__["offline_store_config"] = offline_store_config
         __props__.__dict__["online_store_config"] = online_store_config
+        __props__.__dict__["pipeline_id"] = pipeline_id
         __props__.__dict__["pipeline_schedule_state"] = pipeline_schedule_state
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["streaming_mode"] = streaming_mode
@@ -730,6 +770,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         return pulumi.get(self, "is_online")
 
     @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
     def last_materialization_time(self) -> pulumi.Output[_builtins.str]:
         """
@@ -769,6 +817,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         Destination for writing feature values to an online Lakebase table
         """
         return pulumi.get(self, "online_store_config")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+        """
+        return pulumi.get(self, "pipeline_id")
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleState")

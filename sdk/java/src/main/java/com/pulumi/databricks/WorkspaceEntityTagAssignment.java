@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
  * 
@@ -97,14 +97,14 @@ public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomRes
         return this.entityId;
     }
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      * 
      */
     public Output<String> entityType() {

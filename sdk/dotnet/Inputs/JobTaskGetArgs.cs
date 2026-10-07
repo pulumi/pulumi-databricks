@@ -86,6 +86,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("environmentKey")]
         public Input<string>? EnvironmentKey { get; set; }
 
+        [Input("environmentVariablesKey")]
+        public Input<string>? EnvironmentVariablesKey { get; set; }
+
         /// <summary>
         /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         /// </summary>

@@ -177,6 +177,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakehouseMonitor{}
 	case "databricks:index/library:Library":
 		r = &Library{}
+	case "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry":
+		r = &MasonManagedMemoryEntry{}
+	case "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore":
+		r = &MasonManagedMemoryStore{}
+	case "databricks:index/masonSession:MasonSession":
+		r = &MasonSession{}
+	case "databricks:index/masonSessionStore:MasonSessionStore":
+		r = &MasonSessionStore{}
 	case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
 		r = &MaterializedFeaturesFeatureTag{}
 	case "databricks:index/metastore:Metastore":
@@ -261,6 +269,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresSnapshotSchedule{}
 	case "databricks:index/postgresSyncedTable:PostgresSyncedTable":
 		r = &PostgresSyncedTable{}
+	case "databricks:index/privateNetworkGateway:PrivateNetworkGateway":
+		r = &PrivateNetworkGateway{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
 		r = &QualityMonitor{}
 	case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -792,6 +802,26 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/masonManagedMemoryEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/masonManagedMemoryStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/masonSession",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/masonSessionStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/materializedFeaturesFeatureTag",
 		&module{version},
 	)
@@ -998,6 +1028,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/postgresSyncedTable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/privateNetworkGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

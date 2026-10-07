@@ -71,6 +71,10 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        /// policy configuration is captured in create/update audit logs (see go/auditlogs)
+        /// </summary>
         [Output("oidcPolicy")]
         public Output<Outputs.ServicePrincipalFederationPolicyOidcPolicy?> OidcPolicy { get; private set; } = null!;
 
@@ -150,6 +154,10 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        /// policy configuration is captured in create/update audit logs (see go/auditlogs)
+        /// </summary>
         [Input("oidcPolicy")]
         public Input<Inputs.ServicePrincipalFederationPolicyOidcPolicyArgs>? OidcPolicy { get; set; }
 
@@ -196,6 +204,10 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+        /// policy configuration is captured in create/update audit logs (see go/auditlogs)
+        /// </summary>
         [Input("oidcPolicy")]
         public Input<Inputs.ServicePrincipalFederationPolicyOidcPolicyGetArgs>? OidcPolicy { get; set; }
 

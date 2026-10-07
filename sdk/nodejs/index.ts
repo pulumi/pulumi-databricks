@@ -815,6 +815,46 @@ export const getKnowledgeAssistants: typeof import("./getKnowledgeAssistants").g
 export const getKnowledgeAssistantsOutput: typeof import("./getKnowledgeAssistants").getKnowledgeAssistantsOutput = null as any;
 utilities.lazyLoad(exports, ["getKnowledgeAssistants","getKnowledgeAssistantsOutput"], () => require("./getKnowledgeAssistants"));
 
+export { GetMasonManagedMemoryEntriesArgs, GetMasonManagedMemoryEntriesResult, GetMasonManagedMemoryEntriesOutputArgs } from "./getMasonManagedMemoryEntries";
+export const getMasonManagedMemoryEntries: typeof import("./getMasonManagedMemoryEntries").getMasonManagedMemoryEntries = null as any;
+export const getMasonManagedMemoryEntriesOutput: typeof import("./getMasonManagedMemoryEntries").getMasonManagedMemoryEntriesOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonManagedMemoryEntries","getMasonManagedMemoryEntriesOutput"], () => require("./getMasonManagedMemoryEntries"));
+
+export { GetMasonManagedMemoryEntryArgs, GetMasonManagedMemoryEntryResult, GetMasonManagedMemoryEntryOutputArgs } from "./getMasonManagedMemoryEntry";
+export const getMasonManagedMemoryEntry: typeof import("./getMasonManagedMemoryEntry").getMasonManagedMemoryEntry = null as any;
+export const getMasonManagedMemoryEntryOutput: typeof import("./getMasonManagedMemoryEntry").getMasonManagedMemoryEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonManagedMemoryEntry","getMasonManagedMemoryEntryOutput"], () => require("./getMasonManagedMemoryEntry"));
+
+export { GetMasonManagedMemoryStoreArgs, GetMasonManagedMemoryStoreResult, GetMasonManagedMemoryStoreOutputArgs } from "./getMasonManagedMemoryStore";
+export const getMasonManagedMemoryStore: typeof import("./getMasonManagedMemoryStore").getMasonManagedMemoryStore = null as any;
+export const getMasonManagedMemoryStoreOutput: typeof import("./getMasonManagedMemoryStore").getMasonManagedMemoryStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonManagedMemoryStore","getMasonManagedMemoryStoreOutput"], () => require("./getMasonManagedMemoryStore"));
+
+export { GetMasonManagedMemoryStoresArgs, GetMasonManagedMemoryStoresResult, GetMasonManagedMemoryStoresOutputArgs } from "./getMasonManagedMemoryStores";
+export const getMasonManagedMemoryStores: typeof import("./getMasonManagedMemoryStores").getMasonManagedMemoryStores = null as any;
+export const getMasonManagedMemoryStoresOutput: typeof import("./getMasonManagedMemoryStores").getMasonManagedMemoryStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonManagedMemoryStores","getMasonManagedMemoryStoresOutput"], () => require("./getMasonManagedMemoryStores"));
+
+export { GetMasonSessionArgs, GetMasonSessionResult, GetMasonSessionOutputArgs } from "./getMasonSession";
+export const getMasonSession: typeof import("./getMasonSession").getMasonSession = null as any;
+export const getMasonSessionOutput: typeof import("./getMasonSession").getMasonSessionOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonSession","getMasonSessionOutput"], () => require("./getMasonSession"));
+
+export { GetMasonSessionStoreArgs, GetMasonSessionStoreResult, GetMasonSessionStoreOutputArgs } from "./getMasonSessionStore";
+export const getMasonSessionStore: typeof import("./getMasonSessionStore").getMasonSessionStore = null as any;
+export const getMasonSessionStoreOutput: typeof import("./getMasonSessionStore").getMasonSessionStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonSessionStore","getMasonSessionStoreOutput"], () => require("./getMasonSessionStore"));
+
+export { GetMasonSessionStoresArgs, GetMasonSessionStoresResult, GetMasonSessionStoresOutputArgs } from "./getMasonSessionStores";
+export const getMasonSessionStores: typeof import("./getMasonSessionStores").getMasonSessionStores = null as any;
+export const getMasonSessionStoresOutput: typeof import("./getMasonSessionStores").getMasonSessionStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonSessionStores","getMasonSessionStoresOutput"], () => require("./getMasonSessionStores"));
+
+export { GetMasonSessionsArgs, GetMasonSessionsResult, GetMasonSessionsOutputArgs } from "./getMasonSessions";
+export const getMasonSessions: typeof import("./getMasonSessions").getMasonSessions = null as any;
+export const getMasonSessionsOutput: typeof import("./getMasonSessions").getMasonSessionsOutput = null as any;
+utilities.lazyLoad(exports, ["getMasonSessions","getMasonSessionsOutput"], () => require("./getMasonSessions"));
+
 export { GetMaterializedFeaturesFeatureTagArgs, GetMaterializedFeaturesFeatureTagResult, GetMaterializedFeaturesFeatureTagOutputArgs } from "./getMaterializedFeaturesFeatureTag";
 export const getMaterializedFeaturesFeatureTag: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTag = null as any;
 export const getMaterializedFeaturesFeatureTagOutput: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTagOutput = null as any;
@@ -1004,6 +1044,16 @@ export { GetPostgresSyncedTableArgs, GetPostgresSyncedTableResult, GetPostgresSy
 export const getPostgresSyncedTable: typeof import("./getPostgresSyncedTable").getPostgresSyncedTable = null as any;
 export const getPostgresSyncedTableOutput: typeof import("./getPostgresSyncedTable").getPostgresSyncedTableOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresSyncedTable","getPostgresSyncedTableOutput"], () => require("./getPostgresSyncedTable"));
+
+export { GetPrivateNetworkGatewayArgs, GetPrivateNetworkGatewayResult, GetPrivateNetworkGatewayOutputArgs } from "./getPrivateNetworkGateway";
+export const getPrivateNetworkGateway: typeof import("./getPrivateNetworkGateway").getPrivateNetworkGateway = null as any;
+export const getPrivateNetworkGatewayOutput: typeof import("./getPrivateNetworkGateway").getPrivateNetworkGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateNetworkGateway","getPrivateNetworkGatewayOutput"], () => require("./getPrivateNetworkGateway"));
+
+export { GetPrivateNetworkGatewaysArgs, GetPrivateNetworkGatewaysResult, GetPrivateNetworkGatewaysOutputArgs } from "./getPrivateNetworkGateways";
+export const getPrivateNetworkGateways: typeof import("./getPrivateNetworkGateways").getPrivateNetworkGateways = null as any;
+export const getPrivateNetworkGatewaysOutput: typeof import("./getPrivateNetworkGateways").getPrivateNetworkGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateNetworkGateways","getPrivateNetworkGatewaysOutput"], () => require("./getPrivateNetworkGateways"));
 
 export { GetQualityMonitorV2Args, GetQualityMonitorV2Result, GetQualityMonitorV2OutputArgs } from "./getQualityMonitorV2";
 export const getQualityMonitorV2: typeof import("./getQualityMonitorV2").getQualityMonitorV2 = null as any;
@@ -1375,6 +1425,26 @@ export type Library = import("./library").Library;
 export const Library: typeof import("./library").Library = null as any;
 utilities.lazyLoad(exports, ["Library"], () => require("./library"));
 
+export { MasonManagedMemoryEntryArgs, MasonManagedMemoryEntryState } from "./masonManagedMemoryEntry";
+export type MasonManagedMemoryEntry = import("./masonManagedMemoryEntry").MasonManagedMemoryEntry;
+export const MasonManagedMemoryEntry: typeof import("./masonManagedMemoryEntry").MasonManagedMemoryEntry = null as any;
+utilities.lazyLoad(exports, ["MasonManagedMemoryEntry"], () => require("./masonManagedMemoryEntry"));
+
+export { MasonManagedMemoryStoreArgs, MasonManagedMemoryStoreState } from "./masonManagedMemoryStore";
+export type MasonManagedMemoryStore = import("./masonManagedMemoryStore").MasonManagedMemoryStore;
+export const MasonManagedMemoryStore: typeof import("./masonManagedMemoryStore").MasonManagedMemoryStore = null as any;
+utilities.lazyLoad(exports, ["MasonManagedMemoryStore"], () => require("./masonManagedMemoryStore"));
+
+export { MasonSessionArgs, MasonSessionState } from "./masonSession";
+export type MasonSession = import("./masonSession").MasonSession;
+export const MasonSession: typeof import("./masonSession").MasonSession = null as any;
+utilities.lazyLoad(exports, ["MasonSession"], () => require("./masonSession"));
+
+export { MasonSessionStoreArgs, MasonSessionStoreState } from "./masonSessionStore";
+export type MasonSessionStore = import("./masonSessionStore").MasonSessionStore;
+export const MasonSessionStore: typeof import("./masonSessionStore").MasonSessionStore = null as any;
+utilities.lazyLoad(exports, ["MasonSessionStore"], () => require("./masonSessionStore"));
+
 export { MaterializedFeaturesFeatureTagArgs, MaterializedFeaturesFeatureTagState } from "./materializedFeaturesFeatureTag";
 export type MaterializedFeaturesFeatureTag = import("./materializedFeaturesFeatureTag").MaterializedFeaturesFeatureTag;
 export const MaterializedFeaturesFeatureTag: typeof import("./materializedFeaturesFeatureTag").MaterializedFeaturesFeatureTag = null as any;
@@ -1584,6 +1654,11 @@ export { PostgresSyncedTableArgs, PostgresSyncedTableState } from "./postgresSyn
 export type PostgresSyncedTable = import("./postgresSyncedTable").PostgresSyncedTable;
 export const PostgresSyncedTable: typeof import("./postgresSyncedTable").PostgresSyncedTable = null as any;
 utilities.lazyLoad(exports, ["PostgresSyncedTable"], () => require("./postgresSyncedTable"));
+
+export { PrivateNetworkGatewayArgs, PrivateNetworkGatewayState } from "./privateNetworkGateway";
+export type PrivateNetworkGateway = import("./privateNetworkGateway").PrivateNetworkGateway;
+export const PrivateNetworkGateway: typeof import("./privateNetworkGateway").PrivateNetworkGateway = null as any;
+utilities.lazyLoad(exports, ["PrivateNetworkGateway"], () => require("./privateNetworkGateway"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -2028,6 +2103,14 @@ const _module = {
                 return new LakehouseMonitor(name, <any>undefined, { urn })
             case "databricks:index/library:Library":
                 return new Library(name, <any>undefined, { urn })
+            case "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry":
+                return new MasonManagedMemoryEntry(name, <any>undefined, { urn })
+            case "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore":
+                return new MasonManagedMemoryStore(name, <any>undefined, { urn })
+            case "databricks:index/masonSession:MasonSession":
+                return new MasonSession(name, <any>undefined, { urn })
+            case "databricks:index/masonSessionStore:MasonSessionStore":
+                return new MasonSessionStore(name, <any>undefined, { urn })
             case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
                 return new MaterializedFeaturesFeatureTag(name, <any>undefined, { urn })
             case "databricks:index/metastore:Metastore":
@@ -2112,6 +2195,8 @@ const _module = {
                 return new PostgresSnapshotSchedule(name, <any>undefined, { urn })
             case "databricks:index/postgresSyncedTable:PostgresSyncedTable":
                 return new PostgresSyncedTable(name, <any>undefined, { urn })
+            case "databricks:index/privateNetworkGateway:PrivateNetworkGateway":
+                return new PrivateNetworkGateway(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
                 return new QualityMonitor(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -2303,6 +2388,10 @@ pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistant", 
 pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistantKnowledgeSource", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/lakehouseMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/masonManagedMemoryEntry", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/masonManagedMemoryStore", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/masonSession", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/masonSessionStore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/materializedFeaturesFeatureTag", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreAssignment", _module)
@@ -2345,6 +2434,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _mo
 pulumi.runtime.registerResourceModule("databricks", "index/postgresRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresSnapshotSchedule", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresSyncedTable", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/privateNetworkGateway", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitorV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/query", _module)

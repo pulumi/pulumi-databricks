@@ -72,9 +72,19 @@ public final class AccountFederationPolicyState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     * 
+     */
     @Import(name="oidcPolicy")
     private @Nullable Output<AccountFederationPolicyOidcPolicyArgs> oidcPolicy;
 
+    /**
+     * @return audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     * 
+     */
     public Optional<Output<AccountFederationPolicyOidcPolicyArgs>> oidcPolicy() {
         return Optional.ofNullable(this.oidcPolicy);
     }
@@ -243,11 +253,25 @@ public final class AccountFederationPolicyState extends com.pulumi.resources.Res
             return name(Output.of(name));
         }
 
+        /**
+         * @param oidcPolicy audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+         * policy configuration is captured in create/update audit logs (see go/auditlogs)
+         * 
+         * @return builder
+         * 
+         */
         public Builder oidcPolicy(@Nullable Output<AccountFederationPolicyOidcPolicyArgs> oidcPolicy) {
             $.oidcPolicy = oidcPolicy;
             return this;
         }
 
+        /**
+         * @param oidcPolicy audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+         * policy configuration is captured in create/update audit logs (see go/auditlogs)
+         * 
+         * @return builder
+         * 
+         */
         public Builder oidcPolicy(AccountFederationPolicyOidcPolicyArgs oidcPolicy) {
             return oidcPolicy(Output.of(oidcPolicy));
         }

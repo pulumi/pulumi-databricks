@@ -162,6 +162,9 @@ namespace Pulumi.Databricks
         [Output("emailNotifications")]
         public Output<Outputs.JobEmailNotifications?> EmailNotifications { get; private set; } = null!;
 
+        [Output("environmentVariables")]
+        public Output<ImmutableArray<Outputs.JobEnvironmentVariable>> EnvironmentVariables { get; private set; } = null!;
+
         [Output("environments")]
         public Output<ImmutableArray<Outputs.JobEnvironment>> Environments { get; private set; } = null!;
 
@@ -428,6 +431,14 @@ namespace Pulumi.Databricks
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsArgs>? EmailNotifications { get; set; }
 
+        [Input("environmentVariables")]
+        private InputList<Inputs.JobEnvironmentVariableArgs>? _environmentVariables;
+        public InputList<Inputs.JobEnvironmentVariableArgs> EnvironmentVariables
+        {
+            get => _environmentVariables ?? (_environmentVariables = new InputList<Inputs.JobEnvironmentVariableArgs>());
+            set => _environmentVariables = value;
+        }
+
         [Input("environments")]
         private InputList<Inputs.JobEnvironmentArgs>? _environments;
         public InputList<Inputs.JobEnvironmentArgs> Environments
@@ -689,6 +700,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsGetArgs>? EmailNotifications { get; set; }
+
+        [Input("environmentVariables")]
+        private InputList<Inputs.JobEnvironmentVariableGetArgs>? _environmentVariables;
+        public InputList<Inputs.JobEnvironmentVariableGetArgs> EnvironmentVariables
+        {
+            get => _environmentVariables ?? (_environmentVariables = new InputList<Inputs.JobEnvironmentVariableGetArgs>());
+            set => _environmentVariables = value;
+        }
 
         [Input("environments")]
         private InputList<Inputs.JobEnvironmentGetArgs>? _environments;

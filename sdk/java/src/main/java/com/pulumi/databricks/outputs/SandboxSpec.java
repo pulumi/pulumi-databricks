@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.SandboxSpecCompute;
+import com.pulumi.databricks.outputs.SandboxSpecEnvironment;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class SandboxSpec {
      * 
      */
     private @Nullable SandboxSpecCompute compute;
+    /**
+     * @return The execution environment to use for the sandbox
+     * 
+     */
+    private @Nullable SandboxSpecEnvironment environment;
 
     private SandboxSpec() {}
     /**
@@ -24,6 +30,13 @@ public final class SandboxSpec {
      */
     public Optional<SandboxSpecCompute> compute() {
         return Optional.ofNullable(this.compute);
+    }
+    /**
+     * @return The execution environment to use for the sandbox
+     * 
+     */
+    public Optional<SandboxSpecEnvironment> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class SandboxSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable SandboxSpecCompute compute;
+        private @Nullable SandboxSpecEnvironment environment;
         public Builder() {}
         public Builder(SandboxSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compute = defaults.compute;
+    	      this.environment = defaults.environment;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class SandboxSpec {
             this.compute = compute;
             return this;
         }
+        @CustomType.Setter
+        public Builder environment(@Nullable SandboxSpecEnvironment environment) {
+
+            this.environment = environment;
+            return this;
+        }
         public SandboxSpec build() {
             final var _resultValue = new SandboxSpec();
             _resultValue.compute = compute;
+            _resultValue.environment = environment;
             return _resultValue;
         }
     }

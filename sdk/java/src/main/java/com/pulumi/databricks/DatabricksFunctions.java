@@ -204,6 +204,22 @@ import com.pulumi.databricks.inputs.GetKnowledgeAssistantKnowledgeSourcesPlainAr
 import com.pulumi.databricks.inputs.GetKnowledgeAssistantPlainArgs;
 import com.pulumi.databricks.inputs.GetKnowledgeAssistantsArgs;
 import com.pulumi.databricks.inputs.GetKnowledgeAssistantsPlainArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryEntriesArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryEntriesPlainArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryEntryArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryEntryPlainArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryStoreArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryStorePlainArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryStoresArgs;
+import com.pulumi.databricks.inputs.GetMasonManagedMemoryStoresPlainArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionPlainArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionStoreArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionStorePlainArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionStoresArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionStoresPlainArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionsArgs;
+import com.pulumi.databricks.inputs.GetMasonSessionsPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagsArgs;
@@ -280,6 +296,10 @@ import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
 import com.pulumi.databricks.inputs.GetPostgresSnapshotSchedulePlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
 import com.pulumi.databricks.inputs.GetPostgresSyncedTablePlainArgs;
+import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayArgs;
+import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayPlainArgs;
+import com.pulumi.databricks.inputs.GetPrivateNetworkGatewaysArgs;
+import com.pulumi.databricks.inputs.GetPrivateNetworkGatewaysPlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
@@ -496,6 +516,14 @@ import com.pulumi.databricks.outputs.GetKnowledgeAssistantKnowledgeSourceResult;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantKnowledgeSourcesResult;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantResult;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantsResult;
+import com.pulumi.databricks.outputs.GetMasonManagedMemoryEntriesResult;
+import com.pulumi.databricks.outputs.GetMasonManagedMemoryEntryResult;
+import com.pulumi.databricks.outputs.GetMasonManagedMemoryStoreResult;
+import com.pulumi.databricks.outputs.GetMasonManagedMemoryStoresResult;
+import com.pulumi.databricks.outputs.GetMasonSessionResult;
+import com.pulumi.databricks.outputs.GetMasonSessionStoreResult;
+import com.pulumi.databricks.outputs.GetMasonSessionStoresResult;
+import com.pulumi.databricks.outputs.GetMasonSessionsResult;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagResult;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsResult;
 import com.pulumi.databricks.outputs.GetMetastoreResult;
@@ -534,6 +562,8 @@ import com.pulumi.databricks.outputs.GetPostgresRoleResult;
 import com.pulumi.databricks.outputs.GetPostgresRolesResult;
 import com.pulumi.databricks.outputs.GetPostgresSnapshotScheduleResult;
 import com.pulumi.databricks.outputs.GetPostgresSyncedTableResult;
+import com.pulumi.databricks.outputs.GetPrivateNetworkGatewayResult;
+import com.pulumi.databricks.outputs.GetPrivateNetworkGatewaysResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
 import com.pulumi.databricks.outputs.GetRecipientsResult;
@@ -25745,6 +25775,314 @@ public final class DatabricksFunctions {
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      */
+    public static Output<GetMasonManagedMemoryEntriesResult> getMasonManagedMemoryEntries(GetMasonManagedMemoryEntriesArgs args) {
+        return getMasonManagedMemoryEntries(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryEntriesResult> getMasonManagedMemoryEntriesPlain(GetMasonManagedMemoryEntriesPlainArgs args) {
+        return getMasonManagedMemoryEntriesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryEntriesResult> getMasonManagedMemoryEntries(GetMasonManagedMemoryEntriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryEntries:getMasonManagedMemoryEntries", TypeShape.of(GetMasonManagedMemoryEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryEntriesResult> getMasonManagedMemoryEntries(GetMasonManagedMemoryEntriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryEntries:getMasonManagedMemoryEntries", TypeShape.of(GetMasonManagedMemoryEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryEntriesResult> getMasonManagedMemoryEntriesPlain(GetMasonManagedMemoryEntriesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonManagedMemoryEntries:getMasonManagedMemoryEntries", TypeShape.of(GetMasonManagedMemoryEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryEntryResult> getMasonManagedMemoryEntry(GetMasonManagedMemoryEntryArgs args) {
+        return getMasonManagedMemoryEntry(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryEntryResult> getMasonManagedMemoryEntryPlain(GetMasonManagedMemoryEntryPlainArgs args) {
+        return getMasonManagedMemoryEntryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryEntryResult> getMasonManagedMemoryEntry(GetMasonManagedMemoryEntryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryEntry:getMasonManagedMemoryEntry", TypeShape.of(GetMasonManagedMemoryEntryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryEntryResult> getMasonManagedMemoryEntry(GetMasonManagedMemoryEntryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryEntry:getMasonManagedMemoryEntry", TypeShape.of(GetMasonManagedMemoryEntryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryEntryResult> getMasonManagedMemoryEntryPlain(GetMasonManagedMemoryEntryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonManagedMemoryEntry:getMasonManagedMemoryEntry", TypeShape.of(GetMasonManagedMemoryEntryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoreResult> getMasonManagedMemoryStore(GetMasonManagedMemoryStoreArgs args) {
+        return getMasonManagedMemoryStore(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryStoreResult> getMasonManagedMemoryStorePlain(GetMasonManagedMemoryStorePlainArgs args) {
+        return getMasonManagedMemoryStorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoreResult> getMasonManagedMemoryStore(GetMasonManagedMemoryStoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryStore:getMasonManagedMemoryStore", TypeShape.of(GetMasonManagedMemoryStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoreResult> getMasonManagedMemoryStore(GetMasonManagedMemoryStoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryStore:getMasonManagedMemoryStore", TypeShape.of(GetMasonManagedMemoryStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryStoreResult> getMasonManagedMemoryStorePlain(GetMasonManagedMemoryStorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonManagedMemoryStore:getMasonManagedMemoryStore", TypeShape.of(GetMasonManagedMemoryStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStores() {
+        return getMasonManagedMemoryStores(GetMasonManagedMemoryStoresArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStoresPlain() {
+        return getMasonManagedMemoryStoresPlain(GetMasonManagedMemoryStoresPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStores(GetMasonManagedMemoryStoresArgs args) {
+        return getMasonManagedMemoryStores(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStoresPlain(GetMasonManagedMemoryStoresPlainArgs args) {
+        return getMasonManagedMemoryStoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStores(GetMasonManagedMemoryStoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryStores:getMasonManagedMemoryStores", TypeShape.of(GetMasonManagedMemoryStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStores(GetMasonManagedMemoryStoresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonManagedMemoryStores:getMasonManagedMemoryStores", TypeShape.of(GetMasonManagedMemoryStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonManagedMemoryStoresResult> getMasonManagedMemoryStoresPlain(GetMasonManagedMemoryStoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonManagedMemoryStores:getMasonManagedMemoryStores", TypeShape.of(GetMasonManagedMemoryStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionResult> getMasonSession(GetMasonSessionArgs args) {
+        return getMasonSession(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionResult> getMasonSessionPlain(GetMasonSessionPlainArgs args) {
+        return getMasonSessionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionResult> getMasonSession(GetMasonSessionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSession:getMasonSession", TypeShape.of(GetMasonSessionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionResult> getMasonSession(GetMasonSessionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSession:getMasonSession", TypeShape.of(GetMasonSessionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionResult> getMasonSessionPlain(GetMasonSessionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonSession:getMasonSession", TypeShape.of(GetMasonSessionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoreResult> getMasonSessionStore(GetMasonSessionStoreArgs args) {
+        return getMasonSessionStore(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionStoreResult> getMasonSessionStorePlain(GetMasonSessionStorePlainArgs args) {
+        return getMasonSessionStorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoreResult> getMasonSessionStore(GetMasonSessionStoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSessionStore:getMasonSessionStore", TypeShape.of(GetMasonSessionStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoreResult> getMasonSessionStore(GetMasonSessionStoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSessionStore:getMasonSessionStore", TypeShape.of(GetMasonSessionStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionStoreResult> getMasonSessionStorePlain(GetMasonSessionStorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonSessionStore:getMasonSessionStore", TypeShape.of(GetMasonSessionStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoresResult> getMasonSessionStores() {
+        return getMasonSessionStores(GetMasonSessionStoresArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionStoresResult> getMasonSessionStoresPlain() {
+        return getMasonSessionStoresPlain(GetMasonSessionStoresPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoresResult> getMasonSessionStores(GetMasonSessionStoresArgs args) {
+        return getMasonSessionStores(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionStoresResult> getMasonSessionStoresPlain(GetMasonSessionStoresPlainArgs args) {
+        return getMasonSessionStoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoresResult> getMasonSessionStores(GetMasonSessionStoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSessionStores:getMasonSessionStores", TypeShape.of(GetMasonSessionStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionStoresResult> getMasonSessionStores(GetMasonSessionStoresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSessionStores:getMasonSessionStores", TypeShape.of(GetMasonSessionStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionStoresResult> getMasonSessionStoresPlain(GetMasonSessionStoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonSessionStores:getMasonSessionStores", TypeShape.of(GetMasonSessionStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionsResult> getMasonSessions(GetMasonSessionsArgs args) {
+        return getMasonSessions(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionsResult> getMasonSessionsPlain(GetMasonSessionsPlainArgs args) {
+        return getMasonSessionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionsResult> getMasonSessions(GetMasonSessionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSessions:getMasonSessions", TypeShape.of(GetMasonSessionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetMasonSessionsResult> getMasonSessions(GetMasonSessionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMasonSessions:getMasonSessions", TypeShape.of(GetMasonSessionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetMasonSessionsResult> getMasonSessionsPlain(GetMasonSessionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMasonSessions:getMasonSessions", TypeShape.of(GetMasonSessionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args) {
         return getMaterializedFeaturesFeatureTag(args, InvokeOptions.Empty);
     }
@@ -35234,6 +35572,341 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetPostgresSyncedTableResult> getPostgresSyncedTablePlain(GetPostgresSyncedTablePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a private network gateway&#39;s configuration and lifecycle state by its canonical resource name.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var gatewayName = config.require("gatewayName");
+     *         final var example = DatabricksFunctions.getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs.builder()
+     *             .name(gatewayName)
+     *             .build());
+     * 
+     *         ctx.export("gatewayState", example.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * This data source reads the current state; it does not wait for an in-progress create operation to finish. When managing the gateway in the same configuration, reference `databricks_private_network_gateway.azure.name` directly instead of reading it back through a data source.
+     * 
+     */
+    public static Output<GetPrivateNetworkGatewayResult> getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs args) {
+        return getPrivateNetworkGateway(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a private network gateway&#39;s configuration and lifecycle state by its canonical resource name.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var gatewayName = config.require("gatewayName");
+     *         final var example = DatabricksFunctions.getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs.builder()
+     *             .name(gatewayName)
+     *             .build());
+     * 
+     *         ctx.export("gatewayState", example.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * This data source reads the current state; it does not wait for an in-progress create operation to finish. When managing the gateway in the same configuration, reference `databricks_private_network_gateway.azure.name` directly instead of reading it back through a data source.
+     * 
+     */
+    public static CompletableFuture<GetPrivateNetworkGatewayResult> getPrivateNetworkGatewayPlain(GetPrivateNetworkGatewayPlainArgs args) {
+        return getPrivateNetworkGatewayPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a private network gateway&#39;s configuration and lifecycle state by its canonical resource name.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var gatewayName = config.require("gatewayName");
+     *         final var example = DatabricksFunctions.getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs.builder()
+     *             .name(gatewayName)
+     *             .build());
+     * 
+     *         ctx.export("gatewayState", example.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * This data source reads the current state; it does not wait for an in-progress create operation to finish. When managing the gateway in the same configuration, reference `databricks_private_network_gateway.azure.name` directly instead of reading it back through a data source.
+     * 
+     */
+    public static Output<GetPrivateNetworkGatewayResult> getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPrivateNetworkGateway:getPrivateNetworkGateway", TypeShape.of(GetPrivateNetworkGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a private network gateway&#39;s configuration and lifecycle state by its canonical resource name.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var gatewayName = config.require("gatewayName");
+     *         final var example = DatabricksFunctions.getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs.builder()
+     *             .name(gatewayName)
+     *             .build());
+     * 
+     *         ctx.export("gatewayState", example.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * This data source reads the current state; it does not wait for an in-progress create operation to finish. When managing the gateway in the same configuration, reference `databricks_private_network_gateway.azure.name` directly instead of reading it back through a data source.
+     * 
+     */
+    public static Output<GetPrivateNetworkGatewayResult> getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPrivateNetworkGateway:getPrivateNetworkGateway", TypeShape.of(GetPrivateNetworkGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a private network gateway&#39;s configuration and lifecycle state by its canonical resource name.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPrivateNetworkGatewayArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var gatewayName = config.require("gatewayName");
+     *         final var example = DatabricksFunctions.getPrivateNetworkGateway(GetPrivateNetworkGatewayArgs.builder()
+     *             .name(gatewayName)
+     *             .build());
+     * 
+     *         ctx.export("gatewayState", example.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * This data source reads the current state; it does not wait for an in-progress create operation to finish. When managing the gateway in the same configuration, reference `databricks_private_network_gateway.azure.name` directly instead of reading it back through a data source.
+     * 
+     */
+    public static CompletableFuture<GetPrivateNetworkGatewayResult> getPrivateNetworkGatewayPlain(GetPrivateNetworkGatewayPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPrivateNetworkGateway:getPrivateNetworkGateway", TypeShape.of(GetPrivateNetworkGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists private network gateways under a network connectivity configuration, following pagination automatically. Gateways being deleted are excluded.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * List gateways under an existing network connectivity configuration. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account and NCC IDs through input variables.
+     * 
+     */
+    public static Output<GetPrivateNetworkGatewaysResult> getPrivateNetworkGateways(GetPrivateNetworkGatewaysArgs args) {
+        return getPrivateNetworkGateways(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists private network gateways under a network connectivity configuration, following pagination automatically. Gateways being deleted are excluded.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * List gateways under an existing network connectivity configuration. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account and NCC IDs through input variables.
+     * 
+     */
+    public static CompletableFuture<GetPrivateNetworkGatewaysResult> getPrivateNetworkGatewaysPlain(GetPrivateNetworkGatewaysPlainArgs args) {
+        return getPrivateNetworkGatewaysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists private network gateways under a network connectivity configuration, following pagination automatically. Gateways being deleted are excluded.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * List gateways under an existing network connectivity configuration. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account and NCC IDs through input variables.
+     * 
+     */
+    public static Output<GetPrivateNetworkGatewaysResult> getPrivateNetworkGateways(GetPrivateNetworkGatewaysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPrivateNetworkGateways:getPrivateNetworkGateways", TypeShape.of(GetPrivateNetworkGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists private network gateways under a network connectivity configuration, following pagination automatically. Gateways being deleted are excluded.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * List gateways under an existing network connectivity configuration. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account and NCC IDs through input variables.
+     * 
+     */
+    public static Output<GetPrivateNetworkGatewaysResult> getPrivateNetworkGateways(GetPrivateNetworkGatewaysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPrivateNetworkGateways:getPrivateNetworkGateways", TypeShape.of(GetPrivateNetworkGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists private network gateways under a network connectivity configuration, following pagination automatically. Gateways being deleted are excluded.
+     * 
+     * This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
+     * 
+     * ## Example Usage
+     * 
+     * List gateways under an existing network connectivity configuration. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account and NCC IDs through input variables.
+     * 
+     */
+    public static CompletableFuture<GetPrivateNetworkGatewaysResult> getPrivateNetworkGatewaysPlain(GetPrivateNetworkGatewaysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPrivateNetworkGateways:getPrivateNetworkGateways", TypeShape.of(GetPrivateNetworkGatewaysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -46873,7 +47546,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -46937,7 +47610,7 @@ public final class DatabricksFunctions {
         return getWorkspaceEntityTagAssignment(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47001,7 +47674,7 @@ public final class DatabricksFunctions {
         return getWorkspaceEntityTagAssignmentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47065,7 +47738,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", TypeShape.of(GetWorkspaceEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47129,7 +47802,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", TypeShape.of(GetWorkspaceEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47193,7 +47866,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", TypeShape.of(GetWorkspaceEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47253,7 +47926,7 @@ public final class DatabricksFunctions {
         return getWorkspaceEntityTagAssignments(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47313,7 +47986,7 @@ public final class DatabricksFunctions {
         return getWorkspaceEntityTagAssignmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47373,7 +48046,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", TypeShape.of(GetWorkspaceEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
@@ -47433,7 +48106,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", TypeShape.of(GetWorkspaceEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 

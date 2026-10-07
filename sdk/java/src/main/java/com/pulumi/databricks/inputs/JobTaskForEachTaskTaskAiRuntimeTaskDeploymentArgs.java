@@ -17,11 +17,11 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs extends com
 
     public static final JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs Empty = new JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs();
 
-    @Import(name="commandPath", required=true)
-    private Output<String> commandPath;
+    @Import(name="commandPath")
+    private @Nullable Output<String> commandPath;
 
-    public Output<String> commandPath() {
-        return this.commandPath;
+    public Optional<Output<String>> commandPath() {
+        return Optional.ofNullable(this.commandPath);
     }
 
     /**
@@ -84,7 +84,7 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs extends com
             $ = new JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder commandPath(Output<String> commandPath) {
+        public Builder commandPath(@Nullable Output<String> commandPath) {
             $.commandPath = commandPath;
             return this;
         }
@@ -140,9 +140,6 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs extends com
         }
 
         public JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs build() {
-            if ($.commandPath == null) {
-                throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs", "commandPath");
-            }
             if ($.compute == null) {
                 throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs", "compute");
             }

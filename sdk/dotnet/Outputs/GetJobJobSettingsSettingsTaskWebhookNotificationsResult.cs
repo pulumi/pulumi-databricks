@@ -15,6 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult> OnDurationWarningThresholdExceededs;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult> OnFailures;
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteResult> OnMaintenanceCompletes;
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartResult> OnMaintenanceStarts;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult> OnStarts;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededResult> OnStreamingBacklogExceededs;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult> OnSuccesses;
@@ -25,6 +27,10 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult> onFailures,
 
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteResult> onMaintenanceCompletes,
+
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartResult> onMaintenanceStarts,
+
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult> onStarts,
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededResult> onStreamingBacklogExceededs,
@@ -33,6 +39,8 @@ namespace Pulumi.Databricks.Outputs
         {
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
+            OnMaintenanceCompletes = onMaintenanceCompletes;
+            OnMaintenanceStarts = onMaintenanceStarts;
             OnStarts = onStarts;
             OnStreamingBacklogExceededs = onStreamingBacklogExceededs;
             OnSuccesses = onSuccesses;

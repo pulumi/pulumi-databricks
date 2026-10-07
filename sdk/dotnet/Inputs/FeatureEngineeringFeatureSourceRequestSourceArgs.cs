@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureSourceRequestSourceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dataframeSchema")]
+        public Input<string>? DataframeSchema { get; set; }
+
         /// <summary>
         /// A flat schema with scalar-typed fields only
         /// </summary>

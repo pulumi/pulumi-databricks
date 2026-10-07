@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
 //
@@ -78,7 +78,7 @@ func GetWorkspaceEntityTagAssignments(ctx *pulumi.Context, args *GetWorkspaceEnt
 type GetWorkspaceEntityTagAssignmentsArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 	EntityType string `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	PageSize *int `pulumi:"pageSize"`
@@ -90,7 +90,7 @@ type GetWorkspaceEntityTagAssignmentsArgs struct {
 type GetWorkspaceEntityTagAssignmentsResult struct {
 	// (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
-	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 	EntityType     string                                          `pulumi:"entityType"`
 	PageSize       *int                                            `pulumi:"pageSize"`
 	ProviderConfig *GetWorkspaceEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
@@ -106,7 +106,7 @@ func GetWorkspaceEntityTagAssignmentsOutput(ctx *pulumi.Context, args GetWorkspa
 type GetWorkspaceEntityTagAssignmentsOutputArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
@@ -138,7 +138,7 @@ func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityId() pulumi.StringOu
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
+// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.EntityType }).(pulumi.StringOutput)
 }

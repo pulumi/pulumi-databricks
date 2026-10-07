@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.JobDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobDeploymentArgs;
 import com.pulumi.databricks.inputs.JobEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.JobEnvironmentArgs;
+import com.pulumi.databricks.inputs.JobEnvironmentVariableArgs;
 import com.pulumi.databricks.inputs.JobGitSourceArgs;
 import com.pulumi.databricks.inputs.JobHealthArgs;
 import com.pulumi.databricks.inputs.JobJobClusterArgs;
@@ -186,6 +187,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<JobEmailNotificationsArgs>> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environmentVariables")
+    private @Nullable Output<List<JobEnvironmentVariableArgs>> environmentVariables;
+
+    public Optional<Output<List<JobEnvironmentVariableArgs>>> environmentVariables() {
+        return Optional.ofNullable(this.environmentVariables);
     }
 
     @Import(name="environments")
@@ -732,6 +740,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
+        this.environmentVariables = $.environmentVariables;
         this.environments = $.environments;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -979,6 +988,19 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder emailNotifications(JobEmailNotificationsArgs emailNotifications) {
             return emailNotifications(Output.of(emailNotifications));
+        }
+
+        public Builder environmentVariables(@Nullable Output<List<JobEnvironmentVariableArgs>> environmentVariables) {
+            $.environmentVariables = environmentVariables;
+            return this;
+        }
+
+        public Builder environmentVariables(List<JobEnvironmentVariableArgs> environmentVariables) {
+            return environmentVariables(Output.of(environmentVariables));
+        }
+
+        public Builder environmentVariables(JobEnvironmentVariableArgs... environmentVariables) {
+            return environmentVariables(List.of(environmentVariables));
         }
 
         public Builder environments(@Nullable Output<List<JobEnvironmentArgs>> environments) {

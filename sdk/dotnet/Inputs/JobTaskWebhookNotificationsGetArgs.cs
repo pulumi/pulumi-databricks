@@ -36,6 +36,22 @@ namespace Pulumi.Databricks.Inputs
             set => _onFailures = value;
         }
 
+        [Input("onMaintenanceCompletes")]
+        private InputList<Inputs.JobTaskWebhookNotificationsOnMaintenanceCompleteGetArgs>? _onMaintenanceCompletes;
+        public InputList<Inputs.JobTaskWebhookNotificationsOnMaintenanceCompleteGetArgs> OnMaintenanceCompletes
+        {
+            get => _onMaintenanceCompletes ?? (_onMaintenanceCompletes = new InputList<Inputs.JobTaskWebhookNotificationsOnMaintenanceCompleteGetArgs>());
+            set => _onMaintenanceCompletes = value;
+        }
+
+        [Input("onMaintenanceStarts")]
+        private InputList<Inputs.JobTaskWebhookNotificationsOnMaintenanceStartGetArgs>? _onMaintenanceStarts;
+        public InputList<Inputs.JobTaskWebhookNotificationsOnMaintenanceStartGetArgs> OnMaintenanceStarts
+        {
+            get => _onMaintenanceStarts ?? (_onMaintenanceStarts = new InputList<Inputs.JobTaskWebhookNotificationsOnMaintenanceStartGetArgs>());
+            set => _onMaintenanceStarts = value;
+        }
+
         [Input("onStarts")]
         private InputList<Inputs.JobTaskWebhookNotificationsOnStartGetArgs>? _onStarts;
 

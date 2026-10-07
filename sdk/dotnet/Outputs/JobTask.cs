@@ -51,6 +51,7 @@ namespace Pulumi.Databricks.Outputs
         /// identifier of an `Environment` block that is used to specify libraries.  Required for some tasks (`SparkPythonTask`, `PythonWheelTask`, ...) running on serverless compute.
         /// </summary>
         public readonly string? EnvironmentKey;
+        public readonly string? EnvironmentVariablesKey;
         /// <summary>
         /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         /// </summary>
@@ -149,6 +150,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? environmentKey,
 
+            string? environmentVariablesKey,
+
             string? existingClusterId,
 
             Outputs.JobTaskForEachTask? forEachTask,
@@ -214,6 +217,7 @@ namespace Pulumi.Databricks.Outputs
             Disabled = disabled;
             EmailNotifications = emailNotifications;
             EnvironmentKey = environmentKey;
+            EnvironmentVariablesKey = environmentVariablesKey;
             ExistingClusterId = existingClusterId;
             ForEachTask = forEachTask;
             GenAiComputeTask = genAiComputeTask;

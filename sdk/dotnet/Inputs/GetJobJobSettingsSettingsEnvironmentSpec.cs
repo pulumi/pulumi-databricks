@@ -37,6 +37,9 @@ namespace Pulumi.Databricks.Inputs
             set => _javaDependencies = value;
         }
 
+        [Input("projectEnvironment")]
+        public string? ProjectEnvironment { get; set; }
+
         public GetJobJobSettingsSettingsEnvironmentSpecArgs()
         {
         }

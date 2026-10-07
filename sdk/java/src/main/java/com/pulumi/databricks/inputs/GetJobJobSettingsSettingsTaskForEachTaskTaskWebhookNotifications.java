@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess;
@@ -31,6 +33,20 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
 
     public Optional<List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure>> onFailures() {
         return Optional.ofNullable(this.onFailures);
+    }
+
+    @Import(name="onMaintenanceCompletes")
+    private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes;
+
+    public Optional<List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete>> onMaintenanceCompletes() {
+        return Optional.ofNullable(this.onMaintenanceCompletes);
+    }
+
+    @Import(name="onMaintenanceStarts")
+    private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts;
+
+    public Optional<List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart>> onMaintenanceStarts() {
+        return Optional.ofNullable(this.onMaintenanceStarts);
     }
 
     @Import(name="onStarts")
@@ -59,6 +75,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
     private GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications $) {
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
+        this.onMaintenanceCompletes = $.onMaintenanceCompletes;
+        this.onMaintenanceStarts = $.onMaintenanceStarts;
         this.onStarts = $.onStarts;
         this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
@@ -98,6 +116,24 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
 
         public Builder onFailures(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure... onFailures) {
             return onFailures(List.of(onFailures));
+        }
+
+        public Builder onMaintenanceCompletes(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete> onMaintenanceCompletes) {
+            $.onMaintenanceCompletes = onMaintenanceCompletes;
+            return this;
+        }
+
+        public Builder onMaintenanceCompletes(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete... onMaintenanceCompletes) {
+            return onMaintenanceCompletes(List.of(onMaintenanceCompletes));
+        }
+
+        public Builder onMaintenanceStarts(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart> onMaintenanceStarts) {
+            $.onMaintenanceStarts = onMaintenanceStarts;
+            return this;
+        }
+
+        public Builder onMaintenanceStarts(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart... onMaintenanceStarts) {
+            return onMaintenanceStarts(List.of(onMaintenanceStarts));
         }
 
         public Builder onStarts(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts) {

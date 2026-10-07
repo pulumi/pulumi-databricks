@@ -122,9 +122,19 @@ public class AccountFederationPolicy extends com.pulumi.resources.CustomResource
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     * 
+     */
     @Export(name="oidcPolicy", refs={AccountFederationPolicyOidcPolicy.class}, tree="[0]")
     private Output</* @Nullable */ AccountFederationPolicyOidcPolicy> oidcPolicy;
 
+    /**
+     * @return audit_mode INCLUDE is required on both this message field and its leaf fields so the OIDC
+     * policy configuration is captured in create/update audit logs (see go/auditlogs)
+     * 
+     */
     public Output<Optional<AccountFederationPolicyOidcPolicy>> oidcPolicy() {
         return Codegen.optional(this.oidcPolicy);
     }

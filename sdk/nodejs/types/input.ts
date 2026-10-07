@@ -1951,6 +1951,26 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccess
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
@@ -1985,6 +2005,26 @@ export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigAnthropicRelayed {
@@ -2008,6 +2048,26 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
@@ -2032,6 +2092,26 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
@@ -2067,6 +2147,26 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
@@ -2090,6 +2190,26 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKey
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueSecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigGeminiEnterprise {
@@ -2103,6 +2223,7 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
      */
     projectId?: pulumi.Input<string | undefined>;
     region?: pulumi.Input<string | undefined>;
+    serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential | undefined>;
 }
 
 export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
@@ -2112,6 +2233,37 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigInferenceTable {
@@ -2160,6 +2312,26 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
@@ -2184,6 +2356,26 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraS
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretSecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
@@ -2218,6 +2410,26 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
      * object remains present to indicate that a secret is configured
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelProviderServiceConfigRateLimit {
@@ -6017,6 +6229,7 @@ export interface FeatureEngineeringFeatureSourceLateness {
 }
 
 export interface FeatureEngineeringFeatureSourceRequestSource {
+    dataframeSchema?: pulumi.Input<string | undefined>;
     /**
      * A flat schema with scalar-typed fields only
      */
@@ -10190,6 +10403,8 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     onStarts?: string[];
     onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
@@ -10199,6 +10414,8 @@ export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
     noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -10220,6 +10437,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
     dependencies?: string[];
     environmentVersion?: string;
     javaDependencies?: string[];
+    projectEnvironment?: string;
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
@@ -10228,6 +10446,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
     dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     environmentVersion?: pulumi.Input<string | undefined>;
     javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    projectEnvironment?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -11282,6 +11501,8 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     onStarts?: string[];
     onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
@@ -11291,6 +11512,8 @@ export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
     noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -11454,6 +11677,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications 
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
+    onMaintenanceCompletes?: string[];
+    onMaintenanceStarts?: string[];
     onStarts?: string[];
     onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
@@ -11463,6 +11688,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsA
     noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -12111,6 +12338,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs {
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications {
     onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart[];
     onStarts?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart[];
     onStreamingBacklogExceededs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
@@ -12119,6 +12348,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[] | undefined>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs>[] | undefined>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs>[] | undefined>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[] | undefined>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>[] | undefined>;
@@ -12146,6 +12377,34 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceCompleteArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -12837,6 +13096,8 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQueryArgs {
 export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
     onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart[];
     onStarts?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart[];
     onStreamingBacklogExceededs?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess[];
@@ -12845,6 +13106,8 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[] | undefined>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteArgs>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartArgs>[] | undefined>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs>[] | undefined>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[] | undefined>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs>[] | undefined>;
@@ -12872,6 +13135,34 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceCompleteArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnMaintenanceStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -12973,6 +13264,8 @@ export interface GetJobJobSettingsSettingsTriggerTableUpdateArgs {
 export interface GetJobJobSettingsSettingsWebhookNotifications {
     onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
+    onMaintenanceCompletes?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete[];
+    onMaintenanceStarts?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart[];
     onStarts?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
     onStreamingBacklogExceededs?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
@@ -12981,6 +13274,8 @@ export interface GetJobJobSettingsSettingsWebhookNotifications {
 export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>[] | undefined>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceCompleteArgs>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStartArgs>[] | undefined>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs>[] | undefined>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs>[] | undefined>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs>[] | undefined>;
@@ -13008,6 +13303,34 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceCompleteArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnMaintenanceStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -13134,6 +13457,118 @@ export interface GetKnowledgeAssistantsProviderConfig {
 }
 
 export interface GetKnowledgeAssistantsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonManagedMemoryEntriesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonManagedMemoryEntriesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonManagedMemoryEntryProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonManagedMemoryStoreProviderConfigArgs {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonManagedMemoryStoresProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonManagedMemoryStoresProviderConfigArgs {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonSessionProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonSessionStoreProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonSessionStoresProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonSessionStoresProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMasonSessionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetMasonSessionsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -17498,6 +17933,8 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run fails.
      */
     onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run starts.
      */
@@ -17537,6 +17974,20 @@ export interface JobEnvironmentSpec {
      */
     environmentVersion?: pulumi.Input<string | undefined>;
     javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    projectEnvironment?: pulumi.Input<string | undefined>;
+}
+
+export interface JobEnvironmentVariable {
+    environmentVariablesKey: pulumi.Input<string>;
+    /**
+     * block describing the Environment. Consists of following attributes:
+     */
+    spec?: pulumi.Input<inputs.JobEnvironmentVariableSpec | undefined>;
+}
+
+export interface JobEnvironmentVariableSpec {
+    files?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface JobGitSource {
@@ -18389,6 +18840,7 @@ export interface JobTask {
      * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      */
     environmentKey?: pulumi.Input<string | undefined>;
+    environmentVariablesKey?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
@@ -18469,7 +18921,7 @@ export interface JobTaskAiRuntimeTask {
 }
 
 export interface JobTaskAiRuntimeTaskDeployment {
-    commandPath: pulumi.Input<string>;
+    commandPath?: pulumi.Input<string | undefined>;
     /**
      * Task level compute configuration. This block is documented below.
      *
@@ -18674,6 +19126,8 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run fails.
      */
     onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run starts.
      */
@@ -18744,6 +19198,7 @@ export interface JobTaskForEachTaskTask {
      * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      */
     environmentKey?: pulumi.Input<string | undefined>;
+    environmentVariablesKey?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
@@ -18823,7 +19278,7 @@ export interface JobTaskForEachTaskTaskAiRuntimeTask {
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTaskDeployment {
-    commandPath: pulumi.Input<string>;
+    commandPath?: pulumi.Input<string | undefined>;
     /**
      * Task level compute configuration. This block is documented below.
      *
@@ -19028,6 +19483,8 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run fails.
      */
     onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run starts.
      */
@@ -19755,6 +20212,8 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
@@ -19781,6 +20240,20 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThre
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnMaintenanceStart {
     /**
      * ID of the job
      */
@@ -20519,6 +20992,8 @@ export interface JobTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnFailure>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnMaintenanceComplete>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnMaintenanceStart>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
@@ -20545,6 +21020,20 @@ export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobTaskWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobTaskWebhookNotificationsOnMaintenanceStart {
     /**
      * ID of the job
      */
@@ -20687,6 +21176,8 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[] | undefined>;
+    onMaintenanceCompletes?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnMaintenanceComplete>[] | undefined>;
+    onMaintenanceStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnMaintenanceStart>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
@@ -20713,6 +21204,20 @@ export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
 }
 
 export interface JobWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobWebhookNotificationsOnMaintenanceComplete {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobWebhookNotificationsOnMaintenanceStart {
     /**
      * ID of the job
      */
@@ -20939,6 +21444,45 @@ export interface LibraryPypi {
      * The repository where the package can be found. If not specified, the default pip index is used.
      */
     repo?: pulumi.Input<string | undefined>;
+}
+
+export interface MasonManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface MasonManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface MasonManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType?: pulumi.Input<string | undefined>;
+}
+
+export interface MasonSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface MasonSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MaterializedFeaturesFeatureTagProviderConfig {
@@ -22118,11 +22662,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -22189,11 +22733,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.136.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.137.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -24851,6 +25395,65 @@ export interface PostgresSyncedTableStatusOngoingSyncProgress {
     totalRowCount?: pulumi.Input<number | undefined>;
 }
 
+export interface PrivateNetworkGatewayAwsCloudConnection {
+    /**
+     * The IAM role that Databricks assumes to manage gateway resources
+     */
+    crossAccountRole: pulumi.Input<inputs.PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole>;
+    /**
+     * The subnets where the gateway establishes connectivity
+     */
+    gatewaySubnets: pulumi.Input<pulumi.Input<inputs.PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet>[]>;
+    /**
+     * The security groups attached to the gateway network interface
+     */
+    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PrivateNetworkGatewayAwsCloudConnectionCrossAccountRole {
+    /**
+     * The ARN of the IAM role
+     */
+    roleArn: pulumi.Input<string>;
+}
+
+export interface PrivateNetworkGatewayAwsCloudConnectionGatewaySubnet {
+    /**
+     * The AWS subnet ID
+     */
+    subnetId: pulumi.Input<string>;
+}
+
+export interface PrivateNetworkGatewayAzureCloudConnection {
+    /**
+     * The subnet where the gateway establishes connectivity
+     */
+    gatewaySubnet: pulumi.Input<inputs.PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet>;
+}
+
+export interface PrivateNetworkGatewayAzureCloudConnectionGatewaySubnet {
+    /**
+     * The full Azure resource ID of the subnet
+     */
+    resourceId: pulumi.Input<string>;
+}
+
+export interface PrivateNetworkGatewayDestination {
+    /**
+     * The destination type. Possible values are: `DNS_NAME`
+     */
+    destinationType: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface PrivateNetworkGatewayPrivateDnsResolver {
+    /**
+     * The resolver type. Possible values are: `IP_ADDRESS`
+     */
+    resolverType: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
 export interface QualityMonitorCustomMetric {
     /**
      * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
@@ -25356,6 +25959,10 @@ export interface SandboxSpec {
      * Compute configuration (size, inactivity timeout) requested for the sandbox
      */
     compute?: pulumi.Input<inputs.SandboxSpecCompute | undefined>;
+    /**
+     * The execution environment to use for the sandbox
+     */
+    environment?: pulumi.Input<inputs.SandboxSpecEnvironment | undefined>;
 }
 
 export interface SandboxSpecCompute {
@@ -25363,6 +25970,15 @@ export interface SandboxSpecCompute {
      * Idle duration after which the sandbox is automatically terminated
      */
     inactivityTimeout?: pulumi.Input<string | undefined>;
+}
+
+export interface SandboxSpecEnvironment {
+    /**
+     * A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
+     * sandbox environment. When set, this image is used as the environment instead of resolving a
+     * managed image from `environmentVersion`
+     */
+    imageUri?: pulumi.Input<string | undefined>;
 }
 
 export interface SandboxStatus {

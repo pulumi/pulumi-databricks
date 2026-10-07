@@ -18,6 +18,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("compute")]
         public Input<Inputs.SandboxSpecComputeGetArgs>? Compute { get; set; }
 
+        /// <summary>
+        /// The execution environment to use for the sandbox
+        /// </summary>
+        [Input("environment")]
+        public Input<Inputs.SandboxSpecEnvironmentGetArgs>? Environment { get; set; }
+
         public SandboxSpecGetArgs()
         {
         }

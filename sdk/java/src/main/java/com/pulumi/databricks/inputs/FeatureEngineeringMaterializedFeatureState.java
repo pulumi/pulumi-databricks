@@ -12,6 +12,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureProvide
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureStreamingModeArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureTableTriggerArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -93,6 +94,21 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     }
 
     /**
+     * (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     * 
+     */
+    @Import(name="jobId")
+    private @Nullable Output<Integer> jobId;
+
+    /**
+     * @return (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+     * 
+     */
+    public Optional<Output<Integer>> jobId() {
+        return Optional.ofNullable(this.jobId);
+    }
+
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      * 
@@ -167,6 +183,21 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
      */
     public Optional<Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs>> onlineStoreConfig() {
         return Optional.ofNullable(this.onlineStoreConfig);
+    }
+
+    /**
+     * (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     * 
+     */
+    @Import(name="pipelineId")
+    private @Nullable Output<String> pipelineId;
+
+    /**
+     * @return (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+     * 
+     */
+    public Optional<Output<String>> pipelineId() {
+        return Optional.ofNullable(this.pipelineId);
     }
 
     /**
@@ -285,11 +316,13 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         this.cronScheduleTrigger = $.cronScheduleTrigger;
         this.featureName = $.featureName;
         this.isOnline = $.isOnline;
+        this.jobId = $.jobId;
         this.lastMaterializationTime = $.lastMaterializationTime;
         this.latestBackfillOperation = $.latestBackfillOperation;
         this.materializedFeatureId = $.materializedFeatureId;
         this.offlineStoreConfig = $.offlineStoreConfig;
         this.onlineStoreConfig = $.onlineStoreConfig;
+        this.pipelineId = $.pipelineId;
         this.pipelineScheduleState = $.pipelineScheduleState;
         this.providerConfig = $.providerConfig;
         this.streamingMode = $.streamingMode;
@@ -412,6 +445,27 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
+         * @param jobId (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobId(@Nullable Output<Integer> jobId) {
+            $.jobId = jobId;
+            return this;
+        }
+
+        /**
+         * @param jobId (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobId(Integer jobId) {
+            return jobId(Output.of(jobId));
+        }
+
+        /**
          * @param lastMaterializationTime (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
          * If the pipeline has not run yet, this field will be null
          * 
@@ -516,6 +570,27 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
          */
         public Builder onlineStoreConfig(FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs onlineStoreConfig) {
             return onlineStoreConfig(Output.of(onlineStoreConfig));
+        }
+
+        /**
+         * @param pipelineId (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineId(@Nullable Output<String> pipelineId) {
+            $.pipelineId = pipelineId;
+            return this;
+        }
+
+        /**
+         * @param pipelineId (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineId(String pipelineId) {
+            return pipelineId(Output.of(pipelineId));
         }
 
         /**

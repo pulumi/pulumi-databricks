@@ -26,6 +26,8 @@ type FeatureEngineeringMaterializedFeature struct {
 	FeatureName pulumi.StringOutput `pulumi:"featureName"`
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
 	IsOnline pulumi.BoolOutput `pulumi:"isOnline"`
+	// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+	JobId pulumi.IntOutput `pulumi:"jobId"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringOutput `pulumi:"lastMaterializationTime"`
@@ -37,6 +39,8 @@ type FeatureEngineeringMaterializedFeature struct {
 	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput `pulumi:"offlineStoreConfig"`
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput `pulumi:"onlineStoreConfig"`
+	// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+	PipelineId pulumi.StringOutput `pulumi:"pipelineId"`
 	// The schedule state of the materialization pipeline.
 	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrOutput `pulumi:"pipelineScheduleState"`
@@ -103,6 +107,8 @@ type featureEngineeringMaterializedFeatureState struct {
 	FeatureName *string `pulumi:"featureName"`
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
 	IsOnline *bool `pulumi:"isOnline"`
+	// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+	JobId *int `pulumi:"jobId"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime *string `pulumi:"lastMaterializationTime"`
@@ -114,6 +120,8 @@ type featureEngineeringMaterializedFeatureState struct {
 	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig *FeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
+	// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+	PipelineId *string `pulumi:"pipelineId"`
 	// The schedule state of the materialization pipeline.
 	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState *string `pulumi:"pipelineScheduleState"`
@@ -148,6 +156,8 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	FeatureName pulumi.StringPtrInput
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
 	IsOnline pulumi.BoolPtrInput
+	// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+	JobId pulumi.IntPtrInput
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringPtrInput
@@ -159,6 +169,8 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
+	// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+	PipelineId pulumi.StringPtrInput
 	// The schedule state of the materialization pipeline.
 	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrInput
@@ -369,6 +381,11 @@ func (o FeatureEngineeringMaterializedFeatureOutput) IsOnline() pulumi.BoolOutpu
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.BoolOutput { return v.IsOnline }).(pulumi.BoolOutput)
 }
 
+// (integer) - The ID of the job that materializes the feature. This is present for both batch and streaming features
+func (o FeatureEngineeringMaterializedFeatureOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.IntOutput { return v.JobId }).(pulumi.IntOutput)
+}
+
 // (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 // If the pipeline has not run yet, this field will be null
 func (o FeatureEngineeringMaterializedFeatureOutput) LastMaterializationTime() pulumi.StringOutput {
@@ -397,6 +414,11 @@ func (o FeatureEngineeringMaterializedFeatureOutput) OnlineStoreConfig() Feature
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput {
 		return v.OnlineStoreConfig
 	}).(FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput)
+}
+
+// (string) - The ID of the pipeline that materializes this feature. This is only present for streaming features
+func (o FeatureEngineeringMaterializedFeatureOutput) PipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.PipelineId }).(pulumi.StringOutput)
 }
 
 // The schedule state of the materialization pipeline.

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,10 +35,36 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiK
         return Optional.ofNullable(this.plaintext);
     }
 
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner&#39;s access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     * 
+     */
+    @Import(name="secretReference")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs> secretReference;
+
+    /**
+     * @return Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner&#39;s access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     * 
+     */
+    public Optional<Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs>> secretReference() {
+        return Optional.ofNullable(this.secretReference);
+    }
+
     private AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs() {}
 
     private AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs(AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs $) {
         this.plaintext = $.plaintext;
+        this.secretReference = $.secretReference;
     }
 
     public static Builder builder() {
@@ -81,6 +108,37 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiK
          */
         public Builder plaintext(String plaintext) {
             return plaintext(Output.of(plaintext));
+        }
+
+        /**
+         * @param secretReference Reference to a customer-owned UC Secret that carries this secret value.
+         * The value is read at invoke time under the model provider service
+         * owner&#39;s access and is never copied onto the model provider service, so
+         * rotating the UC Secret takes effect with no change to the model provider
+         * service. On Create, supply `secret_reference.name` as
+         * `secrets/{catalog}.{schema}.{secret}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretReference(@Nullable Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs> secretReference) {
+            $.secretReference = secretReference;
+            return this;
+        }
+
+        /**
+         * @param secretReference Reference to a customer-owned UC Secret that carries this secret value.
+         * The value is read at invoke time under the model provider service
+         * owner&#39;s access and is never copied onto the model provider service, so
+         * rotating the UC Secret takes effect with no change to the model provider
+         * service. On Create, supply `secret_reference.name` as
+         * `secrets/{catalog}.{schema}.{secret}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretReference(AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeySecretReferenceArgs secretReference) {
+            return secretReference(Output.of(secretReference));
         }
 
         public AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs build() {

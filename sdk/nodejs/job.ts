@@ -145,6 +145,7 @@ export class Job extends pulumi.CustomResource {
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     declare public readonly emailNotifications: pulumi.Output<outputs.JobEmailNotifications | undefined>;
+    declare public readonly environmentVariables: pulumi.Output<outputs.JobEnvironmentVariable[] | undefined>;
     declare public readonly environments: pulumi.Output<outputs.JobEnvironment[] | undefined>;
     declare public readonly existingClusterId: pulumi.Output<string | undefined>;
     declare public readonly format: pulumi.Output<string>;
@@ -295,6 +296,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["editMode"] = state?.editMode;
             resourceInputs["emailNotifications"] = state?.emailNotifications;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
             resourceInputs["environments"] = state?.environments;
             resourceInputs["existingClusterId"] = state?.existingClusterId;
             resourceInputs["format"] = state?.format;
@@ -342,6 +344,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["editMode"] = args?.editMode;
             resourceInputs["emailNotifications"] = args?.emailNotifications;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
             resourceInputs["environments"] = args?.environments;
             resourceInputs["existingClusterId"] = args?.existingClusterId;
             resourceInputs["format"] = args?.format;
@@ -425,6 +428,7 @@ export interface JobState {
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications | undefined>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.JobEnvironmentVariable>[] | undefined>;
     environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[] | undefined>;
     existingClusterId?: pulumi.Input<string | undefined>;
     format?: pulumi.Input<string | undefined>;
@@ -595,6 +599,7 @@ export interface JobArgs {
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications | undefined>;
+    environmentVariables?: pulumi.Input<pulumi.Input<inputs.JobEnvironmentVariable>[] | undefined>;
     environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[] | undefined>;
     existingClusterId?: pulumi.Input<string | undefined>;
     format?: pulumi.Input<string | undefined>;
