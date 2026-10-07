@@ -2142,6 +2142,12 @@
                                 "on_failure": {
                                     "maxItemsOne": false
                                 },
+                                "on_maintenance_complete": {
+                                    "maxItemsOne": false
+                                },
+                                "on_maintenance_start": {
+                                    "maxItemsOne": false
+                                },
                                 "on_start": {
                                     "maxItemsOne": false
                                 },
@@ -2166,6 +2172,23 @@
                                                 "maxItemsOne": false
                                             },
                                             "java_dependencies": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "environment_variables": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "files": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -2707,6 +2730,12 @@
                                             "on_failure": {
                                                 "maxItemsOne": false
                                             },
+                                            "on_maintenance_complete": {
+                                                "maxItemsOne": false
+                                            },
+                                            "on_maintenance_start": {
+                                                "maxItemsOne": false
+                                            },
                                             "on_start": {
                                                 "maxItemsOne": false
                                             },
@@ -2807,6 +2836,12 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_failure": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_maintenance_complete": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_maintenance_start": {
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_start": {
@@ -3186,6 +3221,12 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_failure": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_maintenance_complete": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_maintenance_start": {
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_start": {
@@ -3576,6 +3617,12 @@
                                             "on_failure": {
                                                 "maxItemsOne": false
                                             },
+                                            "on_maintenance_complete": {
+                                                "maxItemsOne": false
+                                            },
+                                            "on_maintenance_start": {
+                                                "maxItemsOne": false
+                                            },
                                             "on_start": {
                                                 "maxItemsOne": false
                                             },
@@ -3684,6 +3731,12 @@
                                     "maxItemsOne": false
                                 },
                                 "on_failure": {
+                                    "maxItemsOne": false
+                                },
+                                "on_maintenance_complete": {
+                                    "maxItemsOne": false
+                                },
+                                "on_maintenance_start": {
                                     "maxItemsOne": false
                                 },
                                 "on_start": {
@@ -3810,6 +3863,22 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "databricks_mason_managed_memory_entry": {
+                "current": "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry",
+                "majorVersion": 1
+            },
+            "databricks_mason_managed_memory_store": {
+                "current": "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore",
+                "majorVersion": 1
+            },
+            "databricks_mason_session": {
+                "current": "databricks:index/masonSession:MasonSession",
+                "majorVersion": 1
+            },
+            "databricks_mason_session_store": {
+                "current": "databricks:index/masonSessionStore:MasonSessionStore",
+                "majorVersion": 1
             },
             "databricks_materialized_features_feature_tag": {
                 "current": "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag",
@@ -5895,6 +5964,28 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "databricks_private_network_gateway": {
+                "current": "databricks:index/privateNetworkGateway:PrivateNetworkGateway",
+                "majorVersion": 1,
+                "fields": {
+                    "aws_cloud_connection": {
+                        "fields": {
+                            "gateway_subnets": {
+                                "maxItemsOne": false
+                            },
+                            "security_group_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "destinations": {
+                        "maxItemsOne": false
+                    },
+                    "private_dns_resolvers": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -10253,6 +10344,12 @@
                                                         "on_failure": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "on_maintenance_complete": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "on_maintenance_start": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "on_start": {
                                                             "maxItemsOne": false
                                                         },
@@ -10635,6 +10732,12 @@
                                                                     "on_failure": {
                                                                         "maxItemsOne": false
                                                                     },
+                                                                    "on_maintenance_complete": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_maintenance_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "on_start": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -10696,6 +10799,12 @@
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_failure": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_maintenance_complete": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_maintenance_start": {
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_start": {
@@ -10945,6 +11054,12 @@
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_failure": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_maintenance_complete": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_maintenance_start": {
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_start": {
@@ -11202,6 +11317,12 @@
                                                                     "on_failure": {
                                                                         "maxItemsOne": false
                                                                     },
+                                                                    "on_maintenance_complete": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_maintenance_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "on_start": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -11248,6 +11369,12 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "on_failure": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "on_maintenance_complete": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "on_maintenance_start": {
                                                             "maxItemsOne": false
                                                         },
                                                         "on_start": {
@@ -11304,6 +11431,58 @@
                 "majorVersion": 1,
                 "fields": {
                     "knowledge_assistants": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_mason_managed_memory_entries": {
+                "current": "databricks:index/getMasonManagedMemoryEntries:getMasonManagedMemoryEntries",
+                "majorVersion": 1,
+                "fields": {
+                    "managed_memory_entries": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_mason_managed_memory_entry": {
+                "current": "databricks:index/getMasonManagedMemoryEntry:getMasonManagedMemoryEntry",
+                "majorVersion": 1
+            },
+            "databricks_mason_managed_memory_store": {
+                "current": "databricks:index/getMasonManagedMemoryStore:getMasonManagedMemoryStore",
+                "majorVersion": 1
+            },
+            "databricks_mason_managed_memory_stores": {
+                "current": "databricks:index/getMasonManagedMemoryStores:getMasonManagedMemoryStores",
+                "majorVersion": 1,
+                "fields": {
+                    "managed_memory_stores": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_mason_session": {
+                "current": "databricks:index/getMasonSession:getMasonSession",
+                "majorVersion": 1
+            },
+            "databricks_mason_session_store": {
+                "current": "databricks:index/getMasonSessionStore:getMasonSessionStore",
+                "majorVersion": 1
+            },
+            "databricks_mason_session_stores": {
+                "current": "databricks:index/getMasonSessionStores:getMasonSessionStores",
+                "majorVersion": 1,
+                "fields": {
+                    "session_stores": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_mason_sessions": {
+                "current": "databricks:index/getMasonSessions:getMasonSessions",
+                "majorVersion": 1,
+                "fields": {
+                    "sessions": {
                         "maxItemsOne": false
                     }
                 }
@@ -11868,6 +12047,57 @@
                             },
                             "type_overrides": {
                                 "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_private_network_gateway": {
+                "current": "databricks:index/getPrivateNetworkGateway:getPrivateNetworkGateway",
+                "majorVersion": 1,
+                "fields": {
+                    "aws_cloud_connection": {
+                        "fields": {
+                            "gateway_subnets": {
+                                "maxItemsOne": false
+                            },
+                            "security_group_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "destinations": {
+                        "maxItemsOne": false
+                    },
+                    "private_dns_resolvers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_private_network_gateways": {
+                "current": "databricks:index/getPrivateNetworkGateways:getPrivateNetworkGateways",
+                "majorVersion": 1,
+                "fields": {
+                    "private_network_gateways": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "aws_cloud_connection": {
+                                    "fields": {
+                                        "gateway_subnets": {
+                                            "maxItemsOne": false
+                                        },
+                                        "security_group_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "destinations": {
+                                    "maxItemsOne": false
+                                },
+                                "private_dns_resolvers": {
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     }
@@ -13063,6 +13293,26 @@
                     }
                 }
             },
+            "databricks_mason_managed_memory_entry": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_mason_managed_memory_store": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_mason_session": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_mason_session_store": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_materialized_features_feature_tag": {},
             "databricks_online_store": {},
             "databricks_policy_info": {},
@@ -13112,6 +13362,11 @@
                 }
             },
             "databricks_postgres_synced_table": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_private_network_gateway": {
                 "computeID": {
                     "kind": "missing"
                 }
@@ -13370,6 +13625,10 @@
             "databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource": 1,
             "databricks:index/lakehouseMonitor:LakehouseMonitor": 0,
             "databricks:index/library:Library": 1,
+            "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry": 1,
+            "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore": 1,
+            "databricks:index/masonSession:MasonSession": 1,
+            "databricks:index/masonSessionStore:MasonSessionStore": 1,
             "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag": 1,
             "databricks:index/metastore:Metastore": 0,
             "databricks:index/metastoreAssignment:MetastoreAssignment": 0,
@@ -13412,6 +13671,7 @@
             "databricks:index/postgresRole:PostgresRole": 1,
             "databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule": 1,
             "databricks:index/postgresSyncedTable:PostgresSyncedTable": 1,
+            "databricks:index/privateNetworkGateway:PrivateNetworkGateway": 1,
             "databricks:index/qualityMonitor:QualityMonitor": 1,
             "databricks:index/qualityMonitorV2:QualityMonitorV2": 1,
             "databricks:index/query:Query": 0,
@@ -13568,6 +13828,14 @@
             "databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource": 1,
             "databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources": 1,
             "databricks:index/getKnowledgeAssistants:getKnowledgeAssistants": 1,
+            "databricks:index/getMasonManagedMemoryEntries:getMasonManagedMemoryEntries": 1,
+            "databricks:index/getMasonManagedMemoryEntry:getMasonManagedMemoryEntry": 1,
+            "databricks:index/getMasonManagedMemoryStore:getMasonManagedMemoryStore": 1,
+            "databricks:index/getMasonManagedMemoryStores:getMasonManagedMemoryStores": 1,
+            "databricks:index/getMasonSession:getMasonSession": 1,
+            "databricks:index/getMasonSessionStore:getMasonSessionStore": 1,
+            "databricks:index/getMasonSessionStores:getMasonSessionStores": 1,
+            "databricks:index/getMasonSessions:getMasonSessions": 1,
             "databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag": 1,
             "databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags": 1,
             "databricks:index/getMetastore:getMetastore": 0,
@@ -13606,6 +13874,8 @@
             "databricks:index/getPostgresRoles:getPostgresRoles": 1,
             "databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule": 1,
             "databricks:index/getPostgresSyncedTable:getPostgresSyncedTable": 1,
+            "databricks:index/getPrivateNetworkGateway:getPrivateNetworkGateway": 1,
+            "databricks:index/getPrivateNetworkGateways:getPrivateNetworkGateways": 1,
             "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
             "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
             "databricks:index/getRecipients:getRecipients": 1,
@@ -16797,6 +17067,19 @@
             "databricks_library": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_mason_managed_memory_entry": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_managed_memory_store": [
+                "provider_config.workspace_id",
+                "workspace_id"
+            ],
+            "databricks_mason_session": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_session_store": [
+                "provider_config.workspace_id"
+            ],
             "databricks_materialized_features_feature_tag": [
                 "provider_config.workspace_id"
             ],
@@ -17300,6 +17583,36 @@
             "databricks_knowledge_assistants": [
                 "knowledge_assistants.$.provider_config.workspace_id",
                 "provider_config.workspace_id"
+            ],
+            "databricks_mason_managed_memory_entries": [
+                "managed_memory_entries.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_managed_memory_entry": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_managed_memory_store": [
+                "provider_config.workspace_id",
+                "workspace_id"
+            ],
+            "databricks_mason_managed_memory_stores": [
+                "managed_memory_stores.$.provider_config.workspace_id",
+                "managed_memory_stores.$.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_session": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_session_store": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_mason_session_stores": [
+                "provider_config.workspace_id",
+                "session_stores.$.provider_config.workspace_id"
+            ],
+            "databricks_mason_sessions": [
+                "provider_config.workspace_id",
+                "sessions.$.provider_config.workspace_id"
             ],
             "databricks_materialized_features_feature_tag": [
                 "provider_config.workspace_id"
