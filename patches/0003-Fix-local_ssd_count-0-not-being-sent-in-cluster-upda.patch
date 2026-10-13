@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: stav-cohen12 <stav.c@lsports.eu>
+Date: Thu, 12 Feb 2026 06:21:05 +0200
+Subject: [PATCH] Fix local_ssd_count=0 not being sent in cluster update
+
+When updating a cluster with gcp_attributes.local_ssd_count=0, the value
+was being omitted from the API request, causing Databricks to fall back
+to 'Default' behavior (at least 1 local SSD).
+
+This fix adds the same ForceSendFields handling for LocalSsdCount in the
+update function that was previously added to the create function in
+commit 88bcc654 (PR #3631).
+
+Fixes: https://github.com/pulumi/pulumi-databricks/issues/1023
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
+diff --git a/clusters/resource_cluster.go b/clusters/resource_cluster.go
+index 534fdb90..31863610 100644
+--- a/clusters/resource_cluster.go
++++ b/clusters/resource_cluster.go
+@@ -620,6 +620,11 @@ func resourceClusterUpdate(ctx context.Context, d *schema.ResourceData, c *commo
+ 			})
+ 		} else {
+ 			SetForceSendFieldsForCluster(&cluster, d)
++			if cluster.GcpAttributes != nil {
++				if _, ok := d.GetOkExists("gcp_attributes.0.local_ssd_count"); ok {
++					cluster.GcpAttributes.ForceSendFields = []string{"LocalSsdCount"}
++				}
++			}
+ 
+ 			err = retry.RetryContext(ctx, 15*time.Minute, func() *retry.RetryError {
+ 				_, err = clusters.Edit(ctx, cluster)
