@@ -90,7 +90,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
      * 
      *     public static void stack(Context ctx) {
      *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
-     *             .clusterId(clusterName.id())
+     *             .clusterId(clusterName.get("id"))
      *             .build());
      * 
      *     }
@@ -130,7 +130,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
      * 
      *     public static void stack(Context ctx) {
      *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
-     *             .clusterId(clusterName.id())
+     *             .clusterId(clusterName.get("id"))
      *             .build());
      * 
      *     }
@@ -325,7 +325,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
          * 
          *     public static void stack(Context ctx) {
          *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
-         *             .clusterId(clusterName.id())
+         *             .clusterId(clusterName.get("id"))
          *             .build());
          * 
          *     }
@@ -369,7 +369,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
          * 
          *     public static void stack(Context ctx) {
          *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
-         *             .clusterId(clusterName.id())
+         *             .clusterId(clusterName.get("id"))
          *             .build());
          * 
          *     }

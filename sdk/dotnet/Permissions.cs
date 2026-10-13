@@ -465,7 +465,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var notebookUsageById = new Databricks.Permissions("notebook_usage_by_id", new()
     ///     {
-    ///         NotebookId = @this.ObjectId,
+    ///         NotebookId = @this.ObjectId.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
@@ -550,7 +550,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var workspaceFileUsageById = new Databricks.Permissions("workspace_file_usage_by_id", new()
     ///     {
-    ///         WorkspaceFileId = @this.ObjectId,
+    ///         WorkspaceFileId = @this.ObjectId.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
@@ -635,7 +635,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var folderUsageById = new Databricks.Permissions("folder_usage_by_id", new()
     ///     {
-    ///         DirectoryId = @this.ObjectId,
+    ///         DirectoryId = @this.ObjectId.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs

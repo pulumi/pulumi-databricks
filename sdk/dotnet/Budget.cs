@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
     ///                 Operator = "IN",
     ///                 Values = new[]
     ///                 {
-    ///                     1234567890098765,
+    ///                     (int)1234567890098765,
     ///                 },
     ///             },
     ///             Tags = new[]

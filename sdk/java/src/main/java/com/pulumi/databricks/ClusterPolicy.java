@@ -76,8 +76,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var team = config.require("team");
- *         final var policyOverrides = config.require("policyOverrides");
+ *         final var team = config.requireObject("team", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var policyOverrides = config.requireObject("policyOverrides", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         final var defaultPolicy = Map.ofEntries(
  *             Map.entry("dbus_per_hour", Map.ofEntries(
  *                 Map.entry("type", "range"),

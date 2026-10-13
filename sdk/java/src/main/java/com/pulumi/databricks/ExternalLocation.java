@@ -63,16 +63,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
- *             .name(externalDataAccess.name())
+ *             .name(externalDataAccess.get("name"))
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
- *                 .roleArn(externalDataAccess.arn())
+ *                 .roleArn(externalDataAccess.get("arn"))
  *                 .build())
  *             .comment("Managed by TF")
  *             .build());
  * 
  *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
  *             .name("external")
- *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
+ *             .url(String.format("s3://%s/some", externalAwsS3Bucket.get("id")))
  *             .credentialName(external.id())
  *             .comment("Managed by TF")
  *             .build());
@@ -126,11 +126,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
- *             .name(extCred.displayName())
+ *             .name(extCred.get("displayName"))
  *             .azureServicePrincipal(StorageCredentialAzureServicePrincipalArgs.builder()
  *                 .directoryId(tenantId)
- *                 .applicationId(extCred.applicationId())
- *                 .clientSecret(extCredAzureadApplicationPassword.value())
+ *                 .applicationId(extCred.get("applicationId"))
+ *                 .clientSecret(extCredAzureadApplicationPassword.get("value"))
  *                 .build())
  *             .comment("Managed by TF")
  *             .build(), CustomResourceOptions.builder()
@@ -142,8 +142,8 @@ import javax.annotation.Nullable;
  *             .url(StdFunctions.format(FormatArgs.builder()
  *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net")
  *                 .args(                
- *                     extStorage.name(),
- *                     extStorageAzurermStorageAccount.name())
+ *                     extStorage.get("name"),
+ *                     extStorageAzurermStorageAccount.get("name"))
  *                 .build()).result())
  *             .credentialName(external.id())
  *             .comment("Managed by TF")
@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  * 
  *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
  *             .name("the-ext-location")
- *             .url(String.format("gs://%s", extBucket.name()))
+ *             .url(String.format("gs://%s", extBucket.get("name")))
  *             .credentialName(ext.id())
  *             .comment("Managed by TF")
  *             .build());

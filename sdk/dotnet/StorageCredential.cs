@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
     ///     var external = new Databricks.StorageCredential("external", new()
     ///     {
     ///         Name = "the-creds",
-    ///         DatabricksGcpServiceAccount = null,
+    ///         DatabricksGcpServiceAccount = new() { },
     ///     });
     /// 
     ///     var externalCreds = new Databricks.Grants("external_creds", new()

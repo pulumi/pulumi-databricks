@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var things = new Schema("things", SchemaArgs.builder()
- *             .catalogName(sandbox.id())
+ *             .catalogName(sandbox.get("id"))
  *             .name("things")
  *             .comment("this schema is managed by terraform")
  *             .properties(Map.of("kind", "various"))
@@ -426,10 +426,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new Volume("this", VolumeArgs.builder()
  *             .name("quickstart_volume")
- *             .catalogName(sandbox.name())
- *             .schemaName(things.name())
+ *             .catalogName(sandbox.get("name"))
+ *             .schemaName(things.get("name"))
  *             .volumeType("EXTERNAL")
- *             .storageLocation(some.url())
+ *             .storageLocation(some.get("url"))
  *             .comment("this volume is managed by terraform")
  *             .build());
  * 
@@ -710,9 +710,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new Credential("external", CredentialArgs.builder()
- *             .name(externalDataAccess.name())
+ *             .name(externalDataAccess.get("name"))
  *             .awsIamRole(CredentialAwsIamRoleArgs.builder()
- *                 .roleArn(externalDataAccess.arn())
+ *                 .roleArn(externalDataAccess.get("arn"))
  *                 .build())
  *             .purpose("SERVICE")
  *             .comment("Managed by TF")
@@ -759,9 +759,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
- *             .name(externalDataAccess.name())
+ *             .name(externalDataAccess.get("name"))
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
- *                 .roleArn(externalDataAccess.arn())
+ *                 .roleArn(externalDataAccess.get("arn"))
  *                 .build())
  *             .comment("Managed by TF")
  *             .build());
@@ -807,8 +807,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
  *             .name("external")
- *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
- *             .credentialName(external.id())
+ *             .url(String.format("s3://%s/some", externalAwsS3Bucket.get("id")))
+ *             .credentialName(external.get("id"))
  *             .comment("Managed by TF")
  *             .build());
  * 
@@ -822,7 +822,7 @@ import javax.annotation.Nullable;
  * 
  *         var someServicePrincipal = new Grant("someServicePrincipal", GrantArgs.builder()
  *             .externalLocation(some.id())
- *             .principal(mySp.applicationId())
+ *             .principal(mySp.get("applicationId"))
  *             .privileges(            
  *                 "USE_SCHEMA",
  *                 "MODIFY")
@@ -830,7 +830,7 @@ import javax.annotation.Nullable;
  * 
  *         var someGroup = new Grant("someGroup", GrantArgs.builder()
  *             .externalLocation(some.id())
- *             .principal(myGroup.displayName())
+ *             .principal(myGroup.get("displayName"))
  *             .privileges(            
  *                 "USE_SCHEMA",
  *                 "MODIFY")
@@ -838,7 +838,7 @@ import javax.annotation.Nullable;
  * 
  *         var someUser = new Grant("someUser", GrantArgs.builder()
  *             .externalLocation(some.id())
- *             .principal(myUser.userName())
+ *             .principal(myUser.get("userName"))
  *             .privileges(            
  *                 "USE_SCHEMA",
  *                 "MODIFY")

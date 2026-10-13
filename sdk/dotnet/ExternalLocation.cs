@@ -153,7 +153,7 @@ namespace Pulumi.Databricks
     ///     var ext = new Databricks.StorageCredential("ext", new()
     ///     {
     ///         Name = "the-creds",
-    ///         DatabricksGcpServiceAccount = null,
+    ///         DatabricksGcpServiceAccount = new() { },
     ///     });
     /// 
     ///     var some = new Databricks.ExternalLocation("some", new()

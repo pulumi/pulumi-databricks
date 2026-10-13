@@ -56,21 +56,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         var rootStorageBucket = new S3Bucket("rootStorageBucket", S3BucketArgs.builder()
  *             .bucket(String.format("%s-rootbucket", prefix))
  *             .acl("private")
  *             .build());
  * 
  *         var rootVersioning = new S3BucketVersioning("rootVersioning", S3BucketVersioningArgs.builder()
- *             .bucket(rootStorageBucket.id())
+ *             .bucket(rootStorageBucket.get("id"))
  *             .versioningConfiguration(Arrays.asList(Map.of("status", "Disabled")))
  *             .build());
  * 
  *         var this_ = new MwsStorageConfigurations("this", MwsStorageConfigurationsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName(String.format("%s-storage", prefix))
- *             .bucketName(rootStorageBucket.bucket())
+ *             .bucketName(rootStorageBucket.get("bucket"))
  *             .build());
  * 
  *     }
@@ -107,8 +107,8 @@ import javax.annotation.Nullable;
  *         var this_ = new MwsStorageConfigurations("this", MwsStorageConfigurationsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName(String.format("%s-storage", prefix))
- *             .bucketName(rootStorageBucket.bucket())
- *             .roleArn(unityCatalogRole.arn())
+ *             .bucketName(rootStorageBucket.get("bucket"))
+ *             .roleArn(unityCatalogRole.get("arn"))
  *             .build());
  * 
  *     }

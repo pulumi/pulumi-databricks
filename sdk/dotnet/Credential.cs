@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
     ///     var externalGcpSa = new Databricks.Credential("external_gcp_sa", new()
     ///     {
     ///         Name = "gcp_sa_credential",
-    ///         DatabricksGcpServiceAccount = null,
+    ///         DatabricksGcpServiceAccount = new() { },
     ///         Purpose = "SERVICE",
     ///         Comment = "GCP SA credential managed by TF",
     ///     });

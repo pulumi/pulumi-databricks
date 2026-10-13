@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Store this experiment's traces in a Unity Catalog schema
  *         var withUcTraces = new MlflowExperiment("withUcTraces", MlflowExperimentArgs.builder()
- *             .name(String.format("%s/uc-traces-experiment", me.home()))
+ *             .name(String.format("%s/uc-traces-experiment", me.get("home")))
  *             .traceLocation(MlflowExperimentTraceLocationArgs.builder()
  *                 .ucTraceLocation(MlflowExperimentTraceLocationUcTraceLocationArgs.builder()
  *                     .catalog("my_catalog")

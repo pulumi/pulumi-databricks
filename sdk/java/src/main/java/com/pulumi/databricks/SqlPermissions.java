@@ -196,7 +196,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * 
      *     public static void stack(Context ctx) {
      *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
-     *             .clusterId(clusterName.id())
+     *             .clusterId(clusterName.get("id"))
      *             .build());
      * 
      *     }
@@ -236,7 +236,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * 
      *     public static void stack(Context ctx) {
      *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
-     *             .clusterId(clusterName.id())
+     *             .clusterId(clusterName.get("id"))
      *             .build());
      * 
      *     }

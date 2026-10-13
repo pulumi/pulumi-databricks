@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .catalogId("existing_db_catalog")
  *             .spec(PostgresCatalogSpecArgs.builder()
  *                 .postgresDatabase("existing_database")
- *                 .branch(main.name())
+ *                 .branch(main.get("name"))
  *                 .build())
  *             .build());
  * 

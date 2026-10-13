@@ -148,8 +148,8 @@ import javax.annotation.Nullable;
  * 
  *         var thing = new SqlTable("thing", SqlTableArgs.builder()
  *             .name("quickstart_table")
- *             .catalogName(sandbox.name())
- *             .schemaName(things.name())
+ *             .catalogName(sandbox.get("name"))
+ *             .schemaName(things.get("name"))
  *             .tableType("MANAGED")
  *             .warehouseId(this_.sqlEndpointId())
  *             .columns(            
@@ -167,8 +167,8 @@ import javax.annotation.Nullable;
  * 
  *         var thingView = new SqlTable("thingView", SqlTableArgs.builder()
  *             .name("quickstart_table_view")
- *             .catalogName(sandbox.name())
- *             .schemaName(things.name())
+ *             .catalogName(sandbox.get("name"))
+ *             .schemaName(things.get("name"))
  *             .tableType("VIEW")
  *             .warehouseId(this_.sqlEndpointId())
  *             .viewDefinition(StdFunctions.format(FormatArgs.builder()
@@ -276,8 +276,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var thing = new SqlTable("thing", SqlTableArgs.builder()
  *             .name("auto_cluster_table")
- *             .catalogName(sandbox.name())
- *             .schemaName(things.name())
+ *             .catalogName(sandbox.get("name"))
+ *             .schemaName(things.get("name"))
  *             .tableType("MANAGED")
  *             .clusterKeys("AUTO")
  *             .columns(SqlTableColumnArgs.builder()

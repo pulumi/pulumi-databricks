@@ -91,43 +91,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         var dbxPrivateVpc = new ComputeNetwork("dbxPrivateVpc", ComputeNetworkArgs.builder()
  *             .project(googleProject)
- *             .name(String.format("tf-network-%s", suffix.result()))
+ *             .name(String.format("tf-network-%s", suffix.get("result")))
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var network_with_private_secondary_ip_ranges = new ComputeSubnetwork("network-with-private-secondary-ip-ranges", ComputeSubnetworkArgs.builder()
- *             .name(String.format("test-dbx-%s", suffix.result()))
+ *             .name(String.format("test-dbx-%s", suffix.get("result")))
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
- *             .network(dbxPrivateVpc.id())
+ *             .network(dbxPrivateVpc.get("id"))
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
  *         var router = new ComputeRouter("router", ComputeRouterArgs.builder()
- *             .name(String.format("my-router-%s", suffix.result()))
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .network(dbxPrivateVpc.id())
+ *             .name(String.format("my-router-%s", suffix.get("result")))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .network(dbxPrivateVpc.get("id"))
  *             .build());
  * 
  *         var nat = new ComputeRouterNat("nat", ComputeRouterNatArgs.builder()
- *             .name(String.format("my-router-nat-%s", suffix.result()))
- *             .router(router.name())
- *             .region(router.region())
+ *             .name(String.format("my-router-nat-%s", suffix.get("result")))
+ *             .router(router.get("name"))
+ *             .region(router.get("region"))
  *             .natIpAllocateOption("AUTO_ONLY")
  *             .sourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_IP_RANGES")
  *             .build());
  * 
  *         var this_ = new MwsNetworks("this", MwsNetworksArgs.builder()
  *             .accountId(databricksAccountId)
- *             .networkName(String.format("test-demo-%s", suffix.result()))
+ *             .networkName(String.format("test-demo-%s", suffix.get("result")))
  *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
  *                 .networkProjectId(googleProject)
- *                 .vpcId(dbxPrivateVpc.name())
- *                 .subnetId(networkWithPrivateSecondaryIpRanges.name())
- *                 .subnetRegion(networkWithPrivateSecondaryIpRanges.region())
+ *                 .vpcId(dbxPrivateVpc.get("name"))
+ *                 .subnetId(networkWithPrivateSecondaryIpRanges.get("name"))
+ *                 .subnetRegion(networkWithPrivateSecondaryIpRanges.get("region"))
  *                 .build())
  *             .build());
  * 
@@ -164,16 +164,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new MwsNetworks("this", MwsNetworksArgs.builder()
  *             .accountId(databricksAccountId)
- *             .networkName(String.format("test-demo-%s", suffix.result()))
+ *             .networkName(String.format("test-demo-%s", suffix.get("result")))
  *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
  *                 .networkProjectId(googleProject)
- *                 .vpcId(dbxPrivateVpc.name())
- *                 .subnetId(networkWithPrivateSecondaryIpRanges.name())
- *                 .subnetRegion(networkWithPrivateSecondaryIpRanges.region())
+ *                 .vpcId(dbxPrivateVpc.get("name"))
+ *                 .subnetId(networkWithPrivateSecondaryIpRanges.get("name"))
+ *                 .subnetRegion(networkWithPrivateSecondaryIpRanges.get("region"))
  *                 .build())
  *             .vpcEndpoints(MwsNetworksVpcEndpointsArgs.builder()
- *                 .dataplaneRelays(relay.vpcEndpointId())
- *                 .restApis(workspace.vpcEndpointId())
+ *                 .dataplaneRelays(relay.get("vpcEndpointId"))
+ *                 .restApis(workspace.get("vpcEndpointId"))
  *                 .build())
  *             .build());
  * 

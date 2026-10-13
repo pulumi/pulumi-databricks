@@ -54,22 +54,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var workspace = new VpcEndpoint("workspace", VpcEndpointArgs.builder()
- *             .vpcId(vpc.vpcId())
- *             .serviceName(privateLink.workspaceService())
+ *             .vpcId(vpc.get("vpcId"))
+ *             .serviceName(privateLink.get("workspaceService"))
  *             .vpcEndpointType("Interface")
- *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
- *             .subnetIds(Arrays.asList(plSubnet.id()))
+ *             .securityGroupIds(Arrays.asList(vpc.get("defaultSecurityGroupId")))
+ *             .subnetIds(Arrays.asList(plSubnet.get("id")))
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(Arrays.asList(plSubnet))
  *                 .build());
  * 
  *         var relay = new VpcEndpoint("relay", VpcEndpointArgs.builder()
- *             .vpcId(vpc.vpcId())
- *             .serviceName(privateLink.relayService())
+ *             .vpcId(vpc.get("vpcId"))
+ *             .serviceName(privateLink.get("relayService"))
  *             .vpcEndpointType("Interface")
- *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
- *             .subnetIds(Arrays.asList(plSubnet.id()))
+ *             .securityGroupIds(Arrays.asList(vpc.get("defaultSecurityGroupId")))
+ *             .subnetIds(Arrays.asList(plSubnet.get("id")))
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(Arrays.asList(plSubnet))
@@ -107,30 +107,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
- *             .vpcId(vpc.vpcId())
- *             .routeTableIds(vpc.privateRouteTableIds())
+ *             .vpcId(vpc.get("vpcId"))
+ *             .routeTableIds(vpc.get("privateRouteTableIds"))
  *             .serviceName(String.format("com.amazonaws.%s.s3", region))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(Arrays.asList(vpc))
  *                 .build());
  * 
  *         var sts = new VpcEndpoint("sts", VpcEndpointArgs.builder()
- *             .vpcId(vpc.vpcId())
+ *             .vpcId(vpc.get("vpcId"))
  *             .serviceName(String.format("com.amazonaws.%s.sts", region))
  *             .vpcEndpointType("Interface")
- *             .subnetIds(vpc.privateSubnets())
- *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
+ *             .subnetIds(vpc.get("privateSubnets"))
+ *             .securityGroupIds(Arrays.asList(vpc.get("defaultSecurityGroupId")))
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(Arrays.asList(vpc))
  *                 .build());
  * 
  *         var kinesis_streams = new VpcEndpoint("kinesis-streams", VpcEndpointArgs.builder()
- *             .vpcId(vpc.vpcId())
+ *             .vpcId(vpc.get("vpcId"))
  *             .serviceName(String.format("com.amazonaws.%s.kinesis-streams", region))
  *             .vpcEndpointType("Interface")
- *             .subnetIds(vpc.privateSubnets())
- *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
+ *             .subnetIds(vpc.get("privateSubnets"))
+ *             .securityGroupIds(Arrays.asList(vpc.get("defaultSecurityGroupId")))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(Arrays.asList(vpc))
  *                 .build());
@@ -167,8 +167,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var workspace = new MwsVpcEndpoint("workspace", MwsVpcEndpointArgs.builder()
  *             .accountId(databricksAccountId)
- *             .awsVpcEndpointId(workspaceAwsVpcEndpoint.id())
- *             .vpcEndpointName(String.format("VPC Relay for %s", vpc.vpcId()))
+ *             .awsVpcEndpointId(workspaceAwsVpcEndpoint.get("id"))
+ *             .vpcEndpointName(String.format("VPC Relay for %s", vpc.get("vpcId")))
  *             .region(region)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(workspaceAwsVpcEndpoint)
@@ -176,8 +176,8 @@ import javax.annotation.Nullable;
  * 
  *         var relay = new MwsVpcEndpoint("relay", MwsVpcEndpointArgs.builder()
  *             .accountId(databricksAccountId)
- *             .awsVpcEndpointId(relayAwsVpcEndpoint.id())
- *             .vpcEndpointName(String.format("VPC Relay for %s", vpc.vpcId()))
+ *             .awsVpcEndpointId(relayAwsVpcEndpoint.get("id"))
+ *             .vpcEndpointName(String.format("VPC Relay for %s", vpc.get("vpcId")))
  *             .region(region)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(relayAwsVpcEndpoint)
@@ -217,10 +217,10 @@ import javax.annotation.Nullable;
  *             .accountId(databricksAccountId)
  *             .awsRegion(region)
  *             .workspaceName(prefix)
- *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
- *             .storageConfigurationId(thisDatabricksMwsStorageConfigurations.storageConfigurationId())
- *             .networkId(thisDatabricksMwsNetworks.networkId())
- *             .privateAccessSettingsId(pas.privateAccessSettingsId())
+ *             .credentialsId(thisDatabricksMwsCredentials.get("credentialsId"))
+ *             .storageConfigurationId(thisDatabricksMwsStorageConfigurations.get("storageConfigurationId"))
+ *             .networkId(thisDatabricksMwsNetworks.get("networkId"))
+ *             .privateAccessSettingsId(pas.get("privateAccessSettingsId"))
  *             .pricingTier("ENTERPRISE")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(thisDatabricksMwsNetworks)
@@ -263,10 +263,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
- *         final var databricksGoogleServiceAccount = config.require("databricksGoogleServiceAccount");
- *         final var googleProject = config.require("googleProject");
- *         final var subnetRegion = config.require("subnetRegion");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var googleProject = config.requireObject("googleProject", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var subnetRegion = config.requireObject("subnetRegion", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         var workspace = new MwsVpcEndpoint("workspace", MwsVpcEndpointArgs.builder()
  *             .accountId(databricksAccountId)
  *             .vpcEndpointName("PSC Rest API endpoint")
@@ -333,8 +333,8 @@ import javax.annotation.Nullable;
  *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
  *                 .masterIpRange("10.3.0.0/28")
  *                 .build())
- *             .networkId(thisDatabricksMwsNetworks.networkId())
- *             .privateAccessSettingsId(pas.privateAccessSettingsId())
+ *             .networkId(thisDatabricksMwsNetworks.get("networkId"))
+ *             .privateAccessSettingsId(pas.get("privateAccessSettingsId"))
  *             .pricingTier("PREMIUM")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(thisDatabricksMwsNetworks)

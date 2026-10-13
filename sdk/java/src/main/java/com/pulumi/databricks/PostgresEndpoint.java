@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var readReplica = new PostgresEndpoint("readReplica", PostgresEndpointArgs.builder()
  *             .endpointId("read-replica-1")
- *             .parent(dev.name())
+ *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_ONLY")
  *                 .autoscalingLimitMinCu(0.5)
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var analytics = new PostgresEndpoint("analytics", PostgresEndpointArgs.builder()
  *             .endpointId("analytics")
- *             .parent(dev.name())
+ *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_ONLY")
  *                 .autoscalingLimitMinCu(1.0)
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var maintenance = new PostgresEndpoint("maintenance", PostgresEndpointArgs.builder()
  *             .endpointId("primary")
- *             .parent(dev.name())
+ *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
  *                 .disabled(true)
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var alwaysOn = new PostgresEndpoint("alwaysOn", PostgresEndpointArgs.builder()
  *             .endpointId("always-on")
- *             .parent(dev.name())
+ *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
  *                 .noSuspension(true)
@@ -286,7 +286,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var haPrimary = new PostgresEndpoint("haPrimary", PostgresEndpointArgs.builder()
  *             .endpointId("primary")
- *             .parent(dev.name())
+ *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
  *                 .noSuspension(true)
@@ -338,7 +338,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var haReadable = new PostgresEndpoint("haReadable", PostgresEndpointArgs.builder()
  *             .endpointId("primary")
- *             .parent(dev.name())
+ *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
  *                 .noSuspension(true)

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()
  *             .key("publishing_api")
- *             .stringValue(example.value())
+ *             .stringValue(example.get("value"))
  *             .scope(app.name())
  *             .build());
  * 

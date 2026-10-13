@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         Parent = $"accounts/{databricksAccountId}/network-connectivity-configs/{nccId}",
     ///         DisplayName = "private-gateway",
-    ///         BandwidthTierGigabitsPerSecond = bandwidthTierGigabitsPerSecond,
+    ///         BandwidthTierGigabitsPerSecond = (int)bandwidthTierGigabitsPerSecond,
     ///         TrafficMode = "SPECIFIC_DESTINATIONS",
     ///         AzureCloudConnection = new Databricks.Inputs.PrivateNetworkGatewayAzureCloudConnectionArgs
     ///         {

@@ -97,9 +97,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var d1 = new Permissions("d1", PermissionsArgs.builder()
- *             .sqlDashboardId(d1DatabricksSqlDashboard.id())
+ *             .sqlDashboardId(d1DatabricksSqlDashboard.get("id"))
  *             .accessControls(PermissionsAccessControlArgs.builder()
- *                 .groupName(users.displayName())
+ *                 .groupName(users.get("displayName"))
  *                 .permissionLevel("CAN_RUN")
  *                 .build())
  *             .build());

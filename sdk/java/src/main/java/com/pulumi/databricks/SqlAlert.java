@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var this_ = new SqlQuery("this", SqlQueryArgs.builder()
- *             .dataSourceId(example.dataSourceId())
+ *             .dataSourceId(example.get("dataSourceId"))
  *             .name("My Query Name")
  *             .query("SELECT 1 AS p1, 2 as p2")
  *             .parent(sharedDir.objectId().applyValue(_objectId -> String.format("folders/%s", _objectId)))
