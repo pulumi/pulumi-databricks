@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.require("region");
- *         final var prefix = config.require("prefix");
+ *         final var region = config.requireObject("region", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var prefix = config.requireObject("prefix", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
  *             .name(String.format("ncc-for-%s", prefix))
  *             .region(region)

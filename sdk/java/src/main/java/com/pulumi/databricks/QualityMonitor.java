@@ -149,9 +149,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testMonitorInference = new QualityMonitor("testMonitorInference", QualityMonitorArgs.builder()
- *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
- *             .assetsDir(String.format("/Shared/provider-test/databricks_quality_monitoring/%s", myTestTable.name()))
- *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))
+ *             .tableName(String.format("%s.%s.%s", sandbox.get("name"),things.get("name"),myTestTable.get("name")))
+ *             .assetsDir(String.format("/Shared/provider-test/databricks_quality_monitoring/%s", myTestTable.get("name")))
+ *             .outputSchemaName(String.format("%s.%s", sandbox.get("name"),things.get("name")))
  *             .inferenceLog(QualityMonitorInferenceLogArgs.builder()
  *                 .granularities("1 hour")
  *                 .timestampCol("timestamp")
@@ -190,9 +190,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testMonitorInference = new QualityMonitor("testMonitorInference", QualityMonitorArgs.builder()
- *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
- *             .assetsDir(String.format("/Shared/provider-test/databricks_quality_monitoring/%s", myTestTable.name()))
- *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))
+ *             .tableName(String.format("%s.%s.%s", sandbox.get("name"),things.get("name"),myTestTable.get("name")))
+ *             .assetsDir(String.format("/Shared/provider-test/databricks_quality_monitoring/%s", myTestTable.get("name")))
+ *             .outputSchemaName(String.format("%s.%s", sandbox.get("name"),things.get("name")))
  *             .snapshot(QualityMonitorSnapshotArgs.builder()
  *                 .build())
  *             .build());

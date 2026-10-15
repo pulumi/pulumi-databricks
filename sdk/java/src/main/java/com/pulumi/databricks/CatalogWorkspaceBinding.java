@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", CatalogWorkspaceBindingArgs.builder()
  *             .securableName(sandbox.name())
- *             .workspaceId(other.workspaceId())
+ *             .workspaceId(other.get("workspaceId"))
  *             .build());
  * 
  *     }

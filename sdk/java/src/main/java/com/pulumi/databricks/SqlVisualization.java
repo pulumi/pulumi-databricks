@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var q1v1 = new SqlVisualization("q1v1", SqlVisualizationArgs.builder()
- *             .queryId(q1.id())
+ *             .queryId(q1.get("id"))
  *             .type("table")
  *             .name("My Table")
  *             .description("Some Description")

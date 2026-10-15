@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Value = new Databricks.Inputs.AlertConditionThresholdValueArgs
     ///                 {
-    ///                     DoubleValue = 42,
+    ///                     DoubleValue = 42.0,
     ///                 },
     ///             },
     ///         },
@@ -142,7 +142,7 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Value = new Databricks.Inputs.AlertConditionThresholdValueArgs
     ///                 {
-    ///                     DoubleValue = 42,
+    ///                     DoubleValue = 42.0,
     ///                 },
     ///             },
     ///         },

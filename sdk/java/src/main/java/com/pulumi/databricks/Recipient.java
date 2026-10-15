@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .name(String.format("%s-recipient", current.alphanumeric()))
  *             .comment("Made by Pulumi")
  *             .authenticationType("TOKEN")
- *             .sharingCode(db2opensharecode.result())
+ *             .sharingCode(db2opensharecode.get("result"))
  *             .ipAccessList(RecipientIpAccessListArgs.builder()
  *                 .allowedIpAddresses()
  *                 .build())
@@ -131,8 +131,8 @@ import javax.annotation.Nullable;
  *             .storageRoot(StdFunctions.format(FormatArgs.builder()
  *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net/")
  *                 .args(                
- *                     unityCatalog.name(),
- *                     unityCatalogAzurermStorageAccount.name())
+ *                     unityCatalog.get("name"),
+ *                     unityCatalogAzurermStorageAccount.get("name"))
  *                 .build()).result())
  *             .deltaSharingScope("INTERNAL")
  *             .deltaSharingRecipientTokenLifetimeInSeconds(60000000)

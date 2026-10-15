@@ -231,8 +231,8 @@ import javax.annotation.Nullable;
  *         var this_ = new Mount("this", MountArgs.builder()
  *             .name("experiments")
  *             .s3(MountS3Args.builder()
- *                 .instanceProfile(ds.id())
- *                 .bucketName(thisAwsS3Bucket.bucket())
+ *                 .instanceProfile(ds.get("id"))
+ *                 .bucketName(thisAwsS3Bucket.get("bucket"))
  *                 .build())
  *             .build());
  * 
@@ -313,22 +313,22 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var thisRoleAssignment = new RoleAssignment("thisRoleAssignment", RoleAssignmentArgs.builder()
- *             .scope(this_.id())
+ *             .scope(this_.get("id"))
  *             .roleDefinitionName("Storage Blob Data Contributor")
- *             .principalId(current.objectId())
+ *             .principalId(current.get("objectId"))
  *             .build());
  * 
  *         var thisStorageContainer = new StorageContainer("thisStorageContainer", StorageContainerArgs.builder()
  *             .name("marketing")
- *             .storageAccountName(this_.name())
+ *             .storageAccountName(this_.get("name"))
  *             .containerAccessType("private")
  *             .build());
  * 
  *         var marketing = new Mount("marketing", MountArgs.builder()
  *             .name("marketing")
- *             .resourceId(thisStorageContainer.resourceManagerId())
+ *             .resourceId(thisStorageContainer.get("resourceManagerId"))
  *             .abfs(MountAbfsArgs.builder()
- *                 .clientId(current.clientId())
+ *                 .clientId(current.get("clientId"))
  *                 .clientSecretScope(terraform.name())
  *                 .clientSecretKey(servicePrincipalKey.key())
  *                 .initializeFileSystem(true)
@@ -427,10 +427,10 @@ import javax.annotation.Nullable;
  *             .name("{var.RANDOM}")
  *             .adl(MountAdlArgs.builder()
  *                 .storageResourceName("{env.TEST_STORAGE_ACCOUNT_NAME}")
- *                 .tenantId(current.tenantId())
- *                 .clientId(current.clientId())
- *                 .clientSecretScope(terraform.name())
- *                 .clientSecretKey(servicePrincipalKey.key())
+ *                 .tenantId(current.get("tenantId"))
+ *                 .clientId(current.get("clientId"))
+ *                 .clientSecretScope(terraform.get("name"))
+ *                 .clientSecretKey(servicePrincipalKey.get("key"))
  *                 .sparkConfPrefix("fs.adl")
  *                 .build())
  *             .build());
@@ -495,7 +495,7 @@ import javax.annotation.Nullable;
  * 
  *         var marketing = new StorageContainer("marketing", StorageContainerArgs.builder()
  *             .name("marketing")
- *             .storageAccountName(blobaccount.name())
+ *             .storageAccountName(blobaccount.get("name"))
  *             .containerAccessType("private")
  *             .build());
  * 
@@ -506,15 +506,15 @@ import javax.annotation.Nullable;
  * 
  *         var storageKey = new Secret("storageKey", SecretArgs.builder()
  *             .key("blob_storage_key")
- *             .stringValue(blobaccount.primaryAccessKey())
+ *             .stringValue(blobaccount.get("primaryAccessKey"))
  *             .scope(terraform.name())
  *             .build());
  * 
  *         var marketingMount = new Mount("marketingMount", MountArgs.builder()
  *             .name("marketing")
  *             .wasb(MountWasbArgs.builder()
- *                 .containerName(marketing.name())
- *                 .storageAccountName(blobaccount.name())
+ *                 .containerName(marketing.get("name"))
+ *                 .storageAccountName(blobaccount.get("name"))
  *                 .authType("ACCESS_KEY")
  *                 .tokenSecretScope(terraform.name())
  *                 .tokenSecretKey(storageKey.key())

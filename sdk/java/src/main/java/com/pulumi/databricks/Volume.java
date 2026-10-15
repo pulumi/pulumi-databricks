@@ -95,13 +95,13 @@ import javax.annotation.Nullable;
  *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
  *             .name("creds")
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
- *                 .roleArn(externalDataAccess.arn())
+ *                 .roleArn(externalDataAccess.get("arn"))
  *                 .build())
  *             .build());
  * 
  *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
  *             .name("external_location")
- *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
+ *             .url(String.format("s3://%s/some", externalAwsS3Bucket.get("id")))
  *             .credentialName(external.name())
  *             .build());
  * 

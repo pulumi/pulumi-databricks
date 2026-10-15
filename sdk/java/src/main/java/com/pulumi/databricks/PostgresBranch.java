@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dev = new PostgresBranch("dev", PostgresBranchArgs.builder()
  *             .branchId("dev-branch")
- *             .parent(this_.name())
+ *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .noExpiry(true)
  *                 .build())
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var protected_ = new PostgresBranch("protected", PostgresBranchArgs.builder()
  *             .branchId("protected-branch")
- *             .parent(this_.name())
+ *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .isProtected(true)
  *                 .noExpiry(true)
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var temporary = new PostgresBranch("temporary", PostgresBranchArgs.builder()
  *             .branchId("temp-feature-test")
- *             .parent(this_.name())
+ *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .ttl("604800s")
  *                 .build())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var fromSnapshot = new PostgresBranch("fromSnapshot", PostgresBranchArgs.builder()
  *             .branchId("restored-branch")
- *             .parent(this_.name())
+ *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .sourceSnapshot("projects/my-project/snapshots/my-snapshot")
  *                 .noExpiry(true)

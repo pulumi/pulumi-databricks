@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var q1 = new SqlQuery("q1", SqlQueryArgs.builder()
- *             .dataSourceId(example.dataSourceId())
+ *             .dataSourceId(example.get("dataSourceId"))
  *             .name("My Query Name")
  *             .query("""
  *                         SELECT {{ p1 }} AS p1
@@ -142,14 +142,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var q1 = new Permissions("q1", PermissionsArgs.builder()
- *             .sqlQueryId(q1DatabricksSqlQuery.id())
+ *             .sqlQueryId(q1DatabricksSqlQuery.get("id"))
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
- *                     .groupName(users.displayName())
+ *                     .groupName(users.get("displayName"))
  *                     .permissionLevel("CAN_RUN")
  *                     .build(),
  *                 PermissionsAccessControlArgs.builder()
- *                     .groupName(team.displayName())
+ *                     .groupName(team.get("displayName"))
  *                     .permissionLevel("CAN_EDIT")
  *                     .build())
  *             .build());

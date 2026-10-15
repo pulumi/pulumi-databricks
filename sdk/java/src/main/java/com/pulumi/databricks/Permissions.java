@@ -1740,7 +1740,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var knowledgeAssistantUsage = new Permissions("knowledgeAssistantUsage", PermissionsArgs.builder()
- *             .knowledgeAssistantId(this_.id())
+ *             .knowledgeAssistantId(this_.get("id"))
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName("users")
@@ -1791,7 +1791,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var supervisorAgentUsage = new Permissions("supervisorAgentUsage", PermissionsArgs.builder()
- *             .supervisorAgentId(this_.supervisorAgentId())
+ *             .supervisorAgentId(this_.get("supervisorAgentId"))
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName("users")

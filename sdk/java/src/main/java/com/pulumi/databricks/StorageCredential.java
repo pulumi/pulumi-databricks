@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
- *             .name(externalDataAccess.name())
+ *             .name(externalDataAccess.get("name"))
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
- *                 .roleArn(externalDataAccess.arn())
+ *                 .roleArn(externalDataAccess.get("arn"))
  *                 .build())
  *             .comment("Managed by TF")
  *             .build());
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *         var externalMi = new StorageCredential("externalMi", StorageCredentialArgs.builder()
  *             .name("mi_credential")
  *             .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()
- *                 .accessConnectorId(example.id())
+ *                 .accessConnectorId(example.get("id"))
  *                 .build())
  *             .comment("Managed identity credential managed by TF")
  *             .build());

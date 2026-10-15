@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         // register cross-account ARN
  *         var this_ = new MwsCredentials("this", MwsCredentialsArgs.builder()
  *             .accountId(databricksAccountId)
@@ -247,14 +247,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         var naming = new String("naming", StringArgs.builder()
  *             .special(false)
  *             .upper(false)
  *             .length(6)
  *             .build());
  * 
- *         final var prefix = String.format("dltp%s", naming.result());
+ *         final var prefix = String.format("dltp%s", naming.get("result"));
  * 
  *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
  *             .externalId(databricksAccountId)
@@ -271,14 +271,14 @@ import javax.annotation.Nullable;
  * 
  *         var thisIamRolePolicy = new IamRolePolicy("thisIamRolePolicy", IamRolePolicyArgs.builder()
  *             .name(String.format("%s-policy", prefix))
- *             .role(crossAccountRole.id())
+ *             .role(crossAccountRole.get("id"))
  *             .policy(thisGetAwsCrossAccountPolicy.json())
  *             .build());
  * 
  *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .credentialsName(String.format("%s-creds", prefix))
- *             .roleArn(crossAccountRole.arn())
+ *             .roleArn(crossAccountRole.get("arn"))
  *             .build());
  * 
  *         var rootStorageBucket = new S3Bucket("rootStorageBucket", S3BucketArgs.builder()
@@ -289,17 +289,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var rootVersioning = new S3BucketVersioning("rootVersioning", S3BucketVersioningArgs.builder()
- *             .bucket(rootStorageBucket.id())
+ *             .bucket(rootStorageBucket.get("id"))
  *             .versioningConfiguration(Arrays.asList(Map.of("status", "Disabled")))
  *             .build());
  * 
  *         var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new S3BucketServerSideEncryptionConfiguration("rootStorageBucketS3BucketServerSideEncryptionConfiguration", S3BucketServerSideEncryptionConfigurationArgs.builder()
- *             .bucket(rootStorageBucket.bucket())
+ *             .bucket(rootStorageBucket.get("bucket"))
  *             .rule(Arrays.asList(Map.of("applyServerSideEncryptionByDefault", Arrays.asList(Map.of("sseAlgorithm", "AES256")))))
  *             .build());
  * 
  *         var rootStorageBucketS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock("rootStorageBucketS3BucketPublicAccessBlock", S3BucketPublicAccessBlockArgs.builder()
- *             .bucket(rootStorageBucket.id())
+ *             .bucket(rootStorageBucket.get("id"))
  *             .blockPublicAcls(true)
  *             .blockPublicPolicy(true)
  *             .ignorePublicAcls(true)
@@ -309,11 +309,11 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         final var thisGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
- *             .bucket(rootStorageBucket.bucket())
+ *             .bucket(rootStorageBucket.get("bucket"))
  *             .build());
  * 
  *         var rootBucketPolicy = new S3BucketPolicy("rootBucketPolicy", S3BucketPolicyArgs.builder()
- *             .bucket(rootStorageBucket.id())
+ *             .bucket(rootStorageBucket.get("id"))
  *             .policy(thisGetAwsBucketPolicy.json())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(Arrays.asList(rootStorageBucketS3BucketPublicAccessBlock))
@@ -322,7 +322,7 @@ import javax.annotation.Nullable;
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName(String.format("%s-storage", prefix))
- *             .bucketName(rootStorageBucket.bucket())
+ *             .bucketName(rootStorageBucket.get("bucket"))
  *             .build());
  * 
  *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()
@@ -375,9 +375,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
- *         final var databricksGoogleServiceAccount = config.require("databricksGoogleServiceAccount");
- *         final var googleProject = config.require("googleProject");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var googleProject = config.requireObject("googleProject", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         // register VPC
  *         var this_ = new MwsNetworks("this", MwsNetworksArgs.builder()
  *             .accountId(databricksAccountId)
@@ -444,7 +444,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         final var me = GoogleFunctions.ClientOpenidUserinfo(Map.ofEntries(
  *         ));
  * 
@@ -454,10 +454,10 @@ import javax.annotation.Nullable;
  *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
  *             .accountId(databricksAccountId)
  *             .workspaceName(prefix)
- *             .location(current.region())
+ *             .location(current.get("region"))
  *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
  *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
- *                     .projectId(current.project())
+ *                     .projectId(current.get("project"))
  *                     .build())
  *                 .build())
  *             .build());

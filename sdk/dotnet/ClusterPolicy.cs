@@ -50,24 +50,24 @@ namespace Pulumi.Databricks
     ///     var team = config.RequireObject&lt;dynamic&gt;("team");
     ///     // Cluster policy overrides
     ///     var policyOverrides = config.RequireObject&lt;dynamic&gt;("policyOverrides");
-    ///     var defaultPolicy = 
+    ///     var defaultPolicy = new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         { "dbus_per_hour", 
+    ///         ["dbus_per_hour"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "type", "range" },
-    ///             { "maxValue", 10 },
-    ///         } },
-    ///         { "autotermination_minutes", 
+    ///             ["type"] = "range",
+    ///             ["maxValue"] = 10,
+    ///         },
+    ///         ["autotermination_minutes"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "type", "fixed" },
-    ///             { "value", 20 },
-    ///             { "hidden", true },
-    ///         } },
-    ///         { "custom_tags.Team", 
+    ///             ["type"] = "fixed",
+    ///             ["value"] = 20,
+    ///             ["hidden"] = true,
+    ///         },
+    ///         ["custom_tags.Team"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "type", "fixed" },
-    ///             { "value", team },
-    ///         } },
+    ///             ["type"] = "fixed",
+    ///             ["value"] = team,
+    ///         },
     ///     };
     /// 
     ///     var fairUse = new Databricks.ClusterPolicy("fair_use", new()
@@ -137,19 +137,19 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var personalVmOverride = 
+    ///     var personalVmOverride = new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         { "autotermination_minutes", 
+    ///         ["autotermination_minutes"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "type", "fixed" },
-    ///             { "value", 220 },
-    ///             { "hidden", true },
-    ///         } },
-    ///         { "custom_tags.Team", 
+    ///             ["type"] = "fixed",
+    ///             ["value"] = 220,
+    ///             ["hidden"] = true,
+    ///         },
+    ///         ["custom_tags.Team"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "type", "fixed" },
-    ///             { "value", team },
-    ///         } },
+    ///             ["type"] = "fixed",
+    ///             ["value"] = team,
+    ///         },
     ///     };
     /// 
     ///     var personalVm = new Databricks.ClusterPolicy("personal_vm", new()

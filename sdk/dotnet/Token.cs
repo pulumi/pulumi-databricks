@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
     ///     var pat = new Databricks.Token("pat", new()
     ///     {
     ///         Comment = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),
-    ///         LifetimeSeconds = 60 * 24 * 60 * 60,
+    ///         LifetimeSeconds = (int)(60 * 24 * 60.0 * 60.0),
     ///     });
     /// 
     /// });

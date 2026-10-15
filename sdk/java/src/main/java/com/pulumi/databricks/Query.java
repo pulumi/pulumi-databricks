@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         // This will be replaced with new databricks_query resource
  *         var this_ = new Query("this", QueryArgs.builder()
- *             .warehouseId(example.id())
+ *             .warehouseId(example.get("id"))
  *             .displayName("My Query Name")
  *             .queryText("SELECT 42 as value")
  *             .parentPath(sharedDir.path())
@@ -105,10 +105,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var query = new SqlQuery("query", SqlQueryArgs.builder()
- *             .dataSourceId(example.dataSourceId())
+ *             .dataSourceId(example.get("dataSourceId"))
  *             .query("select 42 as value")
  *             .name("My Query")
- *             .parent(String.format("folders/%s", sharedDir.objectId()))
+ *             .parent(String.format("folders/%s", sharedDir.get("objectId")))
  *             .parameters(SqlQueryParameterArgs.builder()
  *                 .name("p1")
  *                 .title("Title for p1")
@@ -150,10 +150,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var query = new Query("query", QueryArgs.builder()
- *             .warehouseId(example.id())
+ *             .warehouseId(example.get("id"))
  *             .queryText("select 42 as value")
  *             .displayName("My Query")
- *             .parentPath(sharedDir.path())
+ *             .parentPath(sharedDir.get("path"))
  *             .parameters(QueryParameterArgs.builder()
  *                 .name("p1")
  *                 .title("Title for p1")
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var queryUsage = new Permissions("queryUsage", PermissionsArgs.builder()
- *             .sqlQueryId(query.id())
+ *             .sqlQueryId(query.get("id"))
  *             .accessControls(PermissionsAccessControlArgs.builder()
  *                 .groupName("users")
  *                 .permissionLevel("CAN_RUN")

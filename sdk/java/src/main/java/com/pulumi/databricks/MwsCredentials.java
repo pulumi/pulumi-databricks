@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
- *         final var prefix = config.require("prefix");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+ *         final var prefix = config.requireObject("prefix", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
  *             .externalId(databricksAccountId)
  *             .build());
@@ -73,13 +73,13 @@ import javax.annotation.Nullable;
  * 
  *         var thisIamRolePolicy = new IamRolePolicy("thisIamRolePolicy", IamRolePolicyArgs.builder()
  *             .name(String.format("%s-policy", prefix))
- *             .role(crossAccountRole.id())
+ *             .role(crossAccountRole.get("id"))
  *             .policy(thisGetAwsCrossAccountPolicy.json())
  *             .build());
  * 
  *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
  *             .credentialsName(String.format("%s-creds", prefix))
- *             .roleArn(crossAccountRole.arn())
+ *             .roleArn(crossAccountRole.get("arn"))
  *             .build());
  * 
  *     }

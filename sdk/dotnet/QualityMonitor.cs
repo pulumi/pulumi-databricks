@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
     ///         TableName = $"{sandbox.Name}.{things.Name}.{myTestTable.Name}",
     ///         AssetsDir = $"/Shared/provider-test/databricks_quality_monitoring/{myTestTable.Name}",
     ///         OutputSchemaName = $"{sandbox.Name}.{things.Name}",
-    ///         Snapshot = null,
+    ///         Snapshot = new() { },
     ///     });
     /// 
     /// });

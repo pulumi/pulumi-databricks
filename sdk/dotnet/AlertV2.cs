@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Value = new Databricks.Inputs.AlertV2EvaluationThresholdValueArgs
     ///                 {
-    ///                     DoubleValue = 100,
+    ///                     DoubleValue = 100.0,
     ///                 },
     ///             },
     ///             EmptyResultState = "OK",

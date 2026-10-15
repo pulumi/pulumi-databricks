@@ -140,9 +140,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var child = new PostgresBranch("child", PostgresBranchArgs.builder()
  *             .branchId("feature-x")
- *             .parent(this_.name())
+ *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
- *                 .sourceBranch(production.name())
+ *                 .sourceBranch(production.get("name"))
  *                 .noExpiry(true)
  *                 .build())
  *             .build());
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var adminSp = new PostgresRole("adminSp", PostgresRoleArgs.builder()
  *             .roleId("admin-sp")
- *             .parent(main.name())
+ *             .parent(main.get("name"))
  *             .spec(PostgresRoleSpecArgs.builder()
  *                 .identityType("SERVICE_PRINCIPAL")
  *                 .postgresRole("00000000-0000-0000-0000-000000000000")
@@ -323,7 +323,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var schemaOwner = new PostgresRole("schemaOwner", PostgresRoleArgs.builder()
  *             .roleId("schemamigrator")
- *             .parent(test.name())
+ *             .parent(test.get("name"))
  *             .spec(PostgresRoleSpecArgs.builder()
  *                 .postgresRole("schemamigrator")
  *                 .membershipRoles("DATABRICKS_SUPERUSER")
@@ -332,7 +332,7 @@ import javax.annotation.Nullable;
  * 
  *         var application = new PostgresDatabase("application", PostgresDatabaseArgs.builder()
  *             .databaseId("application")
- *             .parent(test.name())
+ *             .parent(test.get("name"))
  *             .spec(PostgresDatabaseSpecArgs.builder()
  *                 .postgresDatabase("application")
  *                 .role(schemaOwner.name())
@@ -341,7 +341,7 @@ import javax.annotation.Nullable;
  * 
  *         var applicationPostgresRole = new PostgresRole("applicationPostgresRole", PostgresRoleArgs.builder()
  *             .roleId("application")
- *             .parent(test.name())
+ *             .parent(test.get("name"))
  *             .spec(PostgresRoleSpecArgs.builder()
  *                 .postgresRole("application")
  *                 .build())

@@ -127,9 +127,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var child = new PostgresBranch("child", PostgresBranchArgs.builder()
  *             .branchId("feature-x")
- *             .parent(this_.name())
+ *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
- *                 .sourceBranch(production.name())
+ *                 .sourceBranch(production.get("name"))
  *                 .noExpiry(true)
  *                 .build())
  *             .build());
@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var appOwner = new PostgresRole("appOwner", PostgresRoleArgs.builder()
  *             .roleId("app-owner")
- *             .parent(main.name())
+ *             .parent(main.get("name"))
  *             .spec(PostgresRoleSpecArgs.builder()
  *                 .postgresRole("app_owner")
  *                 .build())
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  * 
  *         var app = new PostgresDatabase("app", PostgresDatabaseArgs.builder()
  *             .databaseId("app")
- *             .parent(main.name())
+ *             .parent(main.get("name"))
  *             .spec(PostgresDatabaseSpecArgs.builder()
  *                 .postgresDatabase("app")
  *                 .role(appOwner.name())
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var analytics = new PostgresDatabase("analytics", PostgresDatabaseArgs.builder()
  *             .databaseId("analytics")
- *             .parent(main.name())
+ *             .parent(main.get("name"))
  *             .spec(PostgresDatabaseSpecArgs.builder()
  *                 .postgresDatabase("analytics_v2")
  *                 .build())
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var schemaOwner = new PostgresRole("schemaOwner", PostgresRoleArgs.builder()
  *             .roleId("schemamigrator")
- *             .parent(test.name())
+ *             .parent(test.get("name"))
  *             .spec(PostgresRoleSpecArgs.builder()
  *                 .postgresRole("schemamigrator")
  *                 .membershipRoles("DATABRICKS_SUPERUSER")
@@ -299,7 +299,7 @@ import javax.annotation.Nullable;
  * 
  *         var application1 = new PostgresDatabase("application1", PostgresDatabaseArgs.builder()
  *             .databaseId("application1")
- *             .parent(test.name())
+ *             .parent(test.get("name"))
  *             .spec(PostgresDatabaseSpecArgs.builder()
  *                 .postgresDatabase("application1")
  *                 .role(schemaOwner.name())
@@ -308,7 +308,7 @@ import javax.annotation.Nullable;
  * 
  *         var application2 = new PostgresDatabase("application2", PostgresDatabaseArgs.builder()
  *             .databaseId("application2")
- *             .parent(test.name())
+ *             .parent(test.get("name"))
  *             .spec(PostgresDatabaseSpecArgs.builder()
  *                 .postgresDatabase("application2")
  *                 .role(schemaOwner.name())

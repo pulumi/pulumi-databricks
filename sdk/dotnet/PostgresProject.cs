@@ -59,8 +59,8 @@ namespace Pulumi.Databricks
     ///             HistoryRetentionDuration = "1209600s",
     ///             DefaultEndpointSettings = new Databricks.Inputs.PostgresProjectSpecDefaultEndpointSettingsArgs
     ///             {
-    ///                 AutoscalingLimitMinCu = 1,
-    ///                 AutoscalingLimitMaxCu = 8,
+    ///                 AutoscalingLimitMinCu = 1.0,
+    ///                 AutoscalingLimitMaxCu = 8.0,
     ///                 SuspendTimeoutDuration = "86400s",
     ///             },
     ///         },
@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
     ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
     ///             NoSuspension = true,
     ///             AutoscalingLimitMinCu = 0.5,
-    ///             AutoscalingLimitMaxCu = 4,
+    ///             AutoscalingLimitMaxCu = 4.0,
     ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
     ///             {
     ///                 Min = 2,

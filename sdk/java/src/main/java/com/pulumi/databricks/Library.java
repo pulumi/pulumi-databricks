@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var deequ = new Library("deequ", LibraryArgs.builder()
- *             .clusterId(this_.id())
+ *             .clusterId(this_.get("id"))
  *             .maven(LibraryMavenArgs.builder()
  *                 .coordinates("com.amazon.deequ:deequ:1.0.4")
  *                 .exclusions("org.apache.avro:avro")
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fbprophet = new Library("fbprophet", LibraryArgs.builder()
- *             .clusterId(this_.id())
+ *             .clusterId(this_.get("id"))
  *             .pypi(LibraryPypiArgs.builder()
  *                 .package_("fbprophet==0.6")
  *                 .build())
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var libraries = new Library("libraries", LibraryArgs.builder()
- *             .clusterId(this_.id())
+ *             .clusterId(this_.get("id"))
  *             .requirements("/Workspace/path/to/requirements.txt")
  *             .build());
  * 
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var rkeops = new Library("rkeops", LibraryArgs.builder()
- *             .clusterId(this_.id())
+ *             .clusterId(this_.get("id"))
  *             .cran(LibraryCranArgs.builder()
  *                 .package_("rkeops")
  *                 .build())

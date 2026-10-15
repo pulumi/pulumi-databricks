@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var lastSelected = new WarehousesDefaultWarehouseOverride("lastSelected", WarehousesDefaultWarehouseOverrideArgs.builder()
- *             .defaultWarehouseOverrideId(example.id())
+ *             .defaultWarehouseOverrideId(example.get("id"))
  *             .type("LAST_SELECTED")
  *             .build());
  * 
@@ -92,9 +92,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom = new WarehousesDefaultWarehouseOverride("custom", WarehousesDefaultWarehouseOverrideArgs.builder()
- *             .defaultWarehouseOverrideId(example.id())
+ *             .defaultWarehouseOverrideId(example.get("id"))
  *             .type("CUSTOM")
- *             .warehouseId(exampleDatabricksSqlEndpoint.id())
+ *             .warehouseId(exampleDatabricksSqlEndpoint.get("id"))
  *             .build());
  * 
  *     }

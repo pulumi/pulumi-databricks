@@ -9082,7 +9082,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -9102,15 +9102,15 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccount.name())
+     *             .policyArn(crossAccountPolicy.get("arn"))
+     *             .role(crossAccount.get("name"))
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
-     *             .roleArn(crossAccount.arn())
+     *             .roleArn(crossAccount.get("arn"))
      *             .build());
      * 
      *     }
@@ -9171,7 +9171,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -9191,15 +9191,15 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccount.name())
+     *             .policyArn(crossAccountPolicy.get("arn"))
+     *             .role(crossAccount.get("name"))
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
-     *             .roleArn(crossAccount.arn())
+     *             .roleArn(crossAccount.get("arn"))
      *             .build());
      * 
      *     }
@@ -9260,7 +9260,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -9280,15 +9280,15 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccount.name())
+     *             .policyArn(crossAccountPolicy.get("arn"))
+     *             .role(crossAccount.get("name"))
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
-     *             .roleArn(crossAccount.arn())
+     *             .roleArn(crossAccount.get("arn"))
      *             .build());
      * 
      *     }
@@ -9349,7 +9349,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -9369,15 +9369,15 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccount.name())
+     *             .policyArn(crossAccountPolicy.get("arn"))
+     *             .role(crossAccount.get("name"))
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
-     *             .roleArn(crossAccount.arn())
+     *             .roleArn(crossAccount.get("arn"))
      *             .build());
      * 
      *     }
@@ -9438,7 +9438,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.require("databricksAccountId");
+     *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -9458,15 +9458,15 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccount.name())
+     *             .policyArn(crossAccountPolicy.get("arn"))
+     *             .role(crossAccount.get("name"))
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
-     *             .roleArn(crossAccount.arn())
+     *             .roleArn(crossAccount.get("arn"))
      *             .build());
      * 
      *     }
@@ -9525,11 +9525,11 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.bucket())
+     *             .bucket(thisS3Bucket.get("bucket"))
      *             .build());
      * 
      *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.id())
+     *             .bucket(thisS3Bucket.get("id"))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -9583,11 +9583,11 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.bucket())
+     *             .bucket(thisS3Bucket.get("bucket"))
      *             .build());
      * 
      *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.id())
+     *             .bucket(thisS3Bucket.get("id"))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -9641,11 +9641,11 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.bucket())
+     *             .bucket(thisS3Bucket.get("bucket"))
      *             .build());
      * 
      *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.id())
+     *             .bucket(thisS3Bucket.get("id"))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -9699,11 +9699,11 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.bucket())
+     *             .bucket(thisS3Bucket.get("bucket"))
      *             .build());
      * 
      *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.id())
+     *             .bucket(thisS3Bucket.get("id"))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -9757,11 +9757,11 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.bucket())
+     *             .bucket(thisS3Bucket.get("bucket"))
      *             .build());
      * 
      *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
-     *             .bucket(thisS3Bucket.id())
+     *             .bucket(thisS3Bucket.get("id"))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -10202,8 +10202,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10277,8 +10277,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10352,8 +10352,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10427,8 +10427,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10502,8 +10502,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10577,8 +10577,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10652,8 +10652,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10727,8 +10727,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10802,8 +10802,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -10877,8 +10877,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
-     *             .role(metastoreDataAccess.name())
-     *             .policyArn(unityMetastore.arn())
+     *             .role(metastoreDataAccess.get("name"))
+     *             .policyArn(unityMetastore.get("arn"))
      *             .build());
      * 
      *     }
@@ -26191,7 +26191,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -26260,7 +26260,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -26329,7 +26329,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -26398,7 +26398,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -26467,7 +26467,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -26536,7 +26536,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -26605,7 +26605,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -40350,20 +40350,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -40421,20 +40421,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -40492,20 +40492,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -40563,20 +40563,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -40634,20 +40634,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -40705,20 +40705,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -40776,20 +40776,20 @@ public final class DatabricksFunctions {
      *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *         for (var i = 0; i < allDatabricksServingEndpoints.get("endpoints"); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
-     *                 .servingEndpointId(range.value().id())
+     *                 .servingEndpointId(range.value().get("id"))
      *                 .accessControls(                
      *                     PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
      *                         .permissionLevel("CAN_VIEW")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(auto.displayName())
+     *                         .groupName(auto.get("displayName"))
      *                         .permissionLevel("CAN_MANAGE")
      *                         .build(),
      *                     PermissionsAccessControlArgs.builder()
-     *                         .groupName(eng.displayName())
+     *                         .groupName(eng.get("displayName"))
      *                         .permissionLevel("CAN_QUERY")
      *                         .build())
      *                 .build());
@@ -46977,7 +46977,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
-     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .name(String.format("default-warehouse-overrides/%s", example.get("id")))
      *             .build());
      * 
      *     }
@@ -47032,7 +47032,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
-     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .name(String.format("default-warehouse-overrides/%s", example.get("id")))
      *             .build());
      * 
      *     }
@@ -47087,7 +47087,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
-     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .name(String.format("default-warehouse-overrides/%s", example.get("id")))
      *             .build());
      * 
      *     }
@@ -47142,7 +47142,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
-     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .name(String.format("default-warehouse-overrides/%s", example.get("id")))
      *             .build());
      * 
      *     }
@@ -47197,7 +47197,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
-     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .name(String.format("default-warehouse-overrides/%s", example.get("id")))
      *             .build());
      * 
      *     }

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new Metastore("this", MetastoreArgs.builder()
  *             .name("primary")
- *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+ *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
  *             .owner("uc admins")
  *             .region("us-east-1")
  *             .forceDestroy(true)
@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  * 
  *         var thisMetastoreDataAccess = new MetastoreDataAccess("thisMetastoreDataAccess", MetastoreDataAccessArgs.builder()
  *             .metastoreId(this_.id())
- *             .name(metastoreDataAccess.name())
+ *             .name(metastoreDataAccess.get("name"))
  *             .awsIamRole(MetastoreDataAccessAwsIamRoleArgs.builder()
- *                 .roleArn(metastoreDataAccess.arn())
+ *                 .roleArn(metastoreDataAccess.get("arn"))
  *                 .build())
  *             .isDefault(true)
  *             .build());
@@ -114,8 +114,8 @@ import javax.annotation.Nullable;
  *             .storageRoot(StdFunctions.format(FormatArgs.builder()
  *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net/")
  *                 .args(                
- *                     unityCatalog.name(),
- *                     unityCatalogAzurermStorageAccount.name())
+ *                     unityCatalog.get("name"),
+ *                     unityCatalogAzurermStorageAccount.get("name"))
  *                 .build()).result())
  *             .owner("uc admins")
  *             .region("eastus")

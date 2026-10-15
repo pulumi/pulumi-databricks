@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         ObjectType = "schema",
     ///         ObjectId = @this.SchemaId,
-    ///         AnomalyDetectionConfig = null,
+    ///         AnomalyDetectionConfig = new() { },
     ///     });
     /// 
     /// });

@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  *                 .timePeriod("MONTH")
  *                 .scopeType("ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER")
  *                 .principalOverrides(BudgetAlertConfigurationPrincipalOverrideArgs.builder()
- *                     .principalId(genie_power_usersDatabricksGroup.id())
+ *                     .principalId(genie_power_usersDatabricksGroup.get("id"))
  *                     .overrideThreshold("300")
  *                     .build())
  *                 .actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs.builder()

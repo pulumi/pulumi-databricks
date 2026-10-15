@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new Metastore("this", MetastoreArgs.builder()
  *             .name("primary")
- *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+ *             .storageRoot(String.format("s3://%s/metastore", metastore.get("id")))
  *             .owner("uc admins")
  *             .region("us-east-1")
  *             .forceDestroy(true)

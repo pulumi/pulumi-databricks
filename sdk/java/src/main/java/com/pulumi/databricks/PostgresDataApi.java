@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var app = new PostgresDataApi("app", PostgresDataApiArgs.builder()
- *             .parent(appDatabricksPostgresDatabase.name())
+ *             .parent(appDatabricksPostgresDatabase.get("name"))
  *             .spec(PostgresDataApiSpecArgs.builder()
  *                 .dbSchemas("public")
  *                 .dbMaxRows(1000)

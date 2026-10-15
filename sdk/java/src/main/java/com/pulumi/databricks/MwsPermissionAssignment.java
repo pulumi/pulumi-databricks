@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addAdminGroup = new MwsPermissionAssignment("addAdminGroup", MwsPermissionAssignmentArgs.builder()
- *             .workspaceId(this_.workspaceId())
+ *             .workspaceId(this_.get("workspaceId"))
  *             .principalId(dataEng.id())
  *             .permissions("ADMIN")
  *             .build());
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addUser = new MwsPermissionAssignment("addUser", MwsPermissionAssignmentArgs.builder()
- *             .workspaceId(this_.workspaceId())
+ *             .workspaceId(this_.get("workspaceId"))
  *             .principalId(me.id())
  *             .permissions("USER")
  *             .build());
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addAdminSpn = new MwsPermissionAssignment("addAdminSpn", MwsPermissionAssignmentArgs.builder()
- *             .workspaceId(this_.workspaceId())
+ *             .workspaceId(this_.get("workspaceId"))
  *             .principalId(sp.id())
  *             .permissions("ADMIN")
  *             .build());

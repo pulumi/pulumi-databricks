@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
- *             .metastoreId(thisDatabricksMetastore.id())
+ *             .metastoreId(thisDatabricksMetastore.get("id"))
  *             .name("sandbox")
  *             .comment("this catalog is managed by terraform")
  *             .properties(Map.of("purpose", "testing"))
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * echo \"Hello World\"
  *                 """)
  *                 .build()).result())
- *             .path(String.format("%s/fileName", this_.volumePath()))
+ *             .path(String.format("%s/fileName", this_.get("volumePath")))
  *             .build());
  * 
  *     }

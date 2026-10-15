@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()
- *             .servicePrincipalId(this_.id())
+ *             .servicePrincipalId(this_.get("id"))
  *             .build());
  * 
  *     }
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()
- *             .servicePrincipalId(thisDatabricksServicePrincipal.id())
+ *             .servicePrincipalId(thisDatabricksServicePrincipal.get("id"))
  *             .timeRotating(this_.rfc3339().applyValue(_rfc3339 -> String.format("Pulumi (created: %s)", _rfc3339)))
  *             .build());
  * 

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksAccountId = config.requireObject("databricksAccountId", com.pulumi.core.TypeShape.map(String.class, Object.class));
  *         var logdeliveryS3Bucket = new S3Bucket("logdeliveryS3Bucket", S3BucketArgs.builder()
  *             .bucket(String.format("%s-logdelivery", prefix))
  *             .acl("private")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var logdeliveryS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock("logdeliveryS3BucketPublicAccessBlock", S3BucketPublicAccessBlockArgs.builder()
- *             .bucket(logdeliveryS3Bucket.id())
+ *             .bucket(logdeliveryS3Bucket.get("id"))
  *             .ignorePublicAcls(true)
  *             .build());
  * 
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var logdeliveryVersioning = new S3BucketVersioning("logdeliveryVersioning", S3BucketVersioningArgs.builder()
- *             .bucket(logdeliveryS3Bucket.id())
+ *             .bucket(logdeliveryS3Bucket.get("id"))
  *             .versioningConfiguration(Arrays.asList(Map.of("status", "Disabled")))
  *             .build());
  * 
@@ -109,12 +109,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var logdeliveryGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
- *             .fullAccessRole(logdeliveryIamRole.arn())
- *             .bucket(logdeliveryS3Bucket.bucket())
+ *             .fullAccessRole(logdeliveryIamRole.get("arn"))
+ *             .bucket(logdeliveryS3Bucket.get("bucket"))
  *             .build());
  * 
  *         var logdeliveryS3BucketPolicy = new S3BucketPolicy("logdeliveryS3BucketPolicy", S3BucketPolicyArgs.builder()
- *             .bucket(logdeliveryS3Bucket.id())
+ *             .bucket(logdeliveryS3Bucket.get("id"))
  *             .policy(logdeliveryGetAwsBucketPolicy.json())
  *             .build());
  * 
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *         var logWriter = new MwsCredentials("logWriter", MwsCredentialsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .credentialsName("Usage Delivery")
- *             .roleArn(logdeliveryIamRole.arn())
+ *             .roleArn(logdeliveryIamRole.get("arn"))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait)
  *                 .build());
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *         var logBucket = new MwsStorageConfigurations("logBucket", MwsStorageConfigurationsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName("Usage Logs")
- *             .bucketName(logdeliveryS3Bucket.bucket())
+ *             .bucketName(logdeliveryS3Bucket.get("bucket"))
  *             .build());
  * 
  *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()
@@ -193,8 +193,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()
  *             .accountId(databricksAccountId)
- *             .credentialsId(logWriter.credentialsId())
- *             .storageConfigurationId(logBucket.storageConfigurationId())
+ *             .credentialsId(logWriter.get("credentialsId"))
+ *             .storageConfigurationId(logBucket.get("storageConfigurationId"))
  *             .deliveryPathPrefix("billable-usage")
  *             .configName("Usage Logs")
  *             .logType("BILLABLE_USAGE")
@@ -234,8 +234,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var auditLogs = new MwsLogDelivery("auditLogs", MwsLogDeliveryArgs.builder()
  *             .accountId(databricksAccountId)
- *             .credentialsId(logWriter.credentialsId())
- *             .storageConfigurationId(logBucket.storageConfigurationId())
+ *             .credentialsId(logWriter.get("credentialsId"))
+ *             .storageConfigurationId(logBucket.get("storageConfigurationId"))
  *             .deliveryPathPrefix("audit-logs")
  *             .configName("Audit Logs")
  *             .logType("AUDIT_LOGS")

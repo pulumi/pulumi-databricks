@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         // This will be replaced with new databricks_query resource
  *         var this_ = new Query("this", QueryArgs.builder()
- *             .warehouseId(example.id())
+ *             .warehouseId(example.get("id"))
  *             .displayName("My Query Name")
  *             .queryText("SELECT 42 as value")
  *             .parentPath(sharedDir.path())
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()
- *             .queryId(this_.id())
+ *             .queryId(this_.get("id"))
  *             .name("My Alert")
- *             .parent(String.format("folders/%s", sharedDir.objectId()))
+ *             .parent(String.format("folders/%s", sharedDir.get("objectId")))
  *             .options(SqlAlertOptionsArgs.builder()
  *                 .column("value")
  *                 .op(">")
@@ -184,9 +184,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var alert = new Alert("alert", AlertArgs.builder()
- *             .queryId(this_.id())
+ *             .queryId(this_.get("id"))
  *             .displayName("My Alert")
- *             .parentPath(sharedDir.path())
+ *             .parentPath(sharedDir.get("path"))
  *             .condition(AlertConditionArgs.builder()
  *                 .op("GREATER_THAN")
  *                 .operand(AlertConditionOperandArgs.builder()
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var alertUsage = new Permissions("alertUsage", PermissionsArgs.builder()
- *             .sqlAlertId(alert.id())
+ *             .sqlAlertId(alert.get("id"))
  *             .accessControls(PermissionsAccessControlArgs.builder()
  *                 .groupName("users")
  *                 .permissionLevel("CAN_RUN")
@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var alertUsage = new Permissions("alertUsage", PermissionsArgs.builder()
- *             .sqlAlertId(alert.id())
+ *             .sqlAlertId(alert.get("id"))
  *             .accessControls(PermissionsAccessControlArgs.builder()
  *                 .groupName("users")
  *                 .permissionLevel("CAN_RUN")

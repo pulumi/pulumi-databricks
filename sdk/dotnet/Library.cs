@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         cli.Add(new Databricks.Library($"cli-{range.Key}", new()
     ///         {
-    ///             ClusterId = range.Key,
+    ///             ClusterId = range.Key.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///             Pypi = new Databricks.Inputs.LibraryPypiArgs
     ///             {
     ///                 Package = "databricks-cli",
