@@ -300,16 +300,6 @@ export type FeatureEngineeringFeature = import("./featureEngineeringFeature").Fe
 export const FeatureEngineeringFeature: typeof import("./featureEngineeringFeature").FeatureEngineeringFeature = null as any;
 utilities.lazyLoad(exports, ["FeatureEngineeringFeature"], () => require("./featureEngineeringFeature"));
 
-export { FeatureEngineeringKafkaConfigArgs, FeatureEngineeringKafkaConfigState } from "./featureEngineeringKafkaConfig";
-export type FeatureEngineeringKafkaConfig = import("./featureEngineeringKafkaConfig").FeatureEngineeringKafkaConfig;
-export const FeatureEngineeringKafkaConfig: typeof import("./featureEngineeringKafkaConfig").FeatureEngineeringKafkaConfig = null as any;
-utilities.lazyLoad(exports, ["FeatureEngineeringKafkaConfig"], () => require("./featureEngineeringKafkaConfig"));
-
-export { FeatureEngineeringMaterializedFeatureArgs, FeatureEngineeringMaterializedFeatureState } from "./featureEngineeringMaterializedFeature";
-export type FeatureEngineeringMaterializedFeature = import("./featureEngineeringMaterializedFeature").FeatureEngineeringMaterializedFeature;
-export const FeatureEngineeringMaterializedFeature: typeof import("./featureEngineeringMaterializedFeature").FeatureEngineeringMaterializedFeature = null as any;
-utilities.lazyLoad(exports, ["FeatureEngineeringMaterializedFeature"], () => require("./featureEngineeringMaterializedFeature"));
-
 export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
@@ -745,26 +735,6 @@ export const getFeatureEngineeringFeatures: typeof import("./getFeatureEngineeri
 export const getFeatureEngineeringFeaturesOutput: typeof import("./getFeatureEngineeringFeatures").getFeatureEngineeringFeaturesOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureEngineeringFeatures","getFeatureEngineeringFeaturesOutput"], () => require("./getFeatureEngineeringFeatures"));
 
-export { GetFeatureEngineeringKafkaConfigArgs, GetFeatureEngineeringKafkaConfigResult, GetFeatureEngineeringKafkaConfigOutputArgs } from "./getFeatureEngineeringKafkaConfig";
-export const getFeatureEngineeringKafkaConfig: typeof import("./getFeatureEngineeringKafkaConfig").getFeatureEngineeringKafkaConfig = null as any;
-export const getFeatureEngineeringKafkaConfigOutput: typeof import("./getFeatureEngineeringKafkaConfig").getFeatureEngineeringKafkaConfigOutput = null as any;
-utilities.lazyLoad(exports, ["getFeatureEngineeringKafkaConfig","getFeatureEngineeringKafkaConfigOutput"], () => require("./getFeatureEngineeringKafkaConfig"));
-
-export { GetFeatureEngineeringKafkaConfigsArgs, GetFeatureEngineeringKafkaConfigsResult, GetFeatureEngineeringKafkaConfigsOutputArgs } from "./getFeatureEngineeringKafkaConfigs";
-export const getFeatureEngineeringKafkaConfigs: typeof import("./getFeatureEngineeringKafkaConfigs").getFeatureEngineeringKafkaConfigs = null as any;
-export const getFeatureEngineeringKafkaConfigsOutput: typeof import("./getFeatureEngineeringKafkaConfigs").getFeatureEngineeringKafkaConfigsOutput = null as any;
-utilities.lazyLoad(exports, ["getFeatureEngineeringKafkaConfigs","getFeatureEngineeringKafkaConfigsOutput"], () => require("./getFeatureEngineeringKafkaConfigs"));
-
-export { GetFeatureEngineeringMaterializedFeatureArgs, GetFeatureEngineeringMaterializedFeatureResult, GetFeatureEngineeringMaterializedFeatureOutputArgs } from "./getFeatureEngineeringMaterializedFeature";
-export const getFeatureEngineeringMaterializedFeature: typeof import("./getFeatureEngineeringMaterializedFeature").getFeatureEngineeringMaterializedFeature = null as any;
-export const getFeatureEngineeringMaterializedFeatureOutput: typeof import("./getFeatureEngineeringMaterializedFeature").getFeatureEngineeringMaterializedFeatureOutput = null as any;
-utilities.lazyLoad(exports, ["getFeatureEngineeringMaterializedFeature","getFeatureEngineeringMaterializedFeatureOutput"], () => require("./getFeatureEngineeringMaterializedFeature"));
-
-export { GetFeatureEngineeringMaterializedFeaturesArgs, GetFeatureEngineeringMaterializedFeaturesResult, GetFeatureEngineeringMaterializedFeaturesOutputArgs } from "./getFeatureEngineeringMaterializedFeatures";
-export const getFeatureEngineeringMaterializedFeatures: typeof import("./getFeatureEngineeringMaterializedFeatures").getFeatureEngineeringMaterializedFeatures = null as any;
-export const getFeatureEngineeringMaterializedFeaturesOutput: typeof import("./getFeatureEngineeringMaterializedFeatures").getFeatureEngineeringMaterializedFeaturesOutput = null as any;
-utilities.lazyLoad(exports, ["getFeatureEngineeringMaterializedFeatures","getFeatureEngineeringMaterializedFeaturesOutput"], () => require("./getFeatureEngineeringMaterializedFeatures"));
-
 export { GetFunctionsArgs, GetFunctionsResult, GetFunctionsOutputArgs } from "./getFunctions";
 export const getFunctions: typeof import("./getFunctions").getFunctions = null as any;
 export const getFunctionsOutput: typeof import("./getFunctions").getFunctionsOutput = null as any;
@@ -814,46 +784,6 @@ export { GetKnowledgeAssistantsArgs, GetKnowledgeAssistantsResult, GetKnowledgeA
 export const getKnowledgeAssistants: typeof import("./getKnowledgeAssistants").getKnowledgeAssistants = null as any;
 export const getKnowledgeAssistantsOutput: typeof import("./getKnowledgeAssistants").getKnowledgeAssistantsOutput = null as any;
 utilities.lazyLoad(exports, ["getKnowledgeAssistants","getKnowledgeAssistantsOutput"], () => require("./getKnowledgeAssistants"));
-
-export { GetMasonManagedMemoryEntriesArgs, GetMasonManagedMemoryEntriesResult, GetMasonManagedMemoryEntriesOutputArgs } from "./getMasonManagedMemoryEntries";
-export const getMasonManagedMemoryEntries: typeof import("./getMasonManagedMemoryEntries").getMasonManagedMemoryEntries = null as any;
-export const getMasonManagedMemoryEntriesOutput: typeof import("./getMasonManagedMemoryEntries").getMasonManagedMemoryEntriesOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonManagedMemoryEntries","getMasonManagedMemoryEntriesOutput"], () => require("./getMasonManagedMemoryEntries"));
-
-export { GetMasonManagedMemoryEntryArgs, GetMasonManagedMemoryEntryResult, GetMasonManagedMemoryEntryOutputArgs } from "./getMasonManagedMemoryEntry";
-export const getMasonManagedMemoryEntry: typeof import("./getMasonManagedMemoryEntry").getMasonManagedMemoryEntry = null as any;
-export const getMasonManagedMemoryEntryOutput: typeof import("./getMasonManagedMemoryEntry").getMasonManagedMemoryEntryOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonManagedMemoryEntry","getMasonManagedMemoryEntryOutput"], () => require("./getMasonManagedMemoryEntry"));
-
-export { GetMasonManagedMemoryStoreArgs, GetMasonManagedMemoryStoreResult, GetMasonManagedMemoryStoreOutputArgs } from "./getMasonManagedMemoryStore";
-export const getMasonManagedMemoryStore: typeof import("./getMasonManagedMemoryStore").getMasonManagedMemoryStore = null as any;
-export const getMasonManagedMemoryStoreOutput: typeof import("./getMasonManagedMemoryStore").getMasonManagedMemoryStoreOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonManagedMemoryStore","getMasonManagedMemoryStoreOutput"], () => require("./getMasonManagedMemoryStore"));
-
-export { GetMasonManagedMemoryStoresArgs, GetMasonManagedMemoryStoresResult, GetMasonManagedMemoryStoresOutputArgs } from "./getMasonManagedMemoryStores";
-export const getMasonManagedMemoryStores: typeof import("./getMasonManagedMemoryStores").getMasonManagedMemoryStores = null as any;
-export const getMasonManagedMemoryStoresOutput: typeof import("./getMasonManagedMemoryStores").getMasonManagedMemoryStoresOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonManagedMemoryStores","getMasonManagedMemoryStoresOutput"], () => require("./getMasonManagedMemoryStores"));
-
-export { GetMasonSessionArgs, GetMasonSessionResult, GetMasonSessionOutputArgs } from "./getMasonSession";
-export const getMasonSession: typeof import("./getMasonSession").getMasonSession = null as any;
-export const getMasonSessionOutput: typeof import("./getMasonSession").getMasonSessionOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonSession","getMasonSessionOutput"], () => require("./getMasonSession"));
-
-export { GetMasonSessionStoreArgs, GetMasonSessionStoreResult, GetMasonSessionStoreOutputArgs } from "./getMasonSessionStore";
-export const getMasonSessionStore: typeof import("./getMasonSessionStore").getMasonSessionStore = null as any;
-export const getMasonSessionStoreOutput: typeof import("./getMasonSessionStore").getMasonSessionStoreOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonSessionStore","getMasonSessionStoreOutput"], () => require("./getMasonSessionStore"));
-
-export { GetMasonSessionStoresArgs, GetMasonSessionStoresResult, GetMasonSessionStoresOutputArgs } from "./getMasonSessionStores";
-export const getMasonSessionStores: typeof import("./getMasonSessionStores").getMasonSessionStores = null as any;
-export const getMasonSessionStoresOutput: typeof import("./getMasonSessionStores").getMasonSessionStoresOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonSessionStores","getMasonSessionStoresOutput"], () => require("./getMasonSessionStores"));
-
-export { GetMasonSessionsArgs, GetMasonSessionsResult, GetMasonSessionsOutputArgs } from "./getMasonSessions";
-export const getMasonSessions: typeof import("./getMasonSessions").getMasonSessions = null as any;
-export const getMasonSessionsOutput: typeof import("./getMasonSessions").getMasonSessionsOutput = null as any;
-utilities.lazyLoad(exports, ["getMasonSessions","getMasonSessionsOutput"], () => require("./getMasonSessions"));
 
 export { GetMaterializedFeaturesFeatureTagArgs, GetMaterializedFeaturesFeatureTagResult, GetMaterializedFeaturesFeatureTagOutputArgs } from "./getMaterializedFeaturesFeatureTag";
 export const getMaterializedFeaturesFeatureTag: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTag = null as any;
@@ -1424,26 +1354,6 @@ export { LibraryArgs, LibraryState } from "./library";
 export type Library = import("./library").Library;
 export const Library: typeof import("./library").Library = null as any;
 utilities.lazyLoad(exports, ["Library"], () => require("./library"));
-
-export { MasonManagedMemoryEntryArgs, MasonManagedMemoryEntryState } from "./masonManagedMemoryEntry";
-export type MasonManagedMemoryEntry = import("./masonManagedMemoryEntry").MasonManagedMemoryEntry;
-export const MasonManagedMemoryEntry: typeof import("./masonManagedMemoryEntry").MasonManagedMemoryEntry = null as any;
-utilities.lazyLoad(exports, ["MasonManagedMemoryEntry"], () => require("./masonManagedMemoryEntry"));
-
-export { MasonManagedMemoryStoreArgs, MasonManagedMemoryStoreState } from "./masonManagedMemoryStore";
-export type MasonManagedMemoryStore = import("./masonManagedMemoryStore").MasonManagedMemoryStore;
-export const MasonManagedMemoryStore: typeof import("./masonManagedMemoryStore").MasonManagedMemoryStore = null as any;
-utilities.lazyLoad(exports, ["MasonManagedMemoryStore"], () => require("./masonManagedMemoryStore"));
-
-export { MasonSessionArgs, MasonSessionState } from "./masonSession";
-export type MasonSession = import("./masonSession").MasonSession;
-export const MasonSession: typeof import("./masonSession").MasonSession = null as any;
-utilities.lazyLoad(exports, ["MasonSession"], () => require("./masonSession"));
-
-export { MasonSessionStoreArgs, MasonSessionStoreState } from "./masonSessionStore";
-export type MasonSessionStore = import("./masonSessionStore").MasonSessionStore;
-export const MasonSessionStore: typeof import("./masonSessionStore").MasonSessionStore = null as any;
-utilities.lazyLoad(exports, ["MasonSessionStore"], () => require("./masonSessionStore"));
 
 export { MaterializedFeaturesFeatureTagArgs, MaterializedFeaturesFeatureTagState } from "./materializedFeaturesFeatureTag";
 export type MaterializedFeaturesFeatureTag = import("./materializedFeaturesFeatureTag").MaterializedFeaturesFeatureTag;
@@ -2065,10 +1975,6 @@ const _module = {
                 return new ExternalMetadata(name, <any>undefined, { urn })
             case "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature":
                 return new FeatureEngineeringFeature(name, <any>undefined, { urn })
-            case "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig":
-                return new FeatureEngineeringKafkaConfig(name, <any>undefined, { urn })
-            case "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature":
-                return new FeatureEngineeringMaterializedFeature(name, <any>undefined, { urn })
             case "databricks:index/file:File":
                 return new File(name, <any>undefined, { urn })
             case "databricks:index/gitCredential:GitCredential":
@@ -2103,14 +2009,6 @@ const _module = {
                 return new LakehouseMonitor(name, <any>undefined, { urn })
             case "databricks:index/library:Library":
                 return new Library(name, <any>undefined, { urn })
-            case "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry":
-                return new MasonManagedMemoryEntry(name, <any>undefined, { urn })
-            case "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore":
-                return new MasonManagedMemoryStore(name, <any>undefined, { urn })
-            case "databricks:index/masonSession:MasonSession":
-                return new MasonSession(name, <any>undefined, { urn })
-            case "databricks:index/masonSessionStore:MasonSessionStore":
-                return new MasonSessionStore(name, <any>undefined, { urn })
             case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
                 return new MaterializedFeaturesFeatureTag(name, <any>undefined, { urn })
             case "databricks:index/metastore:Metastore":
@@ -2369,8 +2267,6 @@ pulumi.runtime.registerResourceModule("databricks", "index/environmentsWorkspace
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalMetadata", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringFeature", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringKafkaConfig", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringMaterializedFeature", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/globalInitScript", _module)
@@ -2388,10 +2284,6 @@ pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistant", 
 pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistantKnowledgeSource", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/lakehouseMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/masonManagedMemoryEntry", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/masonManagedMemoryStore", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/masonSession", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/masonSessionStore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/materializedFeaturesFeatureTag", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreAssignment", _module)

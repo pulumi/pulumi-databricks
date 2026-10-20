@@ -139,10 +139,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExternalMetadata{}
 	case "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature":
 		r = &FeatureEngineeringFeature{}
-	case "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig":
-		r = &FeatureEngineeringKafkaConfig{}
-	case "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature":
-		r = &FeatureEngineeringMaterializedFeature{}
 	case "databricks:index/file:File":
 		r = &File{}
 	case "databricks:index/gitCredential:GitCredential":
@@ -177,14 +173,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakehouseMonitor{}
 	case "databricks:index/library:Library":
 		r = &Library{}
-	case "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry":
-		r = &MasonManagedMemoryEntry{}
-	case "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore":
-		r = &MasonManagedMemoryStore{}
-	case "databricks:index/masonSession:MasonSession":
-		r = &MasonSession{}
-	case "databricks:index/masonSessionStore:MasonSessionStore":
-		r = &MasonSessionStore{}
 	case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
 		r = &MaterializedFeaturesFeatureTag{}
 	case "databricks:index/metastore:Metastore":
@@ -707,16 +695,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
-		"index/featureEngineeringKafkaConfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/featureEngineeringMaterializedFeature",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
 		"index/file",
 		&module{version},
 	)
@@ -798,26 +776,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/library",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/masonManagedMemoryEntry",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/masonManagedMemoryStore",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/masonSession",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/masonSessionStore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

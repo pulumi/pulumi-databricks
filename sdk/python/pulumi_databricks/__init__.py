@@ -65,8 +65,6 @@ from .environments_workspace_base_environment import *
 from .external_location import *
 from .external_metadata import *
 from .feature_engineering_feature import *
-from .feature_engineering_kafka_config import *
-from .feature_engineering_materialized_feature import *
 from .file import *
 from .get_account_federation_policies import *
 from .get_account_federation_policy import *
@@ -154,10 +152,6 @@ from .get_external_metadata import *
 from .get_external_metadatas import *
 from .get_feature_engineering_feature import *
 from .get_feature_engineering_features import *
-from .get_feature_engineering_kafka_config import *
-from .get_feature_engineering_kafka_configs import *
-from .get_feature_engineering_materialized_feature import *
-from .get_feature_engineering_materialized_features import *
 from .get_functions import *
 from .get_group import *
 from .get_instance_pool import *
@@ -168,14 +162,6 @@ from .get_knowledge_assistant import *
 from .get_knowledge_assistant_knowledge_source import *
 from .get_knowledge_assistant_knowledge_sources import *
 from .get_knowledge_assistants import *
-from .get_mason_managed_memory_entries import *
-from .get_mason_managed_memory_entry import *
-from .get_mason_managed_memory_store import *
-from .get_mason_managed_memory_stores import *
-from .get_mason_session import *
-from .get_mason_session_store import *
-from .get_mason_session_stores import *
-from .get_mason_sessions import *
 from .get_materialized_features_feature_tag import *
 from .get_materialized_features_feature_tags import *
 from .get_metastore import *
@@ -290,10 +276,6 @@ from .knowledge_assistant import *
 from .knowledge_assistant_knowledge_source import *
 from .lakehouse_monitor import *
 from .library import *
-from .mason_managed_memory_entry import *
-from .mason_managed_memory_store import *
-from .mason_session import *
-from .mason_session_store import *
 from .materialized_features_feature_tag import *
 from .metastore import *
 from .metastore_assignment import *
@@ -879,22 +861,6 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
-  "mod": "index/featureEngineeringKafkaConfig",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig": "FeatureEngineeringKafkaConfig"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/featureEngineeringMaterializedFeature",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature": "FeatureEngineeringMaterializedFeature"
-  }
- },
- {
-  "pkg": "databricks",
   "mod": "index/file",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1027,38 +993,6 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/library:Library": "Library"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/masonManagedMemoryEntry",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/masonManagedMemoryEntry:MasonManagedMemoryEntry": "MasonManagedMemoryEntry"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/masonManagedMemoryStore",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/masonManagedMemoryStore:MasonManagedMemoryStore": "MasonManagedMemoryStore"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/masonSession",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/masonSession:MasonSession": "MasonSession"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/masonSessionStore",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/masonSessionStore:MasonSessionStore": "MasonSessionStore"
   }
  },
  {
