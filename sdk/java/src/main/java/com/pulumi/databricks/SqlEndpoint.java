@@ -16,6 +16,7 @@ import com.pulumi.databricks.outputs.SqlEndpointOdbcParams;
 import com.pulumi.databricks.outputs.SqlEndpointProviderConfig;
 import com.pulumi.databricks.outputs.SqlEndpointTags;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -151,6 +152,12 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> creatorName() {
         return this.creatorName;
     }
+    @Export(name="customerVersionLabel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customerVersionLabel;
+
+    public Output<Optional<String>> customerVersionLabel() {
+        return Codegen.optional(this.customerVersionLabel);
+    }
     /**
      * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
@@ -230,6 +237,12 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> jdbcUrl() {
         return this.jdbcUrl;
+    }
+    @Export(name="maxDbu", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxDbu;
+
+    public Output<Optional<Integer>> maxDbu() {
+        return Codegen.optional(this.maxDbu);
     }
     /**
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -343,6 +356,12 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<SqlEndpointProviderConfig> providerConfig() {
         return this.providerConfig;
     }
+    @Export(name="reydenClusterSizeMultiplier", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> reydenClusterSizeMultiplier;
+
+    public Output<Optional<Double>> reydenClusterSizeMultiplier() {
+        return Codegen.optional(this.reydenClusterSizeMultiplier);
+    }
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      * 
@@ -384,6 +403,12 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="statementTimeout", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> statementTimeout;
+
+    public Output<Optional<Integer>> statementTimeout() {
+        return Codegen.optional(this.statementTimeout);
     }
     /**
      * Databricks tags all endpoint resources with these tags.

@@ -11,7 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+//
+// Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+//
+// ## Example Usage
+//
+// List every feature in a schema, then project their names.
 func GetFeatureEngineeringFeatures(ctx *pulumi.Context, args *GetFeatureEngineeringFeaturesArgs, opts ...pulumi.InvokeOption) (*GetFeatureEngineeringFeaturesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFeatureEngineeringFeaturesResult

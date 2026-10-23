@@ -1772,6 +1772,45 @@ export interface AccountSettingV2WorkspaceLabel {
     label?: string;
 }
 
+export interface AgentKitManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AgentKitManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface AgentKitManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId: string;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType: string;
+}
+
+export interface AgentKitSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AgentKitSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface AiGatewayMcpServiceConfig {
     /**
      * Tool names or prefix patterns to expose from the MCP server. Use exact
@@ -1861,6 +1900,7 @@ export interface AiGatewayModelProviderServiceConfig {
     amazonBedrock?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrock;
     anthropic?: outputs.AiGatewayModelProviderServiceConfigAnthropic;
     azureOpenai?: outputs.AiGatewayModelProviderServiceConfigAzureOpenai;
+    bedrockMantle?: outputs.AiGatewayModelProviderServiceConfigBedrockMantle;
     custom?: outputs.AiGatewayModelProviderServiceConfigCustom;
     /**
      * Whether to forward incoming HTTP headers to the upstream provider. Defaults
@@ -1880,7 +1920,9 @@ export interface AiGatewayModelProviderServiceConfig {
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      */
     forwardUnmanagedPaths?: boolean;
     geminiEnterprise?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterprise;
@@ -1893,9 +1935,14 @@ export interface AiGatewayModelProviderServiceConfig {
     microsoftFoundry?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry;
     openai?: outputs.AiGatewayModelProviderServiceConfigOpenai;
     /**
+     * Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     */
+    pricing?: outputs.AiGatewayModelProviderServiceConfigPricing;
+    /**
      * External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      */
     providerType?: string;
     /**
@@ -2115,6 +2162,76 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantle {
+    direct?: outputs.AiGatewayModelProviderServiceConfigBedrockMantleDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirect {
+    /**
+     * AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
+     */
+    awsAccessKey?: outputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey;
+    region?: string;
+    serviceCredential?: outputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+    /**
+     * AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: string;
+    /**
+     * AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
+     */
+    secretAccessKey?: outputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext: string;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
     /**
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
@@ -2432,6 +2549,16 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretRefe
     name: string;
 }
 
+export interface AiGatewayModelProviderServiceConfigPricing {
+    /**
+     * Provider-wide adjustment to external-model spend estimates in basis points:
+     * 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+     * beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+     * value or zero leaves the estimate unchanged
+     */
+    defaultDiscountBasisPoints?: number;
+}
+
 export interface AiGatewayModelProviderServiceConfigRateLimit {
     /**
      * Scope of the rate limit. Depending on this value, the limit applies to a
@@ -2462,6 +2589,14 @@ export interface AiGatewayModelProviderServiceConfigRateLimit {
 
 export interface AiGatewayModelProviderServiceConfigTarget {
     /**
+     * Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
      * This identifies a model at the upstream provider; it is not a Unity
      * Catalog model resource
@@ -2469,9 +2604,11 @@ export interface AiGatewayModelProviderServiceConfigTarget {
     model: string;
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -2626,6 +2763,14 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
 
 export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget {
     /**
+     * Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -2633,9 +2778,11 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
     model: string;
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -2733,6 +2880,14 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
 
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
     /**
+     * Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -2740,9 +2895,11 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
     model: string;
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -3248,6 +3405,7 @@ export interface AppActiveDeployment {
      * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
      */
     gitSource?: outputs.AppActiveDeploymentGitSource;
+    healthCheck?: outputs.AppActiveDeploymentHealthCheck;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -3323,6 +3481,11 @@ export interface AppActiveDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: string;
+}
+
+export interface AppActiveDeploymentHealthCheck {
+    path?: string;
+    timeout?: string;
 }
 
 export interface AppActiveDeploymentStatus {
@@ -3485,6 +3648,7 @@ export interface AppPendingDeployment {
      * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
      */
     gitSource?: outputs.AppPendingDeploymentGitSource;
+    healthCheck?: outputs.AppPendingDeploymentHealthCheck;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -3560,6 +3724,11 @@ export interface AppPendingDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: string;
+}
+
+export interface AppPendingDeploymentHealthCheck {
+    path?: string;
+    timeout?: string;
 }
 
 export interface AppPendingDeploymentStatus {
@@ -3872,7 +4041,7 @@ export interface AppSpaceResourceUcSecurable {
      */
     securableKind: string;
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -3968,7 +4137,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec 
 export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     permission: string;
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -5474,6 +5643,13 @@ export interface DisableLegacyFeaturesSettingProviderConfig {
     workspaceId: string;
 }
 
+export interface DisasterRecoveryFailoverGroupInitialReplicationProgress {
+    /**
+     * (integer) - Percent complete, 0-100
+     */
+    completed: number;
+}
+
 export interface DisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
      * UC catalogs to replicate
@@ -6158,6 +6334,10 @@ export interface FeatureEngineeringFeatureSource {
      */
     requestSource?: outputs.FeatureEngineeringFeatureSourceRequestSource;
     /**
+     * A Spark Declarative Pipeline data source
+     */
+    sdpSource?: outputs.FeatureEngineeringFeatureSourceSdpSource;
+    /**
      * A Stream data source
      */
     streamSource?: outputs.FeatureEngineeringFeatureSourceStreamSource;
@@ -6168,13 +6348,13 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
     entityColumns?: string[];
     filterCondition?: string;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      */
     timeseriesColumn?: string;
     transformationSql?: string;
@@ -6254,13 +6434,42 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
     name: string;
 }
 
+export interface FeatureEngineeringFeatureSourceSdpSource {
+    dataframeSchema?: string;
+    filterCondition?: string;
+    /**
+     * The full three-part names of the tables the pipeline reads from. Required to materialize this
+     * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+     * these tables, and the run fails if it doesn't. At most 100 tables
+     */
+    inputTables?: string[];
+    /**
+     * The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+     * The table doesn't need to exist until the pipeline first runs. Required
+     */
+    outputTable?: string;
+    /**
+     * The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+     * each materialization or backfill. The pipeline must already exist when the feature is created,
+     * and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+     * Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+     * back empty. Required
+     */
+    pipelineId?: string;
+    /**
+     * (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+     * has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+     */
+    pipelineState: string;
+    transformationSql?: string;
+}
+
 export interface FeatureEngineeringFeatureSourceStreamSource {
     dataframeSchema?: string;
     filterCondition?: string;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     transformationSql?: string;
@@ -11462,6 +11671,285 @@ export interface GetAccountSettingV2WorkspaceLabel {
     label?: string;
 }
 
+export interface GetAgentKitManagedMemoryEntriesManagedMemoryEntry {
+    /**
+     * Customer-provided identifier for the actor whose entries are listed
+     */
+    actorId: string;
+    /**
+     * (string) - Optional free-form memory content
+     */
+    content: string;
+    /**
+     * (string) - Time when the entry was created
+     */
+    createTime: string;
+    /**
+     * (string) - Human-readable description of the memory entry
+     */
+    description: string;
+    /**
+     * (string) - Resource name in the form
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     */
+    name: string;
+    /**
+     * (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Paths must begin with `/` and must not contain empty, `.` or `..` segments
+     */
+    path: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAgentKitManagedMemoryEntriesManagedMemoryEntryProviderConfig;
+    /**
+     * Optional session identifier. When set, only entries with this exact `sessionId` are
+     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     */
+    sessionId: string;
+    /**
+     * (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     */
+    sourceType: string;
+    /**
+     * (string) - Time when the entry was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetAgentKitManagedMemoryEntriesManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitManagedMemoryEntriesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId: string;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType: string;
+}
+
+export interface GetAgentKitManagedMemoryStoresManagedMemoryStore {
+    /**
+     * (string) - Time when the store was created
+     */
+    createTime: string;
+    /**
+     * (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+     * immutable server-set attribution and does not grant access; authorization is evaluated from
+     * the authenticated request context
+     */
+    creatorUserId: string;
+    /**
+     * (string) - Human-readable description of the memory store
+     */
+    description: string;
+    /**
+     * (string, deprecated) - Deprecated compatibility alias for the caller-provided memory store ID. Canonical
+     * clients provide the ID through `CreateMemoryStoreRequest.managed_memory_store_id` and use
+     * `name` as the resource identifier
+     */
+    displayName: string;
+    /**
+     * (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
+     */
+    name: string;
+    /**
+     * (string, deprecated) - Deprecated alias for `creatorUserId`. This identifies the original creator, not a
+     * transferable owner. Use `creatorUserId` instead
+     */
+    ownerUserId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAgentKitManagedMemoryStoresManagedMemoryStoreProviderConfig;
+    /**
+     * (StorageBackend) - Service-managed storage backing this memory store
+     */
+    storageBackend: outputs.GetAgentKitManagedMemoryStoresManagedMemoryStoreStorageBackend;
+    /**
+     * (string) - Time when the store was last updated
+     */
+    updateTime: string;
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: number;
+}
+
+export interface GetAgentKitManagedMemoryStoresManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitManagedMemoryStoresManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId: string;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType: string;
+}
+
+export interface GetAgentKitManagedMemoryStoresProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitSessionStoresProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitSessionStoresSessionStore {
+    /**
+     * (string) - Time when the store was created
+     */
+    createTime: string;
+    /**
+     * (string) - Workspace-local user ID of the authenticated principal that created the store. This is
+     * immutable server-set attribution and does not grant access; authorization is evaluated from
+     * the authenticated request context
+     */
+    creatorUserId: string;
+    /**
+     * (string) - Human-readable description of the session store
+     */
+    description: string;
+    /**
+     * (object) - Mutable caller-defined string labels
+     */
+    metadata: {[key: string]: string};
+    /**
+     * (string) - Resource name in the form `session-stores/{session_store_id}`
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAgentKitSessionStoresSessionStoreProviderConfig;
+    /**
+     * (string) - Time when the store was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetAgentKitSessionStoresSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitSessionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAgentKitSessionsSession {
+    /**
+     * (string) - Opaque caller-provided identifier for the application actor associated with the session.
+     */
+    actorId: string;
+    /**
+     * (string) - Time when the session was created
+     */
+    createTime: string;
+    /**
+     * (string) - Time when the session's item history was last mutated
+     */
+    lastActivityTime: string;
+    /**
+     * (object) - Mutable caller-defined string labels
+     */
+    metadata: {[key: string]: string};
+    /**
+     * (string) - Resource name in the form `session-stores/{session_store_id}/sessions/{session_id}`
+     */
+    name: string;
+    /**
+     * (string) - Immediate parent session ID. Set only at creation for child sessions, immutable thereafter, and
+     * restricted to the same store
+     */
+    parentSessionId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAgentKitSessionsSessionProviderConfig;
+    /**
+     * (string) - Top-level session ID in the spawn tree. This equals `sessionId` for a root or fork and is
+     * inherited transitively by child sessions
+     */
+    rootSessionId: string;
+    /**
+     * (string) - Unique session ID. The service generates a UUID unless the caller supplies
+     * `CreateSessionRequest.session_id`
+     */
+    sessionId: string;
+    /**
+     * (string) - Time when session resource fields last changed
+     */
+    updateTime: string;
+}
+
+export interface GetAgentKitSessionsSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetAiGatewayMcpServiceConfig {
     /**
      * (list of string) - Tool names or prefix patterns to expose from the MCP server. Use exact
@@ -11697,6 +12185,10 @@ export interface GetAiGatewayModelProviderServiceConfig {
      */
     azureOpenai?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenai;
     /**
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     */
+    bedrockMantle?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantle;
+    /**
      * (ModelProviderServiceConfigCustomProviderConfig)
      */
     custom?: outputs.GetAiGatewayModelProviderServiceConfigCustom;
@@ -11718,7 +12210,9 @@ export interface GetAiGatewayModelProviderServiceConfig {
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      */
     forwardUnmanagedPaths?: boolean;
     /**
@@ -11740,9 +12234,14 @@ export interface GetAiGatewayModelProviderServiceConfig {
      */
     openai?: outputs.GetAiGatewayModelProviderServiceConfigOpenai;
     /**
+     * (ModelProviderServiceConfigProviderPricingConfig) - Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     */
+    pricing?: outputs.GetAiGatewayModelProviderServiceConfigPricing;
+    /**
      * (string) - External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      */
     providerType?: string;
     /**
@@ -12008,6 +12507,91 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraSer
 }
 
 export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigBedrockMantle {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantleDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirect {
+    /**
+     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
+     */
+    awsAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey;
+    /**
+     * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
+     * Required on Create
+     */
+    region?: string;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+    /**
+     * (string) - AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
+     */
+    secretAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
     /**
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
@@ -12390,6 +12974,16 @@ export interface GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretR
     name: string;
 }
 
+export interface GetAiGatewayModelProviderServiceConfigPricing {
+    /**
+     * (integer) - Provider-wide adjustment to external-model spend estimates in basis points:
+     * 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+     * beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+     * value or zero leaves the estimate unchanged
+     */
+    defaultDiscountBasisPoints?: number;
+}
+
 export interface GetAiGatewayModelProviderServiceConfigRateLimit {
     /**
      * (string) - Scope of the rate limit. Depending on this value, the limit applies to a
@@ -12420,6 +13014,14 @@ export interface GetAiGatewayModelProviderServiceConfigRateLimit {
 
 export interface GetAiGatewayModelProviderServiceConfigTarget {
     /**
+     * (string) - Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
      * This identifies a model at the upstream provider; it is not a Unity
      * Catalog model resource
@@ -12427,9 +13029,11 @@ export interface GetAiGatewayModelProviderServiceConfigTarget {
     model: string;
     /**
      * (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -12516,6 +13120,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      */
     azureOpenai?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenai;
     /**
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     */
+    bedrockMantle?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantle;
+    /**
      * (ModelProviderServiceConfigCustomProviderConfig)
      */
     custom?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustom;
@@ -12537,7 +13145,9 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      */
     forwardUnmanagedPaths?: boolean;
     /**
@@ -12559,9 +13169,14 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      */
     openai?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenai;
     /**
+     * (ModelProviderServiceConfigProviderPricingConfig) - Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     */
+    pricing?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigPricing;
+    /**
      * (string) - External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      */
     providerType?: string;
     /**
@@ -12822,6 +13437,89 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantle {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirect {
+    /**
+     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
+     */
+    awsAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKey;
+    /**
+     * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
+     * Required on Create
+     */
+    region?: string;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectServiceCredential;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+    /**
+     * (string) - AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
+     */
+    secretAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext: string;
+    /**
+     * (ModelProviderServiceConfigSecretReference) - Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectServiceCredential {
     /**
      * (string) - Resource name of the bound Unity Catalog service credential, in the form
      * `credentials/{name}`. Supply this field when creating the service or
@@ -13195,6 +13893,16 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpen
     name: string;
 }
 
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigPricing {
+    /**
+     * (integer) - Provider-wide adjustment to external-model spend estimates in basis points:
+     * 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+     * beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+     * value or zero leaves the estimate unchanged
+     */
+    defaultDiscountBasisPoints?: number;
+}
+
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigRateLimit {
     /**
      * (string) - Scope of the rate limit. Depending on this value, the limit applies to a
@@ -13225,6 +13933,14 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigRate
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigTarget {
     /**
+     * (string) - Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
      * This identifies a model at the upstream provider; it is not a Unity
      * Catalog model resource
@@ -13232,9 +13948,11 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigTarg
     model: string;
     /**
      * (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -13403,6 +14121,14 @@ export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelCo
 
 export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget {
     /**
+     * (string) - Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -13410,9 +14136,11 @@ export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelCo
     model: string;
     /**
      * (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -13517,6 +14245,14 @@ export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExterna
 
 export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
     /**
+     * (string) - Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -13524,9 +14260,11 @@ export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExterna
     model: string;
     /**
      * (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -13770,6 +14508,14 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationEx
 
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationExternalModelConfigTarget {
     /**
+     * (string) - Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -13777,9 +14523,11 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationEx
     model: string;
     /**
      * (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -13880,6 +14628,14 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDesti
 
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
     /**
+     * (string) - Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: string;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -13887,9 +14643,11 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDesti
     model: string;
     /**
      * (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: string[];
 }
@@ -14707,6 +15465,10 @@ export interface GetAlertsV2Alert {
      */
     customSummary: string;
     /**
+     * (string) - The format used to interpret the `customSummary` and `customDescription` templates.
+     */
+    customTemplateFormat: string;
+    /**
      * (string) - The display name of the alert
      */
     displayName: string;
@@ -15115,6 +15877,7 @@ export interface GetAppAppActiveDeployment {
     deploymentId?: string;
     envVars?: outputs.GetAppAppActiveDeploymentEnvVar[];
     gitSource?: outputs.GetAppAppActiveDeploymentGitSource;
+    healthCheck?: outputs.GetAppAppActiveDeploymentHealthCheck;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -15178,6 +15941,11 @@ export interface GetAppAppActiveDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: string;
+}
+
+export interface GetAppAppActiveDeploymentHealthCheck {
+    path?: string;
+    timeout?: string;
 }
 
 export interface GetAppAppActiveDeploymentStatus {
@@ -15310,6 +16078,7 @@ export interface GetAppAppPendingDeployment {
     deploymentId?: string;
     envVars?: outputs.GetAppAppPendingDeploymentEnvVar[];
     gitSource?: outputs.GetAppAppPendingDeploymentGitSource;
+    healthCheck?: outputs.GetAppAppPendingDeploymentHealthCheck;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -15373,6 +16142,11 @@ export interface GetAppAppPendingDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: string;
+}
+
+export interface GetAppAppPendingDeploymentHealthCheck {
+    path?: string;
+    timeout?: string;
 }
 
 export interface GetAppAppPendingDeploymentStatus {
@@ -15786,7 +16560,7 @@ export interface GetAppSpaceResourceUcSecurable {
      */
     securableKind: string;
     /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -16074,7 +16848,7 @@ export interface GetAppSpacesSpaceResourceUcSecurable {
      */
     securableKind: string;
     /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -16242,6 +17016,7 @@ export interface GetAppsAppActiveDeployment {
     deploymentId?: string;
     envVars?: outputs.GetAppsAppActiveDeploymentEnvVar[];
     gitSource?: outputs.GetAppsAppActiveDeploymentGitSource;
+    healthCheck?: outputs.GetAppsAppActiveDeploymentHealthCheck;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -16305,6 +17080,11 @@ export interface GetAppsAppActiveDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: string;
+}
+
+export interface GetAppsAppActiveDeploymentHealthCheck {
+    path?: string;
+    timeout?: string;
 }
 
 export interface GetAppsAppActiveDeploymentStatus {
@@ -16437,6 +17217,7 @@ export interface GetAppsAppPendingDeployment {
     deploymentId?: string;
     envVars?: outputs.GetAppsAppPendingDeploymentEnvVar[];
     gitSource?: outputs.GetAppsAppPendingDeploymentGitSource;
+    healthCheck?: outputs.GetAppsAppPendingDeploymentHealthCheck;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -16500,6 +17281,11 @@ export interface GetAppsAppPendingDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: string;
+}
+
+export interface GetAppsAppPendingDeploymentHealthCheck {
+    path?: string;
+    timeout?: string;
 }
 
 export interface GetAppsAppPendingDeploymentStatus {
@@ -16818,7 +17604,7 @@ export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpe
      */
     permission: string;
     /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -16967,7 +17753,7 @@ export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSec
      */
     permission: string;
     /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -19520,6 +20306,13 @@ export interface GetDirectoryProviderConfig {
     workspaceId: string;
 }
 
+export interface GetDisasterRecoveryFailoverGroupInitialReplicationProgress {
+    /**
+     * (integer) - Percent complete, 0-100
+     */
+    completed: number;
+}
+
 export interface GetDisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
      * (list of UcCatalog) - UC catalogs to replicate
@@ -19606,10 +20399,18 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroup {
      */
     etag: string;
     /**
+     * (boolean) - True if errors currently block the replication point
+     */
+    hasReplicationPointBlockingErrors: boolean;
+    /**
      * (string) - Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      */
     initialPrimaryRegion: string;
+    /**
+     * (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     */
+    initialReplicationProgress: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupInitialReplicationProgress;
     /**
      * (string) - Resource name for this workspace set
      */
@@ -19638,6 +20439,13 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroup {
      * (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other
      */
     workspaceSets: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet[];
+}
+
+export interface GetDisasterRecoveryFailoverGroupsFailoverGroupInitialReplicationProgress {
+    /**
+     * (integer) - Percent complete, 0-100
+     */
+    completed: number;
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssets {
@@ -20939,6 +21747,10 @@ export interface GetFeatureEngineeringFeatureSource {
      */
     requestSource?: outputs.GetFeatureEngineeringFeatureSourceRequestSource;
     /**
+     * (SdpSource) - A Spark Declarative Pipeline data source
+     */
+    sdpSource?: outputs.GetFeatureEngineeringFeatureSourceSdpSource;
+    /**
      * (StreamSource) - A Stream data source
      */
     streamSource?: outputs.GetFeatureEngineeringFeatureSourceStreamSource;
@@ -20960,9 +21772,7 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     filterCondition?: string;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     /**
@@ -21074,6 +21884,49 @@ export interface GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaField 
     name: string;
 }
 
+export interface GetFeatureEngineeringFeatureSourceSdpSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
+     * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+     * these tables, and the run fails if it doesn't. At most 100 tables
+     */
+    inputTables?: string[];
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+     * The table doesn't need to exist until the pipeline first runs. Required
+     */
+    outputTable?: string;
+    /**
+     * (string) - The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+     * each materialization or backfill. The pipeline must already exist when the feature is created,
+     * and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+     * Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+     * back empty. Required
+     */
+    pipelineId?: string;
+    /**
+     * (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+     * has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+     */
+    pipelineState: string;
+    /**
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     */
+    transformationSql?: string;
+}
+
 export interface GetFeatureEngineeringFeatureSourceStreamSource {
     /**
      * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
@@ -21086,9 +21939,7 @@ export interface GetFeatureEngineeringFeatureSourceStreamSource {
      */
     filterCondition?: string;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     /**
@@ -21243,7 +22094,8 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     description: string;
     /**
-     * (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      */
     entities: outputs.GetFeatureEngineeringFeaturesFeatureEntity[];
     /**
@@ -21766,6 +22618,10 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
      */
     requestSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
     /**
+     * (SdpSource) - A Spark Declarative Pipeline data source
+     */
+    sdpSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceSdpSource;
+    /**
      * (StreamSource) - A Stream data source
      */
     streamSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceStreamSource;
@@ -21897,6 +22753,49 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSche
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceSdpSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
+     * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+     * these tables, and the run fails if it doesn't. At most 100 tables
+     */
+    inputTables?: string[];
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+     * The table doesn't need to exist until the pipeline first runs. Required
+     */
+    outputTable?: string;
+    /**
+     * (string) - The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+     * each materialization or backfill. The pipeline must already exist when the feature is created,
+     * and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+     * Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+     * back empty. Required
+     */
+    pipelineId?: string;
+    /**
+     * (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+     * has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+     */
+    pipelineState: string;
+    /**
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
@@ -23053,9 +23952,31 @@ export interface GetJobJobSettingsSettingsTaskDashboardTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscription {
+    attachment?: outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment;
     customSubject?: string;
     paused?: boolean;
     subscribers?: outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachment;
+    pageAttachment?: outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachment;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: string;
+    includeAppliedFilters?: boolean;
+    widgets: outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget[];
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: string;
+    widgetId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: string[];
+    pageSelection?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber {
@@ -23141,9 +24062,31 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription {
+    attachment?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment;
     customSubject?: string;
     paused?: boolean;
     subscribers?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment;
+    pageAttachment?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: string;
+    includeAppliedFilters?: boolean;
+    widgets: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: string;
+    widgetId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: string[];
+    pageSelection?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
@@ -24801,6 +25744,17 @@ export interface GetPolicyInfoDeny {
     privileges: string[];
 }
 
+export interface GetPolicyInfoGovernedTag {
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
+    /**
+     * (TagValueExtraction) - Extracts the value of a securable-level tag
+     */
+    tagValue?: string;
+}
+
 export interface GetPolicyInfoGrant {
     /**
      * (list of string) - List of privileges to grant.
@@ -24931,6 +25885,10 @@ export interface GetPolicyInfosPolicy {
      * Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
+    /**
+     * (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+     */
+    governedTags: outputs.GetPolicyInfosPolicyGovernedTag[];
     /**
      * (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
      * Required on create and optional on update. When specified on update,
@@ -25075,6 +26033,17 @@ export interface GetPolicyInfosPolicyDeny {
      * Required on create and update
      */
     privileges: string[];
+}
+
+export interface GetPolicyInfosPolicyGovernedTag {
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
+    /**
+     * (TagValueExtraction) - Extracts the value of a securable-level tag
+     */
+    tagValue?: string;
 }
 
 export interface GetPolicyInfosPolicyGrant {
@@ -31712,6 +32681,7 @@ export interface JobTaskDashboardTask {
 }
 
 export interface JobTaskDashboardTaskSubscription {
+    attachment?: outputs.JobTaskDashboardTaskSubscriptionAttachment;
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
      */
@@ -31724,6 +32694,27 @@ export interface JobTaskDashboardTaskSubscription {
      * The list of subscribers to send the snapshot of the dashboard to.
      */
     subscribers?: outputs.JobTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: outputs.JobTaskDashboardTaskSubscriptionAttachmentDataAttachment;
+    pageAttachment?: outputs.JobTaskDashboardTaskSubscriptionAttachmentPageAttachment;
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: string;
+    includeAppliedFilters?: boolean;
+    widgets: outputs.JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget[];
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: string;
+    widgetId: string;
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: string[];
+    pageSelection?: string;
 }
 
 export interface JobTaskDashboardTaskSubscriptionSubscriber {
@@ -32069,6 +33060,7 @@ export interface JobTaskForEachTaskTaskDashboardTask {
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
+    attachment?: outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment;
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
      */
@@ -32081,6 +33073,27 @@ export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
      * The list of subscribers to send the snapshot of the dashboard to.
      */
     subscribers?: outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment;
+    pageAttachment?: outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: string;
+    includeAppliedFilters?: boolean;
+    widgets: outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget[];
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: string;
+    widgetId: string;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: string[];
+    pageSelection?: string;
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
@@ -35311,11 +36324,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -35382,11 +36395,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -35418,6 +36431,8 @@ export interface NotebookProviderConfig {
 }
 
 export interface NotificationDestinationConfig {
+    databricksAppSlack?: outputs.NotificationDestinationConfigDatabricksAppSlack;
+    databricksAppTeams?: outputs.NotificationDestinationConfigDatabricksAppTeams;
     /**
      * The email configuration of the Notification Destination. It must contain the following:
      */
@@ -35438,6 +36453,31 @@ export interface NotificationDestinationConfig {
      * The Slack configuration of the Notification Destination. It must contain the following:
      */
     slack?: outputs.NotificationDestinationConfigSlack;
+}
+
+export interface NotificationDestinationConfigDatabricksAppSlack {
+    /**
+     * Slack channel ID for notifications.
+     */
+    channelId?: string;
+    channelIdSet?: boolean;
+    teamId?: string;
+    teamIdSet?: boolean;
+}
+
+export interface NotificationDestinationConfigDatabricksAppTeams {
+    /**
+     * Slack channel ID for notifications.
+     */
+    channelId?: string;
+    channelIdSet?: boolean;
+    teamId?: string;
+    teamIdSet?: boolean;
+    /**
+     * Tenant ID for Microsoft Teams App.
+     */
+    tenantId?: string;
+    tenantIdSet?: boolean;
 }
 
 export interface NotificationDestinationConfigEmail {
@@ -37018,9 +38058,6 @@ export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection 
      * Extracts the value of a column-level tag
      */
     columnTagValue?: outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
-    /**
-     * Extracts the value of a securable-level tag
-     */
     tagValue?: outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue;
 }
 
@@ -37038,6 +38075,11 @@ export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionT
 
 export interface PolicyInfoDeny {
     privileges: string[];
+}
+
+export interface PolicyInfoGovernedTag {
+    tagKey: string;
+    tagValue?: string;
 }
 
 export interface PolicyInfoGrant {
@@ -37090,9 +38132,6 @@ export interface PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
      * Extracts the value of a column-level tag
      */
     columnTagValue?: outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
-    /**
-     * Extracts the value of a securable-level tag
-     */
     tagValue?: outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue;
 }
 

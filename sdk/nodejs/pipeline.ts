@@ -186,6 +186,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly notifications: pulumi.Output<outputs.PipelineNotification[] | undefined>;
+    declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
@@ -272,6 +273,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["libraries"] = state?.libraries;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifications"] = state?.notifications;
+            resourceInputs["parentPath"] = state?.parentPath;
             resourceInputs["photon"] = state?.photon;
             resourceInputs["pipelineId"] = state?.pipelineId;
             resourceInputs["providerConfig"] = state?.providerConfig;
@@ -316,6 +318,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["libraries"] = args?.libraries;
             resourceInputs["name"] = args?.name;
             resourceInputs["notifications"] = args?.notifications;
+            resourceInputs["parentPath"] = args?.parentPath;
             resourceInputs["photon"] = args?.photon;
             resourceInputs["pipelineId"] = args?.pipelineId;
             resourceInputs["providerConfig"] = args?.providerConfig;
@@ -413,6 +416,7 @@ export interface PipelineState {
      */
     name?: pulumi.Input<string | undefined>;
     notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[] | undefined>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
@@ -536,6 +540,7 @@ export interface PipelineArgs {
      */
     name?: pulumi.Input<string | undefined>;
     notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[] | undefined>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */

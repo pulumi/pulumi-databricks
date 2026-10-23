@@ -77,6 +77,8 @@ type LookupAlertV2Result struct {
 	CustomDescription string `pulumi:"customDescription"`
 	// (string) - Custom summary for the alert. support mustache template
 	CustomSummary string `pulumi:"customSummary"`
+	// (string) - The format used to interpret the `customSummary` and `customDescription` templates.
+	CustomTemplateFormat string `pulumi:"customTemplateFormat"`
 	// (string) - The display name of the alert
 	DisplayName string `pulumi:"displayName"`
 	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -161,6 +163,11 @@ func (o LookupAlertV2ResultOutput) CustomDescription() pulumi.StringOutput {
 // (string) - Custom summary for the alert. support mustache template
 func (o LookupAlertV2ResultOutput) CustomSummary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CustomSummary }).(pulumi.StringOutput)
+}
+
+// (string) - The format used to interpret the `customSummary` and `customDescription` templates.
+func (o LookupAlertV2ResultOutput) CustomTemplateFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CustomTemplateFormat }).(pulumi.StringOutput)
 }
 
 // (string) - The display name of the alert

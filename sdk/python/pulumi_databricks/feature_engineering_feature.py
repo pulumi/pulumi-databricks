@@ -35,20 +35,21 @@ class FeatureEngineeringFeatureArgs:
         """
         The set of arguments for constructing a FeatureEngineeringFeature resource.
 
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-               feature's resource identifier; the catalog_name, schema_name, and name fields
-               below are OUTPUT_ONLY decomposed views of this value
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup.
+               Optional since entities are not set for RequestSource features or on-demand calculated features
         :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs'] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs'] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations.
+               Optional since a timeseries column is not set for RequestSource features or on-demand
+               calculated features
         """
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "function", function)
@@ -74,9 +75,7 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The full three-part name (catalog, schema, name) of the feature. This is the
-        feature's resource identifier; the catalog_name, schema_name, and name fields
-        below are OUTPUT_ONLY decomposed views of this value
+        The full three-part name (catalog, schema, name) of the feature
         """
         return pulumi.get(self, "full_name")
 
@@ -124,7 +123,8 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter
     def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]:
         """
-        The entity columns for the feature, used as aggregation keys and for query-time lookup
+        The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        Optional since entities are not set for RequestSource features or on-demand calculated features
         """
         return pulumi.get(self, "entities")
 
@@ -191,7 +191,9 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter(name="timeseriesColumn")
     def timeseries_column(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']]:
         """
-        Column recording time, used for point-in-time joins, backfills, and aggregations
+        Column recording time, used for point-in-time joins, backfills, and aggregations.
+        Optional since a timeseries column is not set for RequestSource features or on-demand
+        calculated features
         """
         return pulumi.get(self, "timeseries_column")
 
@@ -226,10 +228,9 @@ class _FeatureEngineeringFeatureState:
         :param pulumi.Input[_builtins.str] created_at: (string) - Time at which this feature was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the feature creator
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-               feature's resource identifier; the catalog_name, schema_name, and name fields
-               below are OUTPUT_ONLY decomposed views of this value
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup.
+               Optional since entities are not set for RequestSource features or on-demand calculated features
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -240,7 +241,9 @@ class _FeatureEngineeringFeatureState:
         :param pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
-        :param pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs'] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs'] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations.
+               Optional since a timeseries column is not set for RequestSource features or on-demand
+               calculated features
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -327,7 +330,8 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter
     def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]:
         """
-        The entity columns for the feature, used as aggregation keys and for query-time lookup
+        The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        Optional since entities are not set for RequestSource features or on-demand calculated features
         """
         return pulumi.get(self, "entities")
 
@@ -348,9 +352,7 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The full three-part name (catalog, schema, name) of the feature. This is the
-        feature's resource identifier; the catalog_name, schema_name, and name fields
-        below are OUTPUT_ONLY decomposed views of this value
+        The full three-part name (catalog, schema, name) of the feature
         """
         return pulumi.get(self, "full_name")
 
@@ -456,7 +458,9 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter(name="timeseriesColumn")
     def timeseries_column(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']]:
         """
-        Column recording time, used for point-in-time joins, backfills, and aggregations
+        Column recording time, used for point-in-time joins, backfills, and aggregations.
+        Optional since a timeseries column is not set for RequestSource features or on-demand
+        calculated features
         """
         return pulumi.get(self, "timeseries_column")
 
@@ -484,16 +488,95 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+
+        A feature is a reusable, governed definition of a model input registered in Unity Catalog. Each feature binds a data source to the function that computes its value, so model training and online serving read one definition instead of two implementations that drift apart.
+
+        Registering a feature computes nothing on its own. To produce values, materialize the feature to an offline Delta table or an online Lakebase table using the Feature Engineering API.
+
+        Only `description` can be changed in place. Changing any other field replaces the feature.
+
+        ## Example Usage
+
+        A feature needs a source and a function. A Delta table source also requires the entity columns that
+        key the feature and a timeseries column; a request source takes neither, because the value arrives
+        in the request.
+
+        ### Aggregation over a sliding window
+
+        Count each customer's transactions over the trailing seven days, recomputed daily.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        transaction_count7d = databricks.FeatureEngineeringFeature("transaction_count_7d",
+            full_name="main.features.transaction_count_7d",
+            description="Transactions per customer over the trailing seven days.",
+            source={
+                "delta_table_source": {
+                    "full_name": "main.retail.transactions",
+                },
+            },
+            function={
+                "aggregation_function": {
+                    "count_function": {
+                        "input": "transaction_id",
+                    },
+                    "time_window": {
+                        "sliding": {
+                            "window_duration": "604800s",
+                            "slide_duration": "86400s",
+                        },
+                    },
+                },
+            },
+            entities=[{
+                "name": "customer_id",
+            }],
+            timeseries_column={
+                "name": "transaction_time",
+            })
+        ```
+
+        ### Latest value of a column
+
+        Read a column straight from the source with no aggregation, so no time window is needed. The
+        timeseries column is still required, because it is what makes the lookup point-in-time correct.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customer_tier = databricks.FeatureEngineeringFeature("customer_tier",
+            full_name="main.features.customer_tier",
+            source={
+                "delta_table_source": {
+                    "full_name": "main.retail.customers",
+                },
+            },
+            function={
+                "column_selection": {
+                    "column": "tier",
+                },
+            },
+            entities=[{
+                "name": "customer_id",
+            }],
+            timeseries_column={
+                "name": "updated_at",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-               feature's resource identifier; the catalog_name, schema_name, and name fields
-               below are OUTPUT_ONLY decomposed views of this value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup.
+               Optional since entities are not set for RequestSource features or on-demand calculated features
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']] function: The function by which the feature is computed
         :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']] lineage_context: Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -502,7 +585,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']] source: The data source of the feature
-        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations.
+               Optional since a timeseries column is not set for RequestSource features or on-demand
+               calculated features
         """
         ...
     @overload
@@ -511,7 +596,87 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  args: FeatureEngineeringFeatureArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+
+        A feature is a reusable, governed definition of a model input registered in Unity Catalog. Each feature binds a data source to the function that computes its value, so model training and online serving read one definition instead of two implementations that drift apart.
+
+        Registering a feature computes nothing on its own. To produce values, materialize the feature to an offline Delta table or an online Lakebase table using the Feature Engineering API.
+
+        Only `description` can be changed in place. Changing any other field replaces the feature.
+
+        ## Example Usage
+
+        A feature needs a source and a function. A Delta table source also requires the entity columns that
+        key the feature and a timeseries column; a request source takes neither, because the value arrives
+        in the request.
+
+        ### Aggregation over a sliding window
+
+        Count each customer's transactions over the trailing seven days, recomputed daily.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        transaction_count7d = databricks.FeatureEngineeringFeature("transaction_count_7d",
+            full_name="main.features.transaction_count_7d",
+            description="Transactions per customer over the trailing seven days.",
+            source={
+                "delta_table_source": {
+                    "full_name": "main.retail.transactions",
+                },
+            },
+            function={
+                "aggregation_function": {
+                    "count_function": {
+                        "input": "transaction_id",
+                    },
+                    "time_window": {
+                        "sliding": {
+                            "window_duration": "604800s",
+                            "slide_duration": "86400s",
+                        },
+                    },
+                },
+            },
+            entities=[{
+                "name": "customer_id",
+            }],
+            timeseries_column={
+                "name": "transaction_time",
+            })
+        ```
+
+        ### Latest value of a column
+
+        Read a column straight from the source with no aggregation, so no time window is needed. The
+        timeseries column is still required, because it is what makes the lookup point-in-time correct.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customer_tier = databricks.FeatureEngineeringFeature("customer_tier",
+            full_name="main.features.customer_tier",
+            source={
+                "delta_table_source": {
+                    "full_name": "main.retail.customers",
+                },
+            },
+            function={
+                "column_selection": {
+                    "column": "tier",
+                },
+            },
+            entities=[{
+                "name": "customer_id",
+            }],
+            timeseries_column={
+                "name": "updated_at",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -608,10 +773,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: (string) - Time at which this feature was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the feature creator
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-               feature's resource identifier; the catalog_name, schema_name, and name fields
-               below are OUTPUT_ONLY decomposed views of this value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup.
+               Optional since entities are not set for RequestSource features or on-demand calculated features
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']] function: The function by which the feature is computed
         :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']] lineage_context: Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -622,7 +786,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']] source: The data source of the feature
-        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations.
+               Optional since a timeseries column is not set for RequestSource features or on-demand
+               calculated features
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -682,7 +848,8 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter
     def entities(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureEngineeringFeatureEntity']]]:
         """
-        The entity columns for the feature, used as aggregation keys and for query-time lookup
+        The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        Optional since entities are not set for RequestSource features or on-demand calculated features
         """
         return pulumi.get(self, "entities")
 
@@ -695,9 +862,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The full three-part name (catalog, schema, name) of the feature. This is the
-        feature's resource identifier; the catalog_name, schema_name, and name fields
-        below are OUTPUT_ONLY decomposed views of this value
+        The full three-part name (catalog, schema, name) of the feature
         """
         return pulumi.get(self, "full_name")
 
@@ -716,7 +881,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="lineageContext")
-    def lineage_context(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureLineageContext']]:
+    def lineage_context(self) -> pulumi.Output['outputs.FeatureEngineeringFeatureLineageContext']:
         """
         Lineage context information for this feature.
         WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -767,7 +932,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter(name="timeseriesColumn")
     def timeseries_column(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureTimeseriesColumn']]:
         """
-        Column recording time, used for point-in-time joins, backfills, and aggregations
+        Column recording time, used for point-in-time joins, backfills, and aggregations.
+        Optional since a timeseries column is not set for RequestSource features or on-demand
+        calculated features
         """
         return pulumi.get(self, "timeseries_column")
 

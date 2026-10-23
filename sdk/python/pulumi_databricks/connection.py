@@ -30,7 +30,8 @@ class ConnectionArgs:
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional['ConnectionProviderConfigArgs']] = None,
-                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -65,6 +66,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
 
     @_builtins.property
     @pulumi.getter
@@ -186,6 +189,15 @@ class ConnectionArgs:
     def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "secrets", value)
+
 
 @pulumi.input_type
 class _ConnectionState:
@@ -207,6 +219,7 @@ class _ConnectionState:
                  provider_config: pulumi.Input[Optional['ConnectionProviderConfigArgs']] = None,
                  provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.int]] = None,
                  updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -270,6 +283,8 @@ class _ConnectionState:
             pulumi.set(__self__, "provisioning_infos", provisioning_infos)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
         if securable_type is not None:
             pulumi.set(__self__, "securable_type", securable_type)
         if updated_at is not None:
@@ -484,6 +499,15 @@ class _ConnectionState:
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "secrets", value)
+
+    @_builtins.property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -548,6 +572,7 @@ class Connection(pulumi.CustomResource):
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/connections)
@@ -911,6 +936,7 @@ class Connection(pulumi.CustomResource):
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -930,6 +956,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["properties"] = properties
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_only"] = read_only
+            __props__.__dict__["secrets"] = secrets
             __props__.__dict__["connection_id"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
@@ -970,6 +997,7 @@ class Connection(pulumi.CustomResource):
             provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
             provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]]] = None,
             read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             securable_type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1024,6 +1052,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["provisioning_infos"] = provisioning_infos
         __props__.__dict__["read_only"] = read_only
+        __props__.__dict__["secrets"] = secrets
         __props__.__dict__["securable_type"] = securable_type
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
@@ -1165,6 +1194,11 @@ class Connection(pulumi.CustomResource):
         If the connection is read only. Change forces creation of a new resource.
         """
         return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        return pulumi.get(self, "secrets")
 
     @_builtins.property
     @pulumi.getter(name="securableType")

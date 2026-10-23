@@ -104,6 +104,10 @@ export interface GetPolicyInfoResult {
      */
     readonly forSecurableType: string;
     /**
+     * (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+     */
+    readonly governedTags: outputs.GetPolicyInfoGovernedTag[];
+    /**
      * (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole

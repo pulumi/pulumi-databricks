@@ -17,9 +17,6 @@ namespace Pulumi.Databricks.Outputs
         /// Extracts the value of a column-level tag
         /// </summary>
         public readonly Outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue? ColumnTagValue;
-        /// <summary>
-        /// Extracts the value of a securable-level tag
-        /// </summary>
         public readonly Outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue? TagValue;
 
         [OutputConstructor]

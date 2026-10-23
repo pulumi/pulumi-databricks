@@ -24,17 +24,21 @@ class SqlEndpointArgs:
                  cluster_size: pulumi.Input[_builtins.str],
                  auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  channel: pulumi.Input[Optional['SqlEndpointChannelArgs']] = None,
+                 customer_version_label: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_dbu: pulumi.Input[Optional[_builtins.int]] = None,
                  max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  provider_config: pulumi.Input[Optional['SqlEndpointProviderConfigArgs']] = None,
+                 reyden_cluster_size_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional['SqlEndpointTagsArgs']] = None,
                  warehouse_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -63,6 +67,8 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "auto_stop_mins", auto_stop_mins)
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
+        if customer_version_label is not None:
+            pulumi.set(__self__, "customer_version_label", customer_version_label)
         if data_source_id is not None:
             pulumi.set(__self__, "data_source_id", data_source_id)
         if enable_photon is not None:
@@ -71,6 +77,8 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if max_dbu is not None:
+            pulumi.set(__self__, "max_dbu", max_dbu)
         if max_num_clusters is not None:
             pulumi.set(__self__, "max_num_clusters", max_num_clusters)
         if min_num_clusters is not None:
@@ -81,10 +89,14 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "no_wait", no_wait)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if reyden_cluster_size_multiplier is not None:
+            pulumi.set(__self__, "reyden_cluster_size_multiplier", reyden_cluster_size_multiplier)
         if spot_instance_policy is not None:
             pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
         if sql_endpoint_id is not None:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
+        if statement_timeout is not None:
+            pulumi.set(__self__, "statement_timeout", statement_timeout)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if warehouse_type is not None:
@@ -125,6 +137,15 @@ class SqlEndpointArgs:
     @channel.setter
     def channel(self, value: pulumi.Input[Optional['SqlEndpointChannelArgs']]):
         pulumi.set(self, "channel", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerVersionLabel")
+    def customer_version_label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "customer_version_label")
+
+    @customer_version_label.setter
+    def customer_version_label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "customer_version_label", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
@@ -172,6 +193,15 @@ class SqlEndpointArgs:
     @instance_profile_arn.setter
     def instance_profile_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDbu")
+    def max_dbu(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "max_dbu")
+
+    @max_dbu.setter
+    def max_dbu(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_dbu", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumClusters")
@@ -234,6 +264,15 @@ class SqlEndpointArgs:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="reydenClusterSizeMultiplier")
+    def reyden_cluster_size_multiplier(self) -> pulumi.Input[Optional[_builtins.float]]:
+        return pulumi.get(self, "reyden_cluster_size_multiplier")
+
+    @reyden_cluster_size_multiplier.setter
+    def reyden_cluster_size_multiplier(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "reyden_cluster_size_multiplier", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -256,6 +295,15 @@ class SqlEndpointArgs:
     @sql_endpoint_id.setter
     def sql_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_endpoint_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="statementTimeout")
+    def statement_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "statement_timeout")
+
+    @statement_timeout.setter
+    def statement_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "statement_timeout", value)
 
     @_builtins.property
     @pulumi.getter
@@ -289,12 +337,14 @@ class _SqlEndpointState:
                  channel: pulumi.Input[Optional['SqlEndpointChannelArgs']] = None,
                  cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
                  creator_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_version_label: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  healths: pulumi.Input[Optional[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  jdbc_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_dbu: pulumi.Input[Optional[_builtins.int]] = None,
                  max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -303,9 +353,11 @@ class _SqlEndpointState:
                  num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  odbc_params: pulumi.Input[Optional['SqlEndpointOdbcParamsArgs']] = None,
                  provider_config: pulumi.Input[Optional['SqlEndpointProviderConfigArgs']] = None,
+                 reyden_cluster_size_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional['SqlEndpointTagsArgs']] = None,
                  warehouse_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -344,6 +396,8 @@ class _SqlEndpointState:
             pulumi.set(__self__, "cluster_size", cluster_size)
         if creator_name is not None:
             pulumi.set(__self__, "creator_name", creator_name)
+        if customer_version_label is not None:
+            pulumi.set(__self__, "customer_version_label", customer_version_label)
         if data_source_id is not None:
             pulumi.set(__self__, "data_source_id", data_source_id)
         if enable_photon is not None:
@@ -356,6 +410,8 @@ class _SqlEndpointState:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if jdbc_url is not None:
             pulumi.set(__self__, "jdbc_url", jdbc_url)
+        if max_dbu is not None:
+            pulumi.set(__self__, "max_dbu", max_dbu)
         if max_num_clusters is not None:
             pulumi.set(__self__, "max_num_clusters", max_num_clusters)
         if min_num_clusters is not None:
@@ -372,12 +428,16 @@ class _SqlEndpointState:
             pulumi.set(__self__, "odbc_params", odbc_params)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if reyden_cluster_size_multiplier is not None:
+            pulumi.set(__self__, "reyden_cluster_size_multiplier", reyden_cluster_size_multiplier)
         if spot_instance_policy is not None:
             pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
         if sql_endpoint_id is not None:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if statement_timeout is not None:
+            pulumi.set(__self__, "statement_timeout", statement_timeout)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if warehouse_type is not None:
@@ -430,6 +490,15 @@ class _SqlEndpointState:
     @creator_name.setter
     def creator_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerVersionLabel")
+    def customer_version_label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "customer_version_label")
+
+    @customer_version_label.setter
+    def customer_version_label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "customer_version_label", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
@@ -501,6 +570,15 @@ class _SqlEndpointState:
     @jdbc_url.setter
     def jdbc_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDbu")
+    def max_dbu(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "max_dbu")
+
+    @max_dbu.setter
+    def max_dbu(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_dbu", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumClusters")
@@ -599,6 +677,15 @@ class _SqlEndpointState:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="reydenClusterSizeMultiplier")
+    def reyden_cluster_size_multiplier(self) -> pulumi.Input[Optional[_builtins.float]]:
+        return pulumi.get(self, "reyden_cluster_size_multiplier")
+
+    @reyden_cluster_size_multiplier.setter
+    def reyden_cluster_size_multiplier(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "reyden_cluster_size_multiplier", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -635,6 +722,15 @@ class _SqlEndpointState:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter(name="statementTimeout")
+    def statement_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "statement_timeout")
+
+    @statement_timeout.setter
+    def statement_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "statement_timeout", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional['SqlEndpointTagsArgs']]:
         """
@@ -668,17 +764,21 @@ class SqlEndpoint(pulumi.CustomResource):
                  auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
                  cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_version_label: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_dbu: pulumi.Input[Optional[_builtins.int]] = None,
                  max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
+                 reyden_cluster_size_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
                  warehouse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -810,17 +910,21 @@ class SqlEndpoint(pulumi.CustomResource):
                  auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
                  cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_version_label: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_dbu: pulumi.Input[Optional[_builtins.int]] = None,
                  max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
+                 reyden_cluster_size_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
                  warehouse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -837,17 +941,21 @@ class SqlEndpoint(pulumi.CustomResource):
             if cluster_size is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_size'")
             __props__.__dict__["cluster_size"] = cluster_size
+            __props__.__dict__["customer_version_label"] = customer_version_label
             __props__.__dict__["data_source_id"] = data_source_id
             __props__.__dict__["enable_photon"] = enable_photon
             __props__.__dict__["enable_serverless_compute"] = enable_serverless_compute
             __props__.__dict__["instance_profile_arn"] = instance_profile_arn
+            __props__.__dict__["max_dbu"] = max_dbu
             __props__.__dict__["max_num_clusters"] = max_num_clusters
             __props__.__dict__["min_num_clusters"] = min_num_clusters
             __props__.__dict__["name"] = name
             __props__.__dict__["no_wait"] = no_wait
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["reyden_cluster_size_multiplier"] = reyden_cluster_size_multiplier
             __props__.__dict__["spot_instance_policy"] = spot_instance_policy
             __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
+            __props__.__dict__["statement_timeout"] = statement_timeout
             __props__.__dict__["tags"] = tags
             __props__.__dict__["warehouse_type"] = warehouse_type
             __props__.__dict__["creator_name"] = None
@@ -871,12 +979,14 @@ class SqlEndpoint(pulumi.CustomResource):
             channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
             cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
             creator_name: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_version_label: pulumi.Input[Optional[_builtins.str]] = None,
             data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
             enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
             healths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict', 'outputs.SqlEndpointHealth']]]]] = None,
             instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
             jdbc_url: pulumi.Input[Optional[_builtins.str]] = None,
+            max_dbu: pulumi.Input[Optional[_builtins.int]] = None,
             max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
             min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -885,9 +995,11 @@ class SqlEndpoint(pulumi.CustomResource):
             num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
             odbc_params: pulumi.Input[Optional[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict', 'outputs.SqlEndpointOdbcParams']]] = None,
             provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
+            reyden_cluster_size_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
             spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
             sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
+            statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
             warehouse_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlEndpoint':
         """
@@ -930,12 +1042,14 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["channel"] = channel
         __props__.__dict__["cluster_size"] = cluster_size
         __props__.__dict__["creator_name"] = creator_name
+        __props__.__dict__["customer_version_label"] = customer_version_label
         __props__.__dict__["data_source_id"] = data_source_id
         __props__.__dict__["enable_photon"] = enable_photon
         __props__.__dict__["enable_serverless_compute"] = enable_serverless_compute
         __props__.__dict__["healths"] = healths
         __props__.__dict__["instance_profile_arn"] = instance_profile_arn
         __props__.__dict__["jdbc_url"] = jdbc_url
+        __props__.__dict__["max_dbu"] = max_dbu
         __props__.__dict__["max_num_clusters"] = max_num_clusters
         __props__.__dict__["min_num_clusters"] = min_num_clusters
         __props__.__dict__["name"] = name
@@ -944,9 +1058,11 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["num_clusters"] = num_clusters
         __props__.__dict__["odbc_params"] = odbc_params
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["reyden_cluster_size_multiplier"] = reyden_cluster_size_multiplier
         __props__.__dict__["spot_instance_policy"] = spot_instance_policy
         __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["statement_timeout"] = statement_timeout
         __props__.__dict__["tags"] = tags
         __props__.__dict__["warehouse_type"] = warehouse_type
         return SqlEndpoint(resource_name, opts=opts, __props__=__props__)
@@ -982,6 +1098,11 @@ class SqlEndpoint(pulumi.CustomResource):
         The username of the user who created the endpoint.
         """
         return pulumi.get(self, "creator_name")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVersionLabel")
+    def customer_version_label(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "customer_version_label")
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
@@ -1029,6 +1150,11 @@ class SqlEndpoint(pulumi.CustomResource):
         JDBC connection string.
         """
         return pulumi.get(self, "jdbc_url")
+
+    @_builtins.property
+    @pulumi.getter(name="maxDbu")
+    def max_dbu(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "max_dbu")
 
     @_builtins.property
     @pulumi.getter(name="maxNumClusters")
@@ -1095,6 +1221,11 @@ class SqlEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
+    @pulumi.getter(name="reydenClusterSizeMultiplier")
+    def reyden_cluster_size_multiplier(self) -> pulumi.Output[Optional[_builtins.float]]:
+        return pulumi.get(self, "reyden_cluster_size_multiplier")
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1117,6 +1248,11 @@ class SqlEndpoint(pulumi.CustomResource):
         The current state of the endpoint.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="statementTimeout")
+    def statement_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "statement_timeout")
 
     @_builtins.property
     @pulumi.getter

@@ -114,7 +114,8 @@ class GetFeatureEngineeringFeatureResult:
     @pulumi.getter
     def entities(self) -> Sequence['outputs.GetFeatureEngineeringFeatureEntityResult']:
         """
-        (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+        (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        Optional since entities are not set for RequestSource features or on-demand calculated features
         """
         return pulumi.get(self, "entities")
 
@@ -241,12 +242,25 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
                                     provider_config: Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult']] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringFeatureResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+
+    Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+
+    ## Example Usage
+
+    Look up a feature by its full name.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    transaction_count7d = databricks.get_feature_engineering_feature(full_name="main.features.transaction_count_7d")
+    ```
 
 
-    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-           feature's resource identifier; the catalog_name, schema_name, and name fields
-           below are OUTPUT_ONLY decomposed views of this value
+    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature
     :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -276,12 +290,25 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
                                            provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult']]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeatureResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+
+    Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+
+    ## Example Usage
+
+    Look up a feature by its full name.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    transaction_count7d = databricks.get_feature_engineering_feature(full_name="main.features.transaction_count_7d")
+    ```
 
 
-    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-           feature's resource identifier; the catalog_name, schema_name, and name fields
-           below are OUTPUT_ONLY decomposed views of this value
+    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature
     :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

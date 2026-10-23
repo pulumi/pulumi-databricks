@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * Create an Azure gateway in an existing NCC using an account-level provider. Use a provider release that includes this resource and an account with access to the private network gateway V1 API. Configure account-level authentication outside this file, for example through Databricks unified authentication environment variables.
  * 
- * Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; it has no server-side default.
+ * Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; only 10, 30, 50, and 100 Gbps are allowed, and it has no server-side default.
  * 
  * <pre>
  * {@code

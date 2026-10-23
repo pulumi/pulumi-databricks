@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppAppActiveDeploymentDeploymentArtifacts;
 import com.pulumi.databricks.outputs.GetAppAppActiveDeploymentEnvVar;
 import com.pulumi.databricks.outputs.GetAppAppActiveDeploymentGitSource;
+import com.pulumi.databricks.outputs.GetAppAppActiveDeploymentHealthCheck;
 import com.pulumi.databricks.outputs.GetAppAppActiveDeploymentStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -40,6 +41,7 @@ public final class GetAppAppActiveDeployment {
     private @Nullable String deploymentId;
     private @Nullable List<GetAppAppActiveDeploymentEnvVar> envVars;
     private @Nullable GetAppAppActiveDeploymentGitSource gitSource;
+    private @Nullable GetAppAppActiveDeploymentHealthCheck healthCheck;
     /**
      * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      * 
@@ -99,6 +101,9 @@ public final class GetAppAppActiveDeployment {
     public Optional<GetAppAppActiveDeploymentGitSource> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
+    public Optional<GetAppAppActiveDeploymentHealthCheck> healthCheck() {
+        return Optional.ofNullable(this.healthCheck);
+    }
     /**
      * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      * 
@@ -144,6 +149,7 @@ public final class GetAppAppActiveDeployment {
         private @Nullable String deploymentId;
         private @Nullable List<GetAppAppActiveDeploymentEnvVar> envVars;
         private @Nullable GetAppAppActiveDeploymentGitSource gitSource;
+        private @Nullable GetAppAppActiveDeploymentHealthCheck healthCheck;
         private @Nullable String mode;
         private @Nullable String sourceCodePath;
         private GetAppAppActiveDeploymentStatus status;
@@ -158,6 +164,7 @@ public final class GetAppAppActiveDeployment {
     	      this.deploymentId = defaults.deploymentId;
     	      this.envVars = defaults.envVars;
     	      this.gitSource = defaults.gitSource;
+    	      this.healthCheck = defaults.healthCheck;
     	      this.mode = defaults.mode;
     	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.status = defaults.status;
@@ -219,6 +226,12 @@ public final class GetAppAppActiveDeployment {
             return this;
         }
         @CustomType.Setter
+        public Builder healthCheck(@Nullable GetAppAppActiveDeploymentHealthCheck healthCheck) {
+
+            this.healthCheck = healthCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
             this.mode = mode;
@@ -255,6 +268,7 @@ public final class GetAppAppActiveDeployment {
             _resultValue.deploymentId = deploymentId;
             _resultValue.envVars = envVars;
             _resultValue.gitSource = gitSource;
+            _resultValue.healthCheck = healthCheck;
             _resultValue.mode = mode;
             _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.status = status;

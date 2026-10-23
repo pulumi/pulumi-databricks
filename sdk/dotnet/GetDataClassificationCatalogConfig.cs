@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDataClassificationCatalogConfig
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
         /// 
@@ -21,6 +21,8 @@ namespace Pulumi.Databricks
         /// To read the Data Classification configuration, you must have browse permissions on the catalog.
         /// 
         /// &gt; **Note** This data source can only be used with a workspace-level provider.
+        /// 
+        /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
         /// 
         /// 
         /// ## Example Usage
@@ -47,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["autoTagConfigs"] = prodConfig.Apply(getDataClassificationCatalogConfigResult =&gt; getDataClassificationCatalogConfigResult.AutoTagConfigs),
+        ///         ["includedSchemas"] = prodConfig.Apply(getDataClassificationCatalogConfigResult =&gt; getDataClassificationCatalogConfigResult.IncludedSchemas),
         ///     };
         /// });
         /// ```
@@ -56,7 +58,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataClassificationCatalogConfigResult>("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", args ?? new GetDataClassificationCatalogConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
         /// 
@@ -65,6 +67,8 @@ namespace Pulumi.Databricks
         /// To read the Data Classification configuration, you must have browse permissions on the catalog.
         /// 
         /// &gt; **Note** This data source can only be used with a workspace-level provider.
+        /// 
+        /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
         /// 
         /// 
         /// ## Example Usage
@@ -91,7 +95,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["autoTagConfigs"] = prodConfig.Apply(getDataClassificationCatalogConfigResult =&gt; getDataClassificationCatalogConfigResult.AutoTagConfigs),
+        ///         ["includedSchemas"] = prodConfig.Apply(getDataClassificationCatalogConfigResult =&gt; getDataClassificationCatalogConfigResult.IncludedSchemas),
         ///     };
         /// });
         /// ```
@@ -100,7 +104,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDataClassificationCatalogConfigResult>("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", args ?? new GetDataClassificationCatalogConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
         /// 
@@ -109,6 +113,8 @@ namespace Pulumi.Databricks
         /// To read the Data Classification configuration, you must have browse permissions on the catalog.
         /// 
         /// &gt; **Note** This data source can only be used with a workspace-level provider.
+        /// 
+        /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
         /// 
         /// 
         /// ## Example Usage
@@ -135,7 +141,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["autoTagConfigs"] = prodConfig.Apply(getDataClassificationCatalogConfigResult =&gt; getDataClassificationCatalogConfigResult.AutoTagConfigs),
+        ///         ["includedSchemas"] = prodConfig.Apply(getDataClassificationCatalogConfigResult =&gt; getDataClassificationCatalogConfigResult.IncludedSchemas),
         ///     };
         /// });
         /// ```

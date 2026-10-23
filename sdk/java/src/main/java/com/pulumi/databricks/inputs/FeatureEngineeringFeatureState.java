@@ -84,14 +84,16 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
-     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      * 
      */
     @Import(name="entities")
     private @Nullable Output<List<FeatureEngineeringFeatureEntityArgs>> entities;
 
     /**
-     * @return The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * @return The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      * 
      */
     public Optional<Output<List<FeatureEngineeringFeatureEntityArgs>>> entities() {
@@ -106,18 +108,14 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      * 
      */
     @Import(name="fullName")
     private @Nullable Output<String> fullName;
 
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * @return The full three-part name (catalog, schema, name) of the feature
      * 
      */
     public Optional<Output<String>> fullName() {
@@ -237,14 +235,18 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     @Import(name="timeseriesColumn")
     private @Nullable Output<FeatureEngineeringFeatureTimeseriesColumnArgs> timeseriesColumn;
 
     /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     public Optional<Output<FeatureEngineeringFeatureTimeseriesColumnArgs>> timeseriesColumn() {
@@ -375,7 +377,8 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup
+         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup.
+         * Optional since entities are not set for RequestSource features or on-demand calculated features
          * 
          * @return builder
          * 
@@ -386,7 +389,8 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup
+         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup.
+         * Optional since entities are not set for RequestSource features or on-demand calculated features
          * 
          * @return builder
          * 
@@ -396,7 +400,8 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup
+         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup.
+         * Optional since entities are not set for RequestSource features or on-demand calculated features
          * 
          * @return builder
          * 
@@ -415,9 +420,7 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
-         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-         * below are OUTPUT_ONLY decomposed views of this value
+         * @param fullName The full three-part name (catalog, schema, name) of the feature
          * 
          * @return builder
          * 
@@ -428,9 +431,7 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
-         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-         * below are OUTPUT_ONLY decomposed views of this value
+         * @param fullName The full three-part name (catalog, schema, name) of the feature
          * 
          * @return builder
          * 
@@ -596,7 +597,9 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations.
+         * Optional since a timeseries column is not set for RequestSource features or on-demand
+         * calculated features
          * 
          * @return builder
          * 
@@ -607,7 +610,9 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations.
+         * Optional since a timeseries column is not set for RequestSource features or on-demand
+         * calculated features
          * 
          * @return builder
          * 

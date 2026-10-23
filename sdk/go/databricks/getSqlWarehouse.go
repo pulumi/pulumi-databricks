@@ -73,7 +73,8 @@ type GetSqlWarehouseArgs struct {
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName *string `pulumi:"creatorName"`
+	CreatorName          *string `pulumi:"creatorName"`
+	CustomerVersionLabel *string `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
@@ -87,6 +88,7 @@ type GetSqlWarehouseArgs struct {
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
+	MaxDbu  *int    `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running.
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
@@ -98,12 +100,14 @@ type GetSqlWarehouseArgs struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters *int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams     *GetSqlWarehouseOdbcParams     `pulumi:"odbcParams"`
-	ProviderConfig *GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
+	OdbcParams                  *GetSqlWarehouseOdbcParams     `pulumi:"odbcParams"`
+	ProviderConfig              *GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
+	ReydenClusterSizeMultiplier *float64                       `pulumi:"reydenClusterSizeMultiplier"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
-	State *string `pulumi:"state"`
+	State            *string `pulumi:"state"`
+	StatementTimeout *int    `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags *GetSqlWarehouseTags `pulumi:"tags"`
 	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
@@ -119,7 +123,8 @@ type GetSqlWarehouseResult struct {
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName string `pulumi:"creatorName"`
+	CreatorName          string `pulumi:"creatorName"`
+	CustomerVersionLabel string `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId string `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
@@ -133,6 +138,7 @@ type GetSqlWarehouseResult struct {
 	InstanceProfileArn string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl string `pulumi:"jdbcUrl"`
+	MaxDbu  int    `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running.
 	MaxNumClusters int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
@@ -144,12 +150,14 @@ type GetSqlWarehouseResult struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams     GetSqlWarehouseOdbcParams     `pulumi:"odbcParams"`
-	ProviderConfig GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
+	OdbcParams                  GetSqlWarehouseOdbcParams     `pulumi:"odbcParams"`
+	ProviderConfig              GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
+	ReydenClusterSizeMultiplier float64                       `pulumi:"reydenClusterSizeMultiplier"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
-	State string `pulumi:"state"`
+	State            string `pulumi:"state"`
+	StatementTimeout int    `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTags `pulumi:"tags"`
 	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
@@ -170,7 +178,8 @@ type GetSqlWarehouseOutputArgs struct {
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringPtrInput `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName pulumi.StringPtrInput `pulumi:"creatorName"`
+	CreatorName          pulumi.StringPtrInput `pulumi:"creatorName"`
+	CustomerVersionLabel pulumi.StringPtrInput `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
@@ -184,6 +193,7 @@ type GetSqlWarehouseOutputArgs struct {
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput `pulumi:"jdbcUrl"`
+	MaxDbu  pulumi.IntPtrInput    `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running.
 	MaxNumClusters pulumi.IntPtrInput `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
@@ -195,12 +205,14 @@ type GetSqlWarehouseOutputArgs struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters pulumi.IntPtrInput `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams     GetSqlWarehouseOdbcParamsPtrInput     `pulumi:"odbcParams"`
-	ProviderConfig GetSqlWarehouseProviderConfigPtrInput `pulumi:"providerConfig"`
+	OdbcParams                  GetSqlWarehouseOdbcParamsPtrInput     `pulumi:"odbcParams"`
+	ProviderConfig              GetSqlWarehouseProviderConfigPtrInput `pulumi:"providerConfig"`
+	ReydenClusterSizeMultiplier pulumi.Float64PtrInput                `pulumi:"reydenClusterSizeMultiplier"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State            pulumi.StringPtrInput `pulumi:"state"`
+	StatementTimeout pulumi.IntPtrInput    `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTagsPtrInput `pulumi:"tags"`
 	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
@@ -246,6 +258,10 @@ func (o GetSqlWarehouseResultOutput) CreatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.CreatorName }).(pulumi.StringOutput)
 }
 
+func (o GetSqlWarehouseResultOutput) CustomerVersionLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.CustomerVersionLabel }).(pulumi.StringOutput)
+}
+
 // (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 func (o GetSqlWarehouseResultOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.DataSourceId }).(pulumi.StringOutput)
@@ -278,6 +294,10 @@ func (o GetSqlWarehouseResultOutput) InstanceProfileArn() pulumi.StringOutput {
 // JDBC connection string.
 func (o GetSqlWarehouseResultOutput) JdbcUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.JdbcUrl }).(pulumi.StringOutput)
+}
+
+func (o GetSqlWarehouseResultOutput) MaxDbu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.MaxDbu }).(pulumi.IntOutput)
 }
 
 // Maximum number of clusters available when a SQL warehouse is running.
@@ -314,6 +334,10 @@ func (o GetSqlWarehouseResultOutput) ProviderConfig() GetSqlWarehouseProviderCon
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseProviderConfig { return v.ProviderConfig }).(GetSqlWarehouseProviderConfigOutput)
 }
 
+func (o GetSqlWarehouseResultOutput) ReydenClusterSizeMultiplier() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSqlWarehouseResult) float64 { return v.ReydenClusterSizeMultiplier }).(pulumi.Float64Output)
+}
+
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 func (o GetSqlWarehouseResultOutput) SpotInstancePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.SpotInstancePolicy }).(pulumi.StringOutput)
@@ -322,6 +346,10 @@ func (o GetSqlWarehouseResultOutput) SpotInstancePolicy() pulumi.StringOutput {
 // The current state of the endpoint.
 func (o GetSqlWarehouseResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetSqlWarehouseResultOutput) StatementTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.StatementTimeout }).(pulumi.IntOutput)
 }
 
 // tags used for SQL warehouse resources.

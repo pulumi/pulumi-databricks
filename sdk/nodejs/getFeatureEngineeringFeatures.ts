@@ -7,7 +7,26 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+ *
+ * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+ *
+ * ## Example Usage
+ *
+ * List every feature in a schema, then project their names.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const inSchema = databricks.getFeatureEngineeringFeatures({
+ *     catalogName: "main",
+ *     schemaName: "features",
+ * });
+ * export const featureNames = inSchema.then(inSchema => .map(f => (f.fullName)));
+ * ```
  */
 export function getFeatureEngineeringFeatures(args: GetFeatureEngineeringFeaturesArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureEngineeringFeaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -58,7 +77,26 @@ export interface GetFeatureEngineeringFeaturesResult {
     readonly schemaName: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+ *
+ * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+ *
+ * ## Example Usage
+ *
+ * List every feature in a schema, then project their names.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const inSchema = databricks.getFeatureEngineeringFeatures({
+ *     catalogName: "main",
+ *     schemaName: "features",
+ * });
+ * export const featureNames = inSchema.then(inSchema => .map(f => (f.fullName)));
+ * ```
  */
 export function getFeatureEngineeringFeaturesOutput(args: GetFeatureEngineeringFeaturesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureEngineeringFeaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

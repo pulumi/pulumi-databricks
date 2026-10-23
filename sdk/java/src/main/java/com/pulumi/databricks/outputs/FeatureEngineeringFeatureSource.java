@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceFeatureViewS
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceKafkaSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceLateness;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceRequestSource;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceSdpSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceStreamSource;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,6 +43,11 @@ public final class FeatureEngineeringFeatureSource {
      * 
      */
     private @Nullable FeatureEngineeringFeatureSourceRequestSource requestSource;
+    /**
+     * @return A Spark Declarative Pipeline data source
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureSourceSdpSource sdpSource;
     /**
      * @return A Stream data source
      * 
@@ -86,6 +92,13 @@ public final class FeatureEngineeringFeatureSource {
         return Optional.ofNullable(this.requestSource);
     }
     /**
+     * @return A Spark Declarative Pipeline data source
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureSourceSdpSource> sdpSource() {
+        return Optional.ofNullable(this.sdpSource);
+    }
+    /**
      * @return A Stream data source
      * 
      */
@@ -107,6 +120,7 @@ public final class FeatureEngineeringFeatureSource {
         private @Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource;
         private @Nullable FeatureEngineeringFeatureSourceLateness lateness;
         private @Nullable FeatureEngineeringFeatureSourceRequestSource requestSource;
+        private @Nullable FeatureEngineeringFeatureSourceSdpSource sdpSource;
         private @Nullable FeatureEngineeringFeatureSourceStreamSource streamSource;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSource defaults) {
@@ -116,6 +130,7 @@ public final class FeatureEngineeringFeatureSource {
     	      this.kafkaSource = defaults.kafkaSource;
     	      this.lateness = defaults.lateness;
     	      this.requestSource = defaults.requestSource;
+    	      this.sdpSource = defaults.sdpSource;
     	      this.streamSource = defaults.streamSource;
         }
 
@@ -150,6 +165,12 @@ public final class FeatureEngineeringFeatureSource {
             return this;
         }
         @CustomType.Setter
+        public Builder sdpSource(@Nullable FeatureEngineeringFeatureSourceSdpSource sdpSource) {
+
+            this.sdpSource = sdpSource;
+            return this;
+        }
+        @CustomType.Setter
         public Builder streamSource(@Nullable FeatureEngineeringFeatureSourceStreamSource streamSource) {
 
             this.streamSource = streamSource;
@@ -162,6 +183,7 @@ public final class FeatureEngineeringFeatureSource {
             _resultValue.kafkaSource = kafkaSource;
             _resultValue.lateness = lateness;
             _resultValue.requestSource = requestSource;
+            _resultValue.sdpSource = sdpSource;
             _resultValue.streamSource = streamSource;
             return _resultValue;
         }

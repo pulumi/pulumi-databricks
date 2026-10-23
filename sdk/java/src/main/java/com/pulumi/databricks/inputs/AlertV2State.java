@@ -69,6 +69,37 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The format used to interpret the `customSummary` and `customDescription` templates.
+     * 
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `{@literal @}VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     * 
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     * 
+     */
+    @Import(name="customTemplateFormat")
+    private @Nullable Output<String> customTemplateFormat;
+
+    /**
+     * @return The format used to interpret the `customSummary` and `customDescription` templates.
+     * 
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `{@literal @}VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     * 
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     * 
+     */
+    public Optional<Output<String>> customTemplateFormat() {
+        return Optional.ofNullable(this.customTemplateFormat);
+    }
+
+    /**
      * The display name of the alert
      * 
      */
@@ -319,6 +350,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.customDescription = $.customDescription;
         this.customSummary = $.customSummary;
+        this.customTemplateFormat = $.customTemplateFormat;
         this.displayName = $.displayName;
         this.effectiveRunAs = $.effectiveRunAs;
         this.evaluation = $.evaluation;
@@ -415,6 +447,43 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customSummary(String customSummary) {
             return customSummary(Output.of(customSummary));
+        }
+
+        /**
+         * @param customTemplateFormat The format used to interpret the `customSummary` and `customDescription` templates.
+         * 
+         * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+         * `MARKDOWN` treats them as Markdown with allowlisted `{@literal @}VARIABLE_NAME` placeholders and converts
+         * them to the format each notification destination expects, so a single template renders
+         * correctly in email, Slack, and Microsoft Teams.
+         * 
+         * When unset, the API applies no default. Responses omit the field unless a format is stored,
+         * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTemplateFormat(@Nullable Output<String> customTemplateFormat) {
+            $.customTemplateFormat = customTemplateFormat;
+            return this;
+        }
+
+        /**
+         * @param customTemplateFormat The format used to interpret the `customSummary` and `customDescription` templates.
+         * 
+         * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+         * `MARKDOWN` treats them as Markdown with allowlisted `{@literal @}VARIABLE_NAME` placeholders and converts
+         * them to the format each notification destination expects, so a single template renders
+         * correctly in email, Slack, and Microsoft Teams.
+         * 
+         * When unset, the API applies no default. Responses omit the field unless a format is stored,
+         * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTemplateFormat(String customTemplateFormat) {
+            return customTemplateFormat(Output.of(customTemplateFormat));
         }
 
         /**

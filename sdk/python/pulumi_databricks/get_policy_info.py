@@ -28,7 +28,7 @@ class GetPolicyInfoResult:
     """
     A collection of values returned by getPolicyInfo.
     """
-    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, deny=None, except_principals=None, for_securable_type=None, grant=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, provider_config=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
+    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, deny=None, except_principals=None, for_securable_type=None, governed_tags=None, grant=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, provider_config=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
         if column_mask and not isinstance(column_mask, dict):
             raise TypeError("Expected argument 'column_mask' to be a dict")
         pulumi.set(__self__, "column_mask", column_mask)
@@ -50,6 +50,9 @@ class GetPolicyInfoResult:
         if for_securable_type and not isinstance(for_securable_type, str):
             raise TypeError("Expected argument 'for_securable_type' to be a str")
         pulumi.set(__self__, "for_securable_type", for_securable_type)
+        if governed_tags and not isinstance(governed_tags, list):
+            raise TypeError("Expected argument 'governed_tags' to be a list")
+        pulumi.set(__self__, "governed_tags", governed_tags)
         if grant and not isinstance(grant, dict):
             raise TypeError("Expected argument 'grant' to be a dict")
         pulumi.set(__self__, "grant", grant)
@@ -150,6 +153,14 @@ class GetPolicyInfoResult:
         Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
+
+    @_builtins.property
+    @pulumi.getter(name="governedTags")
+    def governed_tags(self) -> Sequence['outputs.GetPolicyInfoGovernedTagResult']:
+        """
+        (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+        """
+        return pulumi.get(self, "governed_tags")
 
     @_builtins.property
     @pulumi.getter
@@ -277,6 +288,7 @@ class AwaitableGetPolicyInfoResult(GetPolicyInfoResult):
             deny=self.deny,
             except_principals=self.except_principals,
             for_securable_type=self.for_securable_type,
+            governed_tags=self.governed_tags,
             grant=self.grant,
             id=self.id,
             match_columns=self.match_columns,
@@ -345,6 +357,7 @@ def get_policy_info(name: Optional[_builtins.str] = None,
         deny=pulumi.get(__ret__, 'deny'),
         except_principals=pulumi.get(__ret__, 'except_principals'),
         for_securable_type=pulumi.get(__ret__, 'for_securable_type'),
+        governed_tags=pulumi.get(__ret__, 'governed_tags'),
         grant=pulumi.get(__ret__, 'grant'),
         id=pulumi.get(__ret__, 'id'),
         match_columns=pulumi.get(__ret__, 'match_columns'),
@@ -410,6 +423,7 @@ def get_policy_info_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         deny=pulumi.get(__response__, 'deny'),
         except_principals=pulumi.get(__response__, 'except_principals'),
         for_securable_type=pulumi.get(__response__, 'for_securable_type'),
+        governed_tags=pulumi.get(__response__, 'governed_tags'),
         grant=pulumi.get(__response__, 'grant'),
         id=pulumi.get(__response__, 'id'),
         match_columns=pulumi.get(__response__, 'match_columns'),

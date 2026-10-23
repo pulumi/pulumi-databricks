@@ -11,6 +11,7 @@ import com.pulumi.databricks.outputs.GetSqlWarehouseProviderConfig;
 import com.pulumi.databricks.outputs.GetSqlWarehouseTags;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -37,6 +38,7 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String creatorName;
+    private String customerVersionLabel;
     /**
      * @return (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
@@ -68,6 +70,7 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String jdbcUrl;
+    private Integer maxDbu;
     /**
      * @return Maximum number of clusters available when a SQL warehouse is running.
      * 
@@ -99,6 +102,7 @@ public final class GetSqlWarehouseResult {
      */
     private GetSqlWarehouseOdbcParams odbcParams;
     private GetSqlWarehouseProviderConfig providerConfig;
+    private Double reydenClusterSizeMultiplier;
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -109,6 +113,7 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String state;
+    private Integer statementTimeout;
     /**
      * @return tags used for SQL warehouse resources.
      * 
@@ -148,6 +153,9 @@ public final class GetSqlWarehouseResult {
      */
     public String creatorName() {
         return this.creatorName;
+    }
+    public String customerVersionLabel() {
+        return this.customerVersionLabel;
     }
     /**
      * @return (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -194,6 +202,9 @@ public final class GetSqlWarehouseResult {
     public String jdbcUrl() {
         return this.jdbcUrl;
     }
+    public Integer maxDbu() {
+        return this.maxDbu;
+    }
     /**
      * @return Maximum number of clusters available when a SQL warehouse is running.
      * 
@@ -239,6 +250,9 @@ public final class GetSqlWarehouseResult {
     public GetSqlWarehouseProviderConfig providerConfig() {
         return this.providerConfig;
     }
+    public Double reydenClusterSizeMultiplier() {
+        return this.reydenClusterSizeMultiplier;
+    }
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -252,6 +266,9 @@ public final class GetSqlWarehouseResult {
      */
     public String state() {
         return this.state;
+    }
+    public Integer statementTimeout() {
+        return this.statementTimeout;
     }
     /**
      * @return tags used for SQL warehouse resources.
@@ -281,6 +298,7 @@ public final class GetSqlWarehouseResult {
         private GetSqlWarehouseChannel channel;
         private String clusterSize;
         private String creatorName;
+        private String customerVersionLabel;
         private String dataSourceId;
         private Boolean enablePhoton;
         private Boolean enableServerlessCompute;
@@ -288,6 +306,7 @@ public final class GetSqlWarehouseResult {
         private String id;
         private String instanceProfileArn;
         private String jdbcUrl;
+        private Integer maxDbu;
         private Integer maxNumClusters;
         private Integer minNumClusters;
         private String name;
@@ -295,8 +314,10 @@ public final class GetSqlWarehouseResult {
         private Integer numClusters;
         private GetSqlWarehouseOdbcParams odbcParams;
         private GetSqlWarehouseProviderConfig providerConfig;
+        private Double reydenClusterSizeMultiplier;
         private String spotInstancePolicy;
         private String state;
+        private Integer statementTimeout;
         private GetSqlWarehouseTags tags;
         private String warehouseType;
         public Builder() {}
@@ -306,6 +327,7 @@ public final class GetSqlWarehouseResult {
     	      this.channel = defaults.channel;
     	      this.clusterSize = defaults.clusterSize;
     	      this.creatorName = defaults.creatorName;
+    	      this.customerVersionLabel = defaults.customerVersionLabel;
     	      this.dataSourceId = defaults.dataSourceId;
     	      this.enablePhoton = defaults.enablePhoton;
     	      this.enableServerlessCompute = defaults.enableServerlessCompute;
@@ -313,6 +335,7 @@ public final class GetSqlWarehouseResult {
     	      this.id = defaults.id;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
     	      this.jdbcUrl = defaults.jdbcUrl;
+    	      this.maxDbu = defaults.maxDbu;
     	      this.maxNumClusters = defaults.maxNumClusters;
     	      this.minNumClusters = defaults.minNumClusters;
     	      this.name = defaults.name;
@@ -320,8 +343,10 @@ public final class GetSqlWarehouseResult {
     	      this.numClusters = defaults.numClusters;
     	      this.odbcParams = defaults.odbcParams;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.reydenClusterSizeMultiplier = defaults.reydenClusterSizeMultiplier;
     	      this.spotInstancePolicy = defaults.spotInstancePolicy;
     	      this.state = defaults.state;
+    	      this.statementTimeout = defaults.statementTimeout;
     	      this.tags = defaults.tags;
     	      this.warehouseType = defaults.warehouseType;
         }
@@ -356,6 +381,14 @@ public final class GetSqlWarehouseResult {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "creatorName");
             }
             this.creatorName = creatorName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customerVersionLabel(String customerVersionLabel) {
+            if (customerVersionLabel == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "customerVersionLabel");
+            }
+            this.customerVersionLabel = customerVersionLabel;
             return this;
         }
         @CustomType.Setter
@@ -415,6 +448,14 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maxDbu(Integer maxDbu) {
+            if (maxDbu == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "maxDbu");
+            }
+            this.maxDbu = maxDbu;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxNumClusters(Integer maxNumClusters) {
             if (maxNumClusters == null) {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "maxNumClusters");
@@ -471,6 +512,14 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder reydenClusterSizeMultiplier(Double reydenClusterSizeMultiplier) {
+            if (reydenClusterSizeMultiplier == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "reydenClusterSizeMultiplier");
+            }
+            this.reydenClusterSizeMultiplier = reydenClusterSizeMultiplier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spotInstancePolicy(String spotInstancePolicy) {
             if (spotInstancePolicy == null) {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "spotInstancePolicy");
@@ -484,6 +533,14 @@ public final class GetSqlWarehouseResult {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "state");
             }
             this.state = state;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder statementTimeout(Integer statementTimeout) {
+            if (statementTimeout == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "statementTimeout");
+            }
+            this.statementTimeout = statementTimeout;
             return this;
         }
         @CustomType.Setter
@@ -508,6 +565,7 @@ public final class GetSqlWarehouseResult {
             _resultValue.channel = channel;
             _resultValue.clusterSize = clusterSize;
             _resultValue.creatorName = creatorName;
+            _resultValue.customerVersionLabel = customerVersionLabel;
             _resultValue.dataSourceId = dataSourceId;
             _resultValue.enablePhoton = enablePhoton;
             _resultValue.enableServerlessCompute = enableServerlessCompute;
@@ -515,6 +573,7 @@ public final class GetSqlWarehouseResult {
             _resultValue.id = id;
             _resultValue.instanceProfileArn = instanceProfileArn;
             _resultValue.jdbcUrl = jdbcUrl;
+            _resultValue.maxDbu = maxDbu;
             _resultValue.maxNumClusters = maxNumClusters;
             _resultValue.minNumClusters = minNumClusters;
             _resultValue.name = name;
@@ -522,8 +581,10 @@ public final class GetSqlWarehouseResult {
             _resultValue.numClusters = numClusters;
             _resultValue.odbcParams = odbcParams;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.reydenClusterSizeMultiplier = reydenClusterSizeMultiplier;
             _resultValue.spotInstancePolicy = spotInstancePolicy;
             _resultValue.state = state;
+            _resultValue.statementTimeout = statementTimeout;
             _resultValue.tags = tags;
             _resultValue.warehouseType = warehouseType;
             return _resultValue;

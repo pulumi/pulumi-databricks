@@ -17,13 +17,13 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> EntityColumns;
         public readonly string? FilterCondition;
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         public readonly string FullName;
         /// <summary>
-        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations.
+        /// Optional since a timeseries column is not set for RequestSource features or on-demand
+        /// calculated features
         /// </summary>
         public readonly string? TimeseriesColumn;
         public readonly string? TransformationSql;

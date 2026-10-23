@@ -31,17 +31,9 @@ public final class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection
         return Optional.ofNullable(this.columnTagValue);
     }
 
-    /**
-     * Extracts the value of a securable-level tag
-     * 
-     */
     @Import(name="tagValue")
     private @Nullable Output<PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs> tagValue;
 
-    /**
-     * @return Extracts the value of a securable-level tag
-     * 
-     */
     public Optional<Output<PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs>> tagValue() {
         return Optional.ofNullable(this.tagValue);
     }
@@ -92,23 +84,11 @@ public final class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection
             return columnTagValue(Output.of(columnTagValue));
         }
 
-        /**
-         * @param tagValue Extracts the value of a securable-level tag
-         * 
-         * @return builder
-         * 
-         */
         public Builder tagValue(@Nullable Output<PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs> tagValue) {
             $.tagValue = tagValue;
             return this;
         }
 
-        /**
-         * @param tagValue Extracts the value of a securable-level tag
-         * 
-         * @return builder
-         * 
-         */
         public Builder tagValue(PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs tagValue) {
             return tagValue(Output.of(tagValue));
         }

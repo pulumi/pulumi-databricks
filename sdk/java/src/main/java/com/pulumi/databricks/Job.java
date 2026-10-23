@@ -247,6 +247,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    @Export(name="durationTarget", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> durationTarget;
+
+    public Output<Optional<String>> durationTarget() {
+        return Codegen.optional(this.durationTarget);
+    }
     /**
      * If `&#34;UI_LOCKED&#34;`, the user interface for the job will be locked. If `&#34;EDITABLE&#34;` (the default), the user interface will be editable.
      * 

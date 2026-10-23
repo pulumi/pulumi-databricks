@@ -95,6 +95,8 @@ type LookupPolicyInfoResult struct {
 	// (string) - Type of securables that the policy should take effect on.
 	// Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType string `pulumi:"forSecurableType"`
+	// (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+	GovernedTags []GetPolicyInfoGovernedTag `pulumi:"governedTags"`
 	// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -211,6 +213,11 @@ func (o LookupPolicyInfoResultOutput) ExceptPrincipals() pulumi.StringArrayOutpu
 // Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o LookupPolicyInfoResultOutput) ForSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.ForSecurableType }).(pulumi.StringOutput)
+}
+
+// (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+func (o LookupPolicyInfoResultOutput) GovernedTags() GetPolicyInfoGovernedTagArrayOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) []GetPolicyInfoGovernedTag { return v.GovernedTags }).(GetPolicyInfoGovernedTagArrayOutput)
 }
 
 // (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.

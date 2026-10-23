@@ -98,6 +98,18 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     declare public readonly customSummary: pulumi.Output<string | undefined>;
     /**
+     * The format used to interpret the `customSummary` and `customDescription` templates.
+     *
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     *
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     */
+    declare public readonly customTemplateFormat: pulumi.Output<string | undefined>;
+    /**
      * The display name of the alert
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -186,6 +198,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customDescription"] = state?.customDescription;
             resourceInputs["customSummary"] = state?.customSummary;
+            resourceInputs["customTemplateFormat"] = state?.customTemplateFormat;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveRunAs"] = state?.effectiveRunAs;
             resourceInputs["evaluation"] = state?.evaluation;
@@ -220,6 +233,7 @@ export class AlertV2 extends pulumi.CustomResource {
             }
             resourceInputs["customDescription"] = args?.customDescription;
             resourceInputs["customSummary"] = args?.customSummary;
+            resourceInputs["customTemplateFormat"] = args?.customTemplateFormat;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["evaluation"] = args?.evaluation;
             resourceInputs["parameters"] = args?.parameters;
@@ -258,6 +272,18 @@ export interface AlertV2State {
      * Custom summary for the alert. support mustache template
      */
     customSummary?: pulumi.Input<string | undefined>;
+    /**
+     * The format used to interpret the `customSummary` and `customDescription` templates.
+     *
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     *
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     */
+    customTemplateFormat?: pulumi.Input<string | undefined>;
     /**
      * The display name of the alert
      */
@@ -344,6 +370,18 @@ export interface AlertV2Args {
      * Custom summary for the alert. support mustache template
      */
     customSummary?: pulumi.Input<string | undefined>;
+    /**
+     * The format used to interpret the `customSummary` and `customDescription` templates.
+     *
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     *
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     */
+    customTemplateFormat?: pulumi.Input<string | undefined>;
     /**
      * The display name of the alert
      */

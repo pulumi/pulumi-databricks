@@ -168,6 +168,12 @@ namespace Pulumi.Databricks
         public Output<string> ForSecurableType { get; private set; } = null!;
 
         /// <summary>
+        /// (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+        /// </summary>
+        [Output("governedTags")]
+        public Output<ImmutableArray<Outputs.PolicyInfoGovernedTag>> GovernedTags { get; private set; } = null!;
+
+        /// <summary>
         /// Options for grant policies. Valid only if `PolicyType` is `POLICY_TYPE_GRANT`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
@@ -480,6 +486,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("forSecurableType")]
         public Input<string>? ForSecurableType { get; set; }
+
+        [Input("governedTags")]
+        private InputList<Inputs.PolicyInfoGovernedTagGetArgs>? _governedTags;
+
+        /// <summary>
+        /// (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+        /// </summary>
+        public InputList<Inputs.PolicyInfoGovernedTagGetArgs> GovernedTags
+        {
+            get => _governedTags ?? (_governedTags = new InputList<Inputs.PolicyInfoGovernedTagGetArgs>());
+            set => _governedTags = value;
+        }
 
         /// <summary>
         /// Options for grant policies. Valid only if `PolicyType` is `POLICY_TYPE_GRANT`.

@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.DisasterRecoveryFailoverGroupArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DisasterRecoveryFailoverGroupState;
+import com.pulumi.databricks.outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress;
 import com.pulumi.databricks.outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets;
 import com.pulumi.databricks.outputs.DisasterRecoveryFailoverGroupWorkspaceSet;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -139,6 +141,20 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
         return this.failoverGroupId;
     }
     /**
+     * (boolean) - True if errors currently block the replication point
+     * 
+     */
+    @Export(name="hasReplicationPointBlockingErrors", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasReplicationPointBlockingErrors;
+
+    /**
+     * @return (boolean) - True if errors currently block the replication point
+     * 
+     */
+    public Output<Boolean> hasReplicationPointBlockingErrors() {
+        return this.hasReplicationPointBlockingErrors;
+    }
+    /**
      * Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      * 
@@ -153,6 +169,20 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
      */
     public Output<String> initialPrimaryRegion() {
         return this.initialPrimaryRegion;
+    }
+    /**
+     * (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     * 
+     */
+    @Export(name="initialReplicationProgress", refs={DisasterRecoveryFailoverGroupInitialReplicationProgress.class}, tree="[0]")
+    private Output<DisasterRecoveryFailoverGroupInitialReplicationProgress> initialReplicationProgress;
+
+    /**
+     * @return (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     * 
+     */
+    public Output<DisasterRecoveryFailoverGroupInitialReplicationProgress> initialReplicationProgress() {
+        return this.initialReplicationProgress;
     }
     /**
      * (string) - Fully qualified resource name in the format

@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class NotificationDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("databricksAppSlack")]
+        public Input<Inputs.NotificationDestinationConfigDatabricksAppSlackArgs>? DatabricksAppSlack { get; set; }
+
+        [Input("databricksAppTeams")]
+        public Input<Inputs.NotificationDestinationConfigDatabricksAppTeamsArgs>? DatabricksAppTeams { get; set; }
+
         /// <summary>
         /// The email configuration of the Notification Destination. It must contain the following:
         /// </summary>

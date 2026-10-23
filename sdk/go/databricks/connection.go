@@ -318,7 +318,8 @@ type Connection struct {
 	// Status of an asynchronously provisioned resource. This block consists of the following fields:
 	ProvisioningInfos ConnectionProvisioningInfoArrayOutput `pulumi:"provisioningInfos"`
 	// If the connection is read only. Change forces creation of a new resource.
-	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
+	ReadOnly pulumi.BoolOutput      `pulumi:"readOnly"`
+	Secrets  pulumi.StringMapOutput `pulumi:"secrets"`
 	// Securable type.
 	SecurableType pulumi.StringOutput `pulumi:"securableType"`
 	// Time at which this connection was updated, in epoch milliseconds.
@@ -399,7 +400,8 @@ type connectionState struct {
 	// Status of an asynchronously provisioned resource. This block consists of the following fields:
 	ProvisioningInfos []ConnectionProvisioningInfo `pulumi:"provisioningInfos"`
 	// If the connection is read only. Change forces creation of a new resource.
-	ReadOnly *bool `pulumi:"readOnly"`
+	ReadOnly *bool             `pulumi:"readOnly"`
+	Secrets  map[string]string `pulumi:"secrets"`
 	// Securable type.
 	SecurableType *string `pulumi:"securableType"`
 	// Time at which this connection was updated, in epoch milliseconds.
@@ -445,6 +447,7 @@ type ConnectionState struct {
 	ProvisioningInfos ConnectionProvisioningInfoArrayInput
 	// If the connection is read only. Change forces creation of a new resource.
 	ReadOnly pulumi.BoolPtrInput
+	Secrets  pulumi.StringMapInput
 	// Securable type.
 	SecurableType pulumi.StringPtrInput
 	// Time at which this connection was updated, in epoch milliseconds.
@@ -479,7 +482,8 @@ type connectionArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *ConnectionProviderConfig `pulumi:"providerConfig"`
 	// If the connection is read only. Change forces creation of a new resource.
-	ReadOnly *bool `pulumi:"readOnly"`
+	ReadOnly *bool             `pulumi:"readOnly"`
+	Secrets  map[string]string `pulumi:"secrets"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -504,6 +508,7 @@ type ConnectionArgs struct {
 	ProviderConfig ConnectionProviderConfigPtrInput
 	// If the connection is read only. Change forces creation of a new resource.
 	ReadOnly pulumi.BoolPtrInput
+	Secrets  pulumi.StringMapInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -676,6 +681,10 @@ func (o ConnectionOutput) ProvisioningInfos() ConnectionProvisioningInfoArrayOut
 // If the connection is read only. Change forces creation of a new resource.
 func (o ConnectionOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+func (o ConnectionOutput) Secrets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Secrets }).(pulumi.StringMapOutput)
 }
 
 // Securable type.

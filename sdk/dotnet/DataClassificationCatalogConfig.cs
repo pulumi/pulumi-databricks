@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
     /// 
@@ -23,6 +23,8 @@ namespace Pulumi.Databricks
     /// 2. have **USE_CATALOG** and **MANAGE** permissions on the catalog
     /// 
     /// &gt; **Note** This resource can only be used with a workspace-level provider.
+    /// 
+    /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this resource are generally available.
     /// 
     /// ## Example Usage
     /// 
@@ -47,6 +49,30 @@ namespace Pulumi.Databricks
     ///                 "customer_data",
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     // Enable Data Classification for the entire catalog (all current and future schemas)
+    ///     var allSchemas = new Databricks.DataClassificationCatalogConfig("all_schemas", new()
+    ///     {
+    ///         Parent = "catalogs/staging_catalog",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To automatically tag columns detected with specific classes, set `AutoTagConfigs`. This attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var autoTagging = new Databricks.DataClassificationCatalogConfig("auto_tagging", new()
+    ///     {
+    ///         Parent = "catalogs/finance_catalog",
     ///         AutoTagConfigs = new[]
     ///         {
     ///             new Databricks.Inputs.DataClassificationCatalogConfigAutoTagConfigArgs
@@ -60,12 +86,6 @@ namespace Pulumi.Databricks
     ///                 AutoTaggingMode = "AUTO_TAGGING_ENABLED",
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     // Enable Data Classification for the entire catalog (all current and future schemas)
-    ///     var allSchemas = new Databricks.DataClassificationCatalogConfig("all_schemas", new()
-    ///     {
-    ///         Parent = "catalogs/staging_catalog",
     ///     });
     /// 
     /// });

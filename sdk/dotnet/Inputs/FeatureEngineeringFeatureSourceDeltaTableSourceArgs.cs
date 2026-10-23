@@ -27,15 +27,15 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? FilterCondition { get; set; }
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
 
         /// <summary>
-        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations.
+        /// Optional since a timeseries column is not set for RequestSource features or on-demand
+        /// calculated features
         /// </summary>
         [Input("timeseriesColumn")]
         public Input<string>? TimeseriesColumn { get; set; }

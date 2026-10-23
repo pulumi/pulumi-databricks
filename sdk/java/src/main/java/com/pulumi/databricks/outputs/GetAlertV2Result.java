@@ -35,6 +35,11 @@ public final class GetAlertV2Result {
      */
     private String customSummary;
     /**
+     * @return (string) - The format used to interpret the `customSummary` and `customDescription` templates.
+     * 
+     */
+    private String customTemplateFormat;
+    /**
      * @return (string) - The display name of the alert
      * 
      */
@@ -135,6 +140,13 @@ public final class GetAlertV2Result {
      */
     public String customSummary() {
         return this.customSummary;
+    }
+    /**
+     * @return (string) - The format used to interpret the `customSummary` and `customDescription` templates.
+     * 
+     */
+    public String customTemplateFormat() {
+        return this.customTemplateFormat;
     }
     /**
      * @return (string) - The display name of the alert
@@ -258,6 +270,7 @@ public final class GetAlertV2Result {
         private String createTime;
         private String customDescription;
         private String customSummary;
+        private String customTemplateFormat;
         private String displayName;
         private GetAlertV2EffectiveRunAs effectiveRunAs;
         private GetAlertV2Evaluation evaluation;
@@ -279,6 +292,7 @@ public final class GetAlertV2Result {
     	      this.createTime = defaults.createTime;
     	      this.customDescription = defaults.customDescription;
     	      this.customSummary = defaults.customSummary;
+    	      this.customTemplateFormat = defaults.customTemplateFormat;
     	      this.displayName = defaults.displayName;
     	      this.effectiveRunAs = defaults.effectiveRunAs;
     	      this.evaluation = defaults.evaluation;
@@ -318,6 +332,14 @@ public final class GetAlertV2Result {
               throw new MissingRequiredPropertyException("GetAlertV2Result", "customSummary");
             }
             this.customSummary = customSummary;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customTemplateFormat(String customTemplateFormat) {
+            if (customTemplateFormat == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "customTemplateFormat");
+            }
+            this.customTemplateFormat = customTemplateFormat;
             return this;
         }
         @CustomType.Setter
@@ -446,6 +468,7 @@ public final class GetAlertV2Result {
             _resultValue.createTime = createTime;
             _resultValue.customDescription = customDescription;
             _resultValue.customSummary = customSummary;
+            _resultValue.customTemplateFormat = customTemplateFormat;
             _resultValue.displayName = displayName;
             _resultValue.effectiveRunAs = effectiveRunAs;
             _resultValue.evaluation = evaluation;

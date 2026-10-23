@@ -204,6 +204,9 @@ namespace Pulumi.Databricks
         [Input("creatorName")]
         public string? CreatorName { get; set; }
 
+        [Input("customerVersionLabel")]
+        public string? CustomerVersionLabel { get; set; }
+
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
@@ -242,6 +245,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("jdbcUrl")]
         public string? JdbcUrl { get; set; }
+
+        [Input("maxDbu")]
+        public int? MaxDbu { get; set; }
 
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running.
@@ -282,6 +288,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Inputs.GetSqlWarehouseProviderConfigArgs? ProviderConfig { get; set; }
 
+        [Input("reydenClusterSizeMultiplier")]
+        public double? ReydenClusterSizeMultiplier { get; set; }
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -293,6 +302,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
+
+        [Input("statementTimeout")]
+        public int? StatementTimeout { get; set; }
 
         /// <summary>
         /// tags used for SQL warehouse resources.
@@ -338,6 +350,9 @@ namespace Pulumi.Databricks
         [Input("creatorName")]
         public Input<string>? CreatorName { get; set; }
 
+        [Input("customerVersionLabel")]
+        public Input<string>? CustomerVersionLabel { get; set; }
+
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
@@ -376,6 +391,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("jdbcUrl")]
         public Input<string>? JdbcUrl { get; set; }
+
+        [Input("maxDbu")]
+        public Input<int>? MaxDbu { get; set; }
 
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running.
@@ -416,6 +434,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.GetSqlWarehouseProviderConfigInputArgs>? ProviderConfig { get; set; }
 
+        [Input("reydenClusterSizeMultiplier")]
+        public Input<double>? ReydenClusterSizeMultiplier { get; set; }
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -427,6 +448,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("statementTimeout")]
+        public Input<int>? StatementTimeout { get; set; }
 
         /// <summary>
         /// tags used for SQL warehouse resources.
@@ -466,6 +490,7 @@ namespace Pulumi.Databricks
         /// The username of the user who created the endpoint.
         /// </summary>
         public readonly string CreatorName;
+        public readonly string CustomerVersionLabel;
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
@@ -491,6 +516,7 @@ namespace Pulumi.Databricks
         /// JDBC connection string.
         /// </summary>
         public readonly string JdbcUrl;
+        public readonly int MaxDbu;
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running.
         /// </summary>
@@ -516,6 +542,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetSqlWarehouseOdbcParamsResult OdbcParams;
         public readonly Outputs.GetSqlWarehouseProviderConfigResult ProviderConfig;
+        public readonly double ReydenClusterSizeMultiplier;
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -524,6 +551,7 @@ namespace Pulumi.Databricks
         /// The current state of the endpoint.
         /// </summary>
         public readonly string State;
+        public readonly int StatementTimeout;
         /// <summary>
         /// tags used for SQL warehouse resources.
         /// </summary>
@@ -543,6 +571,8 @@ namespace Pulumi.Databricks
 
             string creatorName,
 
+            string customerVersionLabel,
+
             string dataSourceId,
 
             bool enablePhoton,
@@ -556,6 +586,8 @@ namespace Pulumi.Databricks
             string instanceProfileArn,
 
             string jdbcUrl,
+
+            int maxDbu,
 
             int maxNumClusters,
 
@@ -571,9 +603,13 @@ namespace Pulumi.Databricks
 
             Outputs.GetSqlWarehouseProviderConfigResult providerConfig,
 
+            double reydenClusterSizeMultiplier,
+
             string spotInstancePolicy,
 
             string state,
+
+            int statementTimeout,
 
             Outputs.GetSqlWarehouseTagsResult tags,
 
@@ -583,6 +619,7 @@ namespace Pulumi.Databricks
             Channel = channel;
             ClusterSize = clusterSize;
             CreatorName = creatorName;
+            CustomerVersionLabel = customerVersionLabel;
             DataSourceId = dataSourceId;
             EnablePhoton = enablePhoton;
             EnableServerlessCompute = enableServerlessCompute;
@@ -590,6 +627,7 @@ namespace Pulumi.Databricks
             Id = id;
             InstanceProfileArn = instanceProfileArn;
             JdbcUrl = jdbcUrl;
+            MaxDbu = maxDbu;
             MaxNumClusters = maxNumClusters;
             MinNumClusters = minNumClusters;
             Name = name;
@@ -597,8 +635,10 @@ namespace Pulumi.Databricks
             NumClusters = numClusters;
             OdbcParams = odbcParams;
             ProviderConfig = providerConfig;
+            ReydenClusterSizeMultiplier = reydenClusterSizeMultiplier;
             SpotInstancePolicy = spotInstancePolicy;
             State = state;
+            StatementTimeout = statementTimeout;
             Tags = tags;
             WarehouseType = warehouseType;
         }

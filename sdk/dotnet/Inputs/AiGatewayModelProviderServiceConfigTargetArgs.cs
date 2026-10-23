@@ -13,6 +13,16 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelProviderServiceConfigTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Relative path appended to a custom provider's `BaseUrl` for this model,
+        /// such as `serve/openai/chat`. Nonempty values are only supported for
+        /// custom model provider service targets; other provider types reject them.
+        /// Model service destinations do not support this field. Do not include
+        /// URI templates, queries, or fragments. When empty, `BaseUrl` is used unchanged
+        /// </summary>
+        [Input("endpointRoute")]
+        public Input<string>? EndpointRoute { get; set; }
+
+        /// <summary>
         /// Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
         /// This identifies a model at the upstream provider; it is not a Unity
         /// Catalog model resource
@@ -25,9 +35,11 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Provider-native API types supported by this model, such as
-        /// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-        /// uses these values to translate requests and responses. At most 64 entries
-        /// of 256 characters each are allowed
+        /// `openai/v1/chat/completions`. A model provider service target requires at
+        /// least one value. A model service destination may omit the list to use the
+        /// matching provider service target's types when available. AI Gateway uses
+        /// the selected types for translation. At most 64 entries of 256 characters
+        /// each are allowed
         /// </summary>
         public InputList<string> NativeApiTypes
         {

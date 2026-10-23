@@ -5,8 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DisasterRecoveryFailoverGroupInitialReplicationProgressArgs;
 import com.pulumi.databricks.inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs;
 import com.pulumi.databricks.inputs.DisasterRecoveryFailoverGroupWorkspaceSetArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -83,6 +85,21 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
+     * (boolean) - True if errors currently block the replication point
+     * 
+     */
+    @Import(name="hasReplicationPointBlockingErrors")
+    private @Nullable Output<Boolean> hasReplicationPointBlockingErrors;
+
+    /**
+     * @return (boolean) - True if errors currently block the replication point
+     * 
+     */
+    public Optional<Output<Boolean>> hasReplicationPointBlockingErrors() {
+        return Optional.ofNullable(this.hasReplicationPointBlockingErrors);
+    }
+
+    /**
      * Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      * 
@@ -97,6 +114,21 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
      */
     public Optional<Output<String>> initialPrimaryRegion() {
         return Optional.ofNullable(this.initialPrimaryRegion);
+    }
+
+    /**
+     * (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     * 
+     */
+    @Import(name="initialReplicationProgress")
+    private @Nullable Output<DisasterRecoveryFailoverGroupInitialReplicationProgressArgs> initialReplicationProgress;
+
+    /**
+     * @return (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     * 
+     */
+    public Optional<Output<DisasterRecoveryFailoverGroupInitialReplicationProgressArgs>> initialReplicationProgress() {
+        return Optional.ofNullable(this.initialReplicationProgress);
     }
 
     /**
@@ -228,7 +260,9 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         this.effectivePrimaryRegion = $.effectivePrimaryRegion;
         this.etag = $.etag;
         this.failoverGroupId = $.failoverGroupId;
+        this.hasReplicationPointBlockingErrors = $.hasReplicationPointBlockingErrors;
         this.initialPrimaryRegion = $.initialPrimaryRegion;
+        this.initialReplicationProgress = $.initialReplicationProgress;
         this.name = $.name;
         this.parent = $.parent;
         this.regions = $.regions;
@@ -346,6 +380,27 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
+         * @param hasReplicationPointBlockingErrors (boolean) - True if errors currently block the replication point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasReplicationPointBlockingErrors(@Nullable Output<Boolean> hasReplicationPointBlockingErrors) {
+            $.hasReplicationPointBlockingErrors = hasReplicationPointBlockingErrors;
+            return this;
+        }
+
+        /**
+         * @param hasReplicationPointBlockingErrors (boolean) - True if errors currently block the replication point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasReplicationPointBlockingErrors(Boolean hasReplicationPointBlockingErrors) {
+            return hasReplicationPointBlockingErrors(Output.of(hasReplicationPointBlockingErrors));
+        }
+
+        /**
          * @param initialPrimaryRegion Initial primary region. Used only in Create requests to set the starting
          * primary region. Not returned in responses
          * 
@@ -366,6 +421,27 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
          */
         public Builder initialPrimaryRegion(String initialPrimaryRegion) {
             return initialPrimaryRegion(Output.of(initialPrimaryRegion));
+        }
+
+        /**
+         * @param initialReplicationProgress (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialReplicationProgress(@Nullable Output<DisasterRecoveryFailoverGroupInitialReplicationProgressArgs> initialReplicationProgress) {
+            $.initialReplicationProgress = initialReplicationProgress;
+            return this;
+        }
+
+        /**
+         * @param initialReplicationProgress (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialReplicationProgress(DisasterRecoveryFailoverGroupInitialReplicationProgressArgs initialReplicationProgress) {
+            return initialReplicationProgress(Output.of(initialReplicationProgress));
         }
 
         /**

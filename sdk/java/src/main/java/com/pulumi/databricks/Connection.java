@@ -575,6 +575,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<Boolean> readOnly() {
         return this.readOnly;
     }
+    @Export(name="secrets", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> secrets;
+
+    public Output<Optional<Map<String,String>>> secrets() {
+        return Codegen.optional(this.secrets);
+    }
     /**
      * Securable type.
      * 

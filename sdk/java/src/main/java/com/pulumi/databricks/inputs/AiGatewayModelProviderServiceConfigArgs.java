@@ -8,11 +8,13 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAmazonBedrockArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAnthropicArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAzureOpenaiArgs;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigBedrockMantleArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigCustomArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigInferenceTableArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigOpenaiArgs;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigPricingArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigRateLimitArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigTargetArgs;
 import java.lang.Boolean;
@@ -67,6 +69,13 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.azureOpenai);
     }
 
+    @Import(name="bedrockMantle")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigBedrockMantleArgs> bedrockMantle;
+
+    public Optional<Output<AiGatewayModelProviderServiceConfigBedrockMantleArgs>> bedrockMantle() {
+        return Optional.ofNullable(this.bedrockMantle);
+    }
+
     @Import(name="custom")
     private @Nullable Output<AiGatewayModelProviderServiceConfigCustomArgs> custom;
 
@@ -119,7 +128,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      * 
      */
     @Import(name="forwardUnmanagedPaths")
@@ -130,7 +141,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      * 
      */
     public Optional<Output<Boolean>> forwardUnmanagedPaths() {
@@ -178,9 +191,26 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
     }
 
     /**
+     * Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     * 
+     */
+    @Import(name="pricing")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigPricingArgs> pricing;
+
+    /**
+     * @return Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     * 
+     */
+    public Optional<Output<AiGatewayModelProviderServiceConfigPricingArgs>> pricing() {
+        return Optional.ofNullable(this.pricing);
+    }
+
+    /**
      * External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      * 
      */
     @Import(name="providerType")
@@ -189,7 +219,7 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
     /**
      * @return External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      * 
      */
     public Optional<Output<String>> providerType() {
@@ -245,6 +275,7 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         this.amazonBedrock = $.amazonBedrock;
         this.anthropic = $.anthropic;
         this.azureOpenai = $.azureOpenai;
+        this.bedrockMantle = $.bedrockMantle;
         this.custom = $.custom;
         this.forwardHeaders = $.forwardHeaders;
         this.forwardQueryParameters = $.forwardQueryParameters;
@@ -253,6 +284,7 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         this.inferenceTable = $.inferenceTable;
         this.microsoftFoundry = $.microsoftFoundry;
         this.openai = $.openai;
+        this.pricing = $.pricing;
         this.providerType = $.providerType;
         this.rateLimits = $.rateLimits;
         this.targets = $.targets;
@@ -328,6 +360,15 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
             return azureOpenai(Output.of(azureOpenai));
         }
 
+        public Builder bedrockMantle(@Nullable Output<AiGatewayModelProviderServiceConfigBedrockMantleArgs> bedrockMantle) {
+            $.bedrockMantle = bedrockMantle;
+            return this;
+        }
+
+        public Builder bedrockMantle(AiGatewayModelProviderServiceConfigBedrockMantleArgs bedrockMantle) {
+            return bedrockMantle(Output.of(bedrockMantle));
+        }
+
         public Builder custom(@Nullable Output<AiGatewayModelProviderServiceConfigCustomArgs> custom) {
             $.custom = custom;
             return this;
@@ -394,7 +435,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
          * provider-native API types. Defaults to false. When true, these paths are
          * forwarded unchanged to the upstream provider. When false, only
          * recognized API paths are served. Enabling this broadens the upstream API
-         * surface exposed through the provider service
+         * surface exposed through the provider service. AI Gateway cannot evaluate
+         * Service Policies on opaque unmanaged requests, so unmanaged requests are
+         * rejected whenever Service Policies are attached to this securable
          * 
          * @return builder
          * 
@@ -409,7 +452,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
          * provider-native API types. Defaults to false. When true, these paths are
          * forwarded unchanged to the upstream provider. When false, only
          * recognized API paths are served. Enabling this broadens the upstream API
-         * surface exposed through the provider service
+         * surface exposed through the provider service. AI Gateway cannot evaluate
+         * Service Policies on opaque unmanaged requests, so unmanaged requests are
+         * rejected whenever Service Policies are attached to this securable
          * 
          * @return builder
          * 
@@ -471,9 +516,32 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         }
 
         /**
+         * @param pricing Pricing configuration for this provider service. An explicitly empty
+         * configuration is retained on Create and Update and applies no adjustment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricing(@Nullable Output<AiGatewayModelProviderServiceConfigPricingArgs> pricing) {
+            $.pricing = pricing;
+            return this;
+        }
+
+        /**
+         * @param pricing Pricing configuration for this provider service. An explicitly empty
+         * configuration is retained on Create and Update and applies no adjustment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricing(AiGatewayModelProviderServiceConfigPricingArgs pricing) {
+            return pricing(Output.of(pricing));
+        }
+
+        /**
          * @param providerType External model provider. Required on Create and immutable thereafter. Set
          * the matching provider-specific configuration, such as `openai`,
-         * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+         * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
          * 
          * @return builder
          * 
@@ -486,7 +554,7 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         /**
          * @param providerType External model provider. Required on Create and immutable thereafter. Set
          * the matching provider-specific configuration, such as `openai`,
-         * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+         * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
          * 
          * @return builder
          * 

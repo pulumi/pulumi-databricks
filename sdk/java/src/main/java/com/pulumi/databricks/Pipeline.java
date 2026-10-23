@@ -411,6 +411,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<PipelineNotification>>> notifications() {
         return Codegen.optional(this.notifications);
     }
+    @Export(name="parentPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parentPath;
+
+    public Output<Optional<String>> parentPath() {
+        return Codegen.optional(this.parentPath);
+    }
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      * 

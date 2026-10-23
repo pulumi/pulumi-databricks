@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PolicyInfoColumnMaskArgs;
 import com.pulumi.databricks.inputs.PolicyInfoDenyArgs;
+import com.pulumi.databricks.inputs.PolicyInfoGovernedTagArgs;
 import com.pulumi.databricks.inputs.PolicyInfoGrantArgs;
 import com.pulumi.databricks.inputs.PolicyInfoMatchColumnArgs;
 import com.pulumi.databricks.inputs.PolicyInfoProviderConfigArgs;
@@ -136,6 +137,21 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> forSecurableType() {
         return Optional.ofNullable(this.forSecurableType);
+    }
+
+    /**
+     * (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+     * 
+     */
+    @Import(name="governedTags")
+    private @Nullable Output<List<PolicyInfoGovernedTagArgs>> governedTags;
+
+    /**
+     * @return (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+     * 
+     */
+    public Optional<Output<List<PolicyInfoGovernedTagArgs>>> governedTags() {
+        return Optional.ofNullable(this.governedTags);
     }
 
     /**
@@ -350,6 +366,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
         this.deny = $.deny;
         this.exceptPrincipals = $.exceptPrincipals;
         this.forSecurableType = $.forSecurableType;
+        this.governedTags = $.governedTags;
         this.grant = $.grant;
         this.matchColumns = $.matchColumns;
         this.name = $.name;
@@ -547,6 +564,37 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forSecurableType(String forSecurableType) {
             return forSecurableType(Output.of(forSecurableType));
+        }
+
+        /**
+         * @param governedTags (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder governedTags(@Nullable Output<List<PolicyInfoGovernedTagArgs>> governedTags) {
+            $.governedTags = governedTags;
+            return this;
+        }
+
+        /**
+         * @param governedTags (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder governedTags(List<PolicyInfoGovernedTagArgs> governedTags) {
+            return governedTags(Output.of(governedTags));
+        }
+
+        /**
+         * @param governedTags (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder governedTags(PolicyInfoGovernedTagArgs... governedTags) {
+            return governedTags(List.of(governedTags));
         }
 
         /**

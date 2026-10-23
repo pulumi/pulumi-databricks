@@ -58,6 +58,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("gitSource")]
         public Input<Inputs.AppActiveDeploymentGitSourceGetArgs>? GitSource { get; set; }
 
+        [Input("healthCheck")]
+        public Input<Inputs.AppActiveDeploymentHealthCheckGetArgs>? HealthCheck { get; set; }
+
         /// <summary>
         /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
         /// </summary>

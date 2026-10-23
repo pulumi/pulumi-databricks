@@ -96,7 +96,24 @@ def get_feature_engineering_features(catalog_name: Optional[_builtins.str] = Non
                                      schema_name: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringFeaturesResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+
+    Lists the features registered in one Unity Catalog schema. Both `catalog_name` and `schema_name` are required, so a single query never spans schemas.
+
+    ## Example Usage
+
+    List every feature in a schema, then project their names.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    in_schema = databricks.get_feature_engineering_features(catalog_name="main",
+        schema_name="features")
+    pulumi.export("featureNames", [f.full_name for f in in_schema.features])
+    ```
 
 
     :param _builtins.str catalog_name: Name of parent catalog for features of interest
@@ -124,7 +141,24 @@ def get_feature_engineering_features_output(catalog_name: pulumi.Input[Optional[
                                             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeaturesResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+
+    Lists the features registered in one Unity Catalog schema. Both `catalog_name` and `schema_name` are required, so a single query never spans schemas.
+
+    ## Example Usage
+
+    List every feature in a schema, then project their names.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    in_schema = databricks.get_feature_engineering_features(catalog_name="main",
+        schema_name="features")
+    pulumi.export("featureNames", [f.full_name for f in in_schema.features])
+    ```
 
 
     :param _builtins.str catalog_name: Name of parent catalog for features of interest

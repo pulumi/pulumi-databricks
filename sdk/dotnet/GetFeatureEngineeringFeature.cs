@@ -12,19 +12,94 @@ namespace Pulumi.Databricks
     public static class GetFeatureEngineeringFeature
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+        /// 
+        /// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Look up a feature by its full name.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var transactionCount7d = Databricks.GetFeatureEngineeringFeature.Invoke(new()
+        ///     {
+        ///         FullName = "main.features.transaction_count_7d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetFeatureEngineeringFeatureResult> InvokeAsync(GetFeatureEngineeringFeatureArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureEngineeringFeatureResult>("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", args ?? new GetFeatureEngineeringFeatureArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+        /// 
+        /// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Look up a feature by its full name.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var transactionCount7d = Databricks.GetFeatureEngineeringFeature.Invoke(new()
+        ///     {
+        ///         FullName = "main.features.transaction_count_7d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFeatureEngineeringFeatureResult> Invoke(GetFeatureEngineeringFeatureInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureEngineeringFeatureResult>("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", args ?? new GetFeatureEngineeringFeatureInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+        /// 
+        /// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Look up a feature by its full name.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var transactionCount7d = Databricks.GetFeatureEngineeringFeature.Invoke(new()
+        ///     {
+        ///         FullName = "main.features.transaction_count_7d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFeatureEngineeringFeatureResult> Invoke(GetFeatureEngineeringFeatureInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureEngineeringFeatureResult>("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", args ?? new GetFeatureEngineeringFeatureInvokeArgs(), options.WithDefaults());
@@ -34,9 +109,7 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringFeatureArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Input("fullName", required: true)]
         public string FullName { get; set; } = null!;
@@ -56,9 +129,7 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringFeatureInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
@@ -96,7 +167,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        /// Optional since entities are not set for RequestSource features or on-demand calculated features
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeatureEntityResult> Entities;
         /// <summary>

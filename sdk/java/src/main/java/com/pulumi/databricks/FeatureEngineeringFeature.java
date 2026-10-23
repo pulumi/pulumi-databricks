@@ -23,7 +23,148 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+ * 
+ * A feature is a reusable, governed definition of a model input registered in Unity Catalog. Each feature binds a data source to the function that computes its value, so model training and online serving read one definition instead of two implementations that drift apart.
+ * 
+ * Registering a feature computes nothing on its own. To produce values, materialize the feature to an offline Delta table or an online Lakebase table using the Feature Engineering API.
+ * 
+ * Only `description` can be changed in place. Changing any other field replaces the feature.
+ * 
+ * ## Example Usage
+ * 
+ * A feature needs a source and a function. A Delta table source also requires the entity columns that
+ * key the feature and a timeseries column; a request source takes neither, because the value arrives
+ * in the request.
+ * 
+ * ### Aggregation over a sliding window
+ * 
+ * Count each customer&#39;s transactions over the trailing seven days, recomputed daily.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.FeatureEngineeringFeature;
+ * import com.pulumi.databricks.FeatureEngineeringFeatureArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunctionArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureEntityArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeseriesColumnArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var transactionCount7d = new FeatureEngineeringFeature("transactionCount7d", FeatureEngineeringFeatureArgs.builder()
+ *             .fullName("main.features.transaction_count_7d")
+ *             .description("Transactions per customer over the trailing seven days.")
+ *             .source(FeatureEngineeringFeatureSourceArgs.builder()
+ *                 .deltaTableSource(FeatureEngineeringFeatureSourceDeltaTableSourceArgs.builder()
+ *                     .fullName("main.retail.transactions")
+ *                     .build())
+ *                 .build())
+ *             .function(FeatureEngineeringFeatureFunctionArgs.builder()
+ *                 .aggregationFunction(FeatureEngineeringFeatureFunctionAggregationFunctionArgs.builder()
+ *                     .countFunction(FeatureEngineeringFeatureFunctionAggregationFunctionCountFunctionArgs.builder()
+ *                         .input("transaction_id")
+ *                         .build())
+ *                     .timeWindow(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs.builder()
+ *                         .sliding(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs.builder()
+ *                             .windowDuration("604800s")
+ *                             .slideDuration("86400s")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .entities(FeatureEngineeringFeatureEntityArgs.builder()
+ *                 .name("customer_id")
+ *                 .build())
+ *             .timeseriesColumn(FeatureEngineeringFeatureTimeseriesColumnArgs.builder()
+ *                 .name("transaction_time")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Latest value of a column
+ * 
+ * Read a column straight from the source with no aggregation, so no time window is needed. The
+ * timeseries column is still required, because it is what makes the lookup point-in-time correct.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.FeatureEngineeringFeature;
+ * import com.pulumi.databricks.FeatureEngineeringFeatureArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureEntityArgs;
+ * import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeseriesColumnArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customerTier = new FeatureEngineeringFeature("customerTier", FeatureEngineeringFeatureArgs.builder()
+ *             .fullName("main.features.customer_tier")
+ *             .source(FeatureEngineeringFeatureSourceArgs.builder()
+ *                 .deltaTableSource(FeatureEngineeringFeatureSourceDeltaTableSourceArgs.builder()
+ *                     .fullName("main.retail.customers")
+ *                     .build())
+ *                 .build())
+ *             .function(FeatureEngineeringFeatureFunctionArgs.builder()
+ *                 .columnSelection(FeatureEngineeringFeatureFunctionColumnSelectionArgs.builder()
+ *                     .column("tier")
+ *                     .build())
+ *                 .build())
+ *             .entities(FeatureEngineeringFeatureEntityArgs.builder()
+ *                 .name("customer_id")
+ *                 .build())
+ *             .timeseriesColumn(FeatureEngineeringFeatureTimeseriesColumnArgs.builder()
+ *                 .name("updated_at")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/featureEngineeringFeature:FeatureEngineeringFeature")
@@ -85,14 +226,16 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.description);
     }
     /**
-     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      * 
      */
     @Export(name="entities", refs={List.class,FeatureEngineeringFeatureEntity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FeatureEngineeringFeatureEntity>> entities;
 
     /**
-     * @return The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * @return The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      * 
      */
     public Output<Optional<List<FeatureEngineeringFeatureEntity>>> entities() {
@@ -105,18 +248,14 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.filterCondition);
     }
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      * 
      */
     @Export(name="fullName", refs={String.class}, tree="[0]")
     private Output<String> fullName;
 
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * @return The full three-part name (catalog, schema, name) of the feature
      * 
      */
     public Output<String> fullName() {
@@ -151,7 +290,7 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="lineageContext", refs={FeatureEngineeringFeatureLineageContext.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureEngineeringFeatureLineageContext> lineageContext;
+    private Output<FeatureEngineeringFeatureLineageContext> lineageContext;
 
     /**
      * @return Lineage context information for this feature.
@@ -161,8 +300,8 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      * 
      */
-    public Output<Optional<FeatureEngineeringFeatureLineageContext>> lineageContext() {
-        return Codegen.optional(this.lineageContext);
+    public Output<FeatureEngineeringFeatureLineageContext> lineageContext() {
+        return this.lineageContext;
     }
     /**
      * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
@@ -227,14 +366,18 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.timeWindow);
     }
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     @Export(name="timeseriesColumn", refs={FeatureEngineeringFeatureTimeseriesColumn.class}, tree="[0]")
     private Output</* @Nullable */ FeatureEngineeringFeatureTimeseriesColumn> timeseriesColumn;
 
     /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     public Output<Optional<FeatureEngineeringFeatureTimeseriesColumn>> timeseriesColumn() {

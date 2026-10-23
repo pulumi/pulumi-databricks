@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? SecurableKind { get; set; }
 
         /// <summary>
-        /// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        /// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("securableType", required: true)]
         public Input<string> SecurableType { get; set; } = null!;

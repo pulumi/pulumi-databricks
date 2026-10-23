@@ -129,7 +129,9 @@ class _DisasterRecoveryFailoverGroupState:
                  effective_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_replication_point_blocking_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_replication_progress: pulumi.Input[Optional['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -147,8 +149,10 @@ class _DisasterRecoveryFailoverGroupState:
         :param pulumi.Input[_builtins.str] etag: (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         :param pulumi.Input[_builtins.str] failover_group_id: Client-provided identifier for the failover group. Used to construct the
                resource name as {parent}/failover-groups/{failover_group_id}
+        :param pulumi.Input[_builtins.bool] has_replication_point_blocking_errors: (boolean) - True if errors currently block the replication point
         :param pulumi.Input[_builtins.str] initial_primary_region: Initial primary region. Used only in Create requests to set the starting
                primary region. Not returned in responses
+        :param pulumi.Input['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs'] initial_replication_progress: (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
         :param pulumi.Input[_builtins.str] name: (string) - Fully qualified resource name in the format
                accounts/{account_id}/failover-groups/{failover_group_id}
         :param pulumi.Input[_builtins.str] parent: The parent resource. Format: accounts/{account_id}
@@ -167,8 +171,12 @@ class _DisasterRecoveryFailoverGroupState:
             pulumi.set(__self__, "etag", etag)
         if failover_group_id is not None:
             pulumi.set(__self__, "failover_group_id", failover_group_id)
+        if has_replication_point_blocking_errors is not None:
+            pulumi.set(__self__, "has_replication_point_blocking_errors", has_replication_point_blocking_errors)
         if initial_primary_region is not None:
             pulumi.set(__self__, "initial_primary_region", initial_primary_region)
+        if initial_replication_progress is not None:
+            pulumi.set(__self__, "initial_replication_progress", initial_replication_progress)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
@@ -237,6 +245,18 @@ class _DisasterRecoveryFailoverGroupState:
         pulumi.set(self, "failover_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="hasReplicationPointBlockingErrors")
+    def has_replication_point_blocking_errors(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (boolean) - True if errors currently block the replication point
+        """
+        return pulumi.get(self, "has_replication_point_blocking_errors")
+
+    @has_replication_point_blocking_errors.setter
+    def has_replication_point_blocking_errors(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "has_replication_point_blocking_errors", value)
+
+    @_builtins.property
     @pulumi.getter(name="initialPrimaryRegion")
     def initial_primary_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -248,6 +268,18 @@ class _DisasterRecoveryFailoverGroupState:
     @initial_primary_region.setter
     def initial_primary_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_primary_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialReplicationProgress")
+    def initial_replication_progress(self) -> pulumi.Input[Optional['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs']]:
+        """
+        (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+        """
+        return pulumi.get(self, "initial_replication_progress")
+
+    @initial_replication_progress.setter
+    def initial_replication_progress(self, value: pulumi.Input[Optional['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs']]):
+        pulumi.set(self, "initial_replication_progress", value)
 
     @_builtins.property
     @pulumi.getter
@@ -500,6 +532,8 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_primary_region"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["has_replication_point_blocking_errors"] = None
+            __props__.__dict__["initial_replication_progress"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["replication_point"] = None
             __props__.__dict__["state"] = None
@@ -518,7 +552,9 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
             effective_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             failover_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            has_replication_point_blocking_errors: pulumi.Input[Optional[_builtins.bool]] = None,
             initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_replication_progress: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs', 'DisasterRecoveryFailoverGroupInitialReplicationProgressArgsDict', 'outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -540,8 +576,10 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         :param pulumi.Input[_builtins.str] failover_group_id: Client-provided identifier for the failover group. Used to construct the
                resource name as {parent}/failover-groups/{failover_group_id}
+        :param pulumi.Input[_builtins.bool] has_replication_point_blocking_errors: (boolean) - True if errors currently block the replication point
         :param pulumi.Input[_builtins.str] initial_primary_region: Initial primary region. Used only in Create requests to set the starting
                primary region. Not returned in responses
+        :param pulumi.Input[Union['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs', 'DisasterRecoveryFailoverGroupInitialReplicationProgressArgsDict', 'outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress']] initial_replication_progress: (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
         :param pulumi.Input[_builtins.str] name: (string) - Fully qualified resource name in the format
                accounts/{account_id}/failover-groups/{failover_group_id}
         :param pulumi.Input[_builtins.str] parent: The parent resource. Format: accounts/{account_id}
@@ -560,7 +598,9 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         __props__.__dict__["effective_primary_region"] = effective_primary_region
         __props__.__dict__["etag"] = etag
         __props__.__dict__["failover_group_id"] = failover_group_id
+        __props__.__dict__["has_replication_point_blocking_errors"] = has_replication_point_blocking_errors
         __props__.__dict__["initial_primary_region"] = initial_primary_region
+        __props__.__dict__["initial_replication_progress"] = initial_replication_progress
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["regions"] = regions
@@ -606,6 +646,14 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         return pulumi.get(self, "failover_group_id")
 
     @_builtins.property
+    @pulumi.getter(name="hasReplicationPointBlockingErrors")
+    def has_replication_point_blocking_errors(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (boolean) - True if errors currently block the replication point
+        """
+        return pulumi.get(self, "has_replication_point_blocking_errors")
+
+    @_builtins.property
     @pulumi.getter(name="initialPrimaryRegion")
     def initial_primary_region(self) -> pulumi.Output[_builtins.str]:
         """
@@ -613,6 +661,14 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         primary region. Not returned in responses
         """
         return pulumi.get(self, "initial_primary_region")
+
+    @_builtins.property
+    @pulumi.getter(name="initialReplicationProgress")
+    def initial_replication_progress(self) -> pulumi.Output['outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress']:
+        """
+        (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+        """
+        return pulumi.get(self, "initial_replication_progress")
 
     @_builtins.property
     @pulumi.getter

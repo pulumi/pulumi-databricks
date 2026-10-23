@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AppPendingDeploymentDeploymentArtifacts;
 import com.pulumi.databricks.outputs.AppPendingDeploymentEnvVar;
 import com.pulumi.databricks.outputs.AppPendingDeploymentGitSource;
+import com.pulumi.databricks.outputs.AppPendingDeploymentHealthCheck;
 import com.pulumi.databricks.outputs.AppPendingDeploymentStatus;
 import java.lang.String;
 import java.util.List;
@@ -43,6 +44,7 @@ public final class AppPendingDeployment {
      * 
      */
     private @Nullable AppPendingDeploymentGitSource gitSource;
+    private @Nullable AppPendingDeploymentHealthCheck healthCheck;
     /**
      * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      * 
@@ -106,6 +108,9 @@ public final class AppPendingDeployment {
     public Optional<AppPendingDeploymentGitSource> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
+    public Optional<AppPendingDeploymentHealthCheck> healthCheck() {
+        return Optional.ofNullable(this.healthCheck);
+    }
     /**
      * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      * 
@@ -151,6 +156,7 @@ public final class AppPendingDeployment {
         private @Nullable String deploymentId;
         private @Nullable List<AppPendingDeploymentEnvVar> envVars;
         private @Nullable AppPendingDeploymentGitSource gitSource;
+        private @Nullable AppPendingDeploymentHealthCheck healthCheck;
         private @Nullable String mode;
         private @Nullable String sourceCodePath;
         private @Nullable AppPendingDeploymentStatus status;
@@ -165,6 +171,7 @@ public final class AppPendingDeployment {
     	      this.deploymentId = defaults.deploymentId;
     	      this.envVars = defaults.envVars;
     	      this.gitSource = defaults.gitSource;
+    	      this.healthCheck = defaults.healthCheck;
     	      this.mode = defaults.mode;
     	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.status = defaults.status;
@@ -220,6 +227,12 @@ public final class AppPendingDeployment {
             return this;
         }
         @CustomType.Setter
+        public Builder healthCheck(@Nullable AppPendingDeploymentHealthCheck healthCheck) {
+
+            this.healthCheck = healthCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
             this.mode = mode;
@@ -252,6 +265,7 @@ public final class AppPendingDeployment {
             _resultValue.deploymentId = deploymentId;
             _resultValue.envVars = envVars;
             _resultValue.gitSource = gitSource;
+            _resultValue.healthCheck = healthCheck;
             _resultValue.mode = mode;
             _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.status = status;

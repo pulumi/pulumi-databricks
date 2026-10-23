@@ -26,6 +26,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CustomSummary;
         /// <summary>
+        /// (string) - The format used to interpret the `CustomSummary` and `CustomDescription` templates.
+        /// </summary>
+        public readonly string CustomTemplateFormat;
+        /// <summary>
         /// (string) - The display name of the alert
         /// </summary>
         public readonly string DisplayName;
@@ -102,6 +106,8 @@ namespace Pulumi.Databricks.Outputs
 
             string customSummary,
 
+            string customTemplateFormat,
+
             string displayName,
 
             Outputs.GetAlertsV2AlertEffectiveRunAsResult effectiveRunAs,
@@ -135,6 +141,7 @@ namespace Pulumi.Databricks.Outputs
             CreateTime = createTime;
             CustomDescription = customDescription;
             CustomSummary = customSummary;
+            CustomTemplateFormat = customTemplateFormat;
             DisplayName = displayName;
             EffectiveRunAs = effectiveRunAs;
             Evaluation = evaluation;

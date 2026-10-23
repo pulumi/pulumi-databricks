@@ -89,11 +89,23 @@ namespace Pulumi.Databricks
         public Output<string> FailoverGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// (boolean) - True if errors currently block the replication point
+        /// </summary>
+        [Output("hasReplicationPointBlockingErrors")]
+        public Output<bool> HasReplicationPointBlockingErrors { get; private set; } = null!;
+
+        /// <summary>
         /// Initial primary region. Used only in Create requests to set the starting
         /// primary region. Not returned in responses
         /// </summary>
         [Output("initialPrimaryRegion")]
         public Output<string> InitialPrimaryRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+        /// </summary>
+        [Output("initialReplicationProgress")]
+        public Output<Outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress> InitialReplicationProgress { get; private set; } = null!;
 
         /// <summary>
         /// (string) - Fully qualified resource name in the format
@@ -275,11 +287,23 @@ namespace Pulumi.Databricks
         public Input<string>? FailoverGroupId { get; set; }
 
         /// <summary>
+        /// (boolean) - True if errors currently block the replication point
+        /// </summary>
+        [Input("hasReplicationPointBlockingErrors")]
+        public Input<bool>? HasReplicationPointBlockingErrors { get; set; }
+
+        /// <summary>
         /// Initial primary region. Used only in Create requests to set the starting
         /// primary region. Not returned in responses
         /// </summary>
         [Input("initialPrimaryRegion")]
         public Input<string>? InitialPrimaryRegion { get; set; }
+
+        /// <summary>
+        /// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+        /// </summary>
+        [Input("initialReplicationProgress")]
+        public Input<Inputs.DisasterRecoveryFailoverGroupInitialReplicationProgressGetArgs>? InitialReplicationProgress { get; set; }
 
         /// <summary>
         /// (string) - Fully qualified resource name in the format

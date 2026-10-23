@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber;
 import java.lang.Boolean;
 import java.lang.String;
@@ -14,11 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription {
+    private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment attachment;
     private @Nullable String customSubject;
     private @Nullable Boolean paused;
     private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber> subscribers;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription() {}
+    public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
     public Optional<String> customSubject() {
         return Optional.ofNullable(this.customSubject);
     }
@@ -38,17 +43,25 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubs
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment attachment;
         private @Nullable String customSubject;
         private @Nullable Boolean paused;
         private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber> subscribers;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachment = defaults.attachment;
     	      this.customSubject = defaults.customSubject;
     	      this.paused = defaults.paused;
     	      this.subscribers = defaults.subscribers;
         }
 
+        @CustomType.Setter
+        public Builder attachment(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment attachment) {
+
+            this.attachment = attachment;
+            return this;
+        }
         @CustomType.Setter
         public Builder customSubject(@Nullable String customSubject) {
 
@@ -72,6 +85,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubs
         }
         public GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription build() {
             final var _resultValue = new GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription();
+            _resultValue.attachment = attachment;
             _resultValue.customSubject = customSubject;
             _resultValue.paused = paused;
             _resultValue.subscribers = subscribers;

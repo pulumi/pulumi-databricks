@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
     /// 
     /// Create an Azure gateway in an existing NCC using an account-level provider. Use a provider release that includes this resource and an account with access to the private network gateway V1 API. Configure account-level authentication outside this file, for example through Databricks unified authentication environment variables.
     /// 
-    /// Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; it has no server-side default.
+    /// Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; only 10, 30, 50, and 100 Gbps are allowed, and it has no server-side default.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     ///     var nccId = config.Require("nccId");
     ///     // Full Azure resource ID of the existing gateway subnet.
     ///     var subnetResourceId = config.Require("subnetResourceId");
-    ///     // Supported Azure bandwidth tier to provision, in Gbps.
+    ///     // Azure bandwidth tier to provision, in Gbps. Only 10, 30, 50, and 100 are allowed.
     ///     var bandwidthTierGigabitsPerSecond = config.RequireDouble("bandwidthTierGigabitsPerSecond");
     ///     // Private destination hostname, for example database.internal.example.com.
     ///     var destinationHostname = config.Require("destinationHostname");

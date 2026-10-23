@@ -57,8 +57,8 @@ func GetAiGatewayMcpServices(ctx *pulumi.Context, args *GetAiGatewayMcpServicesA
 
 // A collection of arguments for invoking getAiGatewayMcpServices.
 type GetAiGatewayMcpServicesArgs struct {
-	// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-	// the maximum is 100. Use `pageToken` to retrieve additional pages
+	// Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+	// the maximum is 200. Use `pageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
 	// Parent schema to list within, in the form
 	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
@@ -88,8 +88,8 @@ func GetAiGatewayMcpServicesOutput(ctx *pulumi.Context, args GetAiGatewayMcpServ
 
 // A collection of arguments for invoking getAiGatewayMcpServices.
 type GetAiGatewayMcpServicesOutputArgs struct {
-	// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-	// the maximum is 100. Use `pageToken` to retrieve additional pages
+	// Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+	// the maximum is 200. Use `pageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Parent schema to list within, in the form
 	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at

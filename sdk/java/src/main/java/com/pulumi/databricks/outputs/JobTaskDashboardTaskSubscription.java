@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskDashboardTaskSubscriptionAttachment;
 import com.pulumi.databricks.outputs.JobTaskDashboardTaskSubscriptionSubscriber;
 import java.lang.Boolean;
 import java.lang.String;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskDashboardTaskSubscription {
+    private @Nullable JobTaskDashboardTaskSubscriptionAttachment attachment;
     /**
      * @return Allows users to specify a custom subject line on the email sent to subscribers.
      * 
@@ -31,6 +33,9 @@ public final class JobTaskDashboardTaskSubscription {
     private @Nullable List<JobTaskDashboardTaskSubscriptionSubscriber> subscribers;
 
     private JobTaskDashboardTaskSubscription() {}
+    public Optional<JobTaskDashboardTaskSubscriptionAttachment> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
     /**
      * @return Allows users to specify a custom subject line on the email sent to subscribers.
      * 
@@ -62,17 +67,25 @@ public final class JobTaskDashboardTaskSubscription {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTaskDashboardTaskSubscriptionAttachment attachment;
         private @Nullable String customSubject;
         private @Nullable Boolean paused;
         private @Nullable List<JobTaskDashboardTaskSubscriptionSubscriber> subscribers;
         public Builder() {}
         public Builder(JobTaskDashboardTaskSubscription defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachment = defaults.attachment;
     	      this.customSubject = defaults.customSubject;
     	      this.paused = defaults.paused;
     	      this.subscribers = defaults.subscribers;
         }
 
+        @CustomType.Setter
+        public Builder attachment(@Nullable JobTaskDashboardTaskSubscriptionAttachment attachment) {
+
+            this.attachment = attachment;
+            return this;
+        }
         @CustomType.Setter
         public Builder customSubject(@Nullable String customSubject) {
 
@@ -96,6 +109,7 @@ public final class JobTaskDashboardTaskSubscription {
         }
         public JobTaskDashboardTaskSubscription build() {
             final var _resultValue = new JobTaskDashboardTaskSubscription();
+            _resultValue.attachment = attachment;
             _resultValue.customSubject = customSubject;
             _resultValue.paused = paused;
             _resultValue.subscribers = subscribers;

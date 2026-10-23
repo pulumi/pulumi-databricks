@@ -121,7 +121,8 @@ type Job struct {
 	DbtTask    JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
 	Deployment JobDeploymentPtrOutput `pulumi:"deployment"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description    pulumi.StringPtrOutput `pulumi:"description"`
+	DurationTarget pulumi.StringPtrOutput `pulumi:"durationTarget"`
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode pulumi.StringPtrOutput `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -244,7 +245,8 @@ type jobState struct {
 	DbtTask    *JobDbtTask    `pulumi:"dbtTask"`
 	Deployment *JobDeployment `pulumi:"deployment"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description *string `pulumi:"description"`
+	Description    *string `pulumi:"description"`
+	DurationTarget *string `pulumi:"durationTarget"`
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode *string `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -338,7 +340,8 @@ type JobState struct {
 	DbtTask    JobDbtTaskPtrInput
 	Deployment JobDeploymentPtrInput
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description pulumi.StringPtrInput
+	Description    pulumi.StringPtrInput
+	DurationTarget pulumi.StringPtrInput
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode pulumi.StringPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -436,7 +439,8 @@ type jobArgs struct {
 	DbtTask    *JobDbtTask    `pulumi:"dbtTask"`
 	Deployment *JobDeployment `pulumi:"deployment"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description *string `pulumi:"description"`
+	Description    *string `pulumi:"description"`
+	DurationTarget *string `pulumi:"durationTarget"`
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode *string `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -529,7 +533,8 @@ type JobArgs struct {
 	DbtTask    JobDbtTaskPtrInput
 	Deployment JobDeploymentPtrInput
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description pulumi.StringPtrInput
+	Description    pulumi.StringPtrInput
+	DurationTarget pulumi.StringPtrInput
 	// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
 	EditMode pulumi.StringPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -727,6 +732,10 @@ func (o JobOutput) Deployment() JobDeploymentPtrOutput {
 // An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 func (o JobOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o JobOutput) DurationTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.DurationTarget }).(pulumi.StringPtrOutput)
 }
 
 // If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.

@@ -159,6 +159,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="durationTarget")
+    private @Nullable Output<String> durationTarget;
+
+    public Optional<Output<String>> durationTarget() {
+        return Optional.ofNullable(this.durationTarget);
+    }
+
     /**
      * If `&#34;UI_LOCKED&#34;`, the user interface for the job will be locked. If `&#34;EDITABLE&#34;` (the default), the user interface will be editable.
      * 
@@ -723,6 +730,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.dbtTask = $.dbtTask;
         this.deployment = $.deployment;
         this.description = $.description;
+        this.durationTarget = $.durationTarget;
         this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
         this.environmentVariables = $.environmentVariables;
@@ -930,6 +938,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder durationTarget(@Nullable Output<String> durationTarget) {
+            $.durationTarget = durationTarget;
+            return this;
+        }
+
+        public Builder durationTarget(String durationTarget) {
+            return durationTarget(Output.of(durationTarget));
         }
 
         /**

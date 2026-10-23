@@ -28,7 +28,7 @@ class GetAlertV2Result:
     """
     A collection of values returned by getAlertV2.
     """
-    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parameters=None, parent_path=None, provider_config=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
+    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, custom_template_format=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parameters=None, parent_path=None, provider_config=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,6 +38,9 @@ class GetAlertV2Result:
         if custom_summary and not isinstance(custom_summary, str):
             raise TypeError("Expected argument 'custom_summary' to be a str")
         pulumi.set(__self__, "custom_summary", custom_summary)
+        if custom_template_format and not isinstance(custom_template_format, str):
+            raise TypeError("Expected argument 'custom_template_format' to be a str")
+        pulumi.set(__self__, "custom_template_format", custom_template_format)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -107,6 +110,14 @@ class GetAlertV2Result:
         (string) - Custom summary for the alert. support mustache template
         """
         return pulumi.get(self, "custom_summary")
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateFormat")
+    def custom_template_format(self) -> _builtins.str:
+        """
+        (string) - The format used to interpret the `custom_summary` and `custom_description` templates.
+        """
+        return pulumi.get(self, "custom_template_format")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -243,6 +254,7 @@ class AwaitableGetAlertV2Result(GetAlertV2Result):
             create_time=self.create_time,
             custom_description=self.custom_description,
             custom_summary=self.custom_summary,
+            custom_template_format=self.custom_template_format,
             display_name=self.display_name,
             effective_run_as=self.effective_run_as,
             evaluation=self.evaluation,
@@ -302,6 +314,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         custom_description=pulumi.get(__ret__, 'custom_description'),
         custom_summary=pulumi.get(__ret__, 'custom_summary'),
+        custom_template_format=pulumi.get(__ret__, 'custom_template_format'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_run_as=pulumi.get(__ret__, 'effective_run_as'),
         evaluation=pulumi.get(__ret__, 'evaluation'),
@@ -358,6 +371,7 @@ def get_alert_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         create_time=pulumi.get(__response__, 'create_time'),
         custom_description=pulumi.get(__response__, 'custom_description'),
         custom_summary=pulumi.get(__response__, 'custom_summary'),
+        custom_template_format=pulumi.get(__response__, 'custom_template_format'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_run_as=pulumi.get(__response__, 'effective_run_as'),
         evaluation=pulumi.get(__response__, 'evaluation'),

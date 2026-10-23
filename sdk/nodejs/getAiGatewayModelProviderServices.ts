@@ -43,8 +43,8 @@ export function getAiGatewayModelProviderServices(args?: GetAiGatewayModelProvid
  */
 export interface GetAiGatewayModelProviderServicesArgs {
     /**
-     * Maximum number of provider services to return. Defaults to 100 when unset or
-     * 0; the maximum is 100. Use `pageToken` to retrieve additional pages
+     * Maximum number of provider services to return. Defaults to 200 when unset or
+     * 0; the maximum is 200. Use `pageToken` to retrieve additional pages
      */
     pageSize?: number;
     /**
@@ -118,8 +118,8 @@ export function getAiGatewayModelProviderServicesOutput(args?: GetAiGatewayModel
  */
 export interface GetAiGatewayModelProviderServicesOutputArgs {
     /**
-     * Maximum number of provider services to return. Defaults to 100 when unset or
-     * 0; the maximum is 100. Use `pageToken` to retrieve additional pages
+     * Maximum number of provider services to return. Defaults to 200 when unset or
+     * 0; the maximum is 200. Use `pageToken` to retrieve additional pages
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

@@ -16,6 +16,10 @@ from .account_iam_workspace_assignment_v2 import *
 from .account_network_policy import *
 from .account_setting_user_preference_v2 import *
 from .account_setting_v2 import *
+from .agent_kit_managed_memory_entry import *
+from .agent_kit_managed_memory_store import *
+from .agent_kit_session import *
+from .agent_kit_session_store import *
 from .ai_gateway_mcp_service import *
 from .ai_gateway_model_provider_service import *
 from .ai_gateway_model_service import *
@@ -85,6 +89,14 @@ from .get_account_network_policies import *
 from .get_account_network_policy import *
 from .get_account_setting_user_preference_v2 import *
 from .get_account_setting_v2 import *
+from .get_agent_kit_managed_memory_entries import *
+from .get_agent_kit_managed_memory_entry import *
+from .get_agent_kit_managed_memory_store import *
+from .get_agent_kit_managed_memory_stores import *
+from .get_agent_kit_session import *
+from .get_agent_kit_session_store import *
+from .get_agent_kit_session_stores import *
+from .get_agent_kit_sessions import *
 from .get_ai_gateway_mcp_service import *
 from .get_ai_gateway_mcp_services import *
 from .get_ai_gateway_model_provider_service import *
@@ -465,6 +477,38 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accountSettingV2:AccountSettingV2": "AccountSettingV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/agentKitManagedMemoryEntry",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry": "AgentKitManagedMemoryEntry"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/agentKitManagedMemoryStore",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/agentKitManagedMemoryStore:AgentKitManagedMemoryStore": "AgentKitManagedMemoryStore"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/agentKitSession",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/agentKitSession:AgentKitSession": "AgentKitSession"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/agentKitSessionStore",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/agentKitSessionStore:AgentKitSessionStore": "AgentKitSessionStore"
   }
  },
  {

@@ -306,6 +306,7 @@ class _PolicyInfoState:
                  deny: pulumi.Input[Optional['PolicyInfoDenyArgs']] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 governed_tags: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoGovernedTagArgs']]]] = None,
                  grant: pulumi.Input[Optional['PolicyInfoGrantArgs']] = None,
                  match_columns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -333,6 +334,7 @@ class _PolicyInfoState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyInfoGovernedTagArgs']]] governed_tags: (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
         :param pulumi.Input['PolicyInfoGrantArgs'] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -371,6 +373,8 @@ class _PolicyInfoState:
             pulumi.set(__self__, "except_principals", except_principals)
         if for_securable_type is not None:
             pulumi.set(__self__, "for_securable_type", for_securable_type)
+        if governed_tags is not None:
+            pulumi.set(__self__, "governed_tags", governed_tags)
         if grant is not None:
             pulumi.set(__self__, "grant", grant)
         if match_columns is not None:
@@ -484,6 +488,18 @@ class _PolicyInfoState:
     @for_securable_type.setter
     def for_securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "for_securable_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="governedTags")
+    def governed_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoGovernedTagArgs']]]]:
+        """
+        (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+        """
+        return pulumi.get(self, "governed_tags")
+
+    @governed_tags.setter
+    def governed_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoGovernedTagArgs']]]]):
+        pulumi.set(self, "governed_tags", value)
 
     @_builtins.property
     @pulumi.getter
@@ -897,6 +913,7 @@ class PolicyInfo(pulumi.CustomResource):
             __props__.__dict__["when_condition"] = when_condition
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
+            __props__.__dict__["governed_tags"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
         super(PolicyInfo, __self__).__init__(
@@ -916,6 +933,7 @@ class PolicyInfo(pulumi.CustomResource):
             deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']]] = None,
             except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            governed_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoGovernedTagArgs', 'PolicyInfoGovernedTagArgsDict', 'outputs.PolicyInfoGovernedTag']]]]] = None,
             grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']]] = None,
             match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -947,6 +965,7 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoGovernedTagArgs', 'PolicyInfoGovernedTagArgsDict', 'outputs.PolicyInfoGovernedTag']]]] governed_tags: (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
         :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -982,6 +1001,7 @@ class PolicyInfo(pulumi.CustomResource):
         __props__.__dict__["deny"] = deny
         __props__.__dict__["except_principals"] = except_principals
         __props__.__dict__["for_securable_type"] = for_securable_type
+        __props__.__dict__["governed_tags"] = governed_tags
         __props__.__dict__["grant"] = grant
         __props__.__dict__["match_columns"] = match_columns
         __props__.__dict__["name"] = name
@@ -1056,6 +1076,14 @@ class PolicyInfo(pulumi.CustomResource):
         Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
+
+    @_builtins.property
+    @pulumi.getter(name="governedTags")
+    def governed_tags(self) -> pulumi.Output[Sequence['outputs.PolicyInfoGovernedTag']]:
+        """
+        (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+        """
+        return pulumi.get(self, "governed_tags")
 
     @_builtins.property
     @pulumi.getter

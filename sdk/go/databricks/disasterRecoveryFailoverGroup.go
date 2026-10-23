@@ -77,9 +77,13 @@ type DisasterRecoveryFailoverGroup struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringOutput `pulumi:"failoverGroupId"`
+	// (boolean) - True if errors currently block the replication point
+	HasReplicationPointBlockingErrors pulumi.BoolOutput `pulumi:"hasReplicationPointBlockingErrors"`
 	// Initial primary region. Used only in Create requests to set the starting
 	// primary region. Not returned in responses
 	InitialPrimaryRegion pulumi.StringOutput `pulumi:"initialPrimaryRegion"`
+	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+	InitialReplicationProgress DisasterRecoveryFailoverGroupInitialReplicationProgressOutput `pulumi:"initialReplicationProgress"`
 	// (string) - Fully qualified resource name in the format
 	// accounts/{account_id}/failover-groups/{failover_group_id}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -154,9 +158,13 @@ type disasterRecoveryFailoverGroupState struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId *string `pulumi:"failoverGroupId"`
+	// (boolean) - True if errors currently block the replication point
+	HasReplicationPointBlockingErrors *bool `pulumi:"hasReplicationPointBlockingErrors"`
 	// Initial primary region. Used only in Create requests to set the starting
 	// primary region. Not returned in responses
 	InitialPrimaryRegion *string `pulumi:"initialPrimaryRegion"`
+	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+	InitialReplicationProgress *DisasterRecoveryFailoverGroupInitialReplicationProgress `pulumi:"initialReplicationProgress"`
 	// (string) - Fully qualified resource name in the format
 	// accounts/{account_id}/failover-groups/{failover_group_id}
 	Name *string `pulumi:"name"`
@@ -187,9 +195,13 @@ type DisasterRecoveryFailoverGroupState struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringPtrInput
+	// (boolean) - True if errors currently block the replication point
+	HasReplicationPointBlockingErrors pulumi.BoolPtrInput
 	// Initial primary region. Used only in Create requests to set the starting
 	// primary region. Not returned in responses
 	InitialPrimaryRegion pulumi.StringPtrInput
+	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+	InitialReplicationProgress DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput
 	// (string) - Fully qualified resource name in the format
 	// accounts/{account_id}/failover-groups/{failover_group_id}
 	Name pulumi.StringPtrInput
@@ -357,10 +369,22 @@ func (o DisasterRecoveryFailoverGroupOutput) FailoverGroupId() pulumi.StringOutp
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.FailoverGroupId }).(pulumi.StringOutput)
 }
 
+// (boolean) - True if errors currently block the replication point
+func (o DisasterRecoveryFailoverGroupOutput) HasReplicationPointBlockingErrors() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.BoolOutput { return v.HasReplicationPointBlockingErrors }).(pulumi.BoolOutput)
+}
+
 // Initial primary region. Used only in Create requests to set the starting
 // primary region. Not returned in responses
 func (o DisasterRecoveryFailoverGroupOutput) InitialPrimaryRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.InitialPrimaryRegion }).(pulumi.StringOutput)
+}
+
+// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+func (o DisasterRecoveryFailoverGroupOutput) InitialReplicationProgress() DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+		return v.InitialReplicationProgress
+	}).(DisasterRecoveryFailoverGroupInitialReplicationProgressOutput)
 }
 
 // (string) - Fully qualified resource name in the format

@@ -252,7 +252,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.DataClassificationCatalogConfigProviderConfig']]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
@@ -265,6 +265,8 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         2. have **USE_CATALOG** and **MANAGE** permissions on the catalog
 
         > **Note** This resource can only be used with a workspace-level provider.
+
+        > **Note** The `auto_tag_configs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this resource are generally available.
 
         ## Example Usage
 
@@ -281,7 +283,19 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                     "marketing",
                     "customer_data",
                 ],
-            },
+            })
+        # Enable Data Classification for the entire catalog (all current and future schemas)
+        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", parent="catalogs/staging_catalog")
+        ```
+
+        To automatically tag columns detected with specific classes, set `auto_tag_configs`. This attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        auto_tagging = databricks.DataClassificationCatalogConfig("auto_tagging",
+            parent="catalogs/finance_catalog",
             auto_tag_configs=[
                 {
                     "classification_tag": "class.credit_card",
@@ -292,8 +306,6 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                     "auto_tagging_mode": "AUTO_TAGGING_ENABLED",
                 },
             ])
-        # Enable Data Classification for the entire catalog (all current and future schemas)
-        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", parent="catalogs/staging_catalog")
         ```
 
 
@@ -319,7 +331,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                  args: DataClassificationCatalogConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
@@ -332,6 +344,8 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         2. have **USE_CATALOG** and **MANAGE** permissions on the catalog
 
         > **Note** This resource can only be used with a workspace-level provider.
+
+        > **Note** The `auto_tag_configs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this resource are generally available.
 
         ## Example Usage
 
@@ -348,7 +362,19 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                     "marketing",
                     "customer_data",
                 ],
-            },
+            })
+        # Enable Data Classification for the entire catalog (all current and future schemas)
+        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", parent="catalogs/staging_catalog")
+        ```
+
+        To automatically tag columns detected with specific classes, set `auto_tag_configs`. This attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        auto_tagging = databricks.DataClassificationCatalogConfig("auto_tagging",
+            parent="catalogs/finance_catalog",
             auto_tag_configs=[
                 {
                     "classification_tag": "class.credit_card",
@@ -359,8 +385,6 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                     "auto_tagging_mode": "AUTO_TAGGING_ENABLED",
                 },
             ])
-        # Enable Data Classification for the entire catalog (all current and future schemas)
-        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", parent="catalogs/staging_catalog")
         ```
 
 

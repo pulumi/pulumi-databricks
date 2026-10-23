@@ -22,6 +22,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.AiGatewayModelProviderServiceConfigAmazonBedrock? AmazonBedrock;
         public readonly Outputs.AiGatewayModelProviderServiceConfigAnthropic? Anthropic;
         public readonly Outputs.AiGatewayModelProviderServiceConfigAzureOpenai? AzureOpenai;
+        public readonly Outputs.AiGatewayModelProviderServiceConfigBedrockMantle? BedrockMantle;
         public readonly Outputs.AiGatewayModelProviderServiceConfigCustom? Custom;
         /// <summary>
         /// Whether to forward incoming HTTP headers to the upstream provider. Defaults
@@ -41,7 +42,9 @@ namespace Pulumi.Databricks.Outputs
         /// provider-native API types. Defaults to false. When true, these paths are
         /// forwarded unchanged to the upstream provider. When false, only
         /// recognized API paths are served. Enabling this broadens the upstream API
-        /// surface exposed through the provider service
+        /// surface exposed through the provider service. AI Gateway cannot evaluate
+        /// Service Policies on opaque unmanaged requests, so unmanaged requests are
+        /// rejected whenever Service Policies are attached to this securable
         /// </summary>
         public readonly bool? ForwardUnmanagedPaths;
         public readonly Outputs.AiGatewayModelProviderServiceConfigGeminiEnterprise? GeminiEnterprise;
@@ -54,9 +57,14 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry? MicrosoftFoundry;
         public readonly Outputs.AiGatewayModelProviderServiceConfigOpenai? Openai;
         /// <summary>
+        /// Pricing configuration for this provider service. An explicitly empty
+        /// configuration is retained on Create and Update and applies no adjustment
+        /// </summary>
+        public readonly Outputs.AiGatewayModelProviderServiceConfigPricing? Pricing;
+        /// <summary>
         /// External model provider. Required on Create and immutable thereafter. Set
         /// the matching provider-specific configuration, such as `Openai`,
-        /// `AzureOpenai`, or `AmazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        /// `AzureOpenai`, or `AmazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         /// </summary>
         public readonly string? ProviderType;
         /// <summary>
@@ -84,6 +92,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AiGatewayModelProviderServiceConfigAzureOpenai? azureOpenai,
 
+            Outputs.AiGatewayModelProviderServiceConfigBedrockMantle? bedrockMantle,
+
             Outputs.AiGatewayModelProviderServiceConfigCustom? custom,
 
             bool? forwardHeaders,
@@ -100,6 +110,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AiGatewayModelProviderServiceConfigOpenai? openai,
 
+            Outputs.AiGatewayModelProviderServiceConfigPricing? pricing,
+
             string? providerType,
 
             ImmutableArray<Outputs.AiGatewayModelProviderServiceConfigRateLimit> rateLimits,
@@ -110,6 +122,7 @@ namespace Pulumi.Databricks.Outputs
             AmazonBedrock = amazonBedrock;
             Anthropic = anthropic;
             AzureOpenai = azureOpenai;
+            BedrockMantle = bedrockMantle;
             Custom = custom;
             ForwardHeaders = forwardHeaders;
             ForwardQueryParameters = forwardQueryParameters;
@@ -118,6 +131,7 @@ namespace Pulumi.Databricks.Outputs
             InferenceTable = inferenceTable;
             MicrosoftFoundry = microsoftFoundry;
             Openai = openai;
+            Pricing = pricing;
             ProviderType = providerType;
             RateLimits = rateLimits;
             Targets = targets;

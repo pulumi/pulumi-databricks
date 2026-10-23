@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PolicyInfoState;
 import com.pulumi.databricks.outputs.PolicyInfoColumnMask;
 import com.pulumi.databricks.outputs.PolicyInfoDeny;
+import com.pulumi.databricks.outputs.PolicyInfoGovernedTag;
 import com.pulumi.databricks.outputs.PolicyInfoGrant;
 import com.pulumi.databricks.outputs.PolicyInfoMatchColumn;
 import com.pulumi.databricks.outputs.PolicyInfoProviderConfig;
@@ -249,6 +250,20 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
      */
     public Output<String> forSecurableType() {
         return this.forSecurableType;
+    }
+    /**
+     * (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+     * 
+     */
+    @Export(name="governedTags", refs={List.class,PolicyInfoGovernedTag.class}, tree="[0,1]")
+    private Output<List<PolicyInfoGovernedTag>> governedTags;
+
+    /**
+     * @return (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+     * 
+     */
+    public Output<List<PolicyInfoGovernedTag>> governedTags() {
+        return this.governedTags;
     }
     /**
      * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.

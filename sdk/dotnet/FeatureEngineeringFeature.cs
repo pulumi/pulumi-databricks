@@ -10,7 +10,124 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+    /// 
+    /// A feature is a reusable, governed definition of a model input registered in Unity Catalog. Each feature binds a data source to the function that computes its value, so model training and online serving read one definition instead of two implementations that drift apart.
+    /// 
+    /// Registering a feature computes nothing on its own. To produce values, materialize the feature to an offline Delta table or an online Lakebase table using the Feature Engineering API.
+    /// 
+    /// Only `Description` can be changed in place. Changing any other field replaces the feature.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// A feature needs a source and a function. A Delta table source also requires the entity columns that
+    /// key the feature and a timeseries column; a request source takes neither, because the value arrives
+    /// in the request.
+    /// 
+    /// ### Aggregation over a sliding window
+    /// 
+    /// Count each customer's transactions over the trailing seven days, recomputed daily.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var transactionCount7d = new Databricks.FeatureEngineeringFeature("transaction_count_7d", new()
+    ///     {
+    ///         FullName = "main.features.transaction_count_7d",
+    ///         Description = "Transactions per customer over the trailing seven days.",
+    ///         Source = new Databricks.Inputs.FeatureEngineeringFeatureSourceArgs
+    ///         {
+    ///             DeltaTableSource = new Databricks.Inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs
+    ///             {
+    ///                 FullName = "main.retail.transactions",
+    ///             },
+    ///         },
+    ///         Function = new Databricks.Inputs.FeatureEngineeringFeatureFunctionArgs
+    ///         {
+    ///             AggregationFunction = new Databricks.Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs
+    ///             {
+    ///                 CountFunction = new Databricks.Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunctionArgs
+    ///                 {
+    ///                     Input = "transaction_id",
+    ///                 },
+    ///                 TimeWindow = new Databricks.Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs
+    ///                 {
+    ///                     Sliding = new Databricks.Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs
+    ///                     {
+    ///                         WindowDuration = "604800s",
+    ///                         SlideDuration = "86400s",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Entities = new[]
+    ///         {
+    ///             new Databricks.Inputs.FeatureEngineeringFeatureEntityArgs
+    ///             {
+    ///                 Name = "customer_id",
+    ///             },
+    ///         },
+    ///         TimeseriesColumn = new Databricks.Inputs.FeatureEngineeringFeatureTimeseriesColumnArgs
+    ///         {
+    ///             Name = "transaction_time",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Latest value of a column
+    /// 
+    /// Read a column straight from the source with no aggregation, so no time window is needed. The
+    /// timeseries column is still required, because it is what makes the lookup point-in-time correct.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customerTier = new Databricks.FeatureEngineeringFeature("customer_tier", new()
+    ///     {
+    ///         FullName = "main.features.customer_tier",
+    ///         Source = new Databricks.Inputs.FeatureEngineeringFeatureSourceArgs
+    ///         {
+    ///             DeltaTableSource = new Databricks.Inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs
+    ///             {
+    ///                 FullName = "main.retail.customers",
+    ///             },
+    ///         },
+    ///         Function = new Databricks.Inputs.FeatureEngineeringFeatureFunctionArgs
+    ///         {
+    ///             ColumnSelection = new Databricks.Inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs
+    ///             {
+    ///                 Column = "tier",
+    ///             },
+    ///         },
+    ///         Entities = new[]
+    ///         {
+    ///             new Databricks.Inputs.FeatureEngineeringFeatureEntityArgs
+    ///             {
+    ///                 Name = "customer_id",
+    ///             },
+    ///         },
+    ///         TimeseriesColumn = new Databricks.Inputs.FeatureEngineeringFeatureTimeseriesColumnArgs
+    ///         {
+    ///             Name = "updated_at",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/featureEngineeringFeature:FeatureEngineeringFeature")]
     public partial class FeatureEngineeringFeature : global::Pulumi.CustomResource
@@ -40,7 +157,8 @@ namespace Pulumi.Databricks
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        /// Optional since entities are not set for RequestSource features or on-demand calculated features
         /// </summary>
         [Output("entities")]
         public Output<ImmutableArray<Outputs.FeatureEngineeringFeatureEntity>> Entities { get; private set; } = null!;
@@ -49,9 +167,7 @@ namespace Pulumi.Databricks
         public Output<string?> FilterCondition { get; private set; } = null!;
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Output("fullName")]
         public Output<string> FullName { get; private set; } = null!;
@@ -73,7 +189,7 @@ namespace Pulumi.Databricks
         /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         /// </summary>
         [Output("lineageContext")]
-        public Output<Outputs.FeatureEngineeringFeatureLineageContext?> LineageContext { get; private set; } = null!;
+        public Output<Outputs.FeatureEngineeringFeatureLineageContext> LineageContext { get; private set; } = null!;
 
         /// <summary>
         /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
@@ -103,7 +219,9 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringFeatureTimeWindow?> TimeWindow { get; private set; } = null!;
 
         /// <summary>
-        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations.
+        /// Optional since a timeseries column is not set for RequestSource features or on-demand
+        /// calculated features
         /// </summary>
         [Output("timeseriesColumn")]
         public Output<Outputs.FeatureEngineeringFeatureTimeseriesColumn?> TimeseriesColumn { get; private set; } = null!;
@@ -164,7 +282,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.FeatureEngineeringFeatureEntityArgs>? _entities;
 
         /// <summary>
-        /// The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        /// Optional since entities are not set for RequestSource features or on-demand calculated features
         /// </summary>
         public InputList<Inputs.FeatureEngineeringFeatureEntityArgs> Entities
         {
@@ -176,9 +295,7 @@ namespace Pulumi.Databricks
         public Input<string>? FilterCondition { get; set; }
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
@@ -223,7 +340,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowArgs>? TimeWindow { get; set; }
 
         /// <summary>
-        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations.
+        /// Optional since a timeseries column is not set for RequestSource features or on-demand
+        /// calculated features
         /// </summary>
         [Input("timeseriesColumn")]
         public Input<Inputs.FeatureEngineeringFeatureTimeseriesColumnArgs>? TimeseriesColumn { get; set; }
@@ -264,7 +383,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.FeatureEngineeringFeatureEntityGetArgs>? _entities;
 
         /// <summary>
-        /// The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        /// Optional since entities are not set for RequestSource features or on-demand calculated features
         /// </summary>
         public InputList<Inputs.FeatureEngineeringFeatureEntityGetArgs> Entities
         {
@@ -276,9 +396,7 @@ namespace Pulumi.Databricks
         public Input<string>? FilterCondition { get; set; }
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature. This is the
-        /// feature's resource identifier; the catalog_name, schema_name, and name fields
-        /// below are OUTPUT_ONLY decomposed views of this value
+        /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
@@ -335,7 +453,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowGetArgs>? TimeWindow { get; set; }
 
         /// <summary>
-        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations.
+        /// Optional since a timeseries column is not set for RequestSource features or on-demand
+        /// calculated features
         /// </summary>
         [Input("timeseriesColumn")]
         public Input<Inputs.FeatureEngineeringFeatureTimeseriesColumnGetArgs>? TimeseriesColumn { get; set; }

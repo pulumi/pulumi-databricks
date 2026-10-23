@@ -5,6 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.NotificationDestinationConfigDatabricksAppSlackArgs;
+import com.pulumi.databricks.inputs.NotificationDestinationConfigDatabricksAppTeamsArgs;
 import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
 import com.pulumi.databricks.inputs.NotificationDestinationConfigGenericWebhookArgs;
 import com.pulumi.databricks.inputs.NotificationDestinationConfigMicrosoftTeamsArgs;
@@ -18,6 +20,20 @@ import javax.annotation.Nullable;
 public final class NotificationDestinationConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NotificationDestinationConfigArgs Empty = new NotificationDestinationConfigArgs();
+
+    @Import(name="databricksAppSlack")
+    private @Nullable Output<NotificationDestinationConfigDatabricksAppSlackArgs> databricksAppSlack;
+
+    public Optional<Output<NotificationDestinationConfigDatabricksAppSlackArgs>> databricksAppSlack() {
+        return Optional.ofNullable(this.databricksAppSlack);
+    }
+
+    @Import(name="databricksAppTeams")
+    private @Nullable Output<NotificationDestinationConfigDatabricksAppTeamsArgs> databricksAppTeams;
+
+    public Optional<Output<NotificationDestinationConfigDatabricksAppTeamsArgs>> databricksAppTeams() {
+        return Optional.ofNullable(this.databricksAppTeams);
+    }
 
     /**
      * The email configuration of the Notification Destination. It must contain the following:
@@ -97,6 +113,8 @@ public final class NotificationDestinationConfigArgs extends com.pulumi.resource
     private NotificationDestinationConfigArgs() {}
 
     private NotificationDestinationConfigArgs(NotificationDestinationConfigArgs $) {
+        this.databricksAppSlack = $.databricksAppSlack;
+        this.databricksAppTeams = $.databricksAppTeams;
         this.email = $.email;
         this.genericWebhook = $.genericWebhook;
         this.microsoftTeams = $.microsoftTeams;
@@ -120,6 +138,24 @@ public final class NotificationDestinationConfigArgs extends com.pulumi.resource
 
         public Builder(NotificationDestinationConfigArgs defaults) {
             $ = new NotificationDestinationConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder databricksAppSlack(@Nullable Output<NotificationDestinationConfigDatabricksAppSlackArgs> databricksAppSlack) {
+            $.databricksAppSlack = databricksAppSlack;
+            return this;
+        }
+
+        public Builder databricksAppSlack(NotificationDestinationConfigDatabricksAppSlackArgs databricksAppSlack) {
+            return databricksAppSlack(Output.of(databricksAppSlack));
+        }
+
+        public Builder databricksAppTeams(@Nullable Output<NotificationDestinationConfigDatabricksAppTeamsArgs> databricksAppTeams) {
+            $.databricksAppTeams = databricksAppTeams;
+            return this;
+        }
+
+        public Builder databricksAppTeams(NotificationDestinationConfigDatabricksAppTeamsArgs databricksAppTeams) {
+            return databricksAppTeams(Output.of(databricksAppTeams));
         }
 
         /**

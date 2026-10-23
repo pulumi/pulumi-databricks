@@ -1772,6 +1772,45 @@ export interface AccountSettingV2WorkspaceLabel {
     label?: pulumi.Input<string | undefined>;
 }
 
+export interface AgentKitManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AgentKitManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AgentKitManagedMemoryStoreStorageBackend {
+    /**
+     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     */
+    backendId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+     */
+    backendType?: pulumi.Input<string | undefined>;
+}
+
+export interface AgentKitSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AgentKitSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
 export interface AiGatewayMcpServiceConfig {
     /**
      * Tool names or prefix patterns to expose from the MCP server. Use exact
@@ -1861,6 +1900,7 @@ export interface AiGatewayModelProviderServiceConfig {
     amazonBedrock?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrock | undefined>;
     anthropic?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropic | undefined>;
     azureOpenai?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenai | undefined>;
+    bedrockMantle?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantle | undefined>;
     custom?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustom | undefined>;
     /**
      * Whether to forward incoming HTTP headers to the upstream provider. Defaults
@@ -1880,7 +1920,9 @@ export interface AiGatewayModelProviderServiceConfig {
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      */
     forwardUnmanagedPaths?: pulumi.Input<boolean | undefined>;
     geminiEnterprise?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterprise | undefined>;
@@ -1893,9 +1935,14 @@ export interface AiGatewayModelProviderServiceConfig {
     microsoftFoundry?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry | undefined>;
     openai?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigOpenai | undefined>;
     /**
+     * Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     */
+    pricing?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigPricing | undefined>;
+    /**
      * External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      */
     providerType?: pulumi.Input<string | undefined>;
     /**
@@ -2115,6 +2162,76 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantle {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantleDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirect {
+    /**
+     * AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
+     */
+    awsAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+    /**
+     * AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
+     */
+    secretAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * Reference to a customer-owned UC Secret that carries this secret value.
+     * The value is read at invoke time under the model provider service
+     * owner's access and is never copied onto the model provider service, so
+     * rotating the UC Secret takes effect with no change to the model provider
+     * service. On Create, supply `secret_reference.name` as
+     * `secrets/{catalog}.{schema}.{secret}`
+     */
+    secretReference?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
     /**
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
@@ -2432,6 +2549,16 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretRefe
     name: pulumi.Input<string>;
 }
 
+export interface AiGatewayModelProviderServiceConfigPricing {
+    /**
+     * Provider-wide adjustment to external-model spend estimates in basis points:
+     * 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+     * beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+     * value or zero leaves the estimate unchanged
+     */
+    defaultDiscountBasisPoints?: pulumi.Input<number | undefined>;
+}
+
 export interface AiGatewayModelProviderServiceConfigRateLimit {
     /**
      * Scope of the rate limit. Depending on this value, the limit applies to a
@@ -2462,6 +2589,14 @@ export interface AiGatewayModelProviderServiceConfigRateLimit {
 
 export interface AiGatewayModelProviderServiceConfigTarget {
     /**
+     * Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: pulumi.Input<string | undefined>;
+    /**
      * Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
      * This identifies a model at the upstream provider; it is not a Unity
      * Catalog model resource
@@ -2469,9 +2604,11 @@ export interface AiGatewayModelProviderServiceConfigTarget {
     model: pulumi.Input<string>;
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -2626,6 +2763,14 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
 
 export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget {
     /**
+     * Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: pulumi.Input<string | undefined>;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -2633,9 +2778,11 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
     model: pulumi.Input<string>;
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -2733,6 +2880,14 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
 
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
     /**
+     * Relative path appended to a custom provider's `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     */
+    endpointRoute?: pulumi.Input<string | undefined>;
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -2740,9 +2895,11 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
     model: pulumi.Input<string>;
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target's types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      */
     nativeApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -3248,6 +3405,7 @@ export interface AppActiveDeployment {
      * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
      */
     gitSource?: pulumi.Input<inputs.AppActiveDeploymentGitSource | undefined>;
+    healthCheck?: pulumi.Input<inputs.AppActiveDeploymentHealthCheck | undefined>;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -3323,6 +3481,11 @@ export interface AppActiveDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentHealthCheck {
+    path?: pulumi.Input<string | undefined>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 export interface AppActiveDeploymentStatus {
@@ -3485,6 +3648,7 @@ export interface AppPendingDeployment {
      * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
      */
     gitSource?: pulumi.Input<inputs.AppPendingDeploymentGitSource | undefined>;
+    healthCheck?: pulumi.Input<inputs.AppPendingDeploymentHealthCheck | undefined>;
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
@@ -3560,6 +3724,11 @@ export interface AppPendingDeploymentGitSourceGitRepository {
      * URL of the Git repository.
      */
     url: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentHealthCheck {
+    path?: pulumi.Input<string | undefined>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 export interface AppPendingDeploymentStatus {
@@ -3872,7 +4041,7 @@ export interface AppSpaceResourceUcSecurable {
      */
     securableKind?: pulumi.Input<string | undefined>;
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: pulumi.Input<string>;
 }
@@ -3968,7 +4137,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec 
 export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     permission: pulumi.Input<string>;
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: pulumi.Input<string>;
 }
@@ -5474,6 +5643,13 @@ export interface DisableLegacyFeaturesSettingProviderConfig {
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
+export interface DisasterRecoveryFailoverGroupInitialReplicationProgress {
+    /**
+     * (integer) - Percent complete, 0-100
+     */
+    completed?: pulumi.Input<number | undefined>;
+}
+
 export interface DisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
      * UC catalogs to replicate
@@ -6158,6 +6334,10 @@ export interface FeatureEngineeringFeatureSource {
      */
     requestSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSource | undefined>;
     /**
+     * A Spark Declarative Pipeline data source
+     */
+    sdpSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceSdpSource | undefined>;
+    /**
      * A Stream data source
      */
     streamSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceStreamSource | undefined>;
@@ -6168,13 +6348,13 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
     entityColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     filterCondition?: pulumi.Input<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: pulumi.Input<string>;
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      */
     timeseriesColumn?: pulumi.Input<string | undefined>;
     transformationSql?: pulumi.Input<string | undefined>;
@@ -6254,13 +6434,42 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
     name: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureSourceSdpSource {
+    dataframeSchema?: pulumi.Input<string | undefined>;
+    filterCondition?: pulumi.Input<string | undefined>;
+    /**
+     * The full three-part names of the tables the pipeline reads from. Required to materialize this
+     * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+     * these tables, and the run fails if it doesn't. At most 100 tables
+     */
+    inputTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+     * The table doesn't need to exist until the pipeline first runs. Required
+     */
+    outputTable?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+     * each materialization or backfill. The pipeline must already exist when the feature is created,
+     * and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+     * Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+     * back empty. Required
+     */
+    pipelineId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+     * has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+     */
+    pipelineState?: pulumi.Input<string | undefined>;
+    transformationSql?: pulumi.Input<string | undefined>;
+}
+
 export interface FeatureEngineeringFeatureSourceStreamSource {
     dataframeSchema?: pulumi.Input<string | undefined>;
     filterCondition?: pulumi.Input<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: pulumi.Input<string>;
     transformationSql?: pulumi.Input<string | undefined>;
@@ -6327,6 +6536,118 @@ export interface FeatureEngineeringFeatureTimeseriesColumn {
 }
 
 export interface FileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitManagedMemoryEntriesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitManagedMemoryEntriesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitManagedMemoryEntryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitManagedMemoryEntryProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitManagedMemoryStoreProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitManagedMemoryStoreProviderConfigArgs {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitManagedMemoryStoresProviderConfig {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitManagedMemoryStoresProviderConfigArgs {
+    /**
+     * (integer) - Workspace that owns the memory store
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitSessionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitSessionProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitSessionStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitSessionStoreProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitSessionStoresProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitSessionStoresProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAgentKitSessionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAgentKitSessionsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -11048,15 +11369,59 @@ export interface GetJobJobSettingsSettingsTaskDashboardTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscription {
+    attachment?: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment;
     customSubject?: string;
     paused?: boolean;
     subscribers?: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber[];
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs {
+    attachment?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs | undefined>;
     customSubject?: pulumi.Input<string | undefined>;
     paused?: pulumi.Input<boolean | undefined>;
     subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs>[] | undefined>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachment;
+    pageAttachment?: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachment;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs {
+    dataAttachment?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs | undefined>;
+    pageAttachment?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs | undefined>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: string;
+    includeAppliedFilters?: boolean;
+    widgets: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget[];
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs {
+    fileFormat: pulumi.Input<string>;
+    includeAppliedFilters?: pulumi.Input<boolean | undefined>;
+    widgets: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: string;
+    widgetId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs {
+    pageId: pulumi.Input<string>;
+    widgetId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: string[];
+    pageSelection?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs {
+    pageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    pageSelection?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber {
@@ -11224,15 +11589,59 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription {
+    attachment?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment;
     customSubject?: string;
     paused?: boolean;
     subscribers?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber[];
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs {
+    attachment?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs | undefined>;
     customSubject?: pulumi.Input<string | undefined>;
     paused?: pulumi.Input<boolean | undefined>;
     subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>[] | undefined>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment;
+    pageAttachment?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs {
+    dataAttachment?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs | undefined>;
+    pageAttachment?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs | undefined>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: string;
+    includeAppliedFilters?: boolean;
+    widgets: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs {
+    fileFormat: pulumi.Input<string>;
+    includeAppliedFilters?: pulumi.Input<boolean | undefined>;
+    widgets: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: string;
+    widgetId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs {
+    pageId: pulumi.Input<string>;
+    widgetId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: string[];
+    pageSelection?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs {
+    pageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    pageSelection?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
@@ -18514,6 +18923,7 @@ export interface JobTaskDashboardTask {
 }
 
 export interface JobTaskDashboardTaskSubscription {
+    attachment?: pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionAttachment | undefined>;
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
      */
@@ -18526,6 +18936,27 @@ export interface JobTaskDashboardTaskSubscription {
      * The list of subscribers to send the snapshot of the dashboard to.
      */
     subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionSubscriber>[] | undefined>;
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionAttachmentDataAttachment | undefined>;
+    pageAttachment?: pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionAttachmentPageAttachment | undefined>;
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: pulumi.Input<string>;
+    includeAppliedFilters?: pulumi.Input<boolean | undefined>;
+    widgets: pulumi.Input<pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget>[]>;
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: pulumi.Input<string>;
+    widgetId: pulumi.Input<string>;
+}
+
+export interface JobTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    pageSelection?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskDashboardTaskSubscriptionSubscriber {
@@ -18871,6 +19302,7 @@ export interface JobTaskForEachTaskTaskDashboardTask {
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
+    attachment?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment | undefined>;
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
      */
@@ -18883,6 +19315,27 @@ export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
      * The list of subscribers to send the snapshot of the dashboard to.
      */
     subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber>[] | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+    dataAttachment?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment | undefined>;
+    pageAttachment?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+    fileFormat: pulumi.Input<string>;
+    includeAppliedFilters?: pulumi.Input<boolean | undefined>;
+    widgets: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget>[]>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+    pageId: pulumi.Input<string>;
+    widgetId: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+    pageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    pageSelection?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
@@ -22113,11 +22566,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -22184,11 +22637,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -22220,6 +22673,8 @@ export interface NotebookProviderConfig {
 }
 
 export interface NotificationDestinationConfig {
+    databricksAppSlack?: pulumi.Input<inputs.NotificationDestinationConfigDatabricksAppSlack | undefined>;
+    databricksAppTeams?: pulumi.Input<inputs.NotificationDestinationConfigDatabricksAppTeams | undefined>;
     /**
      * The email configuration of the Notification Destination. It must contain the following:
      */
@@ -22240,6 +22695,31 @@ export interface NotificationDestinationConfig {
      * The Slack configuration of the Notification Destination. It must contain the following:
      */
     slack?: pulumi.Input<inputs.NotificationDestinationConfigSlack | undefined>;
+}
+
+export interface NotificationDestinationConfigDatabricksAppSlack {
+    /**
+     * Slack channel ID for notifications.
+     */
+    channelId?: pulumi.Input<string | undefined>;
+    channelIdSet?: pulumi.Input<boolean | undefined>;
+    teamId?: pulumi.Input<string | undefined>;
+    teamIdSet?: pulumi.Input<boolean | undefined>;
+}
+
+export interface NotificationDestinationConfigDatabricksAppTeams {
+    /**
+     * Slack channel ID for notifications.
+     */
+    channelId?: pulumi.Input<string | undefined>;
+    channelIdSet?: pulumi.Input<boolean | undefined>;
+    teamId?: pulumi.Input<string | undefined>;
+    teamIdSet?: pulumi.Input<boolean | undefined>;
+    /**
+     * Tenant ID for Microsoft Teams App.
+     */
+    tenantId?: pulumi.Input<string | undefined>;
+    tenantIdSet?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationDestinationConfigEmail {
@@ -23820,9 +24300,6 @@ export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection 
      * Extracts the value of a column-level tag
      */
     columnTagValue?: pulumi.Input<inputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue | undefined>;
-    /**
-     * Extracts the value of a securable-level tag
-     */
     tagValue?: pulumi.Input<inputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue | undefined>;
 }
 
@@ -23840,6 +24317,11 @@ export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionT
 
 export interface PolicyInfoDeny {
     privileges: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyInfoGovernedTag {
+    tagKey: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string | undefined>;
 }
 
 export interface PolicyInfoGrant {
@@ -23892,9 +24374,6 @@ export interface PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
      * Extracts the value of a column-level tag
      */
     columnTagValue?: pulumi.Input<inputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue | undefined>;
-    /**
-     * Extracts the value of a securable-level tag
-     */
     tagValue?: pulumi.Input<inputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue | undefined>;
 }
 

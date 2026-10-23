@@ -338,6 +338,9 @@ namespace Pulumi.Databricks
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
 
+        [Output("secrets")]
+        public Output<ImmutableDictionary<string, string>?> Secrets { get; private set; } = null!;
+
         /// <summary>
         /// Securable type.
         /// </summary>
@@ -488,6 +491,14 @@ namespace Pulumi.Databricks
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        [Input("secrets")]
+        private InputMap<string>? _secrets;
+        public InputMap<string> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputMap<string>());
+            set => _secrets = value;
+        }
+
         public ConnectionArgs()
         {
         }
@@ -619,6 +630,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
+
+        [Input("secrets")]
+        private InputMap<string>? _secrets;
+        public InputMap<string> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputMap<string>());
+            set => _secrets = value;
+        }
 
         /// <summary>
         /// Securable type.

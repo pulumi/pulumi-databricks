@@ -72,6 +72,10 @@ export interface GetAlertV2Result {
      */
     readonly customSummary: string;
     /**
+     * (string) - The format used to interpret the `customSummary` and `customDescription` templates.
+     */
+    readonly customTemplateFormat: string;
+    /**
      * (string) - The display name of the alert
      */
     readonly displayName: string;

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ServicePrincipalSecretProviderConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -89,6 +90,13 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
      */
     public Optional<Output<ServicePrincipalSecretProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
+    }
+
+    @Import(name="scopes")
+    private @Nullable Output<List<String>> scopes;
+
+    public Optional<Output<List<String>>> scopes() {
+        return Optional.ofNullable(this.scopes);
     }
 
     /**
@@ -204,6 +212,7 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
         this.expireTime = $.expireTime;
         this.lifetime = $.lifetime;
         this.providerConfig = $.providerConfig;
+        this.scopes = $.scopes;
         this.secret = $.secret;
         this.secretHash = $.secretHash;
         this.servicePrincipalId = $.servicePrincipalId;
@@ -334,6 +343,19 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
          */
         public Builder providerConfig(ServicePrincipalSecretProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        public Builder scopes(@Nullable Output<List<String>> scopes) {
+            $.scopes = scopes;
+            return this;
+        }
+
+        public Builder scopes(List<String> scopes) {
+            return scopes(Output.of(scopes));
+        }
+
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
         }
 
         /**

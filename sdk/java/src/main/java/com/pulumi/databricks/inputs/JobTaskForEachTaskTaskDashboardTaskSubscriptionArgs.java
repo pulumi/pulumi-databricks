@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs Empty = new JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs();
+
+    @Import(name="attachment")
+    private @Nullable Output<JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs> attachment;
+
+    public Optional<Output<JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs>> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
 
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
@@ -66,6 +74,7 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends c
     private JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs() {}
 
     private JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs(JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs $) {
+        this.attachment = $.attachment;
         this.customSubject = $.customSubject;
         this.paused = $.paused;
         this.subscribers = $.subscribers;
@@ -87,6 +96,15 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends c
 
         public Builder(JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs defaults) {
             $ = new JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder attachment(@Nullable Output<JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs> attachment) {
+            $.attachment = attachment;
+            return this;
+        }
+
+        public Builder attachment(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs attachment) {
+            return attachment(Output.of(attachment));
         }
 
         /**

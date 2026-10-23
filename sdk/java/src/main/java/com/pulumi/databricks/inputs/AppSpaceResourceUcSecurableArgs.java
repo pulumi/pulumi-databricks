@@ -48,14 +48,14 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
     }
 
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     @Import(name="securableType", required=true)
     private Output<String> securableType;
 
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public Output<String> securableType() {
@@ -131,7 +131,7 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 

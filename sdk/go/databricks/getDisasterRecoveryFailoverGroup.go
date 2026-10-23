@@ -74,9 +74,13 @@ type LookupDisasterRecoveryFailoverGroupResult struct {
 	EffectivePrimaryRegion string `pulumi:"effectivePrimaryRegion"`
 	// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 	Etag string `pulumi:"etag"`
+	// (boolean) - True if errors currently block the replication point
+	HasReplicationPointBlockingErrors bool `pulumi:"hasReplicationPointBlockingErrors"`
 	// (string) - Initial primary region. Used only in Create requests to set the starting
 	// primary region. Not returned in responses
 	InitialPrimaryRegion string `pulumi:"initialPrimaryRegion"`
+	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+	InitialReplicationProgress GetDisasterRecoveryFailoverGroupInitialReplicationProgress `pulumi:"initialReplicationProgress"`
 	// (string) - Resource name for this workspace set
 	Name string `pulumi:"name"`
 	// (list of string) - List of all regions participating in this failover group
@@ -140,10 +144,22 @@ func (o LookupDisasterRecoveryFailoverGroupResultOutput) Etag() pulumi.StringOut
 	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// (boolean) - True if errors currently block the replication point
+func (o LookupDisasterRecoveryFailoverGroupResultOutput) HasReplicationPointBlockingErrors() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) bool { return v.HasReplicationPointBlockingErrors }).(pulumi.BoolOutput)
+}
+
 // (string) - Initial primary region. Used only in Create requests to set the starting
 // primary region. Not returned in responses
 func (o LookupDisasterRecoveryFailoverGroupResultOutput) InitialPrimaryRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) string { return v.InitialPrimaryRegion }).(pulumi.StringOutput)
+}
+
+// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+func (o LookupDisasterRecoveryFailoverGroupResultOutput) InitialReplicationProgress() GetDisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) GetDisasterRecoveryFailoverGroupInitialReplicationProgress {
+		return v.InitialReplicationProgress
+	}).(GetDisasterRecoveryFailoverGroupInitialReplicationProgressOutput)
 }
 
 // (string) - Resource name for this workspace set

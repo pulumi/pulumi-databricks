@@ -4,9 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupInitialReplicationProgress;
 import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupUnityCatalogAssets;
 import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupWorkspaceSet;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,11 +32,21 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     private String etag;
     /**
+     * @return (boolean) - True if errors currently block the replication point
+     * 
+     */
+    private Boolean hasReplicationPointBlockingErrors;
+    /**
      * @return (string) - Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      * 
      */
     private String initialPrimaryRegion;
+    /**
+     * @return (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     * 
+     */
+    private GetDisasterRecoveryFailoverGroupInitialReplicationProgress initialReplicationProgress;
     /**
      * @return (string) - Resource name for this workspace set
      * 
@@ -95,12 +107,26 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         return this.etag;
     }
     /**
+     * @return (boolean) - True if errors currently block the replication point
+     * 
+     */
+    public Boolean hasReplicationPointBlockingErrors() {
+        return this.hasReplicationPointBlockingErrors;
+    }
+    /**
      * @return (string) - Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      * 
      */
     public String initialPrimaryRegion() {
         return this.initialPrimaryRegion;
+    }
+    /**
+     * @return (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     * 
+     */
+    public GetDisasterRecoveryFailoverGroupInitialReplicationProgress initialReplicationProgress() {
+        return this.initialReplicationProgress;
     }
     /**
      * @return (string) - Resource name for this workspace set
@@ -164,7 +190,9 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         private String createTime;
         private String effectivePrimaryRegion;
         private String etag;
+        private Boolean hasReplicationPointBlockingErrors;
         private String initialPrimaryRegion;
+        private GetDisasterRecoveryFailoverGroupInitialReplicationProgress initialReplicationProgress;
         private String name;
         private List<String> regions;
         private String replicationPoint;
@@ -178,7 +206,9 @@ public final class GetDisasterRecoveryFailoverGroupResult {
     	      this.createTime = defaults.createTime;
     	      this.effectivePrimaryRegion = defaults.effectivePrimaryRegion;
     	      this.etag = defaults.etag;
+    	      this.hasReplicationPointBlockingErrors = defaults.hasReplicationPointBlockingErrors;
     	      this.initialPrimaryRegion = defaults.initialPrimaryRegion;
+    	      this.initialReplicationProgress = defaults.initialReplicationProgress;
     	      this.name = defaults.name;
     	      this.regions = defaults.regions;
     	      this.replicationPoint = defaults.replicationPoint;
@@ -213,11 +243,27 @@ public final class GetDisasterRecoveryFailoverGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder hasReplicationPointBlockingErrors(Boolean hasReplicationPointBlockingErrors) {
+            if (hasReplicationPointBlockingErrors == null) {
+              throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupResult", "hasReplicationPointBlockingErrors");
+            }
+            this.hasReplicationPointBlockingErrors = hasReplicationPointBlockingErrors;
+            return this;
+        }
+        @CustomType.Setter
         public Builder initialPrimaryRegion(String initialPrimaryRegion) {
             if (initialPrimaryRegion == null) {
               throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupResult", "initialPrimaryRegion");
             }
             this.initialPrimaryRegion = initialPrimaryRegion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initialReplicationProgress(GetDisasterRecoveryFailoverGroupInitialReplicationProgress initialReplicationProgress) {
+            if (initialReplicationProgress == null) {
+              throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupResult", "initialReplicationProgress");
+            }
+            this.initialReplicationProgress = initialReplicationProgress;
             return this;
         }
         @CustomType.Setter
@@ -287,7 +333,9 @@ public final class GetDisasterRecoveryFailoverGroupResult {
             _resultValue.createTime = createTime;
             _resultValue.effectivePrimaryRegion = effectivePrimaryRegion;
             _resultValue.etag = etag;
+            _resultValue.hasReplicationPointBlockingErrors = hasReplicationPointBlockingErrors;
             _resultValue.initialPrimaryRegion = initialPrimaryRegion;
+            _resultValue.initialReplicationProgress = initialReplicationProgress;
             _resultValue.name = name;
             _resultValue.regions = regions;
             _resultValue.replicationPoint = replicationPoint;

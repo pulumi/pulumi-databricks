@@ -27,6 +27,7 @@ class ServicePrincipalSecretArgs:
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['ServicePrincipalSecretProviderConfigArgs']] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -60,6 +61,8 @@ class ServicePrincipalSecretArgs:
             pulumi.set(__self__, "lifetime", lifetime)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if secret_hash is not None:
@@ -147,6 +150,15 @@ class ServicePrincipalSecretArgs:
 
     @_builtins.property
     @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **Sensitive** Generated secret for the service principal.
@@ -226,6 +238,7 @@ class _ServicePrincipalSecretState:
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['ServicePrincipalSecretProviderConfigArgs']] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -259,6 +272,8 @@ class _ServicePrincipalSecretState:
             pulumi.set(__self__, "lifetime", lifetime)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if secret_hash is not None:
@@ -333,6 +348,15 @@ class _ServicePrincipalSecretState:
     @provider_config.setter
     def provider_config(self, value: pulumi.Input[Optional['ServicePrincipalSecretProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -430,6 +454,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict', 'outputs.ServicePrincipalSecretProviderConfig']]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -563,6 +588,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict', 'outputs.ServicePrincipalSecretProviderConfig']]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -584,6 +610,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["lifetime"] = lifetime
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["scopes"] = scopes
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["secret_hash"] = secret_hash
             if service_principal_id is None and not opts.urn:
@@ -610,6 +637,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             lifetime: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict', 'outputs.ServicePrincipalSecretProviderConfig']]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None,
             secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -646,6 +674,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["lifetime"] = lifetime
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["scopes"] = scopes
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_hash"] = secret_hash
         __props__.__dict__["service_principal_id"] = service_principal_id
@@ -694,6 +723,11 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        return pulumi.get(self, "scopes")
 
     @_builtins.property
     @pulumi.getter

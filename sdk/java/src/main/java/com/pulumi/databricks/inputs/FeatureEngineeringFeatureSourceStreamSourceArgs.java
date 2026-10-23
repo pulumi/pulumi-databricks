@@ -31,18 +31,14 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
     }
 
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      * 
      */
     @Import(name="fullName", required=true)
     private Output<String> fullName;
 
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * @return The full three-part name (catalog, schema, name) of the feature
      * 
      */
     public Output<String> fullName() {
@@ -102,9 +98,7 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
-         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-         * below are OUTPUT_ONLY decomposed views of this value
+         * @param fullName The full three-part name (catalog, schema, name) of the feature
          * 
          * @return builder
          * 
@@ -115,9 +109,7 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
-         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-         * below are OUTPUT_ONLY decomposed views of this value
+         * @param fullName The full three-part name (catalog, schema, name) of the feature
          * 
          * @return builder
          * 
