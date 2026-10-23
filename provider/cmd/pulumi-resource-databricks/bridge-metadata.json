@@ -751,6 +751,22 @@
                     }
                 }
             },
+            "databricks_agent_kit_managed_memory_entry": {
+                "current": "databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_managed_memory_store": {
+                "current": "databricks:index/agentKitManagedMemoryStore:AgentKitManagedMemoryStore",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_session": {
+                "current": "databricks:index/agentKitSession:AgentKitSession",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_session_store": {
+                "current": "databricks:index/agentKitSessionStore:AgentKitSessionStore",
+                "majorVersion": 1
+            },
             "databricks_ai_gateway_mcp_service": {
                 "current": "databricks:index/aiGatewayMcpService:AiGatewayMcpService",
                 "majorVersion": 1,
@@ -1879,6 +1895,13 @@
                                         }
                                     }
                                 }
+                            },
+                            "sdp_source": {
+                                "fields": {
+                                    "input_tables": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     }
@@ -2653,6 +2676,33 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "attachment": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "data_attachment": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "widgets": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "page_attachment": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "page_ids": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "subscribers": {
                                                             "maxItemsOne": false
                                                         }
@@ -2761,6 +2811,33 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "attachment": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "data_attachment": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "widgets": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "page_attachment": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "page_ids": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "subscribers": {
                                                                                     "maxItemsOne": false
                                                                                 }
@@ -4470,6 +4547,12 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "databricks_app_slack": {
+                                    "maxItemsOne": true
+                                },
+                                "databricks_app_teams": {
+                                    "maxItemsOne": true
+                                },
                                 "email": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -5767,6 +5850,9 @@
                     "except_principals": {
                         "maxItemsOne": false
                     },
+                    "governed_tags": {
+                        "maxItemsOne": false
+                    },
                     "grant": {
                         "fields": {
                             "privileges": {
@@ -6287,6 +6373,9 @@
                 "fields": {
                     "provider_config": {
                         "maxItemsOne": true
+                    },
+                    "scopes": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -8314,6 +8403,58 @@
                     }
                 }
             },
+            "databricks_agent_kit_managed_memory_entries": {
+                "current": "databricks:index/getAgentKitManagedMemoryEntries:getAgentKitManagedMemoryEntries",
+                "majorVersion": 1,
+                "fields": {
+                    "managed_memory_entries": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_agent_kit_managed_memory_entry": {
+                "current": "databricks:index/getAgentKitManagedMemoryEntry:getAgentKitManagedMemoryEntry",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_managed_memory_store": {
+                "current": "databricks:index/getAgentKitManagedMemoryStore:getAgentKitManagedMemoryStore",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_managed_memory_stores": {
+                "current": "databricks:index/getAgentKitManagedMemoryStores:getAgentKitManagedMemoryStores",
+                "majorVersion": 1,
+                "fields": {
+                    "managed_memory_stores": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_agent_kit_session": {
+                "current": "databricks:index/getAgentKitSession:getAgentKitSession",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_session_store": {
+                "current": "databricks:index/getAgentKitSessionStore:getAgentKitSessionStore",
+                "majorVersion": 1
+            },
+            "databricks_agent_kit_session_stores": {
+                "current": "databricks:index/getAgentKitSessionStores:getAgentKitSessionStores",
+                "majorVersion": 1,
+                "fields": {
+                    "session_stores": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_agent_kit_sessions": {
+                "current": "databricks:index/getAgentKitSessions:getAgentKitSessions",
+                "majorVersion": 1,
+                "fields": {
+                    "sessions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_ai_gateway_mcp_service": {
                 "current": "databricks:index/getAiGatewayMcpService:getAiGatewayMcpService",
                 "majorVersion": 1,
@@ -9934,6 +10075,13 @@
                                         }
                                     }
                                 }
+                            },
+                            "sdp_source": {
+                                "fields": {
+                                    "input_tables": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     }
@@ -9998,6 +10146,13 @@
                                                             "maxItemsOne": false
                                                         }
                                                     }
+                                                }
+                                            }
+                                        },
+                                        "sdp_source": {
+                                            "fields": {
+                                                "input_tables": {
+                                                    "maxItemsOne": false
                                                 }
                                             }
                                         }
@@ -10555,6 +10710,33 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "attachment": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "data_attachment": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "widgets": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "page_attachment": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "page_ids": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "subscribers": {
                                                                                     "maxItemsOne": false
                                                                                 }
@@ -10624,6 +10806,33 @@
                                                                                                 "maxItemsOne": true,
                                                                                                 "elem": {
                                                                                                     "fields": {
+                                                                                                        "attachment": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "data_attachment": {
+                                                                                                                        "maxItemsOne": true,
+                                                                                                                        "elem": {
+                                                                                                                            "fields": {
+                                                                                                                                "widgets": {
+                                                                                                                                    "maxItemsOne": false
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "page_attachment": {
+                                                                                                                        "maxItemsOne": true,
+                                                                                                                        "elem": {
+                                                                                                                            "fields": {
+                                                                                                                                "page_ids": {
+                                                                                                                                    "maxItemsOne": false
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
                                                                                                         "subscribers": {
                                                                                                             "maxItemsOne": false
                                                                                                         }
@@ -11557,6 +11766,9 @@
                     "except_principals": {
                         "maxItemsOne": false
                     },
+                    "governed_tags": {
+                        "maxItemsOne": false
+                    },
                     "grant": {
                         "fields": {
                             "privileges": {
@@ -11602,6 +11814,9 @@
                                     }
                                 },
                                 "except_principals": {
+                                    "maxItemsOne": false
+                                },
+                                "governed_tags": {
                                     "maxItemsOne": false
                                 },
                                 "grant": {
@@ -12996,6 +13211,26 @@
                 }
             },
             "databricks_account_setting_v2": {},
+            "databricks_agent_kit_managed_memory_entry": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_agent_kit_managed_memory_store": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_agent_kit_session": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_agent_kit_session_store": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_ai_gateway_mcp_service": {
                 "computeID": {
                     "kind": "missing"
@@ -13330,6 +13565,10 @@
             "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": 1,
             "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2": 1,
             "databricks:index/accountSettingV2:AccountSettingV2": 1,
+            "databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry": 1,
+            "databricks:index/agentKitManagedMemoryStore:AgentKitManagedMemoryStore": 1,
+            "databricks:index/agentKitSession:AgentKitSession": 1,
+            "databricks:index/agentKitSessionStore:AgentKitSessionStore": 1,
             "databricks:index/aiGatewayMcpService:AiGatewayMcpService": 1,
             "databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService": 1,
             "databricks:index/aiGatewayModelService:AiGatewayModelService": 1,
@@ -13514,6 +13753,14 @@
             "databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy": 1,
             "databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2": 1,
             "databricks:index/getAccountSettingV2:getAccountSettingV2": 1,
+            "databricks:index/getAgentKitManagedMemoryEntries:getAgentKitManagedMemoryEntries": 1,
+            "databricks:index/getAgentKitManagedMemoryEntry:getAgentKitManagedMemoryEntry": 1,
+            "databricks:index/getAgentKitManagedMemoryStore:getAgentKitManagedMemoryStore": 1,
+            "databricks:index/getAgentKitManagedMemoryStores:getAgentKitManagedMemoryStores": 1,
+            "databricks:index/getAgentKitSession:getAgentKitSession": 1,
+            "databricks:index/getAgentKitSessionStore:getAgentKitSessionStore": 1,
+            "databricks:index/getAgentKitSessionStores:getAgentKitSessionStores": 1,
+            "databricks:index/getAgentKitSessions:getAgentKitSessions": 1,
             "databricks:index/getAiGatewayMcpService:getAiGatewayMcpService": 1,
             "databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices": 1,
             "databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService": 1,
@@ -16620,6 +16867,19 @@
             "databricks_account_iam_workspace_assignment_v2": [
                 "workspace_id"
             ],
+            "databricks_agent_kit_managed_memory_entry": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_managed_memory_store": [
+                "provider_config.workspace_id",
+                "workspace_id"
+            ],
+            "databricks_agent_kit_session": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_session_store": [
+                "provider_config.workspace_id"
+            ],
             "databricks_ai_gateway_mcp_service": [
                 "provider_config.workspace_id"
             ],
@@ -17088,6 +17348,36 @@
             "databricks_account_iam_workspace_assignments_v2": [
                 "workspace_assignments.$.workspace_id",
                 "workspace_id"
+            ],
+            "databricks_agent_kit_managed_memory_entries": [
+                "managed_memory_entries.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_managed_memory_entry": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_managed_memory_store": [
+                "provider_config.workspace_id",
+                "workspace_id"
+            ],
+            "databricks_agent_kit_managed_memory_stores": [
+                "managed_memory_stores.$.provider_config.workspace_id",
+                "managed_memory_stores.$.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_session": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_session_store": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_session_stores": [
+                "provider_config.workspace_id",
+                "session_stores.$.provider_config.workspace_id"
+            ],
+            "databricks_agent_kit_sessions": [
+                "provider_config.workspace_id",
+                "sessions.$.provider_config.workspace_id"
             ],
             "databricks_ai_gateway_mcp_service": [
                 "provider_config.workspace_id"
