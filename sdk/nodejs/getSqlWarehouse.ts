@@ -54,6 +54,7 @@ export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.Invoke
         "channel": args.channel,
         "clusterSize": args.clusterSize,
         "creatorName": args.creatorName,
+        "customerVersionLabel": args.customerVersionLabel,
         "dataSourceId": args.dataSourceId,
         "enablePhoton": args.enablePhoton,
         "enableServerlessCompute": args.enableServerlessCompute,
@@ -61,6 +62,7 @@ export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.Invoke
         "id": args.id,
         "instanceProfileArn": args.instanceProfileArn,
         "jdbcUrl": args.jdbcUrl,
+        "maxDbu": args.maxDbu,
         "maxNumClusters": args.maxNumClusters,
         "minNumClusters": args.minNumClusters,
         "name": args.name,
@@ -68,8 +70,10 @@ export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.Invoke
         "numClusters": args.numClusters,
         "odbcParams": args.odbcParams,
         "providerConfig": args.providerConfig,
+        "reydenClusterSizeMultiplier": args.reydenClusterSizeMultiplier,
         "spotInstancePolicy": args.spotInstancePolicy,
         "state": args.state,
+        "statementTimeout": args.statementTimeout,
         "tags": args.tags,
         "warehouseType": args.warehouseType,
     }, opts);
@@ -95,6 +99,7 @@ export interface GetSqlWarehouseArgs {
      * The username of the user who created the endpoint.
      */
     creatorName?: string;
+    customerVersionLabel?: string;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
@@ -120,6 +125,7 @@ export interface GetSqlWarehouseArgs {
      * JDBC connection string.
      */
     jdbcUrl?: string;
+    maxDbu?: number;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
      */
@@ -145,6 +151,7 @@ export interface GetSqlWarehouseArgs {
      */
     odbcParams?: inputs.GetSqlWarehouseOdbcParams;
     providerConfig?: inputs.GetSqlWarehouseProviderConfig;
+    reydenClusterSizeMultiplier?: number;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
@@ -153,6 +160,7 @@ export interface GetSqlWarehouseArgs {
      * The current state of the endpoint.
      */
     state?: string;
+    statementTimeout?: number;
     /**
      * tags used for SQL warehouse resources.
      */
@@ -183,6 +191,7 @@ export interface GetSqlWarehouseResult {
      * The username of the user who created the endpoint.
      */
     readonly creatorName: string;
+    readonly customerVersionLabel: string;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
@@ -208,6 +217,7 @@ export interface GetSqlWarehouseResult {
      * JDBC connection string.
      */
     readonly jdbcUrl: string;
+    readonly maxDbu: number;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
      */
@@ -233,6 +243,7 @@ export interface GetSqlWarehouseResult {
      */
     readonly odbcParams: outputs.GetSqlWarehouseOdbcParams;
     readonly providerConfig: outputs.GetSqlWarehouseProviderConfig;
+    readonly reydenClusterSizeMultiplier: number;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
@@ -241,6 +252,7 @@ export interface GetSqlWarehouseResult {
      * The current state of the endpoint.
      */
     readonly state: string;
+    readonly statementTimeout: number;
     /**
      * tags used for SQL warehouse resources.
      */
@@ -298,6 +310,7 @@ export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: p
         "channel": args.channel,
         "clusterSize": args.clusterSize,
         "creatorName": args.creatorName,
+        "customerVersionLabel": args.customerVersionLabel,
         "dataSourceId": args.dataSourceId,
         "enablePhoton": args.enablePhoton,
         "enableServerlessCompute": args.enableServerlessCompute,
@@ -305,6 +318,7 @@ export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: p
         "id": args.id,
         "instanceProfileArn": args.instanceProfileArn,
         "jdbcUrl": args.jdbcUrl,
+        "maxDbu": args.maxDbu,
         "maxNumClusters": args.maxNumClusters,
         "minNumClusters": args.minNumClusters,
         "name": args.name,
@@ -312,8 +326,10 @@ export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: p
         "numClusters": args.numClusters,
         "odbcParams": args.odbcParams,
         "providerConfig": args.providerConfig,
+        "reydenClusterSizeMultiplier": args.reydenClusterSizeMultiplier,
         "spotInstancePolicy": args.spotInstancePolicy,
         "state": args.state,
+        "statementTimeout": args.statementTimeout,
         "tags": args.tags,
         "warehouseType": args.warehouseType,
     }, opts);
@@ -339,6 +355,7 @@ export interface GetSqlWarehouseOutputArgs {
      * The username of the user who created the endpoint.
      */
     creatorName?: pulumi.Input<string | undefined>;
+    customerVersionLabel?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
@@ -364,6 +381,7 @@ export interface GetSqlWarehouseOutputArgs {
      * JDBC connection string.
      */
     jdbcUrl?: pulumi.Input<string | undefined>;
+    maxDbu?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
      */
@@ -389,6 +407,7 @@ export interface GetSqlWarehouseOutputArgs {
      */
     odbcParams?: pulumi.Input<inputs.GetSqlWarehouseOdbcParamsArgs | undefined>;
     providerConfig?: pulumi.Input<inputs.GetSqlWarehouseProviderConfigArgs | undefined>;
+    reydenClusterSizeMultiplier?: pulumi.Input<number | undefined>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
@@ -397,6 +416,7 @@ export interface GetSqlWarehouseOutputArgs {
      * The current state of the endpoint.
      */
     state?: pulumi.Input<string | undefined>;
+    statementTimeout?: pulumi.Input<number | undefined>;
     /**
      * tags used for SQL warehouse resources.
      */

@@ -12,19 +12,118 @@ namespace Pulumi.Databricks
     public static class GetFeatureEngineeringFeatures
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+        /// 
+        /// Lists the features registered in one Unity Catalog schema. Both `CatalogName` and `SchemaName` are required, so a single query never spans schemas.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List every feature in a schema, then project their names.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var inSchema = Databricks.GetFeatureEngineeringFeatures.Invoke(new()
+        ///     {
+        ///         CatalogName = "main",
+        ///         SchemaName = "features",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["featureNames"] = .Select(f =&gt; 
+        ///         {
+        ///             return f.FullName;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetFeatureEngineeringFeaturesResult> InvokeAsync(GetFeatureEngineeringFeaturesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureEngineeringFeaturesResult>("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args ?? new GetFeatureEngineeringFeaturesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+        /// 
+        /// Lists the features registered in one Unity Catalog schema. Both `CatalogName` and `SchemaName` are required, so a single query never spans schemas.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List every feature in a schema, then project their names.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var inSchema = Databricks.GetFeatureEngineeringFeatures.Invoke(new()
+        ///     {
+        ///         CatalogName = "main",
+        ///         SchemaName = "features",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["featureNames"] = .Select(f =&gt; 
+        ///         {
+        ///             return f.FullName;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFeatureEngineeringFeaturesResult> Invoke(GetFeatureEngineeringFeaturesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureEngineeringFeaturesResult>("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args ?? new GetFeatureEngineeringFeaturesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+        /// 
+        /// Lists the features registered in one Unity Catalog schema. Both `CatalogName` and `SchemaName` are required, so a single query never spans schemas.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List every feature in a schema, then project their names.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var inSchema = Databricks.GetFeatureEngineeringFeatures.Invoke(new()
+        ///     {
+        ///         CatalogName = "main",
+        ///         SchemaName = "features",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["featureNames"] = .Select(f =&gt; 
+        ///         {
+        ///             return f.FullName;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFeatureEngineeringFeaturesResult> Invoke(GetFeatureEngineeringFeaturesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureEngineeringFeaturesResult>("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args ?? new GetFeatureEngineeringFeaturesInvokeArgs(), options.WithDefaults());

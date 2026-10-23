@@ -21,7 +21,7 @@ public final class AppSpaceResourceUcSecurable {
      */
     private @Nullable String securableKind;
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
@@ -42,7 +42,7 @@ public final class AppSpaceResourceUcSecurable {
         return Optional.ofNullable(this.securableKind);
     }
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

@@ -42,6 +42,22 @@ import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryEntriesArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryEntriesPlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryEntryArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryEntryPlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryStoreArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryStorePlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryStoresArgs;
+import com.pulumi.databricks.inputs.GetAgentKitManagedMemoryStoresPlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionPlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionStoreArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionStorePlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionStoresArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionStoresPlainArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionsArgs;
+import com.pulumi.databricks.inputs.GetAgentKitSessionsPlainArgs;
 import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
 import com.pulumi.databricks.inputs.GetAiGatewayMcpServicePlainArgs;
 import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
@@ -411,6 +427,14 @@ import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountSettingUserPreferenceV2Result;
 import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
+import com.pulumi.databricks.outputs.GetAgentKitManagedMemoryEntriesResult;
+import com.pulumi.databricks.outputs.GetAgentKitManagedMemoryEntryResult;
+import com.pulumi.databricks.outputs.GetAgentKitManagedMemoryStoreResult;
+import com.pulumi.databricks.outputs.GetAgentKitManagedMemoryStoresResult;
+import com.pulumi.databricks.outputs.GetAgentKitSessionResult;
+import com.pulumi.databricks.outputs.GetAgentKitSessionStoreResult;
+import com.pulumi.databricks.outputs.GetAgentKitSessionStoresResult;
+import com.pulumi.databricks.outputs.GetAgentKitSessionsResult;
 import com.pulumi.databricks.outputs.GetAiGatewayMcpServiceResult;
 import com.pulumi.databricks.outputs.GetAiGatewayMcpServicesResult;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceResult;
@@ -4808,6 +4832,402 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryEntriesResult> getAgentKitManagedMemoryEntries(GetAgentKitManagedMemoryEntriesArgs args) {
+        return getAgentKitManagedMemoryEntries(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryEntriesResult> getAgentKitManagedMemoryEntriesPlain(GetAgentKitManagedMemoryEntriesPlainArgs args) {
+        return getAgentKitManagedMemoryEntriesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryEntriesResult> getAgentKitManagedMemoryEntries(GetAgentKitManagedMemoryEntriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryEntries:getAgentKitManagedMemoryEntries", TypeShape.of(GetAgentKitManagedMemoryEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryEntriesResult> getAgentKitManagedMemoryEntries(GetAgentKitManagedMemoryEntriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryEntries:getAgentKitManagedMemoryEntries", TypeShape.of(GetAgentKitManagedMemoryEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryEntriesResult> getAgentKitManagedMemoryEntriesPlain(GetAgentKitManagedMemoryEntriesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitManagedMemoryEntries:getAgentKitManagedMemoryEntries", TypeShape.of(GetAgentKitManagedMemoryEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryEntryResult> getAgentKitManagedMemoryEntry(GetAgentKitManagedMemoryEntryArgs args) {
+        return getAgentKitManagedMemoryEntry(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryEntryResult> getAgentKitManagedMemoryEntryPlain(GetAgentKitManagedMemoryEntryPlainArgs args) {
+        return getAgentKitManagedMemoryEntryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryEntryResult> getAgentKitManagedMemoryEntry(GetAgentKitManagedMemoryEntryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryEntry:getAgentKitManagedMemoryEntry", TypeShape.of(GetAgentKitManagedMemoryEntryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryEntryResult> getAgentKitManagedMemoryEntry(GetAgentKitManagedMemoryEntryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryEntry:getAgentKitManagedMemoryEntry", TypeShape.of(GetAgentKitManagedMemoryEntryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryEntryResult> getAgentKitManagedMemoryEntryPlain(GetAgentKitManagedMemoryEntryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitManagedMemoryEntry:getAgentKitManagedMemoryEntry", TypeShape.of(GetAgentKitManagedMemoryEntryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoreResult> getAgentKitManagedMemoryStore(GetAgentKitManagedMemoryStoreArgs args) {
+        return getAgentKitManagedMemoryStore(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryStoreResult> getAgentKitManagedMemoryStorePlain(GetAgentKitManagedMemoryStorePlainArgs args) {
+        return getAgentKitManagedMemoryStorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoreResult> getAgentKitManagedMemoryStore(GetAgentKitManagedMemoryStoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryStore:getAgentKitManagedMemoryStore", TypeShape.of(GetAgentKitManagedMemoryStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoreResult> getAgentKitManagedMemoryStore(GetAgentKitManagedMemoryStoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryStore:getAgentKitManagedMemoryStore", TypeShape.of(GetAgentKitManagedMemoryStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryStoreResult> getAgentKitManagedMemoryStorePlain(GetAgentKitManagedMemoryStorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitManagedMemoryStore:getAgentKitManagedMemoryStore", TypeShape.of(GetAgentKitManagedMemoryStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStores() {
+        return getAgentKitManagedMemoryStores(GetAgentKitManagedMemoryStoresArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStoresPlain() {
+        return getAgentKitManagedMemoryStoresPlain(GetAgentKitManagedMemoryStoresPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStores(GetAgentKitManagedMemoryStoresArgs args) {
+        return getAgentKitManagedMemoryStores(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStoresPlain(GetAgentKitManagedMemoryStoresPlainArgs args) {
+        return getAgentKitManagedMemoryStoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStores(GetAgentKitManagedMemoryStoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryStores:getAgentKitManagedMemoryStores", TypeShape.of(GetAgentKitManagedMemoryStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStores(GetAgentKitManagedMemoryStoresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitManagedMemoryStores:getAgentKitManagedMemoryStores", TypeShape.of(GetAgentKitManagedMemoryStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitManagedMemoryStoresResult> getAgentKitManagedMemoryStoresPlain(GetAgentKitManagedMemoryStoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitManagedMemoryStores:getAgentKitManagedMemoryStores", TypeShape.of(GetAgentKitManagedMemoryStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionResult> getAgentKitSession(GetAgentKitSessionArgs args) {
+        return getAgentKitSession(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionResult> getAgentKitSessionPlain(GetAgentKitSessionPlainArgs args) {
+        return getAgentKitSessionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionResult> getAgentKitSession(GetAgentKitSessionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSession:getAgentKitSession", TypeShape.of(GetAgentKitSessionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionResult> getAgentKitSession(GetAgentKitSessionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSession:getAgentKitSession", TypeShape.of(GetAgentKitSessionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionResult> getAgentKitSessionPlain(GetAgentKitSessionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitSession:getAgentKitSession", TypeShape.of(GetAgentKitSessionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoreResult> getAgentKitSessionStore(GetAgentKitSessionStoreArgs args) {
+        return getAgentKitSessionStore(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionStoreResult> getAgentKitSessionStorePlain(GetAgentKitSessionStorePlainArgs args) {
+        return getAgentKitSessionStorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoreResult> getAgentKitSessionStore(GetAgentKitSessionStoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSessionStore:getAgentKitSessionStore", TypeShape.of(GetAgentKitSessionStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoreResult> getAgentKitSessionStore(GetAgentKitSessionStoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSessionStore:getAgentKitSessionStore", TypeShape.of(GetAgentKitSessionStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionStoreResult> getAgentKitSessionStorePlain(GetAgentKitSessionStorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitSessionStore:getAgentKitSessionStore", TypeShape.of(GetAgentKitSessionStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoresResult> getAgentKitSessionStores() {
+        return getAgentKitSessionStores(GetAgentKitSessionStoresArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionStoresResult> getAgentKitSessionStoresPlain() {
+        return getAgentKitSessionStoresPlain(GetAgentKitSessionStoresPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoresResult> getAgentKitSessionStores(GetAgentKitSessionStoresArgs args) {
+        return getAgentKitSessionStores(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionStoresResult> getAgentKitSessionStoresPlain(GetAgentKitSessionStoresPlainArgs args) {
+        return getAgentKitSessionStoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoresResult> getAgentKitSessionStores(GetAgentKitSessionStoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSessionStores:getAgentKitSessionStores", TypeShape.of(GetAgentKitSessionStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionStoresResult> getAgentKitSessionStores(GetAgentKitSessionStoresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSessionStores:getAgentKitSessionStores", TypeShape.of(GetAgentKitSessionStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionStoresResult> getAgentKitSessionStoresPlain(GetAgentKitSessionStoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitSessionStores:getAgentKitSessionStores", TypeShape.of(GetAgentKitSessionStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionsResult> getAgentKitSessions(GetAgentKitSessionsArgs args) {
+        return getAgentKitSessions(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionsResult> getAgentKitSessionsPlain(GetAgentKitSessionsPlainArgs args) {
+        return getAgentKitSessionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionsResult> getAgentKitSessions(GetAgentKitSessionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSessions:getAgentKitSessions", TypeShape.of(GetAgentKitSessionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static Output<GetAgentKitSessionsResult> getAgentKitSessions(GetAgentKitSessionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAgentKitSessions:getAgentKitSessions", TypeShape.of(GetAgentKitSessionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/agentkit)
+     * 
+     */
+    public static CompletableFuture<GetAgentKitSessionsResult> getAgentKitSessionsPlain(GetAgentKitSessionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAgentKitSessions:getAgentKitSessions", TypeShape.of(GetAgentKitSessionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -14982,7 +15402,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -14991,6 +15411,8 @@ public final class DatabricksFunctions {
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
      * 
      * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * &gt; **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
      * 
      * ## Example Usage
      * 
@@ -15027,7 +15449,7 @@ public final class DatabricksFunctions {
      *             .name(String.format("catalogs/%s/config", prod.name()))
      *             .build());
      * 
-     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *         ctx.export("includedSchemas", prodConfig.includedSchemas());
      *     }
      * }
      * }
@@ -15038,7 +15460,7 @@ public final class DatabricksFunctions {
         return getDataClassificationCatalogConfig(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -15047,6 +15469,8 @@ public final class DatabricksFunctions {
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
      * 
      * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * &gt; **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
      * 
      * ## Example Usage
      * 
@@ -15083,7 +15507,7 @@ public final class DatabricksFunctions {
      *             .name(String.format("catalogs/%s/config", prod.name()))
      *             .build());
      * 
-     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *         ctx.export("includedSchemas", prodConfig.includedSchemas());
      *     }
      * }
      * }
@@ -15094,7 +15518,7 @@ public final class DatabricksFunctions {
         return getDataClassificationCatalogConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -15103,6 +15527,8 @@ public final class DatabricksFunctions {
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
      * 
      * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * &gt; **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
      * 
      * ## Example Usage
      * 
@@ -15139,7 +15565,7 @@ public final class DatabricksFunctions {
      *             .name(String.format("catalogs/%s/config", prod.name()))
      *             .build());
      * 
-     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *         ctx.export("includedSchemas", prodConfig.includedSchemas());
      *     }
      * }
      * }
@@ -15150,7 +15576,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -15159,6 +15585,8 @@ public final class DatabricksFunctions {
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
      * 
      * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * &gt; **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
      * 
      * ## Example Usage
      * 
@@ -15195,7 +15623,7 @@ public final class DatabricksFunctions {
      *             .name(String.format("catalogs/%s/config", prod.name()))
      *             .build());
      * 
-     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *         ctx.export("includedSchemas", prodConfig.includedSchemas());
      *     }
      * }
      * }
@@ -15206,7 +15634,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -15215,6 +15643,8 @@ public final class DatabricksFunctions {
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
      * 
      * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * &gt; **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
      * 
      * ## Example Usage
      * 
@@ -15251,7 +15681,7 @@ public final class DatabricksFunctions {
      *             .name(String.format("catalogs/%s/config", prod.name()))
      *             .build());
      * 
-     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *         ctx.export("includedSchemas", prodConfig.includedSchemas());
      *     }
      * }
      * }
@@ -22658,70 +23088,305 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+     * 
+     * ## Example Usage
+     * 
+     * Look up a feature by its full name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transactionCount7d = DatabricksFunctions.getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs.builder()
+     *             .fullName("main.features.transaction_count_7d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs args) {
         return getFeatureEngineeringFeature(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+     * 
+     * ## Example Usage
+     * 
+     * Look up a feature by its full name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transactionCount7d = DatabricksFunctions.getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs.builder()
+     *             .fullName("main.features.transaction_count_7d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeaturePlain(GetFeatureEngineeringFeaturePlainArgs args) {
         return getFeatureEngineeringFeaturePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+     * 
+     * ## Example Usage
+     * 
+     * Look up a feature by its full name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transactionCount7d = DatabricksFunctions.getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs.builder()
+     *             .fullName("main.features.transaction_count_7d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+     * 
+     * ## Example Usage
+     * 
+     * Look up a feature by its full name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transactionCount7d = DatabricksFunctions.getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs.builder()
+     *             .fullName("main.features.transaction_count_7d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+     * 
+     * ## Example Usage
+     * 
+     * Look up a feature by its full name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transactionCount7d = DatabricksFunctions.getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs.builder()
+     *             .fullName("main.features.transaction_count_7d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeaturePlain(GetFeatureEngineeringFeaturePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+     * 
+     * ## Example Usage
+     * 
+     * List every feature in a schema, then project their names.
      * 
      */
     public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs args) {
         return getFeatureEngineeringFeatures(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+     * 
+     * ## Example Usage
+     * 
+     * List every feature in a schema, then project their names.
      * 
      */
     public static CompletableFuture<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeaturesPlain(GetFeatureEngineeringFeaturesPlainArgs args) {
         return getFeatureEngineeringFeaturesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+     * 
+     * ## Example Usage
+     * 
+     * List every feature in a schema, then project their names.
      * 
      */
     public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", TypeShape.of(GetFeatureEngineeringFeaturesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+     * 
+     * ## Example Usage
+     * 
+     * List every feature in a schema, then project their names.
      * 
      */
     public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", TypeShape.of(GetFeatureEngineeringFeaturesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+     * 
+     * Lists the features registered in one Unity Catalog schema. Both `catalogName` and `schemaName` are required, so a single query never spans schemas.
+     * 
+     * ## Example Usage
+     * 
+     * List every feature in a schema, then project their names.
      * 
      */
     public static CompletableFuture<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeaturesPlain(GetFeatureEngineeringFeaturesPlainArgs args, InvokeOptions options) {

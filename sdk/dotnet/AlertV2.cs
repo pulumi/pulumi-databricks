@@ -99,6 +99,20 @@ namespace Pulumi.Databricks
         public Output<string?> CustomSummary { get; private set; } = null!;
 
         /// <summary>
+        /// The format used to interpret the `CustomSummary` and `CustomDescription` templates.
+        /// 
+        /// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+        /// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+        /// them to the format each notification destination expects, so a single template renders
+        /// correctly in email, Slack, and Microsoft Teams.
+        /// 
+        /// When unset, the API applies no default. Responses omit the field unless a format is stored,
+        /// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+        /// </summary>
+        [Output("customTemplateFormat")]
+        public Output<string?> CustomTemplateFormat { get; private set; } = null!;
+
+        /// <summary>
         /// The display name of the alert
         /// </summary>
         [Output("displayName")]
@@ -259,6 +273,20 @@ namespace Pulumi.Databricks
         public Input<string>? CustomSummary { get; set; }
 
         /// <summary>
+        /// The format used to interpret the `CustomSummary` and `CustomDescription` templates.
+        /// 
+        /// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+        /// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+        /// them to the format each notification destination expects, so a single template renders
+        /// correctly in email, Slack, and Microsoft Teams.
+        /// 
+        /// When unset, the API applies no default. Responses omit the field unless a format is stored,
+        /// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+        /// </summary>
+        [Input("customTemplateFormat")]
+        public Input<string>? CustomTemplateFormat { get; set; }
+
+        /// <summary>
         /// The display name of the alert
         /// </summary>
         [Input("displayName", required: true)]
@@ -365,6 +393,20 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
+
+        /// <summary>
+        /// The format used to interpret the `CustomSummary` and `CustomDescription` templates.
+        /// 
+        /// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+        /// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+        /// them to the format each notification destination expects, so a single template renders
+        /// correctly in email, Slack, and Microsoft Teams.
+        /// 
+        /// When unset, the API applies no default. Responses omit the field unless a format is stored,
+        /// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+        /// </summary>
+        [Input("customTemplateFormat")]
+        public Input<string>? CustomTemplateFormat { get; set; }
 
         /// <summary>
         /// The display name of the alert

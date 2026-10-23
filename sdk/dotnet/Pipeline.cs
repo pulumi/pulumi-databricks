@@ -242,6 +242,9 @@ namespace Pulumi.Databricks
         [Output("notifications")]
         public Output<ImmutableArray<Outputs.PipelineNotification>> Notifications { get; private set; } = null!;
 
+        [Output("parentPath")]
+        public Output<string?> ParentPath { get; private set; } = null!;
+
         /// <summary>
         /// A flag indicating whether to use Photon engine. The default value is `False`.
         /// </summary>
@@ -517,6 +520,9 @@ namespace Pulumi.Databricks
             set => _notifications = value;
         }
 
+        [Input("parentPath")]
+        public Input<string>? ParentPath { get; set; }
+
         /// <summary>
         /// A flag indicating whether to use Photon engine. The default value is `False`.
         /// </summary>
@@ -759,6 +765,9 @@ namespace Pulumi.Databricks
             get => _notifications ?? (_notifications = new InputList<Inputs.PipelineNotificationGetArgs>());
             set => _notifications = value;
         }
+
+        [Input("parentPath")]
+        public Input<string>? ParentPath { get; set; }
 
         /// <summary>
         /// A flag indicating whether to use Photon engine. The default value is `False`.

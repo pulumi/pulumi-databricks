@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskDashboardTaskSubscriptionAttachmentArgs;
 import com.pulumi.databricks.inputs.JobTaskDashboardTaskSubscriptionSubscriberArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class JobTaskDashboardTaskSubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskDashboardTaskSubscriptionArgs Empty = new JobTaskDashboardTaskSubscriptionArgs();
+
+    @Import(name="attachment")
+    private @Nullable Output<JobTaskDashboardTaskSubscriptionAttachmentArgs> attachment;
+
+    public Optional<Output<JobTaskDashboardTaskSubscriptionAttachmentArgs>> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
 
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
@@ -66,6 +74,7 @@ public final class JobTaskDashboardTaskSubscriptionArgs extends com.pulumi.resou
     private JobTaskDashboardTaskSubscriptionArgs() {}
 
     private JobTaskDashboardTaskSubscriptionArgs(JobTaskDashboardTaskSubscriptionArgs $) {
+        this.attachment = $.attachment;
         this.customSubject = $.customSubject;
         this.paused = $.paused;
         this.subscribers = $.subscribers;
@@ -87,6 +96,15 @@ public final class JobTaskDashboardTaskSubscriptionArgs extends com.pulumi.resou
 
         public Builder(JobTaskDashboardTaskSubscriptionArgs defaults) {
             $ = new JobTaskDashboardTaskSubscriptionArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder attachment(@Nullable Output<JobTaskDashboardTaskSubscriptionAttachmentArgs> attachment) {
+            $.attachment = attachment;
+            return this;
+        }
+
+        public Builder attachment(JobTaskDashboardTaskSubscriptionAttachmentArgs attachment) {
+            return attachment(Output.of(attachment));
         }
 
         /**

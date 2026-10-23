@@ -87,6 +87,16 @@ type AlertV2 struct {
 	CustomDescription pulumi.StringPtrOutput `pulumi:"customDescription"`
 	// Custom summary for the alert. support mustache template
 	CustomSummary pulumi.StringPtrOutput `pulumi:"customSummary"`
+	// The format used to interpret the `customSummary` and `customDescription` templates.
+	//
+	// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+	// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+	// them to the format each notification destination expects, so a single template renders
+	// correctly in email, Slack, and Microsoft Teams.
+	//
+	// When unset, the API applies no default. Responses omit the field unless a format is stored,
+	// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+	CustomTemplateFormat pulumi.StringPtrOutput `pulumi:"customTemplateFormat"`
 	// The display name of the alert
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -186,6 +196,16 @@ type alertV2State struct {
 	CustomDescription *string `pulumi:"customDescription"`
 	// Custom summary for the alert. support mustache template
 	CustomSummary *string `pulumi:"customSummary"`
+	// The format used to interpret the `customSummary` and `customDescription` templates.
+	//
+	// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+	// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+	// them to the format each notification destination expects, so a single template renders
+	// correctly in email, Slack, and Microsoft Teams.
+	//
+	// When unset, the API applies no default. Responses omit the field unless a format is stored,
+	// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+	CustomTemplateFormat *string `pulumi:"customTemplateFormat"`
 	// The display name of the alert
 	DisplayName *string `pulumi:"displayName"`
 	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -241,6 +261,16 @@ type AlertV2State struct {
 	CustomDescription pulumi.StringPtrInput
 	// Custom summary for the alert. support mustache template
 	CustomSummary pulumi.StringPtrInput
+	// The format used to interpret the `customSummary` and `customDescription` templates.
+	//
+	// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+	// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+	// them to the format each notification destination expects, so a single template renders
+	// correctly in email, Slack, and Microsoft Teams.
+	//
+	// When unset, the API applies no default. Responses omit the field unless a format is stored,
+	// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+	CustomTemplateFormat pulumi.StringPtrInput
 	// The display name of the alert
 	DisplayName pulumi.StringPtrInput
 	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -298,6 +328,16 @@ type alertV2Args struct {
 	CustomDescription *string `pulumi:"customDescription"`
 	// Custom summary for the alert. support mustache template
 	CustomSummary *string `pulumi:"customSummary"`
+	// The format used to interpret the `customSummary` and `customDescription` templates.
+	//
+	// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+	// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+	// them to the format each notification destination expects, so a single template renders
+	// correctly in email, Slack, and Microsoft Teams.
+	//
+	// When unset, the API applies no default. Responses omit the field unless a format is stored,
+	// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+	CustomTemplateFormat *string `pulumi:"customTemplateFormat"`
 	// The display name of the alert
 	DisplayName string            `pulumi:"displayName"`
 	Evaluation  AlertV2Evaluation `pulumi:"evaluation"`
@@ -342,6 +382,16 @@ type AlertV2Args struct {
 	CustomDescription pulumi.StringPtrInput
 	// Custom summary for the alert. support mustache template
 	CustomSummary pulumi.StringPtrInput
+	// The format used to interpret the `customSummary` and `customDescription` templates.
+	//
+	// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+	// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+	// them to the format each notification destination expects, so a single template renders
+	// correctly in email, Slack, and Microsoft Teams.
+	//
+	// When unset, the API applies no default. Responses omit the field unless a format is stored,
+	// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+	CustomTemplateFormat pulumi.StringPtrInput
 	// The display name of the alert
 	DisplayName pulumi.StringInput
 	Evaluation  AlertV2EvaluationInput
@@ -480,6 +530,19 @@ func (o AlertV2Output) CustomDescription() pulumi.StringPtrOutput {
 // Custom summary for the alert. support mustache template
 func (o AlertV2Output) CustomSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.CustomSummary }).(pulumi.StringPtrOutput)
+}
+
+// The format used to interpret the `customSummary` and `customDescription` templates.
+//
+// `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+// `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+// them to the format each notification destination expects, so a single template renders
+// correctly in email, Slack, and Microsoft Teams.
+//
+// When unset, the API applies no default. Responses omit the field unless a format is stored,
+// and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+func (o AlertV2Output) CustomTemplateFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.CustomTemplateFormat }).(pulumi.StringPtrOutput)
 }
 
 // The display name of the alert

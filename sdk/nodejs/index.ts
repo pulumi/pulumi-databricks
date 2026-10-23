@@ -55,6 +55,26 @@ export type AccountSettingV2 = import("./accountSettingV2").AccountSettingV2;
 export const AccountSettingV2: typeof import("./accountSettingV2").AccountSettingV2 = null as any;
 utilities.lazyLoad(exports, ["AccountSettingV2"], () => require("./accountSettingV2"));
 
+export { AgentKitManagedMemoryEntryArgs, AgentKitManagedMemoryEntryState } from "./agentKitManagedMemoryEntry";
+export type AgentKitManagedMemoryEntry = import("./agentKitManagedMemoryEntry").AgentKitManagedMemoryEntry;
+export const AgentKitManagedMemoryEntry: typeof import("./agentKitManagedMemoryEntry").AgentKitManagedMemoryEntry = null as any;
+utilities.lazyLoad(exports, ["AgentKitManagedMemoryEntry"], () => require("./agentKitManagedMemoryEntry"));
+
+export { AgentKitManagedMemoryStoreArgs, AgentKitManagedMemoryStoreState } from "./agentKitManagedMemoryStore";
+export type AgentKitManagedMemoryStore = import("./agentKitManagedMemoryStore").AgentKitManagedMemoryStore;
+export const AgentKitManagedMemoryStore: typeof import("./agentKitManagedMemoryStore").AgentKitManagedMemoryStore = null as any;
+utilities.lazyLoad(exports, ["AgentKitManagedMemoryStore"], () => require("./agentKitManagedMemoryStore"));
+
+export { AgentKitSessionArgs, AgentKitSessionState } from "./agentKitSession";
+export type AgentKitSession = import("./agentKitSession").AgentKitSession;
+export const AgentKitSession: typeof import("./agentKitSession").AgentKitSession = null as any;
+utilities.lazyLoad(exports, ["AgentKitSession"], () => require("./agentKitSession"));
+
+export { AgentKitSessionStoreArgs, AgentKitSessionStoreState } from "./agentKitSessionStore";
+export type AgentKitSessionStore = import("./agentKitSessionStore").AgentKitSessionStore;
+export const AgentKitSessionStore: typeof import("./agentKitSessionStore").AgentKitSessionStore = null as any;
+utilities.lazyLoad(exports, ["AgentKitSessionStore"], () => require("./agentKitSessionStore"));
+
 export { AiGatewayMcpServiceArgs, AiGatewayMcpServiceState } from "./aiGatewayMcpService";
 export type AiGatewayMcpService = import("./aiGatewayMcpService").AiGatewayMcpService;
 export const AiGatewayMcpService: typeof import("./aiGatewayMcpService").AiGatewayMcpService = null as any;
@@ -399,6 +419,46 @@ export { GetAccountSettingV2Args, GetAccountSettingV2Result, GetAccountSettingV2
 export const getAccountSettingV2: typeof import("./getAccountSettingV2").getAccountSettingV2 = null as any;
 export const getAccountSettingV2Output: typeof import("./getAccountSettingV2").getAccountSettingV2Output = null as any;
 utilities.lazyLoad(exports, ["getAccountSettingV2","getAccountSettingV2Output"], () => require("./getAccountSettingV2"));
+
+export { GetAgentKitManagedMemoryEntriesArgs, GetAgentKitManagedMemoryEntriesResult, GetAgentKitManagedMemoryEntriesOutputArgs } from "./getAgentKitManagedMemoryEntries";
+export const getAgentKitManagedMemoryEntries: typeof import("./getAgentKitManagedMemoryEntries").getAgentKitManagedMemoryEntries = null as any;
+export const getAgentKitManagedMemoryEntriesOutput: typeof import("./getAgentKitManagedMemoryEntries").getAgentKitManagedMemoryEntriesOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitManagedMemoryEntries","getAgentKitManagedMemoryEntriesOutput"], () => require("./getAgentKitManagedMemoryEntries"));
+
+export { GetAgentKitManagedMemoryEntryArgs, GetAgentKitManagedMemoryEntryResult, GetAgentKitManagedMemoryEntryOutputArgs } from "./getAgentKitManagedMemoryEntry";
+export const getAgentKitManagedMemoryEntry: typeof import("./getAgentKitManagedMemoryEntry").getAgentKitManagedMemoryEntry = null as any;
+export const getAgentKitManagedMemoryEntryOutput: typeof import("./getAgentKitManagedMemoryEntry").getAgentKitManagedMemoryEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitManagedMemoryEntry","getAgentKitManagedMemoryEntryOutput"], () => require("./getAgentKitManagedMemoryEntry"));
+
+export { GetAgentKitManagedMemoryStoreArgs, GetAgentKitManagedMemoryStoreResult, GetAgentKitManagedMemoryStoreOutputArgs } from "./getAgentKitManagedMemoryStore";
+export const getAgentKitManagedMemoryStore: typeof import("./getAgentKitManagedMemoryStore").getAgentKitManagedMemoryStore = null as any;
+export const getAgentKitManagedMemoryStoreOutput: typeof import("./getAgentKitManagedMemoryStore").getAgentKitManagedMemoryStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitManagedMemoryStore","getAgentKitManagedMemoryStoreOutput"], () => require("./getAgentKitManagedMemoryStore"));
+
+export { GetAgentKitManagedMemoryStoresArgs, GetAgentKitManagedMemoryStoresResult, GetAgentKitManagedMemoryStoresOutputArgs } from "./getAgentKitManagedMemoryStores";
+export const getAgentKitManagedMemoryStores: typeof import("./getAgentKitManagedMemoryStores").getAgentKitManagedMemoryStores = null as any;
+export const getAgentKitManagedMemoryStoresOutput: typeof import("./getAgentKitManagedMemoryStores").getAgentKitManagedMemoryStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitManagedMemoryStores","getAgentKitManagedMemoryStoresOutput"], () => require("./getAgentKitManagedMemoryStores"));
+
+export { GetAgentKitSessionArgs, GetAgentKitSessionResult, GetAgentKitSessionOutputArgs } from "./getAgentKitSession";
+export const getAgentKitSession: typeof import("./getAgentKitSession").getAgentKitSession = null as any;
+export const getAgentKitSessionOutput: typeof import("./getAgentKitSession").getAgentKitSessionOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitSession","getAgentKitSessionOutput"], () => require("./getAgentKitSession"));
+
+export { GetAgentKitSessionStoreArgs, GetAgentKitSessionStoreResult, GetAgentKitSessionStoreOutputArgs } from "./getAgentKitSessionStore";
+export const getAgentKitSessionStore: typeof import("./getAgentKitSessionStore").getAgentKitSessionStore = null as any;
+export const getAgentKitSessionStoreOutput: typeof import("./getAgentKitSessionStore").getAgentKitSessionStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitSessionStore","getAgentKitSessionStoreOutput"], () => require("./getAgentKitSessionStore"));
+
+export { GetAgentKitSessionStoresArgs, GetAgentKitSessionStoresResult, GetAgentKitSessionStoresOutputArgs } from "./getAgentKitSessionStores";
+export const getAgentKitSessionStores: typeof import("./getAgentKitSessionStores").getAgentKitSessionStores = null as any;
+export const getAgentKitSessionStoresOutput: typeof import("./getAgentKitSessionStores").getAgentKitSessionStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitSessionStores","getAgentKitSessionStoresOutput"], () => require("./getAgentKitSessionStores"));
+
+export { GetAgentKitSessionsArgs, GetAgentKitSessionsResult, GetAgentKitSessionsOutputArgs } from "./getAgentKitSessions";
+export const getAgentKitSessions: typeof import("./getAgentKitSessions").getAgentKitSessions = null as any;
+export const getAgentKitSessionsOutput: typeof import("./getAgentKitSessions").getAgentKitSessionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentKitSessions","getAgentKitSessionsOutput"], () => require("./getAgentKitSessions"));
 
 export { GetAiGatewayMcpServiceArgs, GetAiGatewayMcpServiceResult, GetAiGatewayMcpServiceOutputArgs } from "./getAiGatewayMcpService";
 export const getAiGatewayMcpService: typeof import("./getAiGatewayMcpService").getAiGatewayMcpService = null as any;
@@ -1877,6 +1937,14 @@ const _module = {
                 return new AccountSettingUserPreferenceV2(name, <any>undefined, { urn })
             case "databricks:index/accountSettingV2:AccountSettingV2":
                 return new AccountSettingV2(name, <any>undefined, { urn })
+            case "databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry":
+                return new AgentKitManagedMemoryEntry(name, <any>undefined, { urn })
+            case "databricks:index/agentKitManagedMemoryStore:AgentKitManagedMemoryStore":
+                return new AgentKitManagedMemoryStore(name, <any>undefined, { urn })
+            case "databricks:index/agentKitSession:AgentKitSession":
+                return new AgentKitSession(name, <any>undefined, { urn })
+            case "databricks:index/agentKitSessionStore:AgentKitSessionStore":
+                return new AgentKitSessionStore(name, <any>undefined, { urn })
             case "databricks:index/aiGatewayMcpService:AiGatewayMcpService":
                 return new AiGatewayMcpService(name, <any>undefined, { urn })
             case "databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService":
@@ -2218,6 +2286,10 @@ pulumi.runtime.registerResourceModule("databricks", "index/accountIamWorkspaceAs
 pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingUserPreferenceV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/agentKitManagedMemoryEntry", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/agentKitManagedMemoryStore", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/agentKitSession", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/agentKitSessionStore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aiGatewayMcpService", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aiGatewayModelProviderService", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aiGatewayModelService", _module)

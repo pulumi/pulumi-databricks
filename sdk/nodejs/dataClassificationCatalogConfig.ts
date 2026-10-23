@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
  *
@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  * 2. have **USE_CATALOG** and **MANAGE** permissions on the catalog
  *
  * > **Note** This resource can only be used with a workspace-level provider.
+ *
+ * > **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this resource are generally available.
  *
  * ## Example Usage
  *
@@ -37,6 +39,19 @@ import * as utilities from "./utilities";
  *             "customer_data",
  *         ],
  *     },
+ * });
+ * // Enable Data Classification for the entire catalog (all current and future schemas)
+ * const allSchemas = new databricks.DataClassificationCatalogConfig("all_schemas", {parent: "catalogs/staging_catalog"});
+ * ```
+ *
+ * To automatically tag columns detected with specific classes, set `autoTagConfigs`. This attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const autoTagging = new databricks.DataClassificationCatalogConfig("auto_tagging", {
+ *     parent: "catalogs/finance_catalog",
  *     autoTagConfigs: [
  *         {
  *             classificationTag: "class.credit_card",
@@ -48,8 +63,6 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * // Enable Data Classification for the entire catalog (all current and future schemas)
- * const allSchemas = new databricks.DataClassificationCatalogConfig("all_schemas", {parent: "catalogs/staging_catalog"});
  * ```
  */
 export class DataClassificationCatalogConfig extends pulumi.CustomResource {

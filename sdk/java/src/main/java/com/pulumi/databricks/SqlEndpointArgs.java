@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.SqlEndpointProviderConfigArgs;
 import com.pulumi.databricks.inputs.SqlEndpointTagsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -66,6 +67,13 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         return this.clusterSize;
     }
 
+    @Import(name="customerVersionLabel")
+    private @Nullable Output<String> customerVersionLabel;
+
+    public Optional<Output<String>> customerVersionLabel() {
+        return Optional.ofNullable(this.customerVersionLabel);
+    }
+
     /**
      * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
@@ -120,6 +128,13 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
+    }
+
+    @Import(name="maxDbu")
+    private @Nullable Output<Integer> maxDbu;
+
+    public Optional<Output<Integer>> maxDbu() {
+        return Optional.ofNullable(this.maxDbu);
     }
 
     /**
@@ -197,6 +212,13 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.providerConfig);
     }
 
+    @Import(name="reydenClusterSizeMultiplier")
+    private @Nullable Output<Double> reydenClusterSizeMultiplier;
+
+    public Optional<Output<Double>> reydenClusterSizeMultiplier() {
+        return Optional.ofNullable(this.reydenClusterSizeMultiplier);
+    }
+
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      * 
@@ -225,6 +247,13 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> sqlEndpointId() {
         return Optional.ofNullable(this.sqlEndpointId);
+    }
+
+    @Import(name="statementTimeout")
+    private @Nullable Output<Integer> statementTimeout;
+
+    public Optional<Output<Integer>> statementTimeout() {
+        return Optional.ofNullable(this.statementTimeout);
     }
 
     /**
@@ -263,17 +292,21 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         this.autoStopMins = $.autoStopMins;
         this.channel = $.channel;
         this.clusterSize = $.clusterSize;
+        this.customerVersionLabel = $.customerVersionLabel;
         this.dataSourceId = $.dataSourceId;
         this.enablePhoton = $.enablePhoton;
         this.enableServerlessCompute = $.enableServerlessCompute;
         this.instanceProfileArn = $.instanceProfileArn;
+        this.maxDbu = $.maxDbu;
         this.maxNumClusters = $.maxNumClusters;
         this.minNumClusters = $.minNumClusters;
         this.name = $.name;
         this.noWait = $.noWait;
         this.providerConfig = $.providerConfig;
+        this.reydenClusterSizeMultiplier = $.reydenClusterSizeMultiplier;
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.sqlEndpointId = $.sqlEndpointId;
+        this.statementTimeout = $.statementTimeout;
         this.tags = $.tags;
         this.warehouseType = $.warehouseType;
     }
@@ -359,6 +392,15 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
             return clusterSize(Output.of(clusterSize));
         }
 
+        public Builder customerVersionLabel(@Nullable Output<String> customerVersionLabel) {
+            $.customerVersionLabel = customerVersionLabel;
+            return this;
+        }
+
+        public Builder customerVersionLabel(String customerVersionLabel) {
+            return customerVersionLabel(Output.of(customerVersionLabel));
+        }
+
         /**
          * @param dataSourceId (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
          * 
@@ -433,6 +475,15 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
+        }
+
+        public Builder maxDbu(@Nullable Output<Integer> maxDbu) {
+            $.maxDbu = maxDbu;
+            return this;
+        }
+
+        public Builder maxDbu(Integer maxDbu) {
+            return maxDbu(Output.of(maxDbu));
         }
 
         /**
@@ -540,6 +591,15 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
             return providerConfig(Output.of(providerConfig));
         }
 
+        public Builder reydenClusterSizeMultiplier(@Nullable Output<Double> reydenClusterSizeMultiplier) {
+            $.reydenClusterSizeMultiplier = reydenClusterSizeMultiplier;
+            return this;
+        }
+
+        public Builder reydenClusterSizeMultiplier(Double reydenClusterSizeMultiplier) {
+            return reydenClusterSizeMultiplier(Output.of(reydenClusterSizeMultiplier));
+        }
+
         /**
          * @param spotInstancePolicy The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
          * 
@@ -580,6 +640,15 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sqlEndpointId(String sqlEndpointId) {
             return sqlEndpointId(Output.of(sqlEndpointId));
+        }
+
+        public Builder statementTimeout(@Nullable Output<Integer> statementTimeout) {
+            $.statementTimeout = statementTimeout;
+            return this;
+        }
+
+        public Builder statementTimeout(Integer statementTimeout) {
+            return statementTimeout(Output.of(statementTimeout));
         }
 
         /**

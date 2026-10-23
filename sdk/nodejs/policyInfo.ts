@@ -135,6 +135,10 @@ export class PolicyInfo extends pulumi.CustomResource {
      */
     declare public readonly forSecurableType: pulumi.Output<string>;
     /**
+     * (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+     */
+    declare public /*out*/ readonly governedTags: pulumi.Output<outputs.PolicyInfoGovernedTag[]>;
+    /**
      * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
@@ -214,6 +218,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["deny"] = state?.deny;
             resourceInputs["exceptPrincipals"] = state?.exceptPrincipals;
             resourceInputs["forSecurableType"] = state?.forSecurableType;
+            resourceInputs["governedTags"] = state?.governedTags;
             resourceInputs["grant"] = state?.grant;
             resourceInputs["matchColumns"] = state?.matchColumns;
             resourceInputs["name"] = state?.name;
@@ -254,6 +259,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["whenCondition"] = args?.whenCondition;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["governedTags"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["updatedBy"] = undefined /*out*/;
         }
@@ -299,6 +305,10 @@ export interface PolicyInfoState {
      * Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType?: pulumi.Input<string | undefined>;
+    /**
+     * (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
+     */
+    governedTags?: pulumi.Input<pulumi.Input<inputs.PolicyInfoGovernedTag>[] | undefined>;
     /**
      * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
      * Required on create and optional on update. When specified on update,

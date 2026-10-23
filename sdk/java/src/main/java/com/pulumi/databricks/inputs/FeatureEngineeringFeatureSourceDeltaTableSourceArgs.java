@@ -39,18 +39,14 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
     }
 
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      * 
      */
     @Import(name="fullName", required=true)
     private Output<String> fullName;
 
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * @return The full three-part name (catalog, schema, name) of the feature
      * 
      */
     public Output<String> fullName() {
@@ -58,14 +54,18 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
     }
 
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     @Import(name="timeseriesColumn")
     private @Nullable Output<String> timeseriesColumn;
 
     /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     public Optional<Output<String>> timeseriesColumn() {
@@ -140,9 +140,7 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
-         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-         * below are OUTPUT_ONLY decomposed views of this value
+         * @param fullName The full three-part name (catalog, schema, name) of the feature
          * 
          * @return builder
          * 
@@ -153,9 +151,7 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
-         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-         * below are OUTPUT_ONLY decomposed views of this value
+         * @param fullName The full three-part name (catalog, schema, name) of the feature
          * 
          * @return builder
          * 
@@ -165,7 +161,9 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         }
 
         /**
-         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations.
+         * Optional since a timeseries column is not set for RequestSource features or on-demand
+         * calculated features
          * 
          * @return builder
          * 
@@ -176,7 +174,9 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         }
 
         /**
-         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations.
+         * Optional since a timeseries column is not set for RequestSource features or on-demand
+         * calculated features
          * 
          * @return builder
          * 

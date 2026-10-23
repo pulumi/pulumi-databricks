@@ -266,6 +266,7 @@ export class Connection extends pulumi.CustomResource {
      * If the connection is read only. Change forces creation of a new resource.
      */
     declare public readonly readOnly: pulumi.Output<boolean>;
+    declare public readonly secrets: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Securable type.
      */
@@ -313,6 +314,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["provisioningInfos"] = state?.provisioningInfos;
             resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["secrets"] = state?.secrets;
             resourceInputs["securableType"] = state?.securableType;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["updatedBy"] = state?.updatedBy;
@@ -329,6 +331,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["properties"] = args?.properties;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["secrets"] = args?.secrets;
             resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -420,6 +423,7 @@ export interface ConnectionState {
      * If the connection is read only. Change forces creation of a new resource.
      */
     readOnly?: pulumi.Input<boolean | undefined>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Securable type.
      */
@@ -482,4 +486,5 @@ export interface ConnectionArgs {
      * If the connection is read only. Change forces creation of a new resource.
      */
     readOnly?: pulumi.Input<boolean | undefined>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

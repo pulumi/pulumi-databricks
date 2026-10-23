@@ -7,11 +7,13 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrock;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigAnthropic;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigAzureOpenai;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigBedrockMantle;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigCustom;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterprise;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigInferenceTable;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundry;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigOpenai;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigPricing;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigRateLimit;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceConfigTarget;
 import java.lang.Boolean;
@@ -46,6 +48,11 @@ public final class GetAiGatewayModelProviderServiceConfig {
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAzureOpenai azureOpenai;
     /**
+     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * 
+     */
+    private @Nullable GetAiGatewayModelProviderServiceConfigBedrockMantle bedrockMantle;
+    /**
      * @return (ModelProviderServiceConfigCustomProviderConfig)
      * 
      */
@@ -70,7 +77,9 @@ public final class GetAiGatewayModelProviderServiceConfig {
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      * 
      */
     private @Nullable Boolean forwardUnmanagedPaths;
@@ -97,9 +106,15 @@ public final class GetAiGatewayModelProviderServiceConfig {
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigOpenai openai;
     /**
+     * @return (ModelProviderServiceConfigProviderPricingConfig) - Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     * 
+     */
+    private @Nullable GetAiGatewayModelProviderServiceConfigPricing pricing;
+    /**
      * @return (string) - External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      * 
      */
     private @Nullable String providerType;
@@ -152,6 +167,13 @@ public final class GetAiGatewayModelProviderServiceConfig {
         return Optional.ofNullable(this.azureOpenai);
     }
     /**
+     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * 
+     */
+    public Optional<GetAiGatewayModelProviderServiceConfigBedrockMantle> bedrockMantle() {
+        return Optional.ofNullable(this.bedrockMantle);
+    }
+    /**
      * @return (ModelProviderServiceConfigCustomProviderConfig)
      * 
      */
@@ -182,7 +204,9 @@ public final class GetAiGatewayModelProviderServiceConfig {
      * provider-native API types. Defaults to false. When true, these paths are
      * forwarded unchanged to the upstream provider. When false, only
      * recognized API paths are served. Enabling this broadens the upstream API
-     * surface exposed through the provider service
+     * surface exposed through the provider service. AI Gateway cannot evaluate
+     * Service Policies on opaque unmanaged requests, so unmanaged requests are
+     * rejected whenever Service Policies are attached to this securable
      * 
      */
     public Optional<Boolean> forwardUnmanagedPaths() {
@@ -219,9 +243,17 @@ public final class GetAiGatewayModelProviderServiceConfig {
         return Optional.ofNullable(this.openai);
     }
     /**
+     * @return (ModelProviderServiceConfigProviderPricingConfig) - Pricing configuration for this provider service. An explicitly empty
+     * configuration is retained on Create and Update and applies no adjustment
+     * 
+     */
+    public Optional<GetAiGatewayModelProviderServiceConfigPricing> pricing() {
+        return Optional.ofNullable(this.pricing);
+    }
+    /**
      * @return (string) - External model provider. Required on Create and immutable thereafter. Set
      * the matching provider-specific configuration, such as `openai`,
-     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      * 
      */
     public Optional<String> providerType() {
@@ -261,6 +293,7 @@ public final class GetAiGatewayModelProviderServiceConfig {
         private @Nullable GetAiGatewayModelProviderServiceConfigAmazonBedrock amazonBedrock;
         private @Nullable GetAiGatewayModelProviderServiceConfigAnthropic anthropic;
         private @Nullable GetAiGatewayModelProviderServiceConfigAzureOpenai azureOpenai;
+        private @Nullable GetAiGatewayModelProviderServiceConfigBedrockMantle bedrockMantle;
         private @Nullable GetAiGatewayModelProviderServiceConfigCustom custom;
         private @Nullable Boolean forwardHeaders;
         private @Nullable Boolean forwardQueryParameters;
@@ -269,6 +302,7 @@ public final class GetAiGatewayModelProviderServiceConfig {
         private @Nullable GetAiGatewayModelProviderServiceConfigInferenceTable inferenceTable;
         private @Nullable GetAiGatewayModelProviderServiceConfigMicrosoftFoundry microsoftFoundry;
         private @Nullable GetAiGatewayModelProviderServiceConfigOpenai openai;
+        private @Nullable GetAiGatewayModelProviderServiceConfigPricing pricing;
         private @Nullable String providerType;
         private @Nullable List<GetAiGatewayModelProviderServiceConfigRateLimit> rateLimits;
         private @Nullable List<GetAiGatewayModelProviderServiceConfigTarget> targets;
@@ -279,6 +313,7 @@ public final class GetAiGatewayModelProviderServiceConfig {
     	      this.amazonBedrock = defaults.amazonBedrock;
     	      this.anthropic = defaults.anthropic;
     	      this.azureOpenai = defaults.azureOpenai;
+    	      this.bedrockMantle = defaults.bedrockMantle;
     	      this.custom = defaults.custom;
     	      this.forwardHeaders = defaults.forwardHeaders;
     	      this.forwardQueryParameters = defaults.forwardQueryParameters;
@@ -287,6 +322,7 @@ public final class GetAiGatewayModelProviderServiceConfig {
     	      this.inferenceTable = defaults.inferenceTable;
     	      this.microsoftFoundry = defaults.microsoftFoundry;
     	      this.openai = defaults.openai;
+    	      this.pricing = defaults.pricing;
     	      this.providerType = defaults.providerType;
     	      this.rateLimits = defaults.rateLimits;
     	      this.targets = defaults.targets;
@@ -314,6 +350,12 @@ public final class GetAiGatewayModelProviderServiceConfig {
         public Builder azureOpenai(@Nullable GetAiGatewayModelProviderServiceConfigAzureOpenai azureOpenai) {
 
             this.azureOpenai = azureOpenai;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bedrockMantle(@Nullable GetAiGatewayModelProviderServiceConfigBedrockMantle bedrockMantle) {
+
+            this.bedrockMantle = bedrockMantle;
             return this;
         }
         @CustomType.Setter
@@ -365,6 +407,12 @@ public final class GetAiGatewayModelProviderServiceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pricing(@Nullable GetAiGatewayModelProviderServiceConfigPricing pricing) {
+
+            this.pricing = pricing;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerType(@Nullable String providerType) {
 
             this.providerType = providerType;
@@ -394,6 +442,7 @@ public final class GetAiGatewayModelProviderServiceConfig {
             _resultValue.amazonBedrock = amazonBedrock;
             _resultValue.anthropic = anthropic;
             _resultValue.azureOpenai = azureOpenai;
+            _resultValue.bedrockMantle = bedrockMantle;
             _resultValue.custom = custom;
             _resultValue.forwardHeaders = forwardHeaders;
             _resultValue.forwardQueryParameters = forwardQueryParameters;
@@ -402,6 +451,7 @@ public final class GetAiGatewayModelProviderServiceConfig {
             _resultValue.inferenceTable = inferenceTable;
             _resultValue.microsoftFoundry = microsoftFoundry;
             _resultValue.openai = openai;
+            _resultValue.pricing = pricing;
             _resultValue.providerType = providerType;
             _resultValue.rateLimits = rateLimits;
             _resultValue.targets = targets;

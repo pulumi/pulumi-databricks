@@ -13,18 +13,22 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionResult
     {
+        public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentResult? Attachment;
         public readonly string? CustomSubject;
         public readonly bool? Paused;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberResult> Subscribers;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionResult(
+            Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentResult? attachment,
+
             string? customSubject,
 
             bool? paused,
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberResult> subscribers)
         {
+            Attachment = attachment;
             CustomSubject = customSubject;
             Paused = paused;
             Subscribers = subscribers;

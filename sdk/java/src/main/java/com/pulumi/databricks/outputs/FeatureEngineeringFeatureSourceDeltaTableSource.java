@@ -17,14 +17,14 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
     private @Nullable List<String> entityColumns;
     private @Nullable String filterCondition;
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * @return The full three-part name (catalog, schema, name) of the feature
      * 
      */
     private String fullName;
     /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     private @Nullable String timeseriesColumn;
@@ -41,16 +41,16 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
         return Optional.ofNullable(this.filterCondition);
     }
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * @return The full three-part name (catalog, schema, name) of the feature
      * 
      */
     public String fullName() {
         return this.fullName;
     }
     /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      * 
      */
     public Optional<String> timeseriesColumn() {

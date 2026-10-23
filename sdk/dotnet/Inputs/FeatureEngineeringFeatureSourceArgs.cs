@@ -44,6 +44,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.FeatureEngineeringFeatureSourceRequestSourceArgs>? RequestSource { get; set; }
 
         /// <summary>
+        /// A Spark Declarative Pipeline data source
+        /// </summary>
+        [Input("sdpSource")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceSdpSourceArgs>? SdpSource { get; set; }
+
+        /// <summary>
         /// A Stream data source
         /// </summary>
         [Input("streamSource")]

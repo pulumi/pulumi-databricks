@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs : global::Pulumi.ResourceArgs
     {
+        [Input("attachment")]
+        public Input<Inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs>? Attachment { get; set; }
+
         /// <summary>
         /// Allows users to specify a custom subject line on the email sent to subscribers.
         /// </summary>

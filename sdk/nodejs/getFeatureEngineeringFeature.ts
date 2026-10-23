@@ -7,7 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+ *
+ * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+ *
+ * ## Example Usage
+ *
+ * Look up a feature by its full name.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const transactionCount7d = databricks.getFeatureEngineeringFeature({
+ *     fullName: "main.features.transaction_count_7d",
+ * });
+ * ```
  */
 export function getFeatureEngineeringFeature(args: GetFeatureEngineeringFeatureArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureEngineeringFeatureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,9 +39,7 @@ export function getFeatureEngineeringFeature(args: GetFeatureEngineeringFeatureA
  */
 export interface GetFeatureEngineeringFeatureArgs {
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     /**
@@ -54,7 +69,8 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly description: string;
     /**
-     * (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      */
     readonly entities: outputs.GetFeatureEngineeringFeatureEntity[];
     /**
@@ -109,7 +125,24 @@ export interface GetFeatureEngineeringFeatureResult {
     readonly timeseriesColumn: outputs.GetFeatureEngineeringFeatureTimeseriesColumn;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+ *
+ * Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+ *
+ * ## Example Usage
+ *
+ * Look up a feature by its full name.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const transactionCount7d = databricks.getFeatureEngineeringFeature({
+ *     fullName: "main.features.transaction_count_7d",
+ * });
+ * ```
  */
 export function getFeatureEngineeringFeatureOutput(args: GetFeatureEngineeringFeatureOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureEngineeringFeatureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -124,9 +157,7 @@ export function getFeatureEngineeringFeatureOutput(args: GetFeatureEngineeringFe
  */
 export interface GetFeatureEngineeringFeatureOutputArgs {
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: pulumi.Input<string>;
     /**

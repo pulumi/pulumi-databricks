@@ -64,10 +64,18 @@ export interface GetDisasterRecoveryFailoverGroupResult {
      */
     readonly etag: string;
     /**
+     * (boolean) - True if errors currently block the replication point
+     */
+    readonly hasReplicationPointBlockingErrors: boolean;
+    /**
      * (string) - Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      */
     readonly initialPrimaryRegion: string;
+    /**
+     * (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     */
+    readonly initialReplicationProgress: outputs.GetDisasterRecoveryFailoverGroupInitialReplicationProgress;
     /**
      * (string) - Resource name for this workspace set
      */

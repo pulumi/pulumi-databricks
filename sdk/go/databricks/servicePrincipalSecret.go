@@ -106,6 +106,7 @@ type ServicePrincipalSecret struct {
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig ServicePrincipalSecretProviderConfigOutput `pulumi:"providerConfig"`
+	Scopes         pulumi.StringArrayOutput                   `pulumi:"scopes"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// Secret Hash.
@@ -172,6 +173,7 @@ type servicePrincipalSecretState struct {
 	Lifetime *string `pulumi:"lifetime"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *ServicePrincipalSecretProviderConfig `pulumi:"providerConfig"`
+	Scopes         []string                              `pulumi:"scopes"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret *string `pulumi:"secret"`
 	// Secret Hash.
@@ -199,6 +201,7 @@ type ServicePrincipalSecretState struct {
 	Lifetime pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig ServicePrincipalSecretProviderConfigPtrInput
+	Scopes         pulumi.StringArrayInput
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringPtrInput
 	// Secret Hash.
@@ -230,6 +233,7 @@ type servicePrincipalSecretArgs struct {
 	Lifetime *string `pulumi:"lifetime"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *ServicePrincipalSecretProviderConfig `pulumi:"providerConfig"`
+	Scopes         []string                              `pulumi:"scopes"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret *string `pulumi:"secret"`
 	// Secret Hash.
@@ -258,6 +262,7 @@ type ServicePrincipalSecretArgs struct {
 	Lifetime pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig ServicePrincipalSecretProviderConfigPtrInput
+	Scopes         pulumi.StringArrayInput
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringPtrInput
 	// Secret Hash.
@@ -384,6 +389,10 @@ func (o ServicePrincipalSecretOutput) Lifetime() pulumi.StringOutput {
 // Configure the provider for management through account provider. This block consists of the following fields:
 func (o ServicePrincipalSecretOutput) ProviderConfig() ServicePrincipalSecretProviderConfigOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) ServicePrincipalSecretProviderConfigOutput { return v.ProviderConfig }).(ServicePrincipalSecretProviderConfigOutput)
+}
+
+func (o ServicePrincipalSecretOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
 // **Sensitive** Generated secret for the service principal.

@@ -8,10 +8,20 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
+    /**
+     * @return (string) - Relative path appended to a custom provider&#39;s `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     * 
+     */
+    private @Nullable String endpointRoute;
     /**
      * @return (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
@@ -21,14 +31,27 @@ public final class GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDes
     private String model;
     /**
      * @return (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target&#39;s types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      * 
      */
     private @Nullable List<String> nativeApiTypes;
 
     private GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget() {}
+    /**
+     * @return (string) - Relative path appended to a custom provider&#39;s `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     * 
+     */
+    public Optional<String> endpointRoute() {
+        return Optional.ofNullable(this.endpointRoute);
+    }
     /**
      * @return (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
@@ -40,9 +63,11 @@ public final class GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDes
     }
     /**
      * @return (list of string) - Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target&#39;s types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      * 
      */
     public List<String> nativeApiTypes() {
@@ -58,15 +83,23 @@ public final class GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDes
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String endpointRoute;
         private String model;
         private @Nullable List<String> nativeApiTypes;
         public Builder() {}
         public Builder(GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.endpointRoute = defaults.endpointRoute;
     	      this.model = defaults.model;
     	      this.nativeApiTypes = defaults.nativeApiTypes;
         }
 
+        @CustomType.Setter
+        public Builder endpointRoute(@Nullable String endpointRoute) {
+
+            this.endpointRoute = endpointRoute;
+            return this;
+        }
         @CustomType.Setter
         public Builder model(String model) {
             if (model == null) {
@@ -86,6 +119,7 @@ public final class GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDes
         }
         public GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget build() {
             final var _resultValue = new GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget();
+            _resultValue.endpointRoute = endpointRoute;
             _resultValue.model = model;
             _resultValue.nativeApiTypes = nativeApiTypes;
             return _resultValue;

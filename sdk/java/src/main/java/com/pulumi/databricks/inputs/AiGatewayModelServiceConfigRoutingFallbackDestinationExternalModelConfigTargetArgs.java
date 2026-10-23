@@ -18,6 +18,29 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
     public static final AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs Empty = new AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs();
 
     /**
+     * Relative path appended to a custom provider&#39;s `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     * 
+     */
+    @Import(name="endpointRoute")
+    private @Nullable Output<String> endpointRoute;
+
+    /**
+     * @return Relative path appended to a custom provider&#39;s `baseUrl` for this model,
+     * such as `serve/openai/chat`. Nonempty values are only supported for
+     * custom model provider service targets; other provider types reject them.
+     * Model service destinations do not support this field. Do not include
+     * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+     * 
+     */
+    public Optional<Output<String>> endpointRoute() {
+        return Optional.ofNullable(this.endpointRoute);
+    }
+
+    /**
      * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
      * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
      * Create/Update time
@@ -38,9 +61,11 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
 
     /**
      * Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target&#39;s types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      * 
      */
     @Import(name="nativeApiTypes")
@@ -48,9 +73,11 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
 
     /**
      * @return Provider-native API types supported by this model, such as
-     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-     * uses these values to translate requests and responses. At most 64 entries
-     * of 256 characters each are allowed
+     * `openai/v1/chat/completions`. A model provider service target requires at
+     * least one value. A model service destination may omit the list to use the
+     * matching provider service target&#39;s types when available. AI Gateway uses
+     * the selected types for translation. At most 64 entries of 256 characters
+     * each are allowed
      * 
      */
     public Optional<Output<List<String>>> nativeApiTypes() {
@@ -60,6 +87,7 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
     private AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs() {}
 
     private AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs(AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs $) {
+        this.endpointRoute = $.endpointRoute;
         this.model = $.model;
         this.nativeApiTypes = $.nativeApiTypes;
     }
@@ -80,6 +108,35 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
 
         public Builder(AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs defaults) {
             $ = new AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param endpointRoute Relative path appended to a custom provider&#39;s `baseUrl` for this model,
+         * such as `serve/openai/chat`. Nonempty values are only supported for
+         * custom model provider service targets; other provider types reject them.
+         * Model service destinations do not support this field. Do not include
+         * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointRoute(@Nullable Output<String> endpointRoute) {
+            $.endpointRoute = endpointRoute;
+            return this;
+        }
+
+        /**
+         * @param endpointRoute Relative path appended to a custom provider&#39;s `baseUrl` for this model,
+         * such as `serve/openai/chat`. Nonempty values are only supported for
+         * custom model provider service targets; other provider types reject them.
+         * Model service destinations do not support this field. Do not include
+         * URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointRoute(String endpointRoute) {
+            return endpointRoute(Output.of(endpointRoute));
         }
 
         /**
@@ -109,9 +166,11 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
 
         /**
          * @param nativeApiTypes Provider-native API types supported by this model, such as
-         * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-         * uses these values to translate requests and responses. At most 64 entries
-         * of 256 characters each are allowed
+         * `openai/v1/chat/completions`. A model provider service target requires at
+         * least one value. A model service destination may omit the list to use the
+         * matching provider service target&#39;s types when available. AI Gateway uses
+         * the selected types for translation. At most 64 entries of 256 characters
+         * each are allowed
          * 
          * @return builder
          * 
@@ -123,9 +182,11 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
 
         /**
          * @param nativeApiTypes Provider-native API types supported by this model, such as
-         * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-         * uses these values to translate requests and responses. At most 64 entries
-         * of 256 characters each are allowed
+         * `openai/v1/chat/completions`. A model provider service target requires at
+         * least one value. A model service destination may omit the list to use the
+         * matching provider service target&#39;s types when available. AI Gateway uses
+         * the selected types for translation. At most 64 entries of 256 characters
+         * each are allowed
          * 
          * @return builder
          * 
@@ -136,9 +197,11 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationExternal
 
         /**
          * @param nativeApiTypes Provider-native API types supported by this model, such as
-         * `openai/v1/chat/completions`. At least one value is required. AI Gateway
-         * uses these values to translate requests and responses. At most 64 entries
-         * of 256 characters each are allowed
+         * `openai/v1/chat/completions`. A model provider service target requires at
+         * least one value. A model service destination may omit the list to use the
+         * matching provider service target&#39;s types when available. AI Gateway uses
+         * the selected types for translation. At most 64 entries of 256 characters
+         * each are allowed
          * 
          * @return builder
          * 

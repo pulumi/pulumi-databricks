@@ -13,12 +13,3878 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ModelServingProvisionedThroughputTag struct {
+	// The key field for a tag.
+	Key string `pulumi:"key"`
+	// The value field for a tag.
+	Value *string `pulumi:"value"`
+}
+
+// ModelServingProvisionedThroughputTagInput is an input type that accepts ModelServingProvisionedThroughputTagArgs and ModelServingProvisionedThroughputTagOutput values.
+// You can construct a concrete instance of `ModelServingProvisionedThroughputTagInput` via:
+//
+//	ModelServingProvisionedThroughputTagArgs{...}
+type ModelServingProvisionedThroughputTagInput interface {
+	pulumi.Input
+
+	ToModelServingProvisionedThroughputTagOutput() ModelServingProvisionedThroughputTagOutput
+	ToModelServingProvisionedThroughputTagOutputWithContext(context.Context) ModelServingProvisionedThroughputTagOutput
+}
+
+type ModelServingProvisionedThroughputTagArgs struct {
+	// The key field for a tag.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value field for a tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ModelServingProvisionedThroughputTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingProvisionedThroughputTag)(nil)).Elem()
+}
+
+func (i ModelServingProvisionedThroughputTagArgs) ToModelServingProvisionedThroughputTagOutput() ModelServingProvisionedThroughputTagOutput {
+	return i.ToModelServingProvisionedThroughputTagOutputWithContext(context.Background())
+}
+
+func (i ModelServingProvisionedThroughputTagArgs) ToModelServingProvisionedThroughputTagOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputTagOutput)
+}
+
+// ModelServingProvisionedThroughputTagArrayInput is an input type that accepts ModelServingProvisionedThroughputTagArray and ModelServingProvisionedThroughputTagArrayOutput values.
+// You can construct a concrete instance of `ModelServingProvisionedThroughputTagArrayInput` via:
+//
+//	ModelServingProvisionedThroughputTagArray{ ModelServingProvisionedThroughputTagArgs{...} }
+type ModelServingProvisionedThroughputTagArrayInput interface {
+	pulumi.Input
+
+	ToModelServingProvisionedThroughputTagArrayOutput() ModelServingProvisionedThroughputTagArrayOutput
+	ToModelServingProvisionedThroughputTagArrayOutputWithContext(context.Context) ModelServingProvisionedThroughputTagArrayOutput
+}
+
+type ModelServingProvisionedThroughputTagArray []ModelServingProvisionedThroughputTagInput
+
+func (ModelServingProvisionedThroughputTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingProvisionedThroughputTag)(nil)).Elem()
+}
+
+func (i ModelServingProvisionedThroughputTagArray) ToModelServingProvisionedThroughputTagArrayOutput() ModelServingProvisionedThroughputTagArrayOutput {
+	return i.ToModelServingProvisionedThroughputTagArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingProvisionedThroughputTagArray) ToModelServingProvisionedThroughputTagArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputTagArrayOutput)
+}
+
+type ModelServingProvisionedThroughputTagOutput struct{ *pulumi.OutputState }
+
+func (ModelServingProvisionedThroughputTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingProvisionedThroughputTag)(nil)).Elem()
+}
+
+func (o ModelServingProvisionedThroughputTagOutput) ToModelServingProvisionedThroughputTagOutput() ModelServingProvisionedThroughputTagOutput {
+	return o
+}
+
+func (o ModelServingProvisionedThroughputTagOutput) ToModelServingProvisionedThroughputTagOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagOutput {
+	return o
+}
+
+// The key field for a tag.
+func (o ModelServingProvisionedThroughputTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingProvisionedThroughputTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value field for a tag.
+func (o ModelServingProvisionedThroughputTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingProvisionedThroughputTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ModelServingProvisionedThroughputTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingProvisionedThroughputTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingProvisionedThroughputTag)(nil)).Elem()
+}
+
+func (o ModelServingProvisionedThroughputTagArrayOutput) ToModelServingProvisionedThroughputTagArrayOutput() ModelServingProvisionedThroughputTagArrayOutput {
+	return o
+}
+
+func (o ModelServingProvisionedThroughputTagArrayOutput) ToModelServingProvisionedThroughputTagArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagArrayOutput {
+	return o
+}
+
+func (o ModelServingProvisionedThroughputTagArrayOutput) Index(i pulumi.IntInput) ModelServingProvisionedThroughputTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingProvisionedThroughputTag {
+		return vs[0].([]ModelServingProvisionedThroughputTag)[vs[1].(int)]
+	}).(ModelServingProvisionedThroughputTagOutput)
+}
+
+type ModelServingRateLimit struct {
+	// Used to specify how many calls are allowed for a key within the renewal_period.
+	Calls int `pulumi:"calls"`
+	// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+	Key *string `pulumi:"key"`
+	// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+	RenewalPeriod string `pulumi:"renewalPeriod"`
+}
+
+// ModelServingRateLimitInput is an input type that accepts ModelServingRateLimitArgs and ModelServingRateLimitOutput values.
+// You can construct a concrete instance of `ModelServingRateLimitInput` via:
+//
+//	ModelServingRateLimitArgs{...}
+type ModelServingRateLimitInput interface {
+	pulumi.Input
+
+	ToModelServingRateLimitOutput() ModelServingRateLimitOutput
+	ToModelServingRateLimitOutputWithContext(context.Context) ModelServingRateLimitOutput
+}
+
+type ModelServingRateLimitArgs struct {
+	// Used to specify how many calls are allowed for a key within the renewal_period.
+	Calls pulumi.IntInput `pulumi:"calls"`
+	// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+	RenewalPeriod pulumi.StringInput `pulumi:"renewalPeriod"`
+}
+
+func (ModelServingRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingRateLimit)(nil)).Elem()
+}
+
+func (i ModelServingRateLimitArgs) ToModelServingRateLimitOutput() ModelServingRateLimitOutput {
+	return i.ToModelServingRateLimitOutputWithContext(context.Background())
+}
+
+func (i ModelServingRateLimitArgs) ToModelServingRateLimitOutputWithContext(ctx context.Context) ModelServingRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingRateLimitOutput)
+}
+
+// ModelServingRateLimitArrayInput is an input type that accepts ModelServingRateLimitArray and ModelServingRateLimitArrayOutput values.
+// You can construct a concrete instance of `ModelServingRateLimitArrayInput` via:
+//
+//	ModelServingRateLimitArray{ ModelServingRateLimitArgs{...} }
+type ModelServingRateLimitArrayInput interface {
+	pulumi.Input
+
+	ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput
+	ToModelServingRateLimitArrayOutputWithContext(context.Context) ModelServingRateLimitArrayOutput
+}
+
+type ModelServingRateLimitArray []ModelServingRateLimitInput
+
+func (ModelServingRateLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingRateLimit)(nil)).Elem()
+}
+
+func (i ModelServingRateLimitArray) ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput {
+	return i.ToModelServingRateLimitArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingRateLimitArray) ToModelServingRateLimitArrayOutputWithContext(ctx context.Context) ModelServingRateLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingRateLimitArrayOutput)
+}
+
+type ModelServingRateLimitOutput struct{ *pulumi.OutputState }
+
+func (ModelServingRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingRateLimit)(nil)).Elem()
+}
+
+func (o ModelServingRateLimitOutput) ToModelServingRateLimitOutput() ModelServingRateLimitOutput {
+	return o
+}
+
+func (o ModelServingRateLimitOutput) ToModelServingRateLimitOutputWithContext(ctx context.Context) ModelServingRateLimitOutput {
+	return o
+}
+
+// Used to specify how many calls are allowed for a key within the renewal_period.
+func (o ModelServingRateLimitOutput) Calls() pulumi.IntOutput {
+	return o.ApplyT(func(v ModelServingRateLimit) int { return v.Calls }).(pulumi.IntOutput)
+}
+
+// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+func (o ModelServingRateLimitOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingRateLimit) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+func (o ModelServingRateLimitOutput) RenewalPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
+}
+
+type ModelServingRateLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingRateLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingRateLimit)(nil)).Elem()
+}
+
+func (o ModelServingRateLimitArrayOutput) ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput {
+	return o
+}
+
+func (o ModelServingRateLimitArrayOutput) ToModelServingRateLimitArrayOutputWithContext(ctx context.Context) ModelServingRateLimitArrayOutput {
+	return o
+}
+
+func (o ModelServingRateLimitArrayOutput) Index(i pulumi.IntInput) ModelServingRateLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingRateLimit {
+		return vs[0].([]ModelServingRateLimit)[vs[1].(int)]
+	}).(ModelServingRateLimitOutput)
+}
+
+type ModelServingTag struct {
+	// The key field for a tag.
+	Key string `pulumi:"key"`
+	// The value field for a tag.
+	Value *string `pulumi:"value"`
+}
+
+// ModelServingTagInput is an input type that accepts ModelServingTagArgs and ModelServingTagOutput values.
+// You can construct a concrete instance of `ModelServingTagInput` via:
+//
+//	ModelServingTagArgs{...}
+type ModelServingTagInput interface {
+	pulumi.Input
+
+	ToModelServingTagOutput() ModelServingTagOutput
+	ToModelServingTagOutputWithContext(context.Context) ModelServingTagOutput
+}
+
+type ModelServingTagArgs struct {
+	// The key field for a tag.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value field for a tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ModelServingTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTag)(nil)).Elem()
+}
+
+func (i ModelServingTagArgs) ToModelServingTagOutput() ModelServingTagOutput {
+	return i.ToModelServingTagOutputWithContext(context.Background())
+}
+
+func (i ModelServingTagArgs) ToModelServingTagOutputWithContext(ctx context.Context) ModelServingTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTagOutput)
+}
+
+// ModelServingTagArrayInput is an input type that accepts ModelServingTagArray and ModelServingTagArrayOutput values.
+// You can construct a concrete instance of `ModelServingTagArrayInput` via:
+//
+//	ModelServingTagArray{ ModelServingTagArgs{...} }
+type ModelServingTagArrayInput interface {
+	pulumi.Input
+
+	ToModelServingTagArrayOutput() ModelServingTagArrayOutput
+	ToModelServingTagArrayOutputWithContext(context.Context) ModelServingTagArrayOutput
+}
+
+type ModelServingTagArray []ModelServingTagInput
+
+func (ModelServingTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingTag)(nil)).Elem()
+}
+
+func (i ModelServingTagArray) ToModelServingTagArrayOutput() ModelServingTagArrayOutput {
+	return i.ToModelServingTagArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingTagArray) ToModelServingTagArrayOutputWithContext(ctx context.Context) ModelServingTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTagArrayOutput)
+}
+
+type ModelServingTagOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTag)(nil)).Elem()
+}
+
+func (o ModelServingTagOutput) ToModelServingTagOutput() ModelServingTagOutput {
+	return o
+}
+
+func (o ModelServingTagOutput) ToModelServingTagOutputWithContext(ctx context.Context) ModelServingTagOutput {
+	return o
+}
+
+// The key field for a tag.
+func (o ModelServingTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value field for a tag.
+func (o ModelServingTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ModelServingTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingTag)(nil)).Elem()
+}
+
+func (o ModelServingTagArrayOutput) ToModelServingTagArrayOutput() ModelServingTagArrayOutput {
+	return o
+}
+
+func (o ModelServingTagArrayOutput) ToModelServingTagArrayOutputWithContext(ctx context.Context) ModelServingTagArrayOutput {
+	return o
+}
+
+func (o ModelServingTagArrayOutput) Index(i pulumi.IntInput) ModelServingTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingTag {
+		return vs[0].([]ModelServingTag)[vs[1].(int)]
+	}).(ModelServingTagOutput)
+}
+
+type ModelServingTelemetryConfig struct {
+	EnabledTelemetryFeatures []string `pulumi:"enabledTelemetryFeatures"`
+	// Block describing the configuration of usage tracking. Consists of the following attributes:
+	InferenceTableConfig *ModelServingTelemetryConfigInferenceTableConfig `pulumi:"inferenceTableConfig"`
+	TableNames           *ModelServingTelemetryConfigTableNames           `pulumi:"tableNames"`
+	TelemetryProfileId   *string                                          `pulumi:"telemetryProfileId"`
+}
+
+// ModelServingTelemetryConfigInput is an input type that accepts ModelServingTelemetryConfigArgs and ModelServingTelemetryConfigOutput values.
+// You can construct a concrete instance of `ModelServingTelemetryConfigInput` via:
+//
+//	ModelServingTelemetryConfigArgs{...}
+type ModelServingTelemetryConfigInput interface {
+	pulumi.Input
+
+	ToModelServingTelemetryConfigOutput() ModelServingTelemetryConfigOutput
+	ToModelServingTelemetryConfigOutputWithContext(context.Context) ModelServingTelemetryConfigOutput
+}
+
+type ModelServingTelemetryConfigArgs struct {
+	EnabledTelemetryFeatures pulumi.StringArrayInput `pulumi:"enabledTelemetryFeatures"`
+	// Block describing the configuration of usage tracking. Consists of the following attributes:
+	InferenceTableConfig ModelServingTelemetryConfigInferenceTableConfigPtrInput `pulumi:"inferenceTableConfig"`
+	TableNames           ModelServingTelemetryConfigTableNamesPtrInput           `pulumi:"tableNames"`
+	TelemetryProfileId   pulumi.StringPtrInput                                   `pulumi:"telemetryProfileId"`
+}
+
+func (ModelServingTelemetryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTelemetryConfig)(nil)).Elem()
+}
+
+func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigOutput() ModelServingTelemetryConfigOutput {
+	return i.ToModelServingTelemetryConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigOutput)
+}
+
+func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
+	return i.ToModelServingTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigOutput).ToModelServingTelemetryConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingTelemetryConfigPtrInput is an input type that accepts ModelServingTelemetryConfigArgs, ModelServingTelemetryConfigPtr and ModelServingTelemetryConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingTelemetryConfigPtrInput` via:
+//
+//	        ModelServingTelemetryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingTelemetryConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput
+	ToModelServingTelemetryConfigPtrOutputWithContext(context.Context) ModelServingTelemetryConfigPtrOutput
+}
+
+type modelServingTelemetryConfigPtrType ModelServingTelemetryConfigArgs
+
+func ModelServingTelemetryConfigPtr(v *ModelServingTelemetryConfigArgs) ModelServingTelemetryConfigPtrInput {
+	return (*modelServingTelemetryConfigPtrType)(v)
+}
+
+func (*modelServingTelemetryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingTelemetryConfig)(nil)).Elem()
+}
+
+func (i *modelServingTelemetryConfigPtrType) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
+	return i.ToModelServingTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingTelemetryConfigPtrType) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigPtrOutput)
+}
+
+type ModelServingTelemetryConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTelemetryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTelemetryConfig)(nil)).Elem()
+}
+
+func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigOutput() ModelServingTelemetryConfigOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
+	return o.ToModelServingTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingTelemetryConfig) *ModelServingTelemetryConfig {
+		return &v
+	}).(ModelServingTelemetryConfigPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigOutput) EnabledTelemetryFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfig) []string { return v.EnabledTelemetryFeatures }).(pulumi.StringArrayOutput)
+}
+
+// Block describing the configuration of usage tracking. Consists of the following attributes:
+func (o ModelServingTelemetryConfigOutput) InferenceTableConfig() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfig) *ModelServingTelemetryConfigInferenceTableConfig {
+		return v.InferenceTableConfig
+	}).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigOutput) TableNames() ModelServingTelemetryConfigTableNamesPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfig) *ModelServingTelemetryConfigTableNames { return v.TableNames }).(ModelServingTelemetryConfigTableNamesPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigOutput) TelemetryProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfig) *string { return v.TelemetryProfileId }).(pulumi.StringPtrOutput)
+}
+
+type ModelServingTelemetryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTelemetryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingTelemetryConfig)(nil)).Elem()
+}
+
+func (o ModelServingTelemetryConfigPtrOutput) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigPtrOutput) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigPtrOutput) Elem() ModelServingTelemetryConfigOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfig) ModelServingTelemetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingTelemetryConfig
+		return ret
+	}).(ModelServingTelemetryConfigOutput)
+}
+
+func (o ModelServingTelemetryConfigPtrOutput) EnabledTelemetryFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledTelemetryFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+// Block describing the configuration of usage tracking. Consists of the following attributes:
+func (o ModelServingTelemetryConfigPtrOutput) InferenceTableConfig() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfig) *ModelServingTelemetryConfigInferenceTableConfig {
+		if v == nil {
+			return nil
+		}
+		return v.InferenceTableConfig
+	}).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigPtrOutput) TableNames() ModelServingTelemetryConfigTableNamesPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfig) *ModelServingTelemetryConfigTableNames {
+		if v == nil {
+			return nil
+		}
+		return v.TableNames
+	}).(ModelServingTelemetryConfigTableNamesPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigPtrOutput) TelemetryProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TelemetryProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingTelemetryConfigInferenceTableConfig struct {
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+	Name             *string  `pulumi:"name"`
+	SamplingFraction *float64 `pulumi:"samplingFraction"`
+}
+
+// ModelServingTelemetryConfigInferenceTableConfigInput is an input type that accepts ModelServingTelemetryConfigInferenceTableConfigArgs and ModelServingTelemetryConfigInferenceTableConfigOutput values.
+// You can construct a concrete instance of `ModelServingTelemetryConfigInferenceTableConfigInput` via:
+//
+//	ModelServingTelemetryConfigInferenceTableConfigArgs{...}
+type ModelServingTelemetryConfigInferenceTableConfigInput interface {
+	pulumi.Input
+
+	ToModelServingTelemetryConfigInferenceTableConfigOutput() ModelServingTelemetryConfigInferenceTableConfigOutput
+	ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(context.Context) ModelServingTelemetryConfigInferenceTableConfigOutput
+}
+
+type ModelServingTelemetryConfigInferenceTableConfigArgs struct {
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+	Name             pulumi.StringPtrInput  `pulumi:"name"`
+	SamplingFraction pulumi.Float64PtrInput `pulumi:"samplingFraction"`
+}
+
+func (ModelServingTelemetryConfigInferenceTableConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigOutput() ModelServingTelemetryConfigInferenceTableConfigOutput {
+	return i.ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigInferenceTableConfigOutput)
+}
+
+func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return i.ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigInferenceTableConfigOutput).ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingTelemetryConfigInferenceTableConfigPtrInput is an input type that accepts ModelServingTelemetryConfigInferenceTableConfigArgs, ModelServingTelemetryConfigInferenceTableConfigPtr and ModelServingTelemetryConfigInferenceTableConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingTelemetryConfigInferenceTableConfigPtrInput` via:
+//
+//	        ModelServingTelemetryConfigInferenceTableConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingTelemetryConfigInferenceTableConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput
+	ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput
+}
+
+type modelServingTelemetryConfigInferenceTableConfigPtrType ModelServingTelemetryConfigInferenceTableConfigArgs
+
+func ModelServingTelemetryConfigInferenceTableConfigPtr(v *ModelServingTelemetryConfigInferenceTableConfigArgs) ModelServingTelemetryConfigInferenceTableConfigPtrInput {
+	return (*modelServingTelemetryConfigInferenceTableConfigPtrType)(v)
+}
+
+func (*modelServingTelemetryConfigInferenceTableConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (i *modelServingTelemetryConfigInferenceTableConfigPtrType) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return i.ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingTelemetryConfigInferenceTableConfigPtrType) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
+}
+
+type ModelServingTelemetryConfigInferenceTableConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTelemetryConfigInferenceTableConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigOutput() ModelServingTelemetryConfigInferenceTableConfigOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return o.ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingTelemetryConfigInferenceTableConfig) *ModelServingTelemetryConfigInferenceTableConfig {
+		return &v
+	}).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
+}
+
+// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+func (o ModelServingTelemetryConfigInferenceTableConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfigInferenceTableConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigOutput) SamplingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfigInferenceTableConfig) *float64 { return v.SamplingFraction }).(pulumi.Float64PtrOutput)
+}
+
+type ModelServingTelemetryConfigInferenceTableConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTelemetryConfigInferenceTableConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) Elem() ModelServingTelemetryConfigInferenceTableConfigOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigInferenceTableConfig) ModelServingTelemetryConfigInferenceTableConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingTelemetryConfigInferenceTableConfig
+		return ret
+	}).(ModelServingTelemetryConfigInferenceTableConfigOutput)
+}
+
+// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigInferenceTableConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) SamplingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigInferenceTableConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ModelServingTelemetryConfigTableNames struct {
+	AnnotationsTable *string `pulumi:"annotationsTable"`
+	LogsTable        *string `pulumi:"logsTable"`
+	MetricsTable     *string `pulumi:"metricsTable"`
+	TracesTable      *string `pulumi:"tracesTable"`
+}
+
+// ModelServingTelemetryConfigTableNamesInput is an input type that accepts ModelServingTelemetryConfigTableNamesArgs and ModelServingTelemetryConfigTableNamesOutput values.
+// You can construct a concrete instance of `ModelServingTelemetryConfigTableNamesInput` via:
+//
+//	ModelServingTelemetryConfigTableNamesArgs{...}
+type ModelServingTelemetryConfigTableNamesInput interface {
+	pulumi.Input
+
+	ToModelServingTelemetryConfigTableNamesOutput() ModelServingTelemetryConfigTableNamesOutput
+	ToModelServingTelemetryConfigTableNamesOutputWithContext(context.Context) ModelServingTelemetryConfigTableNamesOutput
+}
+
+type ModelServingTelemetryConfigTableNamesArgs struct {
+	AnnotationsTable pulumi.StringPtrInput `pulumi:"annotationsTable"`
+	LogsTable        pulumi.StringPtrInput `pulumi:"logsTable"`
+	MetricsTable     pulumi.StringPtrInput `pulumi:"metricsTable"`
+	TracesTable      pulumi.StringPtrInput `pulumi:"tracesTable"`
+}
+
+func (ModelServingTelemetryConfigTableNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTelemetryConfigTableNames)(nil)).Elem()
+}
+
+func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesOutput() ModelServingTelemetryConfigTableNamesOutput {
+	return i.ToModelServingTelemetryConfigTableNamesOutputWithContext(context.Background())
+}
+
+func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigTableNamesOutput)
+}
+
+func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
+	return i.ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigTableNamesOutput).ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx)
+}
+
+// ModelServingTelemetryConfigTableNamesPtrInput is an input type that accepts ModelServingTelemetryConfigTableNamesArgs, ModelServingTelemetryConfigTableNamesPtr and ModelServingTelemetryConfigTableNamesPtrOutput values.
+// You can construct a concrete instance of `ModelServingTelemetryConfigTableNamesPtrInput` via:
+//
+//	        ModelServingTelemetryConfigTableNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingTelemetryConfigTableNamesPtrInput interface {
+	pulumi.Input
+
+	ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput
+	ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Context) ModelServingTelemetryConfigTableNamesPtrOutput
+}
+
+type modelServingTelemetryConfigTableNamesPtrType ModelServingTelemetryConfigTableNamesArgs
+
+func ModelServingTelemetryConfigTableNamesPtr(v *ModelServingTelemetryConfigTableNamesArgs) ModelServingTelemetryConfigTableNamesPtrInput {
+	return (*modelServingTelemetryConfigTableNamesPtrType)(v)
+}
+
+func (*modelServingTelemetryConfigTableNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingTelemetryConfigTableNames)(nil)).Elem()
+}
+
+func (i *modelServingTelemetryConfigTableNamesPtrType) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
+	return i.ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingTelemetryConfigTableNamesPtrType) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigTableNamesPtrOutput)
+}
+
+type ModelServingTelemetryConfigTableNamesOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTelemetryConfigTableNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTelemetryConfigTableNames)(nil)).Elem()
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesOutput() ModelServingTelemetryConfigTableNamesOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
+	return o.ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingTelemetryConfigTableNames) *ModelServingTelemetryConfigTableNames {
+		return &v
+	}).(ModelServingTelemetryConfigTableNamesPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) AnnotationsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.AnnotationsTable }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) LogsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.LogsTable }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) MetricsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.MetricsTable }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesOutput) TracesTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.TracesTable }).(pulumi.StringPtrOutput)
+}
+
+type ModelServingTelemetryConfigTableNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTelemetryConfigTableNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingTelemetryConfigTableNames)(nil)).Elem()
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
+	return o
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) Elem() ModelServingTelemetryConfigTableNamesOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) ModelServingTelemetryConfigTableNames {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingTelemetryConfigTableNames
+		return ret
+	}).(ModelServingTelemetryConfigTableNamesOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) AnnotationsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnnotationsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) LogsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) MetricsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingTelemetryConfigTableNamesPtrOutput) TracesTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TracesTable
+	}).(pulumi.StringPtrOutput)
+}
+
+type MountAbfs struct {
+	ClientId             string  `pulumi:"clientId"`
+	ClientSecretKey      string  `pulumi:"clientSecretKey"`
+	ClientSecretScope    string  `pulumi:"clientSecretScope"`
+	ContainerName        *string `pulumi:"containerName"`
+	Directory            *string `pulumi:"directory"`
+	InitializeFileSystem bool    `pulumi:"initializeFileSystem"`
+	StorageAccountName   *string `pulumi:"storageAccountName"`
+	TenantId             *string `pulumi:"tenantId"`
+}
+
+// MountAbfsInput is an input type that accepts MountAbfsArgs and MountAbfsOutput values.
+// You can construct a concrete instance of `MountAbfsInput` via:
+//
+//	MountAbfsArgs{...}
+type MountAbfsInput interface {
+	pulumi.Input
+
+	ToMountAbfsOutput() MountAbfsOutput
+	ToMountAbfsOutputWithContext(context.Context) MountAbfsOutput
+}
+
+type MountAbfsArgs struct {
+	ClientId             pulumi.StringInput    `pulumi:"clientId"`
+	ClientSecretKey      pulumi.StringInput    `pulumi:"clientSecretKey"`
+	ClientSecretScope    pulumi.StringInput    `pulumi:"clientSecretScope"`
+	ContainerName        pulumi.StringPtrInput `pulumi:"containerName"`
+	Directory            pulumi.StringPtrInput `pulumi:"directory"`
+	InitializeFileSystem pulumi.BoolInput      `pulumi:"initializeFileSystem"`
+	StorageAccountName   pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	TenantId             pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (MountAbfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountAbfs)(nil)).Elem()
+}
+
+func (i MountAbfsArgs) ToMountAbfsOutput() MountAbfsOutput {
+	return i.ToMountAbfsOutputWithContext(context.Background())
+}
+
+func (i MountAbfsArgs) ToMountAbfsOutputWithContext(ctx context.Context) MountAbfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountAbfsOutput)
+}
+
+func (i MountAbfsArgs) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
+	return i.ToMountAbfsPtrOutputWithContext(context.Background())
+}
+
+func (i MountAbfsArgs) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountAbfsOutput).ToMountAbfsPtrOutputWithContext(ctx)
+}
+
+// MountAbfsPtrInput is an input type that accepts MountAbfsArgs, MountAbfsPtr and MountAbfsPtrOutput values.
+// You can construct a concrete instance of `MountAbfsPtrInput` via:
+//
+//	        MountAbfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MountAbfsPtrInput interface {
+	pulumi.Input
+
+	ToMountAbfsPtrOutput() MountAbfsPtrOutput
+	ToMountAbfsPtrOutputWithContext(context.Context) MountAbfsPtrOutput
+}
+
+type mountAbfsPtrType MountAbfsArgs
+
+func MountAbfsPtr(v *MountAbfsArgs) MountAbfsPtrInput {
+	return (*mountAbfsPtrType)(v)
+}
+
+func (*mountAbfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountAbfs)(nil)).Elem()
+}
+
+func (i *mountAbfsPtrType) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
+	return i.ToMountAbfsPtrOutputWithContext(context.Background())
+}
+
+func (i *mountAbfsPtrType) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountAbfsPtrOutput)
+}
+
+type MountAbfsOutput struct{ *pulumi.OutputState }
+
+func (MountAbfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountAbfs)(nil)).Elem()
+}
+
+func (o MountAbfsOutput) ToMountAbfsOutput() MountAbfsOutput {
+	return o
+}
+
+func (o MountAbfsOutput) ToMountAbfsOutputWithContext(ctx context.Context) MountAbfsOutput {
+	return o
+}
+
+func (o MountAbfsOutput) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
+	return o.ToMountAbfsPtrOutputWithContext(context.Background())
+}
+
+func (o MountAbfsOutput) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountAbfs) *MountAbfs {
+		return &v
+	}).(MountAbfsPtrOutput)
+}
+
+func (o MountAbfsOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v MountAbfs) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o MountAbfsOutput) ClientSecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MountAbfs) string { return v.ClientSecretKey }).(pulumi.StringOutput)
+}
+
+func (o MountAbfsOutput) ClientSecretScope() pulumi.StringOutput {
+	return o.ApplyT(func(v MountAbfs) string { return v.ClientSecretScope }).(pulumi.StringOutput)
+}
+
+func (o MountAbfsOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAbfs) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAbfs) *string { return v.Directory }).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsOutput) InitializeFileSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v MountAbfs) bool { return v.InitializeFileSystem }).(pulumi.BoolOutput)
+}
+
+func (o MountAbfsOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAbfs) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAbfs) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type MountAbfsPtrOutput struct{ *pulumi.OutputState }
+
+func (MountAbfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountAbfs)(nil)).Elem()
+}
+
+func (o MountAbfsPtrOutput) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
+	return o
+}
+
+func (o MountAbfsPtrOutput) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
+	return o
+}
+
+func (o MountAbfsPtrOutput) Elem() MountAbfsOutput {
+	return o.ApplyT(func(v *MountAbfs) MountAbfs {
+		if v != nil {
+			return *v
+		}
+		var ret MountAbfs
+		return ret
+	}).(MountAbfsOutput)
+}
+
+func (o MountAbfsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) ClientSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) ClientSecretScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecretScope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Directory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) InitializeFileSystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.InitializeFileSystem
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAbfsPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MountAdl struct {
+	ClientId            string  `pulumi:"clientId"`
+	ClientSecretKey     string  `pulumi:"clientSecretKey"`
+	ClientSecretScope   string  `pulumi:"clientSecretScope"`
+	Directory           *string `pulumi:"directory"`
+	SparkConfPrefix     *string `pulumi:"sparkConfPrefix"`
+	StorageResourceName *string `pulumi:"storageResourceName"`
+	TenantId            *string `pulumi:"tenantId"`
+}
+
+// MountAdlInput is an input type that accepts MountAdlArgs and MountAdlOutput values.
+// You can construct a concrete instance of `MountAdlInput` via:
+//
+//	MountAdlArgs{...}
+type MountAdlInput interface {
+	pulumi.Input
+
+	ToMountAdlOutput() MountAdlOutput
+	ToMountAdlOutputWithContext(context.Context) MountAdlOutput
+}
+
+type MountAdlArgs struct {
+	ClientId            pulumi.StringInput    `pulumi:"clientId"`
+	ClientSecretKey     pulumi.StringInput    `pulumi:"clientSecretKey"`
+	ClientSecretScope   pulumi.StringInput    `pulumi:"clientSecretScope"`
+	Directory           pulumi.StringPtrInput `pulumi:"directory"`
+	SparkConfPrefix     pulumi.StringPtrInput `pulumi:"sparkConfPrefix"`
+	StorageResourceName pulumi.StringPtrInput `pulumi:"storageResourceName"`
+	TenantId            pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (MountAdlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountAdl)(nil)).Elem()
+}
+
+func (i MountAdlArgs) ToMountAdlOutput() MountAdlOutput {
+	return i.ToMountAdlOutputWithContext(context.Background())
+}
+
+func (i MountAdlArgs) ToMountAdlOutputWithContext(ctx context.Context) MountAdlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountAdlOutput)
+}
+
+func (i MountAdlArgs) ToMountAdlPtrOutput() MountAdlPtrOutput {
+	return i.ToMountAdlPtrOutputWithContext(context.Background())
+}
+
+func (i MountAdlArgs) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountAdlOutput).ToMountAdlPtrOutputWithContext(ctx)
+}
+
+// MountAdlPtrInput is an input type that accepts MountAdlArgs, MountAdlPtr and MountAdlPtrOutput values.
+// You can construct a concrete instance of `MountAdlPtrInput` via:
+//
+//	        MountAdlArgs{...}
+//
+//	or:
+//
+//	        nil
+type MountAdlPtrInput interface {
+	pulumi.Input
+
+	ToMountAdlPtrOutput() MountAdlPtrOutput
+	ToMountAdlPtrOutputWithContext(context.Context) MountAdlPtrOutput
+}
+
+type mountAdlPtrType MountAdlArgs
+
+func MountAdlPtr(v *MountAdlArgs) MountAdlPtrInput {
+	return (*mountAdlPtrType)(v)
+}
+
+func (*mountAdlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountAdl)(nil)).Elem()
+}
+
+func (i *mountAdlPtrType) ToMountAdlPtrOutput() MountAdlPtrOutput {
+	return i.ToMountAdlPtrOutputWithContext(context.Background())
+}
+
+func (i *mountAdlPtrType) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountAdlPtrOutput)
+}
+
+type MountAdlOutput struct{ *pulumi.OutputState }
+
+func (MountAdlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountAdl)(nil)).Elem()
+}
+
+func (o MountAdlOutput) ToMountAdlOutput() MountAdlOutput {
+	return o
+}
+
+func (o MountAdlOutput) ToMountAdlOutputWithContext(ctx context.Context) MountAdlOutput {
+	return o
+}
+
+func (o MountAdlOutput) ToMountAdlPtrOutput() MountAdlPtrOutput {
+	return o.ToMountAdlPtrOutputWithContext(context.Background())
+}
+
+func (o MountAdlOutput) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountAdl) *MountAdl {
+		return &v
+	}).(MountAdlPtrOutput)
+}
+
+func (o MountAdlOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v MountAdl) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o MountAdlOutput) ClientSecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MountAdl) string { return v.ClientSecretKey }).(pulumi.StringOutput)
+}
+
+func (o MountAdlOutput) ClientSecretScope() pulumi.StringOutput {
+	return o.ApplyT(func(v MountAdl) string { return v.ClientSecretScope }).(pulumi.StringOutput)
+}
+
+func (o MountAdlOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAdl) *string { return v.Directory }).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlOutput) SparkConfPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAdl) *string { return v.SparkConfPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlOutput) StorageResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAdl) *string { return v.StorageResourceName }).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountAdl) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type MountAdlPtrOutput struct{ *pulumi.OutputState }
+
+func (MountAdlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountAdl)(nil)).Elem()
+}
+
+func (o MountAdlPtrOutput) ToMountAdlPtrOutput() MountAdlPtrOutput {
+	return o
+}
+
+func (o MountAdlPtrOutput) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
+	return o
+}
+
+func (o MountAdlPtrOutput) Elem() MountAdlOutput {
+	return o.ApplyT(func(v *MountAdl) MountAdl {
+		if v != nil {
+			return *v
+		}
+		var ret MountAdl
+		return ret
+	}).(MountAdlOutput)
+}
+
+func (o MountAdlPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlPtrOutput) ClientSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlPtrOutput) ClientSecretScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecretScope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlPtrOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Directory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlPtrOutput) SparkConfPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkConfPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlPtrOutput) StorageResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountAdlPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountAdl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MountGs struct {
+	BucketName     string  `pulumi:"bucketName"`
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// MountGsInput is an input type that accepts MountGsArgs and MountGsOutput values.
+// You can construct a concrete instance of `MountGsInput` via:
+//
+//	MountGsArgs{...}
+type MountGsInput interface {
+	pulumi.Input
+
+	ToMountGsOutput() MountGsOutput
+	ToMountGsOutputWithContext(context.Context) MountGsOutput
+}
+
+type MountGsArgs struct {
+	BucketName     pulumi.StringInput    `pulumi:"bucketName"`
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (MountGsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountGs)(nil)).Elem()
+}
+
+func (i MountGsArgs) ToMountGsOutput() MountGsOutput {
+	return i.ToMountGsOutputWithContext(context.Background())
+}
+
+func (i MountGsArgs) ToMountGsOutputWithContext(ctx context.Context) MountGsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountGsOutput)
+}
+
+func (i MountGsArgs) ToMountGsPtrOutput() MountGsPtrOutput {
+	return i.ToMountGsPtrOutputWithContext(context.Background())
+}
+
+func (i MountGsArgs) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountGsOutput).ToMountGsPtrOutputWithContext(ctx)
+}
+
+// MountGsPtrInput is an input type that accepts MountGsArgs, MountGsPtr and MountGsPtrOutput values.
+// You can construct a concrete instance of `MountGsPtrInput` via:
+//
+//	        MountGsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MountGsPtrInput interface {
+	pulumi.Input
+
+	ToMountGsPtrOutput() MountGsPtrOutput
+	ToMountGsPtrOutputWithContext(context.Context) MountGsPtrOutput
+}
+
+type mountGsPtrType MountGsArgs
+
+func MountGsPtr(v *MountGsArgs) MountGsPtrInput {
+	return (*mountGsPtrType)(v)
+}
+
+func (*mountGsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountGs)(nil)).Elem()
+}
+
+func (i *mountGsPtrType) ToMountGsPtrOutput() MountGsPtrOutput {
+	return i.ToMountGsPtrOutputWithContext(context.Background())
+}
+
+func (i *mountGsPtrType) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountGsPtrOutput)
+}
+
+type MountGsOutput struct{ *pulumi.OutputState }
+
+func (MountGsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountGs)(nil)).Elem()
+}
+
+func (o MountGsOutput) ToMountGsOutput() MountGsOutput {
+	return o
+}
+
+func (o MountGsOutput) ToMountGsOutputWithContext(ctx context.Context) MountGsOutput {
+	return o
+}
+
+func (o MountGsOutput) ToMountGsPtrOutput() MountGsPtrOutput {
+	return o.ToMountGsPtrOutputWithContext(context.Background())
+}
+
+func (o MountGsOutput) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountGs) *MountGs {
+		return &v
+	}).(MountGsPtrOutput)
+}
+
+func (o MountGsOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v MountGs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+func (o MountGsOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountGs) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type MountGsPtrOutput struct{ *pulumi.OutputState }
+
+func (MountGsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountGs)(nil)).Elem()
+}
+
+func (o MountGsPtrOutput) ToMountGsPtrOutput() MountGsPtrOutput {
+	return o
+}
+
+func (o MountGsPtrOutput) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
+	return o
+}
+
+func (o MountGsPtrOutput) Elem() MountGsOutput {
+	return o.ApplyT(func(v *MountGs) MountGs {
+		if v != nil {
+			return *v
+		}
+		var ret MountGs
+		return ret
+	}).(MountGsOutput)
+}
+
+func (o MountGsPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountGs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountGsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountGs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type MountProviderConfig struct {
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// MountProviderConfigInput is an input type that accepts MountProviderConfigArgs and MountProviderConfigOutput values.
+// You can construct a concrete instance of `MountProviderConfigInput` via:
+//
+//	MountProviderConfigArgs{...}
+type MountProviderConfigInput interface {
+	pulumi.Input
+
+	ToMountProviderConfigOutput() MountProviderConfigOutput
+	ToMountProviderConfigOutputWithContext(context.Context) MountProviderConfigOutput
+}
+
+type MountProviderConfigArgs struct {
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (MountProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountProviderConfig)(nil)).Elem()
+}
+
+func (i MountProviderConfigArgs) ToMountProviderConfigOutput() MountProviderConfigOutput {
+	return i.ToMountProviderConfigOutputWithContext(context.Background())
+}
+
+func (i MountProviderConfigArgs) ToMountProviderConfigOutputWithContext(ctx context.Context) MountProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountProviderConfigOutput)
+}
+
+func (i MountProviderConfigArgs) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
+	return i.ToMountProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MountProviderConfigArgs) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountProviderConfigOutput).ToMountProviderConfigPtrOutputWithContext(ctx)
+}
+
+// MountProviderConfigPtrInput is an input type that accepts MountProviderConfigArgs, MountProviderConfigPtr and MountProviderConfigPtrOutput values.
+// You can construct a concrete instance of `MountProviderConfigPtrInput` via:
+//
+//	        MountProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MountProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput
+	ToMountProviderConfigPtrOutputWithContext(context.Context) MountProviderConfigPtrOutput
+}
+
+type mountProviderConfigPtrType MountProviderConfigArgs
+
+func MountProviderConfigPtr(v *MountProviderConfigArgs) MountProviderConfigPtrInput {
+	return (*mountProviderConfigPtrType)(v)
+}
+
+func (*mountProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountProviderConfig)(nil)).Elem()
+}
+
+func (i *mountProviderConfigPtrType) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
+	return i.ToMountProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mountProviderConfigPtrType) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountProviderConfigPtrOutput)
+}
+
+type MountProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (MountProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountProviderConfig)(nil)).Elem()
+}
+
+func (o MountProviderConfigOutput) ToMountProviderConfigOutput() MountProviderConfigOutput {
+	return o
+}
+
+func (o MountProviderConfigOutput) ToMountProviderConfigOutputWithContext(ctx context.Context) MountProviderConfigOutput {
+	return o
+}
+
+func (o MountProviderConfigOutput) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
+	return o.ToMountProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MountProviderConfigOutput) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountProviderConfig) *MountProviderConfig {
+		return &v
+	}).(MountProviderConfigPtrOutput)
+}
+
+func (o MountProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type MountProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MountProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountProviderConfig)(nil)).Elem()
+}
+
+func (o MountProviderConfigPtrOutput) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
+	return o
+}
+
+func (o MountProviderConfigPtrOutput) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
+	return o
+}
+
+func (o MountProviderConfigPtrOutput) Elem() MountProviderConfigOutput {
+	return o.ApplyT(func(v *MountProviderConfig) MountProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MountProviderConfig
+		return ret
+	}).(MountProviderConfigOutput)
+}
+
+func (o MountProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MountS3 struct {
+	BucketName      string  `pulumi:"bucketName"`
+	InstanceProfile *string `pulumi:"instanceProfile"`
+}
+
+// MountS3Input is an input type that accepts MountS3Args and MountS3Output values.
+// You can construct a concrete instance of `MountS3Input` via:
+//
+//	MountS3Args{...}
+type MountS3Input interface {
+	pulumi.Input
+
+	ToMountS3Output() MountS3Output
+	ToMountS3OutputWithContext(context.Context) MountS3Output
+}
+
+type MountS3Args struct {
+	BucketName      pulumi.StringInput    `pulumi:"bucketName"`
+	InstanceProfile pulumi.StringPtrInput `pulumi:"instanceProfile"`
+}
+
+func (MountS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountS3)(nil)).Elem()
+}
+
+func (i MountS3Args) ToMountS3Output() MountS3Output {
+	return i.ToMountS3OutputWithContext(context.Background())
+}
+
+func (i MountS3Args) ToMountS3OutputWithContext(ctx context.Context) MountS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(MountS3Output)
+}
+
+func (i MountS3Args) ToMountS3PtrOutput() MountS3PtrOutput {
+	return i.ToMountS3PtrOutputWithContext(context.Background())
+}
+
+func (i MountS3Args) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountS3Output).ToMountS3PtrOutputWithContext(ctx)
+}
+
+// MountS3PtrInput is an input type that accepts MountS3Args, MountS3Ptr and MountS3PtrOutput values.
+// You can construct a concrete instance of `MountS3PtrInput` via:
+//
+//	        MountS3Args{...}
+//
+//	or:
+//
+//	        nil
+type MountS3PtrInput interface {
+	pulumi.Input
+
+	ToMountS3PtrOutput() MountS3PtrOutput
+	ToMountS3PtrOutputWithContext(context.Context) MountS3PtrOutput
+}
+
+type mountS3PtrType MountS3Args
+
+func MountS3Ptr(v *MountS3Args) MountS3PtrInput {
+	return (*mountS3PtrType)(v)
+}
+
+func (*mountS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountS3)(nil)).Elem()
+}
+
+func (i *mountS3PtrType) ToMountS3PtrOutput() MountS3PtrOutput {
+	return i.ToMountS3PtrOutputWithContext(context.Background())
+}
+
+func (i *mountS3PtrType) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountS3PtrOutput)
+}
+
+type MountS3Output struct{ *pulumi.OutputState }
+
+func (MountS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountS3)(nil)).Elem()
+}
+
+func (o MountS3Output) ToMountS3Output() MountS3Output {
+	return o
+}
+
+func (o MountS3Output) ToMountS3OutputWithContext(ctx context.Context) MountS3Output {
+	return o
+}
+
+func (o MountS3Output) ToMountS3PtrOutput() MountS3PtrOutput {
+	return o.ToMountS3PtrOutputWithContext(context.Background())
+}
+
+func (o MountS3Output) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountS3) *MountS3 {
+		return &v
+	}).(MountS3PtrOutput)
+}
+
+func (o MountS3Output) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v MountS3) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+func (o MountS3Output) InstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountS3) *string { return v.InstanceProfile }).(pulumi.StringPtrOutput)
+}
+
+type MountS3PtrOutput struct{ *pulumi.OutputState }
+
+func (MountS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountS3)(nil)).Elem()
+}
+
+func (o MountS3PtrOutput) ToMountS3PtrOutput() MountS3PtrOutput {
+	return o
+}
+
+func (o MountS3PtrOutput) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
+	return o
+}
+
+func (o MountS3PtrOutput) Elem() MountS3Output {
+	return o.ApplyT(func(v *MountS3) MountS3 {
+		if v != nil {
+			return *v
+		}
+		var ret MountS3
+		return ret
+	}).(MountS3Output)
+}
+
+func (o MountS3PtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountS3PtrOutput) InstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+type MountWasb struct {
+	AuthType           string  `pulumi:"authType"`
+	ContainerName      *string `pulumi:"containerName"`
+	Directory          *string `pulumi:"directory"`
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	TokenSecretKey     string  `pulumi:"tokenSecretKey"`
+	TokenSecretScope   string  `pulumi:"tokenSecretScope"`
+}
+
+// MountWasbInput is an input type that accepts MountWasbArgs and MountWasbOutput values.
+// You can construct a concrete instance of `MountWasbInput` via:
+//
+//	MountWasbArgs{...}
+type MountWasbInput interface {
+	pulumi.Input
+
+	ToMountWasbOutput() MountWasbOutput
+	ToMountWasbOutputWithContext(context.Context) MountWasbOutput
+}
+
+type MountWasbArgs struct {
+	AuthType           pulumi.StringInput    `pulumi:"authType"`
+	ContainerName      pulumi.StringPtrInput `pulumi:"containerName"`
+	Directory          pulumi.StringPtrInput `pulumi:"directory"`
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	TokenSecretKey     pulumi.StringInput    `pulumi:"tokenSecretKey"`
+	TokenSecretScope   pulumi.StringInput    `pulumi:"tokenSecretScope"`
+}
+
+func (MountWasbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountWasb)(nil)).Elem()
+}
+
+func (i MountWasbArgs) ToMountWasbOutput() MountWasbOutput {
+	return i.ToMountWasbOutputWithContext(context.Background())
+}
+
+func (i MountWasbArgs) ToMountWasbOutputWithContext(ctx context.Context) MountWasbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountWasbOutput)
+}
+
+func (i MountWasbArgs) ToMountWasbPtrOutput() MountWasbPtrOutput {
+	return i.ToMountWasbPtrOutputWithContext(context.Background())
+}
+
+func (i MountWasbArgs) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountWasbOutput).ToMountWasbPtrOutputWithContext(ctx)
+}
+
+// MountWasbPtrInput is an input type that accepts MountWasbArgs, MountWasbPtr and MountWasbPtrOutput values.
+// You can construct a concrete instance of `MountWasbPtrInput` via:
+//
+//	        MountWasbArgs{...}
+//
+//	or:
+//
+//	        nil
+type MountWasbPtrInput interface {
+	pulumi.Input
+
+	ToMountWasbPtrOutput() MountWasbPtrOutput
+	ToMountWasbPtrOutputWithContext(context.Context) MountWasbPtrOutput
+}
+
+type mountWasbPtrType MountWasbArgs
+
+func MountWasbPtr(v *MountWasbArgs) MountWasbPtrInput {
+	return (*mountWasbPtrType)(v)
+}
+
+func (*mountWasbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountWasb)(nil)).Elem()
+}
+
+func (i *mountWasbPtrType) ToMountWasbPtrOutput() MountWasbPtrOutput {
+	return i.ToMountWasbPtrOutputWithContext(context.Background())
+}
+
+func (i *mountWasbPtrType) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountWasbPtrOutput)
+}
+
+type MountWasbOutput struct{ *pulumi.OutputState }
+
+func (MountWasbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountWasb)(nil)).Elem()
+}
+
+func (o MountWasbOutput) ToMountWasbOutput() MountWasbOutput {
+	return o
+}
+
+func (o MountWasbOutput) ToMountWasbOutputWithContext(ctx context.Context) MountWasbOutput {
+	return o
+}
+
+func (o MountWasbOutput) ToMountWasbPtrOutput() MountWasbPtrOutput {
+	return o.ToMountWasbPtrOutputWithContext(context.Background())
+}
+
+func (o MountWasbOutput) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountWasb) *MountWasb {
+		return &v
+	}).(MountWasbPtrOutput)
+}
+
+func (o MountWasbOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v MountWasb) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+func (o MountWasbOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountWasb) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountWasb) *string { return v.Directory }).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MountWasb) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbOutput) TokenSecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MountWasb) string { return v.TokenSecretKey }).(pulumi.StringOutput)
+}
+
+func (o MountWasbOutput) TokenSecretScope() pulumi.StringOutput {
+	return o.ApplyT(func(v MountWasb) string { return v.TokenSecretScope }).(pulumi.StringOutput)
+}
+
+type MountWasbPtrOutput struct{ *pulumi.OutputState }
+
+func (MountWasbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountWasb)(nil)).Elem()
+}
+
+func (o MountWasbPtrOutput) ToMountWasbPtrOutput() MountWasbPtrOutput {
+	return o
+}
+
+func (o MountWasbPtrOutput) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
+	return o
+}
+
+func (o MountWasbPtrOutput) Elem() MountWasbOutput {
+	return o.ApplyT(func(v *MountWasb) MountWasb {
+		if v != nil {
+			return *v
+		}
+		var ret MountWasb
+		return ret
+	}).(MountWasbOutput)
+}
+
+func (o MountWasbPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountWasb) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountWasb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbPtrOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountWasb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Directory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountWasb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbPtrOutput) TokenSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountWasb) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenSecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MountWasbPtrOutput) TokenSecretScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountWasb) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenSecretScope
+	}).(pulumi.StringPtrOutput)
+}
+
+type MwsCustomerManagedKeysAwsKeyInfo struct {
+	// The AWS KMS key alias.
+	KeyAlias *string `pulumi:"keyAlias"`
+	// The AWS KMS key's Amazon Resource Name (ARN).
+	KeyArn string `pulumi:"keyArn"`
+	// (Computed) The AWS region in which KMS key is deployed to. This is not required.
+	KeyRegion *string `pulumi:"keyRegion"`
+}
+
+// MwsCustomerManagedKeysAwsKeyInfoInput is an input type that accepts MwsCustomerManagedKeysAwsKeyInfoArgs and MwsCustomerManagedKeysAwsKeyInfoOutput values.
+// You can construct a concrete instance of `MwsCustomerManagedKeysAwsKeyInfoInput` via:
+//
+//	MwsCustomerManagedKeysAwsKeyInfoArgs{...}
+type MwsCustomerManagedKeysAwsKeyInfoInput interface {
+	pulumi.Input
+
+	ToMwsCustomerManagedKeysAwsKeyInfoOutput() MwsCustomerManagedKeysAwsKeyInfoOutput
+	ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(context.Context) MwsCustomerManagedKeysAwsKeyInfoOutput
+}
+
+type MwsCustomerManagedKeysAwsKeyInfoArgs struct {
+	// The AWS KMS key alias.
+	KeyAlias pulumi.StringPtrInput `pulumi:"keyAlias"`
+	// The AWS KMS key's Amazon Resource Name (ARN).
+	KeyArn pulumi.StringInput `pulumi:"keyArn"`
+	// (Computed) The AWS region in which KMS key is deployed to. This is not required.
+	KeyRegion pulumi.StringPtrInput `pulumi:"keyRegion"`
+}
+
+func (MwsCustomerManagedKeysAwsKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
+}
+
+func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoOutput() MwsCustomerManagedKeysAwsKeyInfoOutput {
+	return i.ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(context.Background())
+}
+
+func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysAwsKeyInfoOutput)
+}
+
+func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return i.ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysAwsKeyInfoOutput).ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx)
+}
+
+// MwsCustomerManagedKeysAwsKeyInfoPtrInput is an input type that accepts MwsCustomerManagedKeysAwsKeyInfoArgs, MwsCustomerManagedKeysAwsKeyInfoPtr and MwsCustomerManagedKeysAwsKeyInfoPtrOutput values.
+// You can construct a concrete instance of `MwsCustomerManagedKeysAwsKeyInfoPtrInput` via:
+//
+//	        MwsCustomerManagedKeysAwsKeyInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsCustomerManagedKeysAwsKeyInfoPtrInput interface {
+	pulumi.Input
+
+	ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput
+	ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput
+}
+
+type mwsCustomerManagedKeysAwsKeyInfoPtrType MwsCustomerManagedKeysAwsKeyInfoArgs
+
+func MwsCustomerManagedKeysAwsKeyInfoPtr(v *MwsCustomerManagedKeysAwsKeyInfoArgs) MwsCustomerManagedKeysAwsKeyInfoPtrInput {
+	return (*mwsCustomerManagedKeysAwsKeyInfoPtrType)(v)
+}
+
+func (*mwsCustomerManagedKeysAwsKeyInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
+}
+
+func (i *mwsCustomerManagedKeysAwsKeyInfoPtrType) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return i.ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsCustomerManagedKeysAwsKeyInfoPtrType) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysAwsKeyInfoPtrOutput)
+}
+
+type MwsCustomerManagedKeysAwsKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (MwsCustomerManagedKeysAwsKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoOutput() MwsCustomerManagedKeysAwsKeyInfoOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return o.ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsCustomerManagedKeysAwsKeyInfo) *MwsCustomerManagedKeysAwsKeyInfo {
+		return &v
+	}).(MwsCustomerManagedKeysAwsKeyInfoPtrOutput)
+}
+
+// The AWS KMS key alias.
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) *string { return v.KeyAlias }).(pulumi.StringPtrOutput)
+}
+
+// The AWS KMS key's Amazon Resource Name (ARN).
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) string { return v.KeyArn }).(pulumi.StringOutput)
+}
+
+// (Computed) The AWS region in which KMS key is deployed to. This is not required.
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) *string { return v.KeyRegion }).(pulumi.StringPtrOutput)
+}
+
+type MwsCustomerManagedKeysAwsKeyInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsCustomerManagedKeysAwsKeyInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) Elem() MwsCustomerManagedKeysAwsKeyInfoOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) MwsCustomerManagedKeysAwsKeyInfo {
+		if v != nil {
+			return *v
+		}
+		var ret MwsCustomerManagedKeysAwsKeyInfo
+		return ret
+	}).(MwsCustomerManagedKeysAwsKeyInfoOutput)
+}
+
+// The AWS KMS key alias.
+func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS KMS key's Amazon Resource Name (ARN).
+func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The AWS region in which KMS key is deployed to. This is not required.
+func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+type MwsCustomerManagedKeysGcpKeyInfo struct {
+	// The GCP KMS key's resource name.
+	KmsKeyId string `pulumi:"kmsKeyId"`
+}
+
+// MwsCustomerManagedKeysGcpKeyInfoInput is an input type that accepts MwsCustomerManagedKeysGcpKeyInfoArgs and MwsCustomerManagedKeysGcpKeyInfoOutput values.
+// You can construct a concrete instance of `MwsCustomerManagedKeysGcpKeyInfoInput` via:
+//
+//	MwsCustomerManagedKeysGcpKeyInfoArgs{...}
+type MwsCustomerManagedKeysGcpKeyInfoInput interface {
+	pulumi.Input
+
+	ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput
+	ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput
+}
+
+type MwsCustomerManagedKeysGcpKeyInfoArgs struct {
+	// The GCP KMS key's resource name.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+}
+
+func (MwsCustomerManagedKeysGcpKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return i.ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(context.Background())
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoOutput)
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return i.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoOutput).ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx)
+}
+
+// MwsCustomerManagedKeysGcpKeyInfoPtrInput is an input type that accepts MwsCustomerManagedKeysGcpKeyInfoArgs, MwsCustomerManagedKeysGcpKeyInfoPtr and MwsCustomerManagedKeysGcpKeyInfoPtrOutput values.
+// You can construct a concrete instance of `MwsCustomerManagedKeysGcpKeyInfoPtrInput` via:
+//
+//	        MwsCustomerManagedKeysGcpKeyInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsCustomerManagedKeysGcpKeyInfoPtrInput interface {
+	pulumi.Input
+
+	ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput
+	ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput
+}
+
+type mwsCustomerManagedKeysGcpKeyInfoPtrType MwsCustomerManagedKeysGcpKeyInfoArgs
+
+func MwsCustomerManagedKeysGcpKeyInfoPtr(v *MwsCustomerManagedKeysGcpKeyInfoArgs) MwsCustomerManagedKeysGcpKeyInfoPtrInput {
+	return (*mwsCustomerManagedKeysGcpKeyInfoPtrType)(v)
+}
+
+func (*mwsCustomerManagedKeysGcpKeyInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (i *mwsCustomerManagedKeysGcpKeyInfoPtrType) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return i.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsCustomerManagedKeysGcpKeyInfoPtrType) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
+}
+
+type MwsCustomerManagedKeysGcpKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (MwsCustomerManagedKeysGcpKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsCustomerManagedKeysGcpKeyInfo) *MwsCustomerManagedKeysGcpKeyInfo {
+		return &v
+	}).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
+}
+
+// The GCP KMS key's resource name.
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v MwsCustomerManagedKeysGcpKeyInfo) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+type MwsCustomerManagedKeysGcpKeyInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) Elem() MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) MwsCustomerManagedKeysGcpKeyInfo {
+		if v != nil {
+			return *v
+		}
+		var ret MwsCustomerManagedKeysGcpKeyInfo
+		return ret
+	}).(MwsCustomerManagedKeysGcpKeyInfoOutput)
+}
+
+// The GCP KMS key's resource name.
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpoint struct {
+	AllVpcScServices   *bool                                                   `pulumi:"allVpcScServices"`
+	GoogleApiEndpoints *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints `pulumi:"googleApiEndpoints"`
+	PscEndpointUri     *string                                                 `pulumi:"pscEndpointUri"`
+	ServiceAttachment  *string                                                 `pulumi:"serviceAttachment"`
+}
+
+// MwsNccPrivateEndpointRuleGcpEndpointInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointArgs and MwsNccPrivateEndpointRuleGcpEndpointOutput values.
+// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointInput` via:
+//
+//	MwsNccPrivateEndpointRuleGcpEndpointArgs{...}
+type MwsNccPrivateEndpointRuleGcpEndpointInput interface {
+	pulumi.Input
+
+	ToMwsNccPrivateEndpointRuleGcpEndpointOutput() MwsNccPrivateEndpointRuleGcpEndpointOutput
+	ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointOutput
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointArgs struct {
+	AllVpcScServices   pulumi.BoolPtrInput                                            `pulumi:"allVpcScServices"`
+	GoogleApiEndpoints MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput `pulumi:"googleApiEndpoints"`
+	PscEndpointUri     pulumi.StringPtrInput                                          `pulumi:"pscEndpointUri"`
+	ServiceAttachment  pulumi.StringPtrInput                                          `pulumi:"serviceAttachment"`
+}
+
+func (MwsNccPrivateEndpointRuleGcpEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointOutput() MwsNccPrivateEndpointRuleGcpEndpointOutput {
+	return i.ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(context.Background())
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointOutput)
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return i.ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointOutput).ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx)
+}
+
+// MwsNccPrivateEndpointRuleGcpEndpointPtrInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointArgs, MwsNccPrivateEndpointRuleGcpEndpointPtr and MwsNccPrivateEndpointRuleGcpEndpointPtrOutput values.
+// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointPtrInput` via:
+//
+//	        MwsNccPrivateEndpointRuleGcpEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNccPrivateEndpointRuleGcpEndpointPtrInput interface {
+	pulumi.Input
+
+	ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput
+	ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput
+}
+
+type mwsNccPrivateEndpointRuleGcpEndpointPtrType MwsNccPrivateEndpointRuleGcpEndpointArgs
+
+func MwsNccPrivateEndpointRuleGcpEndpointPtr(v *MwsNccPrivateEndpointRuleGcpEndpointArgs) MwsNccPrivateEndpointRuleGcpEndpointPtrInput {
+	return (*mwsNccPrivateEndpointRuleGcpEndpointPtrType)(v)
+}
+
+func (*mwsNccPrivateEndpointRuleGcpEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
+}
+
+func (i *mwsNccPrivateEndpointRuleGcpEndpointPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return i.ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNccPrivateEndpointRuleGcpEndpointPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput)
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointOutput struct{ *pulumi.OutputState }
+
+func (MwsNccPrivateEndpointRuleGcpEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointOutput() MwsNccPrivateEndpointRuleGcpEndpointOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return o.ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNccPrivateEndpointRuleGcpEndpoint) *MwsNccPrivateEndpointRuleGcpEndpoint {
+		return &v
+	}).(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) AllVpcScServices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *bool { return v.AllVpcScServices }).(pulumi.BoolPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) GoogleApiEndpoints() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
+		return v.GoogleApiEndpoints
+	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) PscEndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *string { return v.PscEndpointUri }).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) Elem() MwsNccPrivateEndpointRuleGcpEndpointOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) MwsNccPrivateEndpointRuleGcpEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNccPrivateEndpointRuleGcpEndpoint
+		return ret
+	}).(MwsNccPrivateEndpointRuleGcpEndpointOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) AllVpcScServices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllVpcScServices
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) GoogleApiEndpoints() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleApiEndpoints
+	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) PscEndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscEndpointUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints struct {
+	Endpoints []string `pulumi:"endpoints"`
+}
+
+// MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs and MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput values.
+// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput` via:
+//
+//	MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{...}
+type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput interface {
+	pulumi.Input
+
+	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput
+	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs struct {
+	Endpoints pulumi.StringArrayInput `pulumi:"endpoints"`
+}
+
+func (MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
+	return i.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(context.Background())
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput)
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return i.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput).ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx)
+}
+
+// MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs, MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtr and MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput values.
+// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput` via:
+//
+//	        MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput
+	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput
+}
+
+type mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs
+
+func MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtr(v *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput {
+	return (*mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType)(v)
+}
+
+func (*mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
+}
+
+func (i *mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return i.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput struct{ *pulumi.OutputState }
+
+func (MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return o.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
+		return &v
+	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) Endpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) []string { return v.Endpoints }).(pulumi.StringArrayOutput)
+}
+
+type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
+	return o
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) Elem() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints
+		return ret
+	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) Endpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoints
+	}).(pulumi.StringArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfig struct {
+	// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+	DefaultRules *MwsNetworkConnectivityConfigEgressConfigDefaultRules `pulumi:"defaultRules"`
+	// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+	TargetRules *MwsNetworkConnectivityConfigEgressConfigTargetRules `pulumi:"targetRules"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigArgs and MwsNetworkConnectivityConfigEgressConfigOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigOutput() MwsNetworkConnectivityConfigEgressConfigOutput
+	ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigArgs struct {
+	// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+	DefaultRules MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput `pulumi:"defaultRules"`
+	// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+	TargetRules MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput `pulumi:"targetRules"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigOutput() MwsNetworkConnectivityConfigEgressConfigOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigOutput)
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigOutput).ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigArgs, MwsNetworkConnectivityConfigEgressConfigPtr and MwsNetworkConnectivityConfigEgressConfigPtrOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigPtrInput` via:
+//
+//	        MwsNetworkConnectivityConfigEgressConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNetworkConnectivityConfigEgressConfigPtrInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput
+	ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput
+}
+
+type mwsNetworkConnectivityConfigEgressConfigPtrType MwsNetworkConnectivityConfigEgressConfigArgs
+
+func MwsNetworkConnectivityConfigEgressConfigPtr(v *MwsNetworkConnectivityConfigEgressConfigArgs) MwsNetworkConnectivityConfigEgressConfigPtrInput {
+	return (*mwsNetworkConnectivityConfigEgressConfigPtrType)(v)
+}
+
+func (*mwsNetworkConnectivityConfigEgressConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigPtrType) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigPtrType) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigOutput() MwsNetworkConnectivityConfigEgressConfigOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return o.ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfig {
+		return &v
+	}).(MwsNetworkConnectivityConfigEgressConfigPtrOutput)
+}
+
+// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigOutput) DefaultRules() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+		return v.DefaultRules
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
+}
+
+// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigOutput) TargetRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
+		return v.TargetRules
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfig) MwsNetworkConnectivityConfigEgressConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNetworkConnectivityConfigEgressConfig
+		return ret
+	}).(MwsNetworkConnectivityConfigEgressConfigOutput)
+}
+
+// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) DefaultRules() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRules
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
+}
+
+// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) TargetRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
+		if v == nil {
+			return nil
+		}
+		return v.TargetRules
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRules struct {
+	// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+	AwsStableIpRule *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule `pulumi:"awsStableIpRule"`
+	// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
+	AzureServiceEndpointRule *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule `pulumi:"azureServiceEndpointRule"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs and MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs struct {
+	// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+	AwsStableIpRule MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput `pulumi:"awsStableIpRule"`
+	// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
+	AzureServiceEndpointRule MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput `pulumi:"azureServiceEndpointRule"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput)
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput).ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs, MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtr and MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput` via:
+//
+//	        MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput
+}
+
+type mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs
+
+func MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtr(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput {
+	return (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType)(v)
+}
+
+func (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return o.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Background())
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+		return &v
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
+}
+
+// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) AwsStableIpRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+		return v.AwsStableIpRule
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
+}
+
+// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) AzureServiceEndpointRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+		return v.AzureServiceEndpointRule
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRules) MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNetworkConnectivityConfigEgressConfigDefaultRules
+		return ret
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput)
+}
+
+// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AwsStableIpRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+		if v == nil {
+			return nil
+		}
+		return v.AwsStableIpRule
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
+}
+
+// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AzureServiceEndpointRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+		if v == nil {
+			return nil
+		}
+		return v.AzureServiceEndpointRule
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule struct {
+	// list of IP CIDR blocks.
+	CidrBlocks []string `pulumi:"cidrBlocks"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs struct {
+	// list of IP CIDR blocks.
+	CidrBlocks pulumi.StringArrayInput `pulumi:"cidrBlocks"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput)
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput).ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs, MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtr and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput` via:
+//
+//	        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput
+}
+
+type mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs
+
+func MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtr(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput {
+	return (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType)(v)
+}
+
+func (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return o.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Background())
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+		return &v
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
+}
+
+// list of IP CIDR blocks.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) []string {
+		return v.CidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule
+		return ret
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput)
+}
+
+// list of IP CIDR blocks.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule struct {
+	// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+	Subnets []string `pulumi:"subnets"`
+	// the Azure region in which this service endpoint rule applies.
+	TargetRegion *string `pulumi:"targetRegion"`
+	// the Azure services to which this service endpoint rule applies to.
+	TargetServices []string `pulumi:"targetServices"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs struct {
+	// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+	// the Azure region in which this service endpoint rule applies.
+	TargetRegion pulumi.StringPtrInput `pulumi:"targetRegion"`
+	// the Azure services to which this service endpoint rule applies to.
+	TargetServices pulumi.StringArrayInput `pulumi:"targetServices"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput)
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput).ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs, MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtr and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput` via:
+//
+//	        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput
+	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput
+}
+
+type mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs
+
+func MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtr(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput {
+	return (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType)(v)
+}
+
+func (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return o.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Background())
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+		return &v
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
+}
+
+// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
+		return v.Subnets
+	}).(pulumi.StringArrayOutput)
+}
+
+// the Azure region in which this service endpoint rule applies.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) TargetRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *string {
+		return v.TargetRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// the Azure services to which this service endpoint rule applies to.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) TargetServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
+		return v.TargetServices
+	}).(pulumi.StringArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule
+		return ret
+	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput)
+}
+
+// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(pulumi.StringArrayOutput)
+}
+
+// the Azure region in which this service endpoint rule applies.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) TargetRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// the Azure services to which this service endpoint rule applies to.
+func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) TargetServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetServices
+	}).(pulumi.StringArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRules struct {
+	// (AWS only) - list containing information about configure AWS Private Endpoints.
+	AwsPrivateEndpointRules []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule `pulumi:"awsPrivateEndpointRules"`
+	// (Azure only) - list containing information about configure Azure Private Endpoints.
+	AzurePrivateEndpointRules []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule `pulumi:"azurePrivateEndpointRules"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigTargetRulesInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs struct {
+	// (AWS only) - list containing information about configure AWS Private Endpoints.
+	AwsPrivateEndpointRules MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput `pulumi:"awsPrivateEndpointRules"`
+	// (Azure only) - list containing information about configure Azure Private Endpoints.
+	AzurePrivateEndpointRules MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput `pulumi:"azurePrivateEndpointRules"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput).ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs, MwsNetworkConnectivityConfigEgressConfigTargetRulesPtr and MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput` via:
+//
+//	        MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput
+}
+
+type mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs
+
+func MwsNetworkConnectivityConfigEgressConfigTargetRulesPtr(v *MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput {
+	return (*mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType)(v)
+}
+
+func (*mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return o.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigTargetRules) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
+		return &v
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
+}
+
+// (AWS only) - list containing information about configure AWS Private Endpoints.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AwsPrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+		return v.AwsPrivateEndpointRules
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
+}
+
+// (Azure only) - list containing information about configure Azure Private Endpoints.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AzurePrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+		return v.AzurePrivateEndpointRules
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) MwsNetworkConnectivityConfigEgressConfigTargetRules {
+		if v != nil {
+			return *v
+		}
+		var ret MwsNetworkConnectivityConfigEgressConfigTargetRules
+		return ret
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
+}
+
+// (AWS only) - list containing information about configure AWS Private Endpoints.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AwsPrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+		if v == nil {
+			return nil
+		}
+		return v.AwsPrivateEndpointRules
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
+}
+
+// (Azure only) - list containing information about configure Azure Private Endpoints.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AzurePrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+		if v == nil {
+			return nil
+		}
+		return v.AzurePrivateEndpointRules
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule struct {
+	AccountId       *string `pulumi:"accountId"`
+	ConnectionState *string `pulumi:"connectionState"`
+	// time in epoch milliseconds when this object was created.
+	CreationTime    *int     `pulumi:"creationTime"`
+	Deactivated     *bool    `pulumi:"deactivated"`
+	DeactivatedAt   *int     `pulumi:"deactivatedAt"`
+	DomainNames     []string `pulumi:"domainNames"`
+	Enabled         *bool    `pulumi:"enabled"`
+	EndpointService *string  `pulumi:"endpointService"`
+	ErrorMessage    *string  `pulumi:"errorMessage"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId *string  `pulumi:"networkConnectivityConfigId"`
+	ResourceNames               []string `pulumi:"resourceNames"`
+	RuleId                      *string  `pulumi:"ruleId"`
+	// time in epoch milliseconds when this object was updated.
+	UpdatedTime   *int    `pulumi:"updatedTime"`
+	VpcEndpointId *string `pulumi:"vpcEndpointId"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs struct {
+	AccountId       pulumi.StringPtrInput `pulumi:"accountId"`
+	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
+	// time in epoch milliseconds when this object was created.
+	CreationTime    pulumi.IntPtrInput      `pulumi:"creationTime"`
+	Deactivated     pulumi.BoolPtrInput     `pulumi:"deactivated"`
+	DeactivatedAt   pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
+	DomainNames     pulumi.StringArrayInput `pulumi:"domainNames"`
+	Enabled         pulumi.BoolPtrInput     `pulumi:"enabled"`
+	EndpointService pulumi.StringPtrInput   `pulumi:"endpointService"`
+	ErrorMessage    pulumi.StringPtrInput   `pulumi:"errorMessage"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId pulumi.StringPtrInput   `pulumi:"networkConnectivityConfigId"`
+	ResourceNames               pulumi.StringArrayInput `pulumi:"resourceNames"`
+	RuleId                      pulumi.StringPtrInput   `pulumi:"ruleId"`
+	// time in epoch milliseconds when this object was updated.
+	UpdatedTime   pulumi.IntPtrInput    `pulumi:"updatedTime"`
+	VpcEndpointId pulumi.StringPtrInput `pulumi:"vpcEndpointId"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray and MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray{ MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{...} }
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.ConnectionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// time in epoch milliseconds when this object was created.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
+		return v.CreationTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *bool {
+		return v.Deactivated
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
+		return v.DeactivatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) []string {
+		return v.DomainNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) EndpointService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.EndpointService
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.ErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Canonical unique identifier of Network Connectivity Config in Databricks Account
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.NetworkConnectivityConfigId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) []string {
+		return v.ResourceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.RuleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// time in epoch milliseconds when this object was updated.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
+		return v.UpdatedTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) VpcEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
+		return v.VpcEndpointId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) Index(i pulumi.IntInput) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+		return vs[0].([]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)[vs[1].(int)]
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule struct {
+	ConnectionState *string `pulumi:"connectionState"`
+	// time in epoch milliseconds when this object was created.
+	CreationTime  *int     `pulumi:"creationTime"`
+	Deactivated   *bool    `pulumi:"deactivated"`
+	DeactivatedAt *int     `pulumi:"deactivatedAt"`
+	DomainNames   []string `pulumi:"domainNames"`
+	EndpointName  *string  `pulumi:"endpointName"`
+	ErrorMessage  *string  `pulumi:"errorMessage"`
+	GroupId       *string  `pulumi:"groupId"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
+	ResourceId                  *string `pulumi:"resourceId"`
+	RuleId                      *string `pulumi:"ruleId"`
+	// time in epoch milliseconds when this object was updated.
+	UpdatedTime *int `pulumi:"updatedTime"`
+}
+
+// MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{...}
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs struct {
+	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
+	// time in epoch milliseconds when this object was created.
+	CreationTime  pulumi.IntPtrInput      `pulumi:"creationTime"`
+	Deactivated   pulumi.BoolPtrInput     `pulumi:"deactivated"`
+	DeactivatedAt pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
+	DomainNames   pulumi.StringArrayInput `pulumi:"domainNames"`
+	EndpointName  pulumi.StringPtrInput   `pulumi:"endpointName"`
+	ErrorMessage  pulumi.StringPtrInput   `pulumi:"errorMessage"`
+	GroupId       pulumi.StringPtrInput   `pulumi:"groupId"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId pulumi.StringPtrInput `pulumi:"networkConnectivityConfigId"`
+	ResourceId                  pulumi.StringPtrInput `pulumi:"resourceId"`
+	RuleId                      pulumi.StringPtrInput `pulumi:"ruleId"`
+	// time in epoch milliseconds when this object was updated.
+	UpdatedTime pulumi.IntPtrInput `pulumi:"updatedTime"`
+}
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput)
+}
+
+// MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray and MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput values.
+// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput` via:
+//
+//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray{ MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{...} }
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput interface {
+	pulumi.Input
+
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput
+	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
+	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(context.Background())
+}
+
+func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.ConnectionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// time in epoch milliseconds when this object was created.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
+		return v.CreationTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *bool {
+		return v.Deactivated
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
+		return v.DeactivatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) []string {
+		return v.DomainNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.EndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.ErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Canonical unique identifier of Network Connectivity Config in Databricks Account
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.NetworkConnectivityConfigId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
+		return v.RuleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// time in epoch milliseconds when this object was updated.
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
+		return v.UpdatedTime
+	}).(pulumi.IntPtrOutput)
+}
+
+type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
+	return o
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) Index(i pulumi.IntInput) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+		return vs[0].([]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)[vs[1].(int)]
+	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput)
+}
+
+type MwsNetworksErrorMessage struct {
+	ErrorMessage *string `pulumi:"errorMessage"`
+	ErrorType    *string `pulumi:"errorType"`
+}
+
+// MwsNetworksErrorMessageInput is an input type that accepts MwsNetworksErrorMessageArgs and MwsNetworksErrorMessageOutput values.
+// You can construct a concrete instance of `MwsNetworksErrorMessageInput` via:
+//
+//	MwsNetworksErrorMessageArgs{...}
+type MwsNetworksErrorMessageInput interface {
+	pulumi.Input
+
+	ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput
+	ToMwsNetworksErrorMessageOutputWithContext(context.Context) MwsNetworksErrorMessageOutput
+}
+
+type MwsNetworksErrorMessageArgs struct {
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+	ErrorType    pulumi.StringPtrInput `pulumi:"errorType"`
+}
+
+func (MwsNetworksErrorMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworksErrorMessage)(nil)).Elem()
+}
+
+func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput {
+	return i.ToMwsNetworksErrorMessageOutputWithContext(context.Background())
+}
+
+func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutputWithContext(ctx context.Context) MwsNetworksErrorMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksErrorMessageOutput)
+}
+
+// MwsNetworksErrorMessageArrayInput is an input type that accepts MwsNetworksErrorMessageArray and MwsNetworksErrorMessageArrayOutput values.
+// You can construct a concrete instance of `MwsNetworksErrorMessageArrayInput` via:
+//
+//	MwsNetworksErrorMessageArray{ MwsNetworksErrorMessageArgs{...} }
+type MwsNetworksErrorMessageArrayInput interface {
+	pulumi.Input
+
+	ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput
+	ToMwsNetworksErrorMessageArrayOutputWithContext(context.Context) MwsNetworksErrorMessageArrayOutput
+}
+
+type MwsNetworksErrorMessageArray []MwsNetworksErrorMessageInput
+
+func (MwsNetworksErrorMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MwsNetworksErrorMessage)(nil)).Elem()
+}
+
+func (i MwsNetworksErrorMessageArray) ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput {
+	return i.ToMwsNetworksErrorMessageArrayOutputWithContext(context.Background())
+}
+
+func (i MwsNetworksErrorMessageArray) ToMwsNetworksErrorMessageArrayOutputWithContext(ctx context.Context) MwsNetworksErrorMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksErrorMessageArrayOutput)
+}
+
+type MwsNetworksErrorMessageOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworksErrorMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsNetworksErrorMessage)(nil)).Elem()
+}
+
+func (o MwsNetworksErrorMessageOutput) ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput {
+	return o
+}
+
+func (o MwsNetworksErrorMessageOutput) ToMwsNetworksErrorMessageOutputWithContext(ctx context.Context) MwsNetworksErrorMessageOutput {
+	return o
+}
+
+func (o MwsNetworksErrorMessageOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworksErrorMessage) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNetworksErrorMessageOutput) ErrorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworksErrorMessage) *string { return v.ErrorType }).(pulumi.StringPtrOutput)
+}
+
+type MwsNetworksErrorMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (MwsNetworksErrorMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MwsNetworksErrorMessage)(nil)).Elem()
+}
+
+func (o MwsNetworksErrorMessageArrayOutput) ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput {
+	return o
+}
+
+func (o MwsNetworksErrorMessageArrayOutput) ToMwsNetworksErrorMessageArrayOutputWithContext(ctx context.Context) MwsNetworksErrorMessageArrayOutput {
+	return o
+}
+
+func (o MwsNetworksErrorMessageArrayOutput) Index(i pulumi.IntInput) MwsNetworksErrorMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworksErrorMessage {
+		return vs[0].([]MwsNetworksErrorMessage)[vs[1].(int)]
+	}).(MwsNetworksErrorMessageOutput)
+}
+
 type MwsNetworksGcpNetworkInfo struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId string `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -42,9 +3908,9 @@ type MwsNetworksGcpNetworkInfoInput interface {
 type MwsNetworksGcpNetworkInfoArgs struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -136,12 +4002,12 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.NetworkProjectId }).(pulumi.StringOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -195,7 +4061,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -205,7 +4071,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -1044,9 +4910,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -1063,9 +4929,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -1147,12 +5013,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -1185,7 +5051,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -1195,7 +5061,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -1686,6 +5552,8 @@ func (o NotebookProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 type NotificationDestinationConfig struct {
+	DatabricksAppSlack *NotificationDestinationConfigDatabricksAppSlack `pulumi:"databricksAppSlack"`
+	DatabricksAppTeams *NotificationDestinationConfigDatabricksAppTeams `pulumi:"databricksAppTeams"`
 	// The email configuration of the Notification Destination. It must contain the following:
 	Email *NotificationDestinationConfigEmail `pulumi:"email"`
 	// The Generic Webhook configuration of the Notification Destination. It must contain the following:
@@ -1710,6 +5578,8 @@ type NotificationDestinationConfigInput interface {
 }
 
 type NotificationDestinationConfigArgs struct {
+	DatabricksAppSlack NotificationDestinationConfigDatabricksAppSlackPtrInput `pulumi:"databricksAppSlack"`
+	DatabricksAppTeams NotificationDestinationConfigDatabricksAppTeamsPtrInput `pulumi:"databricksAppTeams"`
 	// The email configuration of the Notification Destination. It must contain the following:
 	Email NotificationDestinationConfigEmailPtrInput `pulumi:"email"`
 	// The Generic Webhook configuration of the Notification Destination. It must contain the following:
@@ -1799,6 +5669,18 @@ func (o NotificationDestinationConfigOutput) ToNotificationDestinationConfigPtrO
 	}).(NotificationDestinationConfigPtrOutput)
 }
 
+func (o NotificationDestinationConfigOutput) DatabricksAppSlack() NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigDatabricksAppSlack {
+		return v.DatabricksAppSlack
+	}).(NotificationDestinationConfigDatabricksAppSlackPtrOutput)
+}
+
+func (o NotificationDestinationConfigOutput) DatabricksAppTeams() NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigDatabricksAppTeams {
+		return v.DatabricksAppTeams
+	}).(NotificationDestinationConfigDatabricksAppTeamsPtrOutput)
+}
+
 // The email configuration of the Notification Destination. It must contain the following:
 func (o NotificationDestinationConfigOutput) Email() NotificationDestinationConfigEmailPtrOutput {
 	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigEmail { return v.Email }).(NotificationDestinationConfigEmailPtrOutput)
@@ -1852,6 +5734,24 @@ func (o NotificationDestinationConfigPtrOutput) Elem() NotificationDestinationCo
 	}).(NotificationDestinationConfigOutput)
 }
 
+func (o NotificationDestinationConfigPtrOutput) DatabricksAppSlack() NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigDatabricksAppSlack {
+		if v == nil {
+			return nil
+		}
+		return v.DatabricksAppSlack
+	}).(NotificationDestinationConfigDatabricksAppSlackPtrOutput)
+}
+
+func (o NotificationDestinationConfigPtrOutput) DatabricksAppTeams() NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigDatabricksAppTeams {
+		if v == nil {
+			return nil
+		}
+		return v.DatabricksAppTeams
+	}).(NotificationDestinationConfigDatabricksAppTeamsPtrOutput)
+}
+
 // The email configuration of the Notification Destination. It must contain the following:
 func (o NotificationDestinationConfigPtrOutput) Email() NotificationDestinationConfigEmailPtrOutput {
 	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigEmail {
@@ -1900,6 +5800,404 @@ func (o NotificationDestinationConfigPtrOutput) Slack() NotificationDestinationC
 		}
 		return v.Slack
 	}).(NotificationDestinationConfigSlackPtrOutput)
+}
+
+type NotificationDestinationConfigDatabricksAppSlack struct {
+	// Slack channel ID for notifications.
+	ChannelId    *string `pulumi:"channelId"`
+	ChannelIdSet *bool   `pulumi:"channelIdSet"`
+	TeamId       *string `pulumi:"teamId"`
+	TeamIdSet    *bool   `pulumi:"teamIdSet"`
+}
+
+// NotificationDestinationConfigDatabricksAppSlackInput is an input type that accepts NotificationDestinationConfigDatabricksAppSlackArgs and NotificationDestinationConfigDatabricksAppSlackOutput values.
+// You can construct a concrete instance of `NotificationDestinationConfigDatabricksAppSlackInput` via:
+//
+//	NotificationDestinationConfigDatabricksAppSlackArgs{...}
+type NotificationDestinationConfigDatabricksAppSlackInput interface {
+	pulumi.Input
+
+	ToNotificationDestinationConfigDatabricksAppSlackOutput() NotificationDestinationConfigDatabricksAppSlackOutput
+	ToNotificationDestinationConfigDatabricksAppSlackOutputWithContext(context.Context) NotificationDestinationConfigDatabricksAppSlackOutput
+}
+
+type NotificationDestinationConfigDatabricksAppSlackArgs struct {
+	// Slack channel ID for notifications.
+	ChannelId    pulumi.StringPtrInput `pulumi:"channelId"`
+	ChannelIdSet pulumi.BoolPtrInput   `pulumi:"channelIdSet"`
+	TeamId       pulumi.StringPtrInput `pulumi:"teamId"`
+	TeamIdSet    pulumi.BoolPtrInput   `pulumi:"teamIdSet"`
+}
+
+func (NotificationDestinationConfigDatabricksAppSlackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationDestinationConfigDatabricksAppSlack)(nil)).Elem()
+}
+
+func (i NotificationDestinationConfigDatabricksAppSlackArgs) ToNotificationDestinationConfigDatabricksAppSlackOutput() NotificationDestinationConfigDatabricksAppSlackOutput {
+	return i.ToNotificationDestinationConfigDatabricksAppSlackOutputWithContext(context.Background())
+}
+
+func (i NotificationDestinationConfigDatabricksAppSlackArgs) ToNotificationDestinationConfigDatabricksAppSlackOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigDatabricksAppSlackOutput)
+}
+
+func (i NotificationDestinationConfigDatabricksAppSlackArgs) ToNotificationDestinationConfigDatabricksAppSlackPtrOutput() NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return i.ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationDestinationConfigDatabricksAppSlackArgs) ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigDatabricksAppSlackOutput).ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(ctx)
+}
+
+// NotificationDestinationConfigDatabricksAppSlackPtrInput is an input type that accepts NotificationDestinationConfigDatabricksAppSlackArgs, NotificationDestinationConfigDatabricksAppSlackPtr and NotificationDestinationConfigDatabricksAppSlackPtrOutput values.
+// You can construct a concrete instance of `NotificationDestinationConfigDatabricksAppSlackPtrInput` via:
+//
+//	        NotificationDestinationConfigDatabricksAppSlackArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationDestinationConfigDatabricksAppSlackPtrInput interface {
+	pulumi.Input
+
+	ToNotificationDestinationConfigDatabricksAppSlackPtrOutput() NotificationDestinationConfigDatabricksAppSlackPtrOutput
+	ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(context.Context) NotificationDestinationConfigDatabricksAppSlackPtrOutput
+}
+
+type notificationDestinationConfigDatabricksAppSlackPtrType NotificationDestinationConfigDatabricksAppSlackArgs
+
+func NotificationDestinationConfigDatabricksAppSlackPtr(v *NotificationDestinationConfigDatabricksAppSlackArgs) NotificationDestinationConfigDatabricksAppSlackPtrInput {
+	return (*notificationDestinationConfigDatabricksAppSlackPtrType)(v)
+}
+
+func (*notificationDestinationConfigDatabricksAppSlackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationDestinationConfigDatabricksAppSlack)(nil)).Elem()
+}
+
+func (i *notificationDestinationConfigDatabricksAppSlackPtrType) ToNotificationDestinationConfigDatabricksAppSlackPtrOutput() NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return i.ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationDestinationConfigDatabricksAppSlackPtrType) ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigDatabricksAppSlackPtrOutput)
+}
+
+type NotificationDestinationConfigDatabricksAppSlackOutput struct{ *pulumi.OutputState }
+
+func (NotificationDestinationConfigDatabricksAppSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationDestinationConfigDatabricksAppSlack)(nil)).Elem()
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) ToNotificationDestinationConfigDatabricksAppSlackOutput() NotificationDestinationConfigDatabricksAppSlackOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) ToNotificationDestinationConfigDatabricksAppSlackOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppSlackOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) ToNotificationDestinationConfigDatabricksAppSlackPtrOutput() NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return o.ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationDestinationConfigDatabricksAppSlack) *NotificationDestinationConfigDatabricksAppSlack {
+		return &v
+	}).(NotificationDestinationConfigDatabricksAppSlackPtrOutput)
+}
+
+// Slack channel ID for notifications.
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) ChannelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppSlack) *string { return v.ChannelId }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) ChannelIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppSlack) *bool { return v.ChannelIdSet }).(pulumi.BoolPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppSlack) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackOutput) TeamIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppSlack) *bool { return v.TeamIdSet }).(pulumi.BoolPtrOutput)
+}
+
+type NotificationDestinationConfigDatabricksAppSlackPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationDestinationConfigDatabricksAppSlackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationDestinationConfigDatabricksAppSlack)(nil)).Elem()
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) ToNotificationDestinationConfigDatabricksAppSlackPtrOutput() NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) ToNotificationDestinationConfigDatabricksAppSlackPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppSlackPtrOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) Elem() NotificationDestinationConfigDatabricksAppSlackOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppSlack) NotificationDestinationConfigDatabricksAppSlack {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationDestinationConfigDatabricksAppSlack
+		return ret
+	}).(NotificationDestinationConfigDatabricksAppSlackOutput)
+}
+
+// Slack channel ID for notifications.
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) ChannelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppSlack) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) ChannelIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppSlack) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelIdSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppSlack) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppSlackPtrOutput) TeamIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppSlack) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TeamIdSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NotificationDestinationConfigDatabricksAppTeams struct {
+	// Slack channel ID for notifications.
+	ChannelId    *string `pulumi:"channelId"`
+	ChannelIdSet *bool   `pulumi:"channelIdSet"`
+	TeamId       *string `pulumi:"teamId"`
+	TeamIdSet    *bool   `pulumi:"teamIdSet"`
+	// Tenant ID for Microsoft Teams App.
+	TenantId    *string `pulumi:"tenantId"`
+	TenantIdSet *bool   `pulumi:"tenantIdSet"`
+}
+
+// NotificationDestinationConfigDatabricksAppTeamsInput is an input type that accepts NotificationDestinationConfigDatabricksAppTeamsArgs and NotificationDestinationConfigDatabricksAppTeamsOutput values.
+// You can construct a concrete instance of `NotificationDestinationConfigDatabricksAppTeamsInput` via:
+//
+//	NotificationDestinationConfigDatabricksAppTeamsArgs{...}
+type NotificationDestinationConfigDatabricksAppTeamsInput interface {
+	pulumi.Input
+
+	ToNotificationDestinationConfigDatabricksAppTeamsOutput() NotificationDestinationConfigDatabricksAppTeamsOutput
+	ToNotificationDestinationConfigDatabricksAppTeamsOutputWithContext(context.Context) NotificationDestinationConfigDatabricksAppTeamsOutput
+}
+
+type NotificationDestinationConfigDatabricksAppTeamsArgs struct {
+	// Slack channel ID for notifications.
+	ChannelId    pulumi.StringPtrInput `pulumi:"channelId"`
+	ChannelIdSet pulumi.BoolPtrInput   `pulumi:"channelIdSet"`
+	TeamId       pulumi.StringPtrInput `pulumi:"teamId"`
+	TeamIdSet    pulumi.BoolPtrInput   `pulumi:"teamIdSet"`
+	// Tenant ID for Microsoft Teams App.
+	TenantId    pulumi.StringPtrInput `pulumi:"tenantId"`
+	TenantIdSet pulumi.BoolPtrInput   `pulumi:"tenantIdSet"`
+}
+
+func (NotificationDestinationConfigDatabricksAppTeamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationDestinationConfigDatabricksAppTeams)(nil)).Elem()
+}
+
+func (i NotificationDestinationConfigDatabricksAppTeamsArgs) ToNotificationDestinationConfigDatabricksAppTeamsOutput() NotificationDestinationConfigDatabricksAppTeamsOutput {
+	return i.ToNotificationDestinationConfigDatabricksAppTeamsOutputWithContext(context.Background())
+}
+
+func (i NotificationDestinationConfigDatabricksAppTeamsArgs) ToNotificationDestinationConfigDatabricksAppTeamsOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppTeamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigDatabricksAppTeamsOutput)
+}
+
+func (i NotificationDestinationConfigDatabricksAppTeamsArgs) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutput() NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return i.ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationDestinationConfigDatabricksAppTeamsArgs) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigDatabricksAppTeamsOutput).ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(ctx)
+}
+
+// NotificationDestinationConfigDatabricksAppTeamsPtrInput is an input type that accepts NotificationDestinationConfigDatabricksAppTeamsArgs, NotificationDestinationConfigDatabricksAppTeamsPtr and NotificationDestinationConfigDatabricksAppTeamsPtrOutput values.
+// You can construct a concrete instance of `NotificationDestinationConfigDatabricksAppTeamsPtrInput` via:
+//
+//	        NotificationDestinationConfigDatabricksAppTeamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationDestinationConfigDatabricksAppTeamsPtrInput interface {
+	pulumi.Input
+
+	ToNotificationDestinationConfigDatabricksAppTeamsPtrOutput() NotificationDestinationConfigDatabricksAppTeamsPtrOutput
+	ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(context.Context) NotificationDestinationConfigDatabricksAppTeamsPtrOutput
+}
+
+type notificationDestinationConfigDatabricksAppTeamsPtrType NotificationDestinationConfigDatabricksAppTeamsArgs
+
+func NotificationDestinationConfigDatabricksAppTeamsPtr(v *NotificationDestinationConfigDatabricksAppTeamsArgs) NotificationDestinationConfigDatabricksAppTeamsPtrInput {
+	return (*notificationDestinationConfigDatabricksAppTeamsPtrType)(v)
+}
+
+func (*notificationDestinationConfigDatabricksAppTeamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationDestinationConfigDatabricksAppTeams)(nil)).Elem()
+}
+
+func (i *notificationDestinationConfigDatabricksAppTeamsPtrType) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutput() NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return i.ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationDestinationConfigDatabricksAppTeamsPtrType) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigDatabricksAppTeamsPtrOutput)
+}
+
+type NotificationDestinationConfigDatabricksAppTeamsOutput struct{ *pulumi.OutputState }
+
+func (NotificationDestinationConfigDatabricksAppTeamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationDestinationConfigDatabricksAppTeams)(nil)).Elem()
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) ToNotificationDestinationConfigDatabricksAppTeamsOutput() NotificationDestinationConfigDatabricksAppTeamsOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) ToNotificationDestinationConfigDatabricksAppTeamsOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppTeamsOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutput() NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return o.ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationDestinationConfigDatabricksAppTeams) *NotificationDestinationConfigDatabricksAppTeams {
+		return &v
+	}).(NotificationDestinationConfigDatabricksAppTeamsPtrOutput)
+}
+
+// Slack channel ID for notifications.
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) ChannelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppTeams) *string { return v.ChannelId }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) ChannelIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppTeams) *bool { return v.ChannelIdSet }).(pulumi.BoolPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppTeams) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) TeamIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppTeams) *bool { return v.TeamIdSet }).(pulumi.BoolPtrOutput)
+}
+
+// Tenant ID for Microsoft Teams App.
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppTeams) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsOutput) TenantIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationDestinationConfigDatabricksAppTeams) *bool { return v.TenantIdSet }).(pulumi.BoolPtrOutput)
+}
+
+type NotificationDestinationConfigDatabricksAppTeamsPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationDestinationConfigDatabricksAppTeamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationDestinationConfigDatabricksAppTeams)(nil)).Elem()
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutput() NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) ToNotificationDestinationConfigDatabricksAppTeamsPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigDatabricksAppTeamsPtrOutput {
+	return o
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) Elem() NotificationDestinationConfigDatabricksAppTeamsOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) NotificationDestinationConfigDatabricksAppTeams {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationDestinationConfigDatabricksAppTeams
+		return ret
+	}).(NotificationDestinationConfigDatabricksAppTeamsOutput)
+}
+
+// Slack channel ID for notifications.
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) ChannelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) ChannelIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelIdSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) TeamIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TeamIdSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Tenant ID for Microsoft Teams App.
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationDestinationConfigDatabricksAppTeamsPtrOutput) TenantIdSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationDestinationConfigDatabricksAppTeams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TenantIdSet
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NotificationDestinationConfigEmail struct {
@@ -35417,8 +39715,7 @@ func (o PolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput) TagIntrospectio
 type PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection struct {
 	// Extracts the value of a column-level tag
 	ColumnTagValue *PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue `pulumi:"columnTagValue"`
-	// Extracts the value of a securable-level tag
-	TagValue *PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue `pulumi:"tagValue"`
+	TagValue       *PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue       `pulumi:"tagValue"`
 }
 
 // PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionInput is an input type that accepts PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs and PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput values.
@@ -35435,8 +39732,7 @@ type PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionInput interfa
 type PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs struct {
 	// Extracts the value of a column-level tag
 	ColumnTagValue PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput `pulumi:"columnTagValue"`
-	// Extracts the value of a securable-level tag
-	TagValue PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput `pulumi:"tagValue"`
+	TagValue       PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput       `pulumi:"tagValue"`
 }
 
 func (PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ElementType() reflect.Type {
@@ -35523,7 +39819,6 @@ func (o PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) Co
 	}).(PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
 }
 
-// Extracts the value of a securable-level tag
 func (o PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) TagValue() PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
 	return o.ApplyT(func(v PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
 		return v.TagValue
@@ -35564,7 +39859,6 @@ func (o PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
 	}).(PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
 }
 
-// Extracts the value of a securable-level tag
 func (o PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) TagValue() PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
 	return o.ApplyT(func(v *PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
 		if v == nil {
@@ -35994,6 +40288,106 @@ func (o PolicyInfoDenyPtrOutput) Privileges() pulumi.StringArrayOutput {
 		}
 		return v.Privileges
 	}).(pulumi.StringArrayOutput)
+}
+
+type PolicyInfoGovernedTag struct {
+	TagKey   string  `pulumi:"tagKey"`
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// PolicyInfoGovernedTagInput is an input type that accepts PolicyInfoGovernedTagArgs and PolicyInfoGovernedTagOutput values.
+// You can construct a concrete instance of `PolicyInfoGovernedTagInput` via:
+//
+//	PolicyInfoGovernedTagArgs{...}
+type PolicyInfoGovernedTagInput interface {
+	pulumi.Input
+
+	ToPolicyInfoGovernedTagOutput() PolicyInfoGovernedTagOutput
+	ToPolicyInfoGovernedTagOutputWithContext(context.Context) PolicyInfoGovernedTagOutput
+}
+
+type PolicyInfoGovernedTagArgs struct {
+	TagKey   pulumi.StringInput    `pulumi:"tagKey"`
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (PolicyInfoGovernedTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyInfoGovernedTag)(nil)).Elem()
+}
+
+func (i PolicyInfoGovernedTagArgs) ToPolicyInfoGovernedTagOutput() PolicyInfoGovernedTagOutput {
+	return i.ToPolicyInfoGovernedTagOutputWithContext(context.Background())
+}
+
+func (i PolicyInfoGovernedTagArgs) ToPolicyInfoGovernedTagOutputWithContext(ctx context.Context) PolicyInfoGovernedTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyInfoGovernedTagOutput)
+}
+
+// PolicyInfoGovernedTagArrayInput is an input type that accepts PolicyInfoGovernedTagArray and PolicyInfoGovernedTagArrayOutput values.
+// You can construct a concrete instance of `PolicyInfoGovernedTagArrayInput` via:
+//
+//	PolicyInfoGovernedTagArray{ PolicyInfoGovernedTagArgs{...} }
+type PolicyInfoGovernedTagArrayInput interface {
+	pulumi.Input
+
+	ToPolicyInfoGovernedTagArrayOutput() PolicyInfoGovernedTagArrayOutput
+	ToPolicyInfoGovernedTagArrayOutputWithContext(context.Context) PolicyInfoGovernedTagArrayOutput
+}
+
+type PolicyInfoGovernedTagArray []PolicyInfoGovernedTagInput
+
+func (PolicyInfoGovernedTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyInfoGovernedTag)(nil)).Elem()
+}
+
+func (i PolicyInfoGovernedTagArray) ToPolicyInfoGovernedTagArrayOutput() PolicyInfoGovernedTagArrayOutput {
+	return i.ToPolicyInfoGovernedTagArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyInfoGovernedTagArray) ToPolicyInfoGovernedTagArrayOutputWithContext(ctx context.Context) PolicyInfoGovernedTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyInfoGovernedTagArrayOutput)
+}
+
+type PolicyInfoGovernedTagOutput struct{ *pulumi.OutputState }
+
+func (PolicyInfoGovernedTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyInfoGovernedTag)(nil)).Elem()
+}
+
+func (o PolicyInfoGovernedTagOutput) ToPolicyInfoGovernedTagOutput() PolicyInfoGovernedTagOutput {
+	return o
+}
+
+func (o PolicyInfoGovernedTagOutput) ToPolicyInfoGovernedTagOutputWithContext(ctx context.Context) PolicyInfoGovernedTagOutput {
+	return o
+}
+
+func (o PolicyInfoGovernedTagOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyInfoGovernedTag) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+func (o PolicyInfoGovernedTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyInfoGovernedTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type PolicyInfoGovernedTagArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyInfoGovernedTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyInfoGovernedTag)(nil)).Elem()
+}
+
+func (o PolicyInfoGovernedTagArrayOutput) ToPolicyInfoGovernedTagArrayOutput() PolicyInfoGovernedTagArrayOutput {
+	return o
+}
+
+func (o PolicyInfoGovernedTagArrayOutput) ToPolicyInfoGovernedTagArrayOutputWithContext(ctx context.Context) PolicyInfoGovernedTagArrayOutput {
+	return o
+}
+
+func (o PolicyInfoGovernedTagArrayOutput) Index(i pulumi.IntInput) PolicyInfoGovernedTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyInfoGovernedTag {
+		return vs[0].([]PolicyInfoGovernedTag)[vs[1].(int)]
+	}).(PolicyInfoGovernedTagOutput)
 }
 
 type PolicyInfoGrant struct {
@@ -36779,8 +41173,7 @@ func (o PolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput) TagIntrospection
 type PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection struct {
 	// Extracts the value of a column-level tag
 	ColumnTagValue *PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue `pulumi:"columnTagValue"`
-	// Extracts the value of a securable-level tag
-	TagValue *PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue `pulumi:"tagValue"`
+	TagValue       *PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue       `pulumi:"tagValue"`
 }
 
 // PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionInput is an input type that accepts PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs and PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput values.
@@ -36797,8 +41190,7 @@ type PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionInput interfac
 type PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs struct {
 	// Extracts the value of a column-level tag
 	ColumnTagValue PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput `pulumi:"columnTagValue"`
-	// Extracts the value of a securable-level tag
-	TagValue PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput `pulumi:"tagValue"`
+	TagValue       PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput       `pulumi:"tagValue"`
 }
 
 func (PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ElementType() reflect.Type {
@@ -36885,7 +41277,6 @@ func (o PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) Col
 	}).(PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
 }
 
-// Extracts the value of a securable-level tag
 func (o PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) TagValue() PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
 	return o.ApplyT(func(v PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
 		return v.TagValue
@@ -36926,7 +41317,6 @@ func (o PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) 
 	}).(PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
 }
 
-// Extracts the value of a securable-level tag
 func (o PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) TagValue() PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
 	return o.ApplyT(func(v *PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
 		if v == nil {
@@ -77522,4214 +81912,55 @@ func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleArrayOu
 	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOutput)
 }
 
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication struct {
-	// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-	Identities []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity `pulumi:"identities"`
-	// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-	IdentityType *string `pulumi:"identityType"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs struct {
-	// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-	Identities GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayInput `pulumi:"identities"`
-	// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) Identities() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication) []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
-		return v.Identities
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput)
-}
-
-// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput) IdentityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication) *string {
-		return v.IdentityType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput) Identities() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication) []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
-		if v == nil {
-			return nil
-		}
-		return v.Identities
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput)
-}
-
-// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput) IdentityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdentityType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity struct {
-	// (integer)
-	PrincipalId *int `pulumi:"principalId"`
-	// (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
-	PrincipalType *string `pulumi:"principalType"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs struct {
-	// (integer)
-	PrincipalId pulumi.IntPtrInput `pulumi:"principalId"`
-	// (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
-	PrincipalType pulumi.StringPtrInput `pulumi:"principalType"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray{ GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs{...} }
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityInput
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput {
-	return o
-}
-
-// (integer)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput) PrincipalId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity) *int {
-		return v.PrincipalId
-	}).(pulumi.IntPtrOutput)
-}
-
-// (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput) PrincipalType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity) *string {
-		return v.PrincipalType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput) Index(i pulumi.IntInput) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
-		return vs[0].([]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity)[vs[1].(int)]
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination struct {
-	// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-	// Can only be used in the account-level network policy
-	AccountApi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi `pulumi:"accountApi"`
-	// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-	AccountDatabricksOne *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne `pulumi:"accountDatabricksOne"`
-	// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-	// Can only be used in the account-level network policy
-	AccountUi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi `pulumi:"accountUi"`
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-	// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-	AppsRuntime *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime `pulumi:"appsRuntime"`
-	// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-	LakebaseRuntime *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime `pulumi:"lakebaseRuntime"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-	WorkspaceApi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi `pulumi:"workspaceApi"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-	WorkspaceUi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi `pulumi:"workspaceUi"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs struct {
-	// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-	// Can only be used in the account-level network policy
-	AccountApi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrInput `pulumi:"accountApi"`
-	// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-	AccountDatabricksOne GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrInput `pulumi:"accountDatabricksOne"`
-	// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-	// Can only be used in the account-level network policy
-	AccountUi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrInput `pulumi:"accountUi"`
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-	// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-	AppsRuntime GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrInput `pulumi:"appsRuntime"`
-	// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-	LakebaseRuntime GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrInput `pulumi:"lakebaseRuntime"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-	WorkspaceApi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrInput `pulumi:"workspaceApi"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-	WorkspaceUi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrInput `pulumi:"workspaceUi"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) AccountApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
-		return v.AccountApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) AccountDatabricksOne() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
-		return v.AccountDatabricksOne
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) AccountUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
-		return v.AccountUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) AppsRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
-		return v.AppsRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) LakebaseRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
-		return v.LakebaseRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) WorkspaceApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
-		return v.WorkspaceApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput) WorkspaceUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
-		return v.WorkspaceUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) AccountApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
-		if v == nil {
-			return nil
-		}
-		return v.AccountApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) AccountDatabricksOne() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
-		if v == nil {
-			return nil
-		}
-		return v.AccountDatabricksOne
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) AccountUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
-		if v == nil {
-			return nil
-		}
-		return v.AccountUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) AppsRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
-		if v == nil {
-			return nil
-		}
-		return v.AppsRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) LakebaseRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
-		if v == nil {
-			return nil
-		}
-		return v.LakebaseRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) WorkspaceApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput) WorkspaceUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi struct {
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier *string `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes []string `pulumi:"scopes"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs struct {
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier pulumi.StringPtrInput `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi) *string {
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi) []string {
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi struct {
-	// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-	// ("allow all except"). Mutually exclusive with `scopes` — a single
-	// destination may set at most one of the two
-	ExcludedScopes []string `pulumi:"excludedScopes"`
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier *string `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes []string `pulumi:"scopes"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs struct {
-	// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-	// ("allow all except"). Mutually exclusive with `scopes` — a single
-	// destination may set at most one of the two
-	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier pulumi.StringPtrInput `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput)
-}
-
-// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-// ("allow all except"). Mutually exclusive with `scopes` — a single
-// destination may set at most one of the two
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
-		return v.ExcludedScopes
-	}).(pulumi.StringArrayOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) *string {
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput)
-}
-
-// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-// ("allow all except"). Mutually exclusive with `scopes` — a single
-// destination may set at most one of the two
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedScopes
-	}).(pulumi.StringArrayOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin struct {
-	// (boolean) - Matches all source workspaces
-	AllSourceWorkspaces *bool `pulumi:"allSourceWorkspaces"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-	SelectedWorkspaces *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces `pulumi:"selectedWorkspaces"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs struct {
-	// (boolean) - Matches all source workspaces
-	AllSourceWorkspaces pulumi.BoolPtrInput `pulumi:"allSourceWorkspaces"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-	SelectedWorkspaces GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrInput `pulumi:"selectedWorkspaces"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput)
-}
-
-// (boolean) - Matches all source workspaces
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) AllSourceWorkspaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin) *bool {
-		return v.AllSourceWorkspaces
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput) SelectedWorkspaces() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
-		return v.SelectedWorkspaces
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput)
-}
-
-// (boolean) - Matches all source workspaces
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput) AllSourceWorkspaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllSourceWorkspaces
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput) SelectedWorkspaces() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
-		if v == nil {
-			return nil
-		}
-		return v.SelectedWorkspaces
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces struct {
-	// (list of integer) - The workspace IDs to allow egress traffic to
-	WorkspaceIds []int `pulumi:"workspaceIds"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs struct {
-	// (list of integer) - The workspace IDs to allow egress traffic to
-	WorkspaceIds pulumi.IntArrayInput `pulumi:"workspaceIds"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-// (list of integer) - The workspace IDs to allow egress traffic to
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput) WorkspaceIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces) []int {
-		return v.WorkspaceIds
-	}).(pulumi.IntArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput)
-}
-
-// (list of integer) - The workspace IDs to allow egress traffic to
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput) WorkspaceIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces) []int {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceIds
-	}).(pulumi.IntArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule struct {
-	// (CustomerFacingIngressNetworkPolicyAuthentication)
-	Authentication *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication `pulumi:"authentication"`
-	// (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-	Destination *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination `pulumi:"destination"`
-	// (string) - The label for this ingress rule
-	Label *string `pulumi:"label"`
-	// (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
-	Origin *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin `pulumi:"origin"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs struct {
-	// (CustomerFacingIngressNetworkPolicyAuthentication)
-	Authentication GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrInput `pulumi:"authentication"`
-	// (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-	Destination GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrInput `pulumi:"destination"`
-	// (string) - The label for this ingress rule
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
-	Origin GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrInput `pulumi:"origin"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray{ GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs{...} }
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleInput
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput {
-	return o
-}
-
-// (CustomerFacingIngressNetworkPolicyAuthentication)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) Authentication() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication {
-		return v.Authentication
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput)
-}
-
-// (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) Destination() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination {
-		return v.Destination
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput)
-}
-
-// (string) - The label for this ingress rule
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput) Origin() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin {
-		return v.Origin
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput) Index(i pulumi.IntInput) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule {
-		return vs[0].([]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule)[vs[1].(int)]
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication struct {
-	// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-	Identities []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity `pulumi:"identities"`
-	// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-	IdentityType *string `pulumi:"identityType"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs struct {
-	// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-	Identities GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayInput `pulumi:"identities"`
-	// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) Identities() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication) []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
-		return v.Identities
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput)
-}
-
-// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput) IdentityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication) *string {
-		return v.IdentityType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput) Identities() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication) []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
-		if v == nil {
-			return nil
-		}
-		return v.Identities
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput)
-}
-
-// (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput) IdentityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdentityType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity struct {
-	// (integer)
-	PrincipalId *int `pulumi:"principalId"`
-	// (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
-	PrincipalType *string `pulumi:"principalType"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs struct {
-	// (integer)
-	PrincipalId pulumi.IntPtrInput `pulumi:"principalId"`
-	// (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
-	PrincipalType pulumi.StringPtrInput `pulumi:"principalType"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray{ GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs{...} }
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray []GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityInput
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput {
-	return o
-}
-
-// (integer)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput) PrincipalId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity) *int {
-		return v.PrincipalId
-	}).(pulumi.IntPtrOutput)
-}
-
-// (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput) PrincipalType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity) *string {
-		return v.PrincipalType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput) Index(i pulumi.IntInput) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
-		return vs[0].([]GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity)[vs[1].(int)]
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination struct {
-	// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-	// Can only be used in the account-level network policy
-	AccountApi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi `pulumi:"accountApi"`
-	// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-	AccountDatabricksOne *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne `pulumi:"accountDatabricksOne"`
-	// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-	// Can only be used in the account-level network policy
-	AccountUi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi `pulumi:"accountUi"`
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-	// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-	AppsRuntime *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime `pulumi:"appsRuntime"`
-	// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-	LakebaseRuntime *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime `pulumi:"lakebaseRuntime"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-	WorkspaceApi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi `pulumi:"workspaceApi"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-	WorkspaceUi *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi `pulumi:"workspaceUi"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs struct {
-	// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-	// Can only be used in the account-level network policy
-	AccountApi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrInput `pulumi:"accountApi"`
-	// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-	AccountDatabricksOne GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrInput `pulumi:"accountDatabricksOne"`
-	// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-	// Can only be used in the account-level network policy
-	AccountUi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrInput `pulumi:"accountUi"`
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-	// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-	AppsRuntime GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrInput `pulumi:"appsRuntime"`
-	// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-	LakebaseRuntime GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrInput `pulumi:"lakebaseRuntime"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-	WorkspaceApi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrInput `pulumi:"workspaceApi"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-	WorkspaceUi GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrInput `pulumi:"workspaceUi"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) AccountApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
-		return v.AccountApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) AccountDatabricksOne() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
-		return v.AccountDatabricksOne
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) AccountUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
-		return v.AccountUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) AppsRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
-		return v.AppsRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) LakebaseRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
-		return v.LakebaseRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) WorkspaceApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
-		return v.WorkspaceApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput) WorkspaceUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
-		return v.WorkspaceUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) AccountApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
-		if v == nil {
-			return nil
-		}
-		return v.AccountApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) AccountDatabricksOne() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
-		if v == nil {
-			return nil
-		}
-		return v.AccountDatabricksOne
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
-// Can only be used in the account-level network policy
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) AccountUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
-		if v == nil {
-			return nil
-		}
-		return v.AccountUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) AppsRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
-		if v == nil {
-			return nil
-		}
-		return v.AppsRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) LakebaseRuntime() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
-		if v == nil {
-			return nil
-		}
-		return v.LakebaseRuntime
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) WorkspaceApi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceApi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput) WorkspaceUi() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceUi
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi struct {
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier *string `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes []string `pulumi:"scopes"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs struct {
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier pulumi.StringPtrInput `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi) *string {
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi) []string {
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi struct {
-	// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-	// ("allow all except"). Mutually exclusive with `scopes` — a single
-	// destination may set at most one of the two
-	ExcludedScopes []string `pulumi:"excludedScopes"`
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier *string `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes []string `pulumi:"scopes"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs struct {
-	// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-	// ("allow all except"). Mutually exclusive with `scopes` — a single
-	// destination may set at most one of the two
-	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
-	// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-	ScopeQualifier pulumi.StringPtrInput `pulumi:"scopeQualifier"`
-	// (list of string)
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput)
-}
-
-// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-// ("allow all except"). Mutually exclusive with `scopes` — a single
-// destination may set at most one of the two
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
-		return v.ExcludedScopes
-	}).(pulumi.StringArrayOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) *string {
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput)
-}
-
-// (list of string) - Inverse of `scopes`: matches every API scope EXCEPT those listed here
-// ("allow all except"). Mutually exclusive with `scopes` — a single
-// destination may set at most one of the two
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedScopes
-	}).(pulumi.StringArrayOutput)
-}
-
-// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScopeQualifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// (list of string)
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Scopes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi struct {
-	// (boolean) - Must be set to true
-	AllDestinations *bool `pulumi:"allDestinations"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs struct {
-	// (boolean) - Must be set to true
-	AllDestinations pulumi.BoolPtrInput `pulumi:"allDestinations"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi) *bool {
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput)
-}
-
-// (boolean) - Must be set to true
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput) AllDestinations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllDestinations
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin struct {
-	// (boolean) - Matches all source workspaces
-	AllSourceWorkspaces *bool `pulumi:"allSourceWorkspaces"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-	SelectedWorkspaces *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces `pulumi:"selectedWorkspaces"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs struct {
-	// (boolean) - Matches all source workspaces
-	AllSourceWorkspaces pulumi.BoolPtrInput `pulumi:"allSourceWorkspaces"`
-	// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-	SelectedWorkspaces GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrInput `pulumi:"selectedWorkspaces"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput)
-}
-
-// (boolean) - Matches all source workspaces
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) AllSourceWorkspaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin) *bool {
-		return v.AllSourceWorkspaces
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput) SelectedWorkspaces() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
-		return v.SelectedWorkspaces
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput)
-}
-
-// (boolean) - Matches all source workspaces
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput) AllSourceWorkspaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllSourceWorkspaces
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput) SelectedWorkspaces() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
-		if v == nil {
-			return nil
-		}
-		return v.SelectedWorkspaces
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces struct {
-	// (list of integer) - The workspace IDs to allow egress traffic to
-	WorkspaceIds []int `pulumi:"workspaceIds"`
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs{...}
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs struct {
-	// (list of integer) - The workspace IDs to allow egress traffic to
-	WorkspaceIds pulumi.IntArrayInput `pulumi:"workspaceIds"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput).ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs, GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtr and GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrType GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs
-
-func GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtr(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrType) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces) *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput)
-}
-
-// (list of integer) - The workspace IDs to allow egress traffic to
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput) WorkspaceIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces) []int {
-		return v.WorkspaceIds
-	}).(pulumi.IntArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput) ToGetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces) GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput)
-}
-
-// (list of integer) - The workspace IDs to allow egress traffic to
-func (o GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput) WorkspaceIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces) []int {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceIds
-	}).(pulumi.IntArrayOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRun struct {
-	// (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
-	CrossWorkspaceAccess *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess `pulumi:"crossWorkspaceAccess"`
-	// (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
-	// Configures how requests arriving over private connectivity are governed
-	PrivateAccess *GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess `pulumi:"privateAccess"`
-	// (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
-	// Configures how public internet traffic is allowed or denied access
-	PublicAccess *GetAccountNetworkPoliciesItemIngressDryRunPublicAccess `pulumi:"publicAccess"`
-}
-
-// GetAccountNetworkPoliciesItemIngressDryRunInput is an input type that accepts GetAccountNetworkPoliciesItemIngressDryRunArgs and GetAccountNetworkPoliciesItemIngressDryRunOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressDryRunInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressDryRunArgs{...}
-type GetAccountNetworkPoliciesItemIngressDryRunInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressDryRunOutput() GetAccountNetworkPoliciesItemIngressDryRunOutput
-	ToGetAccountNetworkPoliciesItemIngressDryRunOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressDryRunOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRunArgs struct {
-	// (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
-	CrossWorkspaceAccess GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrInput `pulumi:"crossWorkspaceAccess"`
-	// (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
-	// Configures how requests arriving over private connectivity are governed
-	PrivateAccess GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
-	// Configures how public internet traffic is allowed or denied access
-	PublicAccess GetAccountNetworkPoliciesItemIngressDryRunPublicAccessPtrInput `pulumi:"publicAccess"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressDryRunArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRun)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressDryRunArgs) ToGetAccountNetworkPoliciesItemIngressDryRunOutput() GetAccountNetworkPoliciesItemIngressDryRunOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressDryRunOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressDryRunArgs) ToGetAccountNetworkPoliciesItemIngressDryRunOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressDryRunOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRunOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressDryRunOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRun)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunOutput) ToGetAccountNetworkPoliciesItemIngressDryRunOutput() GetAccountNetworkPoliciesItemIngressDryRunOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunOutput) ToGetAccountNetworkPoliciesItemIngressDryRunOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunOutput {
-	return o
-}
-
-// (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
-func (o GetAccountNetworkPoliciesItemIngressDryRunOutput) CrossWorkspaceAccess() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressDryRun) *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess {
-		return v.CrossWorkspaceAccess
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
-// Configures how requests arriving over private connectivity are governed
-func (o GetAccountNetworkPoliciesItemIngressDryRunOutput) PrivateAccess() GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressDryRun) *GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess {
-		return v.PrivateAccess
-	}).(GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessPtrOutput)
-}
-
-// (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
-// Configures how public internet traffic is allowed or denied access
-func (o GetAccountNetworkPoliciesItemIngressDryRunOutput) PublicAccess() GetAccountNetworkPoliciesItemIngressDryRunPublicAccessPtrOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressDryRun) *GetAccountNetworkPoliciesItemIngressDryRunPublicAccess {
-		return v.PublicAccess
-	}).(GetAccountNetworkPoliciesItemIngressDryRunPublicAccessPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess struct {
-	// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-	AllowRules []GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRule `pulumi:"allowRules"`
-	// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-	DenyRules []GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRule `pulumi:"denyRules"`
-	// (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-	RestrictionMode string `pulumi:"restrictionMode"`
-}
-
-// GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessInput is an input type that accepts GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs and GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessInput` via:
-//
-//	GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs{...}
-type GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput
-	ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs struct {
-	// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-	AllowRules GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleArrayInput `pulumi:"allowRules"`
-	// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-	DenyRules GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleArrayInput `pulumi:"denyRules"`
-	// (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
-}
-
-func (GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess)(nil)).Elem()
-}
-
-func (i GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput)
-}
-
-func (i GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(context.Background())
-}
-
-func (i GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput).ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(ctx)
-}
-
-// GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrInput is an input type that accepts GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs, GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtr and GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput values.
-// You can construct a concrete instance of `GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrInput` via:
-//
-//	        GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrInput interface {
-	pulumi.Input
-
-	ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput
-	ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput
-}
-
-type getAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrType GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs
-
-func GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtr(v *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrInput {
-	return (*getAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrType)(v)
-}
-
-func (*getAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess)(nil)).Elem()
-}
-
-func (i *getAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrType) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return i.ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(context.Background())
-}
-
-func (i *getAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrType) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return o.ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(context.Background())
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess {
-		return &v
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) AllowRules() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) []GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRule {
-		return v.AllowRules
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleArrayOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) DenyRules() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleArrayOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) []GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRule {
-		return v.DenyRules
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleArrayOutput)
-}
-
-// (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput) RestrictionMode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) string {
-		return v.RestrictionMode
-	}).(pulumi.StringOutput)
-}
-
-type GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess)(nil)).Elem()
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) ToGetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput {
-	return o
-}
-
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) Elem() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess {
-		if v != nil {
-			return *v
-		}
-		var ret GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess
-		return ret
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) AllowRules() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) []GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRule {
-		if v == nil {
-			return nil
-		}
-		return v.AllowRules
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleArrayOutput)
-}
-
-// (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) DenyRules() GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleArrayOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) []GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRule {
-		if v == nil {
-			return nil
-		}
-		return v.DenyRules
-	}).(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleArrayOutput)
-}
-
-// (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-func (o GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput) RestrictionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RestrictionMode
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputTagInput)(nil)).Elem(), ModelServingProvisionedThroughputTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputTagArrayInput)(nil)).Elem(), ModelServingProvisionedThroughputTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingRateLimitInput)(nil)).Elem(), ModelServingRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingRateLimitArrayInput)(nil)).Elem(), ModelServingRateLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagInput)(nil)).Elem(), ModelServingTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagArrayInput)(nil)).Elem(), ModelServingTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigInput)(nil)).Elem(), ModelServingTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigPtrInput)(nil)).Elem(), ModelServingTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfigInput)(nil)).Elem(), ModelServingTelemetryConfigInferenceTableConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfigPtrInput)(nil)).Elem(), ModelServingTelemetryConfigInferenceTableConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigTableNamesInput)(nil)).Elem(), ModelServingTelemetryConfigTableNamesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigTableNamesPtrInput)(nil)).Elem(), ModelServingTelemetryConfigTableNamesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsInput)(nil)).Elem(), MountAbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsPtrInput)(nil)).Elem(), MountAbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountAdlInput)(nil)).Elem(), MountAdlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountAdlPtrInput)(nil)).Elem(), MountAdlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountGsInput)(nil)).Elem(), MountGsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountGsPtrInput)(nil)).Elem(), MountGsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountProviderConfigInput)(nil)).Elem(), MountProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountProviderConfigPtrInput)(nil)).Elem(), MountProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountS3Input)(nil)).Elem(), MountS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountS3PtrInput)(nil)).Elem(), MountS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountWasbInput)(nil)).Elem(), MountWasbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MountWasbPtrInput)(nil)).Elem(), MountWasbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfoInput)(nil)).Elem(), MwsCustomerManagedKeysAwsKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfoPtrInput)(nil)).Elem(), MwsCustomerManagedKeysAwsKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfoInput)(nil)).Elem(), MwsCustomerManagedKeysGcpKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfoPtrInput)(nil)).Elem(), MwsCustomerManagedKeysGcpKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointPtrInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageInput)(nil)).Elem(), MwsNetworksErrorMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageArrayInput)(nil)).Elem(), MwsNetworksErrorMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoPtrInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
@@ -81752,6 +81983,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookProviderConfigPtrInput)(nil)).Elem(), NotebookProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigInput)(nil)).Elem(), NotificationDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigPtrInput)(nil)).Elem(), NotificationDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigDatabricksAppSlackInput)(nil)).Elem(), NotificationDestinationConfigDatabricksAppSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigDatabricksAppSlackPtrInput)(nil)).Elem(), NotificationDestinationConfigDatabricksAppSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigDatabricksAppTeamsInput)(nil)).Elem(), NotificationDestinationConfigDatabricksAppTeamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigDatabricksAppTeamsPtrInput)(nil)).Elem(), NotificationDestinationConfigDatabricksAppTeamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigEmailInput)(nil)).Elem(), NotificationDestinationConfigEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigEmailPtrInput)(nil)).Elem(), NotificationDestinationConfigEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigGenericWebhookInput)(nil)).Elem(), NotificationDestinationConfigGenericWebhookArgs{})
@@ -82138,6 +82373,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput)(nil)).Elem(), PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoDenyInput)(nil)).Elem(), PolicyInfoDenyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoDenyPtrInput)(nil)).Elem(), PolicyInfoDenyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoGovernedTagInput)(nil)).Elem(), PolicyInfoGovernedTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoGovernedTagArrayInput)(nil)).Elem(), PolicyInfoGovernedTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoGrantInput)(nil)).Elem(), PolicyInfoGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoGrantPtrInput)(nil)).Elem(), PolicyInfoGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInfoMatchColumnInput)(nil)).Elem(), PolicyInfoMatchColumnArgs{})
@@ -82669,59 +82906,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleArrayInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRunInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressDryRunArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrInput)(nil)).Elem(), GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs{})
+	pulumi.RegisterOutputType(ModelServingProvisionedThroughputTagOutput{})
+	pulumi.RegisterOutputType(ModelServingProvisionedThroughputTagArrayOutput{})
+	pulumi.RegisterOutputType(ModelServingRateLimitOutput{})
+	pulumi.RegisterOutputType(ModelServingRateLimitArrayOutput{})
+	pulumi.RegisterOutputType(ModelServingTagOutput{})
+	pulumi.RegisterOutputType(ModelServingTagArrayOutput{})
+	pulumi.RegisterOutputType(ModelServingTelemetryConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingTelemetryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingTelemetryConfigInferenceTableConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingTelemetryConfigInferenceTableConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingTelemetryConfigTableNamesOutput{})
+	pulumi.RegisterOutputType(ModelServingTelemetryConfigTableNamesPtrOutput{})
+	pulumi.RegisterOutputType(MountAbfsOutput{})
+	pulumi.RegisterOutputType(MountAbfsPtrOutput{})
+	pulumi.RegisterOutputType(MountAdlOutput{})
+	pulumi.RegisterOutputType(MountAdlPtrOutput{})
+	pulumi.RegisterOutputType(MountGsOutput{})
+	pulumi.RegisterOutputType(MountGsPtrOutput{})
+	pulumi.RegisterOutputType(MountProviderConfigOutput{})
+	pulumi.RegisterOutputType(MountProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(MountS3Output{})
+	pulumi.RegisterOutputType(MountS3PtrOutput{})
+	pulumi.RegisterOutputType(MountWasbOutput{})
+	pulumi.RegisterOutputType(MountWasbPtrOutput{})
+	pulumi.RegisterOutputType(MwsCustomerManagedKeysAwsKeyInfoOutput{})
+	pulumi.RegisterOutputType(MwsCustomerManagedKeysAwsKeyInfoPtrOutput{})
+	pulumi.RegisterOutputType(MwsCustomerManagedKeysGcpKeyInfoOutput{})
+	pulumi.RegisterOutputType(MwsCustomerManagedKeysGcpKeyInfoPtrOutput{})
+	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointOutput{})
+	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput{})
+	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput{})
+	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigPtrOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput{})
+	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput{})
+	pulumi.RegisterOutputType(MwsNetworksErrorMessageOutput{})
+	pulumi.RegisterOutputType(MwsNetworksErrorMessageArrayOutput{})
 	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoOutput{})
 	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsOutput{})
@@ -82744,6 +82976,10 @@ func init() {
 	pulumi.RegisterOutputType(NotebookProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationDestinationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(NotificationDestinationConfigDatabricksAppSlackOutput{})
+	pulumi.RegisterOutputType(NotificationDestinationConfigDatabricksAppSlackPtrOutput{})
+	pulumi.RegisterOutputType(NotificationDestinationConfigDatabricksAppTeamsOutput{})
+	pulumi.RegisterOutputType(NotificationDestinationConfigDatabricksAppTeamsPtrOutput{})
 	pulumi.RegisterOutputType(NotificationDestinationConfigEmailOutput{})
 	pulumi.RegisterOutputType(NotificationDestinationConfigEmailPtrOutput{})
 	pulumi.RegisterOutputType(NotificationDestinationConfigGenericWebhookOutput{})
@@ -83130,6 +83366,8 @@ func init() {
 	pulumi.RegisterOutputType(PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput{})
 	pulumi.RegisterOutputType(PolicyInfoDenyOutput{})
 	pulumi.RegisterOutputType(PolicyInfoDenyPtrOutput{})
+	pulumi.RegisterOutputType(PolicyInfoGovernedTagOutput{})
+	pulumi.RegisterOutputType(PolicyInfoGovernedTagArrayOutput{})
 	pulumi.RegisterOutputType(PolicyInfoGrantOutput{})
 	pulumi.RegisterOutputType(PolicyInfoGrantPtrOutput{})
 	pulumi.RegisterOutputType(PolicyInfoMatchColumnOutput{})
@@ -83661,57 +83899,4 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOutput{})
 	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentityArrayOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOnePtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimeOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntimePtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimeOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntimePtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentityArrayOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOnePtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimeOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntimePtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimeOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntimePtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUiPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspacesPtrOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressDryRunOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessOutput{})
-	pulumi.RegisterOutputType(GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessPtrOutput{})
 }

@@ -41,7 +41,8 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private String description;
     /**
-     * @return (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * @return (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      * 
      */
     private List<GetFeatureEngineeringFeaturesFeatureEntity> entities;
@@ -140,7 +141,8 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.description;
     }
     /**
-     * @return (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * @return (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      * 
      */
     public List<GetFeatureEngineeringFeaturesFeatureEntity> entities() {

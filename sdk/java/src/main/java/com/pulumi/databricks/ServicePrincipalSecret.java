@@ -181,6 +181,12 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
     public Output<ServicePrincipalSecretProviderConfig> providerConfig() {
         return this.providerConfig;
     }
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> scopes;
+
+    public Output<Optional<List<String>>> scopes() {
+        return Codegen.optional(this.scopes);
+    }
     /**
      * **Sensitive** Generated secret for the service principal.
      * 

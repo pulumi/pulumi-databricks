@@ -91,6 +91,9 @@ namespace Pulumi.Databricks
         [Output("creatorName")]
         public Output<string> CreatorName { get; private set; } = null!;
 
+        [Output("customerVersionLabel")]
+        public Output<string?> CustomerVersionLabel { get; private set; } = null!;
+
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
@@ -125,6 +128,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("jdbcUrl")]
         public Output<string> JdbcUrl { get; private set; } = null!;
+
+        [Output("maxDbu")]
+        public Output<int?> MaxDbu { get; private set; } = null!;
 
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -174,6 +180,9 @@ namespace Pulumi.Databricks
         [Output("providerConfig")]
         public Output<Outputs.SqlEndpointProviderConfig> ProviderConfig { get; private set; } = null!;
 
+        [Output("reydenClusterSizeMultiplier")]
+        public Output<double?> ReydenClusterSizeMultiplier { get; private set; } = null!;
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         /// </summary>
@@ -191,6 +200,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("statementTimeout")]
+        public Output<int?> StatementTimeout { get; private set; } = null!;
 
         /// <summary>
         /// Databricks tags all endpoint resources with these tags.
@@ -268,6 +280,9 @@ namespace Pulumi.Databricks
         [Input("clusterSize", required: true)]
         public Input<string> ClusterSize { get; set; } = null!;
 
+        [Input("customerVersionLabel")]
+        public Input<string>? CustomerVersionLabel { get; set; }
+
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
@@ -290,6 +305,9 @@ namespace Pulumi.Databricks
 
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
+
+        [Input("maxDbu")]
+        public Input<int>? MaxDbu { get; set; }
 
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -321,6 +339,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.SqlEndpointProviderConfigArgs>? ProviderConfig { get; set; }
 
+        [Input("reydenClusterSizeMultiplier")]
+        public Input<double>? ReydenClusterSizeMultiplier { get; set; }
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         /// </summary>
@@ -332,6 +353,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
+
+        [Input("statementTimeout")]
+        public Input<int>? StatementTimeout { get; set; }
 
         /// <summary>
         /// Databricks tags all endpoint resources with these tags.
@@ -377,6 +401,9 @@ namespace Pulumi.Databricks
         [Input("creatorName")]
         public Input<string>? CreatorName { get; set; }
 
+        [Input("customerVersionLabel")]
+        public Input<string>? CustomerVersionLabel { get; set; }
+
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
@@ -417,6 +444,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("jdbcUrl")]
         public Input<string>? JdbcUrl { get; set; }
+
+        [Input("maxDbu")]
+        public Input<int>? MaxDbu { get; set; }
 
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -466,6 +496,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.SqlEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
 
+        [Input("reydenClusterSizeMultiplier")]
+        public Input<double>? ReydenClusterSizeMultiplier { get; set; }
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         /// </summary>
@@ -483,6 +516,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("statementTimeout")]
+        public Input<int>? StatementTimeout { get; set; }
 
         /// <summary>
         /// Databricks tags all endpoint resources with these tags.

@@ -18,9 +18,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("columnTagValue")]
         public Input<Inputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs>? ColumnTagValue { get; set; }
 
-        /// <summary>
-        /// Extracts the value of a securable-level tag
-        /// </summary>
         [Input("tagValue")]
         public Input<Inputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs>? TagValue { get; set; }
 

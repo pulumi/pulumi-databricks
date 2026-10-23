@@ -35,6 +35,7 @@ namespace Pulumi.Databricks.Outputs
         /// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `GitRepository` (see below).
         /// </summary>
         public readonly Outputs.AppPendingDeploymentGitSource? GitSource;
+        public readonly Outputs.AppPendingDeploymentHealthCheck? HealthCheck;
         /// <summary>
         /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
         /// </summary>
@@ -68,6 +69,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AppPendingDeploymentGitSource? gitSource,
 
+            Outputs.AppPendingDeploymentHealthCheck? healthCheck,
+
             string? mode,
 
             string? sourceCodePath,
@@ -83,6 +86,7 @@ namespace Pulumi.Databricks.Outputs
             DeploymentId = deploymentId;
             EnvVars = envVars;
             GitSource = gitSource;
+            HealthCheck = healthCheck;
             Mode = mode;
             SourceCodePath = sourceCodePath;
             Status = status;

@@ -277,6 +277,13 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.readOnly);
     }
 
+    @Import(name="secrets")
+    private @Nullable Output<Map<String,String>> secrets;
+
+    public Optional<Output<Map<String,String>>> secrets() {
+        return Optional.ofNullable(this.secrets);
+    }
+
     /**
      * Securable type.
      * 
@@ -357,6 +364,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.providerConfig = $.providerConfig;
         this.provisioningInfos = $.provisioningInfos;
         this.readOnly = $.readOnly;
+        this.secrets = $.secrets;
         this.securableType = $.securableType;
         this.updatedAt = $.updatedAt;
         this.updatedBy = $.updatedBy;
@@ -746,6 +754,15 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
+        }
+
+        public Builder secrets(@Nullable Output<Map<String,String>> secrets) {
+            $.secrets = secrets;
+            return this;
+        }
+
+        public Builder secrets(Map<String,String> secrets) {
+            return secrets(Output.of(secrets));
         }
 
         /**

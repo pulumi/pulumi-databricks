@@ -41,6 +41,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountSettingUserPreferenceV2{}
 	case "databricks:index/accountSettingV2:AccountSettingV2":
 		r = &AccountSettingV2{}
+	case "databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry":
+		r = &AgentKitManagedMemoryEntry{}
+	case "databricks:index/agentKitManagedMemoryStore:AgentKitManagedMemoryStore":
+		r = &AgentKitManagedMemoryStore{}
+	case "databricks:index/agentKitSession:AgentKitSession":
+		r = &AgentKitSession{}
+	case "databricks:index/agentKitSessionStore:AgentKitSessionStore":
+		r = &AgentKitSessionStore{}
 	case "databricks:index/aiGatewayMcpService:AiGatewayMcpService":
 		r = &AiGatewayMcpService{}
 	case "databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService":
@@ -446,6 +454,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accountSettingV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/agentKitManagedMemoryEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/agentKitManagedMemoryStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/agentKitSession",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/agentKitSessionStore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

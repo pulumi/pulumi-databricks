@@ -7,7 +7,89 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+ *
+ * A feature is a reusable, governed definition of a model input registered in Unity Catalog. Each feature binds a data source to the function that computes its value, so model training and online serving read one definition instead of two implementations that drift apart.
+ *
+ * Registering a feature computes nothing on its own. To produce values, materialize the feature to an offline Delta table or an online Lakebase table using the Feature Engineering API.
+ *
+ * Only `description` can be changed in place. Changing any other field replaces the feature.
+ *
+ * ## Example Usage
+ *
+ * A feature needs a source and a function. A Delta table source also requires the entity columns that
+ * key the feature and a timeseries column; a request source takes neither, because the value arrives
+ * in the request.
+ *
+ * ### Aggregation over a sliding window
+ *
+ * Count each customer's transactions over the trailing seven days, recomputed daily.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const transactionCount7d = new databricks.FeatureEngineeringFeature("transaction_count_7d", {
+ *     fullName: "main.features.transaction_count_7d",
+ *     description: "Transactions per customer over the trailing seven days.",
+ *     source: {
+ *         deltaTableSource: {
+ *             fullName: "main.retail.transactions",
+ *         },
+ *     },
+ *     "function": {
+ *         aggregationFunction: {
+ *             countFunction: {
+ *                 input: "transaction_id",
+ *             },
+ *             timeWindow: {
+ *                 sliding: {
+ *                     windowDuration: "604800s",
+ *                     slideDuration: "86400s",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     entities: [{
+ *         name: "customer_id",
+ *     }],
+ *     timeseriesColumn: {
+ *         name: "transaction_time",
+ *     },
+ * });
+ * ```
+ *
+ * ### Latest value of a column
+ *
+ * Read a column straight from the source with no aggregation, so no time window is needed. The
+ * timeseries column is still required, because it is what makes the lookup point-in-time correct.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const customerTier = new databricks.FeatureEngineeringFeature("customer_tier", {
+ *     fullName: "main.features.customer_tier",
+ *     source: {
+ *         deltaTableSource: {
+ *             fullName: "main.retail.customers",
+ *         },
+ *     },
+ *     "function": {
+ *         columnSelection: {
+ *             column: "tier",
+ *         },
+ *     },
+ *     entities: [{
+ *         name: "customer_id",
+ *     }],
+ *     timeseriesColumn: {
+ *         name: "updated_at",
+ *     },
+ * });
+ * ```
  */
 export class FeatureEngineeringFeature extends pulumi.CustomResource {
     /**
@@ -54,14 +136,13 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      */
     declare public readonly entities: pulumi.Output<outputs.FeatureEngineeringFeatureEntity[] | undefined>;
     declare public readonly filterCondition: pulumi.Output<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     declare public readonly fullName: pulumi.Output<string>;
     /**
@@ -76,7 +157,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
-    declare public readonly lineageContext: pulumi.Output<outputs.FeatureEngineeringFeatureLineageContext | undefined>;
+    declare public readonly lineageContext: pulumi.Output<outputs.FeatureEngineeringFeatureLineageContext>;
     /**
      * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
      */
@@ -95,7 +176,9 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
     declare public readonly source: pulumi.Output<outputs.FeatureEngineeringFeatureSource>;
     declare public readonly timeWindow: pulumi.Output<outputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      */
     declare public readonly timeseriesColumn: pulumi.Output<outputs.FeatureEngineeringFeatureTimeseriesColumn | undefined>;
 
@@ -182,14 +265,13 @@ export interface FeatureEngineeringFeatureState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      */
     entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[] | undefined>;
     filterCondition?: pulumi.Input<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName?: pulumi.Input<string | undefined>;
     /**
@@ -223,7 +305,9 @@ export interface FeatureEngineeringFeatureState {
     source?: pulumi.Input<inputs.FeatureEngineeringFeatureSource | undefined>;
     timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      */
     timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn | undefined>;
 }
@@ -237,14 +321,13 @@ export interface FeatureEngineeringFeatureArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup.
+     * Optional since entities are not set for RequestSource features or on-demand calculated features
      */
     entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[] | undefined>;
     filterCondition?: pulumi.Input<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature. This is the
-     * feature's resource identifier; the catalog_name, schema_name, and name fields
-     * below are OUTPUT_ONLY decomposed views of this value
+     * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: pulumi.Input<string>;
     /**
@@ -270,7 +353,9 @@ export interface FeatureEngineeringFeatureArgs {
     source: pulumi.Input<inputs.FeatureEngineeringFeatureSource>;
     timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * Column recording time, used for point-in-time joins, backfills, and aggregations.
+     * Optional since a timeseries column is not set for RequestSource features or on-demand
+     * calculated features
      */
     timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn | undefined>;
 }

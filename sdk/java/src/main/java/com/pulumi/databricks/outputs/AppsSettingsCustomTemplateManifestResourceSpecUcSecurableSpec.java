@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     private String permission;
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
@@ -22,7 +22,7 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec
         return this.permission;
     }
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

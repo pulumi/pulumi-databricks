@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 //
@@ -25,6 +25,8 @@ import (
 // 2. have **USE_CATALOG** and **MANAGE** permissions on the catalog
 //
 // > **Note** This resource can only be used with a workspace-level provider.
+//
+// > **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this resource are generally available.
 //
 // ## Example Usage
 //
@@ -50,6 +52,39 @@ import (
 //						pulumi.String("customer_data"),
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable Data Classification for the entire catalog (all current and future schemas)
+//			_, err = databricks.NewDataClassificationCatalogConfig(ctx, "all_schemas", &databricks.DataClassificationCatalogConfigArgs{
+//				Parent: pulumi.String("catalogs/staging_catalog"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To automatically tag columns detected with specific classes, set `autoTagConfigs`. This attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDataClassificationCatalogConfig(ctx, "auto_tagging", &databricks.DataClassificationCatalogConfigArgs{
+//				Parent: pulumi.String("catalogs/finance_catalog"),
 //				AutoTagConfigs: databricks.DataClassificationCatalogConfigAutoTagConfigArray{
 //					&databricks.DataClassificationCatalogConfigAutoTagConfigArgs{
 //						ClassificationTag: pulumi.String("class.credit_card"),
@@ -60,13 +95,6 @@ import (
 //						AutoTaggingMode:   pulumi.String("AUTO_TAGGING_ENABLED"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Enable Data Classification for the entire catalog (all current and future schemas)
-//			_, err = databricks.NewDataClassificationCatalogConfig(ctx, "all_schemas", &databricks.DataClassificationCatalogConfigArgs{
-//				Parent: pulumi.String("catalogs/staging_catalog"),
 //			})
 //			if err != nil {
 //				return err

@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyColumnMask;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyDeny;
+import com.pulumi.databricks.outputs.GetPolicyInfosPolicyGovernedTag;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyGrant;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyMatchColumn;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyProviderConfig;
@@ -60,6 +61,11 @@ public final class GetPolicyInfosPolicy {
      * 
      */
     private String forSecurableType;
+    /**
+     * @return (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+     * 
+     */
+    private List<GetPolicyInfosPolicyGovernedTag> governedTags;
     /**
      * @return (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
      * Required on create and optional on update. When specified on update,
@@ -190,6 +196,13 @@ public final class GetPolicyInfosPolicy {
         return this.forSecurableType;
     }
     /**
+     * @return (list of GovernedTagReference) - Governed tag keys and values referenced by this policy&#39;s conditions and function arguments. Output only
+     * 
+     */
+    public List<GetPolicyInfosPolicyGovernedTag> governedTags() {
+        return this.governedTags;
+    }
+    /**
      * @return (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
@@ -305,6 +318,7 @@ public final class GetPolicyInfosPolicy {
         private GetPolicyInfosPolicyDeny deny;
         private List<String> exceptPrincipals;
         private String forSecurableType;
+        private List<GetPolicyInfosPolicyGovernedTag> governedTags;
         private GetPolicyInfosPolicyGrant grant;
         private String id;
         private List<GetPolicyInfosPolicyMatchColumn> matchColumns;
@@ -328,6 +342,7 @@ public final class GetPolicyInfosPolicy {
     	      this.deny = defaults.deny;
     	      this.exceptPrincipals = defaults.exceptPrincipals;
     	      this.forSecurableType = defaults.forSecurableType;
+    	      this.governedTags = defaults.governedTags;
     	      this.grant = defaults.grant;
     	      this.id = defaults.id;
     	      this.matchColumns = defaults.matchColumns;
@@ -401,6 +416,17 @@ public final class GetPolicyInfosPolicy {
             }
             this.forSecurableType = forSecurableType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder governedTags(List<GetPolicyInfosPolicyGovernedTag> governedTags) {
+            if (governedTags == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfosPolicy", "governedTags");
+            }
+            this.governedTags = governedTags;
+            return this;
+        }
+        public Builder governedTags(GetPolicyInfosPolicyGovernedTag... governedTags) {
+            return governedTags(List.of(governedTags));
         }
         @CustomType.Setter
         public Builder grant(GetPolicyInfosPolicyGrant grant) {
@@ -519,6 +545,7 @@ public final class GetPolicyInfosPolicy {
             _resultValue.deny = deny;
             _resultValue.exceptPrincipals = exceptPrincipals;
             _resultValue.forSecurableType = forSecurableType;
+            _resultValue.governedTags = governedTags;
             _resultValue.grant = grant;
             _resultValue.id = id;
             _resultValue.matchColumns = matchColumns;

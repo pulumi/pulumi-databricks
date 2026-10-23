@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber;
 import java.lang.Boolean;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription();
+
+    @Import(name="attachment")
+    private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment attachment;
+
+    public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
 
     @Import(name="customSubject")
     private @Nullable String customSubject;
@@ -41,6 +49,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubs
     private GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription() {}
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription(GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription $) {
+        this.attachment = $.attachment;
         this.customSubject = $.customSubject;
         this.paused = $.paused;
         this.subscribers = $.subscribers;
@@ -62,6 +71,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubs
 
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription defaults) {
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription(Objects.requireNonNull(defaults));
+        }
+
+        public Builder attachment(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachment attachment) {
+            $.attachment = attachment;
+            return this;
         }
 
         public Builder customSubject(@Nullable String customSubject) {

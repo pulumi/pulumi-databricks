@@ -32815,6 +32815,710 @@ func (o AccountSettingV2WorkspaceLabelPtrOutput) Label() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type AgentKitManagedMemoryEntryProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// AgentKitManagedMemoryEntryProviderConfigInput is an input type that accepts AgentKitManagedMemoryEntryProviderConfigArgs and AgentKitManagedMemoryEntryProviderConfigOutput values.
+// You can construct a concrete instance of `AgentKitManagedMemoryEntryProviderConfigInput` via:
+//
+//	AgentKitManagedMemoryEntryProviderConfigArgs{...}
+type AgentKitManagedMemoryEntryProviderConfigInput interface {
+	pulumi.Input
+
+	ToAgentKitManagedMemoryEntryProviderConfigOutput() AgentKitManagedMemoryEntryProviderConfigOutput
+	ToAgentKitManagedMemoryEntryProviderConfigOutputWithContext(context.Context) AgentKitManagedMemoryEntryProviderConfigOutput
+}
+
+type AgentKitManagedMemoryEntryProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (AgentKitManagedMemoryEntryProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitManagedMemoryEntryProviderConfig)(nil)).Elem()
+}
+
+func (i AgentKitManagedMemoryEntryProviderConfigArgs) ToAgentKitManagedMemoryEntryProviderConfigOutput() AgentKitManagedMemoryEntryProviderConfigOutput {
+	return i.ToAgentKitManagedMemoryEntryProviderConfigOutputWithContext(context.Background())
+}
+
+func (i AgentKitManagedMemoryEntryProviderConfigArgs) ToAgentKitManagedMemoryEntryProviderConfigOutputWithContext(ctx context.Context) AgentKitManagedMemoryEntryProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryEntryProviderConfigOutput)
+}
+
+func (i AgentKitManagedMemoryEntryProviderConfigArgs) ToAgentKitManagedMemoryEntryProviderConfigPtrOutput() AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return i.ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentKitManagedMemoryEntryProviderConfigArgs) ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryEntryProviderConfigOutput).ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(ctx)
+}
+
+// AgentKitManagedMemoryEntryProviderConfigPtrInput is an input type that accepts AgentKitManagedMemoryEntryProviderConfigArgs, AgentKitManagedMemoryEntryProviderConfigPtr and AgentKitManagedMemoryEntryProviderConfigPtrOutput values.
+// You can construct a concrete instance of `AgentKitManagedMemoryEntryProviderConfigPtrInput` via:
+//
+//	        AgentKitManagedMemoryEntryProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentKitManagedMemoryEntryProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentKitManagedMemoryEntryProviderConfigPtrOutput() AgentKitManagedMemoryEntryProviderConfigPtrOutput
+	ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(context.Context) AgentKitManagedMemoryEntryProviderConfigPtrOutput
+}
+
+type agentKitManagedMemoryEntryProviderConfigPtrType AgentKitManagedMemoryEntryProviderConfigArgs
+
+func AgentKitManagedMemoryEntryProviderConfigPtr(v *AgentKitManagedMemoryEntryProviderConfigArgs) AgentKitManagedMemoryEntryProviderConfigPtrInput {
+	return (*agentKitManagedMemoryEntryProviderConfigPtrType)(v)
+}
+
+func (*agentKitManagedMemoryEntryProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitManagedMemoryEntryProviderConfig)(nil)).Elem()
+}
+
+func (i *agentKitManagedMemoryEntryProviderConfigPtrType) ToAgentKitManagedMemoryEntryProviderConfigPtrOutput() AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return i.ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentKitManagedMemoryEntryProviderConfigPtrType) ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryEntryProviderConfigPtrOutput)
+}
+
+type AgentKitManagedMemoryEntryProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentKitManagedMemoryEntryProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitManagedMemoryEntryProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigOutput) ToAgentKitManagedMemoryEntryProviderConfigOutput() AgentKitManagedMemoryEntryProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigOutput) ToAgentKitManagedMemoryEntryProviderConfigOutputWithContext(ctx context.Context) AgentKitManagedMemoryEntryProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigOutput) ToAgentKitManagedMemoryEntryProviderConfigPtrOutput() AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return o.ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigOutput) ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentKitManagedMemoryEntryProviderConfig) *AgentKitManagedMemoryEntryProviderConfig {
+		return &v
+	}).(AgentKitManagedMemoryEntryProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o AgentKitManagedMemoryEntryProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentKitManagedMemoryEntryProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type AgentKitManagedMemoryEntryProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentKitManagedMemoryEntryProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitManagedMemoryEntryProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigPtrOutput) ToAgentKitManagedMemoryEntryProviderConfigPtrOutput() AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigPtrOutput) ToAgentKitManagedMemoryEntryProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryEntryProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryEntryProviderConfigPtrOutput) Elem() AgentKitManagedMemoryEntryProviderConfigOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryEntryProviderConfig) AgentKitManagedMemoryEntryProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentKitManagedMemoryEntryProviderConfig
+		return ret
+	}).(AgentKitManagedMemoryEntryProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o AgentKitManagedMemoryEntryProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryEntryProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentKitManagedMemoryStoreProviderConfig struct {
+	// (integer) - Workspace that owns the memory store
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// AgentKitManagedMemoryStoreProviderConfigInput is an input type that accepts AgentKitManagedMemoryStoreProviderConfigArgs and AgentKitManagedMemoryStoreProviderConfigOutput values.
+// You can construct a concrete instance of `AgentKitManagedMemoryStoreProviderConfigInput` via:
+//
+//	AgentKitManagedMemoryStoreProviderConfigArgs{...}
+type AgentKitManagedMemoryStoreProviderConfigInput interface {
+	pulumi.Input
+
+	ToAgentKitManagedMemoryStoreProviderConfigOutput() AgentKitManagedMemoryStoreProviderConfigOutput
+	ToAgentKitManagedMemoryStoreProviderConfigOutputWithContext(context.Context) AgentKitManagedMemoryStoreProviderConfigOutput
+}
+
+type AgentKitManagedMemoryStoreProviderConfigArgs struct {
+	// (integer) - Workspace that owns the memory store
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (AgentKitManagedMemoryStoreProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitManagedMemoryStoreProviderConfig)(nil)).Elem()
+}
+
+func (i AgentKitManagedMemoryStoreProviderConfigArgs) ToAgentKitManagedMemoryStoreProviderConfigOutput() AgentKitManagedMemoryStoreProviderConfigOutput {
+	return i.ToAgentKitManagedMemoryStoreProviderConfigOutputWithContext(context.Background())
+}
+
+func (i AgentKitManagedMemoryStoreProviderConfigArgs) ToAgentKitManagedMemoryStoreProviderConfigOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryStoreProviderConfigOutput)
+}
+
+func (i AgentKitManagedMemoryStoreProviderConfigArgs) ToAgentKitManagedMemoryStoreProviderConfigPtrOutput() AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return i.ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentKitManagedMemoryStoreProviderConfigArgs) ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryStoreProviderConfigOutput).ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(ctx)
+}
+
+// AgentKitManagedMemoryStoreProviderConfigPtrInput is an input type that accepts AgentKitManagedMemoryStoreProviderConfigArgs, AgentKitManagedMemoryStoreProviderConfigPtr and AgentKitManagedMemoryStoreProviderConfigPtrOutput values.
+// You can construct a concrete instance of `AgentKitManagedMemoryStoreProviderConfigPtrInput` via:
+//
+//	        AgentKitManagedMemoryStoreProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentKitManagedMemoryStoreProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentKitManagedMemoryStoreProviderConfigPtrOutput() AgentKitManagedMemoryStoreProviderConfigPtrOutput
+	ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(context.Context) AgentKitManagedMemoryStoreProviderConfigPtrOutput
+}
+
+type agentKitManagedMemoryStoreProviderConfigPtrType AgentKitManagedMemoryStoreProviderConfigArgs
+
+func AgentKitManagedMemoryStoreProviderConfigPtr(v *AgentKitManagedMemoryStoreProviderConfigArgs) AgentKitManagedMemoryStoreProviderConfigPtrInput {
+	return (*agentKitManagedMemoryStoreProviderConfigPtrType)(v)
+}
+
+func (*agentKitManagedMemoryStoreProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitManagedMemoryStoreProviderConfig)(nil)).Elem()
+}
+
+func (i *agentKitManagedMemoryStoreProviderConfigPtrType) ToAgentKitManagedMemoryStoreProviderConfigPtrOutput() AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return i.ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentKitManagedMemoryStoreProviderConfigPtrType) ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryStoreProviderConfigPtrOutput)
+}
+
+type AgentKitManagedMemoryStoreProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentKitManagedMemoryStoreProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitManagedMemoryStoreProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigOutput) ToAgentKitManagedMemoryStoreProviderConfigOutput() AgentKitManagedMemoryStoreProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigOutput) ToAgentKitManagedMemoryStoreProviderConfigOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigOutput) ToAgentKitManagedMemoryStoreProviderConfigPtrOutput() AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return o.ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigOutput) ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentKitManagedMemoryStoreProviderConfig) *AgentKitManagedMemoryStoreProviderConfig {
+		return &v
+	}).(AgentKitManagedMemoryStoreProviderConfigPtrOutput)
+}
+
+// (integer) - Workspace that owns the memory store
+func (o AgentKitManagedMemoryStoreProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentKitManagedMemoryStoreProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type AgentKitManagedMemoryStoreProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentKitManagedMemoryStoreProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitManagedMemoryStoreProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigPtrOutput) ToAgentKitManagedMemoryStoreProviderConfigPtrOutput() AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigPtrOutput) ToAgentKitManagedMemoryStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreProviderConfigPtrOutput) Elem() AgentKitManagedMemoryStoreProviderConfigOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryStoreProviderConfig) AgentKitManagedMemoryStoreProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentKitManagedMemoryStoreProviderConfig
+		return ret
+	}).(AgentKitManagedMemoryStoreProviderConfigOutput)
+}
+
+// (integer) - Workspace that owns the memory store
+func (o AgentKitManagedMemoryStoreProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryStoreProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentKitManagedMemoryStoreStorageBackend struct {
+	// (string) - Backend-specific identifier. For Lakebase, this is the project ID
+	BackendId *string `pulumi:"backendId"`
+	// (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+	BackendType *string `pulumi:"backendType"`
+}
+
+// AgentKitManagedMemoryStoreStorageBackendInput is an input type that accepts AgentKitManagedMemoryStoreStorageBackendArgs and AgentKitManagedMemoryStoreStorageBackendOutput values.
+// You can construct a concrete instance of `AgentKitManagedMemoryStoreStorageBackendInput` via:
+//
+//	AgentKitManagedMemoryStoreStorageBackendArgs{...}
+type AgentKitManagedMemoryStoreStorageBackendInput interface {
+	pulumi.Input
+
+	ToAgentKitManagedMemoryStoreStorageBackendOutput() AgentKitManagedMemoryStoreStorageBackendOutput
+	ToAgentKitManagedMemoryStoreStorageBackendOutputWithContext(context.Context) AgentKitManagedMemoryStoreStorageBackendOutput
+}
+
+type AgentKitManagedMemoryStoreStorageBackendArgs struct {
+	// (string) - Backend-specific identifier. For Lakebase, this is the project ID
+	BackendId pulumi.StringPtrInput `pulumi:"backendId"`
+	// (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+	BackendType pulumi.StringPtrInput `pulumi:"backendType"`
+}
+
+func (AgentKitManagedMemoryStoreStorageBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitManagedMemoryStoreStorageBackend)(nil)).Elem()
+}
+
+func (i AgentKitManagedMemoryStoreStorageBackendArgs) ToAgentKitManagedMemoryStoreStorageBackendOutput() AgentKitManagedMemoryStoreStorageBackendOutput {
+	return i.ToAgentKitManagedMemoryStoreStorageBackendOutputWithContext(context.Background())
+}
+
+func (i AgentKitManagedMemoryStoreStorageBackendArgs) ToAgentKitManagedMemoryStoreStorageBackendOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreStorageBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryStoreStorageBackendOutput)
+}
+
+func (i AgentKitManagedMemoryStoreStorageBackendArgs) ToAgentKitManagedMemoryStoreStorageBackendPtrOutput() AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return i.ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(context.Background())
+}
+
+func (i AgentKitManagedMemoryStoreStorageBackendArgs) ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryStoreStorageBackendOutput).ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(ctx)
+}
+
+// AgentKitManagedMemoryStoreStorageBackendPtrInput is an input type that accepts AgentKitManagedMemoryStoreStorageBackendArgs, AgentKitManagedMemoryStoreStorageBackendPtr and AgentKitManagedMemoryStoreStorageBackendPtrOutput values.
+// You can construct a concrete instance of `AgentKitManagedMemoryStoreStorageBackendPtrInput` via:
+//
+//	        AgentKitManagedMemoryStoreStorageBackendArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentKitManagedMemoryStoreStorageBackendPtrInput interface {
+	pulumi.Input
+
+	ToAgentKitManagedMemoryStoreStorageBackendPtrOutput() AgentKitManagedMemoryStoreStorageBackendPtrOutput
+	ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(context.Context) AgentKitManagedMemoryStoreStorageBackendPtrOutput
+}
+
+type agentKitManagedMemoryStoreStorageBackendPtrType AgentKitManagedMemoryStoreStorageBackendArgs
+
+func AgentKitManagedMemoryStoreStorageBackendPtr(v *AgentKitManagedMemoryStoreStorageBackendArgs) AgentKitManagedMemoryStoreStorageBackendPtrInput {
+	return (*agentKitManagedMemoryStoreStorageBackendPtrType)(v)
+}
+
+func (*agentKitManagedMemoryStoreStorageBackendPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitManagedMemoryStoreStorageBackend)(nil)).Elem()
+}
+
+func (i *agentKitManagedMemoryStoreStorageBackendPtrType) ToAgentKitManagedMemoryStoreStorageBackendPtrOutput() AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return i.ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(context.Background())
+}
+
+func (i *agentKitManagedMemoryStoreStorageBackendPtrType) ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitManagedMemoryStoreStorageBackendPtrOutput)
+}
+
+type AgentKitManagedMemoryStoreStorageBackendOutput struct{ *pulumi.OutputState }
+
+func (AgentKitManagedMemoryStoreStorageBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitManagedMemoryStoreStorageBackend)(nil)).Elem()
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendOutput) ToAgentKitManagedMemoryStoreStorageBackendOutput() AgentKitManagedMemoryStoreStorageBackendOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendOutput) ToAgentKitManagedMemoryStoreStorageBackendOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreStorageBackendOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendOutput) ToAgentKitManagedMemoryStoreStorageBackendPtrOutput() AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return o.ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(context.Background())
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendOutput) ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentKitManagedMemoryStoreStorageBackend) *AgentKitManagedMemoryStoreStorageBackend {
+		return &v
+	}).(AgentKitManagedMemoryStoreStorageBackendPtrOutput)
+}
+
+// (string) - Backend-specific identifier. For Lakebase, this is the project ID
+func (o AgentKitManagedMemoryStoreStorageBackendOutput) BackendId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentKitManagedMemoryStoreStorageBackend) *string { return v.BackendId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+func (o AgentKitManagedMemoryStoreStorageBackendOutput) BackendType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentKitManagedMemoryStoreStorageBackend) *string { return v.BackendType }).(pulumi.StringPtrOutput)
+}
+
+type AgentKitManagedMemoryStoreStorageBackendPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentKitManagedMemoryStoreStorageBackendPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitManagedMemoryStoreStorageBackend)(nil)).Elem()
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendPtrOutput) ToAgentKitManagedMemoryStoreStorageBackendPtrOutput() AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendPtrOutput) ToAgentKitManagedMemoryStoreStorageBackendPtrOutputWithContext(ctx context.Context) AgentKitManagedMemoryStoreStorageBackendPtrOutput {
+	return o
+}
+
+func (o AgentKitManagedMemoryStoreStorageBackendPtrOutput) Elem() AgentKitManagedMemoryStoreStorageBackendOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryStoreStorageBackend) AgentKitManagedMemoryStoreStorageBackend {
+		if v != nil {
+			return *v
+		}
+		var ret AgentKitManagedMemoryStoreStorageBackend
+		return ret
+	}).(AgentKitManagedMemoryStoreStorageBackendOutput)
+}
+
+// (string) - Backend-specific identifier. For Lakebase, this is the project ID
+func (o AgentKitManagedMemoryStoreStorageBackendPtrOutput) BackendId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryStoreStorageBackend) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackendId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+func (o AgentKitManagedMemoryStoreStorageBackendPtrOutput) BackendType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentKitManagedMemoryStoreStorageBackend) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackendType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentKitSessionProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// AgentKitSessionProviderConfigInput is an input type that accepts AgentKitSessionProviderConfigArgs and AgentKitSessionProviderConfigOutput values.
+// You can construct a concrete instance of `AgentKitSessionProviderConfigInput` via:
+//
+//	AgentKitSessionProviderConfigArgs{...}
+type AgentKitSessionProviderConfigInput interface {
+	pulumi.Input
+
+	ToAgentKitSessionProviderConfigOutput() AgentKitSessionProviderConfigOutput
+	ToAgentKitSessionProviderConfigOutputWithContext(context.Context) AgentKitSessionProviderConfigOutput
+}
+
+type AgentKitSessionProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (AgentKitSessionProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitSessionProviderConfig)(nil)).Elem()
+}
+
+func (i AgentKitSessionProviderConfigArgs) ToAgentKitSessionProviderConfigOutput() AgentKitSessionProviderConfigOutput {
+	return i.ToAgentKitSessionProviderConfigOutputWithContext(context.Background())
+}
+
+func (i AgentKitSessionProviderConfigArgs) ToAgentKitSessionProviderConfigOutputWithContext(ctx context.Context) AgentKitSessionProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitSessionProviderConfigOutput)
+}
+
+func (i AgentKitSessionProviderConfigArgs) ToAgentKitSessionProviderConfigPtrOutput() AgentKitSessionProviderConfigPtrOutput {
+	return i.ToAgentKitSessionProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentKitSessionProviderConfigArgs) ToAgentKitSessionProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitSessionProviderConfigOutput).ToAgentKitSessionProviderConfigPtrOutputWithContext(ctx)
+}
+
+// AgentKitSessionProviderConfigPtrInput is an input type that accepts AgentKitSessionProviderConfigArgs, AgentKitSessionProviderConfigPtr and AgentKitSessionProviderConfigPtrOutput values.
+// You can construct a concrete instance of `AgentKitSessionProviderConfigPtrInput` via:
+//
+//	        AgentKitSessionProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentKitSessionProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentKitSessionProviderConfigPtrOutput() AgentKitSessionProviderConfigPtrOutput
+	ToAgentKitSessionProviderConfigPtrOutputWithContext(context.Context) AgentKitSessionProviderConfigPtrOutput
+}
+
+type agentKitSessionProviderConfigPtrType AgentKitSessionProviderConfigArgs
+
+func AgentKitSessionProviderConfigPtr(v *AgentKitSessionProviderConfigArgs) AgentKitSessionProviderConfigPtrInput {
+	return (*agentKitSessionProviderConfigPtrType)(v)
+}
+
+func (*agentKitSessionProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitSessionProviderConfig)(nil)).Elem()
+}
+
+func (i *agentKitSessionProviderConfigPtrType) ToAgentKitSessionProviderConfigPtrOutput() AgentKitSessionProviderConfigPtrOutput {
+	return i.ToAgentKitSessionProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentKitSessionProviderConfigPtrType) ToAgentKitSessionProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitSessionProviderConfigPtrOutput)
+}
+
+type AgentKitSessionProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentKitSessionProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitSessionProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitSessionProviderConfigOutput) ToAgentKitSessionProviderConfigOutput() AgentKitSessionProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitSessionProviderConfigOutput) ToAgentKitSessionProviderConfigOutputWithContext(ctx context.Context) AgentKitSessionProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitSessionProviderConfigOutput) ToAgentKitSessionProviderConfigPtrOutput() AgentKitSessionProviderConfigPtrOutput {
+	return o.ToAgentKitSessionProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentKitSessionProviderConfigOutput) ToAgentKitSessionProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentKitSessionProviderConfig) *AgentKitSessionProviderConfig {
+		return &v
+	}).(AgentKitSessionProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o AgentKitSessionProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentKitSessionProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type AgentKitSessionProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentKitSessionProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitSessionProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitSessionProviderConfigPtrOutput) ToAgentKitSessionProviderConfigPtrOutput() AgentKitSessionProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitSessionProviderConfigPtrOutput) ToAgentKitSessionProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitSessionProviderConfigPtrOutput) Elem() AgentKitSessionProviderConfigOutput {
+	return o.ApplyT(func(v *AgentKitSessionProviderConfig) AgentKitSessionProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentKitSessionProviderConfig
+		return ret
+	}).(AgentKitSessionProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o AgentKitSessionProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentKitSessionProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentKitSessionStoreProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// AgentKitSessionStoreProviderConfigInput is an input type that accepts AgentKitSessionStoreProviderConfigArgs and AgentKitSessionStoreProviderConfigOutput values.
+// You can construct a concrete instance of `AgentKitSessionStoreProviderConfigInput` via:
+//
+//	AgentKitSessionStoreProviderConfigArgs{...}
+type AgentKitSessionStoreProviderConfigInput interface {
+	pulumi.Input
+
+	ToAgentKitSessionStoreProviderConfigOutput() AgentKitSessionStoreProviderConfigOutput
+	ToAgentKitSessionStoreProviderConfigOutputWithContext(context.Context) AgentKitSessionStoreProviderConfigOutput
+}
+
+type AgentKitSessionStoreProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (AgentKitSessionStoreProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitSessionStoreProviderConfig)(nil)).Elem()
+}
+
+func (i AgentKitSessionStoreProviderConfigArgs) ToAgentKitSessionStoreProviderConfigOutput() AgentKitSessionStoreProviderConfigOutput {
+	return i.ToAgentKitSessionStoreProviderConfigOutputWithContext(context.Background())
+}
+
+func (i AgentKitSessionStoreProviderConfigArgs) ToAgentKitSessionStoreProviderConfigOutputWithContext(ctx context.Context) AgentKitSessionStoreProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitSessionStoreProviderConfigOutput)
+}
+
+func (i AgentKitSessionStoreProviderConfigArgs) ToAgentKitSessionStoreProviderConfigPtrOutput() AgentKitSessionStoreProviderConfigPtrOutput {
+	return i.ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentKitSessionStoreProviderConfigArgs) ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionStoreProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitSessionStoreProviderConfigOutput).ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(ctx)
+}
+
+// AgentKitSessionStoreProviderConfigPtrInput is an input type that accepts AgentKitSessionStoreProviderConfigArgs, AgentKitSessionStoreProviderConfigPtr and AgentKitSessionStoreProviderConfigPtrOutput values.
+// You can construct a concrete instance of `AgentKitSessionStoreProviderConfigPtrInput` via:
+//
+//	        AgentKitSessionStoreProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentKitSessionStoreProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentKitSessionStoreProviderConfigPtrOutput() AgentKitSessionStoreProviderConfigPtrOutput
+	ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(context.Context) AgentKitSessionStoreProviderConfigPtrOutput
+}
+
+type agentKitSessionStoreProviderConfigPtrType AgentKitSessionStoreProviderConfigArgs
+
+func AgentKitSessionStoreProviderConfigPtr(v *AgentKitSessionStoreProviderConfigArgs) AgentKitSessionStoreProviderConfigPtrInput {
+	return (*agentKitSessionStoreProviderConfigPtrType)(v)
+}
+
+func (*agentKitSessionStoreProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitSessionStoreProviderConfig)(nil)).Elem()
+}
+
+func (i *agentKitSessionStoreProviderConfigPtrType) ToAgentKitSessionStoreProviderConfigPtrOutput() AgentKitSessionStoreProviderConfigPtrOutput {
+	return i.ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentKitSessionStoreProviderConfigPtrType) ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionStoreProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentKitSessionStoreProviderConfigPtrOutput)
+}
+
+type AgentKitSessionStoreProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentKitSessionStoreProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentKitSessionStoreProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitSessionStoreProviderConfigOutput) ToAgentKitSessionStoreProviderConfigOutput() AgentKitSessionStoreProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitSessionStoreProviderConfigOutput) ToAgentKitSessionStoreProviderConfigOutputWithContext(ctx context.Context) AgentKitSessionStoreProviderConfigOutput {
+	return o
+}
+
+func (o AgentKitSessionStoreProviderConfigOutput) ToAgentKitSessionStoreProviderConfigPtrOutput() AgentKitSessionStoreProviderConfigPtrOutput {
+	return o.ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentKitSessionStoreProviderConfigOutput) ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionStoreProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentKitSessionStoreProviderConfig) *AgentKitSessionStoreProviderConfig {
+		return &v
+	}).(AgentKitSessionStoreProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o AgentKitSessionStoreProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentKitSessionStoreProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type AgentKitSessionStoreProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentKitSessionStoreProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentKitSessionStoreProviderConfig)(nil)).Elem()
+}
+
+func (o AgentKitSessionStoreProviderConfigPtrOutput) ToAgentKitSessionStoreProviderConfigPtrOutput() AgentKitSessionStoreProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitSessionStoreProviderConfigPtrOutput) ToAgentKitSessionStoreProviderConfigPtrOutputWithContext(ctx context.Context) AgentKitSessionStoreProviderConfigPtrOutput {
+	return o
+}
+
+func (o AgentKitSessionStoreProviderConfigPtrOutput) Elem() AgentKitSessionStoreProviderConfigOutput {
+	return o.ApplyT(func(v *AgentKitSessionStoreProviderConfig) AgentKitSessionStoreProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentKitSessionStoreProviderConfig
+		return ret
+	}).(AgentKitSessionStoreProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o AgentKitSessionStoreProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentKitSessionStoreProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiGatewayMcpServiceConfig struct {
 	// Tool names or prefix patterns to expose from the MCP server. Use exact
 	// tool names or prefix patterns such as `read_*`. An empty list exposes all
@@ -33516,6 +34220,7 @@ type AiGatewayModelProviderServiceConfig struct {
 	AmazonBedrock   *AiGatewayModelProviderServiceConfigAmazonBedrock `pulumi:"amazonBedrock"`
 	Anthropic       *AiGatewayModelProviderServiceConfigAnthropic     `pulumi:"anthropic"`
 	AzureOpenai     *AiGatewayModelProviderServiceConfigAzureOpenai   `pulumi:"azureOpenai"`
+	BedrockMantle   *AiGatewayModelProviderServiceConfigBedrockMantle `pulumi:"bedrockMantle"`
 	Custom          *AiGatewayModelProviderServiceConfigCustom        `pulumi:"custom"`
 	// Whether to forward incoming HTTP headers to the upstream provider. Defaults
 	// to false and is configured for the entire provider service, not per request.
@@ -33530,7 +34235,9 @@ type AiGatewayModelProviderServiceConfig struct {
 	// provider-native API types. Defaults to false. When true, these paths are
 	// forwarded unchanged to the upstream provider. When false, only
 	// recognized API paths are served. Enabling this broadens the upstream API
-	// surface exposed through the provider service
+	// surface exposed through the provider service. AI Gateway cannot evaluate
+	// Service Policies on opaque unmanaged requests, so unmanaged requests are
+	// rejected whenever Service Policies are attached to this securable
 	ForwardUnmanagedPaths *bool                                                `pulumi:"forwardUnmanagedPaths"`
 	GeminiEnterprise      *AiGatewayModelProviderServiceConfigGeminiEnterprise `pulumi:"geminiEnterprise"`
 	// Payload logging configuration for requests sent directly to this provider
@@ -33539,9 +34246,12 @@ type AiGatewayModelProviderServiceConfig struct {
 	InferenceTable   *AiGatewayModelProviderServiceConfigInferenceTable   `pulumi:"inferenceTable"`
 	MicrosoftFoundry *AiGatewayModelProviderServiceConfigMicrosoftFoundry `pulumi:"microsoftFoundry"`
 	Openai           *AiGatewayModelProviderServiceConfigOpenai           `pulumi:"openai"`
+	// Pricing configuration for this provider service. An explicitly empty
+	// configuration is retained on Create and Update and applies no adjustment
+	Pricing *AiGatewayModelProviderServiceConfigPricing `pulumi:"pricing"`
 	// External model provider. Required on Create and immutable thereafter. Set
 	// the matching provider-specific configuration, such as `openai`,
-	// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+	// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 	ProviderType *string `pulumi:"providerType"`
 	// Rate limits for requests sent directly to this provider service. Requests
 	// routed through a model service use that model service's rate limits instead
@@ -33574,6 +34284,7 @@ type AiGatewayModelProviderServiceConfigArgs struct {
 	AmazonBedrock   AiGatewayModelProviderServiceConfigAmazonBedrockPtrInput `pulumi:"amazonBedrock"`
 	Anthropic       AiGatewayModelProviderServiceConfigAnthropicPtrInput     `pulumi:"anthropic"`
 	AzureOpenai     AiGatewayModelProviderServiceConfigAzureOpenaiPtrInput   `pulumi:"azureOpenai"`
+	BedrockMantle   AiGatewayModelProviderServiceConfigBedrockMantlePtrInput `pulumi:"bedrockMantle"`
 	Custom          AiGatewayModelProviderServiceConfigCustomPtrInput        `pulumi:"custom"`
 	// Whether to forward incoming HTTP headers to the upstream provider. Defaults
 	// to false and is configured for the entire provider service, not per request.
@@ -33588,7 +34299,9 @@ type AiGatewayModelProviderServiceConfigArgs struct {
 	// provider-native API types. Defaults to false. When true, these paths are
 	// forwarded unchanged to the upstream provider. When false, only
 	// recognized API paths are served. Enabling this broadens the upstream API
-	// surface exposed through the provider service
+	// surface exposed through the provider service. AI Gateway cannot evaluate
+	// Service Policies on opaque unmanaged requests, so unmanaged requests are
+	// rejected whenever Service Policies are attached to this securable
 	ForwardUnmanagedPaths pulumi.BoolPtrInput                                         `pulumi:"forwardUnmanagedPaths"`
 	GeminiEnterprise      AiGatewayModelProviderServiceConfigGeminiEnterprisePtrInput `pulumi:"geminiEnterprise"`
 	// Payload logging configuration for requests sent directly to this provider
@@ -33597,9 +34310,12 @@ type AiGatewayModelProviderServiceConfigArgs struct {
 	InferenceTable   AiGatewayModelProviderServiceConfigInferenceTablePtrInput   `pulumi:"inferenceTable"`
 	MicrosoftFoundry AiGatewayModelProviderServiceConfigMicrosoftFoundryPtrInput `pulumi:"microsoftFoundry"`
 	Openai           AiGatewayModelProviderServiceConfigOpenaiPtrInput           `pulumi:"openai"`
+	// Pricing configuration for this provider service. An explicitly empty
+	// configuration is retained on Create and Update and applies no adjustment
+	Pricing AiGatewayModelProviderServiceConfigPricingPtrInput `pulumi:"pricing"`
 	// External model provider. Required on Create and immutable thereafter. Set
 	// the matching provider-specific configuration, such as `openai`,
-	// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+	// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 	ProviderType pulumi.StringPtrInput `pulumi:"providerType"`
 	// Rate limits for requests sent directly to this provider service. Requests
 	// routed through a model service use that model service's rate limits instead
@@ -33715,6 +34431,12 @@ func (o AiGatewayModelProviderServiceConfigOutput) AzureOpenai() AiGatewayModelP
 	}).(AiGatewayModelProviderServiceConfigAzureOpenaiPtrOutput)
 }
 
+func (o AiGatewayModelProviderServiceConfigOutput) BedrockMantle() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigBedrockMantle {
+		return v.BedrockMantle
+	}).(AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput)
+}
+
 func (o AiGatewayModelProviderServiceConfigOutput) Custom() AiGatewayModelProviderServiceConfigCustomPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigCustom {
 		return v.Custom
@@ -33740,7 +34462,9 @@ func (o AiGatewayModelProviderServiceConfigOutput) ForwardQueryParameters() pulu
 // provider-native API types. Defaults to false. When true, these paths are
 // forwarded unchanged to the upstream provider. When false, only
 // recognized API paths are served. Enabling this broadens the upstream API
-// surface exposed through the provider service
+// surface exposed through the provider service. AI Gateway cannot evaluate
+// Service Policies on opaque unmanaged requests, so unmanaged requests are
+// rejected whenever Service Policies are attached to this securable
 func (o AiGatewayModelProviderServiceConfigOutput) ForwardUnmanagedPaths() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *bool { return v.ForwardUnmanagedPaths }).(pulumi.BoolPtrOutput)
 }
@@ -33772,9 +34496,17 @@ func (o AiGatewayModelProviderServiceConfigOutput) Openai() AiGatewayModelProvid
 	}).(AiGatewayModelProviderServiceConfigOpenaiPtrOutput)
 }
 
+// Pricing configuration for this provider service. An explicitly empty
+// configuration is retained on Create and Update and applies no adjustment
+func (o AiGatewayModelProviderServiceConfigOutput) Pricing() AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigPricing {
+		return v.Pricing
+	}).(AiGatewayModelProviderServiceConfigPricingPtrOutput)
+}
+
 // External model provider. Required on Create and immutable thereafter. Set
 // the matching provider-specific configuration, such as `openai`,
-// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 func (o AiGatewayModelProviderServiceConfigOutput) ProviderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *string { return v.ProviderType }).(pulumi.StringPtrOutput)
 }
@@ -33862,6 +34594,15 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) AzureOpenai() AiGatewayMod
 	}).(AiGatewayModelProviderServiceConfigAzureOpenaiPtrOutput)
 }
 
+func (o AiGatewayModelProviderServiceConfigPtrOutput) BedrockMantle() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigBedrockMantle {
+		if v == nil {
+			return nil
+		}
+		return v.BedrockMantle
+	}).(AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput)
+}
+
 func (o AiGatewayModelProviderServiceConfigPtrOutput) Custom() AiGatewayModelProviderServiceConfigCustomPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigCustom {
 		if v == nil {
@@ -33900,7 +34641,9 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardQueryParameters() p
 // provider-native API types. Defaults to false. When true, these paths are
 // forwarded unchanged to the upstream provider. When false, only
 // recognized API paths are served. Enabling this broadens the upstream API
-// surface exposed through the provider service
+// surface exposed through the provider service. AI Gateway cannot evaluate
+// Service Policies on opaque unmanaged requests, so unmanaged requests are
+// rejected whenever Service Policies are attached to this securable
 func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardUnmanagedPaths() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *bool {
 		if v == nil {
@@ -33949,9 +34692,20 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) Openai() AiGatewayModelPro
 	}).(AiGatewayModelProviderServiceConfigOpenaiPtrOutput)
 }
 
+// Pricing configuration for this provider service. An explicitly empty
+// configuration is retained on Create and Update and applies no adjustment
+func (o AiGatewayModelProviderServiceConfigPtrOutput) Pricing() AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigPricing {
+		if v == nil {
+			return nil
+		}
+		return v.Pricing
+	}).(AiGatewayModelProviderServiceConfigPricingPtrOutput)
+}
+
 // External model provider. Required on Create and immutable thereafter. Set
 // the matching provider-specific configuration, such as `openai`,
-// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 func (o AiGatewayModelProviderServiceConfigPtrOutput) ProviderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *string {
 		if v == nil {
@@ -37059,6 +37813,992 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialPtr
 // `modelProviderServiceId`; required and immutable on Update/Get/Delete
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantle struct {
+	Direct *AiGatewayModelProviderServiceConfigBedrockMantleDirect `pulumi:"direct"`
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleArgs and AiGatewayModelProviderServiceConfigBedrockMantleOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleInput` via:
+//
+//	AiGatewayModelProviderServiceConfigBedrockMantleArgs{...}
+type AiGatewayModelProviderServiceConfigBedrockMantleInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleOutput() AiGatewayModelProviderServiceConfigBedrockMantleOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleOutput
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleArgs struct {
+	Direct AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrInput `pulumi:"direct"`
+}
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantle)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleOutput() AiGatewayModelProviderServiceConfigBedrockMantleOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleArgs) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleArgs) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleOutput).ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantlePtrInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleArgs, AiGatewayModelProviderServiceConfigBedrockMantlePtr and AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantlePtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigBedrockMantleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigBedrockMantlePtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigBedrockMantlePtrType AiGatewayModelProviderServiceConfigBedrockMantleArgs
+
+func AiGatewayModelProviderServiceConfigBedrockMantlePtr(v *AiGatewayModelProviderServiceConfigBedrockMantleArgs) AiGatewayModelProviderServiceConfigBedrockMantlePtrInput {
+	return (*aiGatewayModelProviderServiceConfigBedrockMantlePtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigBedrockMantlePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantle)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantlePtrType) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantlePtrType) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantle)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleOutput() AiGatewayModelProviderServiceConfigBedrockMantleOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleOutput) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleOutput) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigBedrockMantle) *AiGatewayModelProviderServiceConfigBedrockMantle {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput)
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleOutput) Direct() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantle) *AiGatewayModelProviderServiceConfigBedrockMantleDirect {
+		return v.Direct
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantle)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantlePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput) Elem() AiGatewayModelProviderServiceConfigBedrockMantleOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantle) AiGatewayModelProviderServiceConfigBedrockMantle {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigBedrockMantle
+		return ret
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleOutput)
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput) Direct() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantle) *AiGatewayModelProviderServiceConfigBedrockMantleDirect {
+		if v == nil {
+			return nil
+		}
+		return v.Direct
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirect struct {
+	// AWS access-key-pair authentication. Set `accessKeyId` and
+	// `secret_access_key.plaintext`. Mutually exclusive with
+	// `serviceCredential`
+	AwsAccessKey      *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey      `pulumi:"awsAccessKey"`
+	Region            *string                                                                  `pulumi:"region"`
+	ServiceCredential *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential `pulumi:"serviceCredential"`
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs and AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectInput` via:
+//
+//	AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs{...}
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs struct {
+	// AWS access-key-pair authentication. Set `accessKeyId` and
+	// `secret_access_key.plaintext`. Mutually exclusive with
+	// `serviceCredential`
+	AwsAccessKey      AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrInput      `pulumi:"awsAccessKey"`
+	Region            pulumi.StringPtrInput                                                           `pulumi:"region"`
+	ServiceCredential AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrInput `pulumi:"serviceCredential"`
+}
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirect)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput).ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs, AiGatewayModelProviderServiceConfigBedrockMantleDirectPtr and AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigBedrockMantleDirectPtrType AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs
+
+func AiGatewayModelProviderServiceConfigBedrockMantleDirectPtr(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs) AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrInput {
+	return (*aiGatewayModelProviderServiceConfigBedrockMantleDirectPtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigBedrockMantleDirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirect)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirect)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigBedrockMantleDirect) *AiGatewayModelProviderServiceConfigBedrockMantleDirect {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput)
+}
+
+// AWS access-key-pair authentication. Set `accessKeyId` and
+// `secret_access_key.plaintext`. Mutually exclusive with
+// `serviceCredential`
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) AwsAccessKey() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirect) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+		return v.AwsAccessKey
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput)
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirect) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput) ServiceCredential() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirect) *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
+		return v.ServiceCredential
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirect)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) Elem() AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirect) AiGatewayModelProviderServiceConfigBedrockMantleDirect {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigBedrockMantleDirect
+		return ret
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput)
+}
+
+// AWS access-key-pair authentication. Set `accessKeyId` and
+// `secret_access_key.plaintext`. Mutually exclusive with
+// `serviceCredential`
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) AwsAccessKey() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirect) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccessKey
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput)
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput) ServiceCredential() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirect) *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceCredential
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey struct {
+	// AWS access key ID. Required on Create when using access-key auth. Treated as
+	// username-equivalent (not a secret value): round-trips on reads and is
+	// scrubbed from audit logs
+	AccessKeyId *string `pulumi:"accessKeyId"`
+	// AWS secret access key paired with `accessKeyId`. Required when creating
+	// a service with access-key authentication. Supply the value in
+	// `secret_access_key.plaintext`
+	SecretAccessKey *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey `pulumi:"secretAccessKey"`
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs and AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyInput` via:
+//
+//	AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs{...}
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs struct {
+	// AWS access key ID. Required on Create when using access-key auth. Treated as
+	// username-equivalent (not a secret value): round-trips on reads and is
+	// scrubbed from audit logs
+	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	// AWS secret access key paired with `accessKeyId`. Required when creating
+	// a service with access-key authentication. Supply the value in
+	// `secret_access_key.plaintext`
+	SecretAccessKey AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrInput `pulumi:"secretAccessKey"`
+}
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput).ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs, AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtr and AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrType AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs
+
+func AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtr(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrInput {
+	return (*aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput)
+}
+
+// AWS access key ID. Required on Create when using access-key auth. Treated as
+// username-equivalent (not a secret value): round-trips on reads and is
+// scrubbed from audit logs
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey) *string {
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS secret access key paired with `accessKeyId`. Required when creating
+// a service with access-key authentication. Supply the value in
+// `secret_access_key.plaintext`
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput) SecretAccessKey() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+		return v.SecretAccessKey
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput) Elem() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey
+		return ret
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput)
+}
+
+// AWS access key ID. Required on Create when using access-key auth. Treated as
+// username-equivalent (not a secret value): round-trips on reads and is
+// scrubbed from audit logs
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS secret access key paired with `accessKeyId`. Required when creating
+// a service with access-key authentication. Supply the value in
+// `secret_access_key.plaintext`
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput) SecretAccessKey() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKey) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey struct {
+	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
+	Plaintext *string `pulumi:"plaintext"`
+	// Reference to a customer-owned UC Secret that carries this secret value.
+	// The value is read at invoke time under the model provider service
+	// owner's access and is never copied onto the model provider service, so
+	// rotating the UC Secret takes effect with no change to the model provider
+	// service. On Create, supply `secret_reference.name` as
+	// `secrets/{catalog}.{schema}.{secret}`
+	SecretReference *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference `pulumi:"secretReference"`
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs and AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyInput` via:
+//
+//	AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs{...}
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs struct {
+	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
+	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
+	// Reference to a customer-owned UC Secret that carries this secret value.
+	// The value is read at invoke time under the model provider service
+	// owner's access and is never copied onto the model provider service, so
+	// rotating the UC Secret takes effect with no change to the model provider
+	// service. On Create, supply `secret_reference.name` as
+	// `secrets/{catalog}.{schema}.{secret}`
+	SecretReference AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrInput `pulumi:"secretReference"`
+}
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput).ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs, AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtr and AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrType AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs
+
+func AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtr(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrInput {
+	return (*aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput)
+}
+
+// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) Plaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey) *string {
+		return v.Plaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a customer-owned UC Secret that carries this secret value.
+// The value is read at invoke time under the model provider service
+// owner's access and is never copied onto the model provider service, so
+// rotating the UC Secret takes effect with no change to the model provider
+// service. On Create, supply `secret_reference.name` as
+// `secrets/{catalog}.{schema}.{secret}`
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput) SecretReference() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+		return v.SecretReference
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput) Elem() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey
+		return ret
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput)
+}
+
+// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Plaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a customer-owned UC Secret that carries this secret value.
+// The value is read at invoke time under the model provider service
+// owner's access and is never copied onto the model provider service, so
+// rotating the UC Secret takes effect with no change to the model provider
+// service. On Create, supply `secret_reference.name` as
+// `secrets/{catalog}.{schema}.{secret}`
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput) SecretReference() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+		if v == nil {
+			return nil
+		}
+		return v.SecretReference
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference struct {
+	// (string) - Resource name of the provider service.
+	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+	// Each `{...}` component is capped at 255 characters individually.
+	// Server-derived on Create from `parent` +
+	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	Name string `pulumi:"name"`
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs and AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceInput` via:
+//
+//	AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs{...}
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs struct {
+	// (string) - Resource name of the provider service.
+	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+	// Each `{...}` component is capped at 255 characters individually.
+	// Server-derived on Create from `parent` +
+	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput).ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs, AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtr and AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrType AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs
+
+func AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtr(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrInput {
+	return (*aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference) *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput)
+}
+
+// (string) - Resource name of the provider service.
+// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+// Each `{...}` component is capped at 255 characters individually.
+// Server-derived on Create from `parent` +
+// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput) Elem() AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference) AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference
+		return ret
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput)
+}
+
+// (string) - Resource name of the provider service.
+// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+// Each `{...}` component is capped at 255 characters individually.
+// Server-derived on Create from `parent` +
+// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential struct {
+	// (string) - Resource name of the provider service.
+	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+	// Each `{...}` component is capped at 255 characters individually.
+	// Server-derived on Create from `parent` +
+	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	Name string `pulumi:"name"`
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs and AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialInput` via:
+//
+//	AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs{...}
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs struct {
+	// (string) - Resource name of the provider service.
+	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+	// Each `{...}` component is capped at 255 characters individually.
+	// Server-derived on Create from `parent` +
+	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput).ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrInput is an input type that accepts AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs, AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtr and AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput
+	ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrType AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs
+
+func AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtr(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrInput {
+	return (*aiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrType) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential) *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput)
+}
+
+// (string) - Resource name of the provider service.
+// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+// Each `{...}` component is capped at 255 characters individually.
+// Server-derived on Create from `parent` +
+// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput) ToAiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput) Elem() AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential) AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential
+		return ret
+	}).(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput)
+}
+
+// (string) - Resource name of the provider service.
+// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+// Each `{...}` component is capped at 255 characters individually.
+// Server-derived on Create from `parent` +
+// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+func (o AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredential) *string {
 		if v == nil {
 			return nil
 		}
@@ -41265,6 +43005,155 @@ func (o AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferencePtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiGatewayModelProviderServiceConfigPricing struct {
+	// Provider-wide adjustment to external-model spend estimates in basis points:
+	// 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+	// beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+	// value or zero leaves the estimate unchanged
+	DefaultDiscountBasisPoints *int `pulumi:"defaultDiscountBasisPoints"`
+}
+
+// AiGatewayModelProviderServiceConfigPricingInput is an input type that accepts AiGatewayModelProviderServiceConfigPricingArgs and AiGatewayModelProviderServiceConfigPricingOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigPricingInput` via:
+//
+//	AiGatewayModelProviderServiceConfigPricingArgs{...}
+type AiGatewayModelProviderServiceConfigPricingInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigPricingOutput() AiGatewayModelProviderServiceConfigPricingOutput
+	ToAiGatewayModelProviderServiceConfigPricingOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigPricingOutput
+}
+
+type AiGatewayModelProviderServiceConfigPricingArgs struct {
+	// Provider-wide adjustment to external-model spend estimates in basis points:
+	// 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+	// beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+	// value or zero leaves the estimate unchanged
+	DefaultDiscountBasisPoints pulumi.IntPtrInput `pulumi:"defaultDiscountBasisPoints"`
+}
+
+func (AiGatewayModelProviderServiceConfigPricingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigPricing)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigPricingArgs) ToAiGatewayModelProviderServiceConfigPricingOutput() AiGatewayModelProviderServiceConfigPricingOutput {
+	return i.ToAiGatewayModelProviderServiceConfigPricingOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigPricingArgs) ToAiGatewayModelProviderServiceConfigPricingOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigPricingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigPricingOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigPricingArgs) ToAiGatewayModelProviderServiceConfigPricingPtrOutput() AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigPricingArgs) ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigPricingOutput).ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigPricingPtrInput is an input type that accepts AiGatewayModelProviderServiceConfigPricingArgs, AiGatewayModelProviderServiceConfigPricingPtr and AiGatewayModelProviderServiceConfigPricingPtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigPricingPtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigPricingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigPricingPtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigPricingPtrOutput() AiGatewayModelProviderServiceConfigPricingPtrOutput
+	ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigPricingPtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigPricingPtrType AiGatewayModelProviderServiceConfigPricingArgs
+
+func AiGatewayModelProviderServiceConfigPricingPtr(v *AiGatewayModelProviderServiceConfigPricingArgs) AiGatewayModelProviderServiceConfigPricingPtrInput {
+	return (*aiGatewayModelProviderServiceConfigPricingPtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigPricingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigPricing)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigPricingPtrType) ToAiGatewayModelProviderServiceConfigPricingPtrOutput() AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigPricingPtrType) ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigPricingPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigPricingOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigPricingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigPricing)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingOutput) ToAiGatewayModelProviderServiceConfigPricingOutput() AiGatewayModelProviderServiceConfigPricingOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingOutput) ToAiGatewayModelProviderServiceConfigPricingOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigPricingOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingOutput) ToAiGatewayModelProviderServiceConfigPricingPtrOutput() AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingOutput) ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigPricing) *AiGatewayModelProviderServiceConfigPricing {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigPricingPtrOutput)
+}
+
+// Provider-wide adjustment to external-model spend estimates in basis points:
+// 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+// beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+// value or zero leaves the estimate unchanged
+func (o AiGatewayModelProviderServiceConfigPricingOutput) DefaultDiscountBasisPoints() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigPricing) *int { return v.DefaultDiscountBasisPoints }).(pulumi.IntPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigPricingPtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigPricingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigPricing)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingPtrOutput) ToAiGatewayModelProviderServiceConfigPricingPtrOutput() AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingPtrOutput) ToAiGatewayModelProviderServiceConfigPricingPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigPricingPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigPricingPtrOutput) Elem() AiGatewayModelProviderServiceConfigPricingOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigPricing) AiGatewayModelProviderServiceConfigPricing {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigPricing
+		return ret
+	}).(AiGatewayModelProviderServiceConfigPricingOutput)
+}
+
+// Provider-wide adjustment to external-model spend estimates in basis points:
+// 2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+// beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+// value or zero leaves the estimate unchanged
+func (o AiGatewayModelProviderServiceConfigPricingPtrOutput) DefaultDiscountBasisPoints() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigPricing) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDiscountBasisPoints
+	}).(pulumi.IntPtrOutput)
+}
+
 type AiGatewayModelProviderServiceConfigRateLimit struct {
 	// Scope of the rate limit. Depending on this value, the limit applies to a
 	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
@@ -41414,14 +43303,22 @@ func (o AiGatewayModelProviderServiceConfigRateLimitArrayOutput) Index(i pulumi.
 }
 
 type AiGatewayModelProviderServiceConfigTarget struct {
+	// Relative path appended to a custom provider's `baseUrl` for this model,
+	// such as `serve/openai/chat`. Nonempty values are only supported for
+	// custom model provider service targets; other provider types reject them.
+	// Model service destinations do not support this field. Do not include
+	// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+	EndpointRoute *string `pulumi:"endpointRoute"`
 	// Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
 	// This identifies a model at the upstream provider; it is not a Unity
 	// Catalog model resource
 	Model string `pulumi:"model"`
 	// Provider-native API types supported by this model, such as
-	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-	// uses these values to translate requests and responses. At most 64 entries
-	// of 256 characters each are allowed
+	// `openai/v1/chat/completions`. A model provider service target requires at
+	// least one value. A model service destination may omit the list to use the
+	// matching provider service target's types when available. AI Gateway uses
+	// the selected types for translation. At most 64 entries of 256 characters
+	// each are allowed
 	NativeApiTypes []string `pulumi:"nativeApiTypes"`
 }
 
@@ -41437,14 +43334,22 @@ type AiGatewayModelProviderServiceConfigTargetInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigTargetArgs struct {
+	// Relative path appended to a custom provider's `baseUrl` for this model,
+	// such as `serve/openai/chat`. Nonempty values are only supported for
+	// custom model provider service targets; other provider types reject them.
+	// Model service destinations do not support this field. Do not include
+	// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+	EndpointRoute pulumi.StringPtrInput `pulumi:"endpointRoute"`
 	// Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
 	// This identifies a model at the upstream provider; it is not a Unity
 	// Catalog model resource
 	Model pulumi.StringInput `pulumi:"model"`
 	// Provider-native API types supported by this model, such as
-	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-	// uses these values to translate requests and responses. At most 64 entries
-	// of 256 characters each are allowed
+	// `openai/v1/chat/completions`. A model provider service target requires at
+	// least one value. A model service destination may omit the list to use the
+	// matching provider service target's types when available. AI Gateway uses
+	// the selected types for translation. At most 64 entries of 256 characters
+	// each are allowed
 	NativeApiTypes pulumi.StringArrayInput `pulumi:"nativeApiTypes"`
 }
 
@@ -41499,6 +43404,15 @@ func (o AiGatewayModelProviderServiceConfigTargetOutput) ToAiGatewayModelProvide
 	return o
 }
 
+// Relative path appended to a custom provider's `baseUrl` for this model,
+// such as `serve/openai/chat`. Nonempty values are only supported for
+// custom model provider service targets; other provider types reject them.
+// Model service destinations do not support this field. Do not include
+// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+func (o AiGatewayModelProviderServiceConfigTargetOutput) EndpointRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigTarget) *string { return v.EndpointRoute }).(pulumi.StringPtrOutput)
+}
+
 // Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
 // This identifies a model at the upstream provider; it is not a Unity
 // Catalog model resource
@@ -41507,9 +43421,11 @@ func (o AiGatewayModelProviderServiceConfigTargetOutput) Model() pulumi.StringOu
 }
 
 // Provider-native API types supported by this model, such as
-// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-// uses these values to translate requests and responses. At most 64 entries
-// of 256 characters each are allowed
+// `openai/v1/chat/completions`. A model provider service target requires at
+// least one value. A model service destination may omit the list to use the
+// matching provider service target's types when available. AI Gateway uses
+// the selected types for translation. At most 64 entries of 256 characters
+// each are allowed
 func (o AiGatewayModelProviderServiceConfigTargetOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigTarget) []string { return v.NativeApiTypes }).(pulumi.StringArrayOutput)
 }
@@ -42769,14 +44685,22 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigPtrOutpu
 }
 
 type AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget struct {
+	// Relative path appended to a custom provider's `baseUrl` for this model,
+	// such as `serve/openai/chat`. Nonempty values are only supported for
+	// custom model provider service targets; other provider types reject them.
+	// Model service destinations do not support this field. Do not include
+	// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+	EndpointRoute *string `pulumi:"endpointRoute"`
 	// (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model string `pulumi:"model"`
 	// Provider-native API types supported by this model, such as
-	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-	// uses these values to translate requests and responses. At most 64 entries
-	// of 256 characters each are allowed
+	// `openai/v1/chat/completions`. A model provider service target requires at
+	// least one value. A model service destination may omit the list to use the
+	// matching provider service target's types when available. AI Gateway uses
+	// the selected types for translation. At most 64 entries of 256 characters
+	// each are allowed
 	NativeApiTypes []string `pulumi:"nativeApiTypes"`
 }
 
@@ -42792,14 +44716,22 @@ type AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetInput
 }
 
 type AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs struct {
+	// Relative path appended to a custom provider's `baseUrl` for this model,
+	// such as `serve/openai/chat`. Nonempty values are only supported for
+	// custom model provider service targets; other provider types reject them.
+	// Model service destinations do not support this field. Do not include
+	// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+	EndpointRoute pulumi.StringPtrInput `pulumi:"endpointRoute"`
 	// (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model pulumi.StringInput `pulumi:"model"`
 	// Provider-native API types supported by this model, such as
-	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-	// uses these values to translate requests and responses. At most 64 entries
-	// of 256 characters each are allowed
+	// `openai/v1/chat/completions`. A model provider service target requires at
+	// least one value. A model service destination may omit the list to use the
+	// matching provider service target's types when available. AI Gateway uses
+	// the selected types for translation. At most 64 entries of 256 characters
+	// each are allowed
 	NativeApiTypes pulumi.StringArrayInput `pulumi:"nativeApiTypes"`
 }
 
@@ -42880,6 +44812,17 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOu
 	}).(AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPtrOutput)
 }
 
+// Relative path appended to a custom provider's `baseUrl` for this model,
+// such as `serve/openai/chat`. Nonempty values are only supported for
+// custom model provider service targets; other provider types reject them.
+// Model service destinations do not support this field. Do not include
+// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOutput) EndpointRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) *string {
+		return v.EndpointRoute
+	}).(pulumi.StringPtrOutput)
+}
+
 // (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 // `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 // Create/Update time
@@ -42888,9 +44831,11 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOu
 }
 
 // Provider-native API types supported by this model, such as
-// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-// uses these values to translate requests and responses. At most 64 entries
-// of 256 characters each are allowed
+// `openai/v1/chat/completions`. A model provider service target requires at
+// least one value. A model service destination may omit the list to use the
+// matching provider service target's types when available. AI Gateway uses
+// the selected types for translation. At most 64 entries of 256 characters
+// each are allowed
 func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) []string {
 		return v.NativeApiTypes
@@ -42921,6 +44866,20 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPt
 	}).(AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOutput)
 }
 
+// Relative path appended to a custom provider's `baseUrl` for this model,
+// such as `serve/openai/chat`. Nonempty values are only supported for
+// custom model provider service targets; other provider types reject them.
+// Model service destinations do not support this field. Do not include
+// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPtrOutput) EndpointRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointRoute
+	}).(pulumi.StringPtrOutput)
+}
+
 // (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 // `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 // Create/Update time
@@ -42934,9 +44893,11 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPt
 }
 
 // Provider-native API types supported by this model, such as
-// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-// uses these values to translate requests and responses. At most 64 entries
-// of 256 characters each are allowed
+// `openai/v1/chat/completions`. A model provider service target requires at
+// least one value. A model service destination may omit the list to use the
+// matching provider service target's types when available. AI Gateway uses
+// the selected types for translation. At most 64 entries of 256 characters
+// each are allowed
 func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPtrOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) []string {
 		if v == nil {
@@ -43793,14 +45754,22 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 }
 
 type AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget struct {
+	// Relative path appended to a custom provider's `baseUrl` for this model,
+	// such as `serve/openai/chat`. Nonempty values are only supported for
+	// custom model provider service targets; other provider types reject them.
+	// Model service destinations do not support this field. Do not include
+	// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+	EndpointRoute *string `pulumi:"endpointRoute"`
 	// (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model string `pulumi:"model"`
 	// Provider-native API types supported by this model, such as
-	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-	// uses these values to translate requests and responses. At most 64 entries
-	// of 256 characters each are allowed
+	// `openai/v1/chat/completions`. A model provider service target requires at
+	// least one value. A model service destination may omit the list to use the
+	// matching provider service target's types when available. AI Gateway uses
+	// the selected types for translation. At most 64 entries of 256 characters
+	// each are allowed
 	NativeApiTypes []string `pulumi:"nativeApiTypes"`
 }
 
@@ -43816,14 +45785,22 @@ type AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTar
 }
 
 type AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs struct {
+	// Relative path appended to a custom provider's `baseUrl` for this model,
+	// such as `serve/openai/chat`. Nonempty values are only supported for
+	// custom model provider service targets; other provider types reject them.
+	// Model service destinations do not support this field. Do not include
+	// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+	EndpointRoute pulumi.StringPtrInput `pulumi:"endpointRoute"`
 	// (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model pulumi.StringInput `pulumi:"model"`
 	// Provider-native API types supported by this model, such as
-	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-	// uses these values to translate requests and responses. At most 64 entries
-	// of 256 characters each are allowed
+	// `openai/v1/chat/completions`. A model provider service target requires at
+	// least one value. A model service destination may omit the list to use the
+	// matching provider service target's types when available. AI Gateway uses
+	// the selected types for translation. At most 64 entries of 256 characters
+	// each are allowed
 	NativeApiTypes pulumi.StringArrayInput `pulumi:"nativeApiTypes"`
 }
 
@@ -43904,6 +45881,17 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 	}).(AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetPtrOutput)
 }
 
+// Relative path appended to a custom provider's `baseUrl` for this model,
+// such as `serve/openai/chat`. Nonempty values are only supported for
+// custom model provider service targets; other provider types reject them.
+// Model service destinations do not support this field. Do not include
+// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetOutput) EndpointRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget) *string {
+		return v.EndpointRoute
+	}).(pulumi.StringPtrOutput)
+}
+
 // (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 // `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 // Create/Update time
@@ -43914,9 +45902,11 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 }
 
 // Provider-native API types supported by this model, such as
-// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-// uses these values to translate requests and responses. At most 64 entries
-// of 256 characters each are allowed
+// `openai/v1/chat/completions`. A model provider service target requires at
+// least one value. A model service destination may omit the list to use the
+// matching provider service target's types when available. AI Gateway uses
+// the selected types for translation. At most 64 entries of 256 characters
+// each are allowed
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget) []string {
 		return v.NativeApiTypes
@@ -43947,6 +45937,20 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 	}).(AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetOutput)
 }
 
+// Relative path appended to a custom provider's `baseUrl` for this model,
+// such as `serve/openai/chat`. Nonempty values are only supported for
+// custom model provider service targets; other provider types reject them.
+// Model service destinations do not support this field. Do not include
+// URI templates, queries, or fragments. When empty, `baseUrl` is used unchanged
+func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetPtrOutput) EndpointRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointRoute
+	}).(pulumi.StringPtrOutput)
+}
+
 // (string) - UC model FQN of the model served by the backing endpoint (e.g.,
 // `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 // Create/Update time
@@ -43960,9 +45964,11 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 }
 
 // Provider-native API types supported by this model, such as
-// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-// uses these values to translate requests and responses. At most 64 entries
-// of 256 characters each are allowed
+// `openai/v1/chat/completions`. A model provider service target requires at
+// least one value. A model service destination may omit the list to use the
+// matching provider service target's types when available. AI Gateway uses
+// the selected types for translation. At most 64 entries of 256 characters
+// each are allowed
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetPtrOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget) []string {
 		if v == nil {
@@ -50003,7 +52009,8 @@ type AppActiveDeployment struct {
 	DeploymentId *string                     `pulumi:"deploymentId"`
 	EnvVars      []AppActiveDeploymentEnvVar `pulumi:"envVars"`
 	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
-	GitSource *AppActiveDeploymentGitSource `pulumi:"gitSource"`
+	GitSource   *AppActiveDeploymentGitSource   `pulumi:"gitSource"`
+	HealthCheck *AppActiveDeploymentHealthCheck `pulumi:"healthCheck"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode *string `pulumi:"mode"`
 	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
@@ -50037,7 +52044,8 @@ type AppActiveDeploymentArgs struct {
 	DeploymentId pulumi.StringPtrInput               `pulumi:"deploymentId"`
 	EnvVars      AppActiveDeploymentEnvVarArrayInput `pulumi:"envVars"`
 	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
-	GitSource AppActiveDeploymentGitSourcePtrInput `pulumi:"gitSource"`
+	GitSource   AppActiveDeploymentGitSourcePtrInput   `pulumi:"gitSource"`
+	HealthCheck AppActiveDeploymentHealthCheckPtrInput `pulumi:"healthCheck"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
@@ -50158,6 +52166,10 @@ func (o AppActiveDeploymentOutput) GitSource() AppActiveDeploymentGitSourcePtrOu
 	return o.ApplyT(func(v AppActiveDeployment) *AppActiveDeploymentGitSource { return v.GitSource }).(AppActiveDeploymentGitSourcePtrOutput)
 }
 
+func (o AppActiveDeploymentOutput) HealthCheck() AppActiveDeploymentHealthCheckPtrOutput {
+	return o.ApplyT(func(v AppActiveDeployment) *AppActiveDeploymentHealthCheck { return v.HealthCheck }).(AppActiveDeploymentHealthCheckPtrOutput)
+}
+
 // The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 func (o AppActiveDeploymentOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeployment) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -50268,6 +52280,15 @@ func (o AppActiveDeploymentPtrOutput) GitSource() AppActiveDeploymentGitSourcePt
 		}
 		return v.GitSource
 	}).(AppActiveDeploymentGitSourcePtrOutput)
+}
+
+func (o AppActiveDeploymentPtrOutput) HealthCheck() AppActiveDeploymentHealthCheckPtrOutput {
+	return o.ApplyT(func(v *AppActiveDeployment) *AppActiveDeploymentHealthCheck {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheck
+	}).(AppActiveDeploymentHealthCheckPtrOutput)
 }
 
 // The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
@@ -50977,6 +52998,154 @@ func (o AppActiveDeploymentGitSourceGitRepositoryPtrOutput) Url() pulumi.StringP
 			return nil
 		}
 		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppActiveDeploymentHealthCheck struct {
+	Path    *string `pulumi:"path"`
+	Timeout *string `pulumi:"timeout"`
+}
+
+// AppActiveDeploymentHealthCheckInput is an input type that accepts AppActiveDeploymentHealthCheckArgs and AppActiveDeploymentHealthCheckOutput values.
+// You can construct a concrete instance of `AppActiveDeploymentHealthCheckInput` via:
+//
+//	AppActiveDeploymentHealthCheckArgs{...}
+type AppActiveDeploymentHealthCheckInput interface {
+	pulumi.Input
+
+	ToAppActiveDeploymentHealthCheckOutput() AppActiveDeploymentHealthCheckOutput
+	ToAppActiveDeploymentHealthCheckOutputWithContext(context.Context) AppActiveDeploymentHealthCheckOutput
+}
+
+type AppActiveDeploymentHealthCheckArgs struct {
+	Path    pulumi.StringPtrInput `pulumi:"path"`
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (AppActiveDeploymentHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppActiveDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (i AppActiveDeploymentHealthCheckArgs) ToAppActiveDeploymentHealthCheckOutput() AppActiveDeploymentHealthCheckOutput {
+	return i.ToAppActiveDeploymentHealthCheckOutputWithContext(context.Background())
+}
+
+func (i AppActiveDeploymentHealthCheckArgs) ToAppActiveDeploymentHealthCheckOutputWithContext(ctx context.Context) AppActiveDeploymentHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppActiveDeploymentHealthCheckOutput)
+}
+
+func (i AppActiveDeploymentHealthCheckArgs) ToAppActiveDeploymentHealthCheckPtrOutput() AppActiveDeploymentHealthCheckPtrOutput {
+	return i.ToAppActiveDeploymentHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i AppActiveDeploymentHealthCheckArgs) ToAppActiveDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppActiveDeploymentHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppActiveDeploymentHealthCheckOutput).ToAppActiveDeploymentHealthCheckPtrOutputWithContext(ctx)
+}
+
+// AppActiveDeploymentHealthCheckPtrInput is an input type that accepts AppActiveDeploymentHealthCheckArgs, AppActiveDeploymentHealthCheckPtr and AppActiveDeploymentHealthCheckPtrOutput values.
+// You can construct a concrete instance of `AppActiveDeploymentHealthCheckPtrInput` via:
+//
+//	        AppActiveDeploymentHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppActiveDeploymentHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToAppActiveDeploymentHealthCheckPtrOutput() AppActiveDeploymentHealthCheckPtrOutput
+	ToAppActiveDeploymentHealthCheckPtrOutputWithContext(context.Context) AppActiveDeploymentHealthCheckPtrOutput
+}
+
+type appActiveDeploymentHealthCheckPtrType AppActiveDeploymentHealthCheckArgs
+
+func AppActiveDeploymentHealthCheckPtr(v *AppActiveDeploymentHealthCheckArgs) AppActiveDeploymentHealthCheckPtrInput {
+	return (*appActiveDeploymentHealthCheckPtrType)(v)
+}
+
+func (*appActiveDeploymentHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppActiveDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (i *appActiveDeploymentHealthCheckPtrType) ToAppActiveDeploymentHealthCheckPtrOutput() AppActiveDeploymentHealthCheckPtrOutput {
+	return i.ToAppActiveDeploymentHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *appActiveDeploymentHealthCheckPtrType) ToAppActiveDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppActiveDeploymentHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppActiveDeploymentHealthCheckPtrOutput)
+}
+
+type AppActiveDeploymentHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (AppActiveDeploymentHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppActiveDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (o AppActiveDeploymentHealthCheckOutput) ToAppActiveDeploymentHealthCheckOutput() AppActiveDeploymentHealthCheckOutput {
+	return o
+}
+
+func (o AppActiveDeploymentHealthCheckOutput) ToAppActiveDeploymentHealthCheckOutputWithContext(ctx context.Context) AppActiveDeploymentHealthCheckOutput {
+	return o
+}
+
+func (o AppActiveDeploymentHealthCheckOutput) ToAppActiveDeploymentHealthCheckPtrOutput() AppActiveDeploymentHealthCheckPtrOutput {
+	return o.ToAppActiveDeploymentHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o AppActiveDeploymentHealthCheckOutput) ToAppActiveDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppActiveDeploymentHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppActiveDeploymentHealthCheck) *AppActiveDeploymentHealthCheck {
+		return &v
+	}).(AppActiveDeploymentHealthCheckPtrOutput)
+}
+
+func (o AppActiveDeploymentHealthCheckOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppActiveDeploymentHealthCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o AppActiveDeploymentHealthCheckOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppActiveDeploymentHealthCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type AppActiveDeploymentHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AppActiveDeploymentHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppActiveDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (o AppActiveDeploymentHealthCheckPtrOutput) ToAppActiveDeploymentHealthCheckPtrOutput() AppActiveDeploymentHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppActiveDeploymentHealthCheckPtrOutput) ToAppActiveDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppActiveDeploymentHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppActiveDeploymentHealthCheckPtrOutput) Elem() AppActiveDeploymentHealthCheckOutput {
+	return o.ApplyT(func(v *AppActiveDeploymentHealthCheck) AppActiveDeploymentHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret AppActiveDeploymentHealthCheck
+		return ret
+	}).(AppActiveDeploymentHealthCheckOutput)
+}
+
+func (o AppActiveDeploymentHealthCheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppActiveDeploymentHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AppActiveDeploymentHealthCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppActiveDeploymentHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -52524,7 +54693,8 @@ type AppPendingDeployment struct {
 	DeploymentId *string                      `pulumi:"deploymentId"`
 	EnvVars      []AppPendingDeploymentEnvVar `pulumi:"envVars"`
 	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
-	GitSource *AppPendingDeploymentGitSource `pulumi:"gitSource"`
+	GitSource   *AppPendingDeploymentGitSource   `pulumi:"gitSource"`
+	HealthCheck *AppPendingDeploymentHealthCheck `pulumi:"healthCheck"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode *string `pulumi:"mode"`
 	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
@@ -52558,7 +54728,8 @@ type AppPendingDeploymentArgs struct {
 	DeploymentId pulumi.StringPtrInput                `pulumi:"deploymentId"`
 	EnvVars      AppPendingDeploymentEnvVarArrayInput `pulumi:"envVars"`
 	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
-	GitSource AppPendingDeploymentGitSourcePtrInput `pulumi:"gitSource"`
+	GitSource   AppPendingDeploymentGitSourcePtrInput   `pulumi:"gitSource"`
+	HealthCheck AppPendingDeploymentHealthCheckPtrInput `pulumi:"healthCheck"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
@@ -52679,6 +54850,10 @@ func (o AppPendingDeploymentOutput) GitSource() AppPendingDeploymentGitSourcePtr
 	return o.ApplyT(func(v AppPendingDeployment) *AppPendingDeploymentGitSource { return v.GitSource }).(AppPendingDeploymentGitSourcePtrOutput)
 }
 
+func (o AppPendingDeploymentOutput) HealthCheck() AppPendingDeploymentHealthCheckPtrOutput {
+	return o.ApplyT(func(v AppPendingDeployment) *AppPendingDeploymentHealthCheck { return v.HealthCheck }).(AppPendingDeploymentHealthCheckPtrOutput)
+}
+
 // The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 func (o AppPendingDeploymentOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeployment) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -52789,6 +54964,15 @@ func (o AppPendingDeploymentPtrOutput) GitSource() AppPendingDeploymentGitSource
 		}
 		return v.GitSource
 	}).(AppPendingDeploymentGitSourcePtrOutput)
+}
+
+func (o AppPendingDeploymentPtrOutput) HealthCheck() AppPendingDeploymentHealthCheckPtrOutput {
+	return o.ApplyT(func(v *AppPendingDeployment) *AppPendingDeploymentHealthCheck {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheck
+	}).(AppPendingDeploymentHealthCheckPtrOutput)
 }
 
 // The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
@@ -53498,6 +55682,154 @@ func (o AppPendingDeploymentGitSourceGitRepositoryPtrOutput) Url() pulumi.String
 			return nil
 		}
 		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppPendingDeploymentHealthCheck struct {
+	Path    *string `pulumi:"path"`
+	Timeout *string `pulumi:"timeout"`
+}
+
+// AppPendingDeploymentHealthCheckInput is an input type that accepts AppPendingDeploymentHealthCheckArgs and AppPendingDeploymentHealthCheckOutput values.
+// You can construct a concrete instance of `AppPendingDeploymentHealthCheckInput` via:
+//
+//	AppPendingDeploymentHealthCheckArgs{...}
+type AppPendingDeploymentHealthCheckInput interface {
+	pulumi.Input
+
+	ToAppPendingDeploymentHealthCheckOutput() AppPendingDeploymentHealthCheckOutput
+	ToAppPendingDeploymentHealthCheckOutputWithContext(context.Context) AppPendingDeploymentHealthCheckOutput
+}
+
+type AppPendingDeploymentHealthCheckArgs struct {
+	Path    pulumi.StringPtrInput `pulumi:"path"`
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (AppPendingDeploymentHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppPendingDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (i AppPendingDeploymentHealthCheckArgs) ToAppPendingDeploymentHealthCheckOutput() AppPendingDeploymentHealthCheckOutput {
+	return i.ToAppPendingDeploymentHealthCheckOutputWithContext(context.Background())
+}
+
+func (i AppPendingDeploymentHealthCheckArgs) ToAppPendingDeploymentHealthCheckOutputWithContext(ctx context.Context) AppPendingDeploymentHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppPendingDeploymentHealthCheckOutput)
+}
+
+func (i AppPendingDeploymentHealthCheckArgs) ToAppPendingDeploymentHealthCheckPtrOutput() AppPendingDeploymentHealthCheckPtrOutput {
+	return i.ToAppPendingDeploymentHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i AppPendingDeploymentHealthCheckArgs) ToAppPendingDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppPendingDeploymentHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppPendingDeploymentHealthCheckOutput).ToAppPendingDeploymentHealthCheckPtrOutputWithContext(ctx)
+}
+
+// AppPendingDeploymentHealthCheckPtrInput is an input type that accepts AppPendingDeploymentHealthCheckArgs, AppPendingDeploymentHealthCheckPtr and AppPendingDeploymentHealthCheckPtrOutput values.
+// You can construct a concrete instance of `AppPendingDeploymentHealthCheckPtrInput` via:
+//
+//	        AppPendingDeploymentHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppPendingDeploymentHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToAppPendingDeploymentHealthCheckPtrOutput() AppPendingDeploymentHealthCheckPtrOutput
+	ToAppPendingDeploymentHealthCheckPtrOutputWithContext(context.Context) AppPendingDeploymentHealthCheckPtrOutput
+}
+
+type appPendingDeploymentHealthCheckPtrType AppPendingDeploymentHealthCheckArgs
+
+func AppPendingDeploymentHealthCheckPtr(v *AppPendingDeploymentHealthCheckArgs) AppPendingDeploymentHealthCheckPtrInput {
+	return (*appPendingDeploymentHealthCheckPtrType)(v)
+}
+
+func (*appPendingDeploymentHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppPendingDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (i *appPendingDeploymentHealthCheckPtrType) ToAppPendingDeploymentHealthCheckPtrOutput() AppPendingDeploymentHealthCheckPtrOutput {
+	return i.ToAppPendingDeploymentHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *appPendingDeploymentHealthCheckPtrType) ToAppPendingDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppPendingDeploymentHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppPendingDeploymentHealthCheckPtrOutput)
+}
+
+type AppPendingDeploymentHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (AppPendingDeploymentHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppPendingDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (o AppPendingDeploymentHealthCheckOutput) ToAppPendingDeploymentHealthCheckOutput() AppPendingDeploymentHealthCheckOutput {
+	return o
+}
+
+func (o AppPendingDeploymentHealthCheckOutput) ToAppPendingDeploymentHealthCheckOutputWithContext(ctx context.Context) AppPendingDeploymentHealthCheckOutput {
+	return o
+}
+
+func (o AppPendingDeploymentHealthCheckOutput) ToAppPendingDeploymentHealthCheckPtrOutput() AppPendingDeploymentHealthCheckPtrOutput {
+	return o.ToAppPendingDeploymentHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o AppPendingDeploymentHealthCheckOutput) ToAppPendingDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppPendingDeploymentHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppPendingDeploymentHealthCheck) *AppPendingDeploymentHealthCheck {
+		return &v
+	}).(AppPendingDeploymentHealthCheckPtrOutput)
+}
+
+func (o AppPendingDeploymentHealthCheckOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppPendingDeploymentHealthCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o AppPendingDeploymentHealthCheckOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppPendingDeploymentHealthCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type AppPendingDeploymentHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AppPendingDeploymentHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppPendingDeploymentHealthCheck)(nil)).Elem()
+}
+
+func (o AppPendingDeploymentHealthCheckPtrOutput) ToAppPendingDeploymentHealthCheckPtrOutput() AppPendingDeploymentHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppPendingDeploymentHealthCheckPtrOutput) ToAppPendingDeploymentHealthCheckPtrOutputWithContext(ctx context.Context) AppPendingDeploymentHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppPendingDeploymentHealthCheckPtrOutput) Elem() AppPendingDeploymentHealthCheckOutput {
+	return o.ApplyT(func(v *AppPendingDeploymentHealthCheck) AppPendingDeploymentHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret AppPendingDeploymentHealthCheck
+		return ret
+	}).(AppPendingDeploymentHealthCheckOutput)
+}
+
+func (o AppPendingDeploymentHealthCheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppPendingDeploymentHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AppPendingDeploymentHealthCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppPendingDeploymentHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -57406,7 +59738,7 @@ type AppSpaceResourceUcSecurable struct {
 	// (string) - The securable kind from Unity Catalog.
 	// See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
 	SecurableKind *string `pulumi:"securableKind"`
-	// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+	// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 	SecurableType string `pulumi:"securableType"`
 }
 
@@ -57427,7 +59759,7 @@ type AppSpaceResourceUcSecurableArgs struct {
 	// (string) - The securable kind from Unity Catalog.
 	// See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
 	SecurableKind pulumi.StringPtrInput `pulumi:"securableKind"`
-	// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+	// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 	SecurableType pulumi.StringInput `pulumi:"securableType"`
 }
 
@@ -57522,7 +59854,7 @@ func (o AppSpaceResourceUcSecurableOutput) SecurableKind() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AppSpaceResourceUcSecurable) *string { return v.SecurableKind }).(pulumi.StringPtrOutput)
 }
 
-// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 func (o AppSpaceResourceUcSecurableOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpaceResourceUcSecurable) string { return v.SecurableType }).(pulumi.StringOutput)
 }
@@ -57580,7 +59912,7 @@ func (o AppSpaceResourceUcSecurablePtrOutput) SecurableKind() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 func (o AppSpaceResourceUcSecurablePtrOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpaceResourceUcSecurable) *string {
 		if v == nil {
@@ -59040,7 +61372,7 @@ func (o AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecPtrOutput)
 
 type AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec struct {
 	Permission string `pulumi:"permission"`
-	// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+	// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 	SecurableType string `pulumi:"securableType"`
 }
 
@@ -59057,7 +61389,7 @@ type AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecInput interfac
 
 type AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs struct {
 	Permission pulumi.StringInput `pulumi:"permission"`
-	// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+	// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 	SecurableType pulumi.StringInput `pulumi:"securableType"`
 }
 
@@ -59142,7 +61474,7 @@ func (o AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecOutput) Per
 	return o.ApplyT(func(v AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 func (o AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec) string { return v.SecurableType }).(pulumi.StringOutput)
 }
@@ -59180,7 +61512,7 @@ func (o AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
 func (o AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecPtrOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec) *string {
 		if v == nil {
@@ -78156,2104 +80488,6 @@ func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) WorkspaceId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-type DisableLegacyFeaturesSettingDisableLegacyFeatures struct {
-	// The boolean value for the setting.
-	Value bool `pulumi:"value"`
-}
-
-// DisableLegacyFeaturesSettingDisableLegacyFeaturesInput is an input type that accepts DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs and DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput values.
-// You can construct a concrete instance of `DisableLegacyFeaturesSettingDisableLegacyFeaturesInput` via:
-//
-//	DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{...}
-type DisableLegacyFeaturesSettingDisableLegacyFeaturesInput interface {
-	pulumi.Input
-
-	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput
-	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput
-}
-
-type DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs struct {
-	// The boolean value for the setting.
-	Value pulumi.BoolInput `pulumi:"value"`
-}
-
-func (DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
-}
-
-func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
-	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput)
-}
-
-func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput).ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx)
-}
-
-// DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput is an input type that accepts DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs, DisableLegacyFeaturesSettingDisableLegacyFeaturesPtr and DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput values.
-// You can construct a concrete instance of `DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput` via:
-//
-//	        DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput interface {
-	pulumi.Input
-
-	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput
-	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput
-}
-
-type disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs
-
-func DisableLegacyFeaturesSettingDisableLegacyFeaturesPtr(v *DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput {
-	return (*disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType)(v)
-}
-
-func (*disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
-}
-
-func (i *disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
-}
-
-func (i *disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput)
-}
-
-type DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return o.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyFeaturesSettingDisableLegacyFeatures) *DisableLegacyFeaturesSettingDisableLegacyFeatures {
-		return &v
-	}).(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput)
-}
-
-// The boolean value for the setting.
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) Value() pulumi.BoolOutput {
-	return o.ApplyT(func(v DisableLegacyFeaturesSettingDisableLegacyFeatures) bool { return v.Value }).(pulumi.BoolOutput)
-}
-
-type DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) Elem() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
-	return o.ApplyT(func(v *DisableLegacyFeaturesSettingDisableLegacyFeatures) DisableLegacyFeaturesSettingDisableLegacyFeatures {
-		if v != nil {
-			return *v
-		}
-		var ret DisableLegacyFeaturesSettingDisableLegacyFeatures
-		return ret
-	}).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput)
-}
-
-// The boolean value for the setting.
-func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) Value() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyFeaturesSettingDisableLegacyFeatures) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.BoolPtrOutput)
-}
-
-type DisableLegacyFeaturesSettingProviderConfig struct {
-	// Deprecated: workspace_id is ignored for account-only resources.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// DisableLegacyFeaturesSettingProviderConfigInput is an input type that accepts DisableLegacyFeaturesSettingProviderConfigArgs and DisableLegacyFeaturesSettingProviderConfigOutput values.
-// You can construct a concrete instance of `DisableLegacyFeaturesSettingProviderConfigInput` via:
-//
-//	DisableLegacyFeaturesSettingProviderConfigArgs{...}
-type DisableLegacyFeaturesSettingProviderConfigInput interface {
-	pulumi.Input
-
-	ToDisableLegacyFeaturesSettingProviderConfigOutput() DisableLegacyFeaturesSettingProviderConfigOutput
-	ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(context.Context) DisableLegacyFeaturesSettingProviderConfigOutput
-}
-
-type DisableLegacyFeaturesSettingProviderConfigArgs struct {
-	// Deprecated: workspace_id is ignored for account-only resources.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (DisableLegacyFeaturesSettingProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
-}
-
-func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigOutput() DisableLegacyFeaturesSettingProviderConfigOutput {
-	return i.ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingProviderConfigOutput)
-}
-
-func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return i.ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingProviderConfigOutput).ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx)
-}
-
-// DisableLegacyFeaturesSettingProviderConfigPtrInput is an input type that accepts DisableLegacyFeaturesSettingProviderConfigArgs, DisableLegacyFeaturesSettingProviderConfigPtr and DisableLegacyFeaturesSettingProviderConfigPtrOutput values.
-// You can construct a concrete instance of `DisableLegacyFeaturesSettingProviderConfigPtrInput` via:
-//
-//	        DisableLegacyFeaturesSettingProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisableLegacyFeaturesSettingProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput
-	ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput
-}
-
-type disableLegacyFeaturesSettingProviderConfigPtrType DisableLegacyFeaturesSettingProviderConfigArgs
-
-func DisableLegacyFeaturesSettingProviderConfigPtr(v *DisableLegacyFeaturesSettingProviderConfigArgs) DisableLegacyFeaturesSettingProviderConfigPtrInput {
-	return (*disableLegacyFeaturesSettingProviderConfigPtrType)(v)
-}
-
-func (*disableLegacyFeaturesSettingProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
-}
-
-func (i *disableLegacyFeaturesSettingProviderConfigPtrType) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return i.ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *disableLegacyFeaturesSettingProviderConfigPtrType) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingProviderConfigPtrOutput)
-}
-
-type DisableLegacyFeaturesSettingProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyFeaturesSettingProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigOutput() DisableLegacyFeaturesSettingProviderConfigOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return o.ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyFeaturesSettingProviderConfig) *DisableLegacyFeaturesSettingProviderConfig {
-		return &v
-	}).(DisableLegacyFeaturesSettingProviderConfigPtrOutput)
-}
-
-// Deprecated: workspace_id is ignored for account-only resources.
-func (o DisableLegacyFeaturesSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DisableLegacyFeaturesSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type DisableLegacyFeaturesSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyFeaturesSettingProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) Elem() DisableLegacyFeaturesSettingProviderConfigOutput {
-	return o.ApplyT(func(v *DisableLegacyFeaturesSettingProviderConfig) DisableLegacyFeaturesSettingProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DisableLegacyFeaturesSettingProviderConfig
-		return ret
-	}).(DisableLegacyFeaturesSettingProviderConfigOutput)
-}
-
-// Deprecated: workspace_id is ignored for account-only resources.
-func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyFeaturesSettingProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssets struct {
-	// UC catalogs to replicate
-	Catalogs []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog `pulumi:"catalogs"`
-	// The workspace set whose workspaces will be used for data replication
-	// of all UC catalogs' underlying storage
-	DataReplicationWorkspaceSet string `pulumi:"dataReplicationWorkspaceSet"`
-	// Location mappings - storage URI per region for each location
-	LocationMappings []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping `pulumi:"locationMappings"`
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{...}
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs struct {
-	// UC catalogs to replicate
-	Catalogs DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput `pulumi:"catalogs"`
-	// The workspace set whose workspaces will be used for data replication
-	// of all UC catalogs' underlying storage
-	DataReplicationWorkspaceSet pulumi.StringInput `pulumi:"dataReplicationWorkspaceSet"`
-	// Location mappings - storage URI per region for each location
-	LocationMappings DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput `pulumi:"locationMappings"`
-}
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput)
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput).ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx)
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs, DisasterRecoveryFailoverGroupUnityCatalogAssetsPtr and DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput` via:
-//
-//	        DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput
-}
-
-type disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs
-
-func DisasterRecoveryFailoverGroupUnityCatalogAssetsPtr(v *DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput {
-	return (*disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType)(v)
-}
-
-func (*disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
-}
-
-func (i *disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Background())
-}
-
-func (i *disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return o.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Background())
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisasterRecoveryFailoverGroupUnityCatalogAssets) *DisasterRecoveryFailoverGroupUnityCatalogAssets {
-		return &v
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput)
-}
-
-// UC catalogs to replicate
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) Catalogs() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
-		return v.Catalogs
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput)
-}
-
-// The workspace set whose workspaces will be used for data replication
-// of all UC catalogs' underlying storage
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) DataReplicationWorkspaceSet() pulumi.StringOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssets) string { return v.DataReplicationWorkspaceSet }).(pulumi.StringOutput)
-}
-
-// Location mappings - storage URI per region for each location
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) LocationMappings() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
-		return v.LocationMappings
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) Elem() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
-	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) DisasterRecoveryFailoverGroupUnityCatalogAssets {
-		if v != nil {
-			return *v
-		}
-		var ret DisasterRecoveryFailoverGroupUnityCatalogAssets
-		return ret
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput)
-}
-
-// UC catalogs to replicate
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) Catalogs() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
-	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
-		if v == nil {
-			return nil
-		}
-		return v.Catalogs
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput)
-}
-
-// The workspace set whose workspaces will be used for data replication
-// of all UC catalogs' underlying storage
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) DataReplicationWorkspaceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataReplicationWorkspaceSet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Location mappings - storage URI per region for each location
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) LocationMappings() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
-	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
-		if v == nil {
-			return nil
-		}
-		return v.LocationMappings
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog struct {
-	// (string) - Fully qualified resource name in the format
-	// accounts/{account_id}/failover-groups/{failover_group_id}
-	Name string `pulumi:"name"`
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs{...}
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs struct {
-	// (string) - Fully qualified resource name in the format
-	// accounts/{account_id}/failover-groups/{failover_group_id}
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput)
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray and DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray{ DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs{...} }
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
-	return o
-}
-
-// (string) - Fully qualified resource name in the format
-// accounts/{account_id}/failover-groups/{failover_group_id}
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
-		return vs[0].([]DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)[vs[1].(int)]
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping struct {
-	// (string) - Fully qualified resource name in the format
-	// accounts/{account_id}/failover-groups/{failover_group_id}
-	Name string `pulumi:"name"`
-	// URI for each region. Each entry maps a region name to a storage URI
-	UriByRegions []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion `pulumi:"uriByRegions"`
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs{...}
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs struct {
-	// (string) - Fully qualified resource name in the format
-	// accounts/{account_id}/failover-groups/{failover_group_id}
-	Name pulumi.StringInput `pulumi:"name"`
-	// URI for each region. Each entry maps a region name to a storage URI
-	UriByRegions DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput `pulumi:"uriByRegions"`
-}
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput)
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray{ DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs{...} }
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
-	return o
-}
-
-// (string) - Fully qualified resource name in the format
-// accounts/{account_id}/failover-groups/{failover_group_id}
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// URI for each region. Each entry maps a region name to a storage URI
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) UriByRegions() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping) []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
-		return v.UriByRegions
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
-		return vs[0].([]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)[vs[1].(int)]
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion struct {
-	// The region name
-	Region string `pulumi:"region"`
-	// The storage URI for this region
-	Uri string `pulumi:"uri"`
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs{...}
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs struct {
-	// The region name
-	Region pulumi.StringInput `pulumi:"region"`
-	// The storage URI for this region
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput)
-}
-
-// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput` via:
-//
-//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray{ DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs{...} }
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput
-	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
-	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
-	return o
-}
-
-// The region name
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion) string {
-		return v.Region
-	}).(pulumi.StringOutput)
-}
-
-// The storage URI for this region
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
-		return vs[0].([]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)[vs[1].(int)]
-	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput)
-}
-
-type DisasterRecoveryFailoverGroupWorkspaceSet struct {
-	// (string) - Fully qualified resource name in the format
-	// accounts/{account_id}/failover-groups/{failover_group_id}
-	Name string `pulumi:"name"`
-	// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-	// Defaults to false
-	ReplicateWorkspaceAssets *bool `pulumi:"replicateWorkspaceAssets"`
-	// Resource names of stable URLs associated with this workspace set.
-	// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-	// The referenced stable URLs must already exist (via CreateStableUrl)
-	StableUrlNames []string `pulumi:"stableUrlNames"`
-	// Workspace IDs in this set. The system derives and validates regions.
-	// All workspaces must be in the Mission Critical tier
-	WorkspaceIds []string `pulumi:"workspaceIds"`
-}
-
-// DisasterRecoveryFailoverGroupWorkspaceSetInput is an input type that accepts DisasterRecoveryFailoverGroupWorkspaceSetArgs and DisasterRecoveryFailoverGroupWorkspaceSetOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupWorkspaceSetInput` via:
-//
-//	DisasterRecoveryFailoverGroupWorkspaceSetArgs{...}
-type DisasterRecoveryFailoverGroupWorkspaceSetInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupWorkspaceSetOutput() DisasterRecoveryFailoverGroupWorkspaceSetOutput
-	ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(context.Context) DisasterRecoveryFailoverGroupWorkspaceSetOutput
-}
-
-type DisasterRecoveryFailoverGroupWorkspaceSetArgs struct {
-	// (string) - Fully qualified resource name in the format
-	// accounts/{account_id}/failover-groups/{failover_group_id}
-	Name pulumi.StringInput `pulumi:"name"`
-	// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-	// Defaults to false
-	ReplicateWorkspaceAssets pulumi.BoolPtrInput `pulumi:"replicateWorkspaceAssets"`
-	// Resource names of stable URLs associated with this workspace set.
-	// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-	// The referenced stable URLs must already exist (via CreateStableUrl)
-	StableUrlNames pulumi.StringArrayInput `pulumi:"stableUrlNames"`
-	// Workspace IDs in this set. The system derives and validates regions.
-	// All workspaces must be in the Mission Critical tier
-	WorkspaceIds pulumi.StringArrayInput `pulumi:"workspaceIds"`
-}
-
-func (DisasterRecoveryFailoverGroupWorkspaceSetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupWorkspaceSetArgs) ToDisasterRecoveryFailoverGroupWorkspaceSetOutput() DisasterRecoveryFailoverGroupWorkspaceSetOutput {
-	return i.ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupWorkspaceSetArgs) ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupWorkspaceSetOutput)
-}
-
-// DisasterRecoveryFailoverGroupWorkspaceSetArrayInput is an input type that accepts DisasterRecoveryFailoverGroupWorkspaceSetArray and DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput values.
-// You can construct a concrete instance of `DisasterRecoveryFailoverGroupWorkspaceSetArrayInput` via:
-//
-//	DisasterRecoveryFailoverGroupWorkspaceSetArray{ DisasterRecoveryFailoverGroupWorkspaceSetArgs{...} }
-type DisasterRecoveryFailoverGroupWorkspaceSetArrayInput interface {
-	pulumi.Input
-
-	ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutput() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput
-	ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput
-}
-
-type DisasterRecoveryFailoverGroupWorkspaceSetArray []DisasterRecoveryFailoverGroupWorkspaceSetInput
-
-func (DisasterRecoveryFailoverGroupWorkspaceSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
-}
-
-func (i DisasterRecoveryFailoverGroupWorkspaceSetArray) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutput() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
-	return i.ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(context.Background())
-}
-
-func (i DisasterRecoveryFailoverGroupWorkspaceSetArray) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupWorkspaceSetOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupWorkspaceSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetOutput() DisasterRecoveryFailoverGroupWorkspaceSetOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetOutput {
-	return o
-}
-
-// (string) - Fully qualified resource name in the format
-// accounts/{account_id}/failover-groups/{failover_group_id}
-func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-// Defaults to false
-func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) ReplicateWorkspaceAssets() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) *bool { return v.ReplicateWorkspaceAssets }).(pulumi.BoolPtrOutput)
-}
-
-// Resource names of stable URLs associated with this workspace set.
-// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-// The referenced stable URLs must already exist (via CreateStableUrl)
-func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) StableUrlNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) []string { return v.StableUrlNames }).(pulumi.StringArrayOutput)
-}
-
-// Workspace IDs in this set. The system derives and validates regions.
-// All workspaces must be in the Mission Critical tier
-func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) WorkspaceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) []string { return v.WorkspaceIds }).(pulumi.StringArrayOutput)
-}
-
-type DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput struct{ *pulumi.OutputState }
-
-func (DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
-}
-
-func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutput() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
-	return o
-}
-
-func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupWorkspaceSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupWorkspaceSet {
-		return vs[0].([]DisasterRecoveryFailoverGroupWorkspaceSet)[vs[1].(int)]
-	}).(DisasterRecoveryFailoverGroupWorkspaceSetOutput)
-}
-
-type DomainIcon struct {
-	// Hex color code with # prefix (e.g., "#FF5733")
-	Color *string `pulumi:"color"`
-	// (string) - Full resource name of the domain. The primary identifier for this resource.
-	// Format: `domains/{domain_id}`
-	// Identifies the domain on get, update, and delete. Not an input on
-	// create — to choose the id, set `CreateDomainRequest.domain_id`
-	Name *string `pulumi:"name"`
-}
-
-// DomainIconInput is an input type that accepts DomainIconArgs and DomainIconOutput values.
-// You can construct a concrete instance of `DomainIconInput` via:
-//
-//	DomainIconArgs{...}
-type DomainIconInput interface {
-	pulumi.Input
-
-	ToDomainIconOutput() DomainIconOutput
-	ToDomainIconOutputWithContext(context.Context) DomainIconOutput
-}
-
-type DomainIconArgs struct {
-	// Hex color code with # prefix (e.g., "#FF5733")
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// (string) - Full resource name of the domain. The primary identifier for this resource.
-	// Format: `domains/{domain_id}`
-	// Identifies the domain on get, update, and delete. Not an input on
-	// create — to choose the id, set `CreateDomainRequest.domain_id`
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (DomainIconArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainIcon)(nil)).Elem()
-}
-
-func (i DomainIconArgs) ToDomainIconOutput() DomainIconOutput {
-	return i.ToDomainIconOutputWithContext(context.Background())
-}
-
-func (i DomainIconArgs) ToDomainIconOutputWithContext(ctx context.Context) DomainIconOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainIconOutput)
-}
-
-func (i DomainIconArgs) ToDomainIconPtrOutput() DomainIconPtrOutput {
-	return i.ToDomainIconPtrOutputWithContext(context.Background())
-}
-
-func (i DomainIconArgs) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainIconOutput).ToDomainIconPtrOutputWithContext(ctx)
-}
-
-// DomainIconPtrInput is an input type that accepts DomainIconArgs, DomainIconPtr and DomainIconPtrOutput values.
-// You can construct a concrete instance of `DomainIconPtrInput` via:
-//
-//	        DomainIconArgs{...}
-//
-//	or:
-//
-//	        nil
-type DomainIconPtrInput interface {
-	pulumi.Input
-
-	ToDomainIconPtrOutput() DomainIconPtrOutput
-	ToDomainIconPtrOutputWithContext(context.Context) DomainIconPtrOutput
-}
-
-type domainIconPtrType DomainIconArgs
-
-func DomainIconPtr(v *DomainIconArgs) DomainIconPtrInput {
-	return (*domainIconPtrType)(v)
-}
-
-func (*domainIconPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainIcon)(nil)).Elem()
-}
-
-func (i *domainIconPtrType) ToDomainIconPtrOutput() DomainIconPtrOutput {
-	return i.ToDomainIconPtrOutputWithContext(context.Background())
-}
-
-func (i *domainIconPtrType) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainIconPtrOutput)
-}
-
-type DomainIconOutput struct{ *pulumi.OutputState }
-
-func (DomainIconOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainIcon)(nil)).Elem()
-}
-
-func (o DomainIconOutput) ToDomainIconOutput() DomainIconOutput {
-	return o
-}
-
-func (o DomainIconOutput) ToDomainIconOutputWithContext(ctx context.Context) DomainIconOutput {
-	return o
-}
-
-func (o DomainIconOutput) ToDomainIconPtrOutput() DomainIconPtrOutput {
-	return o.ToDomainIconPtrOutputWithContext(context.Background())
-}
-
-func (o DomainIconOutput) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainIcon) *DomainIcon {
-		return &v
-	}).(DomainIconPtrOutput)
-}
-
-// Hex color code with # prefix (e.g., "#FF5733")
-func (o DomainIconOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainIcon) *string { return v.Color }).(pulumi.StringPtrOutput)
-}
-
-// (string) - Full resource name of the domain. The primary identifier for this resource.
-// Format: `domains/{domain_id}`
-// Identifies the domain on get, update, and delete. Not an input on
-// create — to choose the id, set `CreateDomainRequest.domain_id`
-func (o DomainIconOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainIcon) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type DomainIconPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainIconPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainIcon)(nil)).Elem()
-}
-
-func (o DomainIconPtrOutput) ToDomainIconPtrOutput() DomainIconPtrOutput {
-	return o
-}
-
-func (o DomainIconPtrOutput) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
-	return o
-}
-
-func (o DomainIconPtrOutput) Elem() DomainIconOutput {
-	return o.ApplyT(func(v *DomainIcon) DomainIcon {
-		if v != nil {
-			return *v
-		}
-		var ret DomainIcon
-		return ret
-	}).(DomainIconOutput)
-}
-
-// Hex color code with # prefix (e.g., "#FF5733")
-func (o DomainIconPtrOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainIcon) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Color
-	}).(pulumi.StringPtrOutput)
-}
-
-// (string) - Full resource name of the domain. The primary identifier for this resource.
-// Format: `domains/{domain_id}`
-// Identifies the domain on get, update, and delete. Not an input on
-// create — to choose the id, set `CreateDomainRequest.domain_id`
-func (o DomainIconPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainIcon) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type DomainProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// DomainProviderConfigInput is an input type that accepts DomainProviderConfigArgs and DomainProviderConfigOutput values.
-// You can construct a concrete instance of `DomainProviderConfigInput` via:
-//
-//	DomainProviderConfigArgs{...}
-type DomainProviderConfigInput interface {
-	pulumi.Input
-
-	ToDomainProviderConfigOutput() DomainProviderConfigOutput
-	ToDomainProviderConfigOutputWithContext(context.Context) DomainProviderConfigOutput
-}
-
-type DomainProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (DomainProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainProviderConfig)(nil)).Elem()
-}
-
-func (i DomainProviderConfigArgs) ToDomainProviderConfigOutput() DomainProviderConfigOutput {
-	return i.ToDomainProviderConfigOutputWithContext(context.Background())
-}
-
-func (i DomainProviderConfigArgs) ToDomainProviderConfigOutputWithContext(ctx context.Context) DomainProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigOutput)
-}
-
-func (i DomainProviderConfigArgs) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
-	return i.ToDomainProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DomainProviderConfigArgs) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigOutput).ToDomainProviderConfigPtrOutputWithContext(ctx)
-}
-
-// DomainProviderConfigPtrInput is an input type that accepts DomainProviderConfigArgs, DomainProviderConfigPtr and DomainProviderConfigPtrOutput values.
-// You can construct a concrete instance of `DomainProviderConfigPtrInput` via:
-//
-//	        DomainProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type DomainProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput
-	ToDomainProviderConfigPtrOutputWithContext(context.Context) DomainProviderConfigPtrOutput
-}
-
-type domainProviderConfigPtrType DomainProviderConfigArgs
-
-func DomainProviderConfigPtr(v *DomainProviderConfigArgs) DomainProviderConfigPtrInput {
-	return (*domainProviderConfigPtrType)(v)
-}
-
-func (*domainProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProviderConfig)(nil)).Elem()
-}
-
-func (i *domainProviderConfigPtrType) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
-	return i.ToDomainProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *domainProviderConfigPtrType) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigPtrOutput)
-}
-
-type DomainProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (DomainProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainProviderConfig)(nil)).Elem()
-}
-
-func (o DomainProviderConfigOutput) ToDomainProviderConfigOutput() DomainProviderConfigOutput {
-	return o
-}
-
-func (o DomainProviderConfigOutput) ToDomainProviderConfigOutputWithContext(ctx context.Context) DomainProviderConfigOutput {
-	return o
-}
-
-func (o DomainProviderConfigOutput) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
-	return o.ToDomainProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DomainProviderConfigOutput) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainProviderConfig) *DomainProviderConfig {
-		return &v
-	}).(DomainProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o DomainProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type DomainProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProviderConfig)(nil)).Elem()
-}
-
-func (o DomainProviderConfigPtrOutput) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
-	return o
-}
-
-func (o DomainProviderConfigPtrOutput) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
-	return o
-}
-
-func (o DomainProviderConfigPtrOutput) Elem() DomainProviderConfigOutput {
-	return o.ApplyT(func(v *DomainProviderConfig) DomainProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DomainProviderConfig
-		return ret
-	}).(DomainProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o DomainProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type EndpointAwsVpcEndpointInfo struct {
-	// (string) - The AWS account ID in which this VPC endpoint lives
-	AwsAccountId *string `pulumi:"awsAccountId"`
-	// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
-	AwsEndpointServiceId *string `pulumi:"awsEndpointServiceId"`
-	// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
-	// registering an existing AWS VPC endpoint
-	AwsVpcEndpointId string `pulumi:"awsVpcEndpointId"`
-}
-
-// EndpointAwsVpcEndpointInfoInput is an input type that accepts EndpointAwsVpcEndpointInfoArgs and EndpointAwsVpcEndpointInfoOutput values.
-// You can construct a concrete instance of `EndpointAwsVpcEndpointInfoInput` via:
-//
-//	EndpointAwsVpcEndpointInfoArgs{...}
-type EndpointAwsVpcEndpointInfoInput interface {
-	pulumi.Input
-
-	ToEndpointAwsVpcEndpointInfoOutput() EndpointAwsVpcEndpointInfoOutput
-	ToEndpointAwsVpcEndpointInfoOutputWithContext(context.Context) EndpointAwsVpcEndpointInfoOutput
-}
-
-type EndpointAwsVpcEndpointInfoArgs struct {
-	// (string) - The AWS account ID in which this VPC endpoint lives
-	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
-	// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
-	AwsEndpointServiceId pulumi.StringPtrInput `pulumi:"awsEndpointServiceId"`
-	// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
-	// registering an existing AWS VPC endpoint
-	AwsVpcEndpointId pulumi.StringInput `pulumi:"awsVpcEndpointId"`
-}
-
-func (EndpointAwsVpcEndpointInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAwsVpcEndpointInfo)(nil)).Elem()
-}
-
-func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoOutput() EndpointAwsVpcEndpointInfoOutput {
-	return i.ToEndpointAwsVpcEndpointInfoOutputWithContext(context.Background())
-}
-
-func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAwsVpcEndpointInfoOutput)
-}
-
-func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
-	return i.ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAwsVpcEndpointInfoOutput).ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx)
-}
-
-// EndpointAwsVpcEndpointInfoPtrInput is an input type that accepts EndpointAwsVpcEndpointInfoArgs, EndpointAwsVpcEndpointInfoPtr and EndpointAwsVpcEndpointInfoPtrOutput values.
-// You can construct a concrete instance of `EndpointAwsVpcEndpointInfoPtrInput` via:
-//
-//	        EndpointAwsVpcEndpointInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type EndpointAwsVpcEndpointInfoPtrInput interface {
-	pulumi.Input
-
-	ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput
-	ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Context) EndpointAwsVpcEndpointInfoPtrOutput
-}
-
-type endpointAwsVpcEndpointInfoPtrType EndpointAwsVpcEndpointInfoArgs
-
-func EndpointAwsVpcEndpointInfoPtr(v *EndpointAwsVpcEndpointInfoArgs) EndpointAwsVpcEndpointInfoPtrInput {
-	return (*endpointAwsVpcEndpointInfoPtrType)(v)
-}
-
-func (*endpointAwsVpcEndpointInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointAwsVpcEndpointInfo)(nil)).Elem()
-}
-
-func (i *endpointAwsVpcEndpointInfoPtrType) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
-	return i.ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *endpointAwsVpcEndpointInfoPtrType) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAwsVpcEndpointInfoPtrOutput)
-}
-
-type EndpointAwsVpcEndpointInfoOutput struct{ *pulumi.OutputState }
-
-func (EndpointAwsVpcEndpointInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAwsVpcEndpointInfo)(nil)).Elem()
-}
-
-func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoOutput() EndpointAwsVpcEndpointInfoOutput {
-	return o
-}
-
-func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoOutput {
-	return o
-}
-
-func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
-	return o.ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAwsVpcEndpointInfo) *EndpointAwsVpcEndpointInfo {
-		return &v
-	}).(EndpointAwsVpcEndpointInfoPtrOutput)
-}
-
-// (string) - The AWS account ID in which this VPC endpoint lives
-func (o EndpointAwsVpcEndpointInfoOutput) AwsAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointAwsVpcEndpointInfo) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
-}
-
-// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
-func (o EndpointAwsVpcEndpointInfoOutput) AwsEndpointServiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointAwsVpcEndpointInfo) *string { return v.AwsEndpointServiceId }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
-// registering an existing AWS VPC endpoint
-func (o EndpointAwsVpcEndpointInfoOutput) AwsVpcEndpointId() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointAwsVpcEndpointInfo) string { return v.AwsVpcEndpointId }).(pulumi.StringOutput)
-}
-
-type EndpointAwsVpcEndpointInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointAwsVpcEndpointInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointAwsVpcEndpointInfo)(nil)).Elem()
-}
-
-func (o EndpointAwsVpcEndpointInfoPtrOutput) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
-	return o
-}
-
-func (o EndpointAwsVpcEndpointInfoPtrOutput) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
-	return o
-}
-
-func (o EndpointAwsVpcEndpointInfoPtrOutput) Elem() EndpointAwsVpcEndpointInfoOutput {
-	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) EndpointAwsVpcEndpointInfo {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointAwsVpcEndpointInfo
-		return ret
-	}).(EndpointAwsVpcEndpointInfoOutput)
-}
-
-// (string) - The AWS account ID in which this VPC endpoint lives
-func (o EndpointAwsVpcEndpointInfoPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
-func (o EndpointAwsVpcEndpointInfoPtrOutput) AwsEndpointServiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsEndpointServiceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
-// registering an existing AWS VPC endpoint
-func (o EndpointAwsVpcEndpointInfoPtrOutput) AwsVpcEndpointId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AwsVpcEndpointId
-	}).(pulumi.StringPtrOutput)
-}
-
-type EndpointAzurePrivateEndpointInfo struct {
-	// The name of the Private Endpoint in the Azure subscription
-	PrivateEndpointName string `pulumi:"privateEndpointName"`
-	// The GUID of the Private Endpoint resource in the Azure subscription.
-	// This is assigned by Azure when the user sets up the Private Endpoint
-	PrivateEndpointResourceGuid string `pulumi:"privateEndpointResourceGuid"`
-	// (string) - The full resource ID of the Private Endpoint
-	PrivateEndpointResourceId *string `pulumi:"privateEndpointResourceId"`
-	// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
-	PrivateLinkServiceId *string `pulumi:"privateLinkServiceId"`
-}
-
-// EndpointAzurePrivateEndpointInfoInput is an input type that accepts EndpointAzurePrivateEndpointInfoArgs and EndpointAzurePrivateEndpointInfoOutput values.
-// You can construct a concrete instance of `EndpointAzurePrivateEndpointInfoInput` via:
-//
-//	EndpointAzurePrivateEndpointInfoArgs{...}
-type EndpointAzurePrivateEndpointInfoInput interface {
-	pulumi.Input
-
-	ToEndpointAzurePrivateEndpointInfoOutput() EndpointAzurePrivateEndpointInfoOutput
-	ToEndpointAzurePrivateEndpointInfoOutputWithContext(context.Context) EndpointAzurePrivateEndpointInfoOutput
-}
-
-type EndpointAzurePrivateEndpointInfoArgs struct {
-	// The name of the Private Endpoint in the Azure subscription
-	PrivateEndpointName pulumi.StringInput `pulumi:"privateEndpointName"`
-	// The GUID of the Private Endpoint resource in the Azure subscription.
-	// This is assigned by Azure when the user sets up the Private Endpoint
-	PrivateEndpointResourceGuid pulumi.StringInput `pulumi:"privateEndpointResourceGuid"`
-	// (string) - The full resource ID of the Private Endpoint
-	PrivateEndpointResourceId pulumi.StringPtrInput `pulumi:"privateEndpointResourceId"`
-	// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
-	PrivateLinkServiceId pulumi.StringPtrInput `pulumi:"privateLinkServiceId"`
-}
-
-func (EndpointAzurePrivateEndpointInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAzurePrivateEndpointInfo)(nil)).Elem()
-}
-
-func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoOutput() EndpointAzurePrivateEndpointInfoOutput {
-	return i.ToEndpointAzurePrivateEndpointInfoOutputWithContext(context.Background())
-}
-
-func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAzurePrivateEndpointInfoOutput)
-}
-
-func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
-	return i.ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAzurePrivateEndpointInfoOutput).ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx)
-}
-
-// EndpointAzurePrivateEndpointInfoPtrInput is an input type that accepts EndpointAzurePrivateEndpointInfoArgs, EndpointAzurePrivateEndpointInfoPtr and EndpointAzurePrivateEndpointInfoPtrOutput values.
-// You can construct a concrete instance of `EndpointAzurePrivateEndpointInfoPtrInput` via:
-//
-//	        EndpointAzurePrivateEndpointInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type EndpointAzurePrivateEndpointInfoPtrInput interface {
-	pulumi.Input
-
-	ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput
-	ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Context) EndpointAzurePrivateEndpointInfoPtrOutput
-}
-
-type endpointAzurePrivateEndpointInfoPtrType EndpointAzurePrivateEndpointInfoArgs
-
-func EndpointAzurePrivateEndpointInfoPtr(v *EndpointAzurePrivateEndpointInfoArgs) EndpointAzurePrivateEndpointInfoPtrInput {
-	return (*endpointAzurePrivateEndpointInfoPtrType)(v)
-}
-
-func (*endpointAzurePrivateEndpointInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointAzurePrivateEndpointInfo)(nil)).Elem()
-}
-
-func (i *endpointAzurePrivateEndpointInfoPtrType) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
-	return i.ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *endpointAzurePrivateEndpointInfoPtrType) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAzurePrivateEndpointInfoPtrOutput)
-}
-
-type EndpointAzurePrivateEndpointInfoOutput struct{ *pulumi.OutputState }
-
-func (EndpointAzurePrivateEndpointInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAzurePrivateEndpointInfo)(nil)).Elem()
-}
-
-func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoOutput() EndpointAzurePrivateEndpointInfoOutput {
-	return o
-}
-
-func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoOutput {
-	return o
-}
-
-func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
-	return o.ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAzurePrivateEndpointInfo) *EndpointAzurePrivateEndpointInfo {
-		return &v
-	}).(EndpointAzurePrivateEndpointInfoPtrOutput)
-}
-
-// The name of the Private Endpoint in the Azure subscription
-func (o EndpointAzurePrivateEndpointInfoOutput) PrivateEndpointName() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) string { return v.PrivateEndpointName }).(pulumi.StringOutput)
-}
-
-// The GUID of the Private Endpoint resource in the Azure subscription.
-// This is assigned by Azure when the user sets up the Private Endpoint
-func (o EndpointAzurePrivateEndpointInfoOutput) PrivateEndpointResourceGuid() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) string { return v.PrivateEndpointResourceGuid }).(pulumi.StringOutput)
-}
-
-// (string) - The full resource ID of the Private Endpoint
-func (o EndpointAzurePrivateEndpointInfoOutput) PrivateEndpointResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) *string { return v.PrivateEndpointResourceId }).(pulumi.StringPtrOutput)
-}
-
-// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
-func (o EndpointAzurePrivateEndpointInfoOutput) PrivateLinkServiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) *string { return v.PrivateLinkServiceId }).(pulumi.StringPtrOutput)
-}
-
-type EndpointAzurePrivateEndpointInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointAzurePrivateEndpointInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointAzurePrivateEndpointInfo)(nil)).Elem()
-}
-
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
-	return o
-}
-
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
-	return o
-}
-
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) Elem() EndpointAzurePrivateEndpointInfoOutput {
-	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) EndpointAzurePrivateEndpointInfo {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointAzurePrivateEndpointInfo
-		return ret
-	}).(EndpointAzurePrivateEndpointInfoOutput)
-}
-
-// The name of the Private Endpoint in the Azure subscription
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateEndpointName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateEndpointName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The GUID of the Private Endpoint resource in the Azure subscription.
-// This is assigned by Azure when the user sets up the Private Endpoint
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateEndpointResourceGuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateEndpointResourceGuid
-	}).(pulumi.StringPtrOutput)
-}
-
-// (string) - The full resource ID of the Private Endpoint
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateEndpointResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateEndpointResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
-func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateLinkServiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkServiceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type EndpointGcpPscEndpointInfo struct {
-	// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
-	// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
-	// region
-	EndpointRegion string `pulumi:"endpointRegion"`
-	// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
-	// when registering an existing PSC endpoint
-	ProjectId string `pulumi:"projectId"`
-	// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
-	// assigned by GCP when the PSC connection is created
-	PscConnectionId *string `pulumi:"pscConnectionId"`
-	// The name of this PSC connection in the GCP consumer project. Provided by the customer when
-	// registering an existing PSC endpoint
-	PscEndpoint string `pulumi:"pscEndpoint"`
-	// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
-	ServiceAttachmentId *string `pulumi:"serviceAttachmentId"`
-}
-
-// EndpointGcpPscEndpointInfoInput is an input type that accepts EndpointGcpPscEndpointInfoArgs and EndpointGcpPscEndpointInfoOutput values.
-// You can construct a concrete instance of `EndpointGcpPscEndpointInfoInput` via:
-//
-//	EndpointGcpPscEndpointInfoArgs{...}
-type EndpointGcpPscEndpointInfoInput interface {
-	pulumi.Input
-
-	ToEndpointGcpPscEndpointInfoOutput() EndpointGcpPscEndpointInfoOutput
-	ToEndpointGcpPscEndpointInfoOutputWithContext(context.Context) EndpointGcpPscEndpointInfoOutput
-}
-
-type EndpointGcpPscEndpointInfoArgs struct {
-	// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
-	// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
-	// region
-	EndpointRegion pulumi.StringInput `pulumi:"endpointRegion"`
-	// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
-	// when registering an existing PSC endpoint
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
-	// assigned by GCP when the PSC connection is created
-	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
-	// The name of this PSC connection in the GCP consumer project. Provided by the customer when
-	// registering an existing PSC endpoint
-	PscEndpoint pulumi.StringInput `pulumi:"pscEndpoint"`
-	// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
-	ServiceAttachmentId pulumi.StringPtrInput `pulumi:"serviceAttachmentId"`
-}
-
-func (EndpointGcpPscEndpointInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointGcpPscEndpointInfo)(nil)).Elem()
-}
-
-func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoOutput() EndpointGcpPscEndpointInfoOutput {
-	return i.ToEndpointGcpPscEndpointInfoOutputWithContext(context.Background())
-}
-
-func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGcpPscEndpointInfoOutput)
-}
-
-func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
-	return i.ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGcpPscEndpointInfoOutput).ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx)
-}
-
-// EndpointGcpPscEndpointInfoPtrInput is an input type that accepts EndpointGcpPscEndpointInfoArgs, EndpointGcpPscEndpointInfoPtr and EndpointGcpPscEndpointInfoPtrOutput values.
-// You can construct a concrete instance of `EndpointGcpPscEndpointInfoPtrInput` via:
-//
-//	        EndpointGcpPscEndpointInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type EndpointGcpPscEndpointInfoPtrInput interface {
-	pulumi.Input
-
-	ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput
-	ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Context) EndpointGcpPscEndpointInfoPtrOutput
-}
-
-type endpointGcpPscEndpointInfoPtrType EndpointGcpPscEndpointInfoArgs
-
-func EndpointGcpPscEndpointInfoPtr(v *EndpointGcpPscEndpointInfoArgs) EndpointGcpPscEndpointInfoPtrInput {
-	return (*endpointGcpPscEndpointInfoPtrType)(v)
-}
-
-func (*endpointGcpPscEndpointInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointGcpPscEndpointInfo)(nil)).Elem()
-}
-
-func (i *endpointGcpPscEndpointInfoPtrType) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
-	return i.ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *endpointGcpPscEndpointInfoPtrType) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGcpPscEndpointInfoPtrOutput)
-}
-
-type EndpointGcpPscEndpointInfoOutput struct{ *pulumi.OutputState }
-
-func (EndpointGcpPscEndpointInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointGcpPscEndpointInfo)(nil)).Elem()
-}
-
-func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoOutput() EndpointGcpPscEndpointInfoOutput {
-	return o
-}
-
-func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoOutput {
-	return o
-}
-
-func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
-	return o.ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointGcpPscEndpointInfo) *EndpointGcpPscEndpointInfo {
-		return &v
-	}).(EndpointGcpPscEndpointInfoPtrOutput)
-}
-
-// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
-// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
-// region
-func (o EndpointGcpPscEndpointInfoOutput) EndpointRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) string { return v.EndpointRegion }).(pulumi.StringOutput)
-}
-
-// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
-// when registering an existing PSC endpoint
-func (o EndpointGcpPscEndpointInfoOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
-// assigned by GCP when the PSC connection is created
-func (o EndpointGcpPscEndpointInfoOutput) PscConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
-}
-
-// The name of this PSC connection in the GCP consumer project. Provided by the customer when
-// registering an existing PSC endpoint
-func (o EndpointGcpPscEndpointInfoOutput) PscEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) string { return v.PscEndpoint }).(pulumi.StringOutput)
-}
-
-// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
-func (o EndpointGcpPscEndpointInfoOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) *string { return v.ServiceAttachmentId }).(pulumi.StringPtrOutput)
-}
-
-type EndpointGcpPscEndpointInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointGcpPscEndpointInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointGcpPscEndpointInfo)(nil)).Elem()
-}
-
-func (o EndpointGcpPscEndpointInfoPtrOutput) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
-	return o
-}
-
-func (o EndpointGcpPscEndpointInfoPtrOutput) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
-	return o
-}
-
-func (o EndpointGcpPscEndpointInfoPtrOutput) Elem() EndpointGcpPscEndpointInfoOutput {
-	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) EndpointGcpPscEndpointInfo {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointGcpPscEndpointInfo
-		return ret
-	}).(EndpointGcpPscEndpointInfoOutput)
-}
-
-// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
-// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
-// region
-func (o EndpointGcpPscEndpointInfoPtrOutput) EndpointRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
-// when registering an existing PSC endpoint
-func (o EndpointGcpPscEndpointInfoPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
-// assigned by GCP when the PSC connection is created
-func (o EndpointGcpPscEndpointInfoPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PscConnectionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of this PSC connection in the GCP consumer project. Provided by the customer when
-// registering an existing PSC endpoint
-func (o EndpointGcpPscEndpointInfoPtrOutput) PscEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PscEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
-func (o EndpointGcpPscEndpointInfoPtrOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAttachmentId
-	}).(pulumi.StringPtrOutput)
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace struct {
-	IsEnabled bool `pulumi:"isEnabled"`
-}
-
-// EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs and EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput values.
-// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput` via:
-//
-//	EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{...}
-type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput interface {
-	pulumi.Input
-
-	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput
-	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs struct {
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-}
-
-func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
-	return i.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(context.Background())
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput)
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return i.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Background())
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput).ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx)
-}
-
-// EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs, EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtr and EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput values.
-// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput` via:
-//
-//	        EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{...}
-//
-//	or:
-//
-//	        nil
-type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput interface {
-	pulumi.Input
-
-	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput
-	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput
-}
-
-type enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs
-
-func EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtr(v *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput {
-	return (*enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType)(v)
-}
-
-func (*enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
-}
-
-func (i *enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return i.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Background())
-}
-
-func (i *enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput)
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput struct{ *pulumi.OutputState }
-
-func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return o.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Background())
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
-		return &v
-	}).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput)
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) bool {
-		return v.IsEnabled
-	}).(pulumi.BoolOutput)
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput struct{ *pulumi.OutputState }
-
-func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) Elem() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
-	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
-		if v != nil {
-			return *v
-		}
-		var ret EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace
-		return ret
-	}).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput)
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingProviderConfig struct {
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs and EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput values.
-// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput` via:
-//
-//	EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{...}
-type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput interface {
-	pulumi.Input
-
-	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput
-	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs struct {
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
-	return i.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(context.Background())
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput)
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return i.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput).ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx)
-}
-
-// EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs, EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtr and EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput values.
-// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput` via:
-//
-//	        EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput
-	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput
-}
-
-type enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs
-
-func EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtr(v *EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput {
-	return (*enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType)(v)
-}
-
-func (*enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
-}
-
-func (i *enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return i.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput)
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return o.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
-		return &v
-	}).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput)
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) Elem() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
-	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret EnhancedSecurityMonitoringWorkspaceSettingProviderConfig
-		return ret
-	}).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput)
-}
-
-func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -80685,6 +80919,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2StringValPtrInput)(nil)).Elem(), AccountSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2WorkspaceLabelInput)(nil)).Elem(), AccountSettingV2WorkspaceLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2WorkspaceLabelPtrInput)(nil)).Elem(), AccountSettingV2WorkspaceLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitManagedMemoryEntryProviderConfigInput)(nil)).Elem(), AgentKitManagedMemoryEntryProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitManagedMemoryEntryProviderConfigPtrInput)(nil)).Elem(), AgentKitManagedMemoryEntryProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitManagedMemoryStoreProviderConfigInput)(nil)).Elem(), AgentKitManagedMemoryStoreProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitManagedMemoryStoreProviderConfigPtrInput)(nil)).Elem(), AgentKitManagedMemoryStoreProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitManagedMemoryStoreStorageBackendInput)(nil)).Elem(), AgentKitManagedMemoryStoreStorageBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitManagedMemoryStoreStorageBackendPtrInput)(nil)).Elem(), AgentKitManagedMemoryStoreStorageBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitSessionProviderConfigInput)(nil)).Elem(), AgentKitSessionProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitSessionProviderConfigPtrInput)(nil)).Elem(), AgentKitSessionProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitSessionStoreProviderConfigInput)(nil)).Elem(), AgentKitSessionStoreProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentKitSessionStoreProviderConfigPtrInput)(nil)).Elem(), AgentKitSessionStoreProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayMcpServiceConfigInput)(nil)).Elem(), AiGatewayMcpServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayMcpServiceConfigPtrInput)(nil)).Elem(), AiGatewayMcpServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayMcpServiceConfigRateLimitInput)(nil)).Elem(), AiGatewayMcpServiceConfigRateLimitArgs{})
@@ -80733,6 +80977,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferencePtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantlePtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectArgs{})
@@ -80783,6 +81039,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferencePtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigPricingInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigPricingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigPricingPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigPricingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigRateLimitInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigRateLimitArrayInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigRateLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigTargetInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigTargetArgs{})
@@ -80901,6 +81159,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentGitSourcePtrInput)(nil)).Elem(), AppActiveDeploymentGitSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentGitSourceGitRepositoryInput)(nil)).Elem(), AppActiveDeploymentGitSourceGitRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentGitSourceGitRepositoryPtrInput)(nil)).Elem(), AppActiveDeploymentGitSourceGitRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentHealthCheckInput)(nil)).Elem(), AppActiveDeploymentHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentHealthCheckPtrInput)(nil)).Elem(), AppActiveDeploymentHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentStatusInput)(nil)).Elem(), AppActiveDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentStatusPtrInput)(nil)).Elem(), AppActiveDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAppStatusInput)(nil)).Elem(), AppAppStatusArgs{})
@@ -80927,6 +81187,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentGitSourcePtrInput)(nil)).Elem(), AppPendingDeploymentGitSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentGitSourceGitRepositoryInput)(nil)).Elem(), AppPendingDeploymentGitSourceGitRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentGitSourceGitRepositoryPtrInput)(nil)).Elem(), AppPendingDeploymentGitSourceGitRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentHealthCheckInput)(nil)).Elem(), AppPendingDeploymentHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentHealthCheckPtrInput)(nil)).Elem(), AppPendingDeploymentHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentStatusInput)(nil)).Elem(), AppPendingDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppPendingDeploymentStatusPtrInput)(nil)).Elem(), AppPendingDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProviderConfigInput)(nil)).Elem(), AppProviderConfigArgs{})
@@ -81226,34 +81488,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfigInput)(nil)).Elem(), DisableLegacyDbfsSettingProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfigInput)(nil)).Elem(), DisableLegacyFeaturesSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyFeaturesSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSetInput)(nil)).Elem(), DisasterRecoveryFailoverGroupWorkspaceSetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSetArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupWorkspaceSetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainIconInput)(nil)).Elem(), DomainIconArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainIconPtrInput)(nil)).Elem(), DomainIconArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainProviderConfigInput)(nil)).Elem(), DomainProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainProviderConfigPtrInput)(nil)).Elem(), DomainProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAwsVpcEndpointInfoInput)(nil)).Elem(), EndpointAwsVpcEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAwsVpcEndpointInfoPtrInput)(nil)).Elem(), EndpointAwsVpcEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAzurePrivateEndpointInfoInput)(nil)).Elem(), EndpointAzurePrivateEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAzurePrivateEndpointInfoPtrInput)(nil)).Elem(), EndpointAzurePrivateEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGcpPscEndpointInfoInput)(nil)).Elem(), EndpointGcpPscEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGcpPscEndpointInfoPtrInput)(nil)).Elem(), EndpointGcpPscEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetProviderConfigOutput{})
@@ -81684,6 +81918,16 @@ func init() {
 	pulumi.RegisterOutputType(AccountSettingV2StringValPtrOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2WorkspaceLabelOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2WorkspaceLabelPtrOutput{})
+	pulumi.RegisterOutputType(AgentKitManagedMemoryEntryProviderConfigOutput{})
+	pulumi.RegisterOutputType(AgentKitManagedMemoryEntryProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentKitManagedMemoryStoreProviderConfigOutput{})
+	pulumi.RegisterOutputType(AgentKitManagedMemoryStoreProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentKitManagedMemoryStoreStorageBackendOutput{})
+	pulumi.RegisterOutputType(AgentKitManagedMemoryStoreStorageBackendPtrOutput{})
+	pulumi.RegisterOutputType(AgentKitSessionProviderConfigOutput{})
+	pulumi.RegisterOutputType(AgentKitSessionProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentKitSessionStoreProviderConfigOutput{})
+	pulumi.RegisterOutputType(AgentKitSessionStoreProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayMcpServiceConfigOutput{})
 	pulumi.RegisterOutputType(AiGatewayMcpServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayMcpServiceConfigRateLimitOutput{})
@@ -81732,6 +81976,18 @@ func init() {
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferencePtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialPtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantlePtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectPtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferencePtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectOutput{})
@@ -81782,6 +82038,8 @@ func init() {
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferencePtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigPricingOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigPricingPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigRateLimitOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigRateLimitArrayOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigTargetOutput{})
@@ -81900,6 +82158,8 @@ func init() {
 	pulumi.RegisterOutputType(AppActiveDeploymentGitSourcePtrOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentGitSourceGitRepositoryOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentGitSourceGitRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(AppActiveDeploymentHealthCheckOutput{})
+	pulumi.RegisterOutputType(AppActiveDeploymentHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentStatusOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentStatusPtrOutput{})
 	pulumi.RegisterOutputType(AppAppStatusOutput{})
@@ -81926,6 +82186,8 @@ func init() {
 	pulumi.RegisterOutputType(AppPendingDeploymentGitSourcePtrOutput{})
 	pulumi.RegisterOutputType(AppPendingDeploymentGitSourceGitRepositoryOutput{})
 	pulumi.RegisterOutputType(AppPendingDeploymentGitSourceGitRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(AppPendingDeploymentHealthCheckOutput{})
+	pulumi.RegisterOutputType(AppPendingDeploymentHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppPendingDeploymentStatusOutput{})
 	pulumi.RegisterOutputType(AppPendingDeploymentStatusPtrOutput{})
 	pulumi.RegisterOutputType(AppProviderConfigOutput{})
@@ -82225,32 +82487,4 @@ func init() {
 	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput{})
 	pulumi.RegisterOutputType(DisableLegacyDbfsSettingProviderConfigOutput{})
 	pulumi.RegisterOutputType(DisableLegacyDbfsSettingProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput{})
-	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput{})
-	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingProviderConfigOutput{})
-	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupWorkspaceSetOutput{})
-	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput{})
-	pulumi.RegisterOutputType(DomainIconOutput{})
-	pulumi.RegisterOutputType(DomainIconPtrOutput{})
-	pulumi.RegisterOutputType(DomainProviderConfigOutput{})
-	pulumi.RegisterOutputType(DomainProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(EndpointAwsVpcEndpointInfoOutput{})
-	pulumi.RegisterOutputType(EndpointAwsVpcEndpointInfoPtrOutput{})
-	pulumi.RegisterOutputType(EndpointAzurePrivateEndpointInfoOutput{})
-	pulumi.RegisterOutputType(EndpointAzurePrivateEndpointInfoPtrOutput{})
-	pulumi.RegisterOutputType(EndpointGcpPscEndpointInfoOutput{})
-	pulumi.RegisterOutputType(EndpointGcpPscEndpointInfoPtrOutput{})
-	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput{})
-	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput{})
-	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput{})
-	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput{})
 }

@@ -328,6 +328,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notifications);
     }
 
+    @Import(name="parentPath")
+    private @Nullable Output<String> parentPath;
+
+    public Optional<Output<String>> parentPath() {
+        return Optional.ofNullable(this.parentPath);
+    }
+
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      * 
@@ -555,6 +562,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.libraries = $.libraries;
         this.name = $.name;
         this.notifications = $.notifications;
+        this.parentPath = $.parentPath;
         this.photon = $.photon;
         this.pipelineId = $.pipelineId;
         this.providerConfig = $.providerConfig;
@@ -1023,6 +1031,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder notifications(PipelineNotificationArgs... notifications) {
             return notifications(List.of(notifications));
+        }
+
+        public Builder parentPath(@Nullable Output<String> parentPath) {
+            $.parentPath = parentPath;
+            return this;
+        }
+
+        public Builder parentPath(String parentPath) {
+            return parentPath(Output.of(parentPath));
         }
 
         /**

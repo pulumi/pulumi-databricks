@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
  *
@@ -16,6 +16,8 @@ import * as utilities from "./utilities";
  * To read the Data Classification configuration, you must have browse permissions on the catalog.
  *
  * > **Note** This data source can only be used with a workspace-level provider.
+ *
+ * > **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
  *
  * ## Example Usage
  *
@@ -31,7 +33,7 @@ import * as utilities from "./utilities";
  * const prodConfig = prod.then(prod => databricks.getDataClassificationCatalogConfig({
  *     name: `catalogs/${prod.name}/config`,
  * }));
- * export const autoTagConfigs = prodConfig.then(prodConfig => prodConfig.autoTagConfigs);
+ * export const includedSchemas = prodConfig.then(prodConfig => prodConfig.includedSchemas);
  * ```
  */
 export function getDataClassificationCatalogConfig(args: GetDataClassificationCatalogConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetDataClassificationCatalogConfigResult> {
@@ -86,7 +88,7 @@ export interface GetDataClassificationCatalogConfigResult {
     readonly providerConfig?: outputs.GetDataClassificationCatalogConfigProviderConfig;
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
  *
@@ -95,6 +97,8 @@ export interface GetDataClassificationCatalogConfigResult {
  * To read the Data Classification configuration, you must have browse permissions on the catalog.
  *
  * > **Note** This data source can only be used with a workspace-level provider.
+ *
+ * > **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
  *
  * ## Example Usage
  *
@@ -110,7 +114,7 @@ export interface GetDataClassificationCatalogConfigResult {
  * const prodConfig = prod.then(prod => databricks.getDataClassificationCatalogConfig({
  *     name: `catalogs/${prod.name}/config`,
  * }));
- * export const autoTagConfigs = prodConfig.then(prodConfig => prodConfig.autoTagConfigs);
+ * export const includedSchemas = prodConfig.then(prodConfig => prodConfig.includedSchemas);
  * ```
  */
 export function getDataClassificationCatalogConfigOutput(args: GetDataClassificationCatalogConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataClassificationCatalogConfigResult> {

@@ -92,6 +92,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      * The username of the user who created the endpoint.
      */
     declare public /*out*/ readonly creatorName: pulumi.Output<string>;
+    declare public readonly customerVersionLabel: pulumi.Output<string | undefined>;
     /**
      * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
@@ -115,6 +116,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      * JDBC connection string.
      */
     declare public /*out*/ readonly jdbcUrl: pulumi.Output<string>;
+    declare public readonly maxDbu: pulumi.Output<number | undefined>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      */
@@ -147,6 +149,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     declare public readonly providerConfig: pulumi.Output<outputs.SqlEndpointProviderConfig>;
+    declare public readonly reydenClusterSizeMultiplier: pulumi.Output<number | undefined>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
@@ -159,6 +162,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      * The current state of the endpoint.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly statementTimeout: pulumi.Output<number | undefined>;
     /**
      * Databricks tags all endpoint resources with these tags.
      */
@@ -185,12 +189,14 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["channel"] = state?.channel;
             resourceInputs["clusterSize"] = state?.clusterSize;
             resourceInputs["creatorName"] = state?.creatorName;
+            resourceInputs["customerVersionLabel"] = state?.customerVersionLabel;
             resourceInputs["dataSourceId"] = state?.dataSourceId;
             resourceInputs["enablePhoton"] = state?.enablePhoton;
             resourceInputs["enableServerlessCompute"] = state?.enableServerlessCompute;
             resourceInputs["healths"] = state?.healths;
             resourceInputs["instanceProfileArn"] = state?.instanceProfileArn;
             resourceInputs["jdbcUrl"] = state?.jdbcUrl;
+            resourceInputs["maxDbu"] = state?.maxDbu;
             resourceInputs["maxNumClusters"] = state?.maxNumClusters;
             resourceInputs["minNumClusters"] = state?.minNumClusters;
             resourceInputs["name"] = state?.name;
@@ -199,9 +205,11 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["numClusters"] = state?.numClusters;
             resourceInputs["odbcParams"] = state?.odbcParams;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["reydenClusterSizeMultiplier"] = state?.reydenClusterSizeMultiplier;
             resourceInputs["spotInstancePolicy"] = state?.spotInstancePolicy;
             resourceInputs["sqlEndpointId"] = state?.sqlEndpointId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["statementTimeout"] = state?.statementTimeout;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["warehouseType"] = state?.warehouseType;
         } else {
@@ -212,17 +220,21 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["autoStopMins"] = args?.autoStopMins;
             resourceInputs["channel"] = args?.channel;
             resourceInputs["clusterSize"] = args?.clusterSize;
+            resourceInputs["customerVersionLabel"] = args?.customerVersionLabel;
             resourceInputs["dataSourceId"] = args?.dataSourceId;
             resourceInputs["enablePhoton"] = args?.enablePhoton;
             resourceInputs["enableServerlessCompute"] = args?.enableServerlessCompute;
             resourceInputs["instanceProfileArn"] = args?.instanceProfileArn;
+            resourceInputs["maxDbu"] = args?.maxDbu;
             resourceInputs["maxNumClusters"] = args?.maxNumClusters;
             resourceInputs["minNumClusters"] = args?.minNumClusters;
             resourceInputs["name"] = args?.name;
             resourceInputs["noWait"] = args?.noWait;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["reydenClusterSizeMultiplier"] = args?.reydenClusterSizeMultiplier;
             resourceInputs["spotInstancePolicy"] = args?.spotInstancePolicy;
             resourceInputs["sqlEndpointId"] = args?.sqlEndpointId;
+            resourceInputs["statementTimeout"] = args?.statementTimeout;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["warehouseType"] = args?.warehouseType;
             resourceInputs["creatorName"] = undefined /*out*/;
@@ -258,6 +270,7 @@ export interface SqlEndpointState {
      * The username of the user who created the endpoint.
      */
     creatorName?: pulumi.Input<string | undefined>;
+    customerVersionLabel?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
@@ -281,6 +294,7 @@ export interface SqlEndpointState {
      * JDBC connection string.
      */
     jdbcUrl?: pulumi.Input<string | undefined>;
+    maxDbu?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      */
@@ -313,6 +327,7 @@ export interface SqlEndpointState {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.SqlEndpointProviderConfig | undefined>;
+    reydenClusterSizeMultiplier?: pulumi.Input<number | undefined>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
@@ -325,6 +340,7 @@ export interface SqlEndpointState {
      * The current state of the endpoint.
      */
     state?: pulumi.Input<string | undefined>;
+    statementTimeout?: pulumi.Input<number | undefined>;
     /**
      * Databricks tags all endpoint resources with these tags.
      */
@@ -351,6 +367,7 @@ export interface SqlEndpointArgs {
      * The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
      */
     clusterSize: pulumi.Input<string>;
+    customerVersionLabel?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
@@ -366,6 +383,7 @@ export interface SqlEndpointArgs {
      */
     enableServerlessCompute?: pulumi.Input<boolean | undefined>;
     instanceProfileArn?: pulumi.Input<string | undefined>;
+    maxDbu?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      */
@@ -386,6 +404,7 @@ export interface SqlEndpointArgs {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.SqlEndpointProviderConfig | undefined>;
+    reydenClusterSizeMultiplier?: pulumi.Input<number | undefined>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
@@ -394,6 +413,7 @@ export interface SqlEndpointArgs {
      * the unique ID of the SQL warehouse.
      */
     sqlEndpointId?: pulumi.Input<string | undefined>;
+    statementTimeout?: pulumi.Input<number | undefined>;
     /**
      * Databricks tags all endpoint resources with these tags.
      */

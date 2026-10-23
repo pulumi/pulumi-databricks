@@ -17,10 +17,6 @@ public final class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection
      * 
      */
     private @Nullable PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue columnTagValue;
-    /**
-     * @return Extracts the value of a securable-level tag
-     * 
-     */
     private @Nullable PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue tagValue;
 
     private PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection() {}
@@ -31,10 +27,6 @@ public final class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection
     public Optional<PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue> columnTagValue() {
         return Optional.ofNullable(this.columnTagValue);
     }
-    /**
-     * @return Extracts the value of a securable-level tag
-     * 
-     */
     public Optional<PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue> tagValue() {
         return Optional.ofNullable(this.tagValue);
     }

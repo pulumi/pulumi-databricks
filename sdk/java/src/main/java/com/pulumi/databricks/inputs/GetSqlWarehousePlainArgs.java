@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetSqlWarehouseOdbcParams;
 import com.pulumi.databricks.inputs.GetSqlWarehouseProviderConfig;
 import com.pulumi.databricks.inputs.GetSqlWarehouseTags;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -79,6 +80,13 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
      */
     public Optional<String> creatorName() {
         return Optional.ofNullable(this.creatorName);
+    }
+
+    @Import(name="customerVersionLabel")
+    private @Nullable String customerVersionLabel;
+
+    public Optional<String> customerVersionLabel() {
+        return Optional.ofNullable(this.customerVersionLabel);
     }
 
     /**
@@ -178,6 +186,13 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.jdbcUrl);
     }
 
+    @Import(name="maxDbu")
+    private @Nullable Integer maxDbu;
+
+    public Optional<Integer> maxDbu() {
+        return Optional.ofNullable(this.maxDbu);
+    }
+
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
      * 
@@ -275,6 +290,13 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.providerConfig);
     }
 
+    @Import(name="reydenClusterSizeMultiplier")
+    private @Nullable Double reydenClusterSizeMultiplier;
+
+    public Optional<Double> reydenClusterSizeMultiplier() {
+        return Optional.ofNullable(this.reydenClusterSizeMultiplier);
+    }
+
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -303,6 +325,13 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
      */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    @Import(name="statementTimeout")
+    private @Nullable Integer statementTimeout;
+
+    public Optional<Integer> statementTimeout() {
+        return Optional.ofNullable(this.statementTimeout);
     }
 
     /**
@@ -342,6 +371,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         this.channel = $.channel;
         this.clusterSize = $.clusterSize;
         this.creatorName = $.creatorName;
+        this.customerVersionLabel = $.customerVersionLabel;
         this.dataSourceId = $.dataSourceId;
         this.enablePhoton = $.enablePhoton;
         this.enableServerlessCompute = $.enableServerlessCompute;
@@ -349,6 +379,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         this.id = $.id;
         this.instanceProfileArn = $.instanceProfileArn;
         this.jdbcUrl = $.jdbcUrl;
+        this.maxDbu = $.maxDbu;
         this.maxNumClusters = $.maxNumClusters;
         this.minNumClusters = $.minNumClusters;
         this.name = $.name;
@@ -356,8 +387,10 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         this.numClusters = $.numClusters;
         this.odbcParams = $.odbcParams;
         this.providerConfig = $.providerConfig;
+        this.reydenClusterSizeMultiplier = $.reydenClusterSizeMultiplier;
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.state = $.state;
+        this.statementTimeout = $.statementTimeout;
         this.tags = $.tags;
         this.warehouseType = $.warehouseType;
     }
@@ -421,6 +454,11 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder creatorName(@Nullable String creatorName) {
             $.creatorName = creatorName;
+            return this;
+        }
+
+        public Builder customerVersionLabel(@Nullable String customerVersionLabel) {
+            $.customerVersionLabel = customerVersionLabel;
             return this;
         }
 
@@ -495,6 +533,11 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        public Builder maxDbu(@Nullable Integer maxDbu) {
+            $.maxDbu = maxDbu;
+            return this;
+        }
+
         /**
          * @param maxNumClusters Maximum number of clusters available when a SQL warehouse is running.
          * 
@@ -566,6 +609,11 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        public Builder reydenClusterSizeMultiplier(@Nullable Double reydenClusterSizeMultiplier) {
+            $.reydenClusterSizeMultiplier = reydenClusterSizeMultiplier;
+            return this;
+        }
+
         /**
          * @param spotInstancePolicy The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
          * 
@@ -585,6 +633,11 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder state(@Nullable String state) {
             $.state = state;
+            return this;
+        }
+
+        public Builder statementTimeout(@Nullable Integer statementTimeout) {
+            $.statementTimeout = statementTimeout;
             return this;
         }
 

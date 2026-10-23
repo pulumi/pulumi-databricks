@@ -445,6 +445,16 @@ __all__ = [
     'AccountSettingV2StringValArgsDict',
     'AccountSettingV2WorkspaceLabelArgs',
     'AccountSettingV2WorkspaceLabelArgsDict',
+    'AgentKitManagedMemoryEntryProviderConfigArgs',
+    'AgentKitManagedMemoryEntryProviderConfigArgsDict',
+    'AgentKitManagedMemoryStoreProviderConfigArgs',
+    'AgentKitManagedMemoryStoreProviderConfigArgsDict',
+    'AgentKitManagedMemoryStoreStorageBackendArgs',
+    'AgentKitManagedMemoryStoreStorageBackendArgsDict',
+    'AgentKitSessionProviderConfigArgs',
+    'AgentKitSessionProviderConfigArgsDict',
+    'AgentKitSessionStoreProviderConfigArgs',
+    'AgentKitSessionStoreProviderConfigArgsDict',
     'AiGatewayMcpServiceConfigArgs',
     'AiGatewayMcpServiceConfigArgsDict',
     'AiGatewayMcpServiceConfigRateLimitArgs',
@@ -493,6 +503,18 @@ __all__ = [
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretSecretReferenceArgsDict',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs',
     'AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgsDict',
+    'AiGatewayModelProviderServiceConfigBedrockMantleArgs',
+    'AiGatewayModelProviderServiceConfigBedrockMantleArgsDict',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectArgsDict',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgsDict',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgsDict',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgsDict',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs',
+    'AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgsDict',
     'AiGatewayModelProviderServiceConfigCustomArgs',
     'AiGatewayModelProviderServiceConfigCustomArgsDict',
     'AiGatewayModelProviderServiceConfigCustomDirectArgs',
@@ -543,6 +565,8 @@ __all__ = [
     'AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgsDict',
     'AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs',
     'AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgsDict',
+    'AiGatewayModelProviderServiceConfigPricingArgs',
+    'AiGatewayModelProviderServiceConfigPricingArgsDict',
     'AiGatewayModelProviderServiceConfigRateLimitArgs',
     'AiGatewayModelProviderServiceConfigRateLimitArgsDict',
     'AiGatewayModelProviderServiceConfigTargetArgs',
@@ -661,6 +685,8 @@ __all__ = [
     'AppActiveDeploymentGitSourceArgsDict',
     'AppActiveDeploymentGitSourceGitRepositoryArgs',
     'AppActiveDeploymentGitSourceGitRepositoryArgsDict',
+    'AppActiveDeploymentHealthCheckArgs',
+    'AppActiveDeploymentHealthCheckArgsDict',
     'AppActiveDeploymentStatusArgs',
     'AppActiveDeploymentStatusArgsDict',
     'AppAppStatusArgs',
@@ -687,6 +713,8 @@ __all__ = [
     'AppPendingDeploymentGitSourceArgsDict',
     'AppPendingDeploymentGitSourceGitRepositoryArgs',
     'AppPendingDeploymentGitSourceGitRepositoryArgsDict',
+    'AppPendingDeploymentHealthCheckArgs',
+    'AppPendingDeploymentHealthCheckArgsDict',
     'AppPendingDeploymentStatusArgs',
     'AppPendingDeploymentStatusArgsDict',
     'AppProviderConfigArgs',
@@ -991,6 +1019,8 @@ __all__ = [
     'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict',
     'DisableLegacyFeaturesSettingProviderConfigArgs',
     'DisableLegacyFeaturesSettingProviderConfigArgsDict',
+    'DisasterRecoveryFailoverGroupInitialReplicationProgressArgs',
+    'DisasterRecoveryFailoverGroupInitialReplicationProgressArgsDict',
     'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs',
     'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict',
     'DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs',
@@ -1149,6 +1179,8 @@ __all__ = [
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaArgsDict',
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArgs',
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArgsDict',
+    'FeatureEngineeringFeatureSourceSdpSourceArgs',
+    'FeatureEngineeringFeatureSourceSdpSourceArgsDict',
     'FeatureEngineeringFeatureSourceStreamSourceArgs',
     'FeatureEngineeringFeatureSourceStreamSourceArgsDict',
     'FeatureEngineeringFeatureTimeWindowArgs',
@@ -1435,6 +1467,14 @@ __all__ = [
     'JobTaskDashboardTaskArgsDict',
     'JobTaskDashboardTaskSubscriptionArgs',
     'JobTaskDashboardTaskSubscriptionArgsDict',
+    'JobTaskDashboardTaskSubscriptionAttachmentArgs',
+    'JobTaskDashboardTaskSubscriptionAttachmentArgsDict',
+    'JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs',
+    'JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict',
+    'JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs',
+    'JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict',
+    'JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs',
+    'JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict',
     'JobTaskDashboardTaskSubscriptionSubscriberArgs',
     'JobTaskDashboardTaskSubscriptionSubscriberArgsDict',
     'JobTaskDbtCloudTaskArgs',
@@ -1471,6 +1511,14 @@ __all__ = [
     'JobTaskForEachTaskTaskDashboardTaskArgsDict',
     'JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs',
     'JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict',
     'JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs',
     'JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict',
     'JobTaskForEachTaskTaskDbtCloudTaskArgs',
@@ -2037,6 +2085,10 @@ __all__ = [
     'NotebookProviderConfigArgsDict',
     'NotificationDestinationConfigArgs',
     'NotificationDestinationConfigArgsDict',
+    'NotificationDestinationConfigDatabricksAppSlackArgs',
+    'NotificationDestinationConfigDatabricksAppSlackArgsDict',
+    'NotificationDestinationConfigDatabricksAppTeamsArgs',
+    'NotificationDestinationConfigDatabricksAppTeamsArgsDict',
     'NotificationDestinationConfigEmailArgs',
     'NotificationDestinationConfigEmailArgsDict',
     'NotificationDestinationConfigGenericWebhookArgs',
@@ -2423,6 +2475,8 @@ __all__ = [
     'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict',
     'PolicyInfoDenyArgs',
     'PolicyInfoDenyArgsDict',
+    'PolicyInfoGovernedTagArgs',
+    'PolicyInfoGovernedTagArgsDict',
     'PolicyInfoGrantArgs',
     'PolicyInfoGrantArgsDict',
     'PolicyInfoMatchColumnArgs',
@@ -2917,6 +2971,22 @@ __all__ = [
     'WorkspaceSettingV2StringValArgsDict',
     'WorkspaceSettingV2WorkspaceLabelArgs',
     'WorkspaceSettingV2WorkspaceLabelArgsDict',
+    'GetAgentKitManagedMemoryEntriesProviderConfigArgs',
+    'GetAgentKitManagedMemoryEntriesProviderConfigArgsDict',
+    'GetAgentKitManagedMemoryEntryProviderConfigArgs',
+    'GetAgentKitManagedMemoryEntryProviderConfigArgsDict',
+    'GetAgentKitManagedMemoryStoreProviderConfigArgs',
+    'GetAgentKitManagedMemoryStoreProviderConfigArgsDict',
+    'GetAgentKitManagedMemoryStoresProviderConfigArgs',
+    'GetAgentKitManagedMemoryStoresProviderConfigArgsDict',
+    'GetAgentKitSessionProviderConfigArgs',
+    'GetAgentKitSessionProviderConfigArgsDict',
+    'GetAgentKitSessionStoreProviderConfigArgs',
+    'GetAgentKitSessionStoreProviderConfigArgsDict',
+    'GetAgentKitSessionStoresProviderConfigArgs',
+    'GetAgentKitSessionStoresProviderConfigArgsDict',
+    'GetAgentKitSessionsProviderConfigArgs',
+    'GetAgentKitSessionsProviderConfigArgsDict',
     'GetAiGatewayMcpServiceProviderConfigArgs',
     'GetAiGatewayMcpServiceProviderConfigArgsDict',
     'GetAiGatewayMcpServicesProviderConfigArgs',
@@ -3417,6 +3487,14 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskDashboardTaskArgsDict',
     'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs',
     'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgsDict',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgsDict',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict',
     'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs',
     'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgsDict',
     'GetJobJobSettingsSettingsTaskDbtTaskArgs',
@@ -3435,6 +3513,14 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgsDict',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs',
@@ -13540,6 +13626,171 @@ class AccountSettingV2WorkspaceLabelArgs:
         pulumi.set(self, "label", value)
 
 
+class AgentKitManagedMemoryEntryProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class AgentKitManagedMemoryEntryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class AgentKitManagedMemoryStoreProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (integer) - Workspace that owns the memory store
+    """
+
+@pulumi.input_type
+class AgentKitManagedMemoryStoreProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: (integer) - Workspace that owns the memory store
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class AgentKitManagedMemoryStoreStorageBackendArgsDict(TypedDict):
+    backend_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - Backend-specific identifier. For Lakebase, this is the project ID
+    """
+    backend_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+    """
+
+@pulumi.input_type
+class AgentKitManagedMemoryStoreStorageBackendArgs:
+    def __init__(__self__, *,
+                 backend_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] backend_id: (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        :param pulumi.Input[_builtins.str] backend_type: (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        if backend_id is not None:
+            pulumi.set(__self__, "backend_id", backend_id)
+        if backend_type is not None:
+            pulumi.set(__self__, "backend_type", backend_type)
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        """
+        return pulumi.get(self, "backend_id")
+
+    @backend_id.setter
+    def backend_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendType")
+    def backend_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Type of the storage backend. Possible values are: `STORAGE_BACKEND_TYPE_LAKEBASE`
+        """
+        return pulumi.get(self, "backend_type")
+
+    @backend_type.setter
+    def backend_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_type", value)
+
+
+class AgentKitSessionProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class AgentKitSessionProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class AgentKitSessionStoreProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class AgentKitSessionStoreProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class AiGatewayMcpServiceConfigArgsDict(TypedDict):
     include_tool_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -13880,6 +14131,7 @@ class AiGatewayModelProviderServiceConfigArgsDict(TypedDict):
     amazon_bedrock: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockArgsDict']]]
     anthropic: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicArgsDict']]]
     azure_openai: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAzureOpenaiArgsDict']]]
+    bedrock_mantle: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleArgsDict']]]
     custom: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomArgsDict']]]
     forward_headers: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -13900,7 +14152,9 @@ class AiGatewayModelProviderServiceConfigArgsDict(TypedDict):
     provider-native API types. Defaults to false. When true, these paths are
     forwarded unchanged to the upstream provider. When false, only
     recognized API paths are served. Enabling this broadens the upstream API
-    surface exposed through the provider service
+    surface exposed through the provider service. AI Gateway cannot evaluate
+    Service Policies on opaque unmanaged requests, so unmanaged requests are
+    rejected whenever Service Policies are attached to this securable
     """
     gemini_enterprise: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigGeminiEnterpriseArgsDict']]]
     inference_table: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigInferenceTableArgsDict']]]
@@ -13911,11 +14165,16 @@ class AiGatewayModelProviderServiceConfigArgsDict(TypedDict):
     """
     microsoft_foundry: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigMicrosoftFoundryArgsDict']]]
     openai: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigOpenaiArgsDict']]]
+    pricing: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigPricingArgsDict']]]
+    """
+    Pricing configuration for this provider service. An explicitly empty
+    configuration is retained on Create and Update and applies no adjustment
+    """
     provider_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     External model provider. Required on Create and immutable thereafter. Set
     the matching provider-specific configuration, such as `openai`,
-    `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+    `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
     """
     rate_limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgsDict']]]]]
     """
@@ -13939,6 +14198,7 @@ class AiGatewayModelProviderServiceConfigArgs:
                  amazon_bedrock: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockArgs']] = None,
                  anthropic: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicArgs']] = None,
                  azure_openai: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAzureOpenaiArgs']] = None,
+                 bedrock_mantle: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleArgs']] = None,
                  custom: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomArgs']] = None,
                  forward_headers: pulumi.Input[Optional[_builtins.bool]] = None,
                  forward_query_parameters: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -13947,6 +14207,7 @@ class AiGatewayModelProviderServiceConfigArgs:
                  inference_table: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigInferenceTableArgs']] = None,
                  microsoft_foundry: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigMicrosoftFoundryArgs']] = None,
                  openai: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigOpenaiArgs']] = None,
+                 pricing: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigPricingArgs']] = None,
                  provider_type: pulumi.Input[Optional[_builtins.str]] = None,
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgs']]]] = None,
                  targets: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigTargetArgs']]]] = None):
@@ -13965,13 +14226,17 @@ class AiGatewayModelProviderServiceConfigArgs:
                provider-native API types. Defaults to false. When true, these paths are
                forwarded unchanged to the upstream provider. When false, only
                recognized API paths are served. Enabling this broadens the upstream API
-               surface exposed through the provider service
+               surface exposed through the provider service. AI Gateway cannot evaluate
+               Service Policies on opaque unmanaged requests, so unmanaged requests are
+               rejected whenever Service Policies are attached to this securable
         :param pulumi.Input['AiGatewayModelProviderServiceConfigInferenceTableArgs'] inference_table: Payload logging configuration for requests sent directly to this provider
                service. Requests routed through a model service are captured by that model
                service's inference table instead
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigPricingArgs'] pricing: Pricing configuration for this provider service. An explicitly empty
+               configuration is retained on Create and Update and applies no adjustment
         :param pulumi.Input[_builtins.str] provider_type: External model provider. Required on Create and immutable thereafter. Set
                the matching provider-specific configuration, such as `openai`,
-               `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+               `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgs']]] rate_limits: Rate limits for requests sent directly to this provider service. Requests
                routed through a model service use that model service's rate limits instead
         :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigTargetArgs']]] targets: Models and provider-native API types exposed by this provider service. Each
@@ -13989,6 +14254,8 @@ class AiGatewayModelProviderServiceConfigArgs:
             pulumi.set(__self__, "anthropic", anthropic)
         if azure_openai is not None:
             pulumi.set(__self__, "azure_openai", azure_openai)
+        if bedrock_mantle is not None:
+            pulumi.set(__self__, "bedrock_mantle", bedrock_mantle)
         if custom is not None:
             pulumi.set(__self__, "custom", custom)
         if forward_headers is not None:
@@ -14005,6 +14272,8 @@ class AiGatewayModelProviderServiceConfigArgs:
             pulumi.set(__self__, "microsoft_foundry", microsoft_foundry)
         if openai is not None:
             pulumi.set(__self__, "openai", openai)
+        if pricing is not None:
+            pulumi.set(__self__, "pricing", pricing)
         if provider_type is not None:
             pulumi.set(__self__, "provider_type", provider_type)
         if rate_limits is not None:
@@ -14054,6 +14323,15 @@ class AiGatewayModelProviderServiceConfigArgs:
         pulumi.set(self, "azure_openai", value)
 
     @_builtins.property
+    @pulumi.getter(name="bedrockMantle")
+    def bedrock_mantle(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleArgs']]:
+        return pulumi.get(self, "bedrock_mantle")
+
+    @bedrock_mantle.setter
+    def bedrock_mantle(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleArgs']]):
+        pulumi.set(self, "bedrock_mantle", value)
+
+    @_builtins.property
     @pulumi.getter
     def custom(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomArgs']]:
         return pulumi.get(self, "custom")
@@ -14099,7 +14377,9 @@ class AiGatewayModelProviderServiceConfigArgs:
         provider-native API types. Defaults to false. When true, these paths are
         forwarded unchanged to the upstream provider. When false, only
         recognized API paths are served. Enabling this broadens the upstream API
-        surface exposed through the provider service
+        surface exposed through the provider service. AI Gateway cannot evaluate
+        Service Policies on opaque unmanaged requests, so unmanaged requests are
+        rejected whenever Service Policies are attached to this securable
         """
         return pulumi.get(self, "forward_unmanaged_paths")
 
@@ -14149,12 +14429,25 @@ class AiGatewayModelProviderServiceConfigArgs:
         pulumi.set(self, "openai", value)
 
     @_builtins.property
+    @pulumi.getter
+    def pricing(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigPricingArgs']]:
+        """
+        Pricing configuration for this provider service. An explicitly empty
+        configuration is retained on Create and Update and applies no adjustment
+        """
+        return pulumi.get(self, "pricing")
+
+    @pricing.setter
+    def pricing(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigPricingArgs']]):
+        pulumi.set(self, "pricing", value)
+
+    @_builtins.property
     @pulumi.getter(name="providerType")
     def provider_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         External model provider. Required on Create and immutable thereafter. Set
         the matching provider-specific configuration, such as `openai`,
-        `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         """
         return pulumi.get(self, "provider_type")
 
@@ -15052,6 +15345,298 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgsD
 
 @pulumi.input_type
 class AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class AiGatewayModelProviderServiceConfigBedrockMantleArgsDict(TypedDict):
+    direct: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectArgsDict']]]
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigBedrockMantleArgs:
+    def __init__(__self__, *,
+                 direct: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs']] = None):
+        if direct is not None:
+            pulumi.set(__self__, "direct", direct)
+
+    @_builtins.property
+    @pulumi.getter
+    def direct(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs']]:
+        return pulumi.get(self, "direct")
+
+    @direct.setter
+    def direct(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs']]):
+        pulumi.set(self, "direct", value)
+
+
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectArgsDict(TypedDict):
+    aws_access_key: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgsDict']]]
+    """
+    AWS access-key-pair authentication. Set `access_key_id` and
+    `secret_access_key.plaintext`. Mutually exclusive with
+    `service_credential`
+    """
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    service_credential: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgsDict']]]
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectArgs:
+    def __init__(__self__, *,
+                 aws_access_key: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_credential: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs']] = None):
+        """
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs'] aws_access_key: AWS access-key-pair authentication. Set `access_key_id` and
+               `secret_access_key.plaintext`. Mutually exclusive with
+               `service_credential`
+        """
+        if aws_access_key is not None:
+            pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if service_credential is not None:
+            pulumi.set(__self__, "service_credential", service_credential)
+
+    @_builtins.property
+    @pulumi.getter(name="awsAccessKey")
+    def aws_access_key(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs']]:
+        """
+        AWS access-key-pair authentication. Set `access_key_id` and
+        `secret_access_key.plaintext`. Mutually exclusive with
+        `service_credential`
+        """
+        return pulumi.get(self, "aws_access_key")
+
+    @aws_access_key.setter
+    def aws_access_key(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs']]):
+        pulumi.set(self, "aws_access_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceCredential")
+    def service_credential(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs']]:
+        return pulumi.get(self, "service_credential")
+
+    @service_credential.setter
+    def service_credential(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs']]):
+        pulumi.set(self, "service_credential", value)
+
+
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgsDict(TypedDict):
+    access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    AWS access key ID. Required on Create when using access-key auth. Treated as
+    username-equivalent (not a secret value): round-trips on reads and is
+    scrubbed from audit logs
+    """
+    secret_access_key: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgsDict']]]
+    """
+    AWS secret access key paired with `access_key_id`. Required when creating
+    a service with access-key authentication. Supply the value in
+    `secret_access_key.plaintext`
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeyArgs:
+    def __init__(__self__, *,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_key_id: AWS access key ID. Required on Create when using access-key auth. Treated as
+               username-equivalent (not a secret value): round-trips on reads and is
+               scrubbed from audit logs
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs'] secret_access_key: AWS secret access key paired with `access_key_id`. Required when creating
+               a service with access-key authentication. Supply the value in
+               `secret_access_key.plaintext`
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        AWS access key ID. Required on Create when using access-key auth. Treated as
+        username-equivalent (not a secret value): round-trips on reads and is
+        scrubbed from audit logs
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs']]:
+        """
+        AWS secret access key paired with `access_key_id`. Required when creating
+        a service with access-key authentication. Supply the value in
+        `secret_access_key.plaintext`
+        """
+        return pulumi.get(self, "secret_access_key")
+
+    @secret_access_key.setter
+    def secret_access_key(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs']]):
+        pulumi.set(self, "secret_access_key", value)
+
+
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgsDict(TypedDict):
+    plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
+    """
+    secret_reference: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgsDict']]]
+    """
+    Reference to a customer-owned UC Secret that carries this secret value.
+    The value is read at invoke time under the model provider service
+    owner's access and is never copied onto the model provider service, so
+    rotating the UC Secret takes effect with no change to the model provider
+    service. On Create, supply `secret_reference.name` as
+    `secrets/{catalog}.{schema}.{secret}`
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeyArgs:
+    def __init__(__self__, *,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_reference: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs'] secret_reference: Reference to a customer-owned UC Secret that carries this secret value.
+               The value is read at invoke time under the model provider service
+               owner's access and is never copied onto the model provider service, so
+               rotating the UC Secret takes effect with no change to the model provider
+               service. On Create, supply `secret_reference.name` as
+               `secrets/{catalog}.{schema}.{secret}`
+        """
+        if plaintext is not None:
+            pulumi.set(__self__, "plaintext", plaintext)
+        if secret_reference is not None:
+            pulumi.set(__self__, "secret_reference", secret_reference)
+
+    @_builtins.property
+    @pulumi.getter
+    def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
+        """
+        return pulumi.get(self, "plaintext")
+
+    @plaintext.setter
+    def plaintext(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "plaintext", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretReference")
+    def secret_reference(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs']]:
+        """
+        Reference to a customer-owned UC Secret that carries this secret value.
+        The value is read at invoke time under the model provider service
+        owner's access and is never copied onto the model provider service, so
+        rotating the UC Secret takes effect with no change to the model provider
+        service. On Create, supply `secret_reference.name` as
+        `secrets/{catalog}.{schema}.{secret}`
+        """
+        return pulumi.get(self, "secret_reference")
+
+    @secret_reference.setter
+    def secret_reference(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs']]):
+        pulumi.set(self, "secret_reference", value)
+
+
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (string) - Resource name of the provider service.
+    Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+    Each `{...}` component is capped at 255 characters individually.
+    Server-derived on Create from `parent` +
+    `model_provider_service_id`; required and immutable on Update/Get/Delete
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKeySecretReferenceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
+               Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+               Each `{...}` component is capped at 255 characters individually.
+               Server-derived on Create from `parent` +
+               `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - Resource name of the provider service.
+        Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+        Each `{...}` component is capped at 255 characters individually.
+        Server-derived on Create from `parent` +
+        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (string) - Resource name of the provider service.
+    Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+    Each `{...}` component is capped at 255 characters individually.
+    Server-derived on Create from `parent` +
+    `model_provider_service_id`; required and immutable on Update/Get/Delete
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCredentialArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str]):
         """
@@ -16388,6 +16973,44 @@ class AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretReferenceArgs:
         pulumi.set(self, "name", value)
 
 
+class AiGatewayModelProviderServiceConfigPricingArgsDict(TypedDict):
+    default_discount_basis_points: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Provider-wide adjustment to external-model spend estimates in basis points:
+    2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+    beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+    value or zero leaves the estimate unchanged
+    """
+
+@pulumi.input_type
+class AiGatewayModelProviderServiceConfigPricingArgs:
+    def __init__(__self__, *,
+                 default_discount_basis_points: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] default_discount_basis_points: Provider-wide adjustment to external-model spend estimates in basis points:
+               2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+               beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+               value or zero leaves the estimate unchanged
+        """
+        if default_discount_basis_points is not None:
+            pulumi.set(__self__, "default_discount_basis_points", default_discount_basis_points)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultDiscountBasisPoints")
+    def default_discount_basis_points(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Provider-wide adjustment to external-model spend estimates in basis points:
+        2000 = 20% off; -2000 = a 20% markup. Negative values have no lower bound
+        beyond the int32 range. Values cannot exceed 10000 (100% off). An omitted
+        value or zero leaves the estimate unchanged
+        """
+        return pulumi.get(self, "default_discount_basis_points")
+
+    @default_discount_basis_points.setter
+    def default_discount_basis_points(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "default_discount_basis_points", value)
+
+
 class AiGatewayModelProviderServiceConfigRateLimitArgsDict(TypedDict):
     key: pulumi.Input[_builtins.str]
     """
@@ -16517,29 +17140,49 @@ class AiGatewayModelProviderServiceConfigTargetArgsDict(TypedDict):
     This identifies a model at the upstream provider; it is not a Unity
     Catalog model resource
     """
+    endpoint_route: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Relative path appended to a custom provider's `base_url` for this model,
+    such as `serve/openai/chat`. Nonempty values are only supported for
+    custom model provider service targets; other provider types reject them.
+    Model service destinations do not support this field. Do not include
+    URI templates, queries, or fragments. When empty, `base_url` is used unchanged
+    """
     native_api_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Provider-native API types supported by this model, such as
-    `openai/v1/chat/completions`. At least one value is required. AI Gateway
-    uses these values to translate requests and responses. At most 64 entries
-    of 256 characters each are allowed
+    `openai/v1/chat/completions`. A model provider service target requires at
+    least one value. A model service destination may omit the list to use the
+    matching provider service target's types when available. AI Gateway uses
+    the selected types for translation. At most 64 entries of 256 characters
+    each are allowed
     """
 
 @pulumi.input_type
 class AiGatewayModelProviderServiceConfigTargetArgs:
     def __init__(__self__, *,
                  model: pulumi.Input[_builtins.str],
+                 endpoint_route: pulumi.Input[Optional[_builtins.str]] = None,
                  native_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] model: Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
                This identifies a model at the upstream provider; it is not a Unity
                Catalog model resource
+        :param pulumi.Input[_builtins.str] endpoint_route: Relative path appended to a custom provider's `base_url` for this model,
+               such as `serve/openai/chat`. Nonempty values are only supported for
+               custom model provider service targets; other provider types reject them.
+               Model service destinations do not support this field. Do not include
+               URI templates, queries, or fragments. When empty, `base_url` is used unchanged
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types supported by this model, such as
-               `openai/v1/chat/completions`. At least one value is required. AI Gateway
-               uses these values to translate requests and responses. At most 64 entries
-               of 256 characters each are allowed
+               `openai/v1/chat/completions`. A model provider service target requires at
+               least one value. A model service destination may omit the list to use the
+               matching provider service target's types when available. AI Gateway uses
+               the selected types for translation. At most 64 entries of 256 characters
+               each are allowed
         """
         pulumi.set(__self__, "model", model)
+        if endpoint_route is not None:
+            pulumi.set(__self__, "endpoint_route", endpoint_route)
         if native_api_types is not None:
             pulumi.set(__self__, "native_api_types", native_api_types)
 
@@ -16558,13 +17201,31 @@ class AiGatewayModelProviderServiceConfigTargetArgs:
         pulumi.set(self, "model", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointRoute")
+    def endpoint_route(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Relative path appended to a custom provider's `base_url` for this model,
+        such as `serve/openai/chat`. Nonempty values are only supported for
+        custom model provider service targets; other provider types reject them.
+        Model service destinations do not support this field. Do not include
+        URI templates, queries, or fragments. When empty, `base_url` is used unchanged
+        """
+        return pulumi.get(self, "endpoint_route")
+
+    @endpoint_route.setter
+    def endpoint_route(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint_route", value)
+
+    @_builtins.property
     @pulumi.getter(name="nativeApiTypes")
     def native_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Provider-native API types supported by this model, such as
-        `openai/v1/chat/completions`. At least one value is required. AI Gateway
-        uses these values to translate requests and responses. At most 64 entries
-        of 256 characters each are allowed
+        `openai/v1/chat/completions`. A model provider service target requires at
+        least one value. A model service destination may omit the list to use the
+        matching provider service target's types when available. AI Gateway uses
+        the selected types for translation. At most 64 entries of 256 characters
+        each are allowed
         """
         return pulumi.get(self, "native_api_types")
 
@@ -17211,29 +17872,49 @@ class AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs
     `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
     Create/Update time
     """
+    endpoint_route: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Relative path appended to a custom provider's `base_url` for this model,
+    such as `serve/openai/chat`. Nonempty values are only supported for
+    custom model provider service targets; other provider types reject them.
+    Model service destinations do not support this field. Do not include
+    URI templates, queries, or fragments. When empty, `base_url` is used unchanged
+    """
     native_api_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Provider-native API types supported by this model, such as
-    `openai/v1/chat/completions`. At least one value is required. AI Gateway
-    uses these values to translate requests and responses. At most 64 entries
-    of 256 characters each are allowed
+    `openai/v1/chat/completions`. A model provider service target requires at
+    least one value. A model service destination may omit the list to use the
+    matching provider service target's types when available. AI Gateway uses
+    the selected types for translation. At most 64 entries of 256 characters
+    each are allowed
     """
 
 @pulumi.input_type
 class AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs:
     def __init__(__self__, *,
                  model: pulumi.Input[_builtins.str],
+                 endpoint_route: pulumi.Input[Optional[_builtins.str]] = None,
                  native_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] model: (string) - UC model FQN of the model served by the backing endpoint (e.g.,
                `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
                Create/Update time
+        :param pulumi.Input[_builtins.str] endpoint_route: Relative path appended to a custom provider's `base_url` for this model,
+               such as `serve/openai/chat`. Nonempty values are only supported for
+               custom model provider service targets; other provider types reject them.
+               Model service destinations do not support this field. Do not include
+               URI templates, queries, or fragments. When empty, `base_url` is used unchanged
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types supported by this model, such as
-               `openai/v1/chat/completions`. At least one value is required. AI Gateway
-               uses these values to translate requests and responses. At most 64 entries
-               of 256 characters each are allowed
+               `openai/v1/chat/completions`. A model provider service target requires at
+               least one value. A model service destination may omit the list to use the
+               matching provider service target's types when available. AI Gateway uses
+               the selected types for translation. At most 64 entries of 256 characters
+               each are allowed
         """
         pulumi.set(__self__, "model", model)
+        if endpoint_route is not None:
+            pulumi.set(__self__, "endpoint_route", endpoint_route)
         if native_api_types is not None:
             pulumi.set(__self__, "native_api_types", native_api_types)
 
@@ -17252,13 +17933,31 @@ class AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs
         pulumi.set(self, "model", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointRoute")
+    def endpoint_route(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Relative path appended to a custom provider's `base_url` for this model,
+        such as `serve/openai/chat`. Nonempty values are only supported for
+        custom model provider service targets; other provider types reject them.
+        Model service destinations do not support this field. Do not include
+        URI templates, queries, or fragments. When empty, `base_url` is used unchanged
+        """
+        return pulumi.get(self, "endpoint_route")
+
+    @endpoint_route.setter
+    def endpoint_route(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint_route", value)
+
+    @_builtins.property
     @pulumi.getter(name="nativeApiTypes")
     def native_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Provider-native API types supported by this model, such as
-        `openai/v1/chat/completions`. At least one value is required. AI Gateway
-        uses these values to translate requests and responses. At most 64 entries
-        of 256 characters each are allowed
+        `openai/v1/chat/completions`. A model provider service target requires at
+        least one value. A model service destination may omit the list to use the
+        matching provider service target's types when available. AI Gateway uses
+        the selected types for translation. At most 64 entries of 256 characters
+        each are allowed
         """
         return pulumi.get(self, "native_api_types")
 
@@ -17645,29 +18344,49 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTa
     `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
     Create/Update time
     """
+    endpoint_route: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Relative path appended to a custom provider's `base_url` for this model,
+    such as `serve/openai/chat`. Nonempty values are only supported for
+    custom model provider service targets; other provider types reject them.
+    Model service destinations do not support this field. Do not include
+    URI templates, queries, or fragments. When empty, `base_url` is used unchanged
+    """
     native_api_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Provider-native API types supported by this model, such as
-    `openai/v1/chat/completions`. At least one value is required. AI Gateway
-    uses these values to translate requests and responses. At most 64 entries
-    of 256 characters each are allowed
+    `openai/v1/chat/completions`. A model provider service target requires at
+    least one value. A model service destination may omit the list to use the
+    matching provider service target's types when available. AI Gateway uses
+    the selected types for translation. At most 64 entries of 256 characters
+    each are allowed
     """
 
 @pulumi.input_type
 class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetArgs:
     def __init__(__self__, *,
                  model: pulumi.Input[_builtins.str],
+                 endpoint_route: pulumi.Input[Optional[_builtins.str]] = None,
                  native_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] model: (string) - UC model FQN of the model served by the backing endpoint (e.g.,
                `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
                Create/Update time
+        :param pulumi.Input[_builtins.str] endpoint_route: Relative path appended to a custom provider's `base_url` for this model,
+               such as `serve/openai/chat`. Nonempty values are only supported for
+               custom model provider service targets; other provider types reject them.
+               Model service destinations do not support this field. Do not include
+               URI templates, queries, or fragments. When empty, `base_url` is used unchanged
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types supported by this model, such as
-               `openai/v1/chat/completions`. At least one value is required. AI Gateway
-               uses these values to translate requests and responses. At most 64 entries
-               of 256 characters each are allowed
+               `openai/v1/chat/completions`. A model provider service target requires at
+               least one value. A model service destination may omit the list to use the
+               matching provider service target's types when available. AI Gateway uses
+               the selected types for translation. At most 64 entries of 256 characters
+               each are allowed
         """
         pulumi.set(__self__, "model", model)
+        if endpoint_route is not None:
+            pulumi.set(__self__, "endpoint_route", endpoint_route)
         if native_api_types is not None:
             pulumi.set(__self__, "native_api_types", native_api_types)
 
@@ -17686,13 +18405,31 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTa
         pulumi.set(self, "model", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointRoute")
+    def endpoint_route(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Relative path appended to a custom provider's `base_url` for this model,
+        such as `serve/openai/chat`. Nonempty values are only supported for
+        custom model provider service targets; other provider types reject them.
+        Model service destinations do not support this field. Do not include
+        URI templates, queries, or fragments. When empty, `base_url` is used unchanged
+        """
+        return pulumi.get(self, "endpoint_route")
+
+    @endpoint_route.setter
+    def endpoint_route(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint_route", value)
+
+    @_builtins.property
     @pulumi.getter(name="nativeApiTypes")
     def native_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Provider-native API types supported by this model, such as
-        `openai/v1/chat/completions`. At least one value is required. AI Gateway
-        uses these values to translate requests and responses. At most 64 entries
-        of 256 characters each are allowed
+        `openai/v1/chat/completions`. A model provider service target requires at
+        least one value. A model service destination may omit the list to use the
+        matching provider service target's types when available. AI Gateway uses
+        the selected types for translation. At most 64 entries of 256 characters
+        each are allowed
         """
         return pulumi.get(self, "native_api_types")
 
@@ -19942,6 +20679,7 @@ class AppActiveDeploymentArgsDict(TypedDict):
     """
     The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
     """
+    health_check: NotRequired[pulumi.Input[Optional['AppActiveDeploymentHealthCheckArgsDict']]]
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
@@ -19969,6 +20707,7 @@ class AppActiveDeploymentArgs:
                  deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  env_vars: pulumi.Input[Optional[Sequence[pulumi.Input['AppActiveDeploymentEnvVarArgs']]]] = None,
                  git_source: pulumi.Input[Optional['AppActiveDeploymentGitSourceArgs']] = None,
+                 health_check: pulumi.Input[Optional['AppActiveDeploymentHealthCheckArgs']] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional['AppActiveDeploymentStatusArgs']] = None,
@@ -19998,6 +20737,8 @@ class AppActiveDeploymentArgs:
             pulumi.set(__self__, "env_vars", env_vars)
         if git_source is not None:
             pulumi.set(__self__, "git_source", git_source)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if source_code_path is not None:
@@ -20084,6 +20825,15 @@ class AppActiveDeploymentArgs:
     @git_source.setter
     def git_source(self, value: pulumi.Input[Optional['AppActiveDeploymentGitSourceArgs']]):
         pulumi.set(self, "git_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> pulumi.Input[Optional['AppActiveDeploymentHealthCheckArgs']]:
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: pulumi.Input[Optional['AppActiveDeploymentHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter
@@ -20425,6 +21175,39 @@ class AppActiveDeploymentGitSourceGitRepositoryArgs:
     @caller_credential_id.setter
     def caller_credential_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "caller_credential_id", value)
+
+
+class AppActiveDeploymentHealthCheckArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class AppActiveDeploymentHealthCheckArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
 
 
 class AppActiveDeploymentStatusArgsDict(TypedDict):
@@ -21121,6 +21904,7 @@ class AppPendingDeploymentArgsDict(TypedDict):
     """
     The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
     """
+    health_check: NotRequired[pulumi.Input[Optional['AppPendingDeploymentHealthCheckArgsDict']]]
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
@@ -21148,6 +21932,7 @@ class AppPendingDeploymentArgs:
                  deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  env_vars: pulumi.Input[Optional[Sequence[pulumi.Input['AppPendingDeploymentEnvVarArgs']]]] = None,
                  git_source: pulumi.Input[Optional['AppPendingDeploymentGitSourceArgs']] = None,
+                 health_check: pulumi.Input[Optional['AppPendingDeploymentHealthCheckArgs']] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional['AppPendingDeploymentStatusArgs']] = None,
@@ -21177,6 +21962,8 @@ class AppPendingDeploymentArgs:
             pulumi.set(__self__, "env_vars", env_vars)
         if git_source is not None:
             pulumi.set(__self__, "git_source", git_source)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if source_code_path is not None:
@@ -21263,6 +22050,15 @@ class AppPendingDeploymentArgs:
     @git_source.setter
     def git_source(self, value: pulumi.Input[Optional['AppPendingDeploymentGitSourceArgs']]):
         pulumi.set(self, "git_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> pulumi.Input[Optional['AppPendingDeploymentHealthCheckArgs']]:
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: pulumi.Input[Optional['AppPendingDeploymentHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter
@@ -21604,6 +22400,39 @@ class AppPendingDeploymentGitSourceGitRepositoryArgs:
     @caller_credential_id.setter
     def caller_credential_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "caller_credential_id", value)
+
+
+class AppPendingDeploymentHealthCheckArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class AppPendingDeploymentHealthCheckArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
 
 
 class AppPendingDeploymentStatusArgsDict(TypedDict):
@@ -23129,7 +23958,7 @@ class AppSpaceResourceUcSecurableArgsDict(TypedDict):
     securable_full_name: pulumi.Input[_builtins.str]
     securable_type: pulumi.Input[_builtins.str]
     """
-    Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+    Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
     """
     securable_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -23145,7 +23974,7 @@ class AppSpaceResourceUcSecurableArgs:
                  securable_type: pulumi.Input[_builtins.str],
                  securable_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] securable_type: Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        :param pulumi.Input[_builtins.str] securable_type: Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         :param pulumi.Input[_builtins.str] securable_kind: (string) - The securable kind from Unity Catalog.
                See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
         """
@@ -23177,7 +24006,7 @@ class AppSpaceResourceUcSecurableArgs:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "securable_type")
 
@@ -23654,7 +24483,7 @@ class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict(Type
     permission: pulumi.Input[_builtins.str]
     securable_type: pulumi.Input[_builtins.str]
     """
-    Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+    Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
     """
 
 @pulumi.input_type
@@ -23663,7 +24492,7 @@ class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs:
                  permission: pulumi.Input[_builtins.str],
                  securable_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] securable_type: Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        :param pulumi.Input[_builtins.str] securable_type: Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_type", securable_type)
@@ -23681,7 +24510,7 @@ class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "securable_type")
 
@@ -30739,6 +31568,35 @@ class DisableLegacyFeaturesSettingProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class DisasterRecoveryFailoverGroupInitialReplicationProgressArgsDict(TypedDict):
+    completed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (integer) - Percent complete, 0-100
+    """
+
+@pulumi.input_type
+class DisasterRecoveryFailoverGroupInitialReplicationProgressArgs:
+    def __init__(__self__, *,
+                 completed: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] completed: (integer) - Percent complete, 0-100
+        """
+        if completed is not None:
+            pulumi.set(__self__, "completed", completed)
+
+    @_builtins.property
+    @pulumi.getter
+    def completed(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (integer) - Percent complete, 0-100
+        """
+        return pulumi.get(self, "completed")
+
+    @completed.setter
+    def completed(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "completed", value)
+
+
 class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict(TypedDict):
     catalogs: pulumi.Input[Sequence[pulumi.Input['DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgsDict']]]
     """
@@ -34095,6 +34953,10 @@ class FeatureEngineeringFeatureSourceArgsDict(TypedDict):
     """
     A request-time data source
     """
+    sdp_source: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceSdpSourceArgsDict']]]
+    """
+    A Spark Declarative Pipeline data source
+    """
     stream_source: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceStreamSourceArgsDict']]]
     """
     A Stream data source
@@ -34108,6 +34970,7 @@ class FeatureEngineeringFeatureSourceArgs:
                  kafka_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceArgs']] = None,
                  lateness: pulumi.Input[Optional['FeatureEngineeringFeatureSourceLatenessArgs']] = None,
                  request_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceRequestSourceArgs']] = None,
+                 sdp_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceSdpSourceArgs']] = None,
                  stream_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceStreamSourceArgs']] = None):
         """
         :param pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs'] delta_table_source: A Delta table data source
@@ -34116,6 +34979,7 @@ class FeatureEngineeringFeatureSourceArgs:
         :param pulumi.Input['FeatureEngineeringFeatureSourceLatenessArgs'] lateness: Completeness timing for this Feature's use of the source. This configuration is part of the
                Feature definition; it does not modify the underlying table or stream
         :param pulumi.Input['FeatureEngineeringFeatureSourceRequestSourceArgs'] request_source: A request-time data source
+        :param pulumi.Input['FeatureEngineeringFeatureSourceSdpSourceArgs'] sdp_source: A Spark Declarative Pipeline data source
         :param pulumi.Input['FeatureEngineeringFeatureSourceStreamSourceArgs'] stream_source: A Stream data source
         """
         if delta_table_source is not None:
@@ -34128,6 +34992,8 @@ class FeatureEngineeringFeatureSourceArgs:
             pulumi.set(__self__, "lateness", lateness)
         if request_source is not None:
             pulumi.set(__self__, "request_source", request_source)
+        if sdp_source is not None:
+            pulumi.set(__self__, "sdp_source", sdp_source)
         if stream_source is not None:
             pulumi.set(__self__, "stream_source", stream_source)
 
@@ -34193,6 +35059,18 @@ class FeatureEngineeringFeatureSourceArgs:
         pulumi.set(self, "request_source", value)
 
     @_builtins.property
+    @pulumi.getter(name="sdpSource")
+    def sdp_source(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceSdpSourceArgs']]:
+        """
+        A Spark Declarative Pipeline data source
+        """
+        return pulumi.get(self, "sdp_source")
+
+    @sdp_source.setter
+    def sdp_source(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceSdpSourceArgs']]):
+        pulumi.set(self, "sdp_source", value)
+
+    @_builtins.property
     @pulumi.getter(name="streamSource")
     def stream_source(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceStreamSourceArgs']]:
         """
@@ -34208,16 +35086,16 @@ class FeatureEngineeringFeatureSourceArgs:
 class FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict(TypedDict):
     full_name: pulumi.Input[_builtins.str]
     """
-    The full three-part name (catalog, schema, name) of the feature. This is the
-    feature's resource identifier; the catalog_name, schema_name, and name fields
-    below are OUTPUT_ONLY decomposed views of this value
+    The full three-part name (catalog, schema, name) of the feature
     """
     dataframe_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Column recording time, used for point-in-time joins, backfills, and aggregations
+    Column recording time, used for point-in-time joins, backfills, and aggregations.
+    Optional since a timeseries column is not set for RequestSource features or on-demand
+    calculated features
     """
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -34231,10 +35109,10 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
                  timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-               feature's resource identifier; the catalog_name, schema_name, and name fields
-               below are OUTPUT_ONLY decomposed views of this value
-        :param pulumi.Input[_builtins.str] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
+        :param pulumi.Input[_builtins.str] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations.
+               Optional since a timeseries column is not set for RequestSource features or on-demand
+               calculated features
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
@@ -34252,9 +35130,7 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The full three-part name (catalog, schema, name) of the feature. This is the
-        feature's resource identifier; the catalog_name, schema_name, and name fields
-        below are OUTPUT_ONLY decomposed views of this value
+        The full three-part name (catalog, schema, name) of the feature
         """
         return pulumi.get(self, "full_name")
 
@@ -34293,7 +35169,9 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     @pulumi.getter(name="timeseriesColumn")
     def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Column recording time, used for point-in-time joins, backfills, and aggregations
+        Column recording time, used for point-in-time joins, backfills, and aggregations.
+        Optional since a timeseries column is not set for RequestSource features or on-demand
+        calculated features
         """
         return pulumi.get(self, "timeseries_column")
 
@@ -34646,12 +35524,165 @@ class FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArgs:
         pulumi.set(self, "name", value)
 
 
+class FeatureEngineeringFeatureSourceSdpSourceArgsDict(TypedDict):
+    dataframe_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    input_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The full three-part names of the tables the pipeline reads from. Required to materialize this
+    feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+    when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+    these tables, and the run fails if it doesn't. At most 100 tables
+    """
+    output_table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+    The table doesn't need to exist until the pipeline first runs. Required
+    """
+    pipeline_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+    each materialization or backfill. The pipeline must already exist when the feature is created,
+    and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+    Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+    back empty. Required
+    """
+    pipeline_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+    has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+    """
+    transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceSdpSourceArgs:
+    def __init__(__self__, *,
+                 dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_tables: The full three-part names of the tables the pipeline reads from. Required to materialize this
+               feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+               when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+               these tables, and the run fails if it doesn't. At most 100 tables
+        :param pulumi.Input[_builtins.str] output_table: The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+               The table doesn't need to exist until the pipeline first runs. Required
+        :param pulumi.Input[_builtins.str] pipeline_id: The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+               each materialization or backfill. The pipeline must already exist when the feature is created,
+               and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+               Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+               back empty. Required
+        :param pulumi.Input[_builtins.str] pipeline_state: (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+               has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+        """
+        if dataframe_schema is not None:
+            pulumi.set(__self__, "dataframe_schema", dataframe_schema)
+        if filter_condition is not None:
+            pulumi.set(__self__, "filter_condition", filter_condition)
+        if input_tables is not None:
+            pulumi.set(__self__, "input_tables", input_tables)
+        if output_table is not None:
+            pulumi.set(__self__, "output_table", output_table)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if pipeline_state is not None:
+            pulumi.set(__self__, "pipeline_state", pipeline_state)
+        if transformation_sql is not None:
+            pulumi.set(__self__, "transformation_sql", transformation_sql)
+
+    @_builtins.property
+    @pulumi.getter(name="dataframeSchema")
+    def dataframe_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "dataframe_schema")
+
+    @dataframe_schema.setter
+    def dataframe_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataframe_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterCondition")
+    def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "filter_condition")
+
+    @filter_condition.setter
+    def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputTables")
+    def input_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The full three-part names of the tables the pipeline reads from. Required to materialize this
+        feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+        when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+        these tables, and the run fails if it doesn't. At most 100 tables
+        """
+        return pulumi.get(self, "input_tables")
+
+    @input_tables.setter
+    def input_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_tables", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputTable")
+    def output_table(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+        The table doesn't need to exist until the pipeline first runs. Required
+        """
+        return pulumi.get(self, "output_table")
+
+    @output_table.setter
+    def output_table(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "output_table", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+        each materialization or backfill. The pipeline must already exist when the feature is created,
+        and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+        Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+        back empty. Required
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pipeline_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineState")
+    def pipeline_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+        has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+        """
+        return pulumi.get(self, "pipeline_state")
+
+    @pipeline_state.setter
+    def pipeline_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pipeline_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transformationSql")
+    def transformation_sql(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "transformation_sql")
+
+    @transformation_sql.setter
+    def transformation_sql(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "transformation_sql", value)
+
+
 class FeatureEngineeringFeatureSourceStreamSourceArgsDict(TypedDict):
     full_name: pulumi.Input[_builtins.str]
     """
-    The full three-part name (catalog, schema, name) of the feature. This is the
-    feature's resource identifier; the catalog_name, schema_name, and name fields
-    below are OUTPUT_ONLY decomposed views of this value
+    The full three-part name (catalog, schema, name) of the feature
     """
     dataframe_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -34665,9 +35696,7 @@ class FeatureEngineeringFeatureSourceStreamSourceArgs:
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
-               feature's resource identifier; the catalog_name, schema_name, and name fields
-               below are OUTPUT_ONLY decomposed views of this value
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
@@ -34681,9 +35710,7 @@ class FeatureEngineeringFeatureSourceStreamSourceArgs:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The full three-part name (catalog, schema, name) of the feature. This is the
-        feature's resource identifier; the catalog_name, schema_name, and name fields
-        below are OUTPUT_ONLY decomposed views of this value
+        The full three-part name (catalog, schema, name) of the feature
         """
         return pulumi.get(self, "full_name")
 
@@ -43504,6 +44531,7 @@ class JobTaskDashboardTaskArgs:
 
 
 class JobTaskDashboardTaskSubscriptionArgsDict(TypedDict):
+    attachment: NotRequired[pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentArgsDict']]]
     custom_subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Allows users to specify a custom subject line on the email sent to subscribers.
@@ -43520,6 +44548,7 @@ class JobTaskDashboardTaskSubscriptionArgsDict(TypedDict):
 @pulumi.input_type
 class JobTaskDashboardTaskSubscriptionArgs:
     def __init__(__self__, *,
+                 attachment: pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentArgs']] = None,
                  custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  subscribers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgs']]]] = None):
@@ -43528,12 +44557,23 @@ class JobTaskDashboardTaskSubscriptionArgs:
         :param pulumi.Input[_builtins.bool] paused: When true, the subscription will not send emails.
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgs']]] subscribers: The list of subscribers to send the snapshot of the dashboard to.
         """
+        if attachment is not None:
+            pulumi.set(__self__, "attachment", attachment)
         if custom_subject is not None:
             pulumi.set(__self__, "custom_subject", custom_subject)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
+
+    @_builtins.property
+    @pulumi.getter
+    def attachment(self) -> pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentArgs']]:
+        return pulumi.get(self, "attachment")
+
+    @attachment.setter
+    def attachment(self, value: pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentArgs']]):
+        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubject")
@@ -43570,6 +44610,147 @@ class JobTaskDashboardTaskSubscriptionArgs:
     @subscribers.setter
     def subscribers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgs']]]]):
         pulumi.set(self, "subscribers", value)
+
+
+class JobTaskDashboardTaskSubscriptionAttachmentArgsDict(TypedDict):
+    data_attachment: NotRequired[pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict']]]
+    page_attachment: NotRequired[pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict']]]
+
+@pulumi.input_type
+class JobTaskDashboardTaskSubscriptionAttachmentArgs:
+    def __init__(__self__, *,
+                 data_attachment: pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']] = None,
+                 page_attachment: pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']] = None):
+        if data_attachment is not None:
+            pulumi.set(__self__, "data_attachment", data_attachment)
+        if page_attachment is not None:
+            pulumi.set(__self__, "page_attachment", page_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dataAttachment")
+    def data_attachment(self) -> pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']]:
+        return pulumi.get(self, "data_attachment")
+
+    @data_attachment.setter
+    def data_attachment(self, value: pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']]):
+        pulumi.set(self, "data_attachment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageAttachment")
+    def page_attachment(self) -> pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']]:
+        return pulumi.get(self, "page_attachment")
+
+    @page_attachment.setter
+    def page_attachment(self, value: pulumi.Input[Optional['JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']]):
+        pulumi.set(self, "page_attachment", value)
+
+
+class JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict(TypedDict):
+    file_format: pulumi.Input[_builtins.str]
+    widgets: pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict']]]
+    include_applied_filters: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+
+@pulumi.input_type
+class JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs:
+    def __init__(__self__, *,
+                 file_format: pulumi.Input[_builtins.str],
+                 widgets: pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']]],
+                 include_applied_filters: pulumi.Input[Optional[_builtins.bool]] = None):
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "widgets", widgets)
+        if include_applied_filters is not None:
+            pulumi.set(__self__, "include_applied_filters", include_applied_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "file_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def widgets(self) -> pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']]]:
+        return pulumi.get(self, "widgets")
+
+    @widgets.setter
+    def widgets(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']]]):
+        pulumi.set(self, "widgets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeAppliedFilters")
+    def include_applied_filters(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "include_applied_filters")
+
+    @include_applied_filters.setter
+    def include_applied_filters(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_applied_filters", value)
+
+
+class JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict(TypedDict):
+    page_id: pulumi.Input[_builtins.str]
+    widget_id: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs:
+    def __init__(__self__, *,
+                 page_id: pulumi.Input[_builtins.str],
+                 widget_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "page_id", page_id)
+        pulumi.set(__self__, "widget_id", widget_id)
+
+    @_builtins.property
+    @pulumi.getter(name="pageId")
+    def page_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "page_id")
+
+    @page_id.setter
+    def page_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "page_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="widgetId")
+    def widget_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "widget_id")
+
+    @widget_id.setter
+    def widget_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "widget_id", value)
+
+
+class JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict(TypedDict):
+    page_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    page_selection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs:
+    def __init__(__self__, *,
+                 page_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 page_selection: pulumi.Input[Optional[_builtins.str]] = None):
+        if page_ids is not None:
+            pulumi.set(__self__, "page_ids", page_ids)
+        if page_selection is not None:
+            pulumi.set(__self__, "page_selection", page_selection)
+
+    @_builtins.property
+    @pulumi.getter(name="pageIds")
+    def page_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "page_ids")
+
+    @page_ids.setter
+    def page_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "page_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageSelection")
+    def page_selection(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "page_selection")
+
+    @page_selection.setter
+    def page_selection(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "page_selection", value)
 
 
 class JobTaskDashboardTaskSubscriptionSubscriberArgsDict(TypedDict):
@@ -45464,6 +46645,7 @@ class JobTaskForEachTaskTaskDashboardTaskArgs:
 
 
 class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict(TypedDict):
+    attachment: NotRequired[pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgsDict']]]
     custom_subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Allows users to specify a custom subject line on the email sent to subscribers.
@@ -45480,6 +46662,7 @@ class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict(TypedDict):
 @pulumi.input_type
 class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs:
     def __init__(__self__, *,
+                 attachment: pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs']] = None,
                  custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  subscribers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]]] = None):
@@ -45488,12 +46671,23 @@ class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs:
         :param pulumi.Input[_builtins.bool] paused: When true, the subscription will not send emails.
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]] subscribers: The list of subscribers to send the snapshot of the dashboard to.
         """
+        if attachment is not None:
+            pulumi.set(__self__, "attachment", attachment)
         if custom_subject is not None:
             pulumi.set(__self__, "custom_subject", custom_subject)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
+
+    @_builtins.property
+    @pulumi.getter
+    def attachment(self) -> pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs']]:
+        return pulumi.get(self, "attachment")
+
+    @attachment.setter
+    def attachment(self, value: pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs']]):
+        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubject")
@@ -45530,6 +46724,147 @@ class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs:
     @subscribers.setter
     def subscribers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]]]):
         pulumi.set(self, "subscribers", value)
+
+
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgsDict(TypedDict):
+    data_attachment: NotRequired[pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict']]]
+    page_attachment: NotRequired[pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict']]]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs:
+    def __init__(__self__, *,
+                 data_attachment: pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']] = None,
+                 page_attachment: pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']] = None):
+        if data_attachment is not None:
+            pulumi.set(__self__, "data_attachment", data_attachment)
+        if page_attachment is not None:
+            pulumi.set(__self__, "page_attachment", page_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dataAttachment")
+    def data_attachment(self) -> pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']]:
+        return pulumi.get(self, "data_attachment")
+
+    @data_attachment.setter
+    def data_attachment(self, value: pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']]):
+        pulumi.set(self, "data_attachment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageAttachment")
+    def page_attachment(self) -> pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']]:
+        return pulumi.get(self, "page_attachment")
+
+    @page_attachment.setter
+    def page_attachment(self, value: pulumi.Input[Optional['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']]):
+        pulumi.set(self, "page_attachment", value)
+
+
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict(TypedDict):
+    file_format: pulumi.Input[_builtins.str]
+    widgets: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict']]]
+    include_applied_filters: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs:
+    def __init__(__self__, *,
+                 file_format: pulumi.Input[_builtins.str],
+                 widgets: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']]],
+                 include_applied_filters: pulumi.Input[Optional[_builtins.bool]] = None):
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "widgets", widgets)
+        if include_applied_filters is not None:
+            pulumi.set(__self__, "include_applied_filters", include_applied_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "file_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def widgets(self) -> pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']]]:
+        return pulumi.get(self, "widgets")
+
+    @widgets.setter
+    def widgets(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']]]):
+        pulumi.set(self, "widgets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeAppliedFilters")
+    def include_applied_filters(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "include_applied_filters")
+
+    @include_applied_filters.setter
+    def include_applied_filters(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_applied_filters", value)
+
+
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict(TypedDict):
+    page_id: pulumi.Input[_builtins.str]
+    widget_id: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs:
+    def __init__(__self__, *,
+                 page_id: pulumi.Input[_builtins.str],
+                 widget_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "page_id", page_id)
+        pulumi.set(__self__, "widget_id", widget_id)
+
+    @_builtins.property
+    @pulumi.getter(name="pageId")
+    def page_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "page_id")
+
+    @page_id.setter
+    def page_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "page_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="widgetId")
+    def widget_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "widget_id")
+
+    @widget_id.setter
+    def widget_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "widget_id", value)
+
+
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict(TypedDict):
+    page_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    page_selection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs:
+    def __init__(__self__, *,
+                 page_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 page_selection: pulumi.Input[Optional[_builtins.str]] = None):
+        if page_ids is not None:
+            pulumi.set(__self__, "page_ids", page_ids)
+        if page_selection is not None:
+            pulumi.set(__self__, "page_selection", page_selection)
+
+    @_builtins.property
+    @pulumi.getter(name="pageIds")
+    def page_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "page_ids")
+
+    @page_ids.setter
+    def page_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "page_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageSelection")
+    def page_selection(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "page_selection")
+
+    @page_selection.setter
+    def page_selection(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "page_selection", value)
 
 
 class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict(TypedDict):
@@ -63122,13 +64457,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -63182,7 +64517,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -63192,7 +64527,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -63450,13 +64785,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -63471,7 +64806,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -63481,7 +64816,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.138.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.139.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -63628,6 +64963,8 @@ class NotebookProviderConfigArgs:
 
 
 class NotificationDestinationConfigArgsDict(TypedDict):
+    databricks_app_slack: NotRequired[pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppSlackArgsDict']]]
+    databricks_app_teams: NotRequired[pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppTeamsArgsDict']]]
     email: NotRequired[pulumi.Input[Optional['NotificationDestinationConfigEmailArgsDict']]]
     """
     The email configuration of the Notification Destination. It must contain the following:
@@ -63652,6 +64989,8 @@ class NotificationDestinationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class NotificationDestinationConfigArgs:
     def __init__(__self__, *,
+                 databricks_app_slack: pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppSlackArgs']] = None,
+                 databricks_app_teams: pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppTeamsArgs']] = None,
                  email: pulumi.Input[Optional['NotificationDestinationConfigEmailArgs']] = None,
                  generic_webhook: pulumi.Input[Optional['NotificationDestinationConfigGenericWebhookArgs']] = None,
                  microsoft_teams: pulumi.Input[Optional['NotificationDestinationConfigMicrosoftTeamsArgs']] = None,
@@ -63664,6 +65003,10 @@ class NotificationDestinationConfigArgs:
         :param pulumi.Input['NotificationDestinationConfigPagerdutyArgs'] pagerduty: The PagerDuty configuration of the Notification Destination. It must contain the following:
         :param pulumi.Input['NotificationDestinationConfigSlackArgs'] slack: The Slack configuration of the Notification Destination. It must contain the following:
         """
+        if databricks_app_slack is not None:
+            pulumi.set(__self__, "databricks_app_slack", databricks_app_slack)
+        if databricks_app_teams is not None:
+            pulumi.set(__self__, "databricks_app_teams", databricks_app_teams)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if generic_webhook is not None:
@@ -63674,6 +65017,24 @@ class NotificationDestinationConfigArgs:
             pulumi.set(__self__, "pagerduty", pagerduty)
         if slack is not None:
             pulumi.set(__self__, "slack", slack)
+
+    @_builtins.property
+    @pulumi.getter(name="databricksAppSlack")
+    def databricks_app_slack(self) -> pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppSlackArgs']]:
+        return pulumi.get(self, "databricks_app_slack")
+
+    @databricks_app_slack.setter
+    def databricks_app_slack(self, value: pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppSlackArgs']]):
+        pulumi.set(self, "databricks_app_slack", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databricksAppTeams")
+    def databricks_app_teams(self) -> pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppTeamsArgs']]:
+        return pulumi.get(self, "databricks_app_teams")
+
+    @databricks_app_teams.setter
+    def databricks_app_teams(self, value: pulumi.Input[Optional['NotificationDestinationConfigDatabricksAppTeamsArgs']]):
+        pulumi.set(self, "databricks_app_teams", value)
 
     @_builtins.property
     @pulumi.getter
@@ -63734,6 +65095,175 @@ class NotificationDestinationConfigArgs:
     @slack.setter
     def slack(self, value: pulumi.Input[Optional['NotificationDestinationConfigSlackArgs']]):
         pulumi.set(self, "slack", value)
+
+
+class NotificationDestinationConfigDatabricksAppSlackArgsDict(TypedDict):
+    channel_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Slack channel ID for notifications.
+    """
+    channel_id_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    team_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    team_id_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+
+@pulumi.input_type
+class NotificationDestinationConfigDatabricksAppSlackArgs:
+    def __init__(__self__, *,
+                 channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel_id_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id_set: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] channel_id: Slack channel ID for notifications.
+        """
+        if channel_id is not None:
+            pulumi.set(__self__, "channel_id", channel_id)
+        if channel_id_set is not None:
+            pulumi.set(__self__, "channel_id_set", channel_id_set)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if team_id_set is not None:
+            pulumi.set(__self__, "team_id_set", team_id_set)
+
+    @_builtins.property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Slack channel ID for notifications.
+        """
+        return pulumi.get(self, "channel_id")
+
+    @channel_id.setter
+    def channel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "channel_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="channelIdSet")
+    def channel_id_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "channel_id_set")
+
+    @channel_id_set.setter
+    def channel_id_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "channel_id_set", value)
+
+    @_builtins.property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "team_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="teamIdSet")
+    def team_id_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "team_id_set")
+
+    @team_id_set.setter
+    def team_id_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "team_id_set", value)
+
+
+class NotificationDestinationConfigDatabricksAppTeamsArgsDict(TypedDict):
+    channel_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Slack channel ID for notifications.
+    """
+    channel_id_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    team_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    team_id_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Tenant ID for Microsoft Teams App.
+    """
+    tenant_id_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+
+@pulumi.input_type
+class NotificationDestinationConfigDatabricksAppTeamsArgs:
+    def __init__(__self__, *,
+                 channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel_id_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id_set: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] channel_id: Slack channel ID for notifications.
+        :param pulumi.Input[_builtins.str] tenant_id: Tenant ID for Microsoft Teams App.
+        """
+        if channel_id is not None:
+            pulumi.set(__self__, "channel_id", channel_id)
+        if channel_id_set is not None:
+            pulumi.set(__self__, "channel_id_set", channel_id_set)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if team_id_set is not None:
+            pulumi.set(__self__, "team_id_set", team_id_set)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if tenant_id_set is not None:
+            pulumi.set(__self__, "tenant_id_set", tenant_id_set)
+
+    @_builtins.property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Slack channel ID for notifications.
+        """
+        return pulumi.get(self, "channel_id")
+
+    @channel_id.setter
+    def channel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "channel_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="channelIdSet")
+    def channel_id_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "channel_id_set")
+
+    @channel_id_set.setter
+    def channel_id_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "channel_id_set", value)
+
+    @_builtins.property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "team_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="teamIdSet")
+    def team_id_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "team_id_set")
+
+    @team_id_set.setter
+    def team_id_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "team_id_set", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Tenant ID for Microsoft Teams App.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tenantIdSet")
+    def tenant_id_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "tenant_id_set")
+
+    @tenant_id_set.setter
+    def tenant_id_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tenant_id_set", value)
 
 
 class NotificationDestinationConfigEmailArgsDict(TypedDict):
@@ -75308,9 +76838,6 @@ class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgsDict(Typ
     Extracts the value of a column-level tag
     """
     tag_value: NotRequired[pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict']]]
-    """
-    Extracts the value of a securable-level tag
-    """
 
 @pulumi.input_type
 class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs:
@@ -75319,7 +76846,6 @@ class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs:
                  tag_value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs']] = None):
         """
         :param pulumi.Input['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs'] column_tag_value: Extracts the value of a column-level tag
-        :param pulumi.Input['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs'] tag_value: Extracts the value of a securable-level tag
         """
         if column_tag_value is not None:
             pulumi.set(__self__, "column_tag_value", column_tag_value)
@@ -75341,9 +76867,6 @@ class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs:
     @_builtins.property
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs']]:
-        """
-        Extracts the value of a securable-level tag
-        """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
@@ -75427,6 +76950,38 @@ class PolicyInfoDenyArgs:
     @privileges.setter
     def privileges(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "privileges", value)
+
+
+class PolicyInfoGovernedTagArgsDict(TypedDict):
+    tag_key: pulumi.Input[_builtins.str]
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PolicyInfoGovernedTagArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[_builtins.str],
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tag_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_value", value)
 
 
 class PolicyInfoGrantArgsDict(TypedDict):
@@ -75654,9 +77209,6 @@ class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgsDict(Type
     Extracts the value of a column-level tag
     """
     tag_value: NotRequired[pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict']]]
-    """
-    Extracts the value of a securable-level tag
-    """
 
 @pulumi.input_type
 class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs:
@@ -75665,7 +77217,6 @@ class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs:
                  tag_value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs']] = None):
         """
         :param pulumi.Input['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs'] column_tag_value: Extracts the value of a column-level tag
-        :param pulumi.Input['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs'] tag_value: Extracts the value of a securable-level tag
         """
         if column_tag_value is not None:
             pulumi.set(__self__, "column_tag_value", column_tag_value)
@@ -75687,9 +77238,6 @@ class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs:
     @_builtins.property
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs']]:
-        """
-        Extracts the value of a securable-level tag
-        """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
@@ -89074,6 +90622,230 @@ class WorkspaceSettingV2WorkspaceLabelArgs:
     @label.setter
     def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
+
+
+class GetAgentKitManagedMemoryEntriesProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAgentKitManagedMemoryEntriesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitManagedMemoryEntryProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAgentKitManagedMemoryEntryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitManagedMemoryStoreProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    (integer) - Workspace that owns the memory store
+    """
+
+@pulumi.input_type
+class GetAgentKitManagedMemoryStoreProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: (integer) - Workspace that owns the memory store
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitManagedMemoryStoresProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    (integer) - Workspace that owns the memory store
+    """
+
+@pulumi.input_type
+class GetAgentKitManagedMemoryStoresProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: (integer) - Workspace that owns the memory store
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        (integer) - Workspace that owns the memory store
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitSessionProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAgentKitSessionProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitSessionStoreProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAgentKitSessionStoreProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitSessionStoresProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAgentKitSessionStoresProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAgentKitSessionsProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAgentKitSessionsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 class GetAiGatewayMcpServiceProviderConfigArgsDict(TypedDict):
@@ -104448,6 +106220,7 @@ class GetJobJobSettingsSettingsTaskDashboardTaskArgs:
 
 
 class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgsDict(TypedDict):
+    attachment: NotRequired['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgsDict']
     custom_subject: NotRequired[_builtins.str]
     paused: NotRequired[_builtins.bool]
     subscribers: NotRequired[Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgsDict']]
@@ -104455,15 +106228,27 @@ class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgsDict(TypedDict):
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs:
     def __init__(__self__, *,
+                 attachment: Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs'] = None,
                  custom_subject: Optional[_builtins.str] = None,
                  paused: Optional[_builtins.bool] = None,
                  subscribers: Optional[Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs']] = None):
+        if attachment is not None:
+            pulumi.set(__self__, "attachment", attachment)
         if custom_subject is not None:
             pulumi.set(__self__, "custom_subject", custom_subject)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
+
+    @_builtins.property
+    @pulumi.getter
+    def attachment(self) -> Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs']:
+        return pulumi.get(self, "attachment")
+
+    @attachment.setter
+    def attachment(self, value: Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs']):
+        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubject")
@@ -104491,6 +106276,147 @@ class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs:
     @subscribers.setter
     def subscribers(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs']]):
         pulumi.set(self, "subscribers", value)
+
+
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgsDict(TypedDict):
+    data_attachment: NotRequired['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict']
+    page_attachment: NotRequired['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict']
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentArgs:
+    def __init__(__self__, *,
+                 data_attachment: Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs'] = None,
+                 page_attachment: Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs'] = None):
+        if data_attachment is not None:
+            pulumi.set(__self__, "data_attachment", data_attachment)
+        if page_attachment is not None:
+            pulumi.set(__self__, "page_attachment", page_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dataAttachment")
+    def data_attachment(self) -> Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']:
+        return pulumi.get(self, "data_attachment")
+
+    @data_attachment.setter
+    def data_attachment(self, value: Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']):
+        pulumi.set(self, "data_attachment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageAttachment")
+    def page_attachment(self) -> Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']:
+        return pulumi.get(self, "page_attachment")
+
+    @page_attachment.setter
+    def page_attachment(self, value: Optional['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']):
+        pulumi.set(self, "page_attachment", value)
+
+
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict(TypedDict):
+    file_format: _builtins.str
+    widgets: Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict']
+    include_applied_filters: NotRequired[_builtins.bool]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs:
+    def __init__(__self__, *,
+                 file_format: _builtins.str,
+                 widgets: Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs'],
+                 include_applied_filters: Optional[_builtins.bool] = None):
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "widgets", widgets)
+        if include_applied_filters is not None:
+            pulumi.set(__self__, "include_applied_filters", include_applied_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> _builtins.str:
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: _builtins.str):
+        pulumi.set(self, "file_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def widgets(self) -> Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']:
+        return pulumi.get(self, "widgets")
+
+    @widgets.setter
+    def widgets(self, value: Sequence['GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']):
+        pulumi.set(self, "widgets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeAppliedFilters")
+    def include_applied_filters(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "include_applied_filters")
+
+    @include_applied_filters.setter
+    def include_applied_filters(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "include_applied_filters", value)
+
+
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict(TypedDict):
+    page_id: _builtins.str
+    widget_id: _builtins.str
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs:
+    def __init__(__self__, *,
+                 page_id: _builtins.str,
+                 widget_id: _builtins.str):
+        pulumi.set(__self__, "page_id", page_id)
+        pulumi.set(__self__, "widget_id", widget_id)
+
+    @_builtins.property
+    @pulumi.getter(name="pageId")
+    def page_id(self) -> _builtins.str:
+        return pulumi.get(self, "page_id")
+
+    @page_id.setter
+    def page_id(self, value: _builtins.str):
+        pulumi.set(self, "page_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="widgetId")
+    def widget_id(self) -> _builtins.str:
+        return pulumi.get(self, "widget_id")
+
+    @widget_id.setter
+    def widget_id(self, value: _builtins.str):
+        pulumi.set(self, "widget_id", value)
+
+
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict(TypedDict):
+    page_ids: NotRequired[Sequence[_builtins.str]]
+    page_selection: NotRequired[_builtins.str]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs:
+    def __init__(__self__, *,
+                 page_ids: Optional[Sequence[_builtins.str]] = None,
+                 page_selection: Optional[_builtins.str] = None):
+        if page_ids is not None:
+            pulumi.set(__self__, "page_ids", page_ids)
+        if page_selection is not None:
+            pulumi.set(__self__, "page_selection", page_selection)
+
+    @_builtins.property
+    @pulumi.getter(name="pageIds")
+    def page_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "page_ids")
+
+    @page_ids.setter
+    def page_ids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "page_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageSelection")
+    def page_selection(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "page_selection")
+
+    @page_selection.setter
+    def page_selection(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "page_selection", value)
 
 
 class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgsDict(TypedDict):
@@ -105295,6 +107221,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs:
 
 
 class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict(TypedDict):
+    attachment: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgsDict']
     custom_subject: NotRequired[_builtins.str]
     paused: NotRequired[_builtins.bool]
     subscribers: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict']]
@@ -105302,15 +107229,27 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgsD
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs:
     def __init__(__self__, *,
+                 attachment: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs'] = None,
                  custom_subject: Optional[_builtins.str] = None,
                  paused: Optional[_builtins.bool] = None,
                  subscribers: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']] = None):
+        if attachment is not None:
+            pulumi.set(__self__, "attachment", attachment)
         if custom_subject is not None:
             pulumi.set(__self__, "custom_subject", custom_subject)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
+
+    @_builtins.property
+    @pulumi.getter
+    def attachment(self) -> Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs']:
+        return pulumi.get(self, "attachment")
+
+    @attachment.setter
+    def attachment(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs']):
+        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubject")
@@ -105338,6 +107277,147 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs:
     @subscribers.setter
     def subscribers(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]):
         pulumi.set(self, "subscribers", value)
+
+
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgsDict(TypedDict):
+    data_attachment: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict']
+    page_attachment: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict']
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs:
+    def __init__(__self__, *,
+                 data_attachment: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs'] = None,
+                 page_attachment: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs'] = None):
+        if data_attachment is not None:
+            pulumi.set(__self__, "data_attachment", data_attachment)
+        if page_attachment is not None:
+            pulumi.set(__self__, "page_attachment", page_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dataAttachment")
+    def data_attachment(self) -> Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']:
+        return pulumi.get(self, "data_attachment")
+
+    @data_attachment.setter
+    def data_attachment(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs']):
+        pulumi.set(self, "data_attachment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageAttachment")
+    def page_attachment(self) -> Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']:
+        return pulumi.get(self, "page_attachment")
+
+    @page_attachment.setter
+    def page_attachment(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs']):
+        pulumi.set(self, "page_attachment", value)
+
+
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgsDict(TypedDict):
+    file_format: _builtins.str
+    widgets: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict']
+    include_applied_filters: NotRequired[_builtins.bool]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs:
+    def __init__(__self__, *,
+                 file_format: _builtins.str,
+                 widgets: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs'],
+                 include_applied_filters: Optional[_builtins.bool] = None):
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "widgets", widgets)
+        if include_applied_filters is not None:
+            pulumi.set(__self__, "include_applied_filters", include_applied_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> _builtins.str:
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: _builtins.str):
+        pulumi.set(self, "file_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def widgets(self) -> Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']:
+        return pulumi.get(self, "widgets")
+
+    @widgets.setter
+    def widgets(self, value: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs']):
+        pulumi.set(self, "widgets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeAppliedFilters")
+    def include_applied_filters(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "include_applied_filters")
+
+    @include_applied_filters.setter
+    def include_applied_filters(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "include_applied_filters", value)
+
+
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgsDict(TypedDict):
+    page_id: _builtins.str
+    widget_id: _builtins.str
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs:
+    def __init__(__self__, *,
+                 page_id: _builtins.str,
+                 widget_id: _builtins.str):
+        pulumi.set(__self__, "page_id", page_id)
+        pulumi.set(__self__, "widget_id", widget_id)
+
+    @_builtins.property
+    @pulumi.getter(name="pageId")
+    def page_id(self) -> _builtins.str:
+        return pulumi.get(self, "page_id")
+
+    @page_id.setter
+    def page_id(self, value: _builtins.str):
+        pulumi.set(self, "page_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="widgetId")
+    def widget_id(self) -> _builtins.str:
+        return pulumi.get(self, "widget_id")
+
+    @widget_id.setter
+    def widget_id(self, value: _builtins.str):
+        pulumi.set(self, "widget_id", value)
+
+
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgsDict(TypedDict):
+    page_ids: NotRequired[Sequence[_builtins.str]]
+    page_selection: NotRequired[_builtins.str]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs:
+    def __init__(__self__, *,
+                 page_ids: Optional[Sequence[_builtins.str]] = None,
+                 page_selection: Optional[_builtins.str] = None):
+        if page_ids is not None:
+            pulumi.set(__self__, "page_ids", page_ids)
+        if page_selection is not None:
+            pulumi.set(__self__, "page_selection", page_selection)
+
+    @_builtins.property
+    @pulumi.getter(name="pageIds")
+    def page_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "page_ids")
+
+    @page_ids.setter
+    def page_ids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "page_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageSelection")
+    def page_selection(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "page_selection")
+
+    @page_selection.setter
+    def page_selection(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "page_selection", value)
 
 
 class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict(TypedDict):

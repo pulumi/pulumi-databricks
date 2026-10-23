@@ -27,7 +27,7 @@ public final class GetAppSpacesSpaceResourceUcSecurable {
      */
     private String securableKind;
     /**
-     * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
@@ -56,7 +56,7 @@ public final class GetAppSpacesSpaceResourceUcSecurable {
         return this.securableKind;
     }
     /**
-     * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

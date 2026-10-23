@@ -27,10 +27,18 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// (boolean) - True if errors currently block the replication point
+        /// </summary>
+        public readonly bool HasReplicationPointBlockingErrors;
+        /// <summary>
         /// (string) - Initial primary region. Used only in Create requests to set the starting
         /// primary region. Not returned in responses
         /// </summary>
         public readonly string InitialPrimaryRegion;
+        /// <summary>
+        /// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+        /// </summary>
+        public readonly Outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupInitialReplicationProgressResult InitialReplicationProgress;
         /// <summary>
         /// (string) - Resource name for this workspace set
         /// </summary>
@@ -68,7 +76,11 @@ namespace Pulumi.Databricks.Outputs
 
             string etag,
 
+            bool hasReplicationPointBlockingErrors,
+
             string initialPrimaryRegion,
+
+            Outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupInitialReplicationProgressResult initialReplicationProgress,
 
             string name,
 
@@ -87,7 +99,9 @@ namespace Pulumi.Databricks.Outputs
             CreateTime = createTime;
             EffectivePrimaryRegion = effectivePrimaryRegion;
             Etag = etag;
+            HasReplicationPointBlockingErrors = hasReplicationPointBlockingErrors;
             InitialPrimaryRegion = initialPrimaryRegion;
+            InitialReplicationProgress = initialReplicationProgress;
             Name = name;
             Regions = regions;
             ReplicationPoint = replicationPoint;

@@ -96,6 +96,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalSecretProviderConfig>;
+    declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */
@@ -143,6 +144,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["lifetime"] = state?.lifetime;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["scopes"] = state?.scopes;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["secretHash"] = state?.secretHash;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
@@ -160,6 +162,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["expireTime"] = args?.expireTime;
             resourceInputs["lifetime"] = args?.lifetime;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["scopes"] = args?.scopes;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["secretHash"] = args?.secretHash;
             resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
@@ -199,6 +202,7 @@ export interface ServicePrincipalSecretState {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */
@@ -253,6 +257,7 @@ export interface ServicePrincipalSecretArgs {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */

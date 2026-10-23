@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber;
 import java.lang.Boolean;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskDashboardTaskSubscription extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskDashboardTaskSubscription Empty = new GetJobJobSettingsSettingsTaskDashboardTaskSubscription();
+
+    @Import(name="attachment")
+    private @Nullable GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment attachment;
+
+    public Optional<GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
 
     @Import(name="customSubject")
     private @Nullable String customSubject;
@@ -41,6 +49,7 @@ public final class GetJobJobSettingsSettingsTaskDashboardTaskSubscription extend
     private GetJobJobSettingsSettingsTaskDashboardTaskSubscription() {}
 
     private GetJobJobSettingsSettingsTaskDashboardTaskSubscription(GetJobJobSettingsSettingsTaskDashboardTaskSubscription $) {
+        this.attachment = $.attachment;
         this.customSubject = $.customSubject;
         this.paused = $.paused;
         this.subscribers = $.subscribers;
@@ -62,6 +71,11 @@ public final class GetJobJobSettingsSettingsTaskDashboardTaskSubscription extend
 
         public Builder(GetJobJobSettingsSettingsTaskDashboardTaskSubscription defaults) {
             $ = new GetJobJobSettingsSettingsTaskDashboardTaskSubscription(Objects.requireNonNull(defaults));
+        }
+
+        public Builder attachment(@Nullable GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachment attachment) {
+            $.attachment = attachment;
+            return this;
         }
 
         public Builder customSubject(@Nullable String customSubject) {

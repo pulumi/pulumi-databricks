@@ -107,7 +107,7 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
                                            provider_config: Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.GetDataClassificationCatalogConfigProviderConfigResult']] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataClassificationCatalogConfigResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
@@ -116,6 +116,8 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
     To read the Data Classification configuration, you must have browse permissions on the catalog.
 
     > **Note** This data source can only be used with a workspace-level provider.
+
+    > **Note** The `auto_tag_configs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
 
     ## Example Usage
 
@@ -127,7 +129,7 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
 
     prod = databricks.get_catalog(name="prod_catalog")
     prod_config = databricks.get_data_classification_catalog_config(name=f"catalogs/{prod.name}/config")
-    pulumi.export("autoTagConfigs", prod_config.auto_tag_configs)
+    pulumi.export("includedSchemas", prod_config.included_schemas)
     ```
 
 
@@ -150,7 +152,7 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
                                                   provider_config: pulumi.Input[Optional[Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.GetDataClassificationCatalogConfigProviderConfigResult']]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataClassificationCatalogConfigResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
@@ -159,6 +161,8 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
     To read the Data Classification configuration, you must have browse permissions on the catalog.
 
     > **Note** This data source can only be used with a workspace-level provider.
+
+    > **Note** The `auto_tag_configs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
 
     ## Example Usage
 
@@ -170,7 +174,7 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
 
     prod = databricks.get_catalog(name="prod_catalog")
     prod_config = databricks.get_data_classification_catalog_config(name=f"catalogs/{prod.name}/config")
-    pulumi.export("autoTagConfigs", prod_config.auto_tag_configs)
+    pulumi.export("includedSchemas", prod_config.included_schemas)
     ```
 
 

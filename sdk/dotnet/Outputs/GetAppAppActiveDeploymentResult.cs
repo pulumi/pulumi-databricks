@@ -32,6 +32,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? DeploymentId;
         public readonly ImmutableArray<Outputs.GetAppAppActiveDeploymentEnvVarResult> EnvVars;
         public readonly Outputs.GetAppAppActiveDeploymentGitSourceResult? GitSource;
+        public readonly Outputs.GetAppAppActiveDeploymentHealthCheckResult? HealthCheck;
         /// <summary>
         /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
         /// </summary>
@@ -65,6 +66,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetAppAppActiveDeploymentGitSourceResult? gitSource,
 
+            Outputs.GetAppAppActiveDeploymentHealthCheckResult? healthCheck,
+
             string? mode,
 
             string? sourceCodePath,
@@ -80,6 +83,7 @@ namespace Pulumi.Databricks.Outputs
             DeploymentId = deploymentId;
             EnvVars = envVars;
             GitSource = gitSource;
+            HealthCheck = healthCheck;
             Mode = mode;
             SourceCodePath = sourceCodePath;
             Status = status;

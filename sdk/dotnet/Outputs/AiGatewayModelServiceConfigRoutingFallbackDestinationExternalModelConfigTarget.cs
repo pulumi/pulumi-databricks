@@ -14,6 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget
     {
         /// <summary>
+        /// Relative path appended to a custom provider's `BaseUrl` for this model,
+        /// such as `serve/openai/chat`. Nonempty values are only supported for
+        /// custom model provider service targets; other provider types reject them.
+        /// Model service destinations do not support this field. Do not include
+        /// URI templates, queries, or fragments. When empty, `BaseUrl` is used unchanged
+        /// </summary>
+        public readonly string? EndpointRoute;
+        /// <summary>
         /// (string) - UC model FQN of the model served by the backing endpoint (e.g.,
         /// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
         /// Create/Update time
@@ -21,18 +29,23 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Model;
         /// <summary>
         /// Provider-native API types supported by this model, such as
-        /// `openai/v1/chat/completions`. At least one value is required. AI Gateway
-        /// uses these values to translate requests and responses. At most 64 entries
-        /// of 256 characters each are allowed
+        /// `openai/v1/chat/completions`. A model provider service target requires at
+        /// least one value. A model service destination may omit the list to use the
+        /// matching provider service target's types when available. AI Gateway uses
+        /// the selected types for translation. At most 64 entries of 256 characters
+        /// each are allowed
         /// </summary>
         public readonly ImmutableArray<string> NativeApiTypes;
 
         [OutputConstructor]
         private AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget(
+            string? endpointRoute,
+
             string model,
 
             ImmutableArray<string> nativeApiTypes)
         {
+            EndpointRoute = endpointRoute;
             Model = model;
             NativeApiTypes = nativeApiTypes;
         }

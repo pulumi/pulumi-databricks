@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfig
     {
+        public readonly Outputs.NotificationDestinationConfigDatabricksAppSlack? DatabricksAppSlack;
+        public readonly Outputs.NotificationDestinationConfigDatabricksAppTeams? DatabricksAppTeams;
         /// <summary>
         /// The email configuration of the Notification Destination. It must contain the following:
         /// </summary>
@@ -36,6 +38,10 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private NotificationDestinationConfig(
+            Outputs.NotificationDestinationConfigDatabricksAppSlack? databricksAppSlack,
+
+            Outputs.NotificationDestinationConfigDatabricksAppTeams? databricksAppTeams,
+
             Outputs.NotificationDestinationConfigEmail? email,
 
             Outputs.NotificationDestinationConfigGenericWebhook? genericWebhook,
@@ -46,6 +52,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.NotificationDestinationConfigSlack? slack)
         {
+            DatabricksAppSlack = databricksAppSlack;
+            DatabricksAppTeams = databricksAppTeams;
             Email = email;
             GenericWebhook = genericWebhook;
             MicrosoftTeams = microsoftTeams;

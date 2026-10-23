@@ -28,6 +28,7 @@ class JobArgs:
                  dbt_task: pulumi.Input[Optional['JobDbtTaskArgs']] = None,
                  deployment: pulumi.Input[Optional['JobDeploymentArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration_target: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional['JobEmailNotificationsArgs']] = None,
                  environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]] = None,
@@ -120,6 +121,8 @@ class JobArgs:
             pulumi.set(__self__, "deployment", deployment)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duration_target is not None:
+            pulumi.set(__self__, "duration_target", duration_target)
         if edit_mode is not None:
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
@@ -308,6 +311,15 @@ class JobArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="durationTarget")
+    def duration_target(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "duration_target")
+
+    @duration_target.setter
+    def duration_target(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "duration_target", value)
 
     @_builtins.property
     @pulumi.getter(name="editMode")
@@ -737,6 +749,7 @@ class _JobState:
                  dbt_task: pulumi.Input[Optional['JobDbtTaskArgs']] = None,
                  deployment: pulumi.Input[Optional['JobDeploymentArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration_target: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional['JobEmailNotificationsArgs']] = None,
                  environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['JobEnvironmentVariableArgs']]]] = None,
@@ -831,6 +844,8 @@ class _JobState:
             pulumi.set(__self__, "deployment", deployment)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duration_target is not None:
+            pulumi.set(__self__, "duration_target", duration_target)
         if edit_mode is not None:
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
@@ -1021,6 +1036,15 @@ class _JobState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="durationTarget")
+    def duration_target(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "duration_target")
+
+    @duration_target.setter
+    def duration_target(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "duration_target", value)
 
     @_builtins.property
     @pulumi.getter(name="editMode")
@@ -1465,6 +1489,7 @@ class Job(pulumi.CustomResource):
                  dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict', 'outputs.JobDbtTask']]] = None,
                  deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict', 'outputs.JobDeployment']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration_target: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
                  environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentVariableArgs', 'JobEnvironmentVariableArgsDict', 'outputs.JobEnvironmentVariable']]]]] = None,
@@ -1713,6 +1738,7 @@ class Job(pulumi.CustomResource):
                  dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict', 'outputs.JobDbtTask']]] = None,
                  deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict', 'outputs.JobDeployment']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration_target: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
                  environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentVariableArgs', 'JobEnvironmentVariableArgsDict', 'outputs.JobEnvironmentVariable']]]]] = None,
@@ -1767,6 +1793,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["dbt_task"] = dbt_task
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["description"] = description
+            __props__.__dict__["duration_target"] = duration_target
             __props__.__dict__["edit_mode"] = edit_mode
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["environment_variables"] = environment_variables
@@ -1823,6 +1850,7 @@ class Job(pulumi.CustomResource):
             dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict', 'outputs.JobDbtTask']]] = None,
             deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict', 'outputs.JobDeployment']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration_target: pulumi.Input[Optional[_builtins.str]] = None,
             edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
             email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
             environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentVariableArgs', 'JobEnvironmentVariableArgsDict', 'outputs.JobEnvironmentVariable']]]]] = None,
@@ -1912,6 +1940,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["dbt_task"] = dbt_task
         __props__.__dict__["deployment"] = deployment
         __props__.__dict__["description"] = description
+        __props__.__dict__["duration_target"] = duration_target
         __props__.__dict__["edit_mode"] = edit_mode
         __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["environment_variables"] = environment_variables
@@ -2006,6 +2035,11 @@ class Job(pulumi.CustomResource):
         An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="durationTarget")
+    def duration_target(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "duration_target")
 
     @_builtins.property
     @pulumi.getter(name="editMode")

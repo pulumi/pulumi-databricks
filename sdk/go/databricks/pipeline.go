@@ -163,6 +163,7 @@ type Pipeline struct {
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
+	ParentPath    pulumi.StringPtrOutput          `pulumi:"parentPath"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrOutput `pulumi:"photon"`
 	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
@@ -262,6 +263,7 @@ type pipelineState struct {
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
+	ParentPath    *string                `pulumi:"parentPath"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon *bool `pulumi:"photon"`
 	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
@@ -332,6 +334,7 @@ type PipelineState struct {
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
+	ParentPath    pulumi.StringPtrInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrInput
 	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
@@ -406,6 +409,7 @@ type pipelineArgs struct {
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
+	ParentPath    *string                `pulumi:"parentPath"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon *bool `pulumi:"photon"`
 	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
@@ -477,6 +481,7 @@ type PipelineArgs struct {
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
+	ParentPath    pulumi.StringPtrInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrInput
 	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
@@ -706,6 +711,10 @@ func (o PipelineOutput) Name() pulumi.StringOutput {
 
 func (o PipelineOutput) Notifications() PipelineNotificationArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineNotificationArrayOutput { return v.Notifications }).(PipelineNotificationArrayOutput)
+}
+
+func (o PipelineOutput) ParentPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
 }
 
 // A flag indicating whether to use Photon engine. The default value is `false`.

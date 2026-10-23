@@ -137,6 +137,7 @@ export class Job extends pulumi.CustomResource {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly durationTarget: pulumi.Output<string | undefined>;
     /**
      * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
      */
@@ -294,6 +295,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["dbtTask"] = state?.dbtTask;
             resourceInputs["deployment"] = state?.deployment;
             resourceInputs["description"] = state?.description;
+            resourceInputs["durationTarget"] = state?.durationTarget;
             resourceInputs["editMode"] = state?.editMode;
             resourceInputs["emailNotifications"] = state?.emailNotifications;
             resourceInputs["environmentVariables"] = state?.environmentVariables;
@@ -342,6 +344,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["dbtTask"] = args?.dbtTask;
             resourceInputs["deployment"] = args?.deployment;
             resourceInputs["description"] = args?.description;
+            resourceInputs["durationTarget"] = args?.durationTarget;
             resourceInputs["editMode"] = args?.editMode;
             resourceInputs["emailNotifications"] = args?.emailNotifications;
             resourceInputs["environmentVariables"] = args?.environmentVariables;
@@ -420,6 +423,7 @@ export interface JobState {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: pulumi.Input<string | undefined>;
+    durationTarget?: pulumi.Input<string | undefined>;
     /**
      * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
      */
@@ -591,6 +595,7 @@ export interface JobArgs {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: pulumi.Input<string | undefined>;
+    durationTarget?: pulumi.Input<string | undefined>;
     /**
      * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
      */

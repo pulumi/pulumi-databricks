@@ -29,6 +29,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("azureOpenai")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigAzureOpenaiArgs>? AzureOpenai { get; set; }
 
+        [Input("bedrockMantle")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigBedrockMantleArgs>? BedrockMantle { get; set; }
+
         [Input("custom")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigCustomArgs>? Custom { get; set; }
 
@@ -54,7 +57,9 @@ namespace Pulumi.Databricks.Inputs
         /// provider-native API types. Defaults to false. When true, these paths are
         /// forwarded unchanged to the upstream provider. When false, only
         /// recognized API paths are served. Enabling this broadens the upstream API
-        /// surface exposed through the provider service
+        /// surface exposed through the provider service. AI Gateway cannot evaluate
+        /// Service Policies on opaque unmanaged requests, so unmanaged requests are
+        /// rejected whenever Service Policies are attached to this securable
         /// </summary>
         [Input("forwardUnmanagedPaths")]
         public Input<bool>? ForwardUnmanagedPaths { get; set; }
@@ -77,9 +82,16 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AiGatewayModelProviderServiceConfigOpenaiArgs>? Openai { get; set; }
 
         /// <summary>
+        /// Pricing configuration for this provider service. An explicitly empty
+        /// configuration is retained on Create and Update and applies no adjustment
+        /// </summary>
+        [Input("pricing")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigPricingArgs>? Pricing { get; set; }
+
+        /// <summary>
         /// External model provider. Required on Create and immutable thereafter. Set
         /// the matching provider-specific configuration, such as `Openai`,
-        /// `AzureOpenai`, or `AmazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        /// `AzureOpenai`, or `AmazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         /// </summary>
         [Input("providerType")]
         public Input<string>? ProviderType { get; set; }

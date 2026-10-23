@@ -18,16 +18,16 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
     public static final GetAiGatewayModelServicesArgs Empty = new GetAiGatewayModelServicesArgs();
 
     /**
-     * Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `pageToken` to retrieve additional pages
+     * Maximum number of model services to return. Defaults to 200 when unset or 0;
+     * the maximum is 200. Use `pageToken` to retrieve additional pages
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `pageToken` to retrieve additional pages
+     * @return Maximum number of model services to return. Defaults to 200 when unset or 0;
+     * the maximum is 200. Use `pageToken` to retrieve additional pages
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -117,8 +117,8 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param pageSize Maximum number of model services to return. Defaults to 100 when unset or 0;
-         * the maximum is 100. Use `pageToken` to retrieve additional pages
+         * @param pageSize Maximum number of model services to return. Defaults to 200 when unset or 0;
+         * the maximum is 200. Use `pageToken` to retrieve additional pages
          * 
          * @return builder
          * 
@@ -129,8 +129,8 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param pageSize Maximum number of model services to return. Defaults to 100 when unset or 0;
-         * the maximum is 100. Use `pageToken` to retrieve additional pages
+         * @param pageSize Maximum number of model services to return. Defaults to 200 when unset or 0;
+         * the maximum is 200. Use `pageToken` to retrieve additional pages
          * 
          * @return builder
          * 

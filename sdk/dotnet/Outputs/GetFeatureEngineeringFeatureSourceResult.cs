@@ -35,6 +35,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceRequestSourceResult? RequestSource;
         /// <summary>
+        /// (SdpSource) - A Spark Declarative Pipeline data source
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureSourceSdpSourceResult? SdpSource;
+        /// <summary>
         /// (StreamSource) - A Stream data source
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceStreamSourceResult? StreamSource;
@@ -51,6 +55,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeatureSourceRequestSourceResult? requestSource,
 
+            Outputs.GetFeatureEngineeringFeatureSourceSdpSourceResult? sdpSource,
+
             Outputs.GetFeatureEngineeringFeatureSourceStreamSourceResult? streamSource)
         {
             DeltaTableSource = deltaTableSource;
@@ -58,6 +64,7 @@ namespace Pulumi.Databricks.Outputs
             KafkaSource = kafkaSource;
             Lateness = lateness;
             RequestSource = requestSource;
+            SdpSource = sdpSource;
             StreamSource = streamSource;
         }
     }

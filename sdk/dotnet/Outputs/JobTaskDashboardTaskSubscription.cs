@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskDashboardTaskSubscription
     {
+        public readonly Outputs.JobTaskDashboardTaskSubscriptionAttachment? Attachment;
         /// <summary>
         /// Allows users to specify a custom subject line on the email sent to subscribers.
         /// </summary>
@@ -28,12 +29,15 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskDashboardTaskSubscription(
+            Outputs.JobTaskDashboardTaskSubscriptionAttachment? attachment,
+
             string? customSubject,
 
             bool? paused,
 
             ImmutableArray<Outputs.JobTaskDashboardTaskSubscriptionSubscriber> subscribers)
         {
+            Attachment = attachment;
             CustomSubject = customSubject;
             Paused = paused;
             Subscribers = subscribers;

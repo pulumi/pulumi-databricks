@@ -17,16 +17,16 @@ public final class GetAiGatewayMcpServicesPlainArgs extends com.pulumi.resources
     public static final GetAiGatewayMcpServicesPlainArgs Empty = new GetAiGatewayMcpServicesPlainArgs();
 
     /**
-     * Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `pageToken` to retrieve additional pages
+     * Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+     * the maximum is 200. Use `pageToken` to retrieve additional pages
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `pageToken` to retrieve additional pages
+     * @return Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+     * the maximum is 200. Use `pageToken` to retrieve additional pages
      * 
      */
     public Optional<Integer> pageSize() {
@@ -114,8 +114,8 @@ public final class GetAiGatewayMcpServicesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param pageSize Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-         * the maximum is 100. Use `pageToken` to retrieve additional pages
+         * @param pageSize Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+         * the maximum is 200. Use `pageToken` to retrieve additional pages
          * 
          * @return builder
          * 

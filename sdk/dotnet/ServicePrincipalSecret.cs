@@ -104,6 +104,9 @@ namespace Pulumi.Databricks
         [Output("providerConfig")]
         public Output<Outputs.ServicePrincipalSecretProviderConfig> ProviderConfig { get; private set; } = null!;
 
+        [Output("scopes")]
+        public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
+
         /// <summary>
         /// **Sensitive** Generated secret for the service principal.
         /// </summary>
@@ -226,6 +229,14 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.ServicePrincipalSecretProviderConfigArgs>? ProviderConfig { get; set; }
 
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
+
         [Input("secret")]
         private Input<string>? _secret;
 
@@ -315,6 +326,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.ServicePrincipalSecretProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
 
         [Input("secret")]
         private Input<string>? _secret;

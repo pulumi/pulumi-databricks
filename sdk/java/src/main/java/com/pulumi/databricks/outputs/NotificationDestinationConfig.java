@@ -4,6 +4,8 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.NotificationDestinationConfigDatabricksAppSlack;
+import com.pulumi.databricks.outputs.NotificationDestinationConfigDatabricksAppTeams;
 import com.pulumi.databricks.outputs.NotificationDestinationConfigEmail;
 import com.pulumi.databricks.outputs.NotificationDestinationConfigGenericWebhook;
 import com.pulumi.databricks.outputs.NotificationDestinationConfigMicrosoftTeams;
@@ -15,6 +17,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfig {
+    private @Nullable NotificationDestinationConfigDatabricksAppSlack databricksAppSlack;
+    private @Nullable NotificationDestinationConfigDatabricksAppTeams databricksAppTeams;
     /**
      * @return The email configuration of the Notification Destination. It must contain the following:
      * 
@@ -42,6 +46,12 @@ public final class NotificationDestinationConfig {
     private @Nullable NotificationDestinationConfigSlack slack;
 
     private NotificationDestinationConfig() {}
+    public Optional<NotificationDestinationConfigDatabricksAppSlack> databricksAppSlack() {
+        return Optional.ofNullable(this.databricksAppSlack);
+    }
+    public Optional<NotificationDestinationConfigDatabricksAppTeams> databricksAppTeams() {
+        return Optional.ofNullable(this.databricksAppTeams);
+    }
     /**
      * @return The email configuration of the Notification Destination. It must contain the following:
      * 
@@ -87,6 +97,8 @@ public final class NotificationDestinationConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable NotificationDestinationConfigDatabricksAppSlack databricksAppSlack;
+        private @Nullable NotificationDestinationConfigDatabricksAppTeams databricksAppTeams;
         private @Nullable NotificationDestinationConfigEmail email;
         private @Nullable NotificationDestinationConfigGenericWebhook genericWebhook;
         private @Nullable NotificationDestinationConfigMicrosoftTeams microsoftTeams;
@@ -95,6 +107,8 @@ public final class NotificationDestinationConfig {
         public Builder() {}
         public Builder(NotificationDestinationConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.databricksAppSlack = defaults.databricksAppSlack;
+    	      this.databricksAppTeams = defaults.databricksAppTeams;
     	      this.email = defaults.email;
     	      this.genericWebhook = defaults.genericWebhook;
     	      this.microsoftTeams = defaults.microsoftTeams;
@@ -102,6 +116,18 @@ public final class NotificationDestinationConfig {
     	      this.slack = defaults.slack;
         }
 
+        @CustomType.Setter
+        public Builder databricksAppSlack(@Nullable NotificationDestinationConfigDatabricksAppSlack databricksAppSlack) {
+
+            this.databricksAppSlack = databricksAppSlack;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder databricksAppTeams(@Nullable NotificationDestinationConfigDatabricksAppTeams databricksAppTeams) {
+
+            this.databricksAppTeams = databricksAppTeams;
+            return this;
+        }
         @CustomType.Setter
         public Builder email(@Nullable NotificationDestinationConfigEmail email) {
 
@@ -134,6 +160,8 @@ public final class NotificationDestinationConfig {
         }
         public NotificationDestinationConfig build() {
             final var _resultValue = new NotificationDestinationConfig();
+            _resultValue.databricksAppSlack = databricksAppSlack;
+            _resultValue.databricksAppTeams = databricksAppTeams;
             _resultValue.email = email;
             _resultValue.genericWebhook = genericWebhook;
             _resultValue.microsoftTeams = microsoftTeams;

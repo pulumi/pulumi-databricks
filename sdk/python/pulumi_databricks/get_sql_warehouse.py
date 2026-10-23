@@ -28,7 +28,7 @@ class GetSqlWarehouseResult:
     """
     A collection of values returned by getSqlWarehouse.
     """
-    def __init__(__self__, auto_stop_mins=None, channel=None, cluster_size=None, creator_name=None, data_source_id=None, enable_photon=None, enable_serverless_compute=None, health=None, id=None, instance_profile_arn=None, jdbc_url=None, max_num_clusters=None, min_num_clusters=None, name=None, num_active_sessions=None, num_clusters=None, odbc_params=None, provider_config=None, spot_instance_policy=None, state=None, tags=None, warehouse_type=None):
+    def __init__(__self__, auto_stop_mins=None, channel=None, cluster_size=None, creator_name=None, customer_version_label=None, data_source_id=None, enable_photon=None, enable_serverless_compute=None, health=None, id=None, instance_profile_arn=None, jdbc_url=None, max_dbu=None, max_num_clusters=None, min_num_clusters=None, name=None, num_active_sessions=None, num_clusters=None, odbc_params=None, provider_config=None, reyden_cluster_size_multiplier=None, spot_instance_policy=None, state=None, statement_timeout=None, tags=None, warehouse_type=None):
         if auto_stop_mins and not isinstance(auto_stop_mins, int):
             raise TypeError("Expected argument 'auto_stop_mins' to be a int")
         pulumi.set(__self__, "auto_stop_mins", auto_stop_mins)
@@ -41,6 +41,9 @@ class GetSqlWarehouseResult:
         if creator_name and not isinstance(creator_name, str):
             raise TypeError("Expected argument 'creator_name' to be a str")
         pulumi.set(__self__, "creator_name", creator_name)
+        if customer_version_label and not isinstance(customer_version_label, str):
+            raise TypeError("Expected argument 'customer_version_label' to be a str")
+        pulumi.set(__self__, "customer_version_label", customer_version_label)
         if data_source_id and not isinstance(data_source_id, str):
             raise TypeError("Expected argument 'data_source_id' to be a str")
         pulumi.set(__self__, "data_source_id", data_source_id)
@@ -62,6 +65,9 @@ class GetSqlWarehouseResult:
         if jdbc_url and not isinstance(jdbc_url, str):
             raise TypeError("Expected argument 'jdbc_url' to be a str")
         pulumi.set(__self__, "jdbc_url", jdbc_url)
+        if max_dbu and not isinstance(max_dbu, int):
+            raise TypeError("Expected argument 'max_dbu' to be a int")
+        pulumi.set(__self__, "max_dbu", max_dbu)
         if max_num_clusters and not isinstance(max_num_clusters, int):
             raise TypeError("Expected argument 'max_num_clusters' to be a int")
         pulumi.set(__self__, "max_num_clusters", max_num_clusters)
@@ -83,12 +89,18 @@ class GetSqlWarehouseResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if reyden_cluster_size_multiplier and not isinstance(reyden_cluster_size_multiplier, float):
+            raise TypeError("Expected argument 'reyden_cluster_size_multiplier' to be a float")
+        pulumi.set(__self__, "reyden_cluster_size_multiplier", reyden_cluster_size_multiplier)
         if spot_instance_policy and not isinstance(spot_instance_policy, str):
             raise TypeError("Expected argument 'spot_instance_policy' to be a str")
         pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if statement_timeout and not isinstance(statement_timeout, int):
+            raise TypeError("Expected argument 'statement_timeout' to be a int")
+        pulumi.set(__self__, "statement_timeout", statement_timeout)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -127,6 +139,11 @@ class GetSqlWarehouseResult:
         The username of the user who created the endpoint.
         """
         return pulumi.get(self, "creator_name")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVersionLabel")
+    def customer_version_label(self) -> _builtins.str:
+        return pulumi.get(self, "customer_version_label")
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
@@ -182,6 +199,11 @@ class GetSqlWarehouseResult:
         return pulumi.get(self, "jdbc_url")
 
     @_builtins.property
+    @pulumi.getter(name="maxDbu")
+    def max_dbu(self) -> _builtins.int:
+        return pulumi.get(self, "max_dbu")
+
+    @_builtins.property
     @pulumi.getter(name="maxNumClusters")
     def max_num_clusters(self) -> _builtins.int:
         """
@@ -235,6 +257,11 @@ class GetSqlWarehouseResult:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
+    @pulumi.getter(name="reydenClusterSizeMultiplier")
+    def reyden_cluster_size_multiplier(self) -> _builtins.float:
+        return pulumi.get(self, "reyden_cluster_size_multiplier")
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> _builtins.str:
         """
@@ -249,6 +276,11 @@ class GetSqlWarehouseResult:
         The current state of the endpoint.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="statementTimeout")
+    def statement_timeout(self) -> _builtins.int:
+        return pulumi.get(self, "statement_timeout")
 
     @_builtins.property
     @pulumi.getter
@@ -277,6 +309,7 @@ class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
             channel=self.channel,
             cluster_size=self.cluster_size,
             creator_name=self.creator_name,
+            customer_version_label=self.customer_version_label,
             data_source_id=self.data_source_id,
             enable_photon=self.enable_photon,
             enable_serverless_compute=self.enable_serverless_compute,
@@ -284,6 +317,7 @@ class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
             id=self.id,
             instance_profile_arn=self.instance_profile_arn,
             jdbc_url=self.jdbc_url,
+            max_dbu=self.max_dbu,
             max_num_clusters=self.max_num_clusters,
             min_num_clusters=self.min_num_clusters,
             name=self.name,
@@ -291,8 +325,10 @@ class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
             num_clusters=self.num_clusters,
             odbc_params=self.odbc_params,
             provider_config=self.provider_config,
+            reyden_cluster_size_multiplier=self.reyden_cluster_size_multiplier,
             spot_instance_policy=self.spot_instance_policy,
             state=self.state,
+            statement_timeout=self.statement_timeout,
             tags=self.tags,
             warehouse_type=self.warehouse_type)
 
@@ -301,6 +337,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
                       channel: Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult']] = None,
                       cluster_size: Optional[_builtins.str] = None,
                       creator_name: Optional[_builtins.str] = None,
+                      customer_version_label: Optional[_builtins.str] = None,
                       data_source_id: Optional[_builtins.str] = None,
                       enable_photon: Optional[_builtins.bool] = None,
                       enable_serverless_compute: Optional[_builtins.bool] = None,
@@ -308,6 +345,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
                       id: Optional[_builtins.str] = None,
                       instance_profile_arn: Optional[_builtins.str] = None,
                       jdbc_url: Optional[_builtins.str] = None,
+                      max_dbu: Optional[_builtins.int] = None,
                       max_num_clusters: Optional[_builtins.int] = None,
                       min_num_clusters: Optional[_builtins.int] = None,
                       name: Optional[_builtins.str] = None,
@@ -315,8 +353,10 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
                       num_clusters: Optional[_builtins.int] = None,
                       odbc_params: Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult']] = None,
                       provider_config: Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict', 'outputs.GetSqlWarehouseProviderConfigResult']] = None,
+                      reyden_cluster_size_multiplier: Optional[_builtins.float] = None,
                       spot_instance_policy: Optional[_builtins.str] = None,
                       state: Optional[_builtins.str] = None,
+                      statement_timeout: Optional[_builtins.int] = None,
                       tags: Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult']] = None,
                       warehouse_type: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehouseResult:
@@ -383,6 +423,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     __args__['channel'] = channel
     __args__['clusterSize'] = cluster_size
     __args__['creatorName'] = creator_name
+    __args__['customerVersionLabel'] = customer_version_label
     __args__['dataSourceId'] = data_source_id
     __args__['enablePhoton'] = enable_photon
     __args__['enableServerlessCompute'] = enable_serverless_compute
@@ -390,6 +431,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     __args__['id'] = id
     __args__['instanceProfileArn'] = instance_profile_arn
     __args__['jdbcUrl'] = jdbc_url
+    __args__['maxDbu'] = max_dbu
     __args__['maxNumClusters'] = max_num_clusters
     __args__['minNumClusters'] = min_num_clusters
     __args__['name'] = name
@@ -397,8 +439,10 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     __args__['numClusters'] = num_clusters
     __args__['odbcParams'] = odbc_params
     __args__['providerConfig'] = provider_config
+    __args__['reydenClusterSizeMultiplier'] = reyden_cluster_size_multiplier
     __args__['spotInstancePolicy'] = spot_instance_policy
     __args__['state'] = state
+    __args__['statementTimeout'] = statement_timeout
     __args__['tags'] = tags
     __args__['warehouseType'] = warehouse_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -409,6 +453,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
         channel=pulumi.get(__ret__, 'channel'),
         cluster_size=pulumi.get(__ret__, 'cluster_size'),
         creator_name=pulumi.get(__ret__, 'creator_name'),
+        customer_version_label=pulumi.get(__ret__, 'customer_version_label'),
         data_source_id=pulumi.get(__ret__, 'data_source_id'),
         enable_photon=pulumi.get(__ret__, 'enable_photon'),
         enable_serverless_compute=pulumi.get(__ret__, 'enable_serverless_compute'),
@@ -416,6 +461,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         instance_profile_arn=pulumi.get(__ret__, 'instance_profile_arn'),
         jdbc_url=pulumi.get(__ret__, 'jdbc_url'),
+        max_dbu=pulumi.get(__ret__, 'max_dbu'),
         max_num_clusters=pulumi.get(__ret__, 'max_num_clusters'),
         min_num_clusters=pulumi.get(__ret__, 'min_num_clusters'),
         name=pulumi.get(__ret__, 'name'),
@@ -423,14 +469,17 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
         num_clusters=pulumi.get(__ret__, 'num_clusters'),
         odbc_params=pulumi.get(__ret__, 'odbc_params'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
+        reyden_cluster_size_multiplier=pulumi.get(__ret__, 'reyden_cluster_size_multiplier'),
         spot_instance_policy=pulumi.get(__ret__, 'spot_instance_policy'),
         state=pulumi.get(__ret__, 'state'),
+        statement_timeout=pulumi.get(__ret__, 'statement_timeout'),
         tags=pulumi.get(__ret__, 'tags'),
         warehouse_type=pulumi.get(__ret__, 'warehouse_type'))
 def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              channel: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult']]]] = None,
                              cluster_size: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              creator_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             customer_version_label: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              data_source_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              enable_photon: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              enable_serverless_compute: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
@@ -438,6 +487,7 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
                              id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              instance_profile_arn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              jdbc_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             max_dbu: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              max_num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              min_num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -445,8 +495,10 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
                              num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              odbc_params: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult']]]] = None,
                              provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict', 'outputs.GetSqlWarehouseProviderConfigResult']]]] = None,
+                             reyden_cluster_size_multiplier: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
                              spot_instance_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             statement_timeout: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              tags: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult']]]] = None,
                              warehouse_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehouseResult]:
@@ -513,6 +565,7 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     __args__['channel'] = channel
     __args__['clusterSize'] = cluster_size
     __args__['creatorName'] = creator_name
+    __args__['customerVersionLabel'] = customer_version_label
     __args__['dataSourceId'] = data_source_id
     __args__['enablePhoton'] = enable_photon
     __args__['enableServerlessCompute'] = enable_serverless_compute
@@ -520,6 +573,7 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     __args__['id'] = id
     __args__['instanceProfileArn'] = instance_profile_arn
     __args__['jdbcUrl'] = jdbc_url
+    __args__['maxDbu'] = max_dbu
     __args__['maxNumClusters'] = max_num_clusters
     __args__['minNumClusters'] = min_num_clusters
     __args__['name'] = name
@@ -527,8 +581,10 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     __args__['numClusters'] = num_clusters
     __args__['odbcParams'] = odbc_params
     __args__['providerConfig'] = provider_config
+    __args__['reydenClusterSizeMultiplier'] = reyden_cluster_size_multiplier
     __args__['spotInstancePolicy'] = spot_instance_policy
     __args__['state'] = state
+    __args__['statementTimeout'] = statement_timeout
     __args__['tags'] = tags
     __args__['warehouseType'] = warehouse_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -538,6 +594,7 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
         channel=pulumi.get(__response__, 'channel'),
         cluster_size=pulumi.get(__response__, 'cluster_size'),
         creator_name=pulumi.get(__response__, 'creator_name'),
+        customer_version_label=pulumi.get(__response__, 'customer_version_label'),
         data_source_id=pulumi.get(__response__, 'data_source_id'),
         enable_photon=pulumi.get(__response__, 'enable_photon'),
         enable_serverless_compute=pulumi.get(__response__, 'enable_serverless_compute'),
@@ -545,6 +602,7 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
         id=pulumi.get(__response__, 'id'),
         instance_profile_arn=pulumi.get(__response__, 'instance_profile_arn'),
         jdbc_url=pulumi.get(__response__, 'jdbc_url'),
+        max_dbu=pulumi.get(__response__, 'max_dbu'),
         max_num_clusters=pulumi.get(__response__, 'max_num_clusters'),
         min_num_clusters=pulumi.get(__response__, 'min_num_clusters'),
         name=pulumi.get(__response__, 'name'),
@@ -552,7 +610,9 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
         num_clusters=pulumi.get(__response__, 'num_clusters'),
         odbc_params=pulumi.get(__response__, 'odbc_params'),
         provider_config=pulumi.get(__response__, 'provider_config'),
+        reyden_cluster_size_multiplier=pulumi.get(__response__, 'reyden_cluster_size_multiplier'),
         spot_instance_policy=pulumi.get(__response__, 'spot_instance_policy'),
         state=pulumi.get(__response__, 'state'),
+        statement_timeout=pulumi.get(__response__, 'statement_timeout'),
         tags=pulumi.get(__response__, 'tags'),
         warehouse_type=pulumi.get(__response__, 'warehouse_type')))

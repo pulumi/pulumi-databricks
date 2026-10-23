@@ -82,7 +82,8 @@ type SqlEndpoint struct {
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringOutput `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName pulumi.StringOutput `pulumi:"creatorName"`
+	CreatorName          pulumi.StringOutput    `pulumi:"creatorName"`
+	CustomerVersionLabel pulumi.StringPtrOutput `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -96,6 +97,7 @@ type SqlEndpoint struct {
 	InstanceProfileArn pulumi.StringPtrOutput       `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl pulumi.StringOutput `pulumi:"jdbcUrl"`
+	MaxDbu  pulumi.IntPtrOutput `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters pulumi.IntPtrOutput `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
@@ -111,13 +113,15 @@ type SqlEndpoint struct {
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsOutput `pulumi:"odbcParams"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SqlEndpointProviderConfigOutput `pulumi:"providerConfig"`
+	ProviderConfig              SqlEndpointProviderConfigOutput `pulumi:"providerConfig"`
+	ReydenClusterSizeMultiplier pulumi.Float64PtrOutput         `pulumi:"reydenClusterSizeMultiplier"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrOutput `pulumi:"spotInstancePolicy"`
 	// the unique ID of the SQL warehouse.
 	SqlEndpointId pulumi.StringOutput `pulumi:"sqlEndpointId"`
 	// The current state of the endpoint.
-	State pulumi.StringOutput `pulumi:"state"`
+	State            pulumi.StringOutput `pulumi:"state"`
+	StatementTimeout pulumi.IntPtrOutput `pulumi:"statementTimeout"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrOutput `pulumi:"tags"`
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -164,7 +168,8 @@ type sqlEndpointState struct {
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName *string `pulumi:"creatorName"`
+	CreatorName          *string `pulumi:"creatorName"`
+	CustomerVersionLabel *string `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -178,6 +183,7 @@ type sqlEndpointState struct {
 	InstanceProfileArn *string             `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
+	MaxDbu  *int    `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
@@ -193,13 +199,15 @@ type sqlEndpointState struct {
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams *SqlEndpointOdbcParams `pulumi:"odbcParams"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig *SqlEndpointProviderConfig `pulumi:"providerConfig"`
+	ProviderConfig              *SqlEndpointProviderConfig `pulumi:"providerConfig"`
+	ReydenClusterSizeMultiplier *float64                   `pulumi:"reydenClusterSizeMultiplier"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// the unique ID of the SQL warehouse.
 	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// The current state of the endpoint.
-	State *string `pulumi:"state"`
+	State            *string `pulumi:"state"`
+	StatementTimeout *int    `pulumi:"statementTimeout"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -214,7 +222,8 @@ type SqlEndpointState struct {
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringPtrInput
 	// The username of the user who created the endpoint.
-	CreatorName pulumi.StringPtrInput
+	CreatorName          pulumi.StringPtrInput
+	CustomerVersionLabel pulumi.StringPtrInput
 	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -228,6 +237,7 @@ type SqlEndpointState struct {
 	InstanceProfileArn pulumi.StringPtrInput
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput
+	MaxDbu  pulumi.IntPtrInput
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters pulumi.IntPtrInput
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
@@ -243,13 +253,15 @@ type SqlEndpointState struct {
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SqlEndpointProviderConfigPtrInput
+	ProviderConfig              SqlEndpointProviderConfigPtrInput
+	ReydenClusterSizeMultiplier pulumi.Float64PtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
 	// the unique ID of the SQL warehouse.
 	SqlEndpointId pulumi.StringPtrInput
 	// The current state of the endpoint.
-	State pulumi.StringPtrInput
+	State            pulumi.StringPtrInput
+	StatementTimeout pulumi.IntPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -266,7 +278,8 @@ type sqlEndpointArgs struct {
 	// block, consisting of following fields:
 	Channel *SqlEndpointChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
-	ClusterSize string `pulumi:"clusterSize"`
+	ClusterSize          string  `pulumi:"clusterSize"`
+	CustomerVersionLabel *string `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -276,6 +289,7 @@ type sqlEndpointArgs struct {
 	// * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
 	EnableServerlessCompute *bool   `pulumi:"enableServerlessCompute"`
 	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
+	MaxDbu                  *int    `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
@@ -285,11 +299,13 @@ type sqlEndpointArgs struct {
 	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
 	NoWait *bool `pulumi:"noWait"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig *SqlEndpointProviderConfig `pulumi:"providerConfig"`
+	ProviderConfig              *SqlEndpointProviderConfig `pulumi:"providerConfig"`
+	ReydenClusterSizeMultiplier *float64                   `pulumi:"reydenClusterSizeMultiplier"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// the unique ID of the SQL warehouse.
-	SqlEndpointId *string `pulumi:"sqlEndpointId"`
+	SqlEndpointId    *string `pulumi:"sqlEndpointId"`
+	StatementTimeout *int    `pulumi:"statementTimeout"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -303,7 +319,8 @@ type SqlEndpointArgs struct {
 	// block, consisting of following fields:
 	Channel SqlEndpointChannelPtrInput
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
-	ClusterSize pulumi.StringInput
+	ClusterSize          pulumi.StringInput
+	CustomerVersionLabel pulumi.StringPtrInput
 	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -313,6 +330,7 @@ type SqlEndpointArgs struct {
 	// * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
 	EnableServerlessCompute pulumi.BoolPtrInput
 	InstanceProfileArn      pulumi.StringPtrInput
+	MaxDbu                  pulumi.IntPtrInput
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters pulumi.IntPtrInput
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
@@ -322,11 +340,13 @@ type SqlEndpointArgs struct {
 	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
 	NoWait pulumi.BoolPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SqlEndpointProviderConfigPtrInput
+	ProviderConfig              SqlEndpointProviderConfigPtrInput
+	ReydenClusterSizeMultiplier pulumi.Float64PtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
 	// the unique ID of the SQL warehouse.
-	SqlEndpointId pulumi.StringPtrInput
+	SqlEndpointId    pulumi.StringPtrInput
+	StatementTimeout pulumi.IntPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -440,6 +460,10 @@ func (o SqlEndpointOutput) CreatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.CreatorName }).(pulumi.StringOutput)
 }
 
+func (o SqlEndpointOutput) CustomerVersionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringPtrOutput { return v.CustomerVersionLabel }).(pulumi.StringPtrOutput)
+}
+
 // (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 func (o SqlEndpointOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
@@ -469,6 +493,10 @@ func (o SqlEndpointOutput) InstanceProfileArn() pulumi.StringPtrOutput {
 // JDBC connection string.
 func (o SqlEndpointOutput) JdbcUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.JdbcUrl }).(pulumi.StringOutput)
+}
+
+func (o SqlEndpointOutput) MaxDbu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.IntPtrOutput { return v.MaxDbu }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -511,6 +539,10 @@ func (o SqlEndpointOutput) ProviderConfig() SqlEndpointProviderConfigOutput {
 	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointProviderConfigOutput { return v.ProviderConfig }).(SqlEndpointProviderConfigOutput)
 }
 
+func (o SqlEndpointOutput) ReydenClusterSizeMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.Float64PtrOutput { return v.ReydenClusterSizeMultiplier }).(pulumi.Float64PtrOutput)
+}
+
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 func (o SqlEndpointOutput) SpotInstancePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringPtrOutput { return v.SpotInstancePolicy }).(pulumi.StringPtrOutput)
@@ -524,6 +556,10 @@ func (o SqlEndpointOutput) SqlEndpointId() pulumi.StringOutput {
 // The current state of the endpoint.
 func (o SqlEndpointOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o SqlEndpointOutput) StatementTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.IntPtrOutput { return v.StatementTimeout }).(pulumi.IntPtrOutput)
 }
 
 // Databricks tags all endpoint resources with these tags.

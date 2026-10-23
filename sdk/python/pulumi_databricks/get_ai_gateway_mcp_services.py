@@ -109,8 +109,8 @@ def get_ai_gateway_mcp_services(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param _builtins.int page_size: Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-           the maximum is 100. Use `page_token` to retrieve additional pages
+    :param _builtins.int page_size: Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+           the maximum is 200. Use `page_token` to retrieve additional pages
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
@@ -158,8 +158,8 @@ def get_ai_gateway_mcp_services_output(page_size: pulumi.Input[Optional[Optional
     ```
 
 
-    :param _builtins.int page_size: Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-           the maximum is 100. Use `page_token` to retrieve additional pages
+    :param _builtins.int page_size: Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+           the maximum is 200. Use `page_token` to retrieve additional pages
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually

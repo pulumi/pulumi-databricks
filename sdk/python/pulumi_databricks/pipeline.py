@@ -46,6 +46,7 @@ class PipelineArgs:
                  libraries: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notifications: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PipelineProviderConfigArgs']] = None,
@@ -142,6 +143,8 @@ class PipelineArgs:
             pulumi.set(__self__, "name", name)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
+        if parent_path is not None:
+            pulumi.set(__self__, "parent_path", parent_path)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
         if pipeline_id is not None:
@@ -446,6 +449,15 @@ class PipelineArgs:
     @notifications.setter
     def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
         pulumi.set(self, "notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parent_path")
+
+    @parent_path.setter
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter
@@ -659,6 +671,7 @@ class _PipelineState:
                  libraries: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notifications: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PipelineProviderConfigArgs']] = None,
@@ -755,6 +768,8 @@ class _PipelineState:
             pulumi.set(__self__, "name", name)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
+        if parent_path is not None:
+            pulumi.set(__self__, "parent_path", parent_path)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
         if pipeline_id is not None:
@@ -1059,6 +1074,15 @@ class _PipelineState:
     @notifications.setter
     def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
         pulumi.set(self, "notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parent_path")
+
+    @parent_path.setter
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1275,6 +1299,7 @@ class Pipeline(pulumi.CustomResource):
                  libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict', 'outputs.PipelineLibrary']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict', 'outputs.PipelineNotification']]]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict', 'outputs.PipelineProviderConfig']]] = None,
@@ -1531,6 +1556,7 @@ class Pipeline(pulumi.CustomResource):
                  libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict', 'outputs.PipelineLibrary']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict', 'outputs.PipelineNotification']]]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  photon: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict', 'outputs.PipelineProviderConfig']]] = None,
@@ -1582,6 +1608,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
+            __props__.__dict__["parent_path"] = parent_path
             __props__.__dict__["photon"] = photon
             __props__.__dict__["pipeline_id"] = pipeline_id
             __props__.__dict__["provider_config"] = provider_config
@@ -1634,6 +1661,7 @@ class Pipeline(pulumi.CustomResource):
             libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict', 'outputs.PipelineLibrary']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict', 'outputs.PipelineNotification']]]]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
             photon: pulumi.Input[Optional[_builtins.bool]] = None,
             pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict', 'outputs.PipelineProviderConfig']]] = None,
@@ -1713,6 +1741,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["libraries"] = libraries
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
+        __props__.__dict__["parent_path"] = parent_path
         __props__.__dict__["photon"] = photon
         __props__.__dict__["pipeline_id"] = pipeline_id
         __props__.__dict__["provider_config"] = provider_config
@@ -1901,6 +1930,11 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def notifications(self) -> pulumi.Output[Optional[Sequence['outputs.PipelineNotification']]]:
         return pulumi.get(self, "notifications")
+
+    @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "parent_path")
 
     @_builtins.property
     @pulumi.getter

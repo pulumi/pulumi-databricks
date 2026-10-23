@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 //
@@ -20,6 +20,8 @@ import (
 // To read the Data Classification configuration, you must have browse permissions on the catalog.
 //
 // > **Note** This data source can only be used with a workspace-level provider.
+//
+// > **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
 //
 // ## Example Usage
 //
@@ -51,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("autoTagConfigs", prodConfig.AutoTagConfigs)
+//			ctx.Export("includedSchemas", prodConfig.IncludedSchemas)
 //			return nil
 //		})
 //	}

@@ -30,7 +30,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+        /// Optional since entities are not set for RequestSource features or on-demand calculated features
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureEntityResult> Entities;
         /// <summary>

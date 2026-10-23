@@ -403,7 +403,7 @@ class PrivateNetworkGateway(pulumi.CustomResource):
 
         Create an Azure gateway in an existing NCC using an account-level provider. Use a provider release that includes this resource and an account with access to the private network gateway V1 API. Configure account-level authentication outside this file, for example through Databricks unified authentication environment variables.
 
-        Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; it has no server-side default.
+        Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; only 10, 30, 50, and 100 Gbps are allowed, and it has no server-side default.
 
         ```python
         import pulumi
@@ -414,7 +414,7 @@ class PrivateNetworkGateway(pulumi.CustomResource):
         ncc_id = config.require("nccId")
         # Full Azure resource ID of the existing gateway subnet.
         subnet_resource_id = config.require("subnetResourceId")
-        # Supported Azure bandwidth tier to provision, in Gbps.
+        # Azure bandwidth tier to provision, in Gbps. Only 10, 30, 50, and 100 are allowed.
         bandwidth_tier_gigabits_per_second = config.require_float("bandwidthTierGigabitsPerSecond")
         # Private destination hostname, for example database.internal.example.com.
         destination_hostname = config.require("destinationHostname")
@@ -474,7 +474,7 @@ class PrivateNetworkGateway(pulumi.CustomResource):
 
         Create an Azure gateway in an existing NCC using an account-level provider. Use a provider release that includes this resource and an account with access to the private network gateway V1 API. Configure account-level authentication outside this file, for example through Databricks unified authentication environment variables.
 
-        Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; it has no server-side default.
+        Supply the input variables through a `.tfvars` file or `TF_VAR_` environment variables. The subnet must already exist. Choose the Azure bandwidth tier explicitly; only 10, 30, 50, and 100 Gbps are allowed, and it has no server-side default.
 
         ```python
         import pulumi
@@ -485,7 +485,7 @@ class PrivateNetworkGateway(pulumi.CustomResource):
         ncc_id = config.require("nccId")
         # Full Azure resource ID of the existing gateway subnet.
         subnet_resource_id = config.require("subnetResourceId")
-        # Supported Azure bandwidth tier to provision, in Gbps.
+        # Azure bandwidth tier to provision, in Gbps. Only 10, 30, 50, and 100 are allowed.
         bandwidth_tier_gigabits_per_second = config.require_float("bandwidthTierGigabitsPerSecond")
         # Private destination hostname, for example database.internal.example.com.
         destination_hostname = config.require("destinationHostname")

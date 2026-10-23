@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note** This resource can only be used with a workspace-level provider.
  * 
+ * &gt; **Note** The `autoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this resource are generally available.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -46,7 +48,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.DataClassificationCatalogConfig;
  * import com.pulumi.databricks.DataClassificationCatalogConfigArgs;
  * import com.pulumi.databricks.inputs.DataClassificationCatalogConfigIncludedSchemasArgs;
- * import com.pulumi.databricks.inputs.DataClassificationCatalogConfigAutoTagConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -69,6 +70,45 @@ import javax.annotation.Nullable;
  *                     "marketing",
  *                     "customer_data")
  *                 .build())
+ *             .build());
+ * 
+ *         // Enable Data Classification for the entire catalog (all current and future schemas)
+ *         var allSchemas = new DataClassificationCatalogConfig("allSchemas", DataClassificationCatalogConfigArgs.builder()
+ *             .parent("catalogs/staging_catalog")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * To automatically tag columns detected with specific classes, set `autoTagConfigs`. This attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DataClassificationCatalogConfig;
+ * import com.pulumi.databricks.DataClassificationCatalogConfigArgs;
+ * import com.pulumi.databricks.inputs.DataClassificationCatalogConfigAutoTagConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var autoTagging = new DataClassificationCatalogConfig("autoTagging", DataClassificationCatalogConfigArgs.builder()
+ *             .parent("catalogs/finance_catalog")
  *             .autoTagConfigs(            
  *                 DataClassificationCatalogConfigAutoTagConfigArgs.builder()
  *                     .classificationTag("class.credit_card")
@@ -78,11 +118,6 @@ import javax.annotation.Nullable;
  *                     .classificationTag("class.email")
  *                     .autoTaggingMode("AUTO_TAGGING_ENABLED")
  *                     .build())
- *             .build());
- * 
- *         // Enable Data Classification for the entire catalog (all current and future schemas)
- *         var allSchemas = new DataClassificationCatalogConfig("allSchemas", DataClassificationCatalogConfigArgs.builder()
- *             .parent("catalogs/staging_catalog")
  *             .build());
  * 
  *     }

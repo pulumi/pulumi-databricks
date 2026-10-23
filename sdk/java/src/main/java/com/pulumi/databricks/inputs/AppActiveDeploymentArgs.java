@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppActiveDeploymentDeploymentArtifactsArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentEnvVarArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentGitSourceArgs;
+import com.pulumi.databricks.inputs.AppActiveDeploymentHealthCheckArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentStatusArgs;
 import java.lang.String;
 import java.util.List;
@@ -109,6 +110,13 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.gitSource);
     }
 
+    @Import(name="healthCheck")
+    private @Nullable Output<AppActiveDeploymentHealthCheckArgs> healthCheck;
+
+    public Optional<Output<AppActiveDeploymentHealthCheckArgs>> healthCheck() {
+        return Optional.ofNullable(this.healthCheck);
+    }
+
     /**
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      * 
@@ -179,6 +187,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         this.deploymentId = $.deploymentId;
         this.envVars = $.envVars;
         this.gitSource = $.gitSource;
+        this.healthCheck = $.healthCheck;
         this.mode = $.mode;
         this.sourceCodePath = $.sourceCodePath;
         this.status = $.status;
@@ -332,6 +341,15 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
          */
         public Builder gitSource(AppActiveDeploymentGitSourceArgs gitSource) {
             return gitSource(Output.of(gitSource));
+        }
+
+        public Builder healthCheck(@Nullable Output<AppActiveDeploymentHealthCheckArgs> healthCheck) {
+            $.healthCheck = healthCheck;
+            return this;
+        }
+
+        public Builder healthCheck(AppActiveDeploymentHealthCheckArgs healthCheck) {
+            return healthCheck(Output.of(healthCheck));
         }
 
         /**

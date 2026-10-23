@@ -27,7 +27,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string SecurableKind;
         /// <summary>
-        /// (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        /// (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string SecurableType;
 

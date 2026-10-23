@@ -27,7 +27,7 @@ class GetDisasterRecoveryFailoverGroupResult:
     """
     A collection of values returned by getDisasterRecoveryFailoverGroup.
     """
-    def __init__(__self__, create_time=None, effective_primary_region=None, etag=None, initial_primary_region=None, name=None, regions=None, replication_point=None, state=None, unity_catalog_assets=None, update_time=None, workspace_sets=None):
+    def __init__(__self__, create_time=None, effective_primary_region=None, etag=None, has_replication_point_blocking_errors=None, initial_primary_region=None, initial_replication_progress=None, name=None, regions=None, replication_point=None, state=None, unity_catalog_assets=None, update_time=None, workspace_sets=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,9 +37,15 @@ class GetDisasterRecoveryFailoverGroupResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if has_replication_point_blocking_errors and not isinstance(has_replication_point_blocking_errors, bool):
+            raise TypeError("Expected argument 'has_replication_point_blocking_errors' to be a bool")
+        pulumi.set(__self__, "has_replication_point_blocking_errors", has_replication_point_blocking_errors)
         if initial_primary_region and not isinstance(initial_primary_region, str):
             raise TypeError("Expected argument 'initial_primary_region' to be a str")
         pulumi.set(__self__, "initial_primary_region", initial_primary_region)
+        if initial_replication_progress and not isinstance(initial_replication_progress, dict):
+            raise TypeError("Expected argument 'initial_replication_progress' to be a dict")
+        pulumi.set(__self__, "initial_replication_progress", initial_replication_progress)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -88,6 +94,14 @@ class GetDisasterRecoveryFailoverGroupResult:
         return pulumi.get(self, "etag")
 
     @_builtins.property
+    @pulumi.getter(name="hasReplicationPointBlockingErrors")
+    def has_replication_point_blocking_errors(self) -> _builtins.bool:
+        """
+        (boolean) - True if errors currently block the replication point
+        """
+        return pulumi.get(self, "has_replication_point_blocking_errors")
+
+    @_builtins.property
     @pulumi.getter(name="initialPrimaryRegion")
     def initial_primary_region(self) -> _builtins.str:
         """
@@ -95,6 +109,14 @@ class GetDisasterRecoveryFailoverGroupResult:
         primary region. Not returned in responses
         """
         return pulumi.get(self, "initial_primary_region")
+
+    @_builtins.property
+    @pulumi.getter(name="initialReplicationProgress")
+    def initial_replication_progress(self) -> 'outputs.GetDisasterRecoveryFailoverGroupInitialReplicationProgressResult':
+        """
+        (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+        """
+        return pulumi.get(self, "initial_replication_progress")
 
     @_builtins.property
     @pulumi.getter
@@ -162,7 +184,9 @@ class AwaitableGetDisasterRecoveryFailoverGroupResult(GetDisasterRecoveryFailove
             create_time=self.create_time,
             effective_primary_region=self.effective_primary_region,
             etag=self.etag,
+            has_replication_point_blocking_errors=self.has_replication_point_blocking_errors,
             initial_primary_region=self.initial_primary_region,
+            initial_replication_progress=self.initial_replication_progress,
             name=self.name,
             regions=self.regions,
             replication_point=self.replication_point,
@@ -207,7 +231,9 @@ def get_disaster_recovery_failover_group(name: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         effective_primary_region=pulumi.get(__ret__, 'effective_primary_region'),
         etag=pulumi.get(__ret__, 'etag'),
+        has_replication_point_blocking_errors=pulumi.get(__ret__, 'has_replication_point_blocking_errors'),
         initial_primary_region=pulumi.get(__ret__, 'initial_primary_region'),
+        initial_replication_progress=pulumi.get(__ret__, 'initial_replication_progress'),
         name=pulumi.get(__ret__, 'name'),
         regions=pulumi.get(__ret__, 'regions'),
         replication_point=pulumi.get(__ret__, 'replication_point'),
@@ -249,7 +275,9 @@ def get_disaster_recovery_failover_group_output(name: pulumi.Input[Optional[_bui
         create_time=pulumi.get(__response__, 'create_time'),
         effective_primary_region=pulumi.get(__response__, 'effective_primary_region'),
         etag=pulumi.get(__response__, 'etag'),
+        has_replication_point_blocking_errors=pulumi.get(__response__, 'has_replication_point_blocking_errors'),
         initial_primary_region=pulumi.get(__response__, 'initial_primary_region'),
+        initial_replication_progress=pulumi.get(__response__, 'initial_replication_progress'),
         name=pulumi.get(__response__, 'name'),
         regions=pulumi.get(__response__, 'regions'),
         replication_point=pulumi.get(__response__, 'replication_point'),

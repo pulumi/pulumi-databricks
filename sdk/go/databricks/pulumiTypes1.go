@@ -13,6 +13,2241 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DisableLegacyFeaturesSettingDisableLegacyFeatures struct {
+	// The boolean value for the setting.
+	Value bool `pulumi:"value"`
+}
+
+// DisableLegacyFeaturesSettingDisableLegacyFeaturesInput is an input type that accepts DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs and DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput values.
+// You can construct a concrete instance of `DisableLegacyFeaturesSettingDisableLegacyFeaturesInput` via:
+//
+//	DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{...}
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesInput interface {
+	pulumi.Input
+
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput
+}
+
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs struct {
+	// The boolean value for the setting.
+	Value pulumi.BoolInput `pulumi:"value"`
+}
+
+func (DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput)
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput).ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput is an input type that accepts DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs, DisableLegacyFeaturesSettingDisableLegacyFeaturesPtr and DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput` via:
+//
+//	        DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput
+}
+
+type disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs
+
+func DisableLegacyFeaturesSettingDisableLegacyFeaturesPtr(v *DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput {
+	return (*disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType)(v)
+}
+
+func (*disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (i *disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput)
+}
+
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyFeaturesSettingDisableLegacyFeatures) *DisableLegacyFeaturesSettingDisableLegacyFeatures {
+		return &v
+	}).(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisableLegacyFeaturesSettingDisableLegacyFeatures) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) Elem() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSettingDisableLegacyFeatures) DisableLegacyFeaturesSettingDisableLegacyFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyFeaturesSettingDisableLegacyFeatures
+		return ret
+	}).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSettingDisableLegacyFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DisableLegacyFeaturesSettingProviderConfig struct {
+	// Deprecated: workspace_id is ignored for account-only resources.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// DisableLegacyFeaturesSettingProviderConfigInput is an input type that accepts DisableLegacyFeaturesSettingProviderConfigArgs and DisableLegacyFeaturesSettingProviderConfigOutput values.
+// You can construct a concrete instance of `DisableLegacyFeaturesSettingProviderConfigInput` via:
+//
+//	DisableLegacyFeaturesSettingProviderConfigArgs{...}
+type DisableLegacyFeaturesSettingProviderConfigInput interface {
+	pulumi.Input
+
+	ToDisableLegacyFeaturesSettingProviderConfigOutput() DisableLegacyFeaturesSettingProviderConfigOutput
+	ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(context.Context) DisableLegacyFeaturesSettingProviderConfigOutput
+}
+
+type DisableLegacyFeaturesSettingProviderConfigArgs struct {
+	// Deprecated: workspace_id is ignored for account-only resources.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (DisableLegacyFeaturesSettingProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
+}
+
+func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigOutput() DisableLegacyFeaturesSettingProviderConfigOutput {
+	return i.ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingProviderConfigOutput)
+}
+
+func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return i.ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyFeaturesSettingProviderConfigArgs) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingProviderConfigOutput).ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyFeaturesSettingProviderConfigPtrInput is an input type that accepts DisableLegacyFeaturesSettingProviderConfigArgs, DisableLegacyFeaturesSettingProviderConfigPtr and DisableLegacyFeaturesSettingProviderConfigPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyFeaturesSettingProviderConfigPtrInput` via:
+//
+//	        DisableLegacyFeaturesSettingProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyFeaturesSettingProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput
+	ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput
+}
+
+type disableLegacyFeaturesSettingProviderConfigPtrType DisableLegacyFeaturesSettingProviderConfigArgs
+
+func DisableLegacyFeaturesSettingProviderConfigPtr(v *DisableLegacyFeaturesSettingProviderConfigArgs) DisableLegacyFeaturesSettingProviderConfigPtrInput {
+	return (*disableLegacyFeaturesSettingProviderConfigPtrType)(v)
+}
+
+func (*disableLegacyFeaturesSettingProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
+}
+
+func (i *disableLegacyFeaturesSettingProviderConfigPtrType) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return i.ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyFeaturesSettingProviderConfigPtrType) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingProviderConfigPtrOutput)
+}
+
+type DisableLegacyFeaturesSettingProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyFeaturesSettingProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigOutput() DisableLegacyFeaturesSettingProviderConfigOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return o.ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyFeaturesSettingProviderConfig) *DisableLegacyFeaturesSettingProviderConfig {
+		return &v
+	}).(DisableLegacyFeaturesSettingProviderConfigPtrOutput)
+}
+
+// Deprecated: workspace_id is ignored for account-only resources.
+func (o DisableLegacyFeaturesSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DisableLegacyFeaturesSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type DisableLegacyFeaturesSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyFeaturesSettingProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyFeaturesSettingProviderConfig)(nil)).Elem()
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutput() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) ToDisableLegacyFeaturesSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) Elem() DisableLegacyFeaturesSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSettingProviderConfig) DisableLegacyFeaturesSettingProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyFeaturesSettingProviderConfig
+		return ret
+	}).(DisableLegacyFeaturesSettingProviderConfigOutput)
+}
+
+// Deprecated: workspace_id is ignored for account-only resources.
+func (o DisableLegacyFeaturesSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSettingProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DisasterRecoveryFailoverGroupInitialReplicationProgress struct {
+	// (integer) - Percent complete, 0-100
+	Completed *int `pulumi:"completed"`
+}
+
+// DisasterRecoveryFailoverGroupInitialReplicationProgressInput is an input type that accepts DisasterRecoveryFailoverGroupInitialReplicationProgressArgs and DisasterRecoveryFailoverGroupInitialReplicationProgressOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupInitialReplicationProgressInput` via:
+//
+//	DisasterRecoveryFailoverGroupInitialReplicationProgressArgs{...}
+type DisasterRecoveryFailoverGroupInitialReplicationProgressInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressOutput
+	ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutputWithContext(context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressOutput
+}
+
+type DisasterRecoveryFailoverGroupInitialReplicationProgressArgs struct {
+	// (integer) - Percent complete, 0-100
+	Completed pulumi.IntPtrInput `pulumi:"completed"`
+}
+
+func (DisasterRecoveryFailoverGroupInitialReplicationProgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupInitialReplicationProgress)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupInitialReplicationProgressArgs) ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return i.ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupInitialReplicationProgressArgs) ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupInitialReplicationProgressOutput)
+}
+
+func (i DisasterRecoveryFailoverGroupInitialReplicationProgressArgs) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return i.ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupInitialReplicationProgressArgs) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupInitialReplicationProgressOutput).ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(ctx)
+}
+
+// DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput is an input type that accepts DisasterRecoveryFailoverGroupInitialReplicationProgressArgs, DisasterRecoveryFailoverGroupInitialReplicationProgressPtr and DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput` via:
+//
+//	        DisasterRecoveryFailoverGroupInitialReplicationProgressArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput
+	ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput
+}
+
+type disasterRecoveryFailoverGroupInitialReplicationProgressPtrType DisasterRecoveryFailoverGroupInitialReplicationProgressArgs
+
+func DisasterRecoveryFailoverGroupInitialReplicationProgressPtr(v *DisasterRecoveryFailoverGroupInitialReplicationProgressArgs) DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput {
+	return (*disasterRecoveryFailoverGroupInitialReplicationProgressPtrType)(v)
+}
+
+func (*disasterRecoveryFailoverGroupInitialReplicationProgressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisasterRecoveryFailoverGroupInitialReplicationProgress)(nil)).Elem()
+}
+
+func (i *disasterRecoveryFailoverGroupInitialReplicationProgressPtrType) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return i.ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(context.Background())
+}
+
+func (i *disasterRecoveryFailoverGroupInitialReplicationProgressPtrType) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput)
+}
+
+type DisasterRecoveryFailoverGroupInitialReplicationProgressOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupInitialReplicationProgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupInitialReplicationProgress)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressOutput) ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressOutput) ToDisasterRecoveryFailoverGroupInitialReplicationProgressOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressOutput) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return o.ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(context.Background())
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressOutput) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisasterRecoveryFailoverGroupInitialReplicationProgress) *DisasterRecoveryFailoverGroupInitialReplicationProgress {
+		return &v
+	}).(DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput)
+}
+
+// (integer) - Percent complete, 0-100
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressOutput) Completed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupInitialReplicationProgress) *int { return v.Completed }).(pulumi.IntPtrOutput)
+}
+
+type DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisasterRecoveryFailoverGroupInitialReplicationProgress)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput() DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput) ToDisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput) Elem() DisasterRecoveryFailoverGroupInitialReplicationProgressOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupInitialReplicationProgress) DisasterRecoveryFailoverGroupInitialReplicationProgress {
+		if v != nil {
+			return *v
+		}
+		var ret DisasterRecoveryFailoverGroupInitialReplicationProgress
+		return ret
+	}).(DisasterRecoveryFailoverGroupInitialReplicationProgressOutput)
+}
+
+// (integer) - Percent complete, 0-100
+func (o DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput) Completed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupInitialReplicationProgress) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Completed
+	}).(pulumi.IntPtrOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssets struct {
+	// UC catalogs to replicate
+	Catalogs []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog `pulumi:"catalogs"`
+	// The workspace set whose workspaces will be used for data replication
+	// of all UC catalogs' underlying storage
+	DataReplicationWorkspaceSet string `pulumi:"dataReplicationWorkspaceSet"`
+	// Location mappings - storage URI per region for each location
+	LocationMappings []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping `pulumi:"locationMappings"`
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{...}
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs struct {
+	// UC catalogs to replicate
+	Catalogs DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput `pulumi:"catalogs"`
+	// The workspace set whose workspaces will be used for data replication
+	// of all UC catalogs' underlying storage
+	DataReplicationWorkspaceSet pulumi.StringInput `pulumi:"dataReplicationWorkspaceSet"`
+	// Location mappings - storage URI per region for each location
+	LocationMappings DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput `pulumi:"locationMappings"`
+}
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput)
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput).ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx)
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs, DisasterRecoveryFailoverGroupUnityCatalogAssetsPtr and DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput` via:
+//
+//	        DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput
+}
+
+type disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs
+
+func DisasterRecoveryFailoverGroupUnityCatalogAssetsPtr(v *DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput {
+	return (*disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType)(v)
+}
+
+func (*disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
+}
+
+func (i *disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Background())
+}
+
+func (i *disasterRecoveryFailoverGroupUnityCatalogAssetsPtrType) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return o.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(context.Background())
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisasterRecoveryFailoverGroupUnityCatalogAssets) *DisasterRecoveryFailoverGroupUnityCatalogAssets {
+		return &v
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput)
+}
+
+// UC catalogs to replicate
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) Catalogs() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
+		return v.Catalogs
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput)
+}
+
+// The workspace set whose workspaces will be used for data replication
+// of all UC catalogs' underlying storage
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) DataReplicationWorkspaceSet() pulumi.StringOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssets) string { return v.DataReplicationWorkspaceSet }).(pulumi.StringOutput)
+}
+
+// Location mappings - storage URI per region for each location
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput) LocationMappings() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
+		return v.LocationMappings
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisasterRecoveryFailoverGroupUnityCatalogAssets)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) Elem() DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) DisasterRecoveryFailoverGroupUnityCatalogAssets {
+		if v != nil {
+			return *v
+		}
+		var ret DisasterRecoveryFailoverGroupUnityCatalogAssets
+		return ret
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput)
+}
+
+// UC catalogs to replicate
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) Catalogs() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
+		if v == nil {
+			return nil
+		}
+		return v.Catalogs
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput)
+}
+
+// The workspace set whose workspaces will be used for data replication
+// of all UC catalogs' underlying storage
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) DataReplicationWorkspaceSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataReplicationWorkspaceSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location mappings - storage URI per region for each location
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput) LocationMappings() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroupUnityCatalogAssets) []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
+		if v == nil {
+			return nil
+		}
+		return v.LocationMappings
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog struct {
+	// (string) - Fully qualified resource name in the format
+	// accounts/{account_id}/failover-groups/{failover_group_id}
+	Name string `pulumi:"name"`
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs{...}
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs struct {
+	// (string) - Fully qualified resource name in the format
+	// accounts/{account_id}/failover-groups/{failover_group_id}
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput)
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray and DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray{ DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs{...} }
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray []DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
+	return o
+}
+
+// (string) - Fully qualified resource name in the format
+// accounts/{account_id}/failover-groups/{failover_group_id}
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
+		return vs[0].([]DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog)[vs[1].(int)]
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping struct {
+	// (string) - Fully qualified resource name in the format
+	// accounts/{account_id}/failover-groups/{failover_group_id}
+	Name string `pulumi:"name"`
+	// URI for each region. Each entry maps a region name to a storage URI
+	UriByRegions []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion `pulumi:"uriByRegions"`
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs{...}
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs struct {
+	// (string) - Fully qualified resource name in the format
+	// accounts/{account_id}/failover-groups/{failover_group_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI for each region. Each entry maps a region name to a storage URI
+	UriByRegions DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput `pulumi:"uriByRegions"`
+}
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput)
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray{ DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs{...} }
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
+	return o
+}
+
+// (string) - Fully qualified resource name in the format
+// accounts/{account_id}/failover-groups/{failover_group_id}
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI for each region. Each entry maps a region name to a storage URI
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput) UriByRegions() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping) []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
+		return v.UriByRegions
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
+		return vs[0].([]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping)[vs[1].(int)]
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion struct {
+	// The region name
+	Region string `pulumi:"region"`
+	// The storage URI for this region
+	Uri string `pulumi:"uri"`
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs{...}
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs struct {
+	// The region name
+	Region pulumi.StringInput `pulumi:"region"`
+	// The storage URI for this region
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput)
+}
+
+// DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput is an input type that accepts DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray and DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput` via:
+//
+//	DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray{ DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs{...} }
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput
+	ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray []DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
+	return i.ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
+	return o
+}
+
+// The region name
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+// The storage URI for this region
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput() DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) ToDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
+		return vs[0].([]DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion)[vs[1].(int)]
+	}).(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput)
+}
+
+type DisasterRecoveryFailoverGroupWorkspaceSet struct {
+	// (string) - Fully qualified resource name in the format
+	// accounts/{account_id}/failover-groups/{failover_group_id}
+	Name string `pulumi:"name"`
+	// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+	// Defaults to false
+	ReplicateWorkspaceAssets *bool `pulumi:"replicateWorkspaceAssets"`
+	// Resource names of stable URLs associated with this workspace set.
+	// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
+	// The referenced stable URLs must already exist (via CreateStableUrl)
+	StableUrlNames []string `pulumi:"stableUrlNames"`
+	// Workspace IDs in this set. The system derives and validates regions.
+	// All workspaces must be in the Mission Critical tier
+	WorkspaceIds []string `pulumi:"workspaceIds"`
+}
+
+// DisasterRecoveryFailoverGroupWorkspaceSetInput is an input type that accepts DisasterRecoveryFailoverGroupWorkspaceSetArgs and DisasterRecoveryFailoverGroupWorkspaceSetOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupWorkspaceSetInput` via:
+//
+//	DisasterRecoveryFailoverGroupWorkspaceSetArgs{...}
+type DisasterRecoveryFailoverGroupWorkspaceSetInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupWorkspaceSetOutput() DisasterRecoveryFailoverGroupWorkspaceSetOutput
+	ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(context.Context) DisasterRecoveryFailoverGroupWorkspaceSetOutput
+}
+
+type DisasterRecoveryFailoverGroupWorkspaceSetArgs struct {
+	// (string) - Fully qualified resource name in the format
+	// accounts/{account_id}/failover-groups/{failover_group_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+	// Defaults to false
+	ReplicateWorkspaceAssets pulumi.BoolPtrInput `pulumi:"replicateWorkspaceAssets"`
+	// Resource names of stable URLs associated with this workspace set.
+	// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
+	// The referenced stable URLs must already exist (via CreateStableUrl)
+	StableUrlNames pulumi.StringArrayInput `pulumi:"stableUrlNames"`
+	// Workspace IDs in this set. The system derives and validates regions.
+	// All workspaces must be in the Mission Critical tier
+	WorkspaceIds pulumi.StringArrayInput `pulumi:"workspaceIds"`
+}
+
+func (DisasterRecoveryFailoverGroupWorkspaceSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupWorkspaceSetArgs) ToDisasterRecoveryFailoverGroupWorkspaceSetOutput() DisasterRecoveryFailoverGroupWorkspaceSetOutput {
+	return i.ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupWorkspaceSetArgs) ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupWorkspaceSetOutput)
+}
+
+// DisasterRecoveryFailoverGroupWorkspaceSetArrayInput is an input type that accepts DisasterRecoveryFailoverGroupWorkspaceSetArray and DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput values.
+// You can construct a concrete instance of `DisasterRecoveryFailoverGroupWorkspaceSetArrayInput` via:
+//
+//	DisasterRecoveryFailoverGroupWorkspaceSetArray{ DisasterRecoveryFailoverGroupWorkspaceSetArgs{...} }
+type DisasterRecoveryFailoverGroupWorkspaceSetArrayInput interface {
+	pulumi.Input
+
+	ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutput() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput
+	ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(context.Context) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput
+}
+
+type DisasterRecoveryFailoverGroupWorkspaceSetArray []DisasterRecoveryFailoverGroupWorkspaceSetInput
+
+func (DisasterRecoveryFailoverGroupWorkspaceSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
+}
+
+func (i DisasterRecoveryFailoverGroupWorkspaceSetArray) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutput() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
+	return i.ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(context.Background())
+}
+
+func (i DisasterRecoveryFailoverGroupWorkspaceSetArray) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupWorkspaceSetOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupWorkspaceSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetOutput() DisasterRecoveryFailoverGroupWorkspaceSetOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetOutput {
+	return o
+}
+
+// (string) - Fully qualified resource name in the format
+// accounts/{account_id}/failover-groups/{failover_group_id}
+func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+// Defaults to false
+func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) ReplicateWorkspaceAssets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) *bool { return v.ReplicateWorkspaceAssets }).(pulumi.BoolPtrOutput)
+}
+
+// Resource names of stable URLs associated with this workspace set.
+// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
+// The referenced stable URLs must already exist (via CreateStableUrl)
+func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) StableUrlNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) []string { return v.StableUrlNames }).(pulumi.StringArrayOutput)
+}
+
+// Workspace IDs in this set. The system derives and validates regions.
+// All workspaces must be in the Mission Critical tier
+func (o DisasterRecoveryFailoverGroupWorkspaceSetOutput) WorkspaceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DisasterRecoveryFailoverGroupWorkspaceSet) []string { return v.WorkspaceIds }).(pulumi.StringArrayOutput)
+}
+
+type DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput struct{ *pulumi.OutputState }
+
+func (DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DisasterRecoveryFailoverGroupWorkspaceSet)(nil)).Elem()
+}
+
+func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutput() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) ToDisasterRecoveryFailoverGroupWorkspaceSetArrayOutputWithContext(ctx context.Context) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
+	return o
+}
+
+func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) Index(i pulumi.IntInput) DisasterRecoveryFailoverGroupWorkspaceSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisasterRecoveryFailoverGroupWorkspaceSet {
+		return vs[0].([]DisasterRecoveryFailoverGroupWorkspaceSet)[vs[1].(int)]
+	}).(DisasterRecoveryFailoverGroupWorkspaceSetOutput)
+}
+
+type DomainIcon struct {
+	// Hex color code with # prefix (e.g., "#FF5733")
+	Color *string `pulumi:"color"`
+	// (string) - Full resource name of the domain. The primary identifier for this resource.
+	// Format: `domains/{domain_id}`
+	// Identifies the domain on get, update, and delete. Not an input on
+	// create — to choose the id, set `CreateDomainRequest.domain_id`
+	Name *string `pulumi:"name"`
+}
+
+// DomainIconInput is an input type that accepts DomainIconArgs and DomainIconOutput values.
+// You can construct a concrete instance of `DomainIconInput` via:
+//
+//	DomainIconArgs{...}
+type DomainIconInput interface {
+	pulumi.Input
+
+	ToDomainIconOutput() DomainIconOutput
+	ToDomainIconOutputWithContext(context.Context) DomainIconOutput
+}
+
+type DomainIconArgs struct {
+	// Hex color code with # prefix (e.g., "#FF5733")
+	Color pulumi.StringPtrInput `pulumi:"color"`
+	// (string) - Full resource name of the domain. The primary identifier for this resource.
+	// Format: `domains/{domain_id}`
+	// Identifies the domain on get, update, and delete. Not an input on
+	// create — to choose the id, set `CreateDomainRequest.domain_id`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DomainIconArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIcon)(nil)).Elem()
+}
+
+func (i DomainIconArgs) ToDomainIconOutput() DomainIconOutput {
+	return i.ToDomainIconOutputWithContext(context.Background())
+}
+
+func (i DomainIconArgs) ToDomainIconOutputWithContext(ctx context.Context) DomainIconOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIconOutput)
+}
+
+func (i DomainIconArgs) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return i.ToDomainIconPtrOutputWithContext(context.Background())
+}
+
+func (i DomainIconArgs) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIconOutput).ToDomainIconPtrOutputWithContext(ctx)
+}
+
+// DomainIconPtrInput is an input type that accepts DomainIconArgs, DomainIconPtr and DomainIconPtrOutput values.
+// You can construct a concrete instance of `DomainIconPtrInput` via:
+//
+//	        DomainIconArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainIconPtrInput interface {
+	pulumi.Input
+
+	ToDomainIconPtrOutput() DomainIconPtrOutput
+	ToDomainIconPtrOutputWithContext(context.Context) DomainIconPtrOutput
+}
+
+type domainIconPtrType DomainIconArgs
+
+func DomainIconPtr(v *DomainIconArgs) DomainIconPtrInput {
+	return (*domainIconPtrType)(v)
+}
+
+func (*domainIconPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIcon)(nil)).Elem()
+}
+
+func (i *domainIconPtrType) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return i.ToDomainIconPtrOutputWithContext(context.Background())
+}
+
+func (i *domainIconPtrType) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIconPtrOutput)
+}
+
+type DomainIconOutput struct{ *pulumi.OutputState }
+
+func (DomainIconOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIcon)(nil)).Elem()
+}
+
+func (o DomainIconOutput) ToDomainIconOutput() DomainIconOutput {
+	return o
+}
+
+func (o DomainIconOutput) ToDomainIconOutputWithContext(ctx context.Context) DomainIconOutput {
+	return o
+}
+
+func (o DomainIconOutput) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return o.ToDomainIconPtrOutputWithContext(context.Background())
+}
+
+func (o DomainIconOutput) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainIcon) *DomainIcon {
+		return &v
+	}).(DomainIconPtrOutput)
+}
+
+// Hex color code with # prefix (e.g., "#FF5733")
+func (o DomainIconOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainIcon) *string { return v.Color }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Full resource name of the domain. The primary identifier for this resource.
+// Format: `domains/{domain_id}`
+// Identifies the domain on get, update, and delete. Not an input on
+// create — to choose the id, set `CreateDomainRequest.domain_id`
+func (o DomainIconOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainIcon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DomainIconPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainIconPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIcon)(nil)).Elem()
+}
+
+func (o DomainIconPtrOutput) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return o
+}
+
+func (o DomainIconPtrOutput) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return o
+}
+
+func (o DomainIconPtrOutput) Elem() DomainIconOutput {
+	return o.ApplyT(func(v *DomainIcon) DomainIcon {
+		if v != nil {
+			return *v
+		}
+		var ret DomainIcon
+		return ret
+	}).(DomainIconOutput)
+}
+
+// Hex color code with # prefix (e.g., "#FF5733")
+func (o DomainIconPtrOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainIcon) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Color
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Full resource name of the domain. The primary identifier for this resource.
+// Format: `domains/{domain_id}`
+// Identifies the domain on get, update, and delete. Not an input on
+// create — to choose the id, set `CreateDomainRequest.domain_id`
+func (o DomainIconPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainIcon) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type DomainProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// DomainProviderConfigInput is an input type that accepts DomainProviderConfigArgs and DomainProviderConfigOutput values.
+// You can construct a concrete instance of `DomainProviderConfigInput` via:
+//
+//	DomainProviderConfigArgs{...}
+type DomainProviderConfigInput interface {
+	pulumi.Input
+
+	ToDomainProviderConfigOutput() DomainProviderConfigOutput
+	ToDomainProviderConfigOutputWithContext(context.Context) DomainProviderConfigOutput
+}
+
+type DomainProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (DomainProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainProviderConfig)(nil)).Elem()
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigOutput() DomainProviderConfigOutput {
+	return i.ToDomainProviderConfigOutputWithContext(context.Background())
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigOutputWithContext(ctx context.Context) DomainProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigOutput)
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return i.ToDomainProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigOutput).ToDomainProviderConfigPtrOutputWithContext(ctx)
+}
+
+// DomainProviderConfigPtrInput is an input type that accepts DomainProviderConfigArgs, DomainProviderConfigPtr and DomainProviderConfigPtrOutput values.
+// You can construct a concrete instance of `DomainProviderConfigPtrInput` via:
+//
+//	        DomainProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput
+	ToDomainProviderConfigPtrOutputWithContext(context.Context) DomainProviderConfigPtrOutput
+}
+
+type domainProviderConfigPtrType DomainProviderConfigArgs
+
+func DomainProviderConfigPtr(v *DomainProviderConfigArgs) DomainProviderConfigPtrInput {
+	return (*domainProviderConfigPtrType)(v)
+}
+
+func (*domainProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainProviderConfig)(nil)).Elem()
+}
+
+func (i *domainProviderConfigPtrType) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return i.ToDomainProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *domainProviderConfigPtrType) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigPtrOutput)
+}
+
+type DomainProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (DomainProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainProviderConfig)(nil)).Elem()
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigOutput() DomainProviderConfigOutput {
+	return o
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigOutputWithContext(ctx context.Context) DomainProviderConfigOutput {
+	return o
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return o.ToDomainProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainProviderConfig) *DomainProviderConfig {
+		return &v
+	}).(DomainProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DomainProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type DomainProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainProviderConfig)(nil)).Elem()
+}
+
+func (o DomainProviderConfigPtrOutput) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return o
+}
+
+func (o DomainProviderConfigPtrOutput) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return o
+}
+
+func (o DomainProviderConfigPtrOutput) Elem() DomainProviderConfigOutput {
+	return o.ApplyT(func(v *DomainProviderConfig) DomainProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainProviderConfig
+		return ret
+	}).(DomainProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DomainProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type EndpointAwsVpcEndpointInfo struct {
+	// (string) - The AWS account ID in which this VPC endpoint lives
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+	AwsEndpointServiceId *string `pulumi:"awsEndpointServiceId"`
+	// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+	// registering an existing AWS VPC endpoint
+	AwsVpcEndpointId string `pulumi:"awsVpcEndpointId"`
+}
+
+// EndpointAwsVpcEndpointInfoInput is an input type that accepts EndpointAwsVpcEndpointInfoArgs and EndpointAwsVpcEndpointInfoOutput values.
+// You can construct a concrete instance of `EndpointAwsVpcEndpointInfoInput` via:
+//
+//	EndpointAwsVpcEndpointInfoArgs{...}
+type EndpointAwsVpcEndpointInfoInput interface {
+	pulumi.Input
+
+	ToEndpointAwsVpcEndpointInfoOutput() EndpointAwsVpcEndpointInfoOutput
+	ToEndpointAwsVpcEndpointInfoOutputWithContext(context.Context) EndpointAwsVpcEndpointInfoOutput
+}
+
+type EndpointAwsVpcEndpointInfoArgs struct {
+	// (string) - The AWS account ID in which this VPC endpoint lives
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+	AwsEndpointServiceId pulumi.StringPtrInput `pulumi:"awsEndpointServiceId"`
+	// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+	// registering an existing AWS VPC endpoint
+	AwsVpcEndpointId pulumi.StringInput `pulumi:"awsVpcEndpointId"`
+}
+
+func (EndpointAwsVpcEndpointInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAwsVpcEndpointInfo)(nil)).Elem()
+}
+
+func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoOutput() EndpointAwsVpcEndpointInfoOutput {
+	return i.ToEndpointAwsVpcEndpointInfoOutputWithContext(context.Background())
+}
+
+func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAwsVpcEndpointInfoOutput)
+}
+
+func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
+	return i.ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointAwsVpcEndpointInfoArgs) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAwsVpcEndpointInfoOutput).ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx)
+}
+
+// EndpointAwsVpcEndpointInfoPtrInput is an input type that accepts EndpointAwsVpcEndpointInfoArgs, EndpointAwsVpcEndpointInfoPtr and EndpointAwsVpcEndpointInfoPtrOutput values.
+// You can construct a concrete instance of `EndpointAwsVpcEndpointInfoPtrInput` via:
+//
+//	        EndpointAwsVpcEndpointInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndpointAwsVpcEndpointInfoPtrInput interface {
+	pulumi.Input
+
+	ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput
+	ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Context) EndpointAwsVpcEndpointInfoPtrOutput
+}
+
+type endpointAwsVpcEndpointInfoPtrType EndpointAwsVpcEndpointInfoArgs
+
+func EndpointAwsVpcEndpointInfoPtr(v *EndpointAwsVpcEndpointInfoArgs) EndpointAwsVpcEndpointInfoPtrInput {
+	return (*endpointAwsVpcEndpointInfoPtrType)(v)
+}
+
+func (*endpointAwsVpcEndpointInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointAwsVpcEndpointInfo)(nil)).Elem()
+}
+
+func (i *endpointAwsVpcEndpointInfoPtrType) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
+	return i.ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointAwsVpcEndpointInfoPtrType) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAwsVpcEndpointInfoPtrOutput)
+}
+
+type EndpointAwsVpcEndpointInfoOutput struct{ *pulumi.OutputState }
+
+func (EndpointAwsVpcEndpointInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAwsVpcEndpointInfo)(nil)).Elem()
+}
+
+func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoOutput() EndpointAwsVpcEndpointInfoOutput {
+	return o
+}
+
+func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoOutput {
+	return o
+}
+
+func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
+	return o.ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointAwsVpcEndpointInfoOutput) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAwsVpcEndpointInfo) *EndpointAwsVpcEndpointInfo {
+		return &v
+	}).(EndpointAwsVpcEndpointInfoPtrOutput)
+}
+
+// (string) - The AWS account ID in which this VPC endpoint lives
+func (o EndpointAwsVpcEndpointInfoOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointAwsVpcEndpointInfo) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+func (o EndpointAwsVpcEndpointInfoOutput) AwsEndpointServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointAwsVpcEndpointInfo) *string { return v.AwsEndpointServiceId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+// registering an existing AWS VPC endpoint
+func (o EndpointAwsVpcEndpointInfoOutput) AwsVpcEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointAwsVpcEndpointInfo) string { return v.AwsVpcEndpointId }).(pulumi.StringOutput)
+}
+
+type EndpointAwsVpcEndpointInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointAwsVpcEndpointInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointAwsVpcEndpointInfo)(nil)).Elem()
+}
+
+func (o EndpointAwsVpcEndpointInfoPtrOutput) ToEndpointAwsVpcEndpointInfoPtrOutput() EndpointAwsVpcEndpointInfoPtrOutput {
+	return o
+}
+
+func (o EndpointAwsVpcEndpointInfoPtrOutput) ToEndpointAwsVpcEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAwsVpcEndpointInfoPtrOutput {
+	return o
+}
+
+func (o EndpointAwsVpcEndpointInfoPtrOutput) Elem() EndpointAwsVpcEndpointInfoOutput {
+	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) EndpointAwsVpcEndpointInfo {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointAwsVpcEndpointInfo
+		return ret
+	}).(EndpointAwsVpcEndpointInfoOutput)
+}
+
+// (string) - The AWS account ID in which this VPC endpoint lives
+func (o EndpointAwsVpcEndpointInfoPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+func (o EndpointAwsVpcEndpointInfoPtrOutput) AwsEndpointServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsEndpointServiceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+// registering an existing AWS VPC endpoint
+func (o EndpointAwsVpcEndpointInfoPtrOutput) AwsVpcEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAwsVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsVpcEndpointId
+	}).(pulumi.StringPtrOutput)
+}
+
+type EndpointAzurePrivateEndpointInfo struct {
+	// The name of the Private Endpoint in the Azure subscription
+	PrivateEndpointName string `pulumi:"privateEndpointName"`
+	// The GUID of the Private Endpoint resource in the Azure subscription.
+	// This is assigned by Azure when the user sets up the Private Endpoint
+	PrivateEndpointResourceGuid string `pulumi:"privateEndpointResourceGuid"`
+	// (string) - The full resource ID of the Private Endpoint
+	PrivateEndpointResourceId *string `pulumi:"privateEndpointResourceId"`
+	// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+	PrivateLinkServiceId *string `pulumi:"privateLinkServiceId"`
+}
+
+// EndpointAzurePrivateEndpointInfoInput is an input type that accepts EndpointAzurePrivateEndpointInfoArgs and EndpointAzurePrivateEndpointInfoOutput values.
+// You can construct a concrete instance of `EndpointAzurePrivateEndpointInfoInput` via:
+//
+//	EndpointAzurePrivateEndpointInfoArgs{...}
+type EndpointAzurePrivateEndpointInfoInput interface {
+	pulumi.Input
+
+	ToEndpointAzurePrivateEndpointInfoOutput() EndpointAzurePrivateEndpointInfoOutput
+	ToEndpointAzurePrivateEndpointInfoOutputWithContext(context.Context) EndpointAzurePrivateEndpointInfoOutput
+}
+
+type EndpointAzurePrivateEndpointInfoArgs struct {
+	// The name of the Private Endpoint in the Azure subscription
+	PrivateEndpointName pulumi.StringInput `pulumi:"privateEndpointName"`
+	// The GUID of the Private Endpoint resource in the Azure subscription.
+	// This is assigned by Azure when the user sets up the Private Endpoint
+	PrivateEndpointResourceGuid pulumi.StringInput `pulumi:"privateEndpointResourceGuid"`
+	// (string) - The full resource ID of the Private Endpoint
+	PrivateEndpointResourceId pulumi.StringPtrInput `pulumi:"privateEndpointResourceId"`
+	// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+	PrivateLinkServiceId pulumi.StringPtrInput `pulumi:"privateLinkServiceId"`
+}
+
+func (EndpointAzurePrivateEndpointInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAzurePrivateEndpointInfo)(nil)).Elem()
+}
+
+func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoOutput() EndpointAzurePrivateEndpointInfoOutput {
+	return i.ToEndpointAzurePrivateEndpointInfoOutputWithContext(context.Background())
+}
+
+func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAzurePrivateEndpointInfoOutput)
+}
+
+func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
+	return i.ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointAzurePrivateEndpointInfoArgs) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAzurePrivateEndpointInfoOutput).ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx)
+}
+
+// EndpointAzurePrivateEndpointInfoPtrInput is an input type that accepts EndpointAzurePrivateEndpointInfoArgs, EndpointAzurePrivateEndpointInfoPtr and EndpointAzurePrivateEndpointInfoPtrOutput values.
+// You can construct a concrete instance of `EndpointAzurePrivateEndpointInfoPtrInput` via:
+//
+//	        EndpointAzurePrivateEndpointInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndpointAzurePrivateEndpointInfoPtrInput interface {
+	pulumi.Input
+
+	ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput
+	ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Context) EndpointAzurePrivateEndpointInfoPtrOutput
+}
+
+type endpointAzurePrivateEndpointInfoPtrType EndpointAzurePrivateEndpointInfoArgs
+
+func EndpointAzurePrivateEndpointInfoPtr(v *EndpointAzurePrivateEndpointInfoArgs) EndpointAzurePrivateEndpointInfoPtrInput {
+	return (*endpointAzurePrivateEndpointInfoPtrType)(v)
+}
+
+func (*endpointAzurePrivateEndpointInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointAzurePrivateEndpointInfo)(nil)).Elem()
+}
+
+func (i *endpointAzurePrivateEndpointInfoPtrType) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
+	return i.ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointAzurePrivateEndpointInfoPtrType) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAzurePrivateEndpointInfoPtrOutput)
+}
+
+type EndpointAzurePrivateEndpointInfoOutput struct{ *pulumi.OutputState }
+
+func (EndpointAzurePrivateEndpointInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAzurePrivateEndpointInfo)(nil)).Elem()
+}
+
+func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoOutput() EndpointAzurePrivateEndpointInfoOutput {
+	return o
+}
+
+func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoOutput {
+	return o
+}
+
+func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
+	return o.ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointAzurePrivateEndpointInfoOutput) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAzurePrivateEndpointInfo) *EndpointAzurePrivateEndpointInfo {
+		return &v
+	}).(EndpointAzurePrivateEndpointInfoPtrOutput)
+}
+
+// The name of the Private Endpoint in the Azure subscription
+func (o EndpointAzurePrivateEndpointInfoOutput) PrivateEndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) string { return v.PrivateEndpointName }).(pulumi.StringOutput)
+}
+
+// The GUID of the Private Endpoint resource in the Azure subscription.
+// This is assigned by Azure when the user sets up the Private Endpoint
+func (o EndpointAzurePrivateEndpointInfoOutput) PrivateEndpointResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) string { return v.PrivateEndpointResourceGuid }).(pulumi.StringOutput)
+}
+
+// (string) - The full resource ID of the Private Endpoint
+func (o EndpointAzurePrivateEndpointInfoOutput) PrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) *string { return v.PrivateEndpointResourceId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+func (o EndpointAzurePrivateEndpointInfoOutput) PrivateLinkServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointAzurePrivateEndpointInfo) *string { return v.PrivateLinkServiceId }).(pulumi.StringPtrOutput)
+}
+
+type EndpointAzurePrivateEndpointInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointAzurePrivateEndpointInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointAzurePrivateEndpointInfo)(nil)).Elem()
+}
+
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) ToEndpointAzurePrivateEndpointInfoPtrOutput() EndpointAzurePrivateEndpointInfoPtrOutput {
+	return o
+}
+
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) ToEndpointAzurePrivateEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointAzurePrivateEndpointInfoPtrOutput {
+	return o
+}
+
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) Elem() EndpointAzurePrivateEndpointInfoOutput {
+	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) EndpointAzurePrivateEndpointInfo {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointAzurePrivateEndpointInfo
+		return ret
+	}).(EndpointAzurePrivateEndpointInfoOutput)
+}
+
+// The name of the Private Endpoint in the Azure subscription
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateEndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateEndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GUID of the Private Endpoint resource in the Azure subscription.
+// This is assigned by Azure when the user sets up the Private Endpoint
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateEndpointResourceGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateEndpointResourceGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - The full resource ID of the Private Endpoint
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+func (o EndpointAzurePrivateEndpointInfoPtrOutput) PrivateLinkServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAzurePrivateEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkServiceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type EndpointGcpPscEndpointInfo struct {
+	// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+	// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+	// region
+	EndpointRegion string `pulumi:"endpointRegion"`
+	// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+	// when registering an existing PSC endpoint
+	ProjectId string `pulumi:"projectId"`
+	// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+	// assigned by GCP when the PSC connection is created
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// The name of this PSC connection in the GCP consumer project. Provided by the customer when
+	// registering an existing PSC endpoint
+	PscEndpoint string `pulumi:"pscEndpoint"`
+	// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+	ServiceAttachmentId *string `pulumi:"serviceAttachmentId"`
+}
+
+// EndpointGcpPscEndpointInfoInput is an input type that accepts EndpointGcpPscEndpointInfoArgs and EndpointGcpPscEndpointInfoOutput values.
+// You can construct a concrete instance of `EndpointGcpPscEndpointInfoInput` via:
+//
+//	EndpointGcpPscEndpointInfoArgs{...}
+type EndpointGcpPscEndpointInfoInput interface {
+	pulumi.Input
+
+	ToEndpointGcpPscEndpointInfoOutput() EndpointGcpPscEndpointInfoOutput
+	ToEndpointGcpPscEndpointInfoOutputWithContext(context.Context) EndpointGcpPscEndpointInfoOutput
+}
+
+type EndpointGcpPscEndpointInfoArgs struct {
+	// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+	// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+	// region
+	EndpointRegion pulumi.StringInput `pulumi:"endpointRegion"`
+	// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+	// when registering an existing PSC endpoint
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+	// assigned by GCP when the PSC connection is created
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// The name of this PSC connection in the GCP consumer project. Provided by the customer when
+	// registering an existing PSC endpoint
+	PscEndpoint pulumi.StringInput `pulumi:"pscEndpoint"`
+	// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+	ServiceAttachmentId pulumi.StringPtrInput `pulumi:"serviceAttachmentId"`
+}
+
+func (EndpointGcpPscEndpointInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGcpPscEndpointInfo)(nil)).Elem()
+}
+
+func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoOutput() EndpointGcpPscEndpointInfoOutput {
+	return i.ToEndpointGcpPscEndpointInfoOutputWithContext(context.Background())
+}
+
+func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGcpPscEndpointInfoOutput)
+}
+
+func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
+	return i.ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointGcpPscEndpointInfoArgs) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGcpPscEndpointInfoOutput).ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx)
+}
+
+// EndpointGcpPscEndpointInfoPtrInput is an input type that accepts EndpointGcpPscEndpointInfoArgs, EndpointGcpPscEndpointInfoPtr and EndpointGcpPscEndpointInfoPtrOutput values.
+// You can construct a concrete instance of `EndpointGcpPscEndpointInfoPtrInput` via:
+//
+//	        EndpointGcpPscEndpointInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndpointGcpPscEndpointInfoPtrInput interface {
+	pulumi.Input
+
+	ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput
+	ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Context) EndpointGcpPscEndpointInfoPtrOutput
+}
+
+type endpointGcpPscEndpointInfoPtrType EndpointGcpPscEndpointInfoArgs
+
+func EndpointGcpPscEndpointInfoPtr(v *EndpointGcpPscEndpointInfoArgs) EndpointGcpPscEndpointInfoPtrInput {
+	return (*endpointGcpPscEndpointInfoPtrType)(v)
+}
+
+func (*endpointGcpPscEndpointInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointGcpPscEndpointInfo)(nil)).Elem()
+}
+
+func (i *endpointGcpPscEndpointInfoPtrType) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
+	return i.ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointGcpPscEndpointInfoPtrType) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGcpPscEndpointInfoPtrOutput)
+}
+
+type EndpointGcpPscEndpointInfoOutput struct{ *pulumi.OutputState }
+
+func (EndpointGcpPscEndpointInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGcpPscEndpointInfo)(nil)).Elem()
+}
+
+func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoOutput() EndpointGcpPscEndpointInfoOutput {
+	return o
+}
+
+func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoOutput {
+	return o
+}
+
+func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
+	return o.ToEndpointGcpPscEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointGcpPscEndpointInfoOutput) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointGcpPscEndpointInfo) *EndpointGcpPscEndpointInfo {
+		return &v
+	}).(EndpointGcpPscEndpointInfoPtrOutput)
+}
+
+// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+// region
+func (o EndpointGcpPscEndpointInfoOutput) EndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) string { return v.EndpointRegion }).(pulumi.StringOutput)
+}
+
+// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+// when registering an existing PSC endpoint
+func (o EndpointGcpPscEndpointInfoOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+// assigned by GCP when the PSC connection is created
+func (o EndpointGcpPscEndpointInfoOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// The name of this PSC connection in the GCP consumer project. Provided by the customer when
+// registering an existing PSC endpoint
+func (o EndpointGcpPscEndpointInfoOutput) PscEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) string { return v.PscEndpoint }).(pulumi.StringOutput)
+}
+
+// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+func (o EndpointGcpPscEndpointInfoOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointGcpPscEndpointInfo) *string { return v.ServiceAttachmentId }).(pulumi.StringPtrOutput)
+}
+
+type EndpointGcpPscEndpointInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointGcpPscEndpointInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointGcpPscEndpointInfo)(nil)).Elem()
+}
+
+func (o EndpointGcpPscEndpointInfoPtrOutput) ToEndpointGcpPscEndpointInfoPtrOutput() EndpointGcpPscEndpointInfoPtrOutput {
+	return o
+}
+
+func (o EndpointGcpPscEndpointInfoPtrOutput) ToEndpointGcpPscEndpointInfoPtrOutputWithContext(ctx context.Context) EndpointGcpPscEndpointInfoPtrOutput {
+	return o
+}
+
+func (o EndpointGcpPscEndpointInfoPtrOutput) Elem() EndpointGcpPscEndpointInfoOutput {
+	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) EndpointGcpPscEndpointInfo {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointGcpPscEndpointInfo
+		return ret
+	}).(EndpointGcpPscEndpointInfoOutput)
+}
+
+// The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+// existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+// region
+func (o EndpointGcpPscEndpointInfoPtrOutput) EndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+// when registering an existing PSC endpoint
+func (o EndpointGcpPscEndpointInfoPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+// assigned by GCP when the PSC connection is created
+func (o EndpointGcpPscEndpointInfoPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of this PSC connection in the GCP consumer project. Provided by the customer when
+// registering an existing PSC endpoint
+func (o EndpointGcpPscEndpointInfoPtrOutput) PscEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PscEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+func (o EndpointGcpPscEndpointInfoPtrOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGcpPscEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace struct {
+	IsEnabled bool `pulumi:"isEnabled"`
+}
+
+// EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs and EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput values.
+// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput` via:
+//
+//	EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{...}
+type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput interface {
+	pulumi.Input
+
+	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput
+	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs struct {
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+}
+
+func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
+	return i.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(context.Background())
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput)
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return i.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput).ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx)
+}
+
+// EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs, EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtr and EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput values.
+// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput` via:
+//
+//	        EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput
+	ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput
+}
+
+type enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs
+
+func EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtr(v *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput {
+	return (*enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType)(v)
+}
+
+func (*enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
+}
+
+func (i *enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return i.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *enhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrType) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput)
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return o.ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
+		return &v
+	}).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput)
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) bool {
+		return v.IsEnabled
+	}).(pulumi.BoolOutput)
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace)(nil)).Elem()
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) Elem() EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput {
+	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace
+		return ret
+	}).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput)
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingProviderConfig struct {
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs and EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput values.
+// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput` via:
+//
+//	EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{...}
+type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput interface {
+	pulumi.Input
+
+	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput
+	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs struct {
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
+	return i.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(context.Background())
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput)
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return i.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput).ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx)
+}
+
+// EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs, EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtr and EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput values.
+// You can construct a concrete instance of `EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput` via:
+//
+//	        EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput
+	ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput
+}
+
+type enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs
+
+func EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtr(v *EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput {
+	return (*enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType)(v)
+}
+
+func (*enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
+}
+
+func (i *enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return i.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *enhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrType) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput)
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return o.ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
+		return &v
+	}).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput)
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnhancedSecurityMonitoringWorkspaceSettingProviderConfig)(nil)).Elem()
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) ToEnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) Elem() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput {
+	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnhancedSecurityMonitoringWorkspaceSettingProviderConfig
+		return ret
+	}).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput)
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type EntitlementsProviderConfig struct {
 	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 	WorkspaceId *string `pulumi:"workspaceId"`
@@ -8896,6 +11131,8 @@ type FeatureEngineeringFeatureSource struct {
 	Lateness *FeatureEngineeringFeatureSourceLateness `pulumi:"lateness"`
 	// A request-time data source
 	RequestSource *FeatureEngineeringFeatureSourceRequestSource `pulumi:"requestSource"`
+	// A Spark Declarative Pipeline data source
+	SdpSource *FeatureEngineeringFeatureSourceSdpSource `pulumi:"sdpSource"`
 	// A Stream data source
 	StreamSource *FeatureEngineeringFeatureSourceStreamSource `pulumi:"streamSource"`
 }
@@ -8923,6 +11160,8 @@ type FeatureEngineeringFeatureSourceArgs struct {
 	Lateness FeatureEngineeringFeatureSourceLatenessPtrInput `pulumi:"lateness"`
 	// A request-time data source
 	RequestSource FeatureEngineeringFeatureSourceRequestSourcePtrInput `pulumi:"requestSource"`
+	// A Spark Declarative Pipeline data source
+	SdpSource FeatureEngineeringFeatureSourceSdpSourcePtrInput `pulumi:"sdpSource"`
 	// A Stream data source
 	StreamSource FeatureEngineeringFeatureSourceStreamSourcePtrInput `pulumi:"streamSource"`
 }
@@ -9038,6 +11277,11 @@ func (o FeatureEngineeringFeatureSourceOutput) RequestSource() FeatureEngineerin
 	}).(FeatureEngineeringFeatureSourceRequestSourcePtrOutput)
 }
 
+// A Spark Declarative Pipeline data source
+func (o FeatureEngineeringFeatureSourceOutput) SdpSource() FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceSdpSource { return v.SdpSource }).(FeatureEngineeringFeatureSourceSdpSourcePtrOutput)
+}
+
 // A Stream data source
 func (o FeatureEngineeringFeatureSourceOutput) StreamSource() FeatureEngineeringFeatureSourceStreamSourcePtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceStreamSource {
@@ -9120,6 +11364,16 @@ func (o FeatureEngineeringFeatureSourcePtrOutput) RequestSource() FeatureEnginee
 	}).(FeatureEngineeringFeatureSourceRequestSourcePtrOutput)
 }
 
+// A Spark Declarative Pipeline data source
+func (o FeatureEngineeringFeatureSourcePtrOutput) SdpSource() FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceSdpSource {
+		if v == nil {
+			return nil
+		}
+		return v.SdpSource
+	}).(FeatureEngineeringFeatureSourceSdpSourcePtrOutput)
+}
+
 // A Stream data source
 func (o FeatureEngineeringFeatureSourcePtrOutput) StreamSource() FeatureEngineeringFeatureSourceStreamSourcePtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceStreamSource {
@@ -9134,11 +11388,11 @@ type FeatureEngineeringFeatureSourceDeltaTableSource struct {
 	DataframeSchema *string  `pulumi:"dataframeSchema"`
 	EntityColumns   []string `pulumi:"entityColumns"`
 	FilterCondition *string  `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature. This is the
-	// feature's resource identifier; the catalog_name, schema_name, and name fields
-	// below are OUTPUT_ONLY decomposed views of this value
+	// The full three-part name (catalog, schema, name) of the feature
 	FullName string `pulumi:"fullName"`
-	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	// Column recording time, used for point-in-time joins, backfills, and aggregations.
+	// Optional since a timeseries column is not set for RequestSource features or on-demand
+	// calculated features
 	TimeseriesColumn  *string `pulumi:"timeseriesColumn"`
 	TransformationSql *string `pulumi:"transformationSql"`
 }
@@ -9158,11 +11412,11 @@ type FeatureEngineeringFeatureSourceDeltaTableSourceArgs struct {
 	DataframeSchema pulumi.StringPtrInput   `pulumi:"dataframeSchema"`
 	EntityColumns   pulumi.StringArrayInput `pulumi:"entityColumns"`
 	FilterCondition pulumi.StringPtrInput   `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature. This is the
-	// feature's resource identifier; the catalog_name, schema_name, and name fields
-	// below are OUTPUT_ONLY decomposed views of this value
+	// The full three-part name (catalog, schema, name) of the feature
 	FullName pulumi.StringInput `pulumi:"fullName"`
-	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	// Column recording time, used for point-in-time joins, backfills, and aggregations.
+	// Optional since a timeseries column is not set for RequestSource features or on-demand
+	// calculated features
 	TimeseriesColumn  pulumi.StringPtrInput `pulumi:"timeseriesColumn"`
 	TransformationSql pulumi.StringPtrInput `pulumi:"transformationSql"`
 }
@@ -9256,14 +11510,14 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) FilterCondition()
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) *string { return v.FilterCondition }).(pulumi.StringPtrOutput)
 }
 
-// The full three-part name (catalog, schema, name) of the feature. This is the
-// feature's resource identifier; the catalog_name, schema_name, and name fields
-// below are OUTPUT_ONLY decomposed views of this value
+// The full three-part name (catalog, schema, name) of the feature
 func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) string { return v.FullName }).(pulumi.StringOutput)
 }
 
-// Column recording time, used for point-in-time joins, backfills, and aggregations
+// Column recording time, used for point-in-time joins, backfills, and aggregations.
+// Optional since a timeseries column is not set for RequestSource features or on-demand
+// calculated features
 func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) TimeseriesColumn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) *string { return v.TimeseriesColumn }).(pulumi.StringPtrOutput)
 }
@@ -9323,9 +11577,7 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) FilterConditio
 	}).(pulumi.StringPtrOutput)
 }
 
-// The full three-part name (catalog, schema, name) of the feature. This is the
-// feature's resource identifier; the catalog_name, schema_name, and name fields
-// below are OUTPUT_ONLY decomposed views of this value
+// The full three-part name (catalog, schema, name) of the feature
 func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceDeltaTableSource) *string {
 		if v == nil {
@@ -9335,7 +11587,9 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) FullName() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Column recording time, used for point-in-time joins, backfills, and aggregations
+// Column recording time, used for point-in-time joins, backfills, and aggregations.
+// Optional since a timeseries column is not set for RequestSource features or on-demand
+// calculated features
 func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) TimeseriesColumn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceDeltaTableSource) *string {
 		if v == nil {
@@ -10562,12 +12816,285 @@ func (o FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArrayOutput) 
 	}).(FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldOutput)
 }
 
+type FeatureEngineeringFeatureSourceSdpSource struct {
+	DataframeSchema *string `pulumi:"dataframeSchema"`
+	FilterCondition *string `pulumi:"filterCondition"`
+	// The full three-part names of the tables the pipeline reads from. Required to materialize this
+	// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+	// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+	// these tables, and the run fails if it doesn't. At most 100 tables
+	InputTables []string `pulumi:"inputTables"`
+	// The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+	// The table doesn't need to exist until the pipeline first runs. Required
+	OutputTable *string `pulumi:"outputTable"`
+	// The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+	// each materialization or backfill. The pipeline must already exist when the feature is created,
+	// and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+	// Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+	// back empty. Required
+	PipelineId *string `pulumi:"pipelineId"`
+	// (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+	// has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+	PipelineState     *string `pulumi:"pipelineState"`
+	TransformationSql *string `pulumi:"transformationSql"`
+}
+
+// FeatureEngineeringFeatureSourceSdpSourceInput is an input type that accepts FeatureEngineeringFeatureSourceSdpSourceArgs and FeatureEngineeringFeatureSourceSdpSourceOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceSdpSourceInput` via:
+//
+//	FeatureEngineeringFeatureSourceSdpSourceArgs{...}
+type FeatureEngineeringFeatureSourceSdpSourceInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceSdpSourceOutput() FeatureEngineeringFeatureSourceSdpSourceOutput
+	ToFeatureEngineeringFeatureSourceSdpSourceOutputWithContext(context.Context) FeatureEngineeringFeatureSourceSdpSourceOutput
+}
+
+type FeatureEngineeringFeatureSourceSdpSourceArgs struct {
+	DataframeSchema pulumi.StringPtrInput `pulumi:"dataframeSchema"`
+	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
+	// The full three-part names of the tables the pipeline reads from. Required to materialize this
+	// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+	// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+	// these tables, and the run fails if it doesn't. At most 100 tables
+	InputTables pulumi.StringArrayInput `pulumi:"inputTables"`
+	// The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+	// The table doesn't need to exist until the pipeline first runs. Required
+	OutputTable pulumi.StringPtrInput `pulumi:"outputTable"`
+	// The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+	// each materialization or backfill. The pipeline must already exist when the feature is created,
+	// and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+	// Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+	// back empty. Required
+	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
+	// (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+	// has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+	PipelineState     pulumi.StringPtrInput `pulumi:"pipelineState"`
+	TransformationSql pulumi.StringPtrInput `pulumi:"transformationSql"`
+}
+
+func (FeatureEngineeringFeatureSourceSdpSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceSdpSource)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceSdpSourceArgs) ToFeatureEngineeringFeatureSourceSdpSourceOutput() FeatureEngineeringFeatureSourceSdpSourceOutput {
+	return i.ToFeatureEngineeringFeatureSourceSdpSourceOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceSdpSourceArgs) ToFeatureEngineeringFeatureSourceSdpSourceOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceSdpSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceSdpSourceOutput)
+}
+
+func (i FeatureEngineeringFeatureSourceSdpSourceArgs) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutput() FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return i.ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceSdpSourceArgs) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceSdpSourceOutput).ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureSourceSdpSourcePtrInput is an input type that accepts FeatureEngineeringFeatureSourceSdpSourceArgs, FeatureEngineeringFeatureSourceSdpSourcePtr and FeatureEngineeringFeatureSourceSdpSourcePtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceSdpSourcePtrInput` via:
+//
+//	        FeatureEngineeringFeatureSourceSdpSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureSourceSdpSourcePtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceSdpSourcePtrOutput() FeatureEngineeringFeatureSourceSdpSourcePtrOutput
+	ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(context.Context) FeatureEngineeringFeatureSourceSdpSourcePtrOutput
+}
+
+type featureEngineeringFeatureSourceSdpSourcePtrType FeatureEngineeringFeatureSourceSdpSourceArgs
+
+func FeatureEngineeringFeatureSourceSdpSourcePtr(v *FeatureEngineeringFeatureSourceSdpSourceArgs) FeatureEngineeringFeatureSourceSdpSourcePtrInput {
+	return (*featureEngineeringFeatureSourceSdpSourcePtrType)(v)
+}
+
+func (*featureEngineeringFeatureSourceSdpSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureSourceSdpSource)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureSourceSdpSourcePtrType) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutput() FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return i.ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureSourceSdpSourcePtrType) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceSdpSourcePtrOutput)
+}
+
+type FeatureEngineeringFeatureSourceSdpSourceOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceSdpSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceSdpSource)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) ToFeatureEngineeringFeatureSourceSdpSourceOutput() FeatureEngineeringFeatureSourceSdpSourceOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) ToFeatureEngineeringFeatureSourceSdpSourceOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceSdpSourceOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutput() FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return o.ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureSourceSdpSource) *FeatureEngineeringFeatureSourceSdpSource {
+		return &v
+	}).(FeatureEngineeringFeatureSourceSdpSourcePtrOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) DataframeSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) *string { return v.DataframeSchema }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) FilterCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) *string { return v.FilterCondition }).(pulumi.StringPtrOutput)
+}
+
+// The full three-part names of the tables the pipeline reads from. Required to materialize this
+// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+// these tables, and the run fails if it doesn't. At most 100 tables
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) InputTables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) []string { return v.InputTables }).(pulumi.StringArrayOutput)
+}
+
+// The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+// The table doesn't need to exist until the pipeline first runs. Required
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) OutputTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) *string { return v.OutputTable }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+// each materialization or backfill. The pipeline must already exist when the feature is created,
+// and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+// Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+// back empty. Required
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+// has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) PipelineState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) *string { return v.PipelineState }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourceOutput) TransformationSql() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) *string { return v.TransformationSql }).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureSourceSdpSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceSdpSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureSourceSdpSource)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutput() FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) ToFeatureEngineeringFeatureSourceSdpSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceSdpSourcePtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) Elem() FeatureEngineeringFeatureSourceSdpSourceOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) FeatureEngineeringFeatureSourceSdpSource {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureSourceSdpSource
+		return ret
+	}).(FeatureEngineeringFeatureSourceSdpSourceOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) DataframeSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataframeSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) FilterCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterCondition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full three-part names of the tables the pipeline reads from. Required to materialize this
+// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
+// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
+// these tables, and the run fails if it doesn't. At most 100 tables
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) InputTables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InputTables
+	}).(pulumi.StringArrayOutput)
+}
+
+// The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
+// The table doesn't need to exist until the pipeline first runs. Required
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) OutputTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
+// each materialization or backfill. The pipeline must already exist when the feature is created,
+// and you need CAN_RUN, CAN_MANAGE, or owner permission on it. It doesn't need to have run yet.
+// Deleting the feature doesn't delete the pipeline. If the pipeline is deleted, this field reads
+// back empty. Required
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - State tracking pipeline execution and output table validation. PENDING until the pipeline
+// has run at least once and created the output table; then RESOLVED on success, or ERROR on failure. Possible values are: `ERROR`, `PENDING`, `RESOLVED`
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) PipelineState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) TransformationSql() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationSql
+	}).(pulumi.StringPtrOutput)
+}
+
 type FeatureEngineeringFeatureSourceStreamSource struct {
 	DataframeSchema *string `pulumi:"dataframeSchema"`
 	FilterCondition *string `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature. This is the
-	// feature's resource identifier; the catalog_name, schema_name, and name fields
-	// below are OUTPUT_ONLY decomposed views of this value
+	// The full three-part name (catalog, schema, name) of the feature
 	FullName          string  `pulumi:"fullName"`
 	TransformationSql *string `pulumi:"transformationSql"`
 }
@@ -10586,9 +13113,7 @@ type FeatureEngineeringFeatureSourceStreamSourceInput interface {
 type FeatureEngineeringFeatureSourceStreamSourceArgs struct {
 	DataframeSchema pulumi.StringPtrInput `pulumi:"dataframeSchema"`
 	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature. This is the
-	// feature's resource identifier; the catalog_name, schema_name, and name fields
-	// below are OUTPUT_ONLY decomposed views of this value
+	// The full three-part name (catalog, schema, name) of the feature
 	FullName          pulumi.StringInput    `pulumi:"fullName"`
 	TransformationSql pulumi.StringPtrInput `pulumi:"transformationSql"`
 }
@@ -10678,9 +13203,7 @@ func (o FeatureEngineeringFeatureSourceStreamSourceOutput) FilterCondition() pul
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceStreamSource) *string { return v.FilterCondition }).(pulumi.StringPtrOutput)
 }
 
-// The full three-part name (catalog, schema, name) of the feature. This is the
-// feature's resource identifier; the catalog_name, schema_name, and name fields
-// below are OUTPUT_ONLY decomposed views of this value
+// The full three-part name (catalog, schema, name) of the feature
 func (o FeatureEngineeringFeatureSourceStreamSourceOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceStreamSource) string { return v.FullName }).(pulumi.StringOutput)
 }
@@ -10731,9 +13254,7 @@ func (o FeatureEngineeringFeatureSourceStreamSourcePtrOutput) FilterCondition() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The full three-part name (catalog, schema, name) of the feature. This is the
-// feature's resource identifier; the catalog_name, schema_name, and name fields
-// below are OUTPUT_ONLY decomposed views of this value
+// The full three-part name (catalog, schema, name) of the feature
 func (o FeatureEngineeringFeatureSourceStreamSourcePtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceStreamSource) *string {
 		if v == nil {
@@ -34130,6 +36651,7 @@ func (o JobTaskDashboardTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskDashboardTaskSubscription struct {
+	Attachment *JobTaskDashboardTaskSubscriptionAttachment `pulumi:"attachment"`
 	// Allows users to specify a custom subject line on the email sent to subscribers.
 	CustomSubject *string `pulumi:"customSubject"`
 	// When true, the subscription will not send emails.
@@ -34150,6 +36672,7 @@ type JobTaskDashboardTaskSubscriptionInput interface {
 }
 
 type JobTaskDashboardTaskSubscriptionArgs struct {
+	Attachment JobTaskDashboardTaskSubscriptionAttachmentPtrInput `pulumi:"attachment"`
 	// Allows users to specify a custom subject line on the email sent to subscribers.
 	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
 	// When true, the subscription will not send emails.
@@ -34235,6 +36758,12 @@ func (o JobTaskDashboardTaskSubscriptionOutput) ToJobTaskDashboardTaskSubscripti
 	}).(JobTaskDashboardTaskSubscriptionPtrOutput)
 }
 
+func (o JobTaskDashboardTaskSubscriptionOutput) Attachment() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) *JobTaskDashboardTaskSubscriptionAttachment {
+		return v.Attachment
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
 // Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskDashboardTaskSubscriptionOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
@@ -34276,6 +36805,15 @@ func (o JobTaskDashboardTaskSubscriptionPtrOutput) Elem() JobTaskDashboardTaskSu
 	}).(JobTaskDashboardTaskSubscriptionOutput)
 }
 
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) Attachment() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) *JobTaskDashboardTaskSubscriptionAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.Attachment
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
 // Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) *string {
@@ -34304,6 +36842,571 @@ func (o JobTaskDashboardTaskSubscriptionPtrOutput) Subscribers() JobTaskDashboar
 		}
 		return v.Subscribers
 	}).(JobTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachment struct {
+	DataAttachment *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment `pulumi:"dataAttachment"`
+	PageAttachment *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment `pulumi:"pageAttachment"`
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentArgs and JobTaskDashboardTaskSubscriptionAttachmentOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionAttachmentArgs{...}
+type JobTaskDashboardTaskSubscriptionAttachmentInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentOutput
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentArgs struct {
+	DataAttachment JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput `pulumi:"dataAttachment"`
+	PageAttachment JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput `pulumi:"pageAttachment"`
+}
+
+func (JobTaskDashboardTaskSubscriptionAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentOutput)
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentOutput).ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx)
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentPtrInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentArgs, JobTaskDashboardTaskSubscriptionAttachmentPtr and JobTaskDashboardTaskSubscriptionAttachmentPtrOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentPtrInput` via:
+//
+//	        JobTaskDashboardTaskSubscriptionAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskDashboardTaskSubscriptionAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentPtrOutput
+}
+
+type jobTaskDashboardTaskSubscriptionAttachmentPtrType JobTaskDashboardTaskSubscriptionAttachmentArgs
+
+func JobTaskDashboardTaskSubscriptionAttachmentPtr(v *JobTaskDashboardTaskSubscriptionAttachmentArgs) JobTaskDashboardTaskSubscriptionAttachmentPtrInput {
+	return (*jobTaskDashboardTaskSubscriptionAttachmentPtrType)(v)
+}
+
+func (*jobTaskDashboardTaskSubscriptionAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (i *jobTaskDashboardTaskSubscriptionAttachmentPtrType) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskDashboardTaskSubscriptionAttachmentPtrType) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskDashboardTaskSubscriptionAttachment) *JobTaskDashboardTaskSubscriptionAttachment {
+		return &v
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentOutput) DataAttachment() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachment) *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		return v.DataAttachment
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentOutput) PageAttachment() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachment) *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		return v.PageAttachment
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPtrOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPtrOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPtrOutput) Elem() JobTaskDashboardTaskSubscriptionAttachmentOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachment) JobTaskDashboardTaskSubscriptionAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskDashboardTaskSubscriptionAttachment
+		return ret
+	}).(JobTaskDashboardTaskSubscriptionAttachmentOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPtrOutput) DataAttachment() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachment) *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.DataAttachment
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPtrOutput) PageAttachment() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachment) *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.PageAttachment
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachment struct {
+	FileFormat            string                                                           `pulumi:"fileFormat"`
+	IncludeAppliedFilters *bool                                                            `pulumi:"includeAppliedFilters"`
+	Widgets               []JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget `pulumi:"widgets"`
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs and JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{...}
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs struct {
+	FileFormat            pulumi.StringInput                                                       `pulumi:"fileFormat"`
+	IncludeAppliedFilters pulumi.BoolPtrInput                                                      `pulumi:"includeAppliedFilters"`
+	Widgets               JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput `pulumi:"widgets"`
+}
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput)
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput).ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx)
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs, JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtr and JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput` via:
+//
+//	        JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput
+}
+
+type jobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs
+
+func JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtr(v *JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput {
+	return (*jobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType)(v)
+}
+
+func (*jobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (i *jobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		return &v
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) string { return v.FileFormat }).(pulumi.StringOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) IncludeAppliedFilters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) *bool { return v.IncludeAppliedFilters }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) Widgets() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) []JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+		return v.Widgets
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) Elem() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) JobTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskDashboardTaskSubscriptionAttachmentDataAttachment
+		return ret
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) IncludeAppliedFilters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAppliedFilters
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) Widgets() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentDataAttachment) []JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+		if v == nil {
+			return nil
+		}
+		return v.Widgets
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget struct {
+	PageId   string `pulumi:"pageId"`
+	WidgetId string `pulumi:"widgetId"`
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs and JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs{...}
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs struct {
+	PageId   pulumi.StringInput `pulumi:"pageId"`
+	WidgetId pulumi.StringInput `pulumi:"widgetId"`
+}
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput)
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray and JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray{ JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs{...} }
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray []JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) PageId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget) string { return v.PageId }).(pulumi.StringOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) WidgetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget) string { return v.WidgetId }).(pulumi.StringOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput() JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) ToJobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) Index(i pulumi.IntInput) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+		return vs[0].([]JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)[vs[1].(int)]
+	}).(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentPageAttachment struct {
+	PageIds       []string `pulumi:"pageIds"`
+	PageSelection *string  `pulumi:"pageSelection"`
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs and JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{...}
+type JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs struct {
+	PageIds       pulumi.StringArrayInput `pulumi:"pageIds"`
+	PageSelection pulumi.StringPtrInput   `pulumi:"pageSelection"`
+}
+
+func (JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput)
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput).ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx)
+}
+
+// JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput is an input type that accepts JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs, JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtr and JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput` via:
+//
+//	        JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput
+	ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput
+}
+
+type jobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs
+
+func JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtr(v *JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput {
+	return (*jobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType)(v)
+}
+
+func (*jobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (i *jobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskDashboardTaskSubscriptionAttachmentPageAttachment) *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		return &v
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) PageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentPageAttachment) []string { return v.PageIds }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) PageSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionAttachmentPageAttachment) *string { return v.PageSelection }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) ToJobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) Elem() JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment) JobTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskDashboardTaskSubscriptionAttachmentPageAttachment
+		return ret
+	}).(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) PageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PageIds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) PageSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscriptionAttachmentPageAttachment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageSelection
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskDashboardTaskSubscriptionSubscriber struct {
@@ -37815,6 +40918,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) WarehouseId() pulumi.Strin
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscription struct {
+	Attachment *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment `pulumi:"attachment"`
 	// Allows users to specify a custom subject line on the email sent to subscribers.
 	CustomSubject *string `pulumi:"customSubject"`
 	// When true, the subscription will not send emails.
@@ -37835,6 +40939,7 @@ type JobTaskForEachTaskTaskDashboardTaskSubscriptionInput interface {
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs struct {
+	Attachment JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrInput `pulumi:"attachment"`
 	// Allows users to specify a custom subject line on the email sent to subscribers.
 	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
 	// When true, the subscription will not send emails.
@@ -37920,6 +41025,12 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ToJobTaskForEachT
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) Attachment() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+		return v.Attachment
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
 // Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
@@ -37961,6 +41072,15 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Elem() JobTask
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput)
 }
 
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Attachment() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.Attachment
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
 // Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) *string {
@@ -37989,6 +41109,583 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Subscribers() 
 		}
 		return v.Subscribers
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment struct {
+	DataAttachment *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment `pulumi:"dataAttachment"`
+	PageAttachment *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment `pulumi:"pageAttachment"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs struct {
+	DataAttachment JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput `pulumi:"dataAttachment"`
+	PageAttachment JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput `pulumi:"pageAttachment"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput)
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput).ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs, JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtr and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput
+}
+
+type jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrType JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs
+
+func JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtr(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrInput {
+	return (*jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+		return &v
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) DataAttachment() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		return v.DataAttachment
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput) PageAttachment() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		return v.PageAttachment
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput) Elem() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment
+		return ret
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput) DataAttachment() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.DataAttachment
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput) PageAttachment() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.PageAttachment
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment struct {
+	FileFormat            string                                                                          `pulumi:"fileFormat"`
+	IncludeAppliedFilters *bool                                                                           `pulumi:"includeAppliedFilters"`
+	Widgets               []JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget `pulumi:"widgets"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs struct {
+	FileFormat            pulumi.StringInput                                                                      `pulumi:"fileFormat"`
+	IncludeAppliedFilters pulumi.BoolPtrInput                                                                     `pulumi:"includeAppliedFilters"`
+	Widgets               JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput `pulumi:"widgets"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput)
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput).ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs, JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtr and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput
+}
+
+type jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs
+
+func JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtr(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput {
+	return (*jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		return &v
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) string {
+		return v.FileFormat
+	}).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) IncludeAppliedFilters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) *bool {
+		return v.IncludeAppliedFilters
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput) Widgets() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) []JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+		return v.Widgets
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) Elem() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment
+		return ret
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) IncludeAppliedFilters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAppliedFilters
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput) Widgets() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachment) []JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+		if v == nil {
+			return nil
+		}
+		return v.Widgets
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget struct {
+	PageId   string `pulumi:"pageId"`
+	WidgetId string `pulumi:"widgetId"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs struct {
+	PageId   pulumi.StringInput `pulumi:"pageId"`
+	WidgetId pulumi.StringInput `pulumi:"widgetId"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray{ JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs{...} }
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray []JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) PageId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget) string {
+		return v.PageId
+	}).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput) WidgetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget) string {
+		return v.WidgetId
+	}).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput) Index(i pulumi.IntInput) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget {
+		return vs[0].([]JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidget)[vs[1].(int)]
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment struct {
+	PageIds       []string `pulumi:"pageIds"`
+	PageSelection *string  `pulumi:"pageSelection"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs struct {
+	PageIds       pulumi.StringArrayInput `pulumi:"pageIds"`
+	PageSelection pulumi.StringPtrInput   `pulumi:"pageSelection"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput)
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput).ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs, JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtr and JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput
+}
+
+type jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs
+
+func JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtr(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput {
+	return (*jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment) *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		return &v
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) PageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment) []string {
+		return v.PageIds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput) PageSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment) *string {
+		return v.PageSelection
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) Elem() JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment) JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment
+		return ret
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) PageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PageIds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput) PageSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageSelection
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber struct {
@@ -79077,3873 +82774,37 @@ func (o ModelServingProvisionedThroughputProviderConfigPtrOutput) WorkspaceId() 
 	}).(pulumi.StringPtrOutput)
 }
 
-type ModelServingProvisionedThroughputTag struct {
-	// The key field for a tag.
-	Key string `pulumi:"key"`
-	// The value field for a tag.
-	Value *string `pulumi:"value"`
-}
-
-// ModelServingProvisionedThroughputTagInput is an input type that accepts ModelServingProvisionedThroughputTagArgs and ModelServingProvisionedThroughputTagOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputTagInput` via:
-//
-//	ModelServingProvisionedThroughputTagArgs{...}
-type ModelServingProvisionedThroughputTagInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputTagOutput() ModelServingProvisionedThroughputTagOutput
-	ToModelServingProvisionedThroughputTagOutputWithContext(context.Context) ModelServingProvisionedThroughputTagOutput
-}
-
-type ModelServingProvisionedThroughputTagArgs struct {
-	// The key field for a tag.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value field for a tag.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ModelServingProvisionedThroughputTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputTag)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputTagArgs) ToModelServingProvisionedThroughputTagOutput() ModelServingProvisionedThroughputTagOutput {
-	return i.ToModelServingProvisionedThroughputTagOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputTagArgs) ToModelServingProvisionedThroughputTagOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputTagOutput)
-}
-
-// ModelServingProvisionedThroughputTagArrayInput is an input type that accepts ModelServingProvisionedThroughputTagArray and ModelServingProvisionedThroughputTagArrayOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputTagArrayInput` via:
-//
-//	ModelServingProvisionedThroughputTagArray{ ModelServingProvisionedThroughputTagArgs{...} }
-type ModelServingProvisionedThroughputTagArrayInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputTagArrayOutput() ModelServingProvisionedThroughputTagArrayOutput
-	ToModelServingProvisionedThroughputTagArrayOutputWithContext(context.Context) ModelServingProvisionedThroughputTagArrayOutput
-}
-
-type ModelServingProvisionedThroughputTagArray []ModelServingProvisionedThroughputTagInput
-
-func (ModelServingProvisionedThroughputTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputTag)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputTagArray) ToModelServingProvisionedThroughputTagArrayOutput() ModelServingProvisionedThroughputTagArrayOutput {
-	return i.ToModelServingProvisionedThroughputTagArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputTagArray) ToModelServingProvisionedThroughputTagArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputTagArrayOutput)
-}
-
-type ModelServingProvisionedThroughputTagOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputTag)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputTagOutput) ToModelServingProvisionedThroughputTagOutput() ModelServingProvisionedThroughputTagOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputTagOutput) ToModelServingProvisionedThroughputTagOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagOutput {
-	return o
-}
-
-// The key field for a tag.
-func (o ModelServingProvisionedThroughputTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputTag) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// The value field for a tag.
-func (o ModelServingProvisionedThroughputTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputTag) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputTagArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputTag)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputTagArrayOutput) ToModelServingProvisionedThroughputTagArrayOutput() ModelServingProvisionedThroughputTagArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputTagArrayOutput) ToModelServingProvisionedThroughputTagArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputTagArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputTagArrayOutput) Index(i pulumi.IntInput) ModelServingProvisionedThroughputTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingProvisionedThroughputTag {
-		return vs[0].([]ModelServingProvisionedThroughputTag)[vs[1].(int)]
-	}).(ModelServingProvisionedThroughputTagOutput)
-}
-
-type ModelServingRateLimit struct {
-	// Used to specify how many calls are allowed for a key within the renewal_period.
-	Calls int `pulumi:"calls"`
-	// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
-	Key *string `pulumi:"key"`
-	// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-	RenewalPeriod string `pulumi:"renewalPeriod"`
-}
-
-// ModelServingRateLimitInput is an input type that accepts ModelServingRateLimitArgs and ModelServingRateLimitOutput values.
-// You can construct a concrete instance of `ModelServingRateLimitInput` via:
-//
-//	ModelServingRateLimitArgs{...}
-type ModelServingRateLimitInput interface {
-	pulumi.Input
-
-	ToModelServingRateLimitOutput() ModelServingRateLimitOutput
-	ToModelServingRateLimitOutputWithContext(context.Context) ModelServingRateLimitOutput
-}
-
-type ModelServingRateLimitArgs struct {
-	// Used to specify how many calls are allowed for a key within the renewal_period.
-	Calls pulumi.IntInput `pulumi:"calls"`
-	// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-	RenewalPeriod pulumi.StringInput `pulumi:"renewalPeriod"`
-}
-
-func (ModelServingRateLimitArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingRateLimit)(nil)).Elem()
-}
-
-func (i ModelServingRateLimitArgs) ToModelServingRateLimitOutput() ModelServingRateLimitOutput {
-	return i.ToModelServingRateLimitOutputWithContext(context.Background())
-}
-
-func (i ModelServingRateLimitArgs) ToModelServingRateLimitOutputWithContext(ctx context.Context) ModelServingRateLimitOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingRateLimitOutput)
-}
-
-// ModelServingRateLimitArrayInput is an input type that accepts ModelServingRateLimitArray and ModelServingRateLimitArrayOutput values.
-// You can construct a concrete instance of `ModelServingRateLimitArrayInput` via:
-//
-//	ModelServingRateLimitArray{ ModelServingRateLimitArgs{...} }
-type ModelServingRateLimitArrayInput interface {
-	pulumi.Input
-
-	ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput
-	ToModelServingRateLimitArrayOutputWithContext(context.Context) ModelServingRateLimitArrayOutput
-}
-
-type ModelServingRateLimitArray []ModelServingRateLimitInput
-
-func (ModelServingRateLimitArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingRateLimit)(nil)).Elem()
-}
-
-func (i ModelServingRateLimitArray) ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput {
-	return i.ToModelServingRateLimitArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingRateLimitArray) ToModelServingRateLimitArrayOutputWithContext(ctx context.Context) ModelServingRateLimitArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingRateLimitArrayOutput)
-}
-
-type ModelServingRateLimitOutput struct{ *pulumi.OutputState }
-
-func (ModelServingRateLimitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingRateLimit)(nil)).Elem()
-}
-
-func (o ModelServingRateLimitOutput) ToModelServingRateLimitOutput() ModelServingRateLimitOutput {
-	return o
-}
-
-func (o ModelServingRateLimitOutput) ToModelServingRateLimitOutputWithContext(ctx context.Context) ModelServingRateLimitOutput {
-	return o
-}
-
-// Used to specify how many calls are allowed for a key within the renewal_period.
-func (o ModelServingRateLimitOutput) Calls() pulumi.IntOutput {
-	return o.ApplyT(func(v ModelServingRateLimit) int { return v.Calls }).(pulumi.IntOutput)
-}
-
-// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
-func (o ModelServingRateLimitOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingRateLimit) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-func (o ModelServingRateLimitOutput) RenewalPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
-}
-
-type ModelServingRateLimitArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingRateLimitArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingRateLimit)(nil)).Elem()
-}
-
-func (o ModelServingRateLimitArrayOutput) ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput {
-	return o
-}
-
-func (o ModelServingRateLimitArrayOutput) ToModelServingRateLimitArrayOutputWithContext(ctx context.Context) ModelServingRateLimitArrayOutput {
-	return o
-}
-
-func (o ModelServingRateLimitArrayOutput) Index(i pulumi.IntInput) ModelServingRateLimitOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingRateLimit {
-		return vs[0].([]ModelServingRateLimit)[vs[1].(int)]
-	}).(ModelServingRateLimitOutput)
-}
-
-type ModelServingTag struct {
-	// The key field for a tag.
-	Key string `pulumi:"key"`
-	// The value field for a tag.
-	Value *string `pulumi:"value"`
-}
-
-// ModelServingTagInput is an input type that accepts ModelServingTagArgs and ModelServingTagOutput values.
-// You can construct a concrete instance of `ModelServingTagInput` via:
-//
-//	ModelServingTagArgs{...}
-type ModelServingTagInput interface {
-	pulumi.Input
-
-	ToModelServingTagOutput() ModelServingTagOutput
-	ToModelServingTagOutputWithContext(context.Context) ModelServingTagOutput
-}
-
-type ModelServingTagArgs struct {
-	// The key field for a tag.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value field for a tag.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ModelServingTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTag)(nil)).Elem()
-}
-
-func (i ModelServingTagArgs) ToModelServingTagOutput() ModelServingTagOutput {
-	return i.ToModelServingTagOutputWithContext(context.Background())
-}
-
-func (i ModelServingTagArgs) ToModelServingTagOutputWithContext(ctx context.Context) ModelServingTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTagOutput)
-}
-
-// ModelServingTagArrayInput is an input type that accepts ModelServingTagArray and ModelServingTagArrayOutput values.
-// You can construct a concrete instance of `ModelServingTagArrayInput` via:
-//
-//	ModelServingTagArray{ ModelServingTagArgs{...} }
-type ModelServingTagArrayInput interface {
-	pulumi.Input
-
-	ToModelServingTagArrayOutput() ModelServingTagArrayOutput
-	ToModelServingTagArrayOutputWithContext(context.Context) ModelServingTagArrayOutput
-}
-
-type ModelServingTagArray []ModelServingTagInput
-
-func (ModelServingTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingTag)(nil)).Elem()
-}
-
-func (i ModelServingTagArray) ToModelServingTagArrayOutput() ModelServingTagArrayOutput {
-	return i.ToModelServingTagArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingTagArray) ToModelServingTagArrayOutputWithContext(ctx context.Context) ModelServingTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTagArrayOutput)
-}
-
-type ModelServingTagOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTag)(nil)).Elem()
-}
-
-func (o ModelServingTagOutput) ToModelServingTagOutput() ModelServingTagOutput {
-	return o
-}
-
-func (o ModelServingTagOutput) ToModelServingTagOutputWithContext(ctx context.Context) ModelServingTagOutput {
-	return o
-}
-
-// The key field for a tag.
-func (o ModelServingTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingTag) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// The value field for a tag.
-func (o ModelServingTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTag) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingTagArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingTag)(nil)).Elem()
-}
-
-func (o ModelServingTagArrayOutput) ToModelServingTagArrayOutput() ModelServingTagArrayOutput {
-	return o
-}
-
-func (o ModelServingTagArrayOutput) ToModelServingTagArrayOutputWithContext(ctx context.Context) ModelServingTagArrayOutput {
-	return o
-}
-
-func (o ModelServingTagArrayOutput) Index(i pulumi.IntInput) ModelServingTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingTag {
-		return vs[0].([]ModelServingTag)[vs[1].(int)]
-	}).(ModelServingTagOutput)
-}
-
-type ModelServingTelemetryConfig struct {
-	EnabledTelemetryFeatures []string `pulumi:"enabledTelemetryFeatures"`
-	// Block describing the configuration of usage tracking. Consists of the following attributes:
-	InferenceTableConfig *ModelServingTelemetryConfigInferenceTableConfig `pulumi:"inferenceTableConfig"`
-	TableNames           *ModelServingTelemetryConfigTableNames           `pulumi:"tableNames"`
-	TelemetryProfileId   *string                                          `pulumi:"telemetryProfileId"`
-}
-
-// ModelServingTelemetryConfigInput is an input type that accepts ModelServingTelemetryConfigArgs and ModelServingTelemetryConfigOutput values.
-// You can construct a concrete instance of `ModelServingTelemetryConfigInput` via:
-//
-//	ModelServingTelemetryConfigArgs{...}
-type ModelServingTelemetryConfigInput interface {
-	pulumi.Input
-
-	ToModelServingTelemetryConfigOutput() ModelServingTelemetryConfigOutput
-	ToModelServingTelemetryConfigOutputWithContext(context.Context) ModelServingTelemetryConfigOutput
-}
-
-type ModelServingTelemetryConfigArgs struct {
-	EnabledTelemetryFeatures pulumi.StringArrayInput `pulumi:"enabledTelemetryFeatures"`
-	// Block describing the configuration of usage tracking. Consists of the following attributes:
-	InferenceTableConfig ModelServingTelemetryConfigInferenceTableConfigPtrInput `pulumi:"inferenceTableConfig"`
-	TableNames           ModelServingTelemetryConfigTableNamesPtrInput           `pulumi:"tableNames"`
-	TelemetryProfileId   pulumi.StringPtrInput                                   `pulumi:"telemetryProfileId"`
-}
-
-func (ModelServingTelemetryConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTelemetryConfig)(nil)).Elem()
-}
-
-func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigOutput() ModelServingTelemetryConfigOutput {
-	return i.ToModelServingTelemetryConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigOutput)
-}
-
-func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
-	return i.ToModelServingTelemetryConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingTelemetryConfigArgs) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigOutput).ToModelServingTelemetryConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingTelemetryConfigPtrInput is an input type that accepts ModelServingTelemetryConfigArgs, ModelServingTelemetryConfigPtr and ModelServingTelemetryConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingTelemetryConfigPtrInput` via:
-//
-//	        ModelServingTelemetryConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingTelemetryConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput
-	ToModelServingTelemetryConfigPtrOutputWithContext(context.Context) ModelServingTelemetryConfigPtrOutput
-}
-
-type modelServingTelemetryConfigPtrType ModelServingTelemetryConfigArgs
-
-func ModelServingTelemetryConfigPtr(v *ModelServingTelemetryConfigArgs) ModelServingTelemetryConfigPtrInput {
-	return (*modelServingTelemetryConfigPtrType)(v)
-}
-
-func (*modelServingTelemetryConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingTelemetryConfig)(nil)).Elem()
-}
-
-func (i *modelServingTelemetryConfigPtrType) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
-	return i.ToModelServingTelemetryConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingTelemetryConfigPtrType) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigPtrOutput)
-}
-
-type ModelServingTelemetryConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTelemetryConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTelemetryConfig)(nil)).Elem()
-}
-
-func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigOutput() ModelServingTelemetryConfigOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
-	return o.ToModelServingTelemetryConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingTelemetryConfigOutput) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingTelemetryConfig) *ModelServingTelemetryConfig {
-		return &v
-	}).(ModelServingTelemetryConfigPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigOutput) EnabledTelemetryFeatures() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfig) []string { return v.EnabledTelemetryFeatures }).(pulumi.StringArrayOutput)
-}
-
-// Block describing the configuration of usage tracking. Consists of the following attributes:
-func (o ModelServingTelemetryConfigOutput) InferenceTableConfig() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfig) *ModelServingTelemetryConfigInferenceTableConfig {
-		return v.InferenceTableConfig
-	}).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigOutput) TableNames() ModelServingTelemetryConfigTableNamesPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfig) *ModelServingTelemetryConfigTableNames { return v.TableNames }).(ModelServingTelemetryConfigTableNamesPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigOutput) TelemetryProfileId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfig) *string { return v.TelemetryProfileId }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingTelemetryConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTelemetryConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingTelemetryConfig)(nil)).Elem()
-}
-
-func (o ModelServingTelemetryConfigPtrOutput) ToModelServingTelemetryConfigPtrOutput() ModelServingTelemetryConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigPtrOutput) ToModelServingTelemetryConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigPtrOutput) Elem() ModelServingTelemetryConfigOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfig) ModelServingTelemetryConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingTelemetryConfig
-		return ret
-	}).(ModelServingTelemetryConfigOutput)
-}
-
-func (o ModelServingTelemetryConfigPtrOutput) EnabledTelemetryFeatures() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EnabledTelemetryFeatures
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block describing the configuration of usage tracking. Consists of the following attributes:
-func (o ModelServingTelemetryConfigPtrOutput) InferenceTableConfig() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfig) *ModelServingTelemetryConfigInferenceTableConfig {
-		if v == nil {
-			return nil
-		}
-		return v.InferenceTableConfig
-	}).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigPtrOutput) TableNames() ModelServingTelemetryConfigTableNamesPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfig) *ModelServingTelemetryConfigTableNames {
-		if v == nil {
-			return nil
-		}
-		return v.TableNames
-	}).(ModelServingTelemetryConfigTableNamesPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigPtrOutput) TelemetryProfileId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TelemetryProfileId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingTelemetryConfigInferenceTableConfig struct {
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-	Name             *string  `pulumi:"name"`
-	SamplingFraction *float64 `pulumi:"samplingFraction"`
-}
-
-// ModelServingTelemetryConfigInferenceTableConfigInput is an input type that accepts ModelServingTelemetryConfigInferenceTableConfigArgs and ModelServingTelemetryConfigInferenceTableConfigOutput values.
-// You can construct a concrete instance of `ModelServingTelemetryConfigInferenceTableConfigInput` via:
-//
-//	ModelServingTelemetryConfigInferenceTableConfigArgs{...}
-type ModelServingTelemetryConfigInferenceTableConfigInput interface {
-	pulumi.Input
-
-	ToModelServingTelemetryConfigInferenceTableConfigOutput() ModelServingTelemetryConfigInferenceTableConfigOutput
-	ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(context.Context) ModelServingTelemetryConfigInferenceTableConfigOutput
-}
-
-type ModelServingTelemetryConfigInferenceTableConfigArgs struct {
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-	Name             pulumi.StringPtrInput  `pulumi:"name"`
-	SamplingFraction pulumi.Float64PtrInput `pulumi:"samplingFraction"`
-}
-
-func (ModelServingTelemetryConfigInferenceTableConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
-}
-
-func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigOutput() ModelServingTelemetryConfigInferenceTableConfigOutput {
-	return i.ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigInferenceTableConfigOutput)
-}
-
-func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return i.ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingTelemetryConfigInferenceTableConfigArgs) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigInferenceTableConfigOutput).ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingTelemetryConfigInferenceTableConfigPtrInput is an input type that accepts ModelServingTelemetryConfigInferenceTableConfigArgs, ModelServingTelemetryConfigInferenceTableConfigPtr and ModelServingTelemetryConfigInferenceTableConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingTelemetryConfigInferenceTableConfigPtrInput` via:
-//
-//	        ModelServingTelemetryConfigInferenceTableConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingTelemetryConfigInferenceTableConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput
-	ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput
-}
-
-type modelServingTelemetryConfigInferenceTableConfigPtrType ModelServingTelemetryConfigInferenceTableConfigArgs
-
-func ModelServingTelemetryConfigInferenceTableConfigPtr(v *ModelServingTelemetryConfigInferenceTableConfigArgs) ModelServingTelemetryConfigInferenceTableConfigPtrInput {
-	return (*modelServingTelemetryConfigInferenceTableConfigPtrType)(v)
-}
-
-func (*modelServingTelemetryConfigInferenceTableConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
-}
-
-func (i *modelServingTelemetryConfigInferenceTableConfigPtrType) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return i.ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingTelemetryConfigInferenceTableConfigPtrType) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
-}
-
-type ModelServingTelemetryConfigInferenceTableConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTelemetryConfigInferenceTableConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigOutput() ModelServingTelemetryConfigInferenceTableConfigOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return o.ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingTelemetryConfigInferenceTableConfig) *ModelServingTelemetryConfigInferenceTableConfig {
-		return &v
-	}).(ModelServingTelemetryConfigInferenceTableConfigPtrOutput)
-}
-
-// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-func (o ModelServingTelemetryConfigInferenceTableConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfigInferenceTableConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigOutput) SamplingFraction() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfigInferenceTableConfig) *float64 { return v.SamplingFraction }).(pulumi.Float64PtrOutput)
-}
-
-type ModelServingTelemetryConfigInferenceTableConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTelemetryConfigInferenceTableConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingTelemetryConfigInferenceTableConfig)(nil)).Elem()
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutput() ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) ToModelServingTelemetryConfigInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigInferenceTableConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) Elem() ModelServingTelemetryConfigInferenceTableConfigOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigInferenceTableConfig) ModelServingTelemetryConfigInferenceTableConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingTelemetryConfigInferenceTableConfig
-		return ret
-	}).(ModelServingTelemetryConfigInferenceTableConfigOutput)
-}
-
-// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigInferenceTableConfigPtrOutput) SamplingFraction() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigInferenceTableConfig) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SamplingFraction
-	}).(pulumi.Float64PtrOutput)
-}
-
-type ModelServingTelemetryConfigTableNames struct {
-	AnnotationsTable *string `pulumi:"annotationsTable"`
-	LogsTable        *string `pulumi:"logsTable"`
-	MetricsTable     *string `pulumi:"metricsTable"`
-	TracesTable      *string `pulumi:"tracesTable"`
-}
-
-// ModelServingTelemetryConfigTableNamesInput is an input type that accepts ModelServingTelemetryConfigTableNamesArgs and ModelServingTelemetryConfigTableNamesOutput values.
-// You can construct a concrete instance of `ModelServingTelemetryConfigTableNamesInput` via:
-//
-//	ModelServingTelemetryConfigTableNamesArgs{...}
-type ModelServingTelemetryConfigTableNamesInput interface {
-	pulumi.Input
-
-	ToModelServingTelemetryConfigTableNamesOutput() ModelServingTelemetryConfigTableNamesOutput
-	ToModelServingTelemetryConfigTableNamesOutputWithContext(context.Context) ModelServingTelemetryConfigTableNamesOutput
-}
-
-type ModelServingTelemetryConfigTableNamesArgs struct {
-	AnnotationsTable pulumi.StringPtrInput `pulumi:"annotationsTable"`
-	LogsTable        pulumi.StringPtrInput `pulumi:"logsTable"`
-	MetricsTable     pulumi.StringPtrInput `pulumi:"metricsTable"`
-	TracesTable      pulumi.StringPtrInput `pulumi:"tracesTable"`
-}
-
-func (ModelServingTelemetryConfigTableNamesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTelemetryConfigTableNames)(nil)).Elem()
-}
-
-func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesOutput() ModelServingTelemetryConfigTableNamesOutput {
-	return i.ToModelServingTelemetryConfigTableNamesOutputWithContext(context.Background())
-}
-
-func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigTableNamesOutput)
-}
-
-func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
-	return i.ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingTelemetryConfigTableNamesArgs) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigTableNamesOutput).ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx)
-}
-
-// ModelServingTelemetryConfigTableNamesPtrInput is an input type that accepts ModelServingTelemetryConfigTableNamesArgs, ModelServingTelemetryConfigTableNamesPtr and ModelServingTelemetryConfigTableNamesPtrOutput values.
-// You can construct a concrete instance of `ModelServingTelemetryConfigTableNamesPtrInput` via:
-//
-//	        ModelServingTelemetryConfigTableNamesArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingTelemetryConfigTableNamesPtrInput interface {
-	pulumi.Input
-
-	ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput
-	ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Context) ModelServingTelemetryConfigTableNamesPtrOutput
-}
-
-type modelServingTelemetryConfigTableNamesPtrType ModelServingTelemetryConfigTableNamesArgs
-
-func ModelServingTelemetryConfigTableNamesPtr(v *ModelServingTelemetryConfigTableNamesArgs) ModelServingTelemetryConfigTableNamesPtrInput {
-	return (*modelServingTelemetryConfigTableNamesPtrType)(v)
-}
-
-func (*modelServingTelemetryConfigTableNamesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingTelemetryConfigTableNames)(nil)).Elem()
-}
-
-func (i *modelServingTelemetryConfigTableNamesPtrType) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
-	return i.ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingTelemetryConfigTableNamesPtrType) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTelemetryConfigTableNamesPtrOutput)
-}
-
-type ModelServingTelemetryConfigTableNamesOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTelemetryConfigTableNamesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingTelemetryConfigTableNames)(nil)).Elem()
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesOutput() ModelServingTelemetryConfigTableNamesOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
-	return o.ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingTelemetryConfigTableNames) *ModelServingTelemetryConfigTableNames {
-		return &v
-	}).(ModelServingTelemetryConfigTableNamesPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) AnnotationsTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.AnnotationsTable }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) LogsTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.LogsTable }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) MetricsTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.MetricsTable }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesOutput) TracesTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingTelemetryConfigTableNames) *string { return v.TracesTable }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingTelemetryConfigTableNamesPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingTelemetryConfigTableNamesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingTelemetryConfigTableNames)(nil)).Elem()
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) ToModelServingTelemetryConfigTableNamesPtrOutput() ModelServingTelemetryConfigTableNamesPtrOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) ToModelServingTelemetryConfigTableNamesPtrOutputWithContext(ctx context.Context) ModelServingTelemetryConfigTableNamesPtrOutput {
-	return o
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) Elem() ModelServingTelemetryConfigTableNamesOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) ModelServingTelemetryConfigTableNames {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingTelemetryConfigTableNames
-		return ret
-	}).(ModelServingTelemetryConfigTableNamesOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) AnnotationsTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AnnotationsTable
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) LogsTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogsTable
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) MetricsTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MetricsTable
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingTelemetryConfigTableNamesPtrOutput) TracesTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingTelemetryConfigTableNames) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TracesTable
-	}).(pulumi.StringPtrOutput)
-}
-
-type MountAbfs struct {
-	ClientId             string  `pulumi:"clientId"`
-	ClientSecretKey      string  `pulumi:"clientSecretKey"`
-	ClientSecretScope    string  `pulumi:"clientSecretScope"`
-	ContainerName        *string `pulumi:"containerName"`
-	Directory            *string `pulumi:"directory"`
-	InitializeFileSystem bool    `pulumi:"initializeFileSystem"`
-	StorageAccountName   *string `pulumi:"storageAccountName"`
-	TenantId             *string `pulumi:"tenantId"`
-}
-
-// MountAbfsInput is an input type that accepts MountAbfsArgs and MountAbfsOutput values.
-// You can construct a concrete instance of `MountAbfsInput` via:
-//
-//	MountAbfsArgs{...}
-type MountAbfsInput interface {
-	pulumi.Input
-
-	ToMountAbfsOutput() MountAbfsOutput
-	ToMountAbfsOutputWithContext(context.Context) MountAbfsOutput
-}
-
-type MountAbfsArgs struct {
-	ClientId             pulumi.StringInput    `pulumi:"clientId"`
-	ClientSecretKey      pulumi.StringInput    `pulumi:"clientSecretKey"`
-	ClientSecretScope    pulumi.StringInput    `pulumi:"clientSecretScope"`
-	ContainerName        pulumi.StringPtrInput `pulumi:"containerName"`
-	Directory            pulumi.StringPtrInput `pulumi:"directory"`
-	InitializeFileSystem pulumi.BoolInput      `pulumi:"initializeFileSystem"`
-	StorageAccountName   pulumi.StringPtrInput `pulumi:"storageAccountName"`
-	TenantId             pulumi.StringPtrInput `pulumi:"tenantId"`
-}
-
-func (MountAbfsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountAbfs)(nil)).Elem()
-}
-
-func (i MountAbfsArgs) ToMountAbfsOutput() MountAbfsOutput {
-	return i.ToMountAbfsOutputWithContext(context.Background())
-}
-
-func (i MountAbfsArgs) ToMountAbfsOutputWithContext(ctx context.Context) MountAbfsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountAbfsOutput)
-}
-
-func (i MountAbfsArgs) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
-	return i.ToMountAbfsPtrOutputWithContext(context.Background())
-}
-
-func (i MountAbfsArgs) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountAbfsOutput).ToMountAbfsPtrOutputWithContext(ctx)
-}
-
-// MountAbfsPtrInput is an input type that accepts MountAbfsArgs, MountAbfsPtr and MountAbfsPtrOutput values.
-// You can construct a concrete instance of `MountAbfsPtrInput` via:
-//
-//	        MountAbfsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MountAbfsPtrInput interface {
-	pulumi.Input
-
-	ToMountAbfsPtrOutput() MountAbfsPtrOutput
-	ToMountAbfsPtrOutputWithContext(context.Context) MountAbfsPtrOutput
-}
-
-type mountAbfsPtrType MountAbfsArgs
-
-func MountAbfsPtr(v *MountAbfsArgs) MountAbfsPtrInput {
-	return (*mountAbfsPtrType)(v)
-}
-
-func (*mountAbfsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountAbfs)(nil)).Elem()
-}
-
-func (i *mountAbfsPtrType) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
-	return i.ToMountAbfsPtrOutputWithContext(context.Background())
-}
-
-func (i *mountAbfsPtrType) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountAbfsPtrOutput)
-}
-
-type MountAbfsOutput struct{ *pulumi.OutputState }
-
-func (MountAbfsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountAbfs)(nil)).Elem()
-}
-
-func (o MountAbfsOutput) ToMountAbfsOutput() MountAbfsOutput {
-	return o
-}
-
-func (o MountAbfsOutput) ToMountAbfsOutputWithContext(ctx context.Context) MountAbfsOutput {
-	return o
-}
-
-func (o MountAbfsOutput) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
-	return o.ToMountAbfsPtrOutputWithContext(context.Background())
-}
-
-func (o MountAbfsOutput) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountAbfs) *MountAbfs {
-		return &v
-	}).(MountAbfsPtrOutput)
-}
-
-func (o MountAbfsOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v MountAbfs) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-func (o MountAbfsOutput) ClientSecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v MountAbfs) string { return v.ClientSecretKey }).(pulumi.StringOutput)
-}
-
-func (o MountAbfsOutput) ClientSecretScope() pulumi.StringOutput {
-	return o.ApplyT(func(v MountAbfs) string { return v.ClientSecretScope }).(pulumi.StringOutput)
-}
-
-func (o MountAbfsOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAbfs) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsOutput) Directory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAbfs) *string { return v.Directory }).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsOutput) InitializeFileSystem() pulumi.BoolOutput {
-	return o.ApplyT(func(v MountAbfs) bool { return v.InitializeFileSystem }).(pulumi.BoolOutput)
-}
-
-func (o MountAbfsOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAbfs) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAbfs) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type MountAbfsPtrOutput struct{ *pulumi.OutputState }
-
-func (MountAbfsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountAbfs)(nil)).Elem()
-}
-
-func (o MountAbfsPtrOutput) ToMountAbfsPtrOutput() MountAbfsPtrOutput {
-	return o
-}
-
-func (o MountAbfsPtrOutput) ToMountAbfsPtrOutputWithContext(ctx context.Context) MountAbfsPtrOutput {
-	return o
-}
-
-func (o MountAbfsPtrOutput) Elem() MountAbfsOutput {
-	return o.ApplyT(func(v *MountAbfs) MountAbfs {
-		if v != nil {
-			return *v
-		}
-		var ret MountAbfs
-		return ret
-	}).(MountAbfsOutput)
-}
-
-func (o MountAbfsPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) ClientSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecretKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) ClientSecretScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecretScope
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ContainerName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) Directory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Directory
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) InitializeFileSystem() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.InitializeFileSystem
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAbfsPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MountAdl struct {
-	ClientId            string  `pulumi:"clientId"`
-	ClientSecretKey     string  `pulumi:"clientSecretKey"`
-	ClientSecretScope   string  `pulumi:"clientSecretScope"`
-	Directory           *string `pulumi:"directory"`
-	SparkConfPrefix     *string `pulumi:"sparkConfPrefix"`
-	StorageResourceName *string `pulumi:"storageResourceName"`
-	TenantId            *string `pulumi:"tenantId"`
-}
-
-// MountAdlInput is an input type that accepts MountAdlArgs and MountAdlOutput values.
-// You can construct a concrete instance of `MountAdlInput` via:
-//
-//	MountAdlArgs{...}
-type MountAdlInput interface {
-	pulumi.Input
-
-	ToMountAdlOutput() MountAdlOutput
-	ToMountAdlOutputWithContext(context.Context) MountAdlOutput
-}
-
-type MountAdlArgs struct {
-	ClientId            pulumi.StringInput    `pulumi:"clientId"`
-	ClientSecretKey     pulumi.StringInput    `pulumi:"clientSecretKey"`
-	ClientSecretScope   pulumi.StringInput    `pulumi:"clientSecretScope"`
-	Directory           pulumi.StringPtrInput `pulumi:"directory"`
-	SparkConfPrefix     pulumi.StringPtrInput `pulumi:"sparkConfPrefix"`
-	StorageResourceName pulumi.StringPtrInput `pulumi:"storageResourceName"`
-	TenantId            pulumi.StringPtrInput `pulumi:"tenantId"`
-}
-
-func (MountAdlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountAdl)(nil)).Elem()
-}
-
-func (i MountAdlArgs) ToMountAdlOutput() MountAdlOutput {
-	return i.ToMountAdlOutputWithContext(context.Background())
-}
-
-func (i MountAdlArgs) ToMountAdlOutputWithContext(ctx context.Context) MountAdlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountAdlOutput)
-}
-
-func (i MountAdlArgs) ToMountAdlPtrOutput() MountAdlPtrOutput {
-	return i.ToMountAdlPtrOutputWithContext(context.Background())
-}
-
-func (i MountAdlArgs) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountAdlOutput).ToMountAdlPtrOutputWithContext(ctx)
-}
-
-// MountAdlPtrInput is an input type that accepts MountAdlArgs, MountAdlPtr and MountAdlPtrOutput values.
-// You can construct a concrete instance of `MountAdlPtrInput` via:
-//
-//	        MountAdlArgs{...}
-//
-//	or:
-//
-//	        nil
-type MountAdlPtrInput interface {
-	pulumi.Input
-
-	ToMountAdlPtrOutput() MountAdlPtrOutput
-	ToMountAdlPtrOutputWithContext(context.Context) MountAdlPtrOutput
-}
-
-type mountAdlPtrType MountAdlArgs
-
-func MountAdlPtr(v *MountAdlArgs) MountAdlPtrInput {
-	return (*mountAdlPtrType)(v)
-}
-
-func (*mountAdlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountAdl)(nil)).Elem()
-}
-
-func (i *mountAdlPtrType) ToMountAdlPtrOutput() MountAdlPtrOutput {
-	return i.ToMountAdlPtrOutputWithContext(context.Background())
-}
-
-func (i *mountAdlPtrType) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountAdlPtrOutput)
-}
-
-type MountAdlOutput struct{ *pulumi.OutputState }
-
-func (MountAdlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountAdl)(nil)).Elem()
-}
-
-func (o MountAdlOutput) ToMountAdlOutput() MountAdlOutput {
-	return o
-}
-
-func (o MountAdlOutput) ToMountAdlOutputWithContext(ctx context.Context) MountAdlOutput {
-	return o
-}
-
-func (o MountAdlOutput) ToMountAdlPtrOutput() MountAdlPtrOutput {
-	return o.ToMountAdlPtrOutputWithContext(context.Background())
-}
-
-func (o MountAdlOutput) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountAdl) *MountAdl {
-		return &v
-	}).(MountAdlPtrOutput)
-}
-
-func (o MountAdlOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v MountAdl) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-func (o MountAdlOutput) ClientSecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v MountAdl) string { return v.ClientSecretKey }).(pulumi.StringOutput)
-}
-
-func (o MountAdlOutput) ClientSecretScope() pulumi.StringOutput {
-	return o.ApplyT(func(v MountAdl) string { return v.ClientSecretScope }).(pulumi.StringOutput)
-}
-
-func (o MountAdlOutput) Directory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAdl) *string { return v.Directory }).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlOutput) SparkConfPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAdl) *string { return v.SparkConfPrefix }).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlOutput) StorageResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAdl) *string { return v.StorageResourceName }).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountAdl) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type MountAdlPtrOutput struct{ *pulumi.OutputState }
-
-func (MountAdlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountAdl)(nil)).Elem()
-}
-
-func (o MountAdlPtrOutput) ToMountAdlPtrOutput() MountAdlPtrOutput {
-	return o
-}
-
-func (o MountAdlPtrOutput) ToMountAdlPtrOutputWithContext(ctx context.Context) MountAdlPtrOutput {
-	return o
-}
-
-func (o MountAdlPtrOutput) Elem() MountAdlOutput {
-	return o.ApplyT(func(v *MountAdl) MountAdl {
-		if v != nil {
-			return *v
-		}
-		var ret MountAdl
-		return ret
-	}).(MountAdlOutput)
-}
-
-func (o MountAdlPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlPtrOutput) ClientSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecretKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlPtrOutput) ClientSecretScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecretScope
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlPtrOutput) Directory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Directory
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlPtrOutput) SparkConfPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkConfPrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlPtrOutput) StorageResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageResourceName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountAdlPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountAdl) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MountGs struct {
-	BucketName     string  `pulumi:"bucketName"`
-	ServiceAccount *string `pulumi:"serviceAccount"`
-}
-
-// MountGsInput is an input type that accepts MountGsArgs and MountGsOutput values.
-// You can construct a concrete instance of `MountGsInput` via:
-//
-//	MountGsArgs{...}
-type MountGsInput interface {
-	pulumi.Input
-
-	ToMountGsOutput() MountGsOutput
-	ToMountGsOutputWithContext(context.Context) MountGsOutput
-}
-
-type MountGsArgs struct {
-	BucketName     pulumi.StringInput    `pulumi:"bucketName"`
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-}
-
-func (MountGsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountGs)(nil)).Elem()
-}
-
-func (i MountGsArgs) ToMountGsOutput() MountGsOutput {
-	return i.ToMountGsOutputWithContext(context.Background())
-}
-
-func (i MountGsArgs) ToMountGsOutputWithContext(ctx context.Context) MountGsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountGsOutput)
-}
-
-func (i MountGsArgs) ToMountGsPtrOutput() MountGsPtrOutput {
-	return i.ToMountGsPtrOutputWithContext(context.Background())
-}
-
-func (i MountGsArgs) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountGsOutput).ToMountGsPtrOutputWithContext(ctx)
-}
-
-// MountGsPtrInput is an input type that accepts MountGsArgs, MountGsPtr and MountGsPtrOutput values.
-// You can construct a concrete instance of `MountGsPtrInput` via:
-//
-//	        MountGsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MountGsPtrInput interface {
-	pulumi.Input
-
-	ToMountGsPtrOutput() MountGsPtrOutput
-	ToMountGsPtrOutputWithContext(context.Context) MountGsPtrOutput
-}
-
-type mountGsPtrType MountGsArgs
-
-func MountGsPtr(v *MountGsArgs) MountGsPtrInput {
-	return (*mountGsPtrType)(v)
-}
-
-func (*mountGsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountGs)(nil)).Elem()
-}
-
-func (i *mountGsPtrType) ToMountGsPtrOutput() MountGsPtrOutput {
-	return i.ToMountGsPtrOutputWithContext(context.Background())
-}
-
-func (i *mountGsPtrType) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountGsPtrOutput)
-}
-
-type MountGsOutput struct{ *pulumi.OutputState }
-
-func (MountGsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountGs)(nil)).Elem()
-}
-
-func (o MountGsOutput) ToMountGsOutput() MountGsOutput {
-	return o
-}
-
-func (o MountGsOutput) ToMountGsOutputWithContext(ctx context.Context) MountGsOutput {
-	return o
-}
-
-func (o MountGsOutput) ToMountGsPtrOutput() MountGsPtrOutput {
-	return o.ToMountGsPtrOutputWithContext(context.Background())
-}
-
-func (o MountGsOutput) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountGs) *MountGs {
-		return &v
-	}).(MountGsPtrOutput)
-}
-
-func (o MountGsOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func(v MountGs) string { return v.BucketName }).(pulumi.StringOutput)
-}
-
-func (o MountGsOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountGs) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
-}
-
-type MountGsPtrOutput struct{ *pulumi.OutputState }
-
-func (MountGsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountGs)(nil)).Elem()
-}
-
-func (o MountGsPtrOutput) ToMountGsPtrOutput() MountGsPtrOutput {
-	return o
-}
-
-func (o MountGsPtrOutput) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsPtrOutput {
-	return o
-}
-
-func (o MountGsPtrOutput) Elem() MountGsOutput {
-	return o.ApplyT(func(v *MountGs) MountGs {
-		if v != nil {
-			return *v
-		}
-		var ret MountGs
-		return ret
-	}).(MountGsOutput)
-}
-
-func (o MountGsPtrOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountGs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BucketName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountGsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountGs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-type MountProviderConfig struct {
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// MountProviderConfigInput is an input type that accepts MountProviderConfigArgs and MountProviderConfigOutput values.
-// You can construct a concrete instance of `MountProviderConfigInput` via:
-//
-//	MountProviderConfigArgs{...}
-type MountProviderConfigInput interface {
-	pulumi.Input
-
-	ToMountProviderConfigOutput() MountProviderConfigOutput
-	ToMountProviderConfigOutputWithContext(context.Context) MountProviderConfigOutput
-}
-
-type MountProviderConfigArgs struct {
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (MountProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountProviderConfig)(nil)).Elem()
-}
-
-func (i MountProviderConfigArgs) ToMountProviderConfigOutput() MountProviderConfigOutput {
-	return i.ToMountProviderConfigOutputWithContext(context.Background())
-}
-
-func (i MountProviderConfigArgs) ToMountProviderConfigOutputWithContext(ctx context.Context) MountProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountProviderConfigOutput)
-}
-
-func (i MountProviderConfigArgs) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
-	return i.ToMountProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MountProviderConfigArgs) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountProviderConfigOutput).ToMountProviderConfigPtrOutputWithContext(ctx)
-}
-
-// MountProviderConfigPtrInput is an input type that accepts MountProviderConfigArgs, MountProviderConfigPtr and MountProviderConfigPtrOutput values.
-// You can construct a concrete instance of `MountProviderConfigPtrInput` via:
-//
-//	        MountProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MountProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput
-	ToMountProviderConfigPtrOutputWithContext(context.Context) MountProviderConfigPtrOutput
-}
-
-type mountProviderConfigPtrType MountProviderConfigArgs
-
-func MountProviderConfigPtr(v *MountProviderConfigArgs) MountProviderConfigPtrInput {
-	return (*mountProviderConfigPtrType)(v)
-}
-
-func (*mountProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountProviderConfig)(nil)).Elem()
-}
-
-func (i *mountProviderConfigPtrType) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
-	return i.ToMountProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mountProviderConfigPtrType) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountProviderConfigPtrOutput)
-}
-
-type MountProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (MountProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountProviderConfig)(nil)).Elem()
-}
-
-func (o MountProviderConfigOutput) ToMountProviderConfigOutput() MountProviderConfigOutput {
-	return o
-}
-
-func (o MountProviderConfigOutput) ToMountProviderConfigOutputWithContext(ctx context.Context) MountProviderConfigOutput {
-	return o
-}
-
-func (o MountProviderConfigOutput) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
-	return o.ToMountProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MountProviderConfigOutput) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountProviderConfig) *MountProviderConfig {
-		return &v
-	}).(MountProviderConfigPtrOutput)
-}
-
-func (o MountProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type MountProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MountProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountProviderConfig)(nil)).Elem()
-}
-
-func (o MountProviderConfigPtrOutput) ToMountProviderConfigPtrOutput() MountProviderConfigPtrOutput {
-	return o
-}
-
-func (o MountProviderConfigPtrOutput) ToMountProviderConfigPtrOutputWithContext(ctx context.Context) MountProviderConfigPtrOutput {
-	return o
-}
-
-func (o MountProviderConfigPtrOutput) Elem() MountProviderConfigOutput {
-	return o.ApplyT(func(v *MountProviderConfig) MountProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MountProviderConfig
-		return ret
-	}).(MountProviderConfigOutput)
-}
-
-func (o MountProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MountS3 struct {
-	BucketName      string  `pulumi:"bucketName"`
-	InstanceProfile *string `pulumi:"instanceProfile"`
-}
-
-// MountS3Input is an input type that accepts MountS3Args and MountS3Output values.
-// You can construct a concrete instance of `MountS3Input` via:
-//
-//	MountS3Args{...}
-type MountS3Input interface {
-	pulumi.Input
-
-	ToMountS3Output() MountS3Output
-	ToMountS3OutputWithContext(context.Context) MountS3Output
-}
-
-type MountS3Args struct {
-	BucketName      pulumi.StringInput    `pulumi:"bucketName"`
-	InstanceProfile pulumi.StringPtrInput `pulumi:"instanceProfile"`
-}
-
-func (MountS3Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountS3)(nil)).Elem()
-}
-
-func (i MountS3Args) ToMountS3Output() MountS3Output {
-	return i.ToMountS3OutputWithContext(context.Background())
-}
-
-func (i MountS3Args) ToMountS3OutputWithContext(ctx context.Context) MountS3Output {
-	return pulumi.ToOutputWithContext(ctx, i).(MountS3Output)
-}
-
-func (i MountS3Args) ToMountS3PtrOutput() MountS3PtrOutput {
-	return i.ToMountS3PtrOutputWithContext(context.Background())
-}
-
-func (i MountS3Args) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountS3Output).ToMountS3PtrOutputWithContext(ctx)
-}
-
-// MountS3PtrInput is an input type that accepts MountS3Args, MountS3Ptr and MountS3PtrOutput values.
-// You can construct a concrete instance of `MountS3PtrInput` via:
-//
-//	        MountS3Args{...}
-//
-//	or:
-//
-//	        nil
-type MountS3PtrInput interface {
-	pulumi.Input
-
-	ToMountS3PtrOutput() MountS3PtrOutput
-	ToMountS3PtrOutputWithContext(context.Context) MountS3PtrOutput
-}
-
-type mountS3PtrType MountS3Args
-
-func MountS3Ptr(v *MountS3Args) MountS3PtrInput {
-	return (*mountS3PtrType)(v)
-}
-
-func (*mountS3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountS3)(nil)).Elem()
-}
-
-func (i *mountS3PtrType) ToMountS3PtrOutput() MountS3PtrOutput {
-	return i.ToMountS3PtrOutputWithContext(context.Background())
-}
-
-func (i *mountS3PtrType) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountS3PtrOutput)
-}
-
-type MountS3Output struct{ *pulumi.OutputState }
-
-func (MountS3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountS3)(nil)).Elem()
-}
-
-func (o MountS3Output) ToMountS3Output() MountS3Output {
-	return o
-}
-
-func (o MountS3Output) ToMountS3OutputWithContext(ctx context.Context) MountS3Output {
-	return o
-}
-
-func (o MountS3Output) ToMountS3PtrOutput() MountS3PtrOutput {
-	return o.ToMountS3PtrOutputWithContext(context.Background())
-}
-
-func (o MountS3Output) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountS3) *MountS3 {
-		return &v
-	}).(MountS3PtrOutput)
-}
-
-func (o MountS3Output) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func(v MountS3) string { return v.BucketName }).(pulumi.StringOutput)
-}
-
-func (o MountS3Output) InstanceProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountS3) *string { return v.InstanceProfile }).(pulumi.StringPtrOutput)
-}
-
-type MountS3PtrOutput struct{ *pulumi.OutputState }
-
-func (MountS3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountS3)(nil)).Elem()
-}
-
-func (o MountS3PtrOutput) ToMountS3PtrOutput() MountS3PtrOutput {
-	return o
-}
-
-func (o MountS3PtrOutput) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3PtrOutput {
-	return o
-}
-
-func (o MountS3PtrOutput) Elem() MountS3Output {
-	return o.ApplyT(func(v *MountS3) MountS3 {
-		if v != nil {
-			return *v
-		}
-		var ret MountS3
-		return ret
-	}).(MountS3Output)
-}
-
-func (o MountS3PtrOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountS3) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BucketName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountS3PtrOutput) InstanceProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceProfile
-	}).(pulumi.StringPtrOutput)
-}
-
-type MountWasb struct {
-	AuthType           string  `pulumi:"authType"`
-	ContainerName      *string `pulumi:"containerName"`
-	Directory          *string `pulumi:"directory"`
-	StorageAccountName *string `pulumi:"storageAccountName"`
-	TokenSecretKey     string  `pulumi:"tokenSecretKey"`
-	TokenSecretScope   string  `pulumi:"tokenSecretScope"`
-}
-
-// MountWasbInput is an input type that accepts MountWasbArgs and MountWasbOutput values.
-// You can construct a concrete instance of `MountWasbInput` via:
-//
-//	MountWasbArgs{...}
-type MountWasbInput interface {
-	pulumi.Input
-
-	ToMountWasbOutput() MountWasbOutput
-	ToMountWasbOutputWithContext(context.Context) MountWasbOutput
-}
-
-type MountWasbArgs struct {
-	AuthType           pulumi.StringInput    `pulumi:"authType"`
-	ContainerName      pulumi.StringPtrInput `pulumi:"containerName"`
-	Directory          pulumi.StringPtrInput `pulumi:"directory"`
-	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
-	TokenSecretKey     pulumi.StringInput    `pulumi:"tokenSecretKey"`
-	TokenSecretScope   pulumi.StringInput    `pulumi:"tokenSecretScope"`
-}
-
-func (MountWasbArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountWasb)(nil)).Elem()
-}
-
-func (i MountWasbArgs) ToMountWasbOutput() MountWasbOutput {
-	return i.ToMountWasbOutputWithContext(context.Background())
-}
-
-func (i MountWasbArgs) ToMountWasbOutputWithContext(ctx context.Context) MountWasbOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountWasbOutput)
-}
-
-func (i MountWasbArgs) ToMountWasbPtrOutput() MountWasbPtrOutput {
-	return i.ToMountWasbPtrOutputWithContext(context.Background())
-}
-
-func (i MountWasbArgs) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountWasbOutput).ToMountWasbPtrOutputWithContext(ctx)
-}
-
-// MountWasbPtrInput is an input type that accepts MountWasbArgs, MountWasbPtr and MountWasbPtrOutput values.
-// You can construct a concrete instance of `MountWasbPtrInput` via:
-//
-//	        MountWasbArgs{...}
-//
-//	or:
-//
-//	        nil
-type MountWasbPtrInput interface {
-	pulumi.Input
-
-	ToMountWasbPtrOutput() MountWasbPtrOutput
-	ToMountWasbPtrOutputWithContext(context.Context) MountWasbPtrOutput
-}
-
-type mountWasbPtrType MountWasbArgs
-
-func MountWasbPtr(v *MountWasbArgs) MountWasbPtrInput {
-	return (*mountWasbPtrType)(v)
-}
-
-func (*mountWasbPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountWasb)(nil)).Elem()
-}
-
-func (i *mountWasbPtrType) ToMountWasbPtrOutput() MountWasbPtrOutput {
-	return i.ToMountWasbPtrOutputWithContext(context.Background())
-}
-
-func (i *mountWasbPtrType) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountWasbPtrOutput)
-}
-
-type MountWasbOutput struct{ *pulumi.OutputState }
-
-func (MountWasbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountWasb)(nil)).Elem()
-}
-
-func (o MountWasbOutput) ToMountWasbOutput() MountWasbOutput {
-	return o
-}
-
-func (o MountWasbOutput) ToMountWasbOutputWithContext(ctx context.Context) MountWasbOutput {
-	return o
-}
-
-func (o MountWasbOutput) ToMountWasbPtrOutput() MountWasbPtrOutput {
-	return o.ToMountWasbPtrOutputWithContext(context.Background())
-}
-
-func (o MountWasbOutput) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountWasb) *MountWasb {
-		return &v
-	}).(MountWasbPtrOutput)
-}
-
-func (o MountWasbOutput) AuthType() pulumi.StringOutput {
-	return o.ApplyT(func(v MountWasb) string { return v.AuthType }).(pulumi.StringOutput)
-}
-
-func (o MountWasbOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountWasb) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbOutput) Directory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountWasb) *string { return v.Directory }).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MountWasb) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbOutput) TokenSecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v MountWasb) string { return v.TokenSecretKey }).(pulumi.StringOutput)
-}
-
-func (o MountWasbOutput) TokenSecretScope() pulumi.StringOutput {
-	return o.ApplyT(func(v MountWasb) string { return v.TokenSecretScope }).(pulumi.StringOutput)
-}
-
-type MountWasbPtrOutput struct{ *pulumi.OutputState }
-
-func (MountWasbPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountWasb)(nil)).Elem()
-}
-
-func (o MountWasbPtrOutput) ToMountWasbPtrOutput() MountWasbPtrOutput {
-	return o
-}
-
-func (o MountWasbPtrOutput) ToMountWasbPtrOutputWithContext(ctx context.Context) MountWasbPtrOutput {
-	return o
-}
-
-func (o MountWasbPtrOutput) Elem() MountWasbOutput {
-	return o.ApplyT(func(v *MountWasb) MountWasb {
-		if v != nil {
-			return *v
-		}
-		var ret MountWasb
-		return ret
-	}).(MountWasbOutput)
-}
-
-func (o MountWasbPtrOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountWasb) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AuthType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbPtrOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountWasb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ContainerName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbPtrOutput) Directory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountWasb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Directory
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountWasb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbPtrOutput) TokenSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountWasb) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TokenSecretKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MountWasbPtrOutput) TokenSecretScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountWasb) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TokenSecretScope
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsCustomerManagedKeysAwsKeyInfo struct {
-	// The AWS KMS key alias.
-	KeyAlias *string `pulumi:"keyAlias"`
-	// The AWS KMS key's Amazon Resource Name (ARN).
-	KeyArn string `pulumi:"keyArn"`
-	// (Computed) The AWS region in which KMS key is deployed to. This is not required.
-	KeyRegion *string `pulumi:"keyRegion"`
-}
-
-// MwsCustomerManagedKeysAwsKeyInfoInput is an input type that accepts MwsCustomerManagedKeysAwsKeyInfoArgs and MwsCustomerManagedKeysAwsKeyInfoOutput values.
-// You can construct a concrete instance of `MwsCustomerManagedKeysAwsKeyInfoInput` via:
-//
-//	MwsCustomerManagedKeysAwsKeyInfoArgs{...}
-type MwsCustomerManagedKeysAwsKeyInfoInput interface {
-	pulumi.Input
-
-	ToMwsCustomerManagedKeysAwsKeyInfoOutput() MwsCustomerManagedKeysAwsKeyInfoOutput
-	ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(context.Context) MwsCustomerManagedKeysAwsKeyInfoOutput
-}
-
-type MwsCustomerManagedKeysAwsKeyInfoArgs struct {
-	// The AWS KMS key alias.
-	KeyAlias pulumi.StringPtrInput `pulumi:"keyAlias"`
-	// The AWS KMS key's Amazon Resource Name (ARN).
-	KeyArn pulumi.StringInput `pulumi:"keyArn"`
-	// (Computed) The AWS region in which KMS key is deployed to. This is not required.
-	KeyRegion pulumi.StringPtrInput `pulumi:"keyRegion"`
-}
-
-func (MwsCustomerManagedKeysAwsKeyInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
-}
-
-func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoOutput() MwsCustomerManagedKeysAwsKeyInfoOutput {
-	return i.ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(context.Background())
-}
-
-func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysAwsKeyInfoOutput)
-}
-
-func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return i.ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Background())
-}
-
-func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysAwsKeyInfoOutput).ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx)
-}
-
-// MwsCustomerManagedKeysAwsKeyInfoPtrInput is an input type that accepts MwsCustomerManagedKeysAwsKeyInfoArgs, MwsCustomerManagedKeysAwsKeyInfoPtr and MwsCustomerManagedKeysAwsKeyInfoPtrOutput values.
-// You can construct a concrete instance of `MwsCustomerManagedKeysAwsKeyInfoPtrInput` via:
-//
-//	        MwsCustomerManagedKeysAwsKeyInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsCustomerManagedKeysAwsKeyInfoPtrInput interface {
-	pulumi.Input
-
-	ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput
-	ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput
-}
-
-type mwsCustomerManagedKeysAwsKeyInfoPtrType MwsCustomerManagedKeysAwsKeyInfoArgs
-
-func MwsCustomerManagedKeysAwsKeyInfoPtr(v *MwsCustomerManagedKeysAwsKeyInfoArgs) MwsCustomerManagedKeysAwsKeyInfoPtrInput {
-	return (*mwsCustomerManagedKeysAwsKeyInfoPtrType)(v)
-}
-
-func (*mwsCustomerManagedKeysAwsKeyInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
-}
-
-func (i *mwsCustomerManagedKeysAwsKeyInfoPtrType) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return i.ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsCustomerManagedKeysAwsKeyInfoPtrType) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysAwsKeyInfoPtrOutput)
-}
-
-type MwsCustomerManagedKeysAwsKeyInfoOutput struct{ *pulumi.OutputState }
-
-func (MwsCustomerManagedKeysAwsKeyInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoOutput() MwsCustomerManagedKeysAwsKeyInfoOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return o.ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(context.Background())
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsCustomerManagedKeysAwsKeyInfo) *MwsCustomerManagedKeysAwsKeyInfo {
-		return &v
-	}).(MwsCustomerManagedKeysAwsKeyInfoPtrOutput)
-}
-
-// The AWS KMS key alias.
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyAlias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) *string { return v.KeyAlias }).(pulumi.StringPtrOutput)
-}
-
-// The AWS KMS key's Amazon Resource Name (ARN).
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyArn() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) string { return v.KeyArn }).(pulumi.StringOutput)
-}
-
-// (Computed) The AWS region in which KMS key is deployed to. This is not required.
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) *string { return v.KeyRegion }).(pulumi.StringPtrOutput)
-}
-
-type MwsCustomerManagedKeysAwsKeyInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsCustomerManagedKeysAwsKeyInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsCustomerManagedKeysAwsKeyInfo)(nil)).Elem()
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutput() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) ToMwsCustomerManagedKeysAwsKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) Elem() MwsCustomerManagedKeysAwsKeyInfoOutput {
-	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) MwsCustomerManagedKeysAwsKeyInfo {
-		if v != nil {
-			return *v
-		}
-		var ret MwsCustomerManagedKeysAwsKeyInfo
-		return ret
-	}).(MwsCustomerManagedKeysAwsKeyInfoOutput)
-}
-
-// The AWS KMS key alias.
-func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyAlias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyAlias
-	}).(pulumi.StringPtrOutput)
-}
-
-// The AWS KMS key's Amazon Resource Name (ARN).
-func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Computed) The AWS region in which KMS key is deployed to. This is not required.
-func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsCustomerManagedKeysAwsKeyInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsCustomerManagedKeysGcpKeyInfo struct {
-	// The GCP KMS key's resource name.
-	KmsKeyId string `pulumi:"kmsKeyId"`
-}
-
-// MwsCustomerManagedKeysGcpKeyInfoInput is an input type that accepts MwsCustomerManagedKeysGcpKeyInfoArgs and MwsCustomerManagedKeysGcpKeyInfoOutput values.
-// You can construct a concrete instance of `MwsCustomerManagedKeysGcpKeyInfoInput` via:
-//
-//	MwsCustomerManagedKeysGcpKeyInfoArgs{...}
-type MwsCustomerManagedKeysGcpKeyInfoInput interface {
-	pulumi.Input
-
-	ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput
-	ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput
-}
-
-type MwsCustomerManagedKeysGcpKeyInfoArgs struct {
-	// The GCP KMS key's resource name.
-	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
-}
-
-func (MwsCustomerManagedKeysGcpKeyInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
-}
-
-func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput {
-	return i.ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(context.Background())
-}
-
-func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoOutput)
-}
-
-func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return i.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
-}
-
-func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoOutput).ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx)
-}
-
-// MwsCustomerManagedKeysGcpKeyInfoPtrInput is an input type that accepts MwsCustomerManagedKeysGcpKeyInfoArgs, MwsCustomerManagedKeysGcpKeyInfoPtr and MwsCustomerManagedKeysGcpKeyInfoPtrOutput values.
-// You can construct a concrete instance of `MwsCustomerManagedKeysGcpKeyInfoPtrInput` via:
-//
-//	        MwsCustomerManagedKeysGcpKeyInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsCustomerManagedKeysGcpKeyInfoPtrInput interface {
-	pulumi.Input
-
-	ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput
-	ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput
-}
-
-type mwsCustomerManagedKeysGcpKeyInfoPtrType MwsCustomerManagedKeysGcpKeyInfoArgs
-
-func MwsCustomerManagedKeysGcpKeyInfoPtr(v *MwsCustomerManagedKeysGcpKeyInfoArgs) MwsCustomerManagedKeysGcpKeyInfoPtrInput {
-	return (*mwsCustomerManagedKeysGcpKeyInfoPtrType)(v)
-}
-
-func (*mwsCustomerManagedKeysGcpKeyInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
-}
-
-func (i *mwsCustomerManagedKeysGcpKeyInfoPtrType) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return i.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsCustomerManagedKeysGcpKeyInfoPtrType) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
-}
-
-type MwsCustomerManagedKeysGcpKeyInfoOutput struct{ *pulumi.OutputState }
-
-func (MwsCustomerManagedKeysGcpKeyInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return o.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsCustomerManagedKeysGcpKeyInfo) *MwsCustomerManagedKeysGcpKeyInfo {
-		return &v
-	}).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
-}
-
-// The GCP KMS key's resource name.
-func (o MwsCustomerManagedKeysGcpKeyInfoOutput) KmsKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsCustomerManagedKeysGcpKeyInfo) string { return v.KmsKeyId }).(pulumi.StringOutput)
-}
-
-type MwsCustomerManagedKeysGcpKeyInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
-	return o
-}
-
-func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) Elem() MwsCustomerManagedKeysGcpKeyInfoOutput {
-	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) MwsCustomerManagedKeysGcpKeyInfo {
-		if v != nil {
-			return *v
-		}
-		var ret MwsCustomerManagedKeysGcpKeyInfo
-		return ret
-	}).(MwsCustomerManagedKeysGcpKeyInfoOutput)
-}
-
-// The GCP KMS key's resource name.
-func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpoint struct {
-	AllVpcScServices   *bool                                                   `pulumi:"allVpcScServices"`
-	GoogleApiEndpoints *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints `pulumi:"googleApiEndpoints"`
-	PscEndpointUri     *string                                                 `pulumi:"pscEndpointUri"`
-	ServiceAttachment  *string                                                 `pulumi:"serviceAttachment"`
-}
-
-// MwsNccPrivateEndpointRuleGcpEndpointInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointArgs and MwsNccPrivateEndpointRuleGcpEndpointOutput values.
-// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointInput` via:
-//
-//	MwsNccPrivateEndpointRuleGcpEndpointArgs{...}
-type MwsNccPrivateEndpointRuleGcpEndpointInput interface {
-	pulumi.Input
-
-	ToMwsNccPrivateEndpointRuleGcpEndpointOutput() MwsNccPrivateEndpointRuleGcpEndpointOutput
-	ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointOutput
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointArgs struct {
-	AllVpcScServices   pulumi.BoolPtrInput                                            `pulumi:"allVpcScServices"`
-	GoogleApiEndpoints MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput `pulumi:"googleApiEndpoints"`
-	PscEndpointUri     pulumi.StringPtrInput                                          `pulumi:"pscEndpointUri"`
-	ServiceAttachment  pulumi.StringPtrInput                                          `pulumi:"serviceAttachment"`
-}
-
-func (MwsNccPrivateEndpointRuleGcpEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointOutput() MwsNccPrivateEndpointRuleGcpEndpointOutput {
-	return i.ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(context.Background())
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointOutput)
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return i.ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointArgs) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointOutput).ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx)
-}
-
-// MwsNccPrivateEndpointRuleGcpEndpointPtrInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointArgs, MwsNccPrivateEndpointRuleGcpEndpointPtr and MwsNccPrivateEndpointRuleGcpEndpointPtrOutput values.
-// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointPtrInput` via:
-//
-//	        MwsNccPrivateEndpointRuleGcpEndpointArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNccPrivateEndpointRuleGcpEndpointPtrInput interface {
-	pulumi.Input
-
-	ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput
-	ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput
-}
-
-type mwsNccPrivateEndpointRuleGcpEndpointPtrType MwsNccPrivateEndpointRuleGcpEndpointArgs
-
-func MwsNccPrivateEndpointRuleGcpEndpointPtr(v *MwsNccPrivateEndpointRuleGcpEndpointArgs) MwsNccPrivateEndpointRuleGcpEndpointPtrInput {
-	return (*mwsNccPrivateEndpointRuleGcpEndpointPtrType)(v)
-}
-
-func (*mwsNccPrivateEndpointRuleGcpEndpointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
-}
-
-func (i *mwsNccPrivateEndpointRuleGcpEndpointPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return i.ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNccPrivateEndpointRuleGcpEndpointPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput)
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointOutput struct{ *pulumi.OutputState }
-
-func (MwsNccPrivateEndpointRuleGcpEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointOutput() MwsNccPrivateEndpointRuleGcpEndpointOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return o.ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNccPrivateEndpointRuleGcpEndpoint) *MwsNccPrivateEndpointRuleGcpEndpoint {
-		return &v
-	}).(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) AllVpcScServices() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *bool { return v.AllVpcScServices }).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) GoogleApiEndpoints() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
-		return v.GoogleApiEndpoints
-	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) PscEndpointUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *string { return v.PscEndpointUri }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointOutput) ServiceAttachment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpoint) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpoint)(nil)).Elem()
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) Elem() MwsNccPrivateEndpointRuleGcpEndpointOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) MwsNccPrivateEndpointRuleGcpEndpoint {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNccPrivateEndpointRuleGcpEndpoint
-		return ret
-	}).(MwsNccPrivateEndpointRuleGcpEndpointOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) AllVpcScServices() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllVpcScServices
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) GoogleApiEndpoints() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
-		if v == nil {
-			return nil
-		}
-		return v.GoogleApiEndpoints
-	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) PscEndpointUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PscEndpointUri
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAttachment
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints struct {
-	Endpoints []string `pulumi:"endpoints"`
-}
-
-// MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs and MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput values.
-// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput` via:
-//
-//	MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{...}
-type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput interface {
-	pulumi.Input
-
-	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput
-	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs struct {
-	Endpoints pulumi.StringArrayInput `pulumi:"endpoints"`
-}
-
-func (MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
-	return i.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(context.Background())
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput)
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return i.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput).ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx)
-}
-
-// MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput is an input type that accepts MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs, MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtr and MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput values.
-// You can construct a concrete instance of `MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput` via:
-//
-//	        MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput interface {
-	pulumi.Input
-
-	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput
-	ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput
-}
-
-type mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs
-
-func MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtr(v *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput {
-	return (*mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType)(v)
-}
-
-func (*mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
-}
-
-func (i *mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return i.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrType) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput struct{ *pulumi.OutputState }
-
-func (MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return o.ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
-		return &v
-	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput) Endpoints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) []string { return v.Endpoints }).(pulumi.StringArrayOutput)
-}
-
-type MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints)(nil)).Elem()
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) ToMwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutputWithContext(ctx context.Context) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput {
-	return o
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) Elem() MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints
-		return ret
-	}).(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput)
-}
-
-func (o MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput) Endpoints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Endpoints
-	}).(pulumi.StringArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfig struct {
-	// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-	DefaultRules *MwsNetworkConnectivityConfigEgressConfigDefaultRules `pulumi:"defaultRules"`
-	// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-	TargetRules *MwsNetworkConnectivityConfigEgressConfigTargetRules `pulumi:"targetRules"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigArgs and MwsNetworkConnectivityConfigEgressConfigOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigOutput() MwsNetworkConnectivityConfigEgressConfigOutput
-	ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigArgs struct {
-	// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-	DefaultRules MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput `pulumi:"defaultRules"`
-	// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-	TargetRules MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput `pulumi:"targetRules"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigOutput() MwsNetworkConnectivityConfigEgressConfigOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigOutput)
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigArgs) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigOutput).ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigArgs, MwsNetworkConnectivityConfigEgressConfigPtr and MwsNetworkConnectivityConfigEgressConfigPtrOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigPtrInput` via:
-//
-//	        MwsNetworkConnectivityConfigEgressConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworkConnectivityConfigEgressConfigPtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput
-	ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput
-}
-
-type mwsNetworkConnectivityConfigEgressConfigPtrType MwsNetworkConnectivityConfigEgressConfigArgs
-
-func MwsNetworkConnectivityConfigEgressConfigPtr(v *MwsNetworkConnectivityConfigEgressConfigArgs) MwsNetworkConnectivityConfigEgressConfigPtrInput {
-	return (*mwsNetworkConnectivityConfigEgressConfigPtrType)(v)
-}
-
-func (*mwsNetworkConnectivityConfigEgressConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigPtrType) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigPtrType) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigOutput() MwsNetworkConnectivityConfigEgressConfigOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return o.ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfig {
-		return &v
-	}).(MwsNetworkConnectivityConfigEgressConfigPtrOutput)
-}
-
-// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigOutput) DefaultRules() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigDefaultRules {
-		return v.DefaultRules
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
-}
-
-// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigOutput) TargetRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
-		return v.TargetRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfig)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutput() MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfig) MwsNetworkConnectivityConfigEgressConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworkConnectivityConfigEgressConfig
-		return ret
-	}).(MwsNetworkConnectivityConfigEgressConfigOutput)
-}
-
-// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) DefaultRules() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigDefaultRules {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultRules
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
-}
-
-// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigPtrOutput) TargetRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfig) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
-		if v == nil {
-			return nil
-		}
-		return v.TargetRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRules struct {
-	// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
-	AwsStableIpRule *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule `pulumi:"awsStableIpRule"`
-	// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
-	AzureServiceEndpointRule *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule `pulumi:"azureServiceEndpointRule"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs and MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs struct {
-	// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
-	AwsStableIpRule MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput `pulumi:"awsStableIpRule"`
-	// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
-	AzureServiceEndpointRule MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput `pulumi:"azureServiceEndpointRule"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput)
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput).ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs, MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtr and MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput` via:
-//
-//	        MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput
-}
-
-type mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs
-
-func MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtr(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput {
-	return (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType)(v)
-}
-
-func (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return o.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRules {
-		return &v
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
-}
-
-// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) AwsStableIpRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
-		return v.AwsStableIpRule
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
-}
-
-// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) AzureServiceEndpointRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
-		return v.AzureServiceEndpointRule
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRules)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRules) MwsNetworkConnectivityConfigEgressConfigDefaultRules {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworkConnectivityConfigEgressConfigDefaultRules
-		return ret
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput)
-}
-
-// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AwsStableIpRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
-		if v == nil {
-			return nil
-		}
-		return v.AwsStableIpRule
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
-}
-
-// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AzureServiceEndpointRule() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRules) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
-		if v == nil {
-			return nil
-		}
-		return v.AzureServiceEndpointRule
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule struct {
-	// list of IP CIDR blocks.
-	CidrBlocks []string `pulumi:"cidrBlocks"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs struct {
-	// list of IP CIDR blocks.
-	CidrBlocks pulumi.StringArrayInput `pulumi:"cidrBlocks"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput)
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput).ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs, MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtr and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput` via:
-//
-//	        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput
-}
-
-type mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs
-
-func MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtr(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput {
-	return (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType)(v)
-}
-
-func (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return o.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
-		return &v
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
-}
-
-// list of IP CIDR blocks.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) []string {
-		return v.CidrBlocks
-	}).(pulumi.StringArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule
-		return ret
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput)
-}
-
-// list of IP CIDR blocks.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CidrBlocks
-	}).(pulumi.StringArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule struct {
-	// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
-	Subnets []string `pulumi:"subnets"`
-	// the Azure region in which this service endpoint rule applies.
-	TargetRegion *string `pulumi:"targetRegion"`
-	// the Azure services to which this service endpoint rule applies to.
-	TargetServices []string `pulumi:"targetServices"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs struct {
-	// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
-	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
-	// the Azure region in which this service endpoint rule applies.
-	TargetRegion pulumi.StringPtrInput `pulumi:"targetRegion"`
-	// the Azure services to which this service endpoint rule applies to.
-	TargetServices pulumi.StringArrayInput `pulumi:"targetServices"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput)
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput).ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs, MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtr and MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput` via:
-//
-//	        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput
-	ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput
-}
-
-type mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs
-
-func MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtr(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput {
-	return (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType)(v)
-}
-
-func (*mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrType) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return o.ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
-		return &v
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
-}
-
-// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) Subnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
-		return v.Subnets
-	}).(pulumi.StringArrayOutput)
-}
-
-// the Azure region in which this service endpoint rule applies.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) TargetRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *string {
-		return v.TargetRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// the Azure services to which this service endpoint rule applies to.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) TargetServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
-		return v.TargetServices
-	}).(pulumi.StringArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) ToMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule
-		return ret
-	}).(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput)
-}
-
-// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) Subnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Subnets
-	}).(pulumi.StringArrayOutput)
-}
-
-// the Azure region in which this service endpoint rule applies.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) TargetRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TargetRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// the Azure services to which this service endpoint rule applies to.
-func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) TargetServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TargetServices
-	}).(pulumi.StringArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRules struct {
-	// (AWS only) - list containing information about configure AWS Private Endpoints.
-	AwsPrivateEndpointRules []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule `pulumi:"awsPrivateEndpointRules"`
-	// (Azure only) - list containing information about configure Azure Private Endpoints.
-	AzurePrivateEndpointRules []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule `pulumi:"azurePrivateEndpointRules"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs struct {
-	// (AWS only) - list containing information about configure AWS Private Endpoints.
-	AwsPrivateEndpointRules MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput `pulumi:"awsPrivateEndpointRules"`
-	// (Azure only) - list containing information about configure Azure Private Endpoints.
-	AzurePrivateEndpointRules MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput `pulumi:"azurePrivateEndpointRules"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput).ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs, MwsNetworkConnectivityConfigEgressConfigTargetRulesPtr and MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput` via:
-//
-//	        MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput
-}
-
-type mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs
-
-func MwsNetworkConnectivityConfigEgressConfigTargetRulesPtr(v *MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput {
-	return (*mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType)(v)
-}
-
-func (*mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigTargetRules) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
-		return &v
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
-}
-
-// (AWS only) - list containing information about configure AWS Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AwsPrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-		return v.AwsPrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
-}
-
-// (Azure only) - list containing information about configure Azure Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AzurePrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-		return v.AzurePrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) MwsNetworkConnectivityConfigEgressConfigTargetRules {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworkConnectivityConfigEgressConfigTargetRules
-		return ret
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
-}
-
-// (AWS only) - list containing information about configure AWS Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AwsPrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-		if v == nil {
-			return nil
-		}
-		return v.AwsPrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
-}
-
-// (Azure only) - list containing information about configure Azure Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AzurePrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-		if v == nil {
-			return nil
-		}
-		return v.AzurePrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule struct {
-	AccountId       *string `pulumi:"accountId"`
-	ConnectionState *string `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime    *int     `pulumi:"creationTime"`
-	Deactivated     *bool    `pulumi:"deactivated"`
-	DeactivatedAt   *int     `pulumi:"deactivatedAt"`
-	DomainNames     []string `pulumi:"domainNames"`
-	Enabled         *bool    `pulumi:"enabled"`
-	EndpointService *string  `pulumi:"endpointService"`
-	ErrorMessage    *string  `pulumi:"errorMessage"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId *string  `pulumi:"networkConnectivityConfigId"`
-	ResourceNames               []string `pulumi:"resourceNames"`
-	RuleId                      *string  `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime   *int    `pulumi:"updatedTime"`
-	VpcEndpointId *string `pulumi:"vpcEndpointId"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs struct {
-	AccountId       pulumi.StringPtrInput `pulumi:"accountId"`
-	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime    pulumi.IntPtrInput      `pulumi:"creationTime"`
-	Deactivated     pulumi.BoolPtrInput     `pulumi:"deactivated"`
-	DeactivatedAt   pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
-	DomainNames     pulumi.StringArrayInput `pulumi:"domainNames"`
-	Enabled         pulumi.BoolPtrInput     `pulumi:"enabled"`
-	EndpointService pulumi.StringPtrInput   `pulumi:"endpointService"`
-	ErrorMessage    pulumi.StringPtrInput   `pulumi:"errorMessage"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId pulumi.StringPtrInput   `pulumi:"networkConnectivityConfigId"`
-	ResourceNames               pulumi.StringArrayInput `pulumi:"resourceNames"`
-	RuleId                      pulumi.StringPtrInput   `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime   pulumi.IntPtrInput    `pulumi:"updatedTime"`
-	VpcEndpointId pulumi.StringPtrInput `pulumi:"vpcEndpointId"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray and MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray{ MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{...} }
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.AccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.ConnectionState
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was created.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
-		return v.CreationTime
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *bool {
-		return v.Deactivated
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
-		return v.DeactivatedAt
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) []string {
-		return v.DomainNames
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *bool {
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) EndpointService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.EndpointService
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Canonical unique identifier of Network Connectivity Config in Databricks Account
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.NetworkConnectivityConfigId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ResourceNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) []string {
-		return v.ResourceNames
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.RuleId
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was updated.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
-		return v.UpdatedTime
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) VpcEndpointId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.VpcEndpointId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) Index(i pulumi.IntInput) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-		return vs[0].([]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)[vs[1].(int)]
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule struct {
-	ConnectionState *string `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime  *int     `pulumi:"creationTime"`
-	Deactivated   *bool    `pulumi:"deactivated"`
-	DeactivatedAt *int     `pulumi:"deactivatedAt"`
-	DomainNames   []string `pulumi:"domainNames"`
-	EndpointName  *string  `pulumi:"endpointName"`
-	ErrorMessage  *string  `pulumi:"errorMessage"`
-	GroupId       *string  `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
-	ResourceId                  *string `pulumi:"resourceId"`
-	RuleId                      *string `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime *int `pulumi:"updatedTime"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs struct {
-	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime  pulumi.IntPtrInput      `pulumi:"creationTime"`
-	Deactivated   pulumi.BoolPtrInput     `pulumi:"deactivated"`
-	DeactivatedAt pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
-	DomainNames   pulumi.StringArrayInput `pulumi:"domainNames"`
-	EndpointName  pulumi.StringPtrInput   `pulumi:"endpointName"`
-	ErrorMessage  pulumi.StringPtrInput   `pulumi:"errorMessage"`
-	GroupId       pulumi.StringPtrInput   `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId pulumi.StringPtrInput `pulumi:"networkConnectivityConfigId"`
-	ResourceId                  pulumi.StringPtrInput `pulumi:"resourceId"`
-	RuleId                      pulumi.StringPtrInput `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime pulumi.IntPtrInput `pulumi:"updatedTime"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray and MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray{ MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{...} }
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.ConnectionState
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was created.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
-		return v.CreationTime
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *bool {
-		return v.Deactivated
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
-		return v.DeactivatedAt
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) []string {
-		return v.DomainNames
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) EndpointName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.EndpointName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.GroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Canonical unique identifier of Network Connectivity Config in Databricks Account
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.NetworkConnectivityConfigId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.RuleId
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was updated.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
-		return v.UpdatedTime
-	}).(pulumi.IntPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) Index(i pulumi.IntInput) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-		return vs[0].([]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)[vs[1].(int)]
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput)
-}
-
-type MwsNetworksErrorMessage struct {
-	ErrorMessage *string `pulumi:"errorMessage"`
-	ErrorType    *string `pulumi:"errorType"`
-}
-
-// MwsNetworksErrorMessageInput is an input type that accepts MwsNetworksErrorMessageArgs and MwsNetworksErrorMessageOutput values.
-// You can construct a concrete instance of `MwsNetworksErrorMessageInput` via:
-//
-//	MwsNetworksErrorMessageArgs{...}
-type MwsNetworksErrorMessageInput interface {
-	pulumi.Input
-
-	ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput
-	ToMwsNetworksErrorMessageOutputWithContext(context.Context) MwsNetworksErrorMessageOutput
-}
-
-type MwsNetworksErrorMessageArgs struct {
-	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
-	ErrorType    pulumi.StringPtrInput `pulumi:"errorType"`
-}
-
-func (MwsNetworksErrorMessageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput {
-	return i.ToMwsNetworksErrorMessageOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutputWithContext(ctx context.Context) MwsNetworksErrorMessageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksErrorMessageOutput)
-}
-
-// MwsNetworksErrorMessageArrayInput is an input type that accepts MwsNetworksErrorMessageArray and MwsNetworksErrorMessageArrayOutput values.
-// You can construct a concrete instance of `MwsNetworksErrorMessageArrayInput` via:
-//
-//	MwsNetworksErrorMessageArray{ MwsNetworksErrorMessageArgs{...} }
-type MwsNetworksErrorMessageArrayInput interface {
-	pulumi.Input
-
-	ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput
-	ToMwsNetworksErrorMessageArrayOutputWithContext(context.Context) MwsNetworksErrorMessageArrayOutput
-}
-
-type MwsNetworksErrorMessageArray []MwsNetworksErrorMessageInput
-
-func (MwsNetworksErrorMessageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (i MwsNetworksErrorMessageArray) ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput {
-	return i.ToMwsNetworksErrorMessageArrayOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksErrorMessageArray) ToMwsNetworksErrorMessageArrayOutputWithContext(ctx context.Context) MwsNetworksErrorMessageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksErrorMessageArrayOutput)
-}
-
-type MwsNetworksErrorMessageOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksErrorMessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (o MwsNetworksErrorMessageOutput) ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageOutput) ToMwsNetworksErrorMessageOutputWithContext(ctx context.Context) MwsNetworksErrorMessageOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworksErrorMessage) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworksErrorMessageOutput) ErrorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworksErrorMessage) *string { return v.ErrorType }).(pulumi.StringPtrOutput)
-}
-
-type MwsNetworksErrorMessageArrayOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksErrorMessageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (o MwsNetworksErrorMessageArrayOutput) ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageArrayOutput) ToMwsNetworksErrorMessageArrayOutputWithContext(ctx context.Context) MwsNetworksErrorMessageArrayOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageArrayOutput) Index(i pulumi.IntInput) MwsNetworksErrorMessageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworksErrorMessage {
-		return vs[0].([]MwsNetworksErrorMessage)[vs[1].(int)]
-	}).(MwsNetworksErrorMessageOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfigInput)(nil)).Elem(), DisableLegacyFeaturesSettingProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyFeaturesSettingProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupInitialReplicationProgressInput)(nil)).Elem(), DisasterRecoveryFailoverGroupInitialReplicationProgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput)(nil)).Elem(), DisasterRecoveryFailoverGroupInitialReplicationProgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSetInput)(nil)).Elem(), DisasterRecoveryFailoverGroupWorkspaceSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSetArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupWorkspaceSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainIconInput)(nil)).Elem(), DomainIconArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainIconPtrInput)(nil)).Elem(), DomainIconArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainProviderConfigInput)(nil)).Elem(), DomainProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainProviderConfigPtrInput)(nil)).Elem(), DomainProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAwsVpcEndpointInfoInput)(nil)).Elem(), EndpointAwsVpcEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAwsVpcEndpointInfoPtrInput)(nil)).Elem(), EndpointAwsVpcEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAzurePrivateEndpointInfoInput)(nil)).Elem(), EndpointAzurePrivateEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAzurePrivateEndpointInfoPtrInput)(nil)).Elem(), EndpointAzurePrivateEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGcpPscEndpointInfoInput)(nil)).Elem(), EndpointGcpPscEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGcpPscEndpointInfoPtrInput)(nil)).Elem(), EndpointGcpPscEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfigInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementsProviderConfigInput)(nil)).Elem(), EntitlementsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementsProviderConfigPtrInput)(nil)).Elem(), EntitlementsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTagAssignmentProviderConfigInput)(nil)).Elem(), EntityTagAssignmentProviderConfigArgs{})
@@ -83078,6 +82939,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceRequestSourceFlatSchemaPtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceRequestSourceFlatSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldInput)(nil)).Elem(), FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArrayInput)(nil)).Elem(), FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceSdpSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceSdpSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceSdpSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceSdpSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceStreamSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceStreamSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceStreamSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceStreamSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowArgs{})
@@ -83361,6 +83224,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskPtrInput)(nil)).Elem(), JobTaskDashboardTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionPtrInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentPtrInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionSubscriberInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionSubscriberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionSubscriberArrayInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionSubscriberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtCloudTaskInput)(nil)).Elem(), JobTaskDbtCloudTaskArgs{})
@@ -83396,6 +83267,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDbtCloudTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskDbtCloudTaskArgs{})
@@ -83891,54 +83770,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputEmailNotificationsPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputProviderConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputProviderConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputTagInput)(nil)).Elem(), ModelServingProvisionedThroughputTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputTagArrayInput)(nil)).Elem(), ModelServingProvisionedThroughputTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingRateLimitInput)(nil)).Elem(), ModelServingRateLimitArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingRateLimitArrayInput)(nil)).Elem(), ModelServingRateLimitArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagInput)(nil)).Elem(), ModelServingTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagArrayInput)(nil)).Elem(), ModelServingTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigInput)(nil)).Elem(), ModelServingTelemetryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigPtrInput)(nil)).Elem(), ModelServingTelemetryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfigInput)(nil)).Elem(), ModelServingTelemetryConfigInferenceTableConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigInferenceTableConfigPtrInput)(nil)).Elem(), ModelServingTelemetryConfigInferenceTableConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigTableNamesInput)(nil)).Elem(), ModelServingTelemetryConfigTableNamesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTelemetryConfigTableNamesPtrInput)(nil)).Elem(), ModelServingTelemetryConfigTableNamesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsInput)(nil)).Elem(), MountAbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsPtrInput)(nil)).Elem(), MountAbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountAdlInput)(nil)).Elem(), MountAdlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountAdlPtrInput)(nil)).Elem(), MountAdlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountGsInput)(nil)).Elem(), MountGsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountGsPtrInput)(nil)).Elem(), MountGsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountProviderConfigInput)(nil)).Elem(), MountProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountProviderConfigPtrInput)(nil)).Elem(), MountProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountS3Input)(nil)).Elem(), MountS3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountS3PtrInput)(nil)).Elem(), MountS3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountWasbInput)(nil)).Elem(), MountWasbArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountWasbPtrInput)(nil)).Elem(), MountWasbArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfoInput)(nil)).Elem(), MwsCustomerManagedKeysAwsKeyInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfoPtrInput)(nil)).Elem(), MwsCustomerManagedKeysAwsKeyInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfoInput)(nil)).Elem(), MwsCustomerManagedKeysGcpKeyInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfoPtrInput)(nil)).Elem(), MwsCustomerManagedKeysGcpKeyInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointPtrInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrInput)(nil)).Elem(), MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageInput)(nil)).Elem(), MwsNetworksErrorMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageArrayInput)(nil)).Elem(), MwsNetworksErrorMessageArray{})
+	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput{})
+	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingProviderConfigOutput{})
+	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupInitialReplicationProgressOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupInitialReplicationProgressPtrOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArrayOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArrayOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupWorkspaceSetOutput{})
+	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput{})
+	pulumi.RegisterOutputType(DomainIconOutput{})
+	pulumi.RegisterOutputType(DomainIconPtrOutput{})
+	pulumi.RegisterOutputType(DomainProviderConfigOutput{})
+	pulumi.RegisterOutputType(DomainProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(EndpointAwsVpcEndpointInfoOutput{})
+	pulumi.RegisterOutputType(EndpointAwsVpcEndpointInfoPtrOutput{})
+	pulumi.RegisterOutputType(EndpointAzurePrivateEndpointInfoOutput{})
+	pulumi.RegisterOutputType(EndpointAzurePrivateEndpointInfoPtrOutput{})
+	pulumi.RegisterOutputType(EndpointGcpPscEndpointInfoOutput{})
+	pulumi.RegisterOutputType(EndpointGcpPscEndpointInfoPtrOutput{})
+	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput{})
+	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigOutput{})
+	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(EntitlementsProviderConfigOutput{})
 	pulumi.RegisterOutputType(EntitlementsProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(EntityTagAssignmentProviderConfigOutput{})
@@ -84073,6 +83934,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceRequestSourceFlatSchemaPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArrayOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceSdpSourceOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceSdpSourcePtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceStreamSourceOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceStreamSourcePtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowOutput{})
@@ -84356,6 +84219,14 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskDashboardTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionOutput{})
 	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionSubscriberOutput{})
 	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionSubscriberArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskDbtCloudTaskOutput{})
@@ -84391,6 +84262,14 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentDataAttachmentWidgetArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionAttachmentPageAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDbtCloudTaskOutput{})
@@ -84886,52 +84765,4 @@ func init() {
 	pulumi.RegisterOutputType(ModelServingProvisionedThroughputEmailNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingProvisionedThroughputProviderConfigOutput{})
 	pulumi.RegisterOutputType(ModelServingProvisionedThroughputProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputTagOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputTagArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingRateLimitOutput{})
-	pulumi.RegisterOutputType(ModelServingRateLimitArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingTagOutput{})
-	pulumi.RegisterOutputType(ModelServingTagArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingTelemetryConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingTelemetryConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingTelemetryConfigInferenceTableConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingTelemetryConfigInferenceTableConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingTelemetryConfigTableNamesOutput{})
-	pulumi.RegisterOutputType(ModelServingTelemetryConfigTableNamesPtrOutput{})
-	pulumi.RegisterOutputType(MountAbfsOutput{})
-	pulumi.RegisterOutputType(MountAbfsPtrOutput{})
-	pulumi.RegisterOutputType(MountAdlOutput{})
-	pulumi.RegisterOutputType(MountAdlPtrOutput{})
-	pulumi.RegisterOutputType(MountGsOutput{})
-	pulumi.RegisterOutputType(MountGsPtrOutput{})
-	pulumi.RegisterOutputType(MountProviderConfigOutput{})
-	pulumi.RegisterOutputType(MountProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(MountS3Output{})
-	pulumi.RegisterOutputType(MountS3PtrOutput{})
-	pulumi.RegisterOutputType(MountWasbOutput{})
-	pulumi.RegisterOutputType(MountWasbPtrOutput{})
-	pulumi.RegisterOutputType(MwsCustomerManagedKeysAwsKeyInfoOutput{})
-	pulumi.RegisterOutputType(MwsCustomerManagedKeysAwsKeyInfoPtrOutput{})
-	pulumi.RegisterOutputType(MwsCustomerManagedKeysGcpKeyInfoOutput{})
-	pulumi.RegisterOutputType(MwsCustomerManagedKeysGcpKeyInfoPtrOutput{})
-	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointOutput{})
-	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput{})
-	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsOutput{})
-	pulumi.RegisterOutputType(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsPtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigPtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput{})
-	pulumi.RegisterOutputType(MwsNetworksErrorMessageOutput{})
-	pulumi.RegisterOutputType(MwsNetworksErrorMessageArrayOutput{})
 }

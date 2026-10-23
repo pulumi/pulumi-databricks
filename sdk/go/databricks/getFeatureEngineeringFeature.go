@@ -11,7 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
+//
+// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
+//
+// ## Example Usage
+//
+// Look up a feature by its full name.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetFeatureEngineeringFeature(ctx, &databricks.LookupFeatureEngineeringFeatureArgs{
+//				FullName: "main.features.transaction_count_7d",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFeatureEngineeringFeature(ctx *pulumi.Context, args *LookupFeatureEngineeringFeatureArgs, opts ...pulumi.InvokeOption) (*LookupFeatureEngineeringFeatureResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeatureEngineeringFeatureResult
@@ -24,9 +56,7 @@ func LookupFeatureEngineeringFeature(ctx *pulumi.Context, args *LookupFeatureEng
 
 // A collection of arguments for invoking getFeatureEngineeringFeature.
 type LookupFeatureEngineeringFeatureArgs struct {
-	// The full three-part name (catalog, schema, name) of the feature. This is the
-	// feature's resource identifier; the catalog_name, schema_name, and name fields
-	// below are OUTPUT_ONLY decomposed views of this value
+	// The full three-part name (catalog, schema, name) of the feature
 	FullName string `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
@@ -42,7 +72,8 @@ type LookupFeatureEngineeringFeatureResult struct {
 	CreatedBy string `pulumi:"createdBy"`
 	// (string) - The description of the feature
 	Description string `pulumi:"description"`
-	// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+	// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+	// Optional since entities are not set for RequestSource features or on-demand calculated features
 	Entities []GetFeatureEngineeringFeatureEntity `pulumi:"entities"`
 	// (string) - The filter condition applied to the source data before aggregation
 	FilterCondition string `pulumi:"filterCondition"`
@@ -83,9 +114,7 @@ func LookupFeatureEngineeringFeatureOutput(ctx *pulumi.Context, args LookupFeatu
 
 // A collection of arguments for invoking getFeatureEngineeringFeature.
 type LookupFeatureEngineeringFeatureOutputArgs struct {
-	// The full three-part name (catalog, schema, name) of the feature. This is the
-	// feature's resource identifier; the catalog_name, schema_name, and name fields
-	// below are OUTPUT_ONLY decomposed views of this value
+	// The full three-part name (catalog, schema, name) of the feature
 	FullName pulumi.StringInput `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetFeatureEngineeringFeatureProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -130,7 +159,8 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Description() pulumi.String
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup.
+// Optional since entities are not set for RequestSource features or on-demand calculated features
 func (o LookupFeatureEngineeringFeatureResultOutput) Entities() GetFeatureEngineeringFeatureEntityArrayOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []GetFeatureEngineeringFeatureEntity { return v.Entities }).(GetFeatureEngineeringFeatureEntityArrayOutput)
 }

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("attachment")]
+        public Input<Inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionAttachmentInputArgs>? Attachment { get; set; }
+
         [Input("customSubject")]
         public Input<string>? CustomSubject { get; set; }
 

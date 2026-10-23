@@ -90,10 +90,18 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
      */
     declare public readonly failoverGroupId: pulumi.Output<string>;
     /**
+     * (boolean) - True if errors currently block the replication point
+     */
+    declare public /*out*/ readonly hasReplicationPointBlockingErrors: pulumi.Output<boolean>;
+    /**
      * Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      */
     declare public readonly initialPrimaryRegion: pulumi.Output<string>;
+    /**
+     * (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     */
+    declare public /*out*/ readonly initialReplicationProgress: pulumi.Output<outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress>;
     /**
      * (string) - Fully qualified resource name in the format
      * accounts/{account_id}/failover-groups/{failover_group_id}
@@ -145,7 +153,9 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
             resourceInputs["effectivePrimaryRegion"] = state?.effectivePrimaryRegion;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["failoverGroupId"] = state?.failoverGroupId;
+            resourceInputs["hasReplicationPointBlockingErrors"] = state?.hasReplicationPointBlockingErrors;
             resourceInputs["initialPrimaryRegion"] = state?.initialPrimaryRegion;
+            resourceInputs["initialReplicationProgress"] = state?.initialReplicationProgress;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["regions"] = state?.regions;
@@ -180,6 +190,8 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectivePrimaryRegion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["hasReplicationPointBlockingErrors"] = undefined /*out*/;
+            resourceInputs["initialReplicationProgress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["replicationPoint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -213,10 +225,18 @@ export interface DisasterRecoveryFailoverGroupState {
      */
     failoverGroupId?: pulumi.Input<string | undefined>;
     /**
+     * (boolean) - True if errors currently block the replication point
+     */
+    hasReplicationPointBlockingErrors?: pulumi.Input<boolean | undefined>;
+    /**
      * Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      */
     initialPrimaryRegion?: pulumi.Input<string | undefined>;
+    /**
+     * (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
+     */
+    initialReplicationProgress?: pulumi.Input<inputs.DisasterRecoveryFailoverGroupInitialReplicationProgress | undefined>;
     /**
      * (string) - Fully qualified resource name in the format
      * accounts/{account_id}/failover-groups/{failover_group_id}

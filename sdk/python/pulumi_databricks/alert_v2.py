@@ -28,6 +28,7 @@ class AlertV2Args:
                  warehouse_id: pulumi.Input[_builtins.str],
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_template_format: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AlertV2ProviderConfigArgs']] = None,
@@ -42,6 +43,15 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
+               
+               `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+               `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+               them to the format each notification destination expects, so a single template renders
+               correctly in email, Slack, and Microsoft Teams.
+               
+               When unset, the API applies no default. Responses omit the field unless a format is stored,
+               and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
         :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
                Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
@@ -74,6 +84,8 @@ class AlertV2Args:
             pulumi.set(__self__, "custom_description", custom_description)
         if custom_summary is not None:
             pulumi.set(__self__, "custom_summary", custom_summary)
+        if custom_template_format is not None:
+            pulumi.set(__self__, "custom_template_format", custom_template_format)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if parent_path is not None:
@@ -164,6 +176,26 @@ class AlertV2Args:
     @custom_summary.setter
     def custom_summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_summary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateFormat")
+    def custom_template_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The format used to interpret the `custom_summary` and `custom_description` templates.
+
+        `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+        `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+        them to the format each notification destination expects, so a single template renders
+        correctly in email, Slack, and Microsoft Teams.
+
+        When unset, the API applies no default. Responses omit the field unless a format is stored,
+        and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+        """
+        return pulumi.get(self, "custom_template_format")
+
+    @custom_template_format.setter
+    def custom_template_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "custom_template_format", value)
 
     @_builtins.property
     @pulumi.getter
@@ -260,6 +292,7 @@ class _AlertV2State:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_template_format: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_run_as: pulumi.Input[Optional['AlertV2EffectiveRunAsArgs']] = None,
                  evaluation: pulumi.Input[Optional['AlertV2EvaluationArgs']] = None,
@@ -281,6 +314,15 @@ class _AlertV2State:
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
+               
+               `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+               `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+               them to the format each notification destination expects, so a single template renders
+               correctly in email, Slack, and Microsoft Teams.
+               
+               When unset, the API applies no default. Responses omit the field unless a format is stored,
+               and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input['AlertV2EffectiveRunAsArgs'] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
                This is an output-only field that shows the resolved run-as identity after applying
@@ -319,6 +361,8 @@ class _AlertV2State:
             pulumi.set(__self__, "custom_description", custom_description)
         if custom_summary is not None:
             pulumi.set(__self__, "custom_summary", custom_summary)
+        if custom_template_format is not None:
+            pulumi.set(__self__, "custom_template_format", custom_template_format)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_run_as is not None:
@@ -385,6 +429,26 @@ class _AlertV2State:
     @custom_summary.setter
     def custom_summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_summary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateFormat")
+    def custom_template_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The format used to interpret the `custom_summary` and `custom_description` templates.
+
+        `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+        `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+        them to the format each notification destination expects, so a single template renders
+        correctly in email, Slack, and Microsoft Teams.
+
+        When unset, the API applies no default. Responses omit the field unless a format is stored,
+        and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+        """
+        return pulumi.get(self, "custom_template_format")
+
+    @custom_template_format.setter
+    def custom_template_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "custom_template_format", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -587,6 +651,7 @@ class AlertV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_template_format: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]]] = None,
@@ -654,6 +719,15 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
+               
+               `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+               `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+               them to the format each notification destination expects, so a single template renders
+               correctly in email, Slack, and Microsoft Teams.
+               
+               When unset, the API applies no default. Responses omit the field unless a format is stored,
+               and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
@@ -754,6 +828,7 @@ class AlertV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_template_format: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]]] = None,
@@ -776,6 +851,7 @@ class AlertV2(pulumi.CustomResource):
 
             __props__.__dict__["custom_description"] = custom_description
             __props__.__dict__["custom_summary"] = custom_summary
+            __props__.__dict__["custom_template_format"] = custom_template_format
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -815,6 +891,7 @@ class AlertV2(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_description: pulumi.Input[Optional[_builtins.str]] = None,
             custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_template_format: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_run_as: pulumi.Input[Optional[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict', 'outputs.AlertV2EffectiveRunAs']]] = None,
             evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
@@ -840,6 +917,15 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
+               
+               `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+               `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+               them to the format each notification destination expects, so a single template renders
+               correctly in email, Slack, and Microsoft Teams.
+               
+               When unset, the API applies no default. Responses omit the field unless a format is stored,
+               and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict', 'outputs.AlertV2EffectiveRunAs']] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
                This is an output-only field that shows the resolved run-as identity after applying
@@ -879,6 +965,7 @@ class AlertV2(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_description"] = custom_description
         __props__.__dict__["custom_summary"] = custom_summary
+        __props__.__dict__["custom_template_format"] = custom_template_format
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_run_as"] = effective_run_as
         __props__.__dict__["evaluation"] = evaluation
@@ -919,6 +1006,22 @@ class AlertV2(pulumi.CustomResource):
         Custom summary for the alert. support mustache template
         """
         return pulumi.get(self, "custom_summary")
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateFormat")
+    def custom_template_format(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The format used to interpret the `custom_summary` and `custom_description` templates.
+
+        `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+        `MARKDOWN` treats them as Markdown with allowlisted `@VARIABLE_NAME` placeholders and converts
+        them to the format each notification destination expects, so a single template renders
+        correctly in email, Slack, and Microsoft Teams.
+
+        When unset, the API applies no default. Responses omit the field unless a format is stored,
+        and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+        """
+        return pulumi.get(self, "custom_template_format")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

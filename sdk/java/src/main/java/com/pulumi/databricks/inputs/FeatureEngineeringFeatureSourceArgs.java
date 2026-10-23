@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceFeatureViewSo
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceLatenessArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceRequestSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceSdpSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceStreamSourceArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -98,6 +99,21 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
     }
 
     /**
+     * A Spark Declarative Pipeline data source
+     * 
+     */
+    @Import(name="sdpSource")
+    private @Nullable Output<FeatureEngineeringFeatureSourceSdpSourceArgs> sdpSource;
+
+    /**
+     * @return A Spark Declarative Pipeline data source
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureSourceSdpSourceArgs>> sdpSource() {
+        return Optional.ofNullable(this.sdpSource);
+    }
+
+    /**
      * A Stream data source
      * 
      */
@@ -120,6 +136,7 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
         this.kafkaSource = $.kafkaSource;
         this.lateness = $.lateness;
         this.requestSource = $.requestSource;
+        this.sdpSource = $.sdpSource;
         this.streamSource = $.streamSource;
     }
 
@@ -246,6 +263,27 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
          */
         public Builder requestSource(FeatureEngineeringFeatureSourceRequestSourceArgs requestSource) {
             return requestSource(Output.of(requestSource));
+        }
+
+        /**
+         * @param sdpSource A Spark Declarative Pipeline data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdpSource(@Nullable Output<FeatureEngineeringFeatureSourceSdpSourceArgs> sdpSource) {
+            $.sdpSource = sdpSource;
+            return this;
+        }
+
+        /**
+         * @param sdpSource A Spark Declarative Pipeline data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdpSource(FeatureEngineeringFeatureSourceSdpSourceArgs sdpSource) {
+            return sdpSource(Output.of(sdpSource));
         }
 
         /**

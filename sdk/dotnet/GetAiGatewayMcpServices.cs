@@ -121,8 +121,8 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayMcpServicesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-        /// the maximum is 100. Use `PageToken` to retrieve additional pages
+        /// Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+        /// the maximum is 200. Use `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -158,8 +158,8 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayMcpServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-        /// the maximum is 100. Use `PageToken` to retrieve additional pages
+        /// Maximum number of MCP services to return. Defaults to 200 when unset or 0;
+        /// the maximum is 200. Use `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

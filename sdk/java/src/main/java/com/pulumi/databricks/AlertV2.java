@@ -148,6 +148,36 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customSummary);
     }
     /**
+     * The format used to interpret the `customSummary` and `customDescription` templates.
+     * 
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `{@literal @}VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     * 
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     * 
+     */
+    @Export(name="customTemplateFormat", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customTemplateFormat;
+
+    /**
+     * @return The format used to interpret the `customSummary` and `customDescription` templates.
+     * 
+     * `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
+     * `MARKDOWN` treats them as Markdown with allowlisted `{@literal @}VARIABLE_NAME` placeholders and converts
+     * them to the format each notification destination expects, so a single template renders
+     * correctly in email, Slack, and Microsoft Teams.
+     * 
+     * When unset, the API applies no default. Responses omit the field unless a format is stored,
+     * and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
+     * 
+     */
+    public Output<Optional<String>> customTemplateFormat() {
+        return Codegen.optional(this.customTemplateFormat);
+    }
+    /**
      * The display name of the alert
      * 
      */
