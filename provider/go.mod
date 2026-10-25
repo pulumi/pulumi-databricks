@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-databricks/provider
 
-go 1.26.8
+go 1.26.10
 
 replace github.com/databricks/terraform-provider-databricks => ../upstream
 
