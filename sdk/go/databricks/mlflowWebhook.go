@@ -102,7 +102,7 @@ import (
 //				Description: pulumi.String("Databricks Job webhook trigger"),
 //				Status:      pulumi.String("ACTIVE"),
 //				JobSpec: &databricks.MlflowWebhookJobSpecArgs{
-//					JobId:        thisJob.ID().ToIDOutput().ToStringOutput(),
+//					JobId:        thisJob.ID(),
 //					WorkspaceUrl: pulumi.String(me.WorkspaceUrl),
 //					AccessToken:  patForWebhook.TokenValue,
 //				},

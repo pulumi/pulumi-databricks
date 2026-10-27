@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			myTestSchema, err := databricks.NewSchema(ctx, "myTestSchema", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID().ToIDOutput().ToStringOutput(),
+//				CatalogName: sandbox.ID(),
 //				Name:        pulumi.String("myTestSchema"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.StringMap{
@@ -81,7 +81,7 @@ import (
 //			}
 //			_, err = databricks.NewDataQualityMonitor(ctx, "this", &databricks.DataQualityMonitorArgs{
 //				ObjectType: pulumi.String("table"),
-//				ObjectId:   myTestTable.ID().ToIDOutput().ToStringOutput(),
+//				ObjectId:   myTestTable.ID(),
 //				DataProfilingConfig: &databricks.DataQualityMonitorDataProfilingConfigArgs{
 //					OutputSchema: myTestSchema.SchemaId,
 //				},
@@ -91,7 +91,7 @@ import (
 //			}
 //			_, err = databricks.NewDataQualityRefresh(ctx, "this", &databricks.DataQualityRefreshArgs{
 //				ObjectType: pulumi.String("table"),
-//				ObjectId:   myTestTable.ID().ToIDOutput().ToStringOutput(),
+//				ObjectId:   myTestTable.ID(),
 //			})
 //			if err != nil {
 //				return err

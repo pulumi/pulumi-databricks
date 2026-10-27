@@ -188,6 +188,13 @@ def get_endpoint(name: Optional[_builtins.str] = None,
 
     ### Example for Azure cloud
     This is an example for getting an endpoint in Azure cloud:
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_endpoint(parent="accounts/123e4567-e89b-12d3-a456-426614174000",
+        endpoint_id="endpoint-123")
+    ```
 
 
     :param _builtins.str name: The resource name of the endpoint, which uniquely identifies the endpoint
@@ -224,6 +231,13 @@ def get_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     ### Example for Azure cloud
     This is an example for getting an endpoint in Azure cloud:
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_endpoint(parent="accounts/123e4567-e89b-12d3-a456-426614174000",
+        endpoint_id="endpoint-123")
+    ```
 
 
     :param _builtins.str name: The resource name of the endpoint, which uniquely identifies the endpoint

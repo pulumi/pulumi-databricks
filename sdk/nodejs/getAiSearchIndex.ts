@@ -16,6 +16,16 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * # Example: AI Search Index Datasource (Singular)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiSearchIndex({
+ *     endpointName: "example-ai-search-endpoint",
+ *     name: "main.default.example_index",
+ * });
+ * ```
  */
 export function getAiSearchIndex(args: GetAiSearchIndexArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchIndexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -96,6 +106,16 @@ export interface GetAiSearchIndexResult {
  * ## Example Usage
  *
  * # Example: AI Search Index Datasource (Singular)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiSearchIndex({
+ *     endpointName: "example-ai-search-endpoint",
+ *     name: "main.default.example_index",
+ * });
+ * ```
  */
 export function getAiSearchIndexOutput(args: GetAiSearchIndexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchIndexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

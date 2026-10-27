@@ -18,6 +18,15 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Referring to a network policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAccountNetworkPolicy({
+ *     policyId: "test",
+ * });
+ * ```
  */
 export function getAccountNetworkPolicy(args: GetAccountNetworkPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountNetworkPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,6 +84,15 @@ export interface GetAccountNetworkPolicyResult {
  * ## Example Usage
  *
  * Referring to a network policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAccountNetworkPolicy({
+ *     policyId: "test",
+ * });
+ * ```
  */
 export function getAccountNetworkPolicyOutput(args: GetAccountNetworkPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountNetworkPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

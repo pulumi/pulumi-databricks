@@ -21,6 +21,26 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a setting by id
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAccountSettingV2.Invoke(new()
+        ///     {
+        ///         Name = "llm_proxy_partner_powered",
+        ///         BooleanVal = 
+        ///         {
+        ///             { "value", false },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAccountSettingV2Result> InvokeAsync(GetAccountSettingV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountSettingV2Result>("databricks:index/getAccountSettingV2:getAccountSettingV2", args ?? new GetAccountSettingV2Args(), options.WithDefaults());
@@ -35,6 +55,26 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a setting by id
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAccountSettingV2.Invoke(new()
+        ///     {
+        ///         Name = "llm_proxy_partner_powered",
+        ///         BooleanVal = 
+        ///         {
+        ///             { "value", false },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountSettingV2Result> Invoke(GetAccountSettingV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountSettingV2Result>("databricks:index/getAccountSettingV2:getAccountSettingV2", args ?? new GetAccountSettingV2InvokeArgs(), options.WithDefaults());
@@ -49,6 +89,26 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a setting by id
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAccountSettingV2.Invoke(new()
+        ///     {
+        ///         Name = "llm_proxy_partner_powered",
+        ///         BooleanVal = 
+        ///         {
+        ///             { "value", false },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountSettingV2Result> Invoke(GetAccountSettingV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountSettingV2Result>("databricks:index/getAccountSettingV2:getAccountSettingV2", args ?? new GetAccountSettingV2InvokeArgs(), options.WithDefaults());

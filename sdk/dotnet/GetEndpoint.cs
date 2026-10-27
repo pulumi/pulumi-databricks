@@ -25,6 +25,22 @@ namespace Pulumi.Databricks
         /// 
         /// ### Example for Azure cloud
         /// This is an example for getting an endpoint in Azure cloud:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetEndpoint.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+        ///         EndpointId = "endpoint-123",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("databricks:index/getEndpoint:getEndpoint", args ?? new GetEndpointArgs(), options.WithDefaults());
@@ -43,6 +59,22 @@ namespace Pulumi.Databricks
         /// 
         /// ### Example for Azure cloud
         /// This is an example for getting an endpoint in Azure cloud:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetEndpoint.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+        ///         EndpointId = "endpoint-123",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEndpointResult> Invoke(GetEndpointInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("databricks:index/getEndpoint:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithDefaults());
@@ -61,6 +93,22 @@ namespace Pulumi.Databricks
         /// 
         /// ### Example for Azure cloud
         /// This is an example for getting an endpoint in Azure cloud:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetEndpoint.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+        ///         EndpointId = "endpoint-123",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEndpointResult> Invoke(GetEndpointInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("databricks:index/getEndpoint:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithDefaults());

@@ -171,6 +171,14 @@ def get_ai_search_index(name: Optional[_builtins.str] = None,
 
     # Example: AI Search Index Datasource (Singular)
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_ai_search_index(endpoint_name="example-ai-search-endpoint",
+        name="main.default.example_index")
+    ```
+
 
     :param _builtins.str name: Name of the AI Search index. Server-assigned full resource path
            (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
@@ -209,6 +217,14 @@ def get_ai_search_index_output(name: pulumi.Input[Optional[_builtins.str]] = Non
     ## Example Usage
 
     # Example: AI Search Index Datasource (Singular)
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_ai_search_index(endpoint_name="example-ai-search-endpoint",
+        name="main.default.example_index")
+    ```
 
 
     :param _builtins.str name: Name of the AI Search index. Server-assigned full resource path

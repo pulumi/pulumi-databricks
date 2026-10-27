@@ -90,6 +90,13 @@ def get_ai_search_indexes(page_size: Optional[_builtins.int] = None,
 
     # Example: AI Search Index Datasource (Plural)
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_ai_search_indexes(endpoint_name="example-ai-search-endpoint")
+    ```
+
 
     :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper
            bound by the shim: `page_size` only narrows the legacy backend's response, never
@@ -124,6 +131,13 @@ def get_ai_search_indexes_output(page_size: pulumi.Input[Optional[Optional[_buil
     ## Example Usage
 
     # Example: AI Search Index Datasource (Plural)
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_ai_search_indexes(endpoint_name="example-ai-search-endpoint")
+    ```
 
 
     :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper

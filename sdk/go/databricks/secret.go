@@ -43,7 +43,7 @@ import (
 //			publishingApi, err := databricks.NewSecret(ctx, "publishing_api", &databricks.SecretArgs{
 //				Key:         pulumi.String("publishing_api"),
 //				StringValue: pulumi.Any(example.Value),
-//				Scope:       app.ID().ToIDOutput().ToStringOutput(),
+//				Scope:       app.ID(),
 //			})
 //			if err != nil {
 //				return err

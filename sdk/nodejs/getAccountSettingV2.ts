@@ -16,6 +16,18 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Referring to a setting by id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAccountSettingV2({
+ *     name: "llm_proxy_partner_powered",
+ *     booleanVal: {
+ *         value: false,
+ *     },
+ * });
+ * ```
  */
 export function getAccountSettingV2(args: GetAccountSettingV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountSettingV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -149,6 +161,18 @@ export interface GetAccountSettingV2Result {
  * ## Example Usage
  *
  * Referring to a setting by id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAccountSettingV2({
+ *     name: "llm_proxy_partner_powered",
+ *     booleanVal: {
+ *         value: false,
+ *     },
+ * });
+ * ```
  */
 export function getAccountSettingV2Output(args: GetAccountSettingV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSettingV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

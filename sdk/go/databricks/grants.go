@@ -176,7 +176,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "things", &databricks.GrantsArgs{
-//				Schema: things.ID().ToIDOutput().ToStringOutput(),
+//				Schema: things.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -399,7 +399,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "volume", &databricks.GrantsArgs{
-//				Volume: this.ID().ToIDOutput().ToStringOutput(),
+//				Volume: this.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -721,7 +721,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				StorageCredential: external.ID().ToIDOutput().ToStringOutput(),
+//				StorageCredential: external.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -766,7 +766,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
-//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
+//				ExternalLocation: some.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),

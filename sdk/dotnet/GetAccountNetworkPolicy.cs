@@ -23,6 +23,22 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a network policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAccountNetworkPolicy.Invoke(new()
+        ///     {
+        ///         PolicyId = "test",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAccountNetworkPolicyResult> InvokeAsync(GetAccountNetworkPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyArgs(), options.WithDefaults());
@@ -39,6 +55,22 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a network policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAccountNetworkPolicy.Invoke(new()
+        ///     {
+        ///         PolicyId = "test",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountNetworkPolicyResult> Invoke(GetAccountNetworkPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyInvokeArgs(), options.WithDefaults());
@@ -55,6 +87,22 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a network policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAccountNetworkPolicy.Invoke(new()
+        ///     {
+        ///         PolicyId = "test",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountNetworkPolicyResult> Invoke(GetAccountNetworkPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyInvokeArgs(), options.WithDefaults());

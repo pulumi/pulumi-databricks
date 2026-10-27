@@ -19,6 +19,15 @@ import * as utilities from "./utilities";
  *
  * ### Example for Azure cloud
  * This is an example for getting an endpoint in Azure cloud:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getEndpoint({
+ *     parent: "accounts/123e4567-e89b-12d3-a456-426614174000",
+ *     endpointId: "endpoint-123",
+ * });
+ * ```
  */
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -102,6 +111,15 @@ export interface GetEndpointResult {
  *
  * ### Example for Azure cloud
  * This is an example for getting an endpoint in Azure cloud:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getEndpoint({
+ *     parent: "accounts/123e4567-e89b-12d3-a456-426614174000",
+ *     endpointId: "endpoint-123",
+ * });
+ * ```
  */
 export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

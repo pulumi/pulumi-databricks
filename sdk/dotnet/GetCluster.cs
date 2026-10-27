@@ -30,7 +30,16 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allGetCluster = ;
+        ///     var allGetCluster = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return Databricks.GetCluster.Invoke(new()
+        ///         {
+        ///             ClusterId = __value,
+        ///         });
+        ///     });
         /// 
         /// });
         /// ```
@@ -101,7 +110,16 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allGetCluster = ;
+        ///     var allGetCluster = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return Databricks.GetCluster.Invoke(new()
+        ///         {
+        ///             ClusterId = __value,
+        ///         });
+        ///     });
         /// 
         /// });
         /// ```
@@ -172,7 +190,16 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allGetCluster = ;
+        ///     var allGetCluster = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return Databricks.GetCluster.Invoke(new()
+        ///         {
+        ///             ClusterId = __value,
+        ///         });
+        ///     });
         /// 
         /// });
         /// ```

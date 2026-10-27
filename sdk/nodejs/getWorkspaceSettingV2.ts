@@ -16,6 +16,17 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Referring to a setting by id
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getWorkspaceSettingV2({
+ *     name: "llm_proxy_partner_powered",
+ *     booleanVal: {
+ *         value: false,
+ *     },
+ * });
+ * ```
  */
 export function getWorkspaceSettingV2(args: GetWorkspaceSettingV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceSettingV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -155,6 +166,17 @@ export interface GetWorkspaceSettingV2Result {
  * ## Example Usage
  *
  * Referring to a setting by id
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getWorkspaceSettingV2({
+ *     name: "llm_proxy_partner_powered",
+ *     booleanVal: {
+ *         value: false,
+ *     },
+ * });
+ * ```
  */
 export function getWorkspaceSettingV2Output(args: GetWorkspaceSettingV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceSettingV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

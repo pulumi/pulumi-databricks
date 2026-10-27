@@ -20,6 +20,32 @@ import (
 // ## Example Usage
 //
 // Referring to a setting by id
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetWorkspaceSettingV2(ctx, &databricks.LookupWorkspaceSettingV2Args{
+//				Name: "llm_proxy_partner_powered",
+//				BooleanVal: map[string]bool{
+//					"value": false,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupWorkspaceSettingV2(ctx *pulumi.Context, args *LookupWorkspaceSettingV2Args, opts ...pulumi.InvokeOption) (*LookupWorkspaceSettingV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceSettingV2Result

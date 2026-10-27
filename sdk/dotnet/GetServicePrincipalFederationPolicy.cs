@@ -23,6 +23,29 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a service principal federation policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Databricks.GetServicePrincipalFederationPolicy.Invoke(new()
+        ///     {
+        ///         ServicePrincipalId = 1234,
+        ///         PolicyId = "my-policy",
+        ///         OidcPolicy = 
+        ///         {
+        ///             { "issuer", "https://myidp.example.com" },
+        ///             { "subjectClaim", "sub" },
+        ///             { "subject", "subject-in-token-from-myidp" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetServicePrincipalFederationPolicyResult> InvokeAsync(GetServicePrincipalFederationPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalFederationPolicyResult>("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args ?? new GetServicePrincipalFederationPolicyArgs(), options.WithDefaults());
@@ -39,6 +62,29 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a service principal federation policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Databricks.GetServicePrincipalFederationPolicy.Invoke(new()
+        ///     {
+        ///         ServicePrincipalId = 1234,
+        ///         PolicyId = "my-policy",
+        ///         OidcPolicy = 
+        ///         {
+        ///             { "issuer", "https://myidp.example.com" },
+        ///             { "subjectClaim", "sub" },
+        ///             { "subject", "subject-in-token-from-myidp" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetServicePrincipalFederationPolicyResult> Invoke(GetServicePrincipalFederationPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalFederationPolicyResult>("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args ?? new GetServicePrincipalFederationPolicyInvokeArgs(), options.WithDefaults());
@@ -55,6 +101,29 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a service principal federation policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Databricks.GetServicePrincipalFederationPolicy.Invoke(new()
+        ///     {
+        ///         ServicePrincipalId = 1234,
+        ///         PolicyId = "my-policy",
+        ///         OidcPolicy = 
+        ///         {
+        ///             { "issuer", "https://myidp.example.com" },
+        ///             { "subjectClaim", "sub" },
+        ///             { "subject", "subject-in-token-from-myidp" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetServicePrincipalFederationPolicyResult> Invoke(GetServicePrincipalFederationPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalFederationPolicyResult>("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args ?? new GetServicePrincipalFederationPolicyInvokeArgs(), options.WithDefaults());

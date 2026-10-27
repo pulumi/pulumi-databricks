@@ -49,8 +49,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "ab", &databricks.GroupMemberArgs{
-//				GroupId:  a.ID().ToIDOutput().ToStringOutput(),
-//				MemberId: b.ID().ToIDOutput().ToStringOutput(),
+//				GroupId:  a.ID(),
+//				MemberId: b.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -62,8 +62,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "bb", &databricks.GroupMemberArgs{
-//				GroupId:  b.ID().ToIDOutput().ToStringOutput(),
-//				MemberId: bradley.ID().ToIDOutput().ToStringOutput(),
+//				GroupId:  b.ID(),
+//				MemberId: bradley.ID(),
 //			})
 //			if err != nil {
 //				return err

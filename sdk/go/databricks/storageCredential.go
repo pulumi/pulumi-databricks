@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				StorageCredential: external.ID().ToIDOutput().ToStringOutput(),
+//				StorageCredential: external.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				StorageCredential: externalMi.ID().ToIDOutput().ToStringOutput(),
+//				StorageCredential: externalMi.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -134,7 +134,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				StorageCredential: external.ID().ToIDOutput().ToStringOutput(),
+//				StorageCredential: external.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),

@@ -21,6 +21,25 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a setting by id
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceSettingV2.Invoke(new()
+        ///     {
+        ///         Name = "llm_proxy_partner_powered",
+        ///         BooleanVal = 
+        ///         {
+        ///             { "value", false },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWorkspaceSettingV2Result> InvokeAsync(GetWorkspaceSettingV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceSettingV2Result>("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args ?? new GetWorkspaceSettingV2Args(), options.WithDefaults());
@@ -35,6 +54,25 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a setting by id
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceSettingV2.Invoke(new()
+        ///     {
+        ///         Name = "llm_proxy_partner_powered",
+        ///         BooleanVal = 
+        ///         {
+        ///             { "value", false },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWorkspaceSettingV2Result> Invoke(GetWorkspaceSettingV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceSettingV2Result>("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args ?? new GetWorkspaceSettingV2InvokeArgs(), options.WithDefaults());
@@ -49,6 +87,25 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to a setting by id
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceSettingV2.Invoke(new()
+        ///     {
+        ///         Name = "llm_proxy_partner_powered",
+        ///         BooleanVal = 
+        ///         {
+        ///             { "value", false },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWorkspaceSettingV2Result> Invoke(GetWorkspaceSettingV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceSettingV2Result>("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args ?? new GetWorkspaceSettingV2InvokeArgs(), options.WithDefaults());
