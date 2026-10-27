@@ -351,6 +351,16 @@ def get_account_setting_v2(name: Optional[_builtins.str] = None,
 
     Referring to a setting by id
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_account_setting_v2(name="llm_proxy_partner_powered",
+        boolean_val={
+            "value": False,
+        })
+    ```
+
 
     :param _builtins.str name: Name of the setting
     """
@@ -397,6 +407,16 @@ def get_account_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] = 
     ## Example Usage
 
     Referring to a setting by id
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_account_setting_v2(name="llm_proxy_partner_powered",
+        boolean_val={
+            "value": False,
+        })
+    ```
 
 
     :param _builtins.str name: Name of the setting

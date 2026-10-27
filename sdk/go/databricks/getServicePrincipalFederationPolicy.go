@@ -22,6 +22,36 @@ import (
 // ## Example Usage
 //
 // Referring to a service principal federation policy by id:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetServicePrincipalFederationPolicy(ctx, &databricks.LookupServicePrincipalFederationPolicyArgs{
+//				ServicePrincipalId: 1234,
+//				PolicyId:           "my-policy",
+//				OidcPolicy: map[string]string{
+//					"issuer":       "https://myidp.example.com",
+//					"subjectClaim": "sub",
+//					"subject":      "subject-in-token-from-myidp",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServicePrincipalFederationPolicy(ctx *pulumi.Context, args *LookupServicePrincipalFederationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServicePrincipalFederationPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServicePrincipalFederationPolicyResult

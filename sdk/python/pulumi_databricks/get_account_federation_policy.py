@@ -155,6 +155,17 @@ def get_account_federation_policy(policy_id: Optional[_builtins.str] = None,
 
     Referring to an account federation policy by id:
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    my_policy = databricks.get_account_federation_policy(policy_id="my-policy",
+        oidc_policy={
+            "issuer": "https://myidp.example.com",
+            "subjectClaim": "sub",
+        })
+    ```
+
 
     :param _builtins.str policy_id: The ID of the federation policy. Output only
     """
@@ -186,6 +197,17 @@ def get_account_federation_policy_output(policy_id: pulumi.Input[Optional[_built
     ## Example Usage
 
     Referring to an account federation policy by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    my_policy = databricks.get_account_federation_policy(policy_id="my-policy",
+        oidc_policy={
+            "issuer": "https://myidp.example.com",
+            "subjectClaim": "sub",
+        })
+    ```
 
 
     :param _builtins.str policy_id: The ID of the federation policy. Output only

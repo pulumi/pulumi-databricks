@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewUserRole(ctx, "my_user_role", &databricks.UserRoleArgs{
-//				UserId: myUser.ID().ToIDOutput().ToStringOutput(),
-//				Role:   instanceProfile.ID().ToIDOutput().ToStringOutput(),
+//				UserId: myUser.ID(),
+//				Role:   instanceProfile.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewUserRole(ctx, "my_user_account_admin", &databricks.UserRoleArgs{
-//				UserId: myUser.ID().ToIDOutput().ToStringOutput(),
+//				UserId: myUser.ID(),
 //				Role:   pulumi.String("account_admin"),
 //			})
 //			if err != nil {

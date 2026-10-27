@@ -180,7 +180,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "things", &databricks.GrantArgs{
-//				Schema:    things.ID().ToIDOutput().ToStringOutput(),
+//				Schema:    things.ID(),
 //				Principal: pulumi.String("Data Engineers"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("USE_SCHEMA"),
@@ -387,7 +387,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "volume", &databricks.GrantArgs{
-//				Volume:    this.ID().ToIDOutput().ToStringOutput(),
+//				Volume:    this.ID(),
 //				Principal: pulumi.String("Data Engineers"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("WRITE_VOLUME"),
@@ -685,7 +685,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "external_creds", &databricks.GrantArgs{
-//				StorageCredential: external.ID().ToIDOutput().ToStringOutput(),
+//				StorageCredential: external.ID(),
 //				Principal:         pulumi.String("Data Engineers"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("CREATE_EXTERNAL_TABLE"),
@@ -726,7 +726,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "some_data_engineers", &databricks.GrantArgs{
-//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
+//				ExternalLocation: some.ID(),
 //				Principal:        pulumi.String("Data Engineers"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("CREATE_EXTERNAL_TABLE"),
@@ -737,7 +737,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "some_service_principal", &databricks.GrantArgs{
-//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
+//				ExternalLocation: some.ID(),
 //				Principal:        pulumi.Any(mySp.ApplicationId),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("USE_SCHEMA"),
@@ -748,7 +748,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "some_group", &databricks.GrantArgs{
-//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
+//				ExternalLocation: some.ID(),
 //				Principal:        pulumi.Any(myGroup.DisplayName),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("USE_SCHEMA"),
@@ -759,7 +759,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "some_user", &databricks.GrantArgs{
-//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
+//				ExternalLocation: some.ID(),
 //				Principal:        pulumi.Any(myUser.UserName),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("USE_SCHEMA"),

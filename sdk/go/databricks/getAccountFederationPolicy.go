@@ -22,6 +22,34 @@ import (
 // ## Example Usage
 //
 // Referring to an account federation policy by id:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetAccountFederationPolicy(ctx, &databricks.LookupAccountFederationPolicyArgs{
+//				PolicyId: "my-policy",
+//				OidcPolicy: map[string]string{
+//					"issuer":       "https://myidp.example.com",
+//					"subjectClaim": "sub",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccountFederationPolicy(ctx *pulumi.Context, args *LookupAccountFederationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccountFederationPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountFederationPolicyResult

@@ -959,6 +959,41 @@ public final class DatabricksFunctions {
      * 
      * Referring to an account federation policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getAccountFederationPolicy(GetAccountFederationPolicyArgs.builder()
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args) {
         return getAccountFederationPolicy(args, InvokeOptions.Empty);
@@ -975,6 +1010,41 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to an account federation policy by id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getAccountFederationPolicy(GetAccountFederationPolicyArgs.builder()
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args) {
@@ -993,6 +1063,41 @@ public final class DatabricksFunctions {
      * 
      * Referring to an account federation policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getAccountFederationPolicy(GetAccountFederationPolicyArgs.builder()
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -1010,6 +1115,41 @@ public final class DatabricksFunctions {
      * 
      * Referring to an account federation policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getAccountFederationPolicy(GetAccountFederationPolicyArgs.builder()
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -1026,6 +1166,41 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to an account federation policy by id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getAccountFederationPolicy(GetAccountFederationPolicyArgs.builder()
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args, InvokeOptions options) {
@@ -4631,6 +4806,37 @@ public final class DatabricksFunctions {
      * 
      * Referring to a network policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args) {
         return getAccountNetworkPolicy(args, InvokeOptions.Empty);
@@ -4647,6 +4853,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a network policy by id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args) {
@@ -4665,6 +4902,37 @@ public final class DatabricksFunctions {
      * 
      * Referring to a network policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
@@ -4682,6 +4950,37 @@ public final class DatabricksFunctions {
      * 
      * Referring to a network policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
@@ -4698,6 +4997,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a network policy by id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
@@ -4769,6 +5099,38 @@ public final class DatabricksFunctions {
      * 
      * Referring to a setting by id
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountSettingV2(GetAccountSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args) {
         return getAccountSettingV2(args, InvokeOptions.Empty);
@@ -4783,6 +5145,38 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountSettingV2(GetAccountSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args) {
@@ -4799,6 +5193,38 @@ public final class DatabricksFunctions {
      * 
      * Referring to a setting by id
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountSettingV2(GetAccountSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
@@ -4814,6 +5240,38 @@ public final class DatabricksFunctions {
      * 
      * Referring to a setting by id
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountSettingV2(GetAccountSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
@@ -4828,6 +5286,38 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountSettingV2(GetAccountSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args, InvokeOptions options) {
@@ -7387,6 +7877,38 @@ public final class DatabricksFunctions {
      * 
      * # Example: AI Search Index Datasource (Singular)
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchIndex(GetAiSearchIndexArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .name("main.default.example_index")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args) {
         return getAiSearchIndex(args, InvokeOptions.Empty);
@@ -7401,6 +7923,38 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * # Example: AI Search Index Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchIndex(GetAiSearchIndexArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .name("main.default.example_index")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiSearchIndexResult> getAiSearchIndexPlain(GetAiSearchIndexPlainArgs args) {
@@ -7417,6 +7971,38 @@ public final class DatabricksFunctions {
      * 
      * # Example: AI Search Index Datasource (Singular)
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchIndex(GetAiSearchIndexArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .name("main.default.example_index")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
@@ -7431,6 +8017,38 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * # Example: AI Search Index Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchIndex(GetAiSearchIndexArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .name("main.default.example_index")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args, InvokeOutputOptions options) {
@@ -7447,6 +8065,38 @@ public final class DatabricksFunctions {
      * 
      * # Example: AI Search Index Datasource (Singular)
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchIndex(GetAiSearchIndexArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .name("main.default.example_index")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetAiSearchIndexResult> getAiSearchIndexPlain(GetAiSearchIndexPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
@@ -7461,6 +8111,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * # Example: AI Search Index Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchIndexes(GetAiSearchIndexesArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args) {
@@ -7477,6 +8158,37 @@ public final class DatabricksFunctions {
      * 
      * # Example: AI Search Index Datasource (Plural)
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchIndexes(GetAiSearchIndexesArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetAiSearchIndexesResult> getAiSearchIndexesPlain(GetAiSearchIndexesPlainArgs args) {
         return getAiSearchIndexesPlain(args, InvokeOptions.Empty);
@@ -7491,6 +8203,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * # Example: AI Search Index Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchIndexes(GetAiSearchIndexesArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args, InvokeOptions options) {
@@ -7507,6 +8250,37 @@ public final class DatabricksFunctions {
      * 
      * # Example: AI Search Index Datasource (Plural)
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchIndexes(GetAiSearchIndexesArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
@@ -7521,6 +8295,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * # Example: AI Search Index Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchIndexesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchIndexes(GetAiSearchIndexesArgs.builder()
+     *             .endpointName("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiSearchIndexesResult> getAiSearchIndexesPlain(GetAiSearchIndexesPlainArgs args, InvokeOptions options) {
@@ -20129,6 +20934,37 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for getting an endpoint in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getEndpoint(GetEndpointArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .endpointId("endpoint-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEndpointResult> getEndpoint(GetEndpointArgs args) {
@@ -20147,6 +20983,37 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for getting an endpoint in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getEndpoint(GetEndpointArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .endpointId("endpoint-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEndpointResult> getEndpointPlain(GetEndpointPlainArgs args) {
@@ -20165,6 +21032,37 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for getting an endpoint in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getEndpoint(GetEndpointArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .endpointId("endpoint-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEndpointResult> getEndpoint(GetEndpointArgs args, InvokeOptions options) {
@@ -20183,6 +21081,37 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for getting an endpoint in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getEndpoint(GetEndpointArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .endpointId("endpoint-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEndpointResult> getEndpoint(GetEndpointArgs args, InvokeOutputOptions options) {
@@ -20201,6 +21130,37 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for getting an endpoint in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getEndpoint(GetEndpointArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .endpointId("endpoint-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEndpointResult> getEndpointPlain(GetEndpointPlainArgs args, InvokeOptions options) {
@@ -40213,6 +41173,43 @@ public final class DatabricksFunctions {
      * 
      * Referring to a service principal federation policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub"),
+     *                 Map.entry("subject", "subject-in-token-from-myidp")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args) {
         return getServicePrincipalFederationPolicy(args, InvokeOptions.Empty);
@@ -40229,6 +41226,43 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a service principal federation policy by id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub"),
+     *                 Map.entry("subject", "subject-in-token-from-myidp")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs args) {
@@ -40247,6 +41281,43 @@ public final class DatabricksFunctions {
      * 
      * Referring to a service principal federation policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub"),
+     *                 Map.entry("subject", "subject-in-token-from-myidp")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -40264,6 +41335,43 @@ public final class DatabricksFunctions {
      * 
      * Referring to a service principal federation policy by id:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub"),
+     *                 Map.entry("subject", "subject-in-token-from-myidp")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -40280,6 +41388,43 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a service principal federation policy by id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPolicy = DatabricksFunctions.getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .policyId("my-policy")
+     *             .oidcPolicy(Map.ofEntries(
+     *                 Map.entry("issuer", "https://myidp.example.com"),
+     *                 Map.entry("subjectClaim", "sub"),
+     *                 Map.entry("subject", "subject-in-token-from-myidp")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs args, InvokeOptions options) {
@@ -51982,6 +53127,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args) {
@@ -51997,6 +53173,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs args) {
@@ -52012,6 +53219,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args, InvokeOptions options) {
@@ -52027,6 +53265,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args, InvokeOutputOptions options) {
@@ -52042,6 +53311,37 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a setting by id
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
+     *             .name("llm_proxy_partner_powered")
+     *             .booleanVal(Map.of("value", false))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs args, InvokeOptions options) {

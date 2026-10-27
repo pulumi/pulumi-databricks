@@ -18,6 +18,19 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Referring to an account federation policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myPolicy = databricks.getAccountFederationPolicy({
+ *     policyId: "my-policy",
+ *     oidcPolicy: {
+ *         issuer: "https://myidp.example.com",
+ *         subjectClaim: "sub",
+ *     },
+ * });
+ * ```
  */
 export function getAccountFederationPolicy(args: GetAccountFederationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFederationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -91,6 +104,19 @@ export interface GetAccountFederationPolicyResult {
  * ## Example Usage
  *
  * Referring to an account federation policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myPolicy = databricks.getAccountFederationPolicy({
+ *     policyId: "my-policy",
+ *     oidcPolicy: {
+ *         issuer: "https://myidp.example.com",
+ *         subjectClaim: "sub",
+ *     },
+ * });
+ * ```
  */
 export function getAccountFederationPolicyOutput(args: GetAccountFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFederationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

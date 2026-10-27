@@ -156,6 +156,19 @@ def get_service_principal_federation_policy(policy_id: Optional[_builtins.str] =
 
     Referring to a service principal federation policy by id:
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    my_policy = databricks.get_service_principal_federation_policy(service_principal_id=1234,
+        policy_id="my-policy",
+        oidc_policy={
+            "issuer": "https://myidp.example.com",
+            "subjectClaim": "sub",
+            "subject": "subject-in-token-from-myidp",
+        })
+    ```
+
 
     :param _builtins.str policy_id: The ID of the federation policy. Output only
     :param _builtins.int service_principal_id: The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -190,6 +203,19 @@ def get_service_principal_federation_policy_output(policy_id: pulumi.Input[Optio
     ## Example Usage
 
     Referring to a service principal federation policy by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    my_policy = databricks.get_service_principal_federation_policy(service_principal_id=1234,
+        policy_id="my-policy",
+        oidc_policy={
+            "issuer": "https://myidp.example.com",
+            "subjectClaim": "sub",
+            "subject": "subject-in-token-from-myidp",
+        })
+    ```
 
 
     :param _builtins.str policy_id: The ID of the federation policy. Output only

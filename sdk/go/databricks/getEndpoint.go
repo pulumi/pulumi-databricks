@@ -23,6 +23,30 @@ import (
 //
 // ### Example for Azure cloud
 // This is an example for getting an endpoint in Azure cloud:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetEndpoint(ctx, &databricks.LookupEndpointArgs{
+//				Parent:     "accounts/123e4567-e89b-12d3-a456-426614174000",
+//				EndpointId: "endpoint-123",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointResult

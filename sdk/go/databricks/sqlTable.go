@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID().ToIDOutput().ToStringOutput(),
+//				CatalogName: sandbox.ID(),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.StringMap{
@@ -205,7 +205,7 @@ import (
 //				return err
 //			}
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID().ToIDOutput().ToStringOutput(),
+//				CatalogName: sandbox.ID(),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.StringMap{

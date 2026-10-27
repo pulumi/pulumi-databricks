@@ -115,6 +115,13 @@ def get_account_network_policy(network_policy_id: Optional[_builtins.str] = None
 
     Referring to a network policy by id:
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_account_network_policy(policy_id="test")
+    ```
+
 
     :param _builtins.str network_policy_id: The unique identifier for the network policy
     """
@@ -143,6 +150,13 @@ def get_account_network_policy_output(network_policy_id: pulumi.Input[Optional[_
     ## Example Usage
 
     Referring to a network policy by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_account_network_policy(policy_id="test")
+    ```
 
 
     :param _builtins.str network_policy_id: The unique identifier for the network policy

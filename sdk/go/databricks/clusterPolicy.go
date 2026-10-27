@@ -104,7 +104,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "can_use_cluster_policyinstance_profile", &databricks.PermissionsArgs{
-//				ClusterPolicyId: fairUse.ID().ToIDOutput().ToStringOutput(),
+//				ClusterPolicyId: fairUse.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.Any(team),

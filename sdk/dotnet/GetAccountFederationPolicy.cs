@@ -23,6 +23,27 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to an account federation policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Databricks.GetAccountFederationPolicy.Invoke(new()
+        ///     {
+        ///         PolicyId = "my-policy",
+        ///         OidcPolicy = 
+        ///         {
+        ///             { "issuer", "https://myidp.example.com" },
+        ///             { "subjectClaim", "sub" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAccountFederationPolicyResult> InvokeAsync(GetAccountFederationPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountFederationPolicyResult>("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", args ?? new GetAccountFederationPolicyArgs(), options.WithDefaults());
@@ -39,6 +60,27 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to an account federation policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Databricks.GetAccountFederationPolicy.Invoke(new()
+        ///     {
+        ///         PolicyId = "my-policy",
+        ///         OidcPolicy = 
+        ///         {
+        ///             { "issuer", "https://myidp.example.com" },
+        ///             { "subjectClaim", "sub" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountFederationPolicyResult> Invoke(GetAccountFederationPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPolicyResult>("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", args ?? new GetAccountFederationPolicyInvokeArgs(), options.WithDefaults());
@@ -55,6 +97,27 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Referring to an account federation policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Databricks.GetAccountFederationPolicy.Invoke(new()
+        ///     {
+        ///         PolicyId = "my-policy",
+        ///         OidcPolicy = 
+        ///         {
+        ///             { "issuer", "https://myidp.example.com" },
+        ///             { "subjectClaim", "sub" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountFederationPolicyResult> Invoke(GetAccountFederationPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPolicyResult>("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", args ?? new GetAccountFederationPolicyInvokeArgs(), options.WithDefaults());

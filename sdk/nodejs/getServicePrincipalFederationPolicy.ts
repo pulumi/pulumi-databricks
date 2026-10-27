@@ -18,6 +18,21 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Referring to a service principal federation policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myPolicy = databricks.getServicePrincipalFederationPolicy({
+ *     servicePrincipalId: 1234,
+ *     policyId: "my-policy",
+ *     oidcPolicy: {
+ *         issuer: "https://myidp.example.com",
+ *         subjectClaim: "sub",
+ *         subject: "subject-in-token-from-myidp",
+ *     },
+ * });
+ * ```
  */
 export function getServicePrincipalFederationPolicy(args: GetServicePrincipalFederationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalFederationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -96,6 +111,21 @@ export interface GetServicePrincipalFederationPolicyResult {
  * ## Example Usage
  *
  * Referring to a service principal federation policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myPolicy = databricks.getServicePrincipalFederationPolicy({
+ *     servicePrincipalId: 1234,
+ *     policyId: "my-policy",
+ *     oidcPolicy: {
+ *         issuer: "https://myidp.example.com",
+ *         subjectClaim: "sub",
+ *         subject: "subject-in-token-from-myidp",
+ *     },
+ * });
+ * ```
  */
 export function getServicePrincipalFederationPolicyOutput(args: GetServicePrincipalFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalFederationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

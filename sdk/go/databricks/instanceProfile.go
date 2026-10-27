@@ -91,7 +91,7 @@ import (
 //			}
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
 //				GroupId:           pulumi.String(users.Id),
-//				InstanceProfileId: this.ID().ToIDOutput().ToStringOutput(),
+//				InstanceProfileId: this.ID(),
 //			})
 //			if err != nil {
 //				return err

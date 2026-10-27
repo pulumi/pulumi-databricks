@@ -20,6 +20,31 @@ import (
 // ## Example Usage
 //
 // # Example: AI Search Index Datasource (Singular)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetAiSearchIndex(ctx, &databricks.LookupAiSearchIndexArgs{
+//				EndpointName: "example-ai-search-endpoint",
+//				Name:         "main.default.example_index",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAiSearchIndex(ctx *pulumi.Context, args *LookupAiSearchIndexArgs, opts ...pulumi.InvokeOption) (*LookupAiSearchIndexResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiSearchIndexResult

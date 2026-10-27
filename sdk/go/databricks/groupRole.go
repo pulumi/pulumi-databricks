@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupRole(ctx, "my_group_instance_profile", &databricks.GroupRoleArgs{
-//				GroupId: myGroup.ID().ToIDOutput().ToStringOutput(),
-//				Role:    instanceProfile.ID().ToIDOutput().ToStringOutput(),
+//				GroupId: myGroup.ID(),
+//				Role:    instanceProfile.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupRole(ctx, "my_group_account_admin", &databricks.GroupRoleArgs{
-//				GroupId: myGroup.ID().ToIDOutput().ToStringOutput(),
+//				GroupId: myGroup.ID(),
 //				Role:    pulumi.String("account_admin"),
 //			})
 //			if err != nil {

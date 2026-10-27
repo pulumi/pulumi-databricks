@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			this := databricks.GetMetastoreOutput(ctx, databricks.GetMetastoreOutputArgs{
-//				MetastoreId: thisMetastore.ID().ToIDOutput().ToStringOutput(),
+//				MetastoreId: thisMetastore.ID(),
 //			}, nil)
 //			ctx.Export("someMetastore", this.ApplyT(func(this databricks.GetMetastoreResult) (databricks.GetMetastoreMetastoreInfo, error) {
 //				return this.MetastoreInfo.(databricks.GetMetastoreMetastoreInfo), nil

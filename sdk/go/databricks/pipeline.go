@@ -68,7 +68,7 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: ldpDemo.ID().ToIDOutput().ToStringOutput(),
+//							Path: ldpDemo.ID(),
 //						},
 //					},
 //					&databricks.PipelineLibraryArgs{

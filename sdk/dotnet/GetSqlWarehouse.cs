@@ -30,7 +30,16 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        ///     var @this = ;
+        ///     var @this = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return Databricks.GetSqlWarehouse.Invoke(new()
+        ///         {
+        ///             Id = __value,
+        ///         });
+        ///     });
         /// 
         /// });
         /// ```
@@ -85,7 +94,16 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        ///     var @this = ;
+        ///     var @this = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return Databricks.GetSqlWarehouse.Invoke(new()
+        ///         {
+        ///             Id = __value,
+        ///         });
+        ///     });
         /// 
         /// });
         /// ```
@@ -140,7 +158,16 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        ///     var @this = ;
+        ///     var @this = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return Databricks.GetSqlWarehouse.Invoke(new()
+        ///         {
+        ///             Id = __value,
+        ///         });
+        ///     });
         /// 
         /// });
         /// ```

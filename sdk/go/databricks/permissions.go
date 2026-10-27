@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "cluster_usage", &databricks.PermissionsArgs{
-//				ClusterId: sharedAutoscaling.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: sharedAutoscaling.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,
@@ -159,7 +159,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "policy_usage", &databricks.PermissionsArgs{
-//				ClusterPolicyId: somethingSimple.ID().ToIDOutput().ToStringOutput(),
+//				ClusterPolicyId: somethingSimple.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       ds.DisplayName,
@@ -225,7 +225,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "pool_usage", &databricks.PermissionsArgs{
-//				InstancePoolId: this.ID().ToIDOutput().ToStringOutput(),
+//				InstancePoolId: this.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,
@@ -317,7 +317,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "job_usage", &databricks.PermissionsArgs{
-//				JobId: this.ID().ToIDOutput().ToStringOutput(),
+//				JobId: this.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -416,7 +416,7 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: ldpDemo.ID().ToIDOutput().ToStringOutput(),
+//							Path: ldpDemo.ID(),
 //						},
 //					},
 //				},
@@ -764,7 +764,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "repo_usage", &databricks.PermissionsArgs{
-//				RepoId: this.ID().ToIDOutput().ToStringOutput(),
+//				RepoId: this.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -830,7 +830,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "experiment_usage", &databricks.PermissionsArgs{
-//				ExperimentId: this.ID().ToIDOutput().ToStringOutput(),
+//				ExperimentId: this.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -1242,7 +1242,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "dashboard_usage", &databricks.PermissionsArgs{
-//				DashboardId: dashboard.ID().ToIDOutput().ToStringOutput(),
+//				DashboardId: dashboard.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,

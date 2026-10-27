@@ -22,6 +22,23 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// # Example: AI Search Index Datasource (Singular)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiSearchIndex.Invoke(new()
+        ///     {
+        ///         EndpointName = "example-ai-search-endpoint",
+        ///         Name = "main.default.example_index",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAiSearchIndexResult> InvokeAsync(GetAiSearchIndexArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexArgs(), options.WithDefaults());
@@ -37,6 +54,23 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// # Example: AI Search Index Datasource (Singular)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiSearchIndex.Invoke(new()
+        ///     {
+        ///         EndpointName = "example-ai-search-endpoint",
+        ///         Name = "main.default.example_index",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiSearchIndexResult> Invoke(GetAiSearchIndexInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexInvokeArgs(), options.WithDefaults());
@@ -52,6 +86,23 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// # Example: AI Search Index Datasource (Singular)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiSearchIndex.Invoke(new()
+        ///     {
+        ///         EndpointName = "example-ai-search-endpoint",
+        ///         Name = "main.default.example_index",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiSearchIndexResult> Invoke(GetAiSearchIndexInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexInvokeArgs(), options.WithDefaults());
