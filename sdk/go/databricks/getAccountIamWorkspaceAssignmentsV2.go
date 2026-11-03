@@ -31,16 +31,19 @@ type GetAccountIamWorkspaceAssignmentsV2Args struct {
 	// The maximum number of workspace assignments to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
-	// Required. The workspace ID for which the workspace assignments are being fetched
-	WorkspaceId string `pulumi:"workspaceId"`
+	// The parent resource name of the workspace whose assignments to list.
+	// Format: accounts/{account_id}/workspaces/{workspace_id}
+	Parent string `pulumi:"parent"`
 }
 
 // A collection of values returned by getAccountIamWorkspaceAssignmentsV2.
 type GetAccountIamWorkspaceAssignmentsV2Result struct {
-	PageSize             *int                                                     `pulumi:"pageSize"`
+	PageSize *int `pulumi:"pageSize"`
+	// (string) - The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent               string                                                   `pulumi:"parent"`
 	WorkspaceAssignments []GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment `pulumi:"workspaceAssignments"`
-	// (integer) - The workspace ID where the principal is assigned
-	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 func GetAccountIamWorkspaceAssignmentsV2Output(ctx *pulumi.Context, args GetAccountIamWorkspaceAssignmentsV2OutputArgs, opts ...pulumi.InvokeOption) GetAccountIamWorkspaceAssignmentsV2ResultOutput {
@@ -53,8 +56,9 @@ type GetAccountIamWorkspaceAssignmentsV2OutputArgs struct {
 	// The maximum number of workspace assignments to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// Required. The workspace ID for which the workspace assignments are being fetched
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+	// The parent resource name of the workspace whose assignments to list.
+	// Format: accounts/{account_id}/workspaces/{workspace_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
 func (GetAccountIamWorkspaceAssignmentsV2OutputArgs) ElementType() reflect.Type {
@@ -80,15 +84,17 @@ func (o GetAccountIamWorkspaceAssignmentsV2ResultOutput) PageSize() pulumi.IntPt
 	return o.ApplyT(func(v GetAccountIamWorkspaceAssignmentsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// (string) - The resource name of the workspace that contains the assignment,
+// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+// APIs return it
+func (o GetAccountIamWorkspaceAssignmentsV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIamWorkspaceAssignmentsV2Result) string { return v.Parent }).(pulumi.StringOutput)
+}
+
 func (o GetAccountIamWorkspaceAssignmentsV2ResultOutput) WorkspaceAssignments() GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentArrayOutput {
 	return o.ApplyT(func(v GetAccountIamWorkspaceAssignmentsV2Result) []GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment {
 		return v.WorkspaceAssignments
 	}).(GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentArrayOutput)
-}
-
-// (integer) - The workspace ID where the principal is assigned
-func (o GetAccountIamWorkspaceAssignmentsV2ResultOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountIamWorkspaceAssignmentsV2Result) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 func init() {

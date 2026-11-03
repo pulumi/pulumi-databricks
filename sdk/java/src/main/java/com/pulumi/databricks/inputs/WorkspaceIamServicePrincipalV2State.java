@@ -94,6 +94,42 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -131,6 +167,8 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         this.applicationId = $.applicationId;
         this.displayName = $.displayName;
         this.externalId = $.externalId;
+        this.name = $.name;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
         this.servicePrincipalId = $.servicePrincipalId;
     }
@@ -258,6 +296,54 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
          */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
+        }
+
+        /**
+         * @param name (string) - The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (string) - The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param parent (string) - The resource name of the account that contains the service principal,
+         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent (string) - The resource name of the account that contains the service principal,
+         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

@@ -164,6 +164,8 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
 
     This data source can be used to get a single Synced Database Table.
 
+    For new workloads, Databricks recommends the `PostgresSyncedTable` data source.
+
     ## Example Usage
 
     Referring to a Database Instance by name:
@@ -204,6 +206,8 @@ def get_database_synced_database_table_output(name: pulumi.Input[Optional[_built
     [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to get a single Synced Database Table.
+
+    For new workloads, Databricks recommends the `PostgresSyncedTable` data source.
 
     ## Example Usage
 

@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamDirectGroupMembersV2.Invoke(new()
         ///     {
-        ///         GroupId = 123456789,
+        ///         Parent = "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamDirectGroupMembersV2.Invoke(new()
         ///     {
-        ///         GroupId = 123456789,
+        ///         Parent = "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
         ///     });
         /// 
         /// });
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamDirectGroupMembersV2.Invoke(new()
         ///     {
-        ///         GroupId = 123456789,
+        ///         Parent = "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
         ///     });
         /// 
         /// });
@@ -115,17 +115,18 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamDirectGroupMembersV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Required. Internal ID of the group in Databricks whose direct members are being listed
-        /// </summary>
-        [Input("groupId", required: true)]
-        public int GroupId { get; set; }
-
-        /// <summary>
         /// The maximum number of members to return. The service may return fewer than this value.
         /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
+
+        /// <summary>
+        /// The parent resource name of the group whose direct members to list.
+        /// Format: accounts/{account_id}/groups/{group_id}
+        /// </summary>
+        [Input("parent", required: true)]
+        public string Parent { get; set; } = null!;
 
         public GetAccountIamDirectGroupMembersV2Args()
         {
@@ -136,17 +137,18 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamDirectGroupMembersV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Required. Internal ID of the group in Databricks whose direct members are being listed
-        /// </summary>
-        [Input("groupId", required: true)]
-        public Input<int> GroupId { get; set; } = null!;
-
-        /// <summary>
         /// The maximum number of members to return. The service may return fewer than this value.
         /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// The parent resource name of the group whose direct members to list.
+        /// Format: accounts/{account_id}/groups/{group_id}
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
 
         public GetAccountIamDirectGroupMembersV2InvokeArgs()
         {
@@ -159,23 +161,26 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamDirectGroupMembersV2Result
     {
         public readonly ImmutableArray<Outputs.GetAccountIamDirectGroupMembersV2DirectGroupMemberResult> DirectGroupMembers;
-        /// <summary>
-        /// (integer) - The internal ID of the group this member belongs to
-        /// </summary>
-        public readonly int GroupId;
         public readonly int? PageSize;
+        /// <summary>
+        /// (string) - The resource name of the group that contains the membership. The format depends on the API
+        /// that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        public readonly string Parent;
 
         [OutputConstructor]
         private GetAccountIamDirectGroupMembersV2Result(
             ImmutableArray<Outputs.GetAccountIamDirectGroupMembersV2DirectGroupMemberResult> directGroupMembers,
 
-            int groupId,
+            int? pageSize,
 
-            int? pageSize)
+            string parent)
         {
             DirectGroupMembers = directGroupMembers;
-            GroupId = groupId;
             PageSize = pageSize;
+            Parent = parent;
         }
     }
 }

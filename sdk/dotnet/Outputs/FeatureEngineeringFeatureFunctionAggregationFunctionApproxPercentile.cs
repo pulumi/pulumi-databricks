@@ -14,7 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile
     {
         /// <summary>
-        /// The accuracy parameter (higher is more accurate but slower)
+        /// The accuracy parameter (higher is more accurate but slower).
+        /// Deprecated: use relative_error. When RelativeError is set, reads return ceil(1 /
+        /// relative_error) here for clients that don't have relative_error, and a request may only send
+        /// that value
         /// </summary>
         public readonly int? Accuracy;
         public readonly string Input;
@@ -22,6 +25,7 @@ namespace Pulumi.Databricks.Outputs
         /// The percentile value to compute (between 0 and 1)
         /// </summary>
         public readonly double Percentile;
+        public readonly double? RelativeError;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile(
@@ -29,11 +33,14 @@ namespace Pulumi.Databricks.Outputs
 
             string input,
 
-            double percentile)
+            double percentile,
+
+            double? relativeError)
         {
             Accuracy = accuracy;
             Input = input;
             Percentile = percentile;
+            RelativeError = relativeError;
         }
     }
 }

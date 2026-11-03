@@ -55,6 +55,23 @@ public final class AccountIamUserV2Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+
+    /**
      * Username/email of the user
      * 
      */
@@ -75,6 +92,7 @@ public final class AccountIamUserV2Args extends com.pulumi.resources.ResourceArg
         this.accountUserStatus = $.accountUserStatus;
         this.externalId = $.externalId;
         this.fullName = $.fullName;
+        this.parent = $.parent;
         this.username = $.username;
     }
 
@@ -148,6 +166,29 @@ public final class AccountIamUserV2Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param parent The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+         * account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+         * account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
+        /**
          * @param username Username/email of the user
          * 
          * @return builder
@@ -174,6 +215,9 @@ public final class AccountIamUserV2Args extends com.pulumi.resources.ResourceArg
             }
             if ($.fullName == null) {
                 throw new MissingRequiredPropertyException("AccountIamUserV2Args", "fullName");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AccountIamUserV2Args", "parent");
             }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("AccountIamUserV2Args", "username");

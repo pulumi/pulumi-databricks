@@ -75,6 +75,42 @@ public final class AccountIamGroupV2State extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.groupName);
     }
 
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
     private AccountIamGroupV2State() {}
 
     private AccountIamGroupV2State(AccountIamGroupV2State $) {
@@ -82,6 +118,8 @@ public final class AccountIamGroupV2State extends com.pulumi.resources.ResourceA
         this.externalId = $.externalId;
         this.groupId = $.groupId;
         this.groupName = $.groupName;
+        this.name = $.name;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -184,6 +222,54 @@ public final class AccountIamGroupV2State extends com.pulumi.resources.ResourceA
          */
         public Builder groupName(String groupName) {
             return groupName(Output.of(groupName));
+        }
+
+        /**
+         * @param name (string) - The resource name of the group. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (string) - The resource name of the group. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param parent The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+         * account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+         * account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         public AccountIamGroupV2State build() {

@@ -20,7 +20,7 @@ public final class GetAiSearchEndpointScalingInfo {
      */
     private @Nullable Integer requestedTargetQps;
     /**
-     * @return (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * @return (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      * 
      */
     private String state;
@@ -35,7 +35,7 @@ public final class GetAiSearchEndpointScalingInfo {
         return Optional.ofNullable(this.requestedTargetQps);
     }
     /**
-     * @return (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * @return (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      * 
      */
     public String state() {

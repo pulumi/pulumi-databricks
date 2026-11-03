@@ -12,25 +12,100 @@ namespace Pulumi.Databricks
     public static class GetAppSpaces
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
+        /// 
+        /// This data source can be used to fetch the list of app spaces within the workspace.
+        /// The list can then be accessed via the data object's `Spaces` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all app spaces:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAppSpaces.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allAppSpaces"] = all.Apply(getAppSpacesResult =&gt; getAppSpacesResult.Spaces),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAppSpacesResult> InvokeAsync(GetAppSpacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppSpacesResult>("databricks:index/getAppSpaces:getAppSpaces", args ?? new GetAppSpacesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
+        /// 
+        /// This data source can be used to fetch the list of app spaces within the workspace.
+        /// The list can then be accessed via the data object's `Spaces` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all app spaces:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAppSpaces.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allAppSpaces"] = all.Apply(getAppSpacesResult =&gt; getAppSpacesResult.Spaces),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAppSpacesResult> Invoke(GetAppSpacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppSpacesResult>("databricks:index/getAppSpaces:getAppSpaces", args ?? new GetAppSpacesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
+        /// 
+        /// This data source can be used to fetch the list of app spaces within the workspace.
+        /// The list can then be accessed via the data object's `Spaces` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all app spaces:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAppSpaces.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allAppSpaces"] = all.Apply(getAppSpacesResult =&gt; getAppSpacesResult.Spaces),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAppSpacesResult> Invoke(GetAppSpacesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppSpacesResult>("databricks:index/getAppSpaces:getAppSpaces", args ?? new GetAppSpacesInvokeArgs(), options.WithDefaults());

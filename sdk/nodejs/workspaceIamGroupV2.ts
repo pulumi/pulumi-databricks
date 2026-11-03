@@ -73,6 +73,17 @@ export class WorkspaceIamGroupV2 extends pulumi.CustomResource {
      */
     declare public readonly groupName: pulumi.Output<string | undefined>;
     /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    declare public /*out*/ readonly parent: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceIamGroupV2ProviderConfig>;
@@ -94,6 +105,8 @@ export class WorkspaceIamGroupV2 extends pulumi.CustomResource {
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as WorkspaceIamGroupV2Args | undefined;
@@ -102,6 +115,8 @@ export class WorkspaceIamGroupV2 extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceIamGroupV2.__pulumiType, name, resourceInputs, opts);
@@ -128,6 +143,17 @@ export interface WorkspaceIamGroupV2State {
      * Display name of the group
      */
     groupName?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

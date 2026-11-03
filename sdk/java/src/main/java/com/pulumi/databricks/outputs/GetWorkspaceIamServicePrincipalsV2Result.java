@@ -18,6 +18,12 @@ import javax.annotation.Nullable;
 public final class GetWorkspaceIamServicePrincipalsV2Result {
     private @Nullable String filter;
     private @Nullable Integer pageSize;
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private @Nullable String parent;
     private @Nullable GetWorkspaceIamServicePrincipalsV2ProviderConfig providerConfig;
     private List<GetWorkspaceIamServicePrincipalsV2ServicePrincipal> servicePrincipals;
 
@@ -27,6 +33,14 @@ public final class GetWorkspaceIamServicePrincipalsV2Result {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
     }
     public Optional<GetWorkspaceIamServicePrincipalsV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -46,6 +60,7 @@ public final class GetWorkspaceIamServicePrincipalsV2Result {
     public static final class Builder {
         private @Nullable String filter;
         private @Nullable Integer pageSize;
+        private @Nullable String parent;
         private @Nullable GetWorkspaceIamServicePrincipalsV2ProviderConfig providerConfig;
         private List<GetWorkspaceIamServicePrincipalsV2ServicePrincipal> servicePrincipals;
         public Builder() {}
@@ -53,6 +68,7 @@ public final class GetWorkspaceIamServicePrincipalsV2Result {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.servicePrincipals = defaults.servicePrincipals;
         }
@@ -67,6 +83,12 @@ public final class GetWorkspaceIamServicePrincipalsV2Result {
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(@Nullable String parent) {
+
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
@@ -90,6 +112,7 @@ public final class GetWorkspaceIamServicePrincipalsV2Result {
             final var _resultValue = new GetWorkspaceIamServicePrincipalsV2Result();
             _resultValue.filter = filter;
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             _resultValue.servicePrincipals = servicePrincipals;
             return _resultValue;

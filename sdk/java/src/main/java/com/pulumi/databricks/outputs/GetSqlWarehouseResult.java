@@ -38,6 +38,10 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String creatorName;
+    /**
+     * @return REALTIME compute version label; empty if the API omits it.
+     * 
+     */
     private String customerVersionLabel;
     /**
      * @return (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -70,6 +74,10 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String jdbcUrl;
+    /**
+     * @return Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     * 
+     */
     private Integer maxDbu;
     /**
      * @return Maximum number of clusters available when a SQL warehouse is running.
@@ -113,6 +121,10 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String state;
+    /**
+     * @return Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * 
+     */
     private Integer statementTimeout;
     /**
      * @return tags used for SQL warehouse resources.
@@ -120,7 +132,7 @@ public final class GetSqlWarehouseResult {
      */
     private GetSqlWarehouseTags tags;
     /**
-     * @return SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * @return SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     private String warehouseType;
@@ -154,6 +166,10 @@ public final class GetSqlWarehouseResult {
     public String creatorName() {
         return this.creatorName;
     }
+    /**
+     * @return REALTIME compute version label; empty if the API omits it.
+     * 
+     */
     public String customerVersionLabel() {
         return this.customerVersionLabel;
     }
@@ -202,6 +218,10 @@ public final class GetSqlWarehouseResult {
     public String jdbcUrl() {
         return this.jdbcUrl;
     }
+    /**
+     * @return Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     * 
+     */
     public Integer maxDbu() {
         return this.maxDbu;
     }
@@ -267,6 +287,10 @@ public final class GetSqlWarehouseResult {
     public String state() {
         return this.state;
     }
+    /**
+     * @return Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * 
+     */
     public Integer statementTimeout() {
         return this.statementTimeout;
     }
@@ -278,7 +302,7 @@ public final class GetSqlWarehouseResult {
         return this.tags;
     }
     /**
-     * @return SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * @return SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     public String warehouseType() {

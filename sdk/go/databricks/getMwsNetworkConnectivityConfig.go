@@ -63,7 +63,8 @@ func LookupMwsNetworkConnectivityConfig(ctx *pulumi.Context, args *LookupMwsNetw
 // A collection of arguments for invoking getMwsNetworkConnectivityConfig.
 type LookupMwsNetworkConnectivityConfigArgs struct {
 	// The Databricks account ID associated with this network configuration.
-	AccountId *string `pulumi:"accountId"`
+	AccountId          *string `pulumi:"accountId"`
+	BillingWorkspaceId *int    `pulumi:"billingWorkspaceId"`
 	// Time in epoch milliseconds when this object was created.
 	CreationTime *int `pulumi:"creationTime"`
 	// Array of egress configuration objects.
@@ -81,7 +82,8 @@ type LookupMwsNetworkConnectivityConfigArgs struct {
 // A collection of values returned by getMwsNetworkConnectivityConfig.
 type LookupMwsNetworkConnectivityConfigResult struct {
 	// The Databricks account ID associated with this network configuration.
-	AccountId string `pulumi:"accountId"`
+	AccountId          string `pulumi:"accountId"`
+	BillingWorkspaceId int    `pulumi:"billingWorkspaceId"`
 	// Time in epoch milliseconds when this object was created.
 	CreationTime int `pulumi:"creationTime"`
 	// Array of egress configuration objects.
@@ -106,7 +108,8 @@ func LookupMwsNetworkConnectivityConfigOutput(ctx *pulumi.Context, args LookupMw
 // A collection of arguments for invoking getMwsNetworkConnectivityConfig.
 type LookupMwsNetworkConnectivityConfigOutputArgs struct {
 	// The Databricks account ID associated with this network configuration.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId          pulumi.StringPtrInput `pulumi:"accountId"`
+	BillingWorkspaceId pulumi.IntPtrInput    `pulumi:"billingWorkspaceId"`
 	// Time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntPtrInput `pulumi:"creationTime"`
 	// Array of egress configuration objects.
@@ -143,6 +146,10 @@ func (o LookupMwsNetworkConnectivityConfigResultOutput) ToLookupMwsNetworkConnec
 // The Databricks account ID associated with this network configuration.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o LookupMwsNetworkConnectivityConfigResultOutput) BillingWorkspaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) int { return v.BillingWorkspaceId }).(pulumi.IntOutput)
 }
 
 // Time in epoch milliseconds when this object was created.

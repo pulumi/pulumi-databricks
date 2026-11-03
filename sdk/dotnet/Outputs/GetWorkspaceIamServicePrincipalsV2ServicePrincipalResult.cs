@@ -35,6 +35,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
+        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfigResult? ProviderConfig;
@@ -55,6 +66,10 @@ namespace Pulumi.Databricks.Outputs
 
             string externalId,
 
+            string name,
+
+            string parent,
+
             Outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfigResult? providerConfig,
 
             string servicePrincipalId)
@@ -64,6 +79,8 @@ namespace Pulumi.Databricks.Outputs
             ApplicationId = applicationId;
             DisplayName = displayName;
             ExternalId = externalId;
+            Name = name;
+            Parent = parent;
             ProviderConfig = providerConfig;
             ServicePrincipalId = servicePrincipalId;
         }

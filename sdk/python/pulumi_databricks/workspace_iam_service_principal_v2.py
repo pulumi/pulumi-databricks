@@ -115,6 +115,8 @@ class _WorkspaceIamServicePrincipalV2State:
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['WorkspaceIamServicePrincipalV2ProviderConfigArgs']] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -126,6 +128,11 @@ class _WorkspaceIamServicePrincipalV2State:
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+               - Workspace-scoped: service-principals/{service_principal_id}
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the service principal,
+               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
         :param pulumi.Input['WorkspaceIamServicePrincipalV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         """
@@ -139,6 +146,10 @@ class _WorkspaceIamServicePrincipalV2State:
             pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if service_principal_id is not None:
@@ -204,6 +215,33 @@ class _WorkspaceIamServicePrincipalV2State:
     @external_id.setter
     def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -346,6 +384,8 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["account_id"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["parent"] = None
             __props__.__dict__["service_principal_id"] = None
         super(WorkspaceIamServicePrincipalV2, __self__).__init__(
             'databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2',
@@ -362,6 +402,8 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceIamServicePrincipalV2':
         """
@@ -377,6 +419,11 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+               - Workspace-scoped: service-principals/{service_principal_id}
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the service principal,
+               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         """
@@ -389,6 +436,8 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_id"] = external_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["service_principal_id"] = service_principal_id
         return WorkspaceIamServicePrincipalV2(resource_name, opts=opts, __props__=__props__)
@@ -433,6 +482,25 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
         ExternalId of the service principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")

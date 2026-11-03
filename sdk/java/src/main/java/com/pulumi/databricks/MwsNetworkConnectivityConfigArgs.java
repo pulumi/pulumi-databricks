@@ -25,6 +25,13 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="billingWorkspaceId")
+    private @Nullable Output<Integer> billingWorkspaceId;
+
+    public Optional<Output<Integer>> billingWorkspaceId() {
+        return Optional.ofNullable(this.billingWorkspaceId);
+    }
+
     /**
      * time in epoch milliseconds when this object was created.
      * 
@@ -119,6 +126,7 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
 
     private MwsNetworkConnectivityConfigArgs(MwsNetworkConnectivityConfigArgs $) {
         this.accountId = $.accountId;
+        this.billingWorkspaceId = $.billingWorkspaceId;
         this.creationTime = $.creationTime;
         this.egressConfig = $.egressConfig;
         this.name = $.name;
@@ -152,6 +160,15 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder billingWorkspaceId(@Nullable Output<Integer> billingWorkspaceId) {
+            $.billingWorkspaceId = billingWorkspaceId;
+            return this;
+        }
+
+        public Builder billingWorkspaceId(Integer billingWorkspaceId) {
+            return billingWorkspaceId(Output.of(billingWorkspaceId));
         }
 
         /**

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single account user by its internal ID.
+ * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
  *
  * ## Example Usage
  *
@@ -24,14 +24,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamUserV2({
- *     userId: "123456789",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/users/123456789",
  * });
  * ```
  */
 export function getAccountIamUserV2(args: GetAccountIamUserV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamUserV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", {
-        "userId": args.userId,
+        "name": args.name,
     }, opts);
 }
 
@@ -40,9 +40,11 @@ export function getAccountIamUserV2(args: GetAccountIamUserV2Args, opts?: pulumi
  */
 export interface GetAccountIamUserV2Args {
     /**
-     * Internal userId of the user in Databricks
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
      */
-    userId: string;
+    name: string;
 }
 
 /**
@@ -66,6 +68,17 @@ export interface GetAccountIamUserV2Result {
      */
     readonly fullName: outputs.GetAccountIamUserV2FullName;
     /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
+    /**
      * (string) - Internal userId of the user in Databricks
      */
     readonly userId: string;
@@ -79,7 +92,7 @@ export interface GetAccountIamUserV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single account user by its internal ID.
+ * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
  *
  * ## Example Usage
  *
@@ -92,14 +105,14 @@ export interface GetAccountIamUserV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamUserV2({
- *     userId: "123456789",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/users/123456789",
  * });
  * ```
  */
 export function getAccountIamUserV2Output(args: GetAccountIamUserV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamUserV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamUserV2:getAccountIamUserV2", {
-        "userId": args.userId,
+        "name": args.name,
     }, opts);
 }
 
@@ -108,7 +121,9 @@ export function getAccountIamUserV2Output(args: GetAccountIamUserV2OutputArgs, o
  */
 export interface GetAccountIamUserV2OutputArgs {
     /**
-     * Internal userId of the user in Databricks
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
      */
-    userId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

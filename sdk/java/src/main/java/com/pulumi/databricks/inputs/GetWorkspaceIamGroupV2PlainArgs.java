@@ -17,18 +17,22 @@ public final class GetWorkspaceIamGroupV2PlainArgs extends com.pulumi.resources.
     public static final GetWorkspaceIamGroupV2PlainArgs Empty = new GetWorkspaceIamGroupV2PlainArgs();
 
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    @Import(name="groupId", required=true)
-    private String groupId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return Internal group ID of the group in Databricks
+     * @return The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    public String groupId() {
-        return this.groupId;
+    public String name() {
+        return this.name;
     }
 
     /**
@@ -49,7 +53,7 @@ public final class GetWorkspaceIamGroupV2PlainArgs extends com.pulumi.resources.
     private GetWorkspaceIamGroupV2PlainArgs() {}
 
     private GetWorkspaceIamGroupV2PlainArgs(GetWorkspaceIamGroupV2PlainArgs $) {
-        this.groupId = $.groupId;
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
     }
 
@@ -72,13 +76,15 @@ public final class GetWorkspaceIamGroupV2PlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param groupId Internal group ID of the group in Databricks
+         * @param name The resource name of the group. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(String groupId) {
-            $.groupId = groupId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
@@ -94,8 +100,8 @@ public final class GetWorkspaceIamGroupV2PlainArgs extends com.pulumi.resources.
         }
 
         public GetWorkspaceIamGroupV2PlainArgs build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamGroupV2PlainArgs", "groupId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamGroupV2PlainArgs", "name");
             }
             return $;
         }

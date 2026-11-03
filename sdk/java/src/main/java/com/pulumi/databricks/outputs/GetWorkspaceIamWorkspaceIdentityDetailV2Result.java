@@ -19,6 +19,12 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
      */
     private String assignmentType;
     /**
+     * @return (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     * 
+     */
+    private String name;
+    /**
      * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
      * 
      */
@@ -42,6 +48,14 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
      */
     public String assignmentType() {
         return this.assignmentType;
+    }
+    /**
+     * @return (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     * 
+     */
+    public String name() {
+        return this.name;
     }
     /**
      * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
@@ -78,6 +92,7 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
     @CustomType.Builder
     public static final class Builder {
         private String assignmentType;
+        private String name;
         private String principalId;
         private String principalType;
         private @Nullable GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig providerConfig;
@@ -86,6 +101,7 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
         public Builder(GetWorkspaceIamWorkspaceIdentityDetailV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assignmentType = defaults.assignmentType;
+    	      this.name = defaults.name;
     	      this.principalId = defaults.principalId;
     	      this.principalType = defaults.principalType;
     	      this.providerConfig = defaults.providerConfig;
@@ -98,6 +114,14 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
               throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceIdentityDetailV2Result", "assignmentType");
             }
             this.assignmentType = assignmentType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceIdentityDetailV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -133,6 +157,7 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
         public GetWorkspaceIamWorkspaceIdentityDetailV2Result build() {
             final var _resultValue = new GetWorkspaceIamWorkspaceIdentityDetailV2Result();
             _resultValue.assignmentType = assignmentType;
+            _resultValue.name = name;
             _resultValue.principalId = principalId;
             _resultValue.principalType = principalType;
             _resultValue.providerConfig = providerConfig;

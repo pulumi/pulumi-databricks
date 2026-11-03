@@ -93,7 +93,8 @@ public final class AgentKitManagedMemoryEntryState extends com.pulumi.resources.
 
     /**
      * (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      * 
      */
     @Import(name="name")
@@ -101,7 +102,8 @@ public final class AgentKitManagedMemoryEntryState extends com.pulumi.resources.
 
     /**
      * @return (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      * 
      */
     public Optional<Output<String>> name() {
@@ -346,7 +348,8 @@ public final class AgentKitManagedMemoryEntryState extends com.pulumi.resources.
 
         /**
          * @param name (string) - Resource name in the form
-         * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+         * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+         * Required for updates; assigned by the service on creation
          * 
          * @return builder
          * 
@@ -358,7 +361,8 @@ public final class AgentKitManagedMemoryEntryState extends com.pulumi.resources.
 
         /**
          * @param name (string) - Resource name in the form
-         * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+         * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+         * Required for updates; assigned by the service on creation
          * 
          * @return builder
          * 

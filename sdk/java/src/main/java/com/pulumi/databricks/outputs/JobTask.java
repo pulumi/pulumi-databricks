@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskAiFunctionTask;
 import com.pulumi.databricks.outputs.JobTaskAiRuntimeTask;
 import com.pulumi.databricks.outputs.JobTaskAlertTask;
 import com.pulumi.databricks.outputs.JobTaskCleanRoomsNotebookTask;
@@ -43,6 +44,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTask {
+    private @Nullable JobTaskAiFunctionTask aiFunctionTask;
     private @Nullable JobTaskAiRuntimeTask aiRuntimeTask;
     private @Nullable JobTaskAlertTask alertTask;
     private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
@@ -169,6 +171,9 @@ public final class JobTask {
     private @Nullable JobTaskWebhookNotifications webhookNotifications;
 
     private JobTask() {}
+    public Optional<JobTaskAiFunctionTask> aiFunctionTask() {
+        return Optional.ofNullable(this.aiFunctionTask);
+    }
     public Optional<JobTaskAiRuntimeTask> aiRuntimeTask() {
         return Optional.ofNullable(this.aiRuntimeTask);
     }
@@ -385,6 +390,7 @@ public final class JobTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTaskAiFunctionTask aiFunctionTask;
         private @Nullable JobTaskAiRuntimeTask aiRuntimeTask;
         private @Nullable JobTaskAlertTask alertTask;
         private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
@@ -429,6 +435,7 @@ public final class JobTask {
         public Builder() {}
         public Builder(JobTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiFunctionTask = defaults.aiFunctionTask;
     	      this.aiRuntimeTask = defaults.aiRuntimeTask;
     	      this.alertTask = defaults.alertTask;
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
@@ -472,6 +479,12 @@ public final class JobTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder aiFunctionTask(@Nullable JobTaskAiFunctionTask aiFunctionTask) {
+
+            this.aiFunctionTask = aiFunctionTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder aiRuntimeTask(@Nullable JobTaskAiRuntimeTask aiRuntimeTask) {
 
@@ -728,6 +741,7 @@ public final class JobTask {
         }
         public JobTask build() {
             final var _resultValue = new JobTask();
+            _resultValue.aiFunctionTask = aiFunctionTask;
             _resultValue.aiRuntimeTask = aiRuntimeTask;
             _resultValue.alertTask = alertTask;
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;

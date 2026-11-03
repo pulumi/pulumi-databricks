@@ -70,6 +70,7 @@ from .external_location import *
 from .external_metadata import *
 from .feature_engineering_feature import *
 from .file import *
+from .genie_agent import *
 from .get_account_federation_policies import *
 from .get_account_federation_policy import *
 from .get_account_iam_direct_group_member_v2 import *
@@ -165,6 +166,8 @@ from .get_external_metadatas import *
 from .get_feature_engineering_feature import *
 from .get_feature_engineering_features import *
 from .get_functions import *
+from .get_genie_agent import *
+from .get_genie_agents import *
 from .get_group import *
 from .get_instance_pool import *
 from .get_instance_profiles import *
@@ -909,6 +912,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/file:File": "File"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/genieAgent",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/genieAgent:GenieAgent": "GenieAgent"
   }
  },
  {

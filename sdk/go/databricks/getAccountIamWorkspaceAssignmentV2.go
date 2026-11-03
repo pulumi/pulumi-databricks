@@ -15,7 +15,7 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
-// Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+// Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
 //
 // ## Example Usage
 //
@@ -36,8 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetAccountIamWorkspaceAssignmentV2(ctx, &databricks.LookupAccountIamWorkspaceAssignmentV2Args{
-//				WorkspaceId: "123456789",
-//				PrincipalId: "987654321",
+//				Name: "accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,10 +58,10 @@ func LookupAccountIamWorkspaceAssignmentV2(ctx *pulumi.Context, args *LookupAcco
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentV2.
 type LookupAccountIamWorkspaceAssignmentV2Args struct {
-	// The internal ID of the principal (user/sp/group) in Databricks
-	PrincipalId string `pulumi:"principalId"`
-	// The workspace ID where the principal is assigned
-	WorkspaceId string `pulumi:"workspaceId"`
+	// The resource name of the workspace assignment. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+	// - Workspace-scoped: workspace-assignments/{principal_id}
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamWorkspaceAssignmentV2.
@@ -77,7 +76,17 @@ type LookupAccountIamWorkspaceAssignmentV2Result struct {
 	// principal also holds through a group.
 	// List responses leave this field empty. Get a single principal to read its entitlements
 	Entitlements []string `pulumi:"entitlements"`
-	// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+	// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+	// - Workspace-scoped: workspace-assignments/{principal_id}
+	Name string `pulumi:"name"`
+	// (string) - The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent string `pulumi:"parent"`
+	// (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+	// created and cannot be changed afterwards; to assign a different principal, create a new
+	// assignment
 	PrincipalId string `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 	PrincipalType string `pulumi:"principalType"`
@@ -92,10 +101,10 @@ func LookupAccountIamWorkspaceAssignmentV2Output(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentV2.
 type LookupAccountIamWorkspaceAssignmentV2OutputArgs struct {
-	// The internal ID of the principal (user/sp/group) in Databricks
-	PrincipalId pulumi.StringInput `pulumi:"principalId"`
-	// The workspace ID where the principal is assigned
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+	// The resource name of the workspace assignment. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+	// - Workspace-scoped: workspace-assignments/{principal_id}
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountIamWorkspaceAssignmentV2OutputArgs) ElementType() reflect.Type {
@@ -136,7 +145,23 @@ func (o LookupAccountIamWorkspaceAssignmentV2ResultOutput) Entitlements() pulumi
 	return o.ApplyT(func(v LookupAccountIamWorkspaceAssignmentV2Result) []string { return v.Entitlements }).(pulumi.StringArrayOutput)
 }
 
-// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+// - Workspace-scoped: workspace-assignments/{principal_id}
+func (o LookupAccountIamWorkspaceAssignmentV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamWorkspaceAssignmentV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the workspace that contains the assignment,
+// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+// APIs return it
+func (o LookupAccountIamWorkspaceAssignmentV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamWorkspaceAssignmentV2Result) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+// created and cannot be changed afterwards; to assign a different principal, create a new
+// assignment
 func (o LookupAccountIamWorkspaceAssignmentV2ResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamWorkspaceAssignmentV2Result) string { return v.PrincipalId }).(pulumi.StringOutput)
 }

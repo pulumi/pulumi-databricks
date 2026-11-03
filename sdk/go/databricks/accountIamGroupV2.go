@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -38,6 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewAccountIamGroupV2(ctx, "this", &databricks.AccountIamGroupV2Args{
+//				Parent:    pulumi.String("accounts/00000000-0000-0000-0000-000000000000"),
 //				GroupName: pulumi.String("data-engineers"),
 //			})
 //			if err != nil {
@@ -59,15 +61,25 @@ type AccountIamGroupV2 struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// Display name of the group
 	GroupName pulumi.StringPtrOutput `pulumi:"groupName"`
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringOutput `pulumi:"parent"`
 }
 
 // NewAccountIamGroupV2 registers a new resource with the given unique name, arguments, and options.
 func NewAccountIamGroupV2(ctx *pulumi.Context,
 	name string, args *AccountIamGroupV2Args, opts ...pulumi.ResourceOption) (*AccountIamGroupV2, error) {
 	if args == nil {
-		args = &AccountIamGroupV2Args{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountIamGroupV2
 	err := ctx.RegisterResource("databricks:index/accountIamGroupV2:AccountIamGroupV2", name, args, &resource, opts...)
@@ -99,6 +111,13 @@ type accountIamGroupV2State struct {
 	GroupId *string `pulumi:"groupId"`
 	// Display name of the group
 	GroupName *string `pulumi:"groupName"`
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name *string `pulumi:"name"`
+	// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent *string `pulumi:"parent"`
 }
 
 type AccountIamGroupV2State struct {
@@ -110,6 +129,13 @@ type AccountIamGroupV2State struct {
 	GroupId pulumi.StringPtrInput
 	// Display name of the group
 	GroupName pulumi.StringPtrInput
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name pulumi.StringPtrInput
+	// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringPtrInput
 }
 
 func (AccountIamGroupV2State) ElementType() reflect.Type {
@@ -121,6 +147,9 @@ type accountIamGroupV2Args struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Display name of the group
 	GroupName *string `pulumi:"groupName"`
+	// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a AccountIamGroupV2 resource.
@@ -129,6 +158,9 @@ type AccountIamGroupV2Args struct {
 	ExternalId pulumi.StringPtrInput
 	// Display name of the group
 	GroupName pulumi.StringPtrInput
+	// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringInput
 }
 
 func (AccountIamGroupV2Args) ElementType() reflect.Type {
@@ -236,6 +268,19 @@ func (o AccountIamGroupV2Output) GroupId() pulumi.StringOutput {
 // Display name of the group
 func (o AccountIamGroupV2Output) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountIamGroupV2) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The resource name of the group. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o AccountIamGroupV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamGroupV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o AccountIamGroupV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamGroupV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 type AccountIamGroupV2ArrayOutput struct{ *pulumi.OutputState }

@@ -17,18 +17,22 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2PlainArgs extends com.pul
     public static final GetWorkspaceIamWorkspaceAssignmentV2PlainArgs Empty = new GetWorkspaceIamWorkspaceAssignmentV2PlainArgs();
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      * 
      */
-    @Import(name="principalId", required=true)
-    private String principalId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      * 
      */
-    public String principalId() {
-        return this.principalId;
+    public String name() {
+        return this.name;
     }
 
     /**
@@ -49,7 +53,7 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2PlainArgs extends com.pul
     private GetWorkspaceIamWorkspaceAssignmentV2PlainArgs() {}
 
     private GetWorkspaceIamWorkspaceAssignmentV2PlainArgs(GetWorkspaceIamWorkspaceAssignmentV2PlainArgs $) {
-        this.principalId = $.principalId;
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
     }
 
@@ -72,13 +76,15 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2PlainArgs extends com.pul
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace assignment. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+         * - Workspace-scoped: workspace-assignments/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder principalId(String principalId) {
-            $.principalId = principalId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
@@ -94,8 +100,8 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2PlainArgs extends com.pul
         }
 
         public GetWorkspaceIamWorkspaceAssignmentV2PlainArgs build() {
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceAssignmentV2PlainArgs", "principalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceAssignmentV2PlainArgs", "name");
             }
             return $;
         }

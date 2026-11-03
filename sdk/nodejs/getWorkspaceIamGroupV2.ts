@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single group by its internal ID, using a workspace-scoped provider.
+ * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
  *
  * ## Example Usage
  *
@@ -24,14 +24,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamGroupV2({
- *     groupId: "123456789",
+ *     name: "groups/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamGroupV2(args: GetWorkspaceIamGroupV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceIamGroupV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", {
-        "groupId": args.groupId,
+        "name": args.name,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -41,9 +41,11 @@ export function getWorkspaceIamGroupV2(args: GetWorkspaceIamGroupV2Args, opts?: 
  */
 export interface GetWorkspaceIamGroupV2Args {
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      */
-    groupId: string;
+    name: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -70,6 +72,17 @@ export interface GetWorkspaceIamGroupV2Result {
      * (string) - Display name of the group
      */
     readonly groupName: string;
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
     readonly providerConfig?: outputs.GetWorkspaceIamGroupV2ProviderConfig;
 }
 /**
@@ -77,7 +90,7 @@ export interface GetWorkspaceIamGroupV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single group by its internal ID, using a workspace-scoped provider.
+ * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
  *
  * ## Example Usage
  *
@@ -90,14 +103,14 @@ export interface GetWorkspaceIamGroupV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamGroupV2({
- *     groupId: "123456789",
+ *     name: "groups/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamGroupV2Output(args: GetWorkspaceIamGroupV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceIamGroupV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", {
-        "groupId": args.groupId,
+        "name": args.name,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -107,9 +120,11 @@ export function getWorkspaceIamGroupV2Output(args: GetWorkspaceIamGroupV2OutputA
  */
 export interface GetWorkspaceIamGroupV2OutputArgs {
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      */
-    groupId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider.
      */

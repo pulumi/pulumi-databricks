@@ -115,7 +115,8 @@ def get_ai_gateway_model_provider_services(page_size: Optional[_builtins.int] = 
 
 
     :param _builtins.int page_size: Maximum number of provider services to return. Defaults to 200 when unset or
-           0; the maximum is 200. Use `page_token` to retrieve additional pages
+           0; the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+           `page_token` to retrieve additional pages
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
@@ -165,7 +166,8 @@ def get_ai_gateway_model_provider_services_output(page_size: pulumi.Input[Option
 
 
     :param _builtins.int page_size: Maximum number of provider services to return. Defaults to 200 when unset or
-           0; the maximum is 200. Use `page_token` to retrieve additional pages
+           0; the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+           `page_token` to retrieve additional pages
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually

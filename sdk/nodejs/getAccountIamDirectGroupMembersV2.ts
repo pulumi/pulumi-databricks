@@ -24,15 +24,15 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamDirectGroupMembersV2({
- *     groupId: 123456789,
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
  * });
  * ```
  */
 export function getAccountIamDirectGroupMembersV2(args: GetAccountIamDirectGroupMembersV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamDirectGroupMembersV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", {
-        "groupId": args.groupId,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -41,14 +41,15 @@ export function getAccountIamDirectGroupMembersV2(args: GetAccountIamDirectGroup
  */
 export interface GetAccountIamDirectGroupMembersV2Args {
     /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     */
-    groupId: number;
-    /**
      * The maximum number of members to return. The service may return fewer than this value.
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     */
+    parent: string;
 }
 
 /**
@@ -56,11 +57,14 @@ export interface GetAccountIamDirectGroupMembersV2Args {
  */
 export interface GetAccountIamDirectGroupMembersV2Result {
     readonly directGroupMembers: outputs.GetAccountIamDirectGroupMembersV2DirectGroupMember[];
-    /**
-     * (integer) - The internal ID of the group this member belongs to
-     */
-    readonly groupId: number;
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    readonly parent: string;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -80,15 +84,15 @@ export interface GetAccountIamDirectGroupMembersV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamDirectGroupMembersV2({
- *     groupId: 123456789,
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
  * });
  * ```
  */
 export function getAccountIamDirectGroupMembersV2Output(args: GetAccountIamDirectGroupMembersV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamDirectGroupMembersV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", {
-        "groupId": args.groupId,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -97,12 +101,13 @@ export function getAccountIamDirectGroupMembersV2Output(args: GetAccountIamDirec
  */
 export interface GetAccountIamDirectGroupMembersV2OutputArgs {
     /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     */
-    groupId: pulumi.Input<number>;
-    /**
      * The maximum number of members to return. The service may return fewer than this value.
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     */
+    parent: pulumi.Input<string>;
 }

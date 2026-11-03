@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.BudgetAlertConfigurationArgs;
 import com.pulumi.databricks.inputs.BudgetFilterArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -85,6 +86,13 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filter);
     }
 
+    @Import(name="includeExternalSpend")
+    private @Nullable Output<Boolean> includeExternalSpend;
+
+    public Optional<Output<Boolean>> includeExternalSpend() {
+        return Optional.ofNullable(this.includeExternalSpend);
+    }
+
     /**
      * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
      * 
@@ -116,6 +124,7 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.displayName = $.displayName;
         this.filter = $.filter;
+        this.includeExternalSpend = $.includeExternalSpend;
         this.resourceType = $.resourceType;
         this.updateTime = $.updateTime;
     }
@@ -230,6 +239,15 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
 
         public Builder filter(BudgetFilterArgs filter) {
             return filter(Output.of(filter));
+        }
+
+        public Builder includeExternalSpend(@Nullable Output<Boolean> includeExternalSpend) {
+            $.includeExternalSpend = includeExternalSpend;
+            return this;
+        }
+
+        public Builder includeExternalSpend(Boolean includeExternalSpend) {
+            return includeExternalSpend(Output.of(includeExternalSpend));
         }
 
         /**

@@ -58,7 +58,8 @@ func GetAiGatewayModelProviderServices(ctx *pulumi.Context, args *GetAiGatewayMo
 // A collection of arguments for invoking getAiGatewayModelProviderServices.
 type GetAiGatewayModelProviderServicesArgs struct {
 	// Maximum number of provider services to return. Defaults to 200 when unset or
-	// 0; the maximum is 200. Use `pageToken` to retrieve additional pages
+	// 0; the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+	// `pageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
 	// Parent schema to list within, in the form
 	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
@@ -93,7 +94,8 @@ func GetAiGatewayModelProviderServicesOutput(ctx *pulumi.Context, args GetAiGate
 // A collection of arguments for invoking getAiGatewayModelProviderServices.
 type GetAiGatewayModelProviderServicesOutputArgs struct {
 	// Maximum number of provider services to return. Defaults to 200 when unset or
-	// 0; the maximum is 200. Use `pageToken` to retrieve additional pages
+	// 0; the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+	// `pageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Parent schema to list within, in the form
 	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at

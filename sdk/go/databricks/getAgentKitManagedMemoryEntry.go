@@ -27,7 +27,8 @@ func LookupAgentKitManagedMemoryEntry(ctx *pulumi.Context, args *LookupAgentKitM
 // A collection of arguments for invoking getAgentKitManagedMemoryEntry.
 type LookupAgentKitManagedMemoryEntryArgs struct {
 	// Resource name in the form
-	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+	// Required for updates; assigned by the service on creation
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAgentKitManagedMemoryEntryProviderConfig `pulumi:"providerConfig"`
@@ -44,7 +45,8 @@ type LookupAgentKitManagedMemoryEntryResult struct {
 	// (string) - Human-readable description of the memory entry
 	Description string `pulumi:"description"`
 	// (string) - Resource name in the form
-	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+	// Required for updates; assigned by the service on creation
 	Name string `pulumi:"name"`
 	// (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
 	// Paths must begin with `/` and must not contain empty, `.` or `..` segments
@@ -67,7 +69,8 @@ func LookupAgentKitManagedMemoryEntryOutput(ctx *pulumi.Context, args LookupAgen
 // A collection of arguments for invoking getAgentKitManagedMemoryEntry.
 type LookupAgentKitManagedMemoryEntryOutputArgs struct {
 	// Resource name in the form
-	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+	// Required for updates; assigned by the service on creation
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAgentKitManagedMemoryEntryProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -113,7 +116,8 @@ func (o LookupAgentKitManagedMemoryEntryResultOutput) Description() pulumi.Strin
 }
 
 // (string) - Resource name in the form
-// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+// Required for updates; assigned by the service on creation
 func (o LookupAgentKitManagedMemoryEntryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentKitManagedMemoryEntryResult) string { return v.Name }).(pulumi.StringOutput)
 }

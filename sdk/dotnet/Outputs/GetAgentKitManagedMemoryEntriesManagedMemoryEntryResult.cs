@@ -31,7 +31,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Description;
         /// <summary>
         /// (string) - Resource name in the form
-        /// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        /// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+        /// Required for updates; assigned by the service on creation
         /// </summary>
         public readonly string Name;
         /// <summary>

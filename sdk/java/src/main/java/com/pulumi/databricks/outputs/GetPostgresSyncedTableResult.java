@@ -28,8 +28,7 @@ public final class GetPostgresSyncedTableResult {
     private String name;
     private @Nullable GetPostgresSyncedTableProviderConfig providerConfig;
     /**
-     * @return (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * @return (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc
      * 
      */
     private GetPostgresSyncedTableSpec spec;
@@ -69,8 +68,7 @@ public final class GetPostgresSyncedTableResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * @return (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc
      * 
      */
     public GetPostgresSyncedTableSpec spec() {

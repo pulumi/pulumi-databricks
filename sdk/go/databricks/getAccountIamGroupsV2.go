@@ -35,7 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetAccountIamGroupsV2(ctx, &databricks.GetAccountIamGroupsV2Args{}, nil)
+//			_, err := databricks.GetAccountIamGroupsV2(ctx, &databricks.GetAccountIamGroupsV2Args{
+//				Parent: "accounts/00000000-0000-0000-0000-000000000000",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -61,6 +63,9 @@ type GetAccountIamGroupsV2Args struct {
 	// The maximum number of groups to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The parent resource name of the account whose groups to list.
+	// Format: accounts/{account_id}
+	Parent string `pulumi:"parent"`
 }
 
 // A collection of values returned by getAccountIamGroupsV2.
@@ -68,6 +73,9 @@ type GetAccountIamGroupsV2Result struct {
 	Filter   *string                      `pulumi:"filter"`
 	Groups   []GetAccountIamGroupsV2Group `pulumi:"groups"`
 	PageSize *int                         `pulumi:"pageSize"`
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 }
 
 func GetAccountIamGroupsV2Output(ctx *pulumi.Context, args GetAccountIamGroupsV2OutputArgs, opts ...pulumi.InvokeOption) GetAccountIamGroupsV2ResultOutput {
@@ -82,6 +90,9 @@ type GetAccountIamGroupsV2OutputArgs struct {
 	// The maximum number of groups to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The parent resource name of the account whose groups to list.
+	// Format: accounts/{account_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
 func (GetAccountIamGroupsV2OutputArgs) ElementType() reflect.Type {
@@ -113,6 +124,12 @@ func (o GetAccountIamGroupsV2ResultOutput) Groups() GetAccountIamGroupsV2GroupAr
 
 func (o GetAccountIamGroupsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccountIamGroupsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o GetAccountIamGroupsV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIamGroupsV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func init() {

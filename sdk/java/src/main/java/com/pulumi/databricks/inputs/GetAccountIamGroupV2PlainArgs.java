@@ -14,24 +14,28 @@ public final class GetAccountIamGroupV2PlainArgs extends com.pulumi.resources.In
     public static final GetAccountIamGroupV2PlainArgs Empty = new GetAccountIamGroupV2PlainArgs();
 
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    @Import(name="groupId", required=true)
-    private String groupId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return Internal group ID of the group in Databricks
+     * @return The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    public String groupId() {
-        return this.groupId;
+    public String name() {
+        return this.name;
     }
 
     private GetAccountIamGroupV2PlainArgs() {}
 
     private GetAccountIamGroupV2PlainArgs(GetAccountIamGroupV2PlainArgs $) {
-        this.groupId = $.groupId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -53,19 +57,21 @@ public final class GetAccountIamGroupV2PlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param groupId Internal group ID of the group in Databricks
+         * @param name The resource name of the group. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(String groupId) {
-            $.groupId = groupId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
         public GetAccountIamGroupV2PlainArgs build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamGroupV2PlainArgs", "groupId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamGroupV2PlainArgs", "name");
             }
             return $;
         }

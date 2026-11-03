@@ -138,6 +138,40 @@ public class WorkspaceIamServicePrincipalV2 extends com.pulumi.resources.CustomR
         return Codegen.optional(this.externalId);
     }
     /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+    /**
      * Configure the provider for management through account provider.
      * 
      */

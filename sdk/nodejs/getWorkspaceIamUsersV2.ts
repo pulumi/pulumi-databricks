@@ -32,6 +32,7 @@ export function getWorkspaceIamUsersV2(args?: GetWorkspaceIamUsersV2Args, opts?:
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -50,6 +51,11 @@ export interface GetWorkspaceIamUsersV2Args {
      */
     pageSize?: number;
     /**
+     * The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent?: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetWorkspaceIamUsersV2ProviderConfig;
@@ -61,6 +67,11 @@ export interface GetWorkspaceIamUsersV2Args {
 export interface GetWorkspaceIamUsersV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamUsersV2ProviderConfig;
     readonly users: outputs.GetWorkspaceIamUsersV2User[];
 }
@@ -90,6 +101,7 @@ export function getWorkspaceIamUsersV2Output(args?: GetWorkspaceIamUsersV2Output
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -107,6 +119,11 @@ export interface GetWorkspaceIamUsersV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

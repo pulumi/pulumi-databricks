@@ -23,15 +23,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getAccountIamServicePrincipalsV2({});
+ * const _this = databricks.getAccountIamServicePrincipalsV2({
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ * });
  * ```
  */
-export function getAccountIamServicePrincipalsV2(args?: GetAccountIamServicePrincipalsV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamServicePrincipalsV2Result> {
-    args = args || {};
+export function getAccountIamServicePrincipalsV2(args: GetAccountIamServicePrincipalsV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamServicePrincipalsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -48,6 +50,11 @@ export interface GetAccountIamServicePrincipalsV2Args {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
+    /**
+     * The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     */
+    parent: string;
 }
 
 /**
@@ -56,6 +63,11 @@ export interface GetAccountIamServicePrincipalsV2Args {
 export interface GetAccountIamServicePrincipalsV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
     readonly servicePrincipals: outputs.GetAccountIamServicePrincipalsV2ServicePrincipal[];
 }
 /**
@@ -75,15 +87,17 @@ export interface GetAccountIamServicePrincipalsV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getAccountIamServicePrincipalsV2({});
+ * const _this = databricks.getAccountIamServicePrincipalsV2({
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ * });
  * ```
  */
-export function getAccountIamServicePrincipalsV2Output(args?: GetAccountIamServicePrincipalsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamServicePrincipalsV2Result> {
-    args = args || {};
+export function getAccountIamServicePrincipalsV2Output(args: GetAccountIamServicePrincipalsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamServicePrincipalsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -100,4 +114,9 @@ export interface GetAccountIamServicePrincipalsV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     */
+    parent: pulumi.Input<string>;
 }

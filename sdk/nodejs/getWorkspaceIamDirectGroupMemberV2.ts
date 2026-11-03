@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+ * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
  *
  * ## Example Usage
  *
@@ -25,16 +25,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamDirectGroupMemberV2({
- *     groupId: 123456789,
- *     principalId: "987654321",
+ *     name: "groups/123456789/direct-members/987654321",
  * });
  * ```
  */
 export function getWorkspaceIamDirectGroupMemberV2(args: GetWorkspaceIamDirectGroupMemberV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceIamDirectGroupMemberV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", {
-        "groupId": args.groupId,
-        "principalId": args.principalId,
+        "name": args.name,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -44,13 +42,11 @@ export function getWorkspaceIamDirectGroupMemberV2(args: GetWorkspaceIamDirectGr
  */
 export interface GetWorkspaceIamDirectGroupMemberV2Args {
     /**
-     * The internal ID of the group this member belongs to
+     * The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
      */
-    groupId: number;
-    /**
-     * Internal ID of the principal in Databricks
-     */
-    principalId: string;
+    name: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -66,7 +62,7 @@ export interface GetWorkspaceIamDirectGroupMemberV2Result {
      */
     readonly displayName: string;
     /**
-     * (string) - The external ID of the principal in Databricks
+     * (string) - The external ID of the principal in the customer's IdP
      */
     readonly externalId: string;
     /**
@@ -77,6 +73,19 @@ export interface GetWorkspaceIamDirectGroupMemberV2Result {
      * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     readonly membershipSource: string;
+    /**
+     * (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    readonly parent: string;
     /**
      * (integer) - Internal ID of the principal in Databricks
      */
@@ -92,7 +101,7 @@ export interface GetWorkspaceIamDirectGroupMemberV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+ * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
  *
  * ## Example Usage
  *
@@ -106,16 +115,14 @@ export interface GetWorkspaceIamDirectGroupMemberV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamDirectGroupMemberV2({
- *     groupId: 123456789,
- *     principalId: "987654321",
+ *     name: "groups/123456789/direct-members/987654321",
  * });
  * ```
  */
 export function getWorkspaceIamDirectGroupMemberV2Output(args: GetWorkspaceIamDirectGroupMemberV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceIamDirectGroupMemberV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", {
-        "groupId": args.groupId,
-        "principalId": args.principalId,
+        "name": args.name,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -125,13 +132,11 @@ export function getWorkspaceIamDirectGroupMemberV2Output(args: GetWorkspaceIamDi
  */
 export interface GetWorkspaceIamDirectGroupMemberV2OutputArgs {
     /**
-     * The internal ID of the group this member belongs to
+     * The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
      */
-    groupId: pulumi.Input<number>;
-    /**
-     * Internal ID of the principal in Databricks
-     */
-    principalId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider.
      */

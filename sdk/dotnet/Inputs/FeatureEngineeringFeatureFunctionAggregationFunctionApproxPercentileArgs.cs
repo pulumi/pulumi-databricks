@@ -13,7 +13,10 @@ namespace Pulumi.Databricks.Inputs
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The accuracy parameter (higher is more accurate but slower)
+        /// The accuracy parameter (higher is more accurate but slower).
+        /// Deprecated: use relative_error. When RelativeError is set, reads return ceil(1 /
+        /// relative_error) here for clients that don't have relative_error, and a request may only send
+        /// that value
         /// </summary>
         [Input("accuracy")]
         public Input<int>? Accuracy { get; set; }
@@ -26,6 +29,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("percentile", required: true)]
         public Input<double> Percentile { get; set; } = null!;
+
+        [Input("relativeError")]
+        public Input<double>? RelativeError { get; set; }
 
         public FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs()
         {

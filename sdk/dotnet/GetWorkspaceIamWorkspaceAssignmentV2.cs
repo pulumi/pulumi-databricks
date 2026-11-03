@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+        /// Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamWorkspaceAssignmentV2.Invoke(new()
         ///     {
-        ///         PrincipalId = "987654321",
+        ///         Name = "workspace-assignments/987654321",
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+        /// Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamWorkspaceAssignmentV2.Invoke(new()
         ///     {
-        ///         PrincipalId = "987654321",
+        ///         Name = "workspace-assignments/987654321",
         ///     });
         /// 
         /// });
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+        /// Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamWorkspaceAssignmentV2.Invoke(new()
         ///     {
-        ///         PrincipalId = "987654321",
+        ///         Name = "workspace-assignments/987654321",
         ///     });
         /// 
         /// });
@@ -118,10 +118,12 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceAssignmentV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The internal ID of the principal (user/sp/group) in Databricks
+        /// The resource name of the workspace assignment. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        /// - Workspace-scoped: workspace-assignments/{principal_id}
         /// </summary>
-        [Input("principalId", required: true)]
-        public string PrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider.
@@ -138,10 +140,12 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceAssignmentV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The internal ID of the principal (user/sp/group) in Databricks
+        /// The resource name of the workspace assignment. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        /// - Workspace-scoped: workspace-assignments/{principal_id}
         /// </summary>
-        [Input("principalId", required: true)]
-        public Input<string> PrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider.
@@ -176,7 +180,21 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<string> Entitlements;
         /// <summary>
-        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        /// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        /// - Workspace-scoped: workspace-assignments/{principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the workspace that contains the assignment,
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+        /// APIs return it
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
+        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        /// created and cannot be changed afterwards; to assign a different principal, create a new
+        /// assignment
         /// </summary>
         public readonly string PrincipalId;
         /// <summary>
@@ -197,6 +215,10 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> entitlements,
 
+            string name,
+
+            string parent,
+
             string principalId,
 
             string principalType,
@@ -208,6 +230,8 @@ namespace Pulumi.Databricks
             AccountId = accountId;
             EffectiveEntitlements = effectiveEntitlements;
             Entitlements = entitlements;
+            Name = name;
+            Parent = parent;
             PrincipalId = principalId;
             PrincipalType = principalType;
             ProviderConfig = providerConfig;

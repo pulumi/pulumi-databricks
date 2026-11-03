@@ -18,6 +18,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("onFailure")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureGetArgs>? OnFailure { get; set; }
 
+        /// <summary>
+        /// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        /// recipient gets one notification per important unhealthy table. Only supported on schema
+        /// monitors, via `AnomalyDetectionConfig`
+        /// </summary>
+        [Input("onUnhealthyTable")]
+        public Input<Inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableGetArgs>? OnUnhealthyTable { get; set; }
+
         public DataQualityMonitorDataProfilingConfigNotificationSettingsGetArgs()
         {
         }

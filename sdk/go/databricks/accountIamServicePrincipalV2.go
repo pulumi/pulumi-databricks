@@ -39,6 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewAccountIamServicePrincipalV2(ctx, "this", &databricks.AccountIamServicePrincipalV2Args{
+//				Parent:          pulumi.String("accounts/00000000-0000-0000-0000-000000000000"),
 //				DisplayName:     pulumi.String("ci-runner"),
 //				AccountSpStatus: pulumi.String("ACTIVE"),
 //			})
@@ -64,6 +65,13 @@ type AccountIamServicePrincipalV2 struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// ExternalId of the service principal in the customer's IdP
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
+	// (string) - The resource name of the service principal. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+	// - Workspace-scoped: service-principals/{service_principal_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// (string) - Internal service principal ID of the service principal in Databricks
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 }
@@ -80,6 +88,9 @@ func NewAccountIamServicePrincipalV2(ctx *pulumi.Context,
 	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountIamServicePrincipalV2
@@ -115,6 +126,13 @@ type accountIamServicePrincipalV2State struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ExternalId of the service principal in the customer's IdP
 	ExternalId *string `pulumi:"externalId"`
+	// (string) - The resource name of the service principal. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+	// - Workspace-scoped: service-principals/{service_principal_id}
+	Name *string `pulumi:"name"`
+	// The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent *string `pulumi:"parent"`
 	// (string) - Internal service principal ID of the service principal in Databricks
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 }
@@ -131,6 +149,13 @@ type AccountIamServicePrincipalV2State struct {
 	DisplayName pulumi.StringPtrInput
 	// ExternalId of the service principal in the customer's IdP
 	ExternalId pulumi.StringPtrInput
+	// (string) - The resource name of the service principal. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+	// - Workspace-scoped: service-principals/{service_principal_id}
+	Name pulumi.StringPtrInput
+	// The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringPtrInput
 	// (string) - Internal service principal ID of the service principal in Databricks
 	ServicePrincipalId pulumi.StringPtrInput
 }
@@ -149,6 +174,9 @@ type accountIamServicePrincipalV2Args struct {
 	DisplayName string `pulumi:"displayName"`
 	// ExternalId of the service principal in the customer's IdP
 	ExternalId *string `pulumi:"externalId"`
+	// The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a AccountIamServicePrincipalV2 resource.
@@ -162,6 +190,9 @@ type AccountIamServicePrincipalV2Args struct {
 	DisplayName pulumi.StringInput
 	// ExternalId of the service principal in the customer's IdP
 	ExternalId pulumi.StringPtrInput
+	// The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringInput
 }
 
 func (AccountIamServicePrincipalV2Args) ElementType() reflect.Type {
@@ -275,6 +306,19 @@ func (o AccountIamServicePrincipalV2Output) DisplayName() pulumi.StringOutput {
 // ExternalId of the service principal in the customer's IdP
 func (o AccountIamServicePrincipalV2Output) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountIamServicePrincipalV2) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The resource name of the service principal. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+// - Workspace-scoped: service-principals/{service_principal_id}
+func (o AccountIamServicePrincipalV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamServicePrincipalV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the account that contains the service principal,
+// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+func (o AccountIamServicePrincipalV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamServicePrincipalV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // (string) - Internal service principal ID of the service principal in Databricks

@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  *    - **USE_CATALOG** on the table&#39;s parent catalog
  *    - **USE_SCHEMA** on the table&#39;s parent schema
  *    - be an owner of the table.
+ * 
+ * For a `schema` monitor, `anomaly_detection_config.notification_settings` manages the schema&#39;s alert, the same alert shown under **Manage alerts** in the Data Quality Monitoring UI. Because the provider updates the whole `anomalyDetectionConfig`, a monitor without `notificationSettings` deletes an alert that was set up in the UI. To stop alerts, remove the `notificationSettings` block. Don&#39;t set it to an empty value: the API accepts it and deletes the alert, but the apply then fails because the API returns no `notificationSettings`.
  * 
  * &gt; **Note** This resource can only be used with a workspace-level provider!
  * 
@@ -70,6 +72,51 @@ import javax.annotation.Nullable;
  *             .objectType("schema")
  *             .objectId(this_.schemaId())
  *             .anomalyDetectionConfig(DataQualityMonitorAnomalyDetectionConfigArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * To alert workspace users or notification destinations when anomaly detection finds unhealthy tables in the schema, set `notificationSettings`:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DataQualityMonitor;
+ * import com.pulumi.databricks.DataQualityMonitorArgs;
+ * import com.pulumi.databricks.inputs.DataQualityMonitorAnomalyDetectionConfigArgs;
+ * import com.pulumi.databricks.inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs;
+ * import com.pulumi.databricks.inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var withAlerts = new DataQualityMonitor("withAlerts", DataQualityMonitorArgs.builder()
+ *             .objectType("schema")
+ *             .objectId(this_.get("schemaId"))
+ *             .anomalyDetectionConfig(DataQualityMonitorAnomalyDetectionConfigArgs.builder()
+ *                 .notificationSettings(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs.builder()
+ *                     .onUnhealthyTable(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs.builder()
+ *                         .destinationUserIds("<user-id>")
+ *                         .destinationIds("<notification-destination-id>")
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 

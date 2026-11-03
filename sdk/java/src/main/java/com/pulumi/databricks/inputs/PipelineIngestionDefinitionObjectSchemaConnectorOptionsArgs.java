@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConne
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgs;
@@ -93,6 +94,13 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
         return Optional.ofNullable(this.metaAdsOptions);
     }
 
+    @Import(name="onedriveOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsArgs> onedriveOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsArgs>> onedriveOptions() {
+        return Optional.ofNullable(this.onedriveOptions);
+    }
+
     @Import(name="outlookOptions")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs> outlookOptions;
 
@@ -154,6 +162,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
         this.linkedinAdsOptions = $.linkedinAdsOptions;
         this.marketoOptions = $.marketoOptions;
         this.metaAdsOptions = $.metaAdsOptions;
+        this.onedriveOptions = $.onedriveOptions;
         this.outlookOptions = $.outlookOptions;
         this.rabbitmqOptions = $.rabbitmqOptions;
         this.redditAdsOptions = $.redditAdsOptions;
@@ -260,6 +269,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
 
         public Builder metaAdsOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs metaAdsOptions) {
             return metaAdsOptions(Output.of(metaAdsOptions));
+        }
+
+        public Builder onedriveOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsArgs> onedriveOptions) {
+            $.onedriveOptions = onedriveOptions;
+            return this;
+        }
+
+        public Builder onedriveOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsArgs onedriveOptions) {
+            return onedriveOptions(Output.of(onedriveOptions));
         }
 
         public Builder outlookOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs> outlookOptions) {

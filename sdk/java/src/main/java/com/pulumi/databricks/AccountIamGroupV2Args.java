@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,29 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.groupName);
     }
 
+    /**
+     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+
     private AccountIamGroupV2Args() {}
 
     private AccountIamGroupV2Args(AccountIamGroupV2Args $) {
         this.externalId = $.externalId;
         this.groupName = $.groupName;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -112,7 +131,33 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
             return groupName(Output.of(groupName));
         }
 
+        /**
+         * @param parent The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+         * account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+         * account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
         public AccountIamGroupV2Args build() {
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AccountIamGroupV2Args", "parent");
+            }
             return $;
         }
     }

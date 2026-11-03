@@ -19,17 +19,38 @@ __all__ = ['AccountIamDirectGroupMemberV2Args', 'AccountIamDirectGroupMemberV2']
 @pulumi.input_type
 class AccountIamDirectGroupMemberV2Args:
     def __init__(__self__, *,
+                 parent: pulumi.Input[_builtins.str],
                  principal_id: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AccountIamDirectGroupMemberV2 resource.
 
+        :param pulumi.Input[_builtins.str] parent: The resource name of the group that contains the membership. The format depends on the API
+               that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
         :param pulumi.Input[_builtins.str] principal_id: Internal ID of the principal in Databricks
         :param pulumi.Input[_builtins.int] group_id: (integer) - The internal ID of the group this member belongs to
         """
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "principal_id", principal_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the group that contains the membership. The format depends on the API
+        that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -63,15 +84,24 @@ class _AccountIamDirectGroupMemberV2State:
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  membership_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountIamDirectGroupMemberV2 resources.
 
         :param pulumi.Input[_builtins.str] display_name: (string) - Display name of the principal
-        :param pulumi.Input[_builtins.str] external_id: (string) - The external ID of the principal in Databricks
+        :param pulumi.Input[_builtins.str] external_id: (string) - The external ID of the principal in the customer's IdP
         :param pulumi.Input[_builtins.int] group_id: (integer) - The internal ID of the group this member belongs to
         :param pulumi.Input[_builtins.str] membership_source: (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group membership. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+               - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the group that contains the membership. The format depends on the API
+               that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
         :param pulumi.Input[_builtins.str] principal_id: Internal ID of the principal in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         """
@@ -83,6 +113,10 @@ class _AccountIamDirectGroupMemberV2State:
             pulumi.set(__self__, "group_id", group_id)
         if membership_source is not None:
             pulumi.set(__self__, "membership_source", membership_source)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
         if principal_type is not None:
@@ -104,7 +138,7 @@ class _AccountIamDirectGroupMemberV2State:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The external ID of the principal in Databricks
+        (string) - The external ID of the principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
 
@@ -135,6 +169,35 @@ class _AccountIamDirectGroupMemberV2State:
     @membership_source.setter
     def membership_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership_source", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the group membership. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the group that contains the membership. The format depends on the API
+        that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -168,6 +231,7 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -190,7 +254,7 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.AccountIamDirectGroupMemberV2("this",
-            group_id=123456789,
+            parent="accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
             principal_id="987654321")
         ```
 
@@ -198,6 +262,10 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] group_id: (integer) - The internal ID of the group this member belongs to
+        :param pulumi.Input[_builtins.str] parent: The resource name of the group that contains the membership. The format depends on the API
+               that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
         :param pulumi.Input[_builtins.str] principal_id: Internal ID of the principal in Databricks
         """
         ...
@@ -226,7 +294,7 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.AccountIamDirectGroupMemberV2("this",
-            group_id=123456789,
+            parent="accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
             principal_id="987654321")
         ```
 
@@ -247,6 +315,7 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -258,12 +327,16 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
             __props__ = AccountIamDirectGroupMemberV2Args.__new__(AccountIamDirectGroupMemberV2Args)
 
             __props__.__dict__["group_id"] = group_id
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             if principal_id is None and not opts.urn:
                 raise TypeError("Missing required property 'principal_id'")
             __props__.__dict__["principal_id"] = principal_id
             __props__.__dict__["display_name"] = None
             __props__.__dict__["external_id"] = None
             __props__.__dict__["membership_source"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["principal_type"] = None
         super(AccountIamDirectGroupMemberV2, __self__).__init__(
             'databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2',
@@ -279,6 +352,8 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.int]] = None,
             membership_source: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             principal_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamDirectGroupMemberV2':
         """
@@ -289,9 +364,16 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: (string) - Display name of the principal
-        :param pulumi.Input[_builtins.str] external_id: (string) - The external ID of the principal in Databricks
+        :param pulumi.Input[_builtins.str] external_id: (string) - The external ID of the principal in the customer's IdP
         :param pulumi.Input[_builtins.int] group_id: (integer) - The internal ID of the group this member belongs to
         :param pulumi.Input[_builtins.str] membership_source: (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group membership. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+               - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the group that contains the membership. The format depends on the API
+               that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
         :param pulumi.Input[_builtins.str] principal_id: Internal ID of the principal in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         """
@@ -303,6 +385,8 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["membership_source"] = membership_source
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["principal_id"] = principal_id
         __props__.__dict__["principal_type"] = principal_type
         return AccountIamDirectGroupMemberV2(resource_name, opts=opts, __props__=__props__)
@@ -319,7 +403,7 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The external ID of the principal in Databricks
+        (string) - The external ID of the principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
 
@@ -338,6 +422,27 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         """
         return pulumi.get(self, "membership_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the group membership. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the group that contains the membership. The format depends on the API
+        that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="principalId")

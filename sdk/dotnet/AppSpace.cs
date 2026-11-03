@@ -10,9 +10,81 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
+    /// 
+    /// App Spaces group related Databricks Apps and share configuration across them. Resources, user API scopes, and the usage policy configured on a space are available to every app in the space.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Example
+    /// 
+    /// This example creates an app space in the workspace with the specified name.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.AppSpace("this", new()
+    ///     {
+    ///         Name = "my-space",
+    ///         Description = "My app space for team applications.",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Example with Resources
+    /// 
+    /// This example creates an app space that gives all of its apps access to a SQL warehouse and a secret.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withResources = new Databricks.AppSpace("with_resources", new()
+    ///     {
+    ///         Name = "analytics-space",
+    ///         Description = "Shared resources for analytics apps",
+    ///         Resources = new[]
+    ///         {
+    ///             new Databricks.Inputs.AppSpaceResourceArgs
+    ///             {
+    ///                 Name = "warehouse",
+    ///                 SqlWarehouse = new Databricks.Inputs.AppSpaceResourceSqlWarehouseArgs
+    ///                 {
+    ///                     Id = "e9ca293f79a74b5c",
+    ///                     Permission = "CAN_USE",
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.AppSpaceResourceArgs
+    ///             {
+    ///                 Name = "api-key",
+    ///                 Secret = new Databricks.Inputs.AppSpaceResourceSecretArgs
+    ///                 {
+    ///                     Scope = "my-scope",
+    ///                     Key = "my-key",
+    ///                     Permission = "READ",
+    ///                 },
+    ///             },
+    ///         },
+    ///         UserApiScopes = new[]
+    ///         {
+    ///             "sql",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/appSpace:AppSpace")]
     public partial class AppSpace : global::Pulumi.CustomResource

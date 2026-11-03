@@ -34,6 +34,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.AccountIamServicePrincipalV2("this", new()
     ///     {
+    ///         Parent = "accounts/00000000-0000-0000-0000-000000000000",
     ///         DisplayName = "ci-runner",
     ///         AccountSpStatus = "ACTIVE",
     ///     });
@@ -74,6 +75,21 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("externalId")]
         public Output<string?> ExternalId { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the account that contains the service principal,
+        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// (string) - Internal service principal ID of the service principal in Databricks
@@ -152,6 +168,13 @@ namespace Pulumi.Databricks
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// The resource name of the account that contains the service principal,
+        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
         public AccountIamServicePrincipalV2Args()
         {
         }
@@ -190,6 +213,21 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
+
+        /// <summary>
+        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The resource name of the account that contains the service principal,
+        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// (string) - Internal service principal ID of the service principal in Databricks

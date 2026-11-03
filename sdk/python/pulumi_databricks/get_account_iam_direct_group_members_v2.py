@@ -27,16 +27,16 @@ class GetAccountIamDirectGroupMembersV2Result:
     """
     A collection of values returned by getAccountIamDirectGroupMembersV2.
     """
-    def __init__(__self__, direct_group_members=None, group_id=None, page_size=None):
+    def __init__(__self__, direct_group_members=None, page_size=None, parent=None):
         if direct_group_members and not isinstance(direct_group_members, list):
             raise TypeError("Expected argument 'direct_group_members' to be a list")
         pulumi.set(__self__, "direct_group_members", direct_group_members)
-        if group_id and not isinstance(group_id, int):
-            raise TypeError("Expected argument 'group_id' to be a int")
-        pulumi.set(__self__, "group_id", group_id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
 
     @_builtins.property
     @pulumi.getter(name="directGroupMembers")
@@ -44,17 +44,20 @@ class GetAccountIamDirectGroupMembersV2Result:
         return pulumi.get(self, "direct_group_members")
 
     @_builtins.property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> _builtins.int:
-        """
-        (integer) - The internal ID of the group this member belongs to
-        """
-        return pulumi.get(self, "group_id")
-
-    @_builtins.property
     @pulumi.getter(name="pageSize")
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group that contains the membership. The format depends on the API
+        that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
 
 
 class AwaitableGetAccountIamDirectGroupMembersV2Result(GetAccountIamDirectGroupMembersV2Result):
@@ -64,12 +67,12 @@ class AwaitableGetAccountIamDirectGroupMembersV2Result(GetAccountIamDirectGroupM
             yield self
         return GetAccountIamDirectGroupMembersV2Result(
             direct_group_members=self.direct_group_members,
-            group_id=self.group_id,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            parent=self.parent)
 
 
-def get_account_iam_direct_group_members_v2(group_id: Optional[_builtins.int] = None,
-                                            page_size: Optional[_builtins.int] = None,
+def get_account_iam_direct_group_members_v2(page_size: Optional[_builtins.int] = None,
+                                            parent: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamDirectGroupMembersV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -88,26 +91,27 @@ def get_account_iam_direct_group_members_v2(group_id: Optional[_builtins.int] = 
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_direct_group_members_v2(group_id=123456789)
+    this = databricks.get_account_iam_direct_group_members_v2(parent="accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
     ```
 
 
-    :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
     :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The parent resource name of the group whose direct members to list.
+           Format: accounts/{account_id}/groups/{group_id}
     """
     __args__ = dict()
-    __args__['groupId'] = group_id
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2', __args__, opts=opts, typ=GetAccountIamDirectGroupMembersV2Result).value
 
     return AwaitableGetAccountIamDirectGroupMembersV2Result(
         direct_group_members=pulumi.get(__ret__, 'direct_group_members'),
-        group_id=pulumi.get(__ret__, 'group_id'),
-        page_size=pulumi.get(__ret__, 'page_size'))
-def get_account_iam_direct_group_members_v2_output(group_id: pulumi.Input[Optional[_builtins.int]] = None,
-                                                   page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+        page_size=pulumi.get(__ret__, 'page_size'),
+        parent=pulumi.get(__ret__, 'parent'))
+def get_account_iam_direct_group_members_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                   parent: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamDirectGroupMembersV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -126,20 +130,21 @@ def get_account_iam_direct_group_members_v2_output(group_id: pulumi.Input[Option
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_direct_group_members_v2(group_id=123456789)
+    this = databricks.get_account_iam_direct_group_members_v2(parent="accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
     ```
 
 
-    :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
     :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The parent resource name of the group whose direct members to list.
+           Format: accounts/{account_id}/groups/{group_id}
     """
     __args__ = dict()
-    __args__['groupId'] = group_id
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2', __args__, opts=opts, typ=GetAccountIamDirectGroupMembersV2Result)
     return __ret__.apply(lambda __response__: GetAccountIamDirectGroupMembersV2Result(
         direct_group_members=pulumi.get(__response__, 'direct_group_members'),
-        group_id=pulumi.get(__response__, 'group_id'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        parent=pulumi.get(__response__, 'parent')))

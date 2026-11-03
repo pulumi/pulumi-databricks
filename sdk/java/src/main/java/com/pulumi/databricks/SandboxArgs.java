@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SandboxMetadataArgs;
 import com.pulumi.databricks.inputs.SandboxProviderConfigArgs;
 import com.pulumi.databricks.inputs.SandboxSpecArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -31,6 +32,21 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Metadata associated with the sandbox
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<SandboxMetadataArgs> metadata;
+
+    /**
+     * @return Metadata associated with the sandbox
+     * 
+     */
+    public Optional<Output<SandboxMetadataArgs>> metadata() {
+        return Optional.ofNullable(this.metadata);
     }
 
     /**
@@ -82,6 +98,7 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
 
     private SandboxArgs(SandboxArgs $) {
         this.displayName = $.displayName;
+        this.metadata = $.metadata;
         this.providerConfig = $.providerConfig;
         this.sandboxId = $.sandboxId;
         this.spec = $.spec;
@@ -124,6 +141,27 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param metadata Metadata associated with the sandbox
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<SandboxMetadataArgs> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata Metadata associated with the sandbox
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(SandboxMetadataArgs metadata) {
+            return metadata(Output.of(metadata));
         }
 
         /**

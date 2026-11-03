@@ -28,7 +28,7 @@ class GetWorkspaceIamServicePrincipalV2Result:
     """
     A collection of values returned by getWorkspaceIamServicePrincipalV2.
     """
-    def __init__(__self__, account_id=None, account_sp_status=None, application_id=None, display_name=None, external_id=None, provider_config=None, service_principal_id=None):
+    def __init__(__self__, account_id=None, account_sp_status=None, application_id=None, display_name=None, external_id=None, name=None, parent=None, provider_config=None, service_principal_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -44,6 +44,12 @@ class GetWorkspaceIamServicePrincipalV2Result:
         if external_id and not isinstance(external_id, str):
             raise TypeError("Expected argument 'external_id' to be a str")
         pulumi.set(__self__, "external_id", external_id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -93,6 +99,25 @@ class GetWorkspaceIamServicePrincipalV2Result:
         return pulumi.get(self, "external_id")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -117,19 +142,21 @@ class AwaitableGetWorkspaceIamServicePrincipalV2Result(GetWorkspaceIamServicePri
             application_id=self.application_id,
             display_name=self.display_name,
             external_id=self.external_id,
+            name=self.name,
+            parent=self.parent,
             provider_config=self.provider_config,
             service_principal_id=self.service_principal_id)
 
 
-def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']] = None,
-                                           service_principal_id: Optional[_builtins.str] = None,
+def get_workspace_iam_service_principal_v2(name: Optional[_builtins.str] = None,
+                                           provider_config: Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamServicePrincipalV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
-    Reads a single service principal by its internal ID, using a workspace-scoped provider.
+    Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
 
     ## Example Usage
 
@@ -141,16 +168,18 @@ def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetW
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_workspace_iam_service_principal_v2(service_principal_id="123456789")
+    this = databricks.get_workspace_iam_service_principal_v2(name="service-principals/123456789")
     ```
 
 
+    :param _builtins.str name: The resource name of the service principal. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+           - Workspace-scoped: service-principals/{service_principal_id}
     :param Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str service_principal_id: Internal service principal ID of the service principal in Databricks
     """
     __args__ = dict()
+    __args__['name'] = name
     __args__['providerConfig'] = provider_config
-    __args__['servicePrincipalId'] = service_principal_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2', __args__, opts=opts, typ=GetWorkspaceIamServicePrincipalV2Result).value
 
@@ -160,17 +189,19 @@ def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetW
         application_id=pulumi.get(__ret__, 'application_id'),
         display_name=pulumi.get(__ret__, 'display_name'),
         external_id=pulumi.get(__ret__, 'external_id'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'))
-def get_workspace_iam_service_principal_v2_output(provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']]]] = None,
-                                                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+def get_workspace_iam_service_principal_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamServicePrincipalV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
-    Reads a single service principal by its internal ID, using a workspace-scoped provider.
+    Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
 
     ## Example Usage
 
@@ -182,16 +213,18 @@ def get_workspace_iam_service_principal_v2_output(provider_config: pulumi.Input[
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_workspace_iam_service_principal_v2(service_principal_id="123456789")
+    this = databricks.get_workspace_iam_service_principal_v2(name="service-principals/123456789")
     ```
 
 
+    :param _builtins.str name: The resource name of the service principal. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+           - Workspace-scoped: service-principals/{service_principal_id}
     :param Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str service_principal_id: Internal service principal ID of the service principal in Databricks
     """
     __args__ = dict()
+    __args__['name'] = name
     __args__['providerConfig'] = provider_config
-    __args__['servicePrincipalId'] = service_principal_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2', __args__, opts=opts, typ=GetWorkspaceIamServicePrincipalV2Result)
     return __ret__.apply(lambda __response__: GetWorkspaceIamServicePrincipalV2Result(
@@ -200,5 +233,7 @@ def get_workspace_iam_service_principal_v2_output(provider_config: pulumi.Input[
         application_id=pulumi.get(__response__, 'application_id'),
         display_name=pulumi.get(__response__, 'display_name'),
         external_id=pulumi.get(__response__, 'external_id'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         service_principal_id=pulumi.get(__response__, 'service_principal_id')))

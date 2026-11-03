@@ -18,18 +18,20 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
     public static final GetWorkspaceIamWorkspaceIdentityDetailV2Args Empty = new GetWorkspaceIamWorkspaceIdentityDetailV2Args();
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
      * 
      */
-    @Import(name="principalId", required=true)
-    private Output<String> principalId;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
      * 
      */
-    public Output<String> principalId() {
-        return this.principalId;
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -50,7 +52,7 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
     private GetWorkspaceIamWorkspaceIdentityDetailV2Args() {}
 
     private GetWorkspaceIamWorkspaceIdentityDetailV2Args(GetWorkspaceIamWorkspaceIdentityDetailV2Args $) {
-        this.principalId = $.principalId;
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
     }
 
@@ -73,24 +75,26 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace identity detail.
+         * Format: principals/{principal_id}/workspace-identity-detail
          * 
          * @return builder
          * 
          */
-        public Builder principalId(Output<String> principalId) {
-            $.principalId = principalId;
+        public Builder name(Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace identity detail.
+         * Format: principals/{principal_id}/workspace-identity-detail
          * 
          * @return builder
          * 
          */
-        public Builder principalId(String principalId) {
-            return principalId(Output.of(principalId));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -115,8 +119,8 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
         }
 
         public GetWorkspaceIamWorkspaceIdentityDetailV2Args build() {
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceIdentityDetailV2Args", "principalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceIdentityDetailV2Args", "name");
             }
             return $;
         }

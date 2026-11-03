@@ -314,13 +314,18 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, update the role if it already exists instead of returning an
-        /// error.
+        /// error. This requires `RoleId` to be set. Without `RoleId`, the request
+        /// follows the normal create path and fails if the role name already exists.
         /// 
-        /// When the role already exists, the provided `Role` spec fully replaces the
-        /// existing one: `MembershipRoles` is overwritten, not merged. Leaving
+        /// When the role already exists, only mutable fields are updated.
+        /// Attributes omitted from the request retain their current values.
+        /// Set an attribute explicitly to false to disable it.
+        /// `IdentityType`, `AuthMethod`, and `PostgresRole` retain their
+        /// existing values; supplied values for these fields are ignored.
+        /// `MembershipRoles` is overwritten, not merged. Leaving
         /// `MembershipRoles` empty clears all of the role's existing memberships,
-        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-        /// memberships when using this field
+        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+        /// of memberships when using this field
         /// </summary>
         [Output("replaceExisting")]
         public Output<bool?> ReplaceExisting { get; private set; } = null!;
@@ -410,13 +415,18 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, update the role if it already exists instead of returning an
-        /// error.
+        /// error. This requires `RoleId` to be set. Without `RoleId`, the request
+        /// follows the normal create path and fails if the role name already exists.
         /// 
-        /// When the role already exists, the provided `Role` spec fully replaces the
-        /// existing one: `MembershipRoles` is overwritten, not merged. Leaving
+        /// When the role already exists, only mutable fields are updated.
+        /// Attributes omitted from the request retain their current values.
+        /// Set an attribute explicitly to false to disable it.
+        /// `IdentityType`, `AuthMethod`, and `PostgresRole` retain their
+        /// existing values; supplied values for these fields are ignored.
+        /// `MembershipRoles` is overwritten, not merged. Leaving
         /// `MembershipRoles` empty clears all of the role's existing memberships,
-        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-        /// memberships when using this field
+        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+        /// of memberships when using this field
         /// </summary>
         [Input("replaceExisting")]
         public Input<bool>? ReplaceExisting { get; set; }
@@ -469,13 +479,18 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, update the role if it already exists instead of returning an
-        /// error.
+        /// error. This requires `RoleId` to be set. Without `RoleId`, the request
+        /// follows the normal create path and fails if the role name already exists.
         /// 
-        /// When the role already exists, the provided `Role` spec fully replaces the
-        /// existing one: `MembershipRoles` is overwritten, not merged. Leaving
+        /// When the role already exists, only mutable fields are updated.
+        /// Attributes omitted from the request retain their current values.
+        /// Set an attribute explicitly to false to disable it.
+        /// `IdentityType`, `AuthMethod`, and `PostgresRole` retain their
+        /// existing values; supplied values for these fields are ignored.
+        /// `MembershipRoles` is overwritten, not merged. Leaving
         /// `MembershipRoles` empty clears all of the role's existing memberships,
-        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-        /// memberships when using this field
+        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+        /// of memberships when using this field
         /// </summary>
         [Input("replaceExisting")]
         public Input<bool>? ReplaceExisting { get; set; }

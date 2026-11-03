@@ -78,6 +78,23 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+
     private AccountIamServicePrincipalV2Args() {}
 
     private AccountIamServicePrincipalV2Args(AccountIamServicePrincipalV2Args $) {
@@ -85,6 +102,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         this.applicationId = $.applicationId;
         this.displayName = $.displayName;
         this.externalId = $.externalId;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -191,12 +209,38 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param parent The resource name of the account that contains the service principal,
+         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the account that contains the service principal,
+         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
         public AccountIamServicePrincipalV2Args build() {
             if ($.accountSpStatus == null) {
                 throw new MissingRequiredPropertyException("AccountIamServicePrincipalV2Args", "accountSpStatus");
             }
             if ($.displayName == null) {
                 throw new MissingRequiredPropertyException("AccountIamServicePrincipalV2Args", "displayName");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AccountIamServicePrincipalV2Args", "parent");
             }
             return $;
         }

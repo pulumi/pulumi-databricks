@@ -31,7 +31,23 @@ public final class GetAccountIamWorkspaceAssignmentV2Result {
      */
     private List<String> entitlements;
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    private String parent;
+    /**
+     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     private String principalId;
@@ -73,7 +89,27 @@ public final class GetAccountIamWorkspaceAssignmentV2Result {
         return this.entitlements;
     }
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+    /**
+     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     public String principalId() {
@@ -106,6 +142,8 @@ public final class GetAccountIamWorkspaceAssignmentV2Result {
         private String accountId;
         private List<String> effectiveEntitlements;
         private List<String> entitlements;
+        private String name;
+        private String parent;
         private String principalId;
         private String principalType;
         private String workspaceId;
@@ -115,6 +153,8 @@ public final class GetAccountIamWorkspaceAssignmentV2Result {
     	      this.accountId = defaults.accountId;
     	      this.effectiveEntitlements = defaults.effectiveEntitlements;
     	      this.entitlements = defaults.entitlements;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.principalId = defaults.principalId;
     	      this.principalType = defaults.principalType;
     	      this.workspaceId = defaults.workspaceId;
@@ -151,6 +191,22 @@ public final class GetAccountIamWorkspaceAssignmentV2Result {
             return entitlements(List.of(entitlements));
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2Result", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2Result", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder principalId(String principalId) {
             if (principalId == null) {
               throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2Result", "principalId");
@@ -179,6 +235,8 @@ public final class GetAccountIamWorkspaceAssignmentV2Result {
             _resultValue.accountId = accountId;
             _resultValue.effectiveEntitlements = effectiveEntitlements;
             _resultValue.entitlements = entitlements;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.principalId = principalId;
             _resultValue.principalType = principalType;
             _resultValue.workspaceId = workspaceId;

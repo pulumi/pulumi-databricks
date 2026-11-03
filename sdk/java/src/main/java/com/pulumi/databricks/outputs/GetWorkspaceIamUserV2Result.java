@@ -34,6 +34,19 @@ public final class GetWorkspaceIamUserV2Result {
      * 
      */
     private GetWorkspaceIamUserV2FullName fullName;
+    /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private String parent;
     private @Nullable GetWorkspaceIamUserV2ProviderConfig providerConfig;
     /**
      * @return (string) - Internal userId of the user in Databricks
@@ -75,6 +88,23 @@ public final class GetWorkspaceIamUserV2Result {
     public GetWorkspaceIamUserV2FullName fullName() {
         return this.fullName;
     }
+    /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
     public Optional<GetWorkspaceIamUserV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -106,6 +136,8 @@ public final class GetWorkspaceIamUserV2Result {
         private String accountUserStatus;
         private String externalId;
         private GetWorkspaceIamUserV2FullName fullName;
+        private String name;
+        private String parent;
         private @Nullable GetWorkspaceIamUserV2ProviderConfig providerConfig;
         private String userId;
         private String username;
@@ -116,6 +148,8 @@ public final class GetWorkspaceIamUserV2Result {
     	      this.accountUserStatus = defaults.accountUserStatus;
     	      this.externalId = defaults.externalId;
     	      this.fullName = defaults.fullName;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.userId = defaults.userId;
     	      this.username = defaults.username;
@@ -154,6 +188,22 @@ public final class GetWorkspaceIamUserV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamUserV2Result", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamUserV2Result", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetWorkspaceIamUserV2ProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -181,6 +231,8 @@ public final class GetWorkspaceIamUserV2Result {
             _resultValue.accountUserStatus = accountUserStatus;
             _resultValue.externalId = externalId;
             _resultValue.fullName = fullName;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             _resultValue.userId = userId;
             _resultValue.username = username;

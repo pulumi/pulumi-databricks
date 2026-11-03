@@ -90,11 +90,11 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Custom description for the alert. support mustache template
+     * Custom description for the alert. Interpreted according to `customTemplateFormat`
      */
     declare public readonly customDescription: pulumi.Output<string | undefined>;
     /**
-     * Custom summary for the alert. support mustache template
+     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
      */
     declare public readonly customSummary: pulumi.Output<string | undefined>;
     /**
@@ -265,11 +265,11 @@ export interface AlertV2State {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Custom description for the alert. support mustache template
+     * Custom description for the alert. Interpreted according to `customTemplateFormat`
      */
     customDescription?: pulumi.Input<string | undefined>;
     /**
-     * Custom summary for the alert. support mustache template
+     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
      */
     customSummary?: pulumi.Input<string | undefined>;
     /**
@@ -363,11 +363,11 @@ export interface AlertV2State {
  */
 export interface AlertV2Args {
     /**
-     * Custom description for the alert. support mustache template
+     * Custom description for the alert. Interpreted according to `customTemplateFormat`
      */
     customDescription?: pulumi.Input<string | undefined>;
     /**
-     * Custom summary for the alert. support mustache template
+     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
      */
     customSummary?: pulumi.Input<string | undefined>;
     /**

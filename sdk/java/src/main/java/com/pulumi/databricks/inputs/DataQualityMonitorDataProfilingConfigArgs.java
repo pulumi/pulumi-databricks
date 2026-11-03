@@ -133,17 +133,9 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         return Optional.ofNullable(this.monitoredTableName);
     }
 
-    /**
-     * Field for specifying notification settings
-     * 
-     */
     @Import(name="notificationSettings")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigNotificationSettingsArgs> notificationSettings;
 
-    /**
-     * @return Field for specifying notification settings
-     * 
-     */
     public Optional<Output<DataQualityMonitorDataProfilingConfigNotificationSettingsArgs>> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
@@ -476,23 +468,11 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
             return monitoredTableName(Output.of(monitoredTableName));
         }
 
-        /**
-         * @param notificationSettings Field for specifying notification settings
-         * 
-         * @return builder
-         * 
-         */
         public Builder notificationSettings(@Nullable Output<DataQualityMonitorDataProfilingConfigNotificationSettingsArgs> notificationSettings) {
             $.notificationSettings = notificationSettings;
             return this;
         }
 
-        /**
-         * @param notificationSettings Field for specifying notification settings
-         * 
-         * @return builder
-         * 
-         */
         public Builder notificationSettings(DataQualityMonitorDataProfilingConfigNotificationSettingsArgs notificationSettings) {
             return notificationSettings(Output.of(notificationSettings));
         }

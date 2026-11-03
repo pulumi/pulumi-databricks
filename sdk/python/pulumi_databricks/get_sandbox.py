@@ -28,13 +28,16 @@ class GetSandboxResult:
     """
     A collection of values returned by getSandbox.
     """
-    def __init__(__self__, create_time=None, display_name=None, name=None, provider_config=None, spec=None, status=None, update_time=None):
+    def __init__(__self__, create_time=None, display_name=None, metadata=None, name=None, provider_config=None, spec=None, status=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -66,6 +69,14 @@ class GetSandboxResult:
         (string) - Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.GetSandboxMetadataResult':
+        """
+        (SandboxMetadata) - Metadata associated with the sandbox
+        """
+        return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter
@@ -114,6 +125,7 @@ class AwaitableGetSandboxResult(GetSandboxResult):
         return GetSandboxResult(
             create_time=self.create_time,
             display_name=self.display_name,
+            metadata=self.metadata,
             name=self.name,
             provider_config=self.provider_config,
             spec=self.spec,
@@ -155,6 +167,7 @@ def get_sandbox(name: Optional[_builtins.str] = None,
     return AwaitableGetSandboxResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
@@ -193,6 +206,7 @@ def get_sandbox_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetSandboxResult(
         create_time=pulumi.get(__response__, 'create_time'),
         display_name=pulumi.get(__response__, 'display_name'),
+        metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),

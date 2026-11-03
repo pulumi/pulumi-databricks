@@ -122,7 +122,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Maximum number of provider services to return. Defaults to 200 when unset or
-        /// 0; the maximum is 200. Use `PageToken` to retrieve additional pages
+        /// 0; the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+        /// `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -160,7 +161,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Maximum number of provider services to return. Defaults to 200 when unset or
-        /// 0; the maximum is 200. Use `PageToken` to retrieve additional pages
+        /// 0; the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+        /// `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

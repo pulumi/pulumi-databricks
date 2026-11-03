@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+ * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
  *
  * ## Example Usage
  *
@@ -22,16 +22,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamWorkspaceAssignmentV2({
- *     workspaceId: "123456789",
- *     principalId: "987654321",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321",
  * });
  * ```
  */
 export function getAccountIamWorkspaceAssignmentV2(args: GetAccountIamWorkspaceAssignmentV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamWorkspaceAssignmentV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", {
-        "principalId": args.principalId,
-        "workspaceId": args.workspaceId,
+        "name": args.name,
     }, opts);
 }
 
@@ -40,13 +38,11 @@ export function getAccountIamWorkspaceAssignmentV2(args: GetAccountIamWorkspaceA
  */
 export interface GetAccountIamWorkspaceAssignmentV2Args {
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      */
-    principalId: string;
-    /**
-     * The workspace ID where the principal is assigned
-     */
-    workspaceId: string;
+    name: string;
 }
 
 /**
@@ -70,7 +66,21 @@ export interface GetAccountIamWorkspaceAssignmentV2Result {
      */
     readonly entitlements: string[];
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     */
+    readonly parent: string;
+    /**
+     * (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      */
     readonly principalId: string;
     /**
@@ -87,7 +97,7 @@ export interface GetAccountIamWorkspaceAssignmentV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+ * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
  *
  * ## Example Usage
  *
@@ -100,16 +110,14 @@ export interface GetAccountIamWorkspaceAssignmentV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamWorkspaceAssignmentV2({
- *     workspaceId: "123456789",
- *     principalId: "987654321",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321",
  * });
  * ```
  */
 export function getAccountIamWorkspaceAssignmentV2Output(args: GetAccountIamWorkspaceAssignmentV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamWorkspaceAssignmentV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", {
-        "principalId": args.principalId,
-        "workspaceId": args.workspaceId,
+        "name": args.name,
     }, opts);
 }
 
@@ -118,11 +126,9 @@ export function getAccountIamWorkspaceAssignmentV2Output(args: GetAccountIamWork
  */
 export interface GetAccountIamWorkspaceAssignmentV2OutputArgs {
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      */
-    principalId: pulumi.Input<string>;
-    /**
-     * The workspace ID where the principal is assigned
-     */
-    workspaceId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

@@ -19,6 +19,8 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of Database Instances within the workspace.
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
         /// 
+        /// For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -52,6 +54,8 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of Database Instances within the workspace.
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
         /// 
+        /// For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -84,6 +88,8 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to fetch the list of Database Instances within the workspace.
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
+        /// 
+        /// For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
         /// 
         /// 
         /// ## Example Usage

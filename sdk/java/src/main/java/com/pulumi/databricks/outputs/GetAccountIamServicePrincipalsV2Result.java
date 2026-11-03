@@ -17,6 +17,12 @@ import javax.annotation.Nullable;
 public final class GetAccountIamServicePrincipalsV2Result {
     private @Nullable String filter;
     private @Nullable Integer pageSize;
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private String parent;
     private List<GetAccountIamServicePrincipalsV2ServicePrincipal> servicePrincipals;
 
     private GetAccountIamServicePrincipalsV2Result() {}
@@ -25,6 +31,14 @@ public final class GetAccountIamServicePrincipalsV2Result {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public String parent() {
+        return this.parent;
     }
     public List<GetAccountIamServicePrincipalsV2ServicePrincipal> servicePrincipals() {
         return this.servicePrincipals;
@@ -41,12 +55,14 @@ public final class GetAccountIamServicePrincipalsV2Result {
     public static final class Builder {
         private @Nullable String filter;
         private @Nullable Integer pageSize;
+        private String parent;
         private List<GetAccountIamServicePrincipalsV2ServicePrincipal> servicePrincipals;
         public Builder() {}
         public Builder(GetAccountIamServicePrincipalsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
     	      this.servicePrincipals = defaults.servicePrincipals;
         }
 
@@ -60,6 +76,14 @@ public final class GetAccountIamServicePrincipalsV2Result {
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalsV2Result", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
@@ -77,6 +101,7 @@ public final class GetAccountIamServicePrincipalsV2Result {
             final var _resultValue = new GetAccountIamServicePrincipalsV2Result();
             _resultValue.filter = filter;
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             _resultValue.servicePrincipals = servicePrincipals;
             return _resultValue;
         }

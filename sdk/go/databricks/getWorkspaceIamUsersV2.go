@@ -61,14 +61,20 @@ type GetWorkspaceIamUsersV2Args struct {
 	// The maximum number of users to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+	// defaults to the account of the calling workspace, and any other account is rejected
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamUsersV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getWorkspaceIamUsersV2.
 type GetWorkspaceIamUsersV2Result struct {
-	Filter         *string                               `pulumi:"filter"`
-	PageSize       *int                                  `pulumi:"pageSize"`
+	Filter   *string `pulumi:"filter"`
+	PageSize *int    `pulumi:"pageSize"`
+	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent         *string                               `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamUsersV2ProviderConfig `pulumi:"providerConfig"`
 	Users          []GetWorkspaceIamUsersV2User          `pulumi:"users"`
 }
@@ -85,6 +91,9 @@ type GetWorkspaceIamUsersV2OutputArgs struct {
 	// The maximum number of users to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+	// defaults to the account of the calling workspace, and any other account is rejected
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamUsersV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -114,6 +123,12 @@ func (o GetWorkspaceIamUsersV2ResultOutput) Filter() pulumi.StringPtrOutput {
 
 func (o GetWorkspaceIamUsersV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceIamUsersV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o GetWorkspaceIamUsersV2ResultOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceIamUsersV2Result) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 func (o GetWorkspaceIamUsersV2ResultOutput) ProviderConfig() GetWorkspaceIamUsersV2ProviderConfigPtrOutput {

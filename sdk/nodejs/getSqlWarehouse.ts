@@ -99,6 +99,9 @@ export interface GetSqlWarehouseArgs {
      * The username of the user who created the endpoint.
      */
     creatorName?: string;
+    /**
+     * REALTIME compute version label; empty if the API omits it.
+     */
     customerVersionLabel?: string;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -125,6 +128,9 @@ export interface GetSqlWarehouseArgs {
      * JDBC connection string.
      */
     jdbcUrl?: string;
+    /**
+     * Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     */
     maxDbu?: number;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
@@ -160,13 +166,16 @@ export interface GetSqlWarehouseArgs {
      * The current state of the endpoint.
      */
     state?: string;
+    /**
+     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     */
     statementTimeout?: number;
     /**
      * tags used for SQL warehouse resources.
      */
     tags?: inputs.GetSqlWarehouseTags;
     /**
-     * SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      */
     warehouseType?: string;
 }
@@ -191,6 +200,9 @@ export interface GetSqlWarehouseResult {
      * The username of the user who created the endpoint.
      */
     readonly creatorName: string;
+    /**
+     * REALTIME compute version label; empty if the API omits it.
+     */
     readonly customerVersionLabel: string;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -217,6 +229,9 @@ export interface GetSqlWarehouseResult {
      * JDBC connection string.
      */
     readonly jdbcUrl: string;
+    /**
+     * Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     */
     readonly maxDbu: number;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
@@ -252,13 +267,16 @@ export interface GetSqlWarehouseResult {
      * The current state of the endpoint.
      */
     readonly state: string;
+    /**
+     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     */
     readonly statementTimeout: number;
     /**
      * tags used for SQL warehouse resources.
      */
     readonly tags: outputs.GetSqlWarehouseTags;
     /**
-     * SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      */
     readonly warehouseType: string;
 }
@@ -355,6 +373,9 @@ export interface GetSqlWarehouseOutputArgs {
      * The username of the user who created the endpoint.
      */
     creatorName?: pulumi.Input<string | undefined>;
+    /**
+     * REALTIME compute version label; empty if the API omits it.
+     */
     customerVersionLabel?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -381,6 +402,9 @@ export interface GetSqlWarehouseOutputArgs {
      * JDBC connection string.
      */
     jdbcUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     */
     maxDbu?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
@@ -416,13 +440,16 @@ export interface GetSqlWarehouseOutputArgs {
      * The current state of the endpoint.
      */
     state?: pulumi.Input<string | undefined>;
+    /**
+     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     */
     statementTimeout?: pulumi.Input<number | undefined>;
     /**
      * tags used for SQL warehouse resources.
      */
     tags?: pulumi.Input<inputs.GetSqlWarehouseTagsArgs | undefined>;
     /**
-     * SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      */
     warehouseType?: pulumi.Input<string | undefined>;
 }

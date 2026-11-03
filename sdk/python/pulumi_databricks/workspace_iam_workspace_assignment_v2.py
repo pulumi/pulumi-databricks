@@ -28,7 +28,9 @@ class WorkspaceIamWorkspaceAssignmentV2Args:
         """
         The set of arguments for constructing a WorkspaceIamWorkspaceAssignmentV2 resource.
 
-        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks
+        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+               created and cannot be changed afterwards; to assign a different principal, create a new
+               assignment
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entitlements: Entitlements granted directly to the principal on this workspace. This is the only
                client-settable field. Create and update manage exactly this set, including entitlements the
                principal also holds through a group.
@@ -48,7 +50,9 @@ class WorkspaceIamWorkspaceAssignmentV2Args:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The internal ID of the principal (user/sp/group) in Databricks
+        The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        created and cannot be changed afterwards; to assign a different principal, create a new
+        assignment
         """
         return pulumi.get(self, "principal_id")
 
@@ -102,6 +106,8 @@ class _WorkspaceIamWorkspaceAssignmentV2State:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs']] = None,
@@ -116,7 +122,15 @@ class _WorkspaceIamWorkspaceAssignmentV2State:
                client-settable field. Create and update manage exactly this set, including entitlements the
                principal also holds through a group.
                List responses leave this field empty. Get a single principal to read its entitlements
-        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+               - Workspace-scoped: workspace-assignments/{principal_id}
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the workspace that contains the assignment,
+               `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+               APIs return it
+        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+               created and cannot be changed afterwards; to assign a different principal, create a new
+               assignment
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         :param pulumi.Input['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_id: (integer) - The workspace ID where the principal is assigned
@@ -127,6 +141,10 @@ class _WorkspaceIamWorkspaceAssignmentV2State:
             pulumi.set(__self__, "effective_entitlements", effective_entitlements)
         if entitlements is not None:
             pulumi.set(__self__, "entitlements", entitlements)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
         if principal_type is not None:
@@ -177,10 +195,40 @@ class _WorkspaceIamWorkspaceAssignmentV2State:
         pulumi.set(self, "entitlements", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        - Workspace-scoped: workspace-assignments/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the workspace that contains the assignment,
+        `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+        APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The internal ID of the principal (user/sp/group) in Databricks
+        The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        created and cannot be changed afterwards; to assign a different principal, create a new
+        assignment
         """
         return pulumi.get(self, "principal_id")
 
@@ -270,7 +318,9 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
                client-settable field. Create and update manage exactly this set, including entitlements the
                principal also holds through a group.
                List responses leave this field empty. Get a single principal to read its entitlements
-        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks
+        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+               created and cannot be changed afterwards; to assign a different principal, create a new
+               assignment
         :param pulumi.Input[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_id: (integer) - The workspace ID where the principal is assigned
         """
@@ -344,6 +394,8 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
             __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["account_id"] = None
             __props__.__dict__["effective_entitlements"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["parent"] = None
             __props__.__dict__["principal_type"] = None
         super(WorkspaceIamWorkspaceAssignmentV2, __self__).__init__(
             'databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2',
@@ -358,6 +410,8 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             principal_type: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']]] = None,
@@ -376,7 +430,15 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
                client-settable field. Create and update manage exactly this set, including entitlements the
                principal also holds through a group.
                List responses leave this field empty. Get a single principal to read its entitlements
-        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+               - Workspace-scoped: workspace-assignments/{principal_id}
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the workspace that contains the assignment,
+               `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+               APIs return it
+        :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+               created and cannot be changed afterwards; to assign a different principal, create a new
+               assignment
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         :param pulumi.Input[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_id: (integer) - The workspace ID where the principal is assigned
@@ -388,6 +450,8 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["effective_entitlements"] = effective_entitlements
         __props__.__dict__["entitlements"] = entitlements
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["principal_id"] = principal_id
         __props__.__dict__["principal_type"] = principal_type
         __props__.__dict__["provider_config"] = provider_config
@@ -423,10 +487,32 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
         return pulumi.get(self, "entitlements")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        - Workspace-scoped: workspace-assignments/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the workspace that contains the assignment,
+        `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+        APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The internal ID of the principal (user/sp/group) in Databricks
+        The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        created and cannot be changed afterwards; to assign a different principal, create a new
+        assignment
         """
         return pulumi.get(self, "principal_id")
 

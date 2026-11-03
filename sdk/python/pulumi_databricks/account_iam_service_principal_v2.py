@@ -21,6 +21,7 @@ class AccountIamServicePrincipalV2Args:
     def __init__(__self__, *,
                  account_sp_status: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
+                 parent: pulumi.Input[_builtins.str],
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -28,12 +29,15 @@ class AccountIamServicePrincipalV2Args:
 
         :param pulumi.Input[_builtins.str] account_sp_status: The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
+               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] application_id: (string) - Application ID of the service principal. Set at creation time and cannot be changed
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
         """
         pulumi.set(__self__, "account_sp_status", account_sp_status)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "parent", parent)
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
         if external_id is not None:
@@ -62,6 +66,19 @@ class AccountIamServicePrincipalV2Args:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
@@ -97,6 +114,8 @@ class _AccountIamServicePrincipalV2State:
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountIamServicePrincipalV2 resources.
@@ -107,6 +126,11 @@ class _AccountIamServicePrincipalV2State:
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+               - Workspace-scoped: service-principals/{service_principal_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
+               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         """
         if account_id is not None:
@@ -119,6 +143,10 @@ class _AccountIamServicePrincipalV2State:
             pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if service_principal_id is not None:
             pulumi.set(__self__, "service_principal_id", service_principal_id)
 
@@ -184,6 +212,33 @@ class _AccountIamServicePrincipalV2State:
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -206,6 +261,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -227,6 +283,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.AccountIamServicePrincipalV2("this",
+            parent="accounts/00000000-0000-0000-0000-000000000000",
             display_name="ci-runner",
             account_sp_status="ACTIVE")
         ```
@@ -239,6 +296,8 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
+               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
         """
         ...
     @overload
@@ -266,6 +325,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.AccountIamServicePrincipalV2("this",
+            parent="accounts/00000000-0000-0000-0000-000000000000",
             display_name="ci-runner",
             account_sp_status="ACTIVE")
         ```
@@ -290,6 +350,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,7 +368,11 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["external_id"] = external_id
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["account_id"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["service_principal_id"] = None
         super(AccountIamServicePrincipalV2, __self__).__init__(
             'databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2',
@@ -324,6 +389,8 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamServicePrincipalV2':
         """
         Get an existing AccountIamServicePrincipalV2 resource's state with the given name, id, and optional extra
@@ -338,6 +405,11 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+               - Workspace-scoped: service-principals/{service_principal_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
+               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -349,6 +421,8 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_id"] = external_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["service_principal_id"] = service_principal_id
         return AccountIamServicePrincipalV2(resource_name, opts=opts, __props__=__props__)
 
@@ -392,6 +466,25 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
         ExternalId of the service principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")

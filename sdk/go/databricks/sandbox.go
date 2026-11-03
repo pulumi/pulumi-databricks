@@ -60,6 +60,8 @@ type Sandbox struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Metadata associated with the sandbox
+	Metadata SandboxMetadataPtrOutput `pulumi:"metadata"`
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -112,6 +114,8 @@ type sandboxState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`
+	// Metadata associated with the sandbox
+	Metadata *SandboxMetadata `pulumi:"metadata"`
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name *string `pulumi:"name"`
@@ -132,6 +136,8 @@ type SandboxState struct {
 	CreateTime pulumi.StringPtrInput
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrInput
+	// Metadata associated with the sandbox
+	Metadata SandboxMetadataPtrInput
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringPtrInput
@@ -154,6 +160,8 @@ func (SandboxState) ElementType() reflect.Type {
 type sandboxArgs struct {
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`
+	// Metadata associated with the sandbox
+	Metadata *SandboxMetadata `pulumi:"metadata"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *SandboxProviderConfig `pulumi:"providerConfig"`
 	// Client-supplied ID that becomes the final path segment of the resource name
@@ -166,6 +174,8 @@ type sandboxArgs struct {
 type SandboxArgs struct {
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrInput
+	// Metadata associated with the sandbox
+	Metadata SandboxMetadataPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigPtrInput
 	// Client-supplied ID that becomes the final path segment of the resource name
@@ -269,6 +279,11 @@ func (o SandboxOutput) CreateTime() pulumi.StringOutput {
 // Human-readable display label for the sandbox. At most 256 characters
 func (o SandboxOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sandbox) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Metadata associated with the sandbox
+func (o SandboxOutput) Metadata() SandboxMetadataPtrOutput {
+	return o.ApplyT(func(v *Sandbox) SandboxMetadataPtrOutput { return v.Metadata }).(SandboxMetadataPtrOutput)
 }
 
 // (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from

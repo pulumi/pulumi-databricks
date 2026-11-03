@@ -32,6 +32,7 @@ export function getWorkspaceIamGroupsV2(args?: GetWorkspaceIamGroupsV2Args, opts
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -50,6 +51,11 @@ export interface GetWorkspaceIamGroupsV2Args {
      */
     pageSize?: number;
     /**
+     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent?: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetWorkspaceIamGroupsV2ProviderConfig;
@@ -62,6 +68,11 @@ export interface GetWorkspaceIamGroupsV2Result {
     readonly filter?: string;
     readonly groups: outputs.GetWorkspaceIamGroupsV2Group[];
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamGroupsV2ProviderConfig;
 }
 /**
@@ -90,6 +101,7 @@ export function getWorkspaceIamGroupsV2Output(args?: GetWorkspaceIamGroupsV2Outp
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -107,6 +119,11 @@ export interface GetWorkspaceIamGroupsV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

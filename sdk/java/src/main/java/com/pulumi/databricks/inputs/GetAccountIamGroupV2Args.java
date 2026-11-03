@@ -15,24 +15,28 @@ public final class GetAccountIamGroupV2Args extends com.pulumi.resources.InvokeA
     public static final GetAccountIamGroupV2Args Empty = new GetAccountIamGroupV2Args();
 
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    @Import(name="groupId", required=true)
-    private Output<String> groupId;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return Internal group ID of the group in Databricks
+     * @return The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    public Output<String> groupId() {
-        return this.groupId;
+    public Output<String> name() {
+        return this.name;
     }
 
     private GetAccountIamGroupV2Args() {}
 
     private GetAccountIamGroupV2Args(GetAccountIamGroupV2Args $) {
-        this.groupId = $.groupId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -54,29 +58,33 @@ public final class GetAccountIamGroupV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param groupId Internal group ID of the group in Databricks
+         * @param name The resource name of the group. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(Output<String> groupId) {
-            $.groupId = groupId;
+        public Builder name(Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param groupId Internal group ID of the group in Databricks
+         * @param name The resource name of the group. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(String groupId) {
-            return groupId(Output.of(groupId));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public GetAccountIamGroupV2Args build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamGroupV2Args", "groupId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamGroupV2Args", "name");
             }
             return $;
         }

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single account group by its internal ID.
+ * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
  *
  * ## Example Usage
  *
@@ -22,14 +22,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamGroupV2({
- *     groupId: "123456789",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
  * });
  * ```
  */
 export function getAccountIamGroupV2(args: GetAccountIamGroupV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamGroupV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", {
-        "groupId": args.groupId,
+        "name": args.name,
     }, opts);
 }
 
@@ -38,9 +38,11 @@ export function getAccountIamGroupV2(args: GetAccountIamGroupV2Args, opts?: pulu
  */
 export interface GetAccountIamGroupV2Args {
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      */
-    groupId: string;
+    name: string;
 }
 
 /**
@@ -63,13 +65,24 @@ export interface GetAccountIamGroupV2Result {
      * (string) - Display name of the group
      */
     readonly groupName: string;
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single account group by its internal ID.
+ * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
  *
  * ## Example Usage
  *
@@ -82,14 +95,14 @@ export interface GetAccountIamGroupV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamGroupV2({
- *     groupId: "123456789",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
  * });
  * ```
  */
 export function getAccountIamGroupV2Output(args: GetAccountIamGroupV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamGroupV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", {
-        "groupId": args.groupId,
+        "name": args.name,
     }, opts);
 }
 
@@ -98,7 +111,9 @@ export function getAccountIamGroupV2Output(args: GetAccountIamGroupV2OutputArgs,
  */
 export interface GetAccountIamGroupV2OutputArgs {
     /**
-     * Internal group ID of the group in Databricks
+     * The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      */
-    groupId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

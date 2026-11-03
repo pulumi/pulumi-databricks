@@ -121,6 +121,40 @@ public class WorkspaceIamGroupV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.groupName);
     }
     /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+    /**
      * Configure the provider for management through account provider.
      * 
      */

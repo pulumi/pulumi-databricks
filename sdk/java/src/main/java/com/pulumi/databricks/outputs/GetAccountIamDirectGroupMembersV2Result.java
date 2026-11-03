@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountIamDirectGroupMembersV2DirectGroupMember;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,26 +16,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountIamDirectGroupMembersV2Result {
     private List<GetAccountIamDirectGroupMembersV2DirectGroupMember> directGroupMembers;
+    private @Nullable Integer pageSize;
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    private Integer groupId;
-    private @Nullable Integer pageSize;
+    private String parent;
 
     private GetAccountIamDirectGroupMembersV2Result() {}
     public List<GetAccountIamDirectGroupMembersV2DirectGroupMember> directGroupMembers() {
         return this.directGroupMembers;
     }
-    /**
-     * @return (integer) - The internal ID of the group this member belongs to
-     * 
-     */
-    public Integer groupId() {
-        return this.groupId;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
     }
 
     public static Builder builder() {
@@ -47,14 +54,14 @@ public final class GetAccountIamDirectGroupMembersV2Result {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAccountIamDirectGroupMembersV2DirectGroupMember> directGroupMembers;
-        private Integer groupId;
         private @Nullable Integer pageSize;
+        private String parent;
         public Builder() {}
         public Builder(GetAccountIamDirectGroupMembersV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.directGroupMembers = defaults.directGroupMembers;
-    	      this.groupId = defaults.groupId;
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
         }
 
         @CustomType.Setter
@@ -69,24 +76,24 @@ public final class GetAccountIamDirectGroupMembersV2Result {
             return directGroupMembers(List.of(directGroupMembers));
         }
         @CustomType.Setter
-        public Builder groupId(Integer groupId) {
-            if (groupId == null) {
-              throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMembersV2Result", "groupId");
-            }
-            this.groupId = groupId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMembersV2Result", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
         public GetAccountIamDirectGroupMembersV2Result build() {
             final var _resultValue = new GetAccountIamDirectGroupMembersV2Result();
             _resultValue.directGroupMembers = directGroupMembers;
-            _resultValue.groupId = groupId;
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             return _resultValue;
         }
     }

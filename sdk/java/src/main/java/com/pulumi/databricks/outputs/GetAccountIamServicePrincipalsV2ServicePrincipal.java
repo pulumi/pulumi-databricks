@@ -37,6 +37,19 @@ public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
      */
     private String externalId;
     /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    private String parent;
+    /**
      * @return (string) - Internal service principal ID of the service principal in Databricks
      * 
      */
@@ -80,6 +93,23 @@ public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
         return this.externalId;
     }
     /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+    /**
      * @return (string) - Internal service principal ID of the service principal in Databricks
      * 
      */
@@ -101,6 +131,8 @@ public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
         private String applicationId;
         private String displayName;
         private String externalId;
+        private String name;
+        private String parent;
         private String servicePrincipalId;
         public Builder() {}
         public Builder(GetAccountIamServicePrincipalsV2ServicePrincipal defaults) {
@@ -110,6 +142,8 @@ public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
     	      this.externalId = defaults.externalId;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
         }
 
@@ -154,6 +188,22 @@ public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalsV2ServicePrincipal", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalsV2ServicePrincipal", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder servicePrincipalId(String servicePrincipalId) {
             if (servicePrincipalId == null) {
               throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalsV2ServicePrincipal", "servicePrincipalId");
@@ -168,6 +218,8 @@ public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
             _resultValue.applicationId = applicationId;
             _resultValue.displayName = displayName;
             _resultValue.externalId = externalId;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.servicePrincipalId = servicePrincipalId;
             return _resultValue;
         }

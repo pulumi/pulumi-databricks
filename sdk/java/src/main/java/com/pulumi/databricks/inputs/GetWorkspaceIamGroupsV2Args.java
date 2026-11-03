@@ -50,6 +50,23 @@ public final class GetWorkspaceIamGroupsV2Args extends com.pulumi.resources.Invo
     }
 
     /**
+     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -69,6 +86,7 @@ public final class GetWorkspaceIamGroupsV2Args extends com.pulumi.resources.Invo
     private GetWorkspaceIamGroupsV2Args(GetWorkspaceIamGroupsV2Args $) {
         this.filter = $.filter;
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
 
@@ -132,6 +150,29 @@ public final class GetWorkspaceIamGroupsV2Args extends com.pulumi.resources.Invo
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param parent The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+         * defaults to the account of the calling workspace, and any other account is rejected
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+         * defaults to the account of the calling workspace, and any other account is rejected
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

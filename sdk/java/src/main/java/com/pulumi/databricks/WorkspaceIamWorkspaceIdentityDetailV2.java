@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * Import the resource by the principal&#39;s internal Databricks ID:
+ * Import the resource by its name, which contains the principal&#39;s internal Databricks ID:
  * 
  * ```sh
- * terraform import databricks_workspace_iam_workspace_identity_detail_v2.this &lt;principal_id&gt;
+ * terraform import databricks_workspace_iam_workspace_identity_detail_v2.this principals/&lt;principal_id&gt;/workspace-identity-detail
  * ```
  * 
  */
@@ -85,6 +85,36 @@ public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.
      */
     public Output<String> assignmentType() {
         return this.assignmentType;
+    }
+    /**
+     * (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * The resource name of the parent
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the parent
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * (integer) - The internal ID of the principal (user/sp/group) in Databricks
@@ -155,7 +185,7 @@ public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkspaceIamWorkspaceIdentityDetailV2(java.lang.String name, @Nullable WorkspaceIamWorkspaceIdentityDetailV2Args args) {
+    public WorkspaceIamWorkspaceIdentityDetailV2(java.lang.String name, WorkspaceIamWorkspaceIdentityDetailV2Args args) {
         this(name, args, null);
     }
     /**
@@ -164,7 +194,7 @@ public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkspaceIamWorkspaceIdentityDetailV2(java.lang.String name, @Nullable WorkspaceIamWorkspaceIdentityDetailV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public WorkspaceIamWorkspaceIdentityDetailV2(java.lang.String name, WorkspaceIamWorkspaceIdentityDetailV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -172,7 +202,7 @@ public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.
         super("databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static WorkspaceIamWorkspaceIdentityDetailV2Args makeArgs(@Nullable WorkspaceIamWorkspaceIdentityDetailV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static WorkspaceIamWorkspaceIdentityDetailV2Args makeArgs(WorkspaceIamWorkspaceIdentityDetailV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -17,11 +17,16 @@ namespace Pulumi.Databricks.Outputs
         /// List of fully qualified table names to exclude from anomaly detection
         /// </summary>
         public readonly ImmutableArray<string> ExcludedTableFullNames;
+        public readonly Outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings? NotificationSettings;
 
         [OutputConstructor]
-        private DataQualityMonitorAnomalyDetectionConfig(ImmutableArray<string> excludedTableFullNames)
+        private DataQualityMonitorAnomalyDetectionConfig(
+            ImmutableArray<string> excludedTableFullNames,
+
+            Outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings? notificationSettings)
         {
             ExcludedTableFullNames = excludedTableFullNames;
+            NotificationSettings = notificationSettings;
         }
     }
 }

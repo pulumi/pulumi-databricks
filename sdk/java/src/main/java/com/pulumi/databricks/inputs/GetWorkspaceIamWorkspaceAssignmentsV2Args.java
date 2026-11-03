@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,6 +35,25 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
     }
 
     /**
+     * The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -52,6 +72,7 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
 
     private GetWorkspaceIamWorkspaceAssignmentsV2Args(GetWorkspaceIamWorkspaceAssignmentsV2Args $) {
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
 
@@ -94,6 +115,31 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param parent The resource name of the workspace to list assignments of,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+         * and any other workspace is rejected
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the workspace to list assignments of,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+         * and any other workspace is rejected
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

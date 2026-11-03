@@ -269,7 +269,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
@@ -347,7 +347,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  args: DataQualityRefreshArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 

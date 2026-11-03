@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.MwsNetworkConnectivityConfigState;
 import com.pulumi.databricks.outputs.MwsNetworkConnectivityConfigEgressConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -82,6 +83,12 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
 
     public Output<String> accountId() {
         return this.accountId;
+    }
+    @Export(name="billingWorkspaceId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> billingWorkspaceId;
+
+    public Output<Optional<Integer>> billingWorkspaceId() {
+        return Codegen.optional(this.billingWorkspaceId);
     }
     /**
      * time in epoch milliseconds when this object was created.

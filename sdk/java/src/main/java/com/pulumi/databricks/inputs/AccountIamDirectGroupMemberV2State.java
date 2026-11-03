@@ -32,14 +32,14 @@ public final class AccountIamDirectGroupMemberV2State extends com.pulumi.resourc
     }
 
     /**
-     * (string) - The external ID of the principal in Databricks
+     * (string) - The external ID of the principal in the customer&#39;s IdP
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return (string) - The external ID of the principal in Databricks
+     * @return (string) - The external ID of the principal in the customer&#39;s IdP
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -74,6 +74,46 @@ public final class AccountIamDirectGroupMemberV2State extends com.pulumi.resourc
      */
     public Optional<Output<String>> membershipSource() {
         return Optional.ofNullable(this.membershipSource);
+    }
+
+    /**
+     * (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
     }
 
     /**
@@ -113,6 +153,8 @@ public final class AccountIamDirectGroupMemberV2State extends com.pulumi.resourc
         this.externalId = $.externalId;
         this.groupId = $.groupId;
         this.membershipSource = $.membershipSource;
+        this.name = $.name;
+        this.parent = $.parent;
         this.principalId = $.principalId;
         this.principalType = $.principalType;
     }
@@ -157,7 +199,7 @@ public final class AccountIamDirectGroupMemberV2State extends com.pulumi.resourc
         }
 
         /**
-         * @param externalId (string) - The external ID of the principal in Databricks
+         * @param externalId (string) - The external ID of the principal in the customer&#39;s IdP
          * 
          * @return builder
          * 
@@ -168,7 +210,7 @@ public final class AccountIamDirectGroupMemberV2State extends com.pulumi.resourc
         }
 
         /**
-         * @param externalId (string) - The external ID of the principal in Databricks
+         * @param externalId (string) - The external ID of the principal in the customer&#39;s IdP
          * 
          * @return builder
          * 
@@ -217,6 +259,58 @@ public final class AccountIamDirectGroupMemberV2State extends com.pulumi.resourc
          */
         public Builder membershipSource(String membershipSource) {
             return membershipSource(Output.of(membershipSource));
+        }
+
+        /**
+         * @param name (string) - The resource name of the group membership. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (string) - The resource name of the group membership. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param parent The resource name of the group that contains the membership. The format depends on the API
+         * that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the group that contains the membership. The format depends on the API
+         * that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

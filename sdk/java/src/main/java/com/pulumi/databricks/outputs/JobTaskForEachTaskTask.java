@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskAiFunctionTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskAiRuntimeTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskAlertTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
@@ -42,6 +43,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTask {
+    private @Nullable JobTaskForEachTaskTaskAiFunctionTask aiFunctionTask;
     private @Nullable JobTaskForEachTaskTaskAiRuntimeTask aiRuntimeTask;
     private @Nullable JobTaskForEachTaskTaskAlertTask alertTask;
     private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
@@ -167,6 +169,9 @@ public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
 
     private JobTaskForEachTaskTask() {}
+    public Optional<JobTaskForEachTaskTaskAiFunctionTask> aiFunctionTask() {
+        return Optional.ofNullable(this.aiFunctionTask);
+    }
     public Optional<JobTaskForEachTaskTaskAiRuntimeTask> aiRuntimeTask() {
         return Optional.ofNullable(this.aiRuntimeTask);
     }
@@ -380,6 +385,7 @@ public final class JobTaskForEachTaskTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTaskForEachTaskTaskAiFunctionTask aiFunctionTask;
         private @Nullable JobTaskForEachTaskTaskAiRuntimeTask aiRuntimeTask;
         private @Nullable JobTaskForEachTaskTaskAlertTask alertTask;
         private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
@@ -423,6 +429,7 @@ public final class JobTaskForEachTaskTask {
         public Builder() {}
         public Builder(JobTaskForEachTaskTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiFunctionTask = defaults.aiFunctionTask;
     	      this.aiRuntimeTask = defaults.aiRuntimeTask;
     	      this.alertTask = defaults.alertTask;
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
@@ -465,6 +472,12 @@ public final class JobTaskForEachTaskTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder aiFunctionTask(@Nullable JobTaskForEachTaskTaskAiFunctionTask aiFunctionTask) {
+
+            this.aiFunctionTask = aiFunctionTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder aiRuntimeTask(@Nullable JobTaskForEachTaskTaskAiRuntimeTask aiRuntimeTask) {
 
@@ -715,6 +728,7 @@ public final class JobTaskForEachTaskTask {
         }
         public JobTaskForEachTaskTask build() {
             final var _resultValue = new JobTaskForEachTaskTask();
+            _resultValue.aiFunctionTask = aiFunctionTask;
             _resultValue.aiRuntimeTask = aiRuntimeTask;
             _resultValue.alertTask = alertTask;
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;

@@ -17,9 +17,19 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
 
     public static final AccountNetworkPolicyIngressArgs Empty = new AccountNetworkPolicyIngressArgs();
 
+    /**
+     * The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     * 
+     */
     @Import(name="crossWorkspaceAccess")
     private @Nullable Output<AccountNetworkPolicyIngressCrossWorkspaceAccessArgs> crossWorkspaceAccess;
 
+    /**
+     * @return The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressCrossWorkspaceAccessArgs>> crossWorkspaceAccess() {
         return Optional.ofNullable(this.crossWorkspaceAccess);
     }
@@ -84,11 +94,25 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
             $ = new AccountNetworkPolicyIngressArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param crossWorkspaceAccess The network policy restrictions for cross-workspace access: which other workspaces may
+         * access this workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder crossWorkspaceAccess(@Nullable Output<AccountNetworkPolicyIngressCrossWorkspaceAccessArgs> crossWorkspaceAccess) {
             $.crossWorkspaceAccess = crossWorkspaceAccess;
             return this;
         }
 
+        /**
+         * @param crossWorkspaceAccess The network policy restrictions for cross-workspace access: which other workspaces may
+         * access this workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder crossWorkspaceAccess(AccountNetworkPolicyIngressCrossWorkspaceAccessArgs crossWorkspaceAccess) {
             return crossWorkspaceAccess(Output.of(crossWorkspaceAccess));
         }

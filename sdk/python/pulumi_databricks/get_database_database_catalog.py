@@ -118,6 +118,8 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
 
     This data source can be used to get a single Database Catalog.
 
+    For new workloads, Databricks recommends the `PostgresCatalog` data source.
+
     ## Example Usage
 
     Referring to a Database Catalog by name:
@@ -155,6 +157,8 @@ def get_database_database_catalog_output(name: pulumi.Input[Optional[_builtins.s
     [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to get a single Database Catalog.
+
+    For new workloads, Databricks recommends the `PostgresCatalog` data source.
 
     ## Example Usage
 

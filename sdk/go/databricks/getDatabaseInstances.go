@@ -18,6 +18,8 @@ import (
 // This data source can be used to fetch the list of Database Instances within the workspace.
 // The list can then be accessed via the data object's `databaseInstances` field.
 //
+// For new workloads, Databricks recommends the `getPostgresProjects` data source.
+//
 // ## Example Usage
 //
 // Getting a list of all Database Instances:

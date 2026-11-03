@@ -23,15 +23,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getAccountIamUsersV2({});
+ * const _this = databricks.getAccountIamUsersV2({
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ * });
  * ```
  */
-export function getAccountIamUsersV2(args?: GetAccountIamUsersV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamUsersV2Result> {
-    args = args || {};
+export function getAccountIamUsersV2(args: GetAccountIamUsersV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamUsersV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -48,6 +50,11 @@ export interface GetAccountIamUsersV2Args {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
+    /**
+     * The parent resource name of the account whose users to list.
+     * Format: accounts/{account_id}
+     */
+    parent: string;
 }
 
 /**
@@ -56,6 +63,11 @@ export interface GetAccountIamUsersV2Args {
 export interface GetAccountIamUsersV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
     readonly users: outputs.GetAccountIamUsersV2User[];
 }
 /**
@@ -75,15 +87,17 @@ export interface GetAccountIamUsersV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getAccountIamUsersV2({});
+ * const _this = databricks.getAccountIamUsersV2({
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ * });
  * ```
  */
-export function getAccountIamUsersV2Output(args?: GetAccountIamUsersV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamUsersV2Result> {
-    args = args || {};
+export function getAccountIamUsersV2Output(args: GetAccountIamUsersV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamUsersV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -100,4 +114,9 @@ export interface GetAccountIamUsersV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The parent resource name of the account whose users to list.
+     * Format: accounts/{account_id}
+     */
+    parent: pulumi.Input<string>;
 }

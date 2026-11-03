@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetWorkspaceIamDirectGroupMembersV2DirectGr
 import com.pulumi.databricks.outputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,27 +17,33 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamDirectGroupMembersV2Result {
     private List<GetWorkspaceIamDirectGroupMembersV2DirectGroupMember> directGroupMembers;
+    private @Nullable Integer pageSize;
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
      * 
      */
-    private Integer groupId;
-    private @Nullable Integer pageSize;
+    private String parent;
     private @Nullable GetWorkspaceIamDirectGroupMembersV2ProviderConfig providerConfig;
 
     private GetWorkspaceIamDirectGroupMembersV2Result() {}
     public List<GetWorkspaceIamDirectGroupMembersV2DirectGroupMember> directGroupMembers() {
         return this.directGroupMembers;
     }
-    /**
-     * @return (integer) - The internal ID of the group this member belongs to
-     * 
-     */
-    public Integer groupId() {
-        return this.groupId;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
     }
     public Optional<GetWorkspaceIamDirectGroupMembersV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -52,15 +59,15 @@ public final class GetWorkspaceIamDirectGroupMembersV2Result {
     @CustomType.Builder
     public static final class Builder {
         private List<GetWorkspaceIamDirectGroupMembersV2DirectGroupMember> directGroupMembers;
-        private Integer groupId;
         private @Nullable Integer pageSize;
+        private String parent;
         private @Nullable GetWorkspaceIamDirectGroupMembersV2ProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetWorkspaceIamDirectGroupMembersV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.directGroupMembers = defaults.directGroupMembers;
-    	      this.groupId = defaults.groupId;
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
         }
 
@@ -76,17 +83,17 @@ public final class GetWorkspaceIamDirectGroupMembersV2Result {
             return directGroupMembers(List.of(directGroupMembers));
         }
         @CustomType.Setter
-        public Builder groupId(Integer groupId) {
-            if (groupId == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2Result", "groupId");
-            }
-            this.groupId = groupId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2Result", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
@@ -98,8 +105,8 @@ public final class GetWorkspaceIamDirectGroupMembersV2Result {
         public GetWorkspaceIamDirectGroupMembersV2Result build() {
             final var _resultValue = new GetWorkspaceIamDirectGroupMembersV2Result();
             _resultValue.directGroupMembers = directGroupMembers;
-            _resultValue.groupId = groupId;
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }

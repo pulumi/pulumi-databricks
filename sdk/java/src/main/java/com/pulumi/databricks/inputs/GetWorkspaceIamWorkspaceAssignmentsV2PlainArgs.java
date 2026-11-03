@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,25 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs extends com.pu
     }
 
     /**
+     * The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable String parent;
+
+    /**
+     * @return The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -51,6 +71,7 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs extends com.pu
 
     private GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs(GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs $) {
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
 
@@ -81,6 +102,19 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs extends com.pu
          */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the workspace to list assignments of,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+         * and any other workspace is rejected
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable String parent) {
+            $.parent = parent;
             return this;
         }
 

@@ -29,8 +29,7 @@ class PostgresSyncedTableArgs:
 
         :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input['PostgresSyncedTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
-               This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         """
         pulumi.set(__self__, "synced_table_id", synced_table_id)
         if provider_config is not None:
@@ -66,8 +65,7 @@ class PostgresSyncedTableArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresSyncedTableSpecArgs']]:
         """
-        Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        Configuration details of the synced table, such as the source table, scheduling policy, etc
         """
         return pulumi.get(self, "spec")
 
@@ -93,8 +91,7 @@ class _PostgresSyncedTableState:
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The Full resource name of the synced table in Postgres
                where (catalog, schema, table) are the UC entity names.
         :param pulumi.Input['PostgresSyncedTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
-               This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         :param pulumi.Input['PostgresSyncedTableStatusArgs'] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
         :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
@@ -155,8 +152,7 @@ class _PostgresSyncedTableState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresSyncedTableSpecArgs']]:
         """
-        Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        Configuration details of the synced table, such as the source table, scheduling policy, etc
         """
         return pulumi.get(self, "spec")
 
@@ -308,8 +304,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
-               This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         """
         ...
@@ -476,8 +471,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The Full resource name of the synced table in Postgres
                where (catalog, schema, table) are the UC entity names.
         :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
-               This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         :param pulumi.Input[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict', 'outputs.PostgresSyncedTableStatus']] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
         :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
@@ -524,8 +518,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.PostgresSyncedTableSpec']:
         """
-        Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        Configuration details of the synced table, such as the source table, scheduling policy, etc
         """
         return pulumi.get(self, "spec")
 

@@ -30,6 +30,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetWorkspaceIamUsersV2UserFullNameResult FullName;
         /// <summary>
+        /// (string) - The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetWorkspaceIamUsersV2UserProviderConfigResult? ProviderConfig;
@@ -52,6 +63,10 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetWorkspaceIamUsersV2UserFullNameResult fullName,
 
+            string name,
+
+            string parent,
+
             Outputs.GetWorkspaceIamUsersV2UserProviderConfigResult? providerConfig,
 
             string userId,
@@ -62,6 +77,8 @@ namespace Pulumi.Databricks.Outputs
             AccountUserStatus = accountUserStatus;
             ExternalId = externalId;
             FullName = fullName;
+            Name = name;
+            Parent = parent;
             ProviderConfig = providerConfig;
             UserId = userId;
             Username = username;

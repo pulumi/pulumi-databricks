@@ -16,7 +16,28 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+        /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `Name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceIamWorkspaceIdentityDetailV2.Invoke(new()
+        ///     {
+        ///         Name = "principals/987654321/workspace-identity-detail",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWorkspaceIamWorkspaceIdentityDetailV2Result> InvokeAsync(GetWorkspaceIamWorkspaceIdentityDetailV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceIamWorkspaceIdentityDetailV2Result>("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args ?? new GetWorkspaceIamWorkspaceIdentityDetailV2Args(), options.WithDefaults());
@@ -26,7 +47,28 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+        /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `Name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceIamWorkspaceIdentityDetailV2.Invoke(new()
+        ///     {
+        ///         Name = "principals/987654321/workspace-identity-detail",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> Invoke(GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamWorkspaceIdentityDetailV2Result>("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args ?? new GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs(), options.WithDefaults());
@@ -36,7 +78,28 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+        /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `Name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceIamWorkspaceIdentityDetailV2.Invoke(new()
+        ///     {
+        ///         Name = "principals/987654321/workspace-identity-detail",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> Invoke(GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamWorkspaceIdentityDetailV2Result>("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args ?? new GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs(), options.WithDefaults());
@@ -46,10 +109,11 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceIdentityDetailV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The internal ID of the principal (user/sp/group) in Databricks
+        /// The resource name of the workspace identity detail.
+        /// Format: principals/{principal_id}/workspace-identity-detail
         /// </summary>
-        [Input("principalId", required: true)]
-        public string PrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider.
@@ -66,10 +130,11 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The internal ID of the principal (user/sp/group) in Databricks
+        /// The resource name of the workspace identity detail.
+        /// Format: principals/{principal_id}/workspace-identity-detail
         /// </summary>
-        [Input("principalId", required: true)]
-        public Input<string> PrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider.
@@ -92,6 +157,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string AssignmentType;
         /// <summary>
+        /// (string) - The resource name of the workspace identity detail.
+        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
         /// </summary>
         public readonly string PrincipalId;
@@ -109,6 +179,8 @@ namespace Pulumi.Databricks
         private GetWorkspaceIamWorkspaceIdentityDetailV2Result(
             string assignmentType,
 
+            string name,
+
             string principalId,
 
             string principalType,
@@ -118,6 +190,7 @@ namespace Pulumi.Databricks
             string workspaceIdentityStatus)
         {
             AssignmentType = assignmentType;
+            Name = name;
             PrincipalId = principalId;
             PrincipalType = principalType;
             ProviderConfig = providerConfig;

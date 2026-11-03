@@ -49,6 +49,23 @@ public final class GetWorkspaceIamServicePrincipalsV2PlainArgs extends com.pulum
     }
 
     /**
+     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable String parent;
+
+    /**
+     * @return The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -68,6 +85,7 @@ public final class GetWorkspaceIamServicePrincipalsV2PlainArgs extends com.pulum
     private GetWorkspaceIamServicePrincipalsV2PlainArgs(GetWorkspaceIamServicePrincipalsV2PlainArgs $) {
         this.filter = $.filter;
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
 
@@ -109,6 +127,18 @@ public final class GetWorkspaceIamServicePrincipalsV2PlainArgs extends com.pulum
          */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+         * defaults to the account of the calling workspace, and any other account is rejected
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable String parent) {
+            $.parent = parent;
             return this;
         }
 

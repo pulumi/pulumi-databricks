@@ -31,13 +31,21 @@ type GetWorkspaceIamWorkspaceAssignmentsV2Args struct {
 	// The maximum number of workspace assignments to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The resource name of the workspace to list assignments of,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+	// and any other workspace is rejected
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getWorkspaceIamWorkspaceAssignmentsV2.
 type GetWorkspaceIamWorkspaceAssignmentsV2Result struct {
-	PageSize             *int                                                       `pulumi:"pageSize"`
+	PageSize *int `pulumi:"pageSize"`
+	// (string) - The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent               *string                                                    `pulumi:"parent"`
 	ProviderConfig       *GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig       `pulumi:"providerConfig"`
 	WorkspaceAssignments []GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment `pulumi:"workspaceAssignments"`
 }
@@ -52,6 +60,10 @@ type GetWorkspaceIamWorkspaceAssignmentsV2OutputArgs struct {
 	// The maximum number of workspace assignments to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The resource name of the workspace to list assignments of,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+	// and any other workspace is rejected
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -77,6 +89,13 @@ func (o GetWorkspaceIamWorkspaceAssignmentsV2ResultOutput) ToGetWorkspaceIamWork
 
 func (o GetWorkspaceIamWorkspaceAssignmentsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceIamWorkspaceAssignmentsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the workspace that contains the assignment,
+// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+// APIs return it
+func (o GetWorkspaceIamWorkspaceAssignmentsV2ResultOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceIamWorkspaceAssignmentsV2Result) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 func (o GetWorkspaceIamWorkspaceAssignmentsV2ResultOutput) ProviderConfig() GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigPtrOutput {

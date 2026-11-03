@@ -34,16 +34,14 @@ public final class PostgresSyncedTableArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * Configuration details of the synced table, such as the source table, scheduling policy, etc
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresSyncedTableSpecArgs> spec;
 
     /**
-     * @return Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * @return Configuration details of the synced table, such as the source table, scheduling policy, etc
      * 
      */
     public Optional<Output<PostgresSyncedTableSpecArgs>> spec() {
@@ -113,8 +111,7 @@ public final class PostgresSyncedTableArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param spec Configuration details of the synced table, such as the source table, scheduling policy, etc.
-         * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+         * @param spec Configuration details of the synced table, such as the source table, scheduling policy, etc
          * 
          * @return builder
          * 
@@ -125,8 +122,7 @@ public final class PostgresSyncedTableArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param spec Configuration details of the synced table, such as the source table, scheduling policy, etc.
-         * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+         * @param spec Configuration details of the synced table, such as the source table, scheduling policy, etc
          * 
          * @return builder
          * 

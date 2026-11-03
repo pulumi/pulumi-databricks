@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
  * 
+ * For new workloads, Databricks recommends the `databricks.PostgresCatalog` resource.
+ * 
  * ## Example Usage
  * 
  * ### Example

@@ -14,24 +14,28 @@ public final class GetAccountIamServicePrincipalV2PlainArgs extends com.pulumi.r
     public static final GetAccountIamServicePrincipalV2PlainArgs Empty = new GetAccountIamServicePrincipalV2PlainArgs();
 
     /**
-     * Internal service principal ID of the service principal in Databricks
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
      * 
      */
-    @Import(name="servicePrincipalId", required=true)
-    private String servicePrincipalId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return Internal service principal ID of the service principal in Databricks
+     * @return The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
      * 
      */
-    public String servicePrincipalId() {
-        return this.servicePrincipalId;
+    public String name() {
+        return this.name;
     }
 
     private GetAccountIamServicePrincipalV2PlainArgs() {}
 
     private GetAccountIamServicePrincipalV2PlainArgs(GetAccountIamServicePrincipalV2PlainArgs $) {
-        this.servicePrincipalId = $.servicePrincipalId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -53,19 +57,21 @@ public final class GetAccountIamServicePrincipalV2PlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicePrincipalId Internal service principal ID of the service principal in Databricks
+         * @param name The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder servicePrincipalId(String servicePrincipalId) {
-            $.servicePrincipalId = servicePrincipalId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
         public GetAccountIamServicePrincipalV2PlainArgs build() {
-            if ($.servicePrincipalId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalV2PlainArgs", "servicePrincipalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalV2PlainArgs", "name");
             }
             return $;
         }

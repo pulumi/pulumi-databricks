@@ -15,7 +15,7 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
-// Reads a single account group by its internal ID.
+// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetAccountIamGroupV2(ctx, &databricks.LookupAccountIamGroupV2Args{
-//				GroupId: "123456789",
+//				Name: "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,8 +58,10 @@ func LookupAccountIamGroupV2(ctx *pulumi.Context, args *LookupAccountIamGroupV2A
 
 // A collection of arguments for invoking getAccountIamGroupV2.
 type LookupAccountIamGroupV2Args struct {
-	// Internal group ID of the group in Databricks
-	GroupId string `pulumi:"groupId"`
+	// The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamGroupV2.
@@ -72,6 +74,13 @@ type LookupAccountIamGroupV2Result struct {
 	GroupId string `pulumi:"groupId"`
 	// (string) - Display name of the group
 	GroupName string `pulumi:"groupName"`
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 }
 
 func LookupAccountIamGroupV2Output(ctx *pulumi.Context, args LookupAccountIamGroupV2OutputArgs, opts ...pulumi.InvokeOption) LookupAccountIamGroupV2ResultOutput {
@@ -81,8 +90,10 @@ func LookupAccountIamGroupV2Output(ctx *pulumi.Context, args LookupAccountIamGro
 
 // A collection of arguments for invoking getAccountIamGroupV2.
 type LookupAccountIamGroupV2OutputArgs struct {
-	// Internal group ID of the group in Databricks
-	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountIamGroupV2OutputArgs) ElementType() reflect.Type {
@@ -122,6 +133,19 @@ func (o LookupAccountIamGroupV2ResultOutput) GroupId() pulumi.StringOutput {
 // (string) - Display name of the group
 func (o LookupAccountIamGroupV2ResultOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the group. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o LookupAccountIamGroupV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o LookupAccountIamGroupV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func init() {

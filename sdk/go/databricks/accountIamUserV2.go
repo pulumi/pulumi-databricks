@@ -39,6 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewAccountIamUserV2(ctx, "this", &databricks.AccountIamUserV2Args{
+//				Parent:            pulumi.String("accounts/00000000-0000-0000-0000-000000000000"),
 //				Username:          pulumi.String("jane.doe@example.com"),
 //				AccountUserStatus: pulumi.String("ACTIVE"),
 //				FullName: &databricks.AccountIamUserV2FullNameArgs{
@@ -64,6 +65,13 @@ type AccountIamUserV2 struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId pulumi.StringPtrOutput         `pulumi:"externalId"`
 	FullName   AccountIamUserV2FullNameOutput `pulumi:"fullName"`
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// (string) - Internal userId of the user in Databricks
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Username/email of the user
@@ -82,6 +90,9 @@ func NewAccountIamUserV2(ctx *pulumi.Context,
 	}
 	if args.FullName == nil {
 		return nil, errors.New("invalid value for required argument 'FullName'")
+	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
@@ -116,6 +127,13 @@ type accountIamUserV2State struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId *string                   `pulumi:"externalId"`
 	FullName   *AccountIamUserV2FullName `pulumi:"fullName"`
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name *string `pulumi:"name"`
+	// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent *string `pulumi:"parent"`
 	// (string) - Internal userId of the user in Databricks
 	UserId *string `pulumi:"userId"`
 	// Username/email of the user
@@ -130,6 +148,13 @@ type AccountIamUserV2State struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId pulumi.StringPtrInput
 	FullName   AccountIamUserV2FullNamePtrInput
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name pulumi.StringPtrInput
+	// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringPtrInput
 	// (string) - Internal userId of the user in Databricks
 	UserId pulumi.StringPtrInput
 	// Username/email of the user
@@ -146,6 +171,9 @@ type accountIamUserV2Args struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId *string                  `pulumi:"externalId"`
 	FullName   AccountIamUserV2FullName `pulumi:"fullName"`
+	// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 	// Username/email of the user
 	Username string `pulumi:"username"`
 }
@@ -157,6 +185,9 @@ type AccountIamUserV2Args struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId pulumi.StringPtrInput
 	FullName   AccountIamUserV2FullNameInput
+	// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringInput
 	// Username/email of the user
 	Username pulumi.StringInput
 }
@@ -265,6 +296,19 @@ func (o AccountIamUserV2Output) ExternalId() pulumi.StringPtrOutput {
 
 func (o AccountIamUserV2Output) FullName() AccountIamUserV2FullNameOutput {
 	return o.ApplyT(func(v *AccountIamUserV2) AccountIamUserV2FullNameOutput { return v.FullName }).(AccountIamUserV2FullNameOutput)
+}
+
+// (string) - The resource name of the user. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/users/{user_id}
+// - Workspace-scoped: users/{user_id}
+func (o AccountIamUserV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamUserV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o AccountIamUserV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamUserV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // (string) - Internal userId of the user in Databricks

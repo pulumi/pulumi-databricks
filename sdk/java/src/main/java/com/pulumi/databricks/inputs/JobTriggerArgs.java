@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTriggerContinuousArgs;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
+import com.pulumi.databricks.inputs.JobTriggerJobCompletionArgs;
 import com.pulumi.databricks.inputs.JobTriggerModelArgs;
 import com.pulumi.databricks.inputs.JobTriggerPeriodicArgs;
 import com.pulumi.databricks.inputs.JobTriggerScheduleArgs;
@@ -50,6 +51,13 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<JobTriggerFileArrivalArgs>> fileArrival() {
         return Optional.ofNullable(this.fileArrival);
+    }
+
+    @Import(name="jobCompletion")
+    private @Nullable Output<JobTriggerJobCompletionArgs> jobCompletion;
+
+    public Optional<Output<JobTriggerJobCompletionArgs>> jobCompletion() {
+        return Optional.ofNullable(this.jobCompletion);
     }
 
     @Import(name="model")
@@ -123,6 +131,7 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
     private JobTriggerArgs(JobTriggerArgs $) {
         this.continuous = $.continuous;
         this.fileArrival = $.fileArrival;
+        this.jobCompletion = $.jobCompletion;
         this.model = $.model;
         this.pauseStatus = $.pauseStatus;
         this.periodic = $.periodic;
@@ -189,6 +198,15 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fileArrival(JobTriggerFileArrivalArgs fileArrival) {
             return fileArrival(Output.of(fileArrival));
+        }
+
+        public Builder jobCompletion(@Nullable Output<JobTriggerJobCompletionArgs> jobCompletion) {
+            $.jobCompletion = jobCompletion;
+            return this;
+        }
+
+        public Builder jobCompletion(JobTriggerJobCompletionArgs jobCompletion) {
+            return jobCompletion(Output.of(jobCompletion));
         }
 
         public Builder model(@Nullable Output<JobTriggerModelArgs> model) {

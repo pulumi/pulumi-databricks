@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
     /// 
@@ -23,6 +23,8 @@ namespace Pulumi.Databricks
     ///    - **USE_CATALOG** on the table's parent catalog
     ///    - **USE_SCHEMA** on the table's parent schema
     ///    - be an owner of the table.
+    /// 
+    /// For a `Schema` monitor, `anomaly_detection_config.notification_settings` manages the schema's alert, the same alert shown under **Manage alerts** in the Data Quality Monitoring UI. Because the provider updates the whole `AnomalyDetectionConfig`, a monitor without `NotificationSettings` deletes an alert that was set up in the UI. To stop alerts, remove the `NotificationSettings` block. Don't set it to an empty value: the API accepts it and deletes the alert, but the apply then fails because the API returns no `NotificationSettings`.
     /// 
     /// &gt; **Note** This resource can only be used with a workspace-level provider!
     /// 
@@ -47,6 +49,42 @@ namespace Pulumi.Databricks
     ///         ObjectType = "schema",
     ///         ObjectId = @this.SchemaId,
     ///         AnomalyDetectionConfig = new() { },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To alert workspace users or notification destinations when anomaly detection finds unhealthy tables in the schema, set `NotificationSettings`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withAlerts = new Databricks.DataQualityMonitor("with_alerts", new()
+    ///     {
+    ///         ObjectType = "schema",
+    ///         ObjectId = @this.SchemaId,
+    ///         AnomalyDetectionConfig = new Databricks.Inputs.DataQualityMonitorAnomalyDetectionConfigArgs
+    ///         {
+    ///             NotificationSettings = new Databricks.Inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs
+    ///             {
+    ///                 OnUnhealthyTable = new Databricks.Inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs
+    ///                 {
+    ///                     DestinationUserIds = new[]
+    ///                     {
+    ///                         int.Parse("&lt;user-id&gt;", System.Globalization.CultureInfo.InvariantCulture),
+    ///                     },
+    ///                     DestinationIds = new[]
+    ///                     {
+    ///                         "&lt;notification-destination-id&gt;",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

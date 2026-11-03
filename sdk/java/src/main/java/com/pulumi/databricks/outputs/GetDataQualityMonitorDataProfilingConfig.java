@@ -101,7 +101,7 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      * @return (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
      * 
      */
-    private @Nullable Boolean skipBuiltinDashboard;
+    private Boolean skipBuiltinDashboard;
     /**
      * @return (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
@@ -132,7 +132,7 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      * warehouse will be used
      * 
      */
-    private @Nullable String warehouseId;
+    private String warehouseId;
 
     private GetDataQualityMonitorDataProfilingConfig() {}
     /**
@@ -243,8 +243,8 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      * @return (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
      * 
      */
-    public Optional<Boolean> skipBuiltinDashboard() {
-        return Optional.ofNullable(this.skipBuiltinDashboard);
+    public Boolean skipBuiltinDashboard() {
+        return this.skipBuiltinDashboard;
     }
     /**
      * @return (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
@@ -284,8 +284,8 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      * warehouse will be used
      * 
      */
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
+    public String warehouseId() {
+        return this.warehouseId;
     }
 
     public static Builder builder() {
@@ -311,12 +311,12 @@ public final class GetDataQualityMonitorDataProfilingConfig {
         private String outputSchemaId;
         private String profileMetricsTableName;
         private @Nullable GetDataQualityMonitorDataProfilingConfigSchedule schedule;
-        private @Nullable Boolean skipBuiltinDashboard;
+        private Boolean skipBuiltinDashboard;
         private @Nullable List<String> slicingExprs;
         private @Nullable GetDataQualityMonitorDataProfilingConfigSnapshot snapshot;
         private String status;
         private @Nullable GetDataQualityMonitorDataProfilingConfigTimeSeries timeSeries;
-        private @Nullable String warehouseId;
+        private String warehouseId;
         public Builder() {}
         public Builder(GetDataQualityMonitorDataProfilingConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -446,8 +446,10 @@ public final class GetDataQualityMonitorDataProfilingConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder skipBuiltinDashboard(@Nullable Boolean skipBuiltinDashboard) {
-
+        public Builder skipBuiltinDashboard(Boolean skipBuiltinDashboard) {
+            if (skipBuiltinDashboard == null) {
+              throw new MissingRequiredPropertyException("GetDataQualityMonitorDataProfilingConfig", "skipBuiltinDashboard");
+            }
             this.skipBuiltinDashboard = skipBuiltinDashboard;
             return this;
         }
@@ -481,8 +483,10 @@ public final class GetDataQualityMonitorDataProfilingConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder warehouseId(@Nullable String warehouseId) {
-
+        public Builder warehouseId(String warehouseId) {
+            if (warehouseId == null) {
+              throw new MissingRequiredPropertyException("GetDataQualityMonitorDataProfilingConfig", "warehouseId");
+            }
             this.warehouseId = warehouseId;
             return this;
         }

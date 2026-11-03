@@ -32,6 +32,38 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
     }
 
     /**
+     * (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The resource name of the parent
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the parent
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * (integer) - The internal ID of the principal (user/sp/group) in Databricks
      * 
      */
@@ -95,6 +127,8 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
 
     private WorkspaceIamWorkspaceIdentityDetailV2State(WorkspaceIamWorkspaceIdentityDetailV2State $) {
         this.assignmentType = $.assignmentType;
+        this.name = $.name;
+        this.parent = $.parent;
         this.principalId = $.principalId;
         this.principalType = $.principalType;
         this.providerConfig = $.providerConfig;
@@ -138,6 +172,50 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
          */
         public Builder assignmentType(String assignmentType) {
             return assignmentType(Output.of(assignmentType));
+        }
+
+        /**
+         * @param name (string) - The resource name of the workspace identity detail.
+         * Format: principals/{principal_id}/workspace-identity-detail
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (string) - The resource name of the workspace identity detail.
+         * Format: principals/{principal_id}/workspace-identity-detail
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

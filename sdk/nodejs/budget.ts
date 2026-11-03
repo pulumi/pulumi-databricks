@@ -217,6 +217,7 @@ export class Budget extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     declare public readonly filter: pulumi.Output<outputs.BudgetFilter | undefined>;
+    declare public readonly includeExternalSpend: pulumi.Output<boolean | undefined>;
     /**
      * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
      */
@@ -242,6 +243,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["filter"] = state?.filter;
+            resourceInputs["includeExternalSpend"] = state?.includeExternalSpend;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -252,6 +254,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["createTime"] = args?.createTime;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["filter"] = args?.filter;
+            resourceInputs["includeExternalSpend"] = args?.includeExternalSpend;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["updateTime"] = args?.updateTime;
         }
@@ -279,6 +282,7 @@ export interface BudgetState {
      */
     displayName?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.BudgetFilter | undefined>;
+    includeExternalSpend?: pulumi.Input<boolean | undefined>;
     /**
      * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
      */
@@ -305,6 +309,7 @@ export interface BudgetArgs {
      */
     displayName?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.BudgetFilter | undefined>;
+    includeExternalSpend?: pulumi.Input<boolean | undefined>;
     /**
      * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
      */

@@ -30,6 +30,19 @@ public final class GetAccountIamGroupsV2Group {
      * 
      */
     private String groupName;
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return The parent resource name of the account whose groups to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    private String parent;
 
     private GetAccountIamGroupsV2Group() {}
     /**
@@ -60,6 +73,23 @@ public final class GetAccountIamGroupsV2Group {
     public String groupName() {
         return this.groupName;
     }
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The parent resource name of the account whose groups to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +104,8 @@ public final class GetAccountIamGroupsV2Group {
         private String externalId;
         private String groupId;
         private String groupName;
+        private String name;
+        private String parent;
         public Builder() {}
         public Builder(GetAccountIamGroupsV2Group defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +113,8 @@ public final class GetAccountIamGroupsV2Group {
     	      this.externalId = defaults.externalId;
     	      this.groupId = defaults.groupId;
     	      this.groupName = defaults.groupName;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
         }
 
         @CustomType.Setter
@@ -115,12 +149,30 @@ public final class GetAccountIamGroupsV2Group {
             this.groupName = groupName;
             return this;
         }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamGroupsV2Group", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamGroupsV2Group", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
         public GetAccountIamGroupsV2Group build() {
             final var _resultValue = new GetAccountIamGroupsV2Group();
             _resultValue.accountId = accountId;
             _resultValue.externalId = externalId;
             _resultValue.groupId = groupId;
             _resultValue.groupName = groupName;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             return _resultValue;
         }
     }

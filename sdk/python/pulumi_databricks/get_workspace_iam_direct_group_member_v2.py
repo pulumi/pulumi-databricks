@@ -28,7 +28,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     """
     A collection of values returned by getWorkspaceIamDirectGroupMemberV2.
     """
-    def __init__(__self__, display_name=None, external_id=None, group_id=None, membership_source=None, principal_id=None, principal_type=None, provider_config=None):
+    def __init__(__self__, display_name=None, external_id=None, group_id=None, membership_source=None, name=None, parent=None, principal_id=None, principal_type=None, provider_config=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -41,6 +41,12 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
         if membership_source and not isinstance(membership_source, str):
             raise TypeError("Expected argument 'membership_source' to be a str")
         pulumi.set(__self__, "membership_source", membership_source)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if principal_id and not isinstance(principal_id, str):
             raise TypeError("Expected argument 'principal_id' to be a str")
         pulumi.set(__self__, "principal_id", principal_id)
@@ -63,7 +69,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="externalId")
     def external_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the principal in Databricks
+        (string) - The external ID of the principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
 
@@ -82,6 +88,27 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
         (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         """
         return pulumi.get(self, "membership_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group membership. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group that contains the membership. The format depends on the API
+        that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -115,13 +142,14 @@ class AwaitableGetWorkspaceIamDirectGroupMemberV2Result(GetWorkspaceIamDirectGro
             external_id=self.external_id,
             group_id=self.group_id,
             membership_source=self.membership_source,
+            name=self.name,
+            parent=self.parent,
             principal_id=self.principal_id,
             principal_type=self.principal_type,
             provider_config=self.provider_config)
 
 
-def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] = None,
-                                             principal_id: Optional[_builtins.str] = None,
+def get_workspace_iam_direct_group_member_v2(name: Optional[_builtins.str] = None,
                                              provider_config: Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult']] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamDirectGroupMemberV2Result:
     """
@@ -129,7 +157,7 @@ def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] =
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
-    Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+    Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
 
     ## Example Usage
 
@@ -142,18 +170,17 @@ def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] =
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_workspace_iam_direct_group_member_v2(group_id=123456789,
-        principal_id="987654321")
+    this = databricks.get_workspace_iam_direct_group_member_v2(name="groups/123456789/direct-members/987654321")
     ```
 
 
-    :param _builtins.int group_id: The internal ID of the group this member belongs to
-    :param _builtins.str principal_id: Internal ID of the principal in Databricks
+    :param _builtins.str name: The resource name of the group membership. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+           - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
     :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
-    __args__['groupId'] = group_id
-    __args__['principalId'] = principal_id
+    __args__['name'] = name
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2', __args__, opts=opts, typ=GetWorkspaceIamDirectGroupMemberV2Result).value
@@ -163,11 +190,12 @@ def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] =
         external_id=pulumi.get(__ret__, 'external_id'),
         group_id=pulumi.get(__ret__, 'group_id'),
         membership_source=pulumi.get(__ret__, 'membership_source'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
         principal_id=pulumi.get(__ret__, 'principal_id'),
         principal_type=pulumi.get(__ret__, 'principal_type'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optional[_builtins.int]] = None,
-                                                    principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+def get_workspace_iam_direct_group_member_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult']]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamDirectGroupMemberV2Result]:
     """
@@ -175,7 +203,7 @@ def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optio
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
-    Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+    Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
 
     ## Example Usage
 
@@ -188,18 +216,17 @@ def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optio
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_workspace_iam_direct_group_member_v2(group_id=123456789,
-        principal_id="987654321")
+    this = databricks.get_workspace_iam_direct_group_member_v2(name="groups/123456789/direct-members/987654321")
     ```
 
 
-    :param _builtins.int group_id: The internal ID of the group this member belongs to
-    :param _builtins.str principal_id: Internal ID of the principal in Databricks
+    :param _builtins.str name: The resource name of the group membership. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+           - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
     :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
-    __args__['groupId'] = group_id
-    __args__['principalId'] = principal_id
+    __args__['name'] = name
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2', __args__, opts=opts, typ=GetWorkspaceIamDirectGroupMemberV2Result)
@@ -208,6 +235,8 @@ def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optio
         external_id=pulumi.get(__response__, 'external_id'),
         group_id=pulumi.get(__response__, 'group_id'),
         membership_source=pulumi.get(__response__, 'membership_source'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
         principal_id=pulumi.get(__response__, 'principal_id'),
         principal_type=pulumi.get(__response__, 'principal_type'),
         provider_config=pulumi.get(__response__, 'provider_config')))

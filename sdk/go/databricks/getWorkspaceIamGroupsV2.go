@@ -61,15 +61,21 @@ type GetWorkspaceIamGroupsV2Args struct {
 	// The maximum number of groups to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+	// defaults to the account of the calling workspace, and any other account is rejected
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamGroupsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getWorkspaceIamGroupsV2.
 type GetWorkspaceIamGroupsV2Result struct {
-	Filter         *string                                `pulumi:"filter"`
-	Groups         []GetWorkspaceIamGroupsV2Group         `pulumi:"groups"`
-	PageSize       *int                                   `pulumi:"pageSize"`
+	Filter   *string                        `pulumi:"filter"`
+	Groups   []GetWorkspaceIamGroupsV2Group `pulumi:"groups"`
+	PageSize *int                           `pulumi:"pageSize"`
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent         *string                                `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamGroupsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -85,6 +91,9 @@ type GetWorkspaceIamGroupsV2OutputArgs struct {
 	// The maximum number of groups to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+	// defaults to the account of the calling workspace, and any other account is rejected
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamGroupsV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -118,6 +127,12 @@ func (o GetWorkspaceIamGroupsV2ResultOutput) Groups() GetWorkspaceIamGroupsV2Gro
 
 func (o GetWorkspaceIamGroupsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceIamGroupsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o GetWorkspaceIamGroupsV2ResultOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceIamGroupsV2Result) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 func (o GetWorkspaceIamGroupsV2ResultOutput) ProviderConfig() GetWorkspaceIamGroupsV2ProviderConfigPtrOutput {

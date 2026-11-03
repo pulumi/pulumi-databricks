@@ -246,16 +246,14 @@ public class PostgresSyncedTable extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * Configuration details of the synced table, such as the source table, scheduling policy, etc
      * 
      */
     @Export(name="spec", refs={PostgresSyncedTableSpec.class}, tree="[0]")
     private Output<PostgresSyncedTableSpec> spec;
 
     /**
-     * @return Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * @return Configuration details of the synced table, such as the source table, scheduling policy, etc
      * 
      */
     public Output<PostgresSyncedTableSpec> spec() {

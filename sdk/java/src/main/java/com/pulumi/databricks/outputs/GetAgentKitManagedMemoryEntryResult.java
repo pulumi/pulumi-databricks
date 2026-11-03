@@ -35,7 +35,8 @@ public final class GetAgentKitManagedMemoryEntryResult {
     private String description;
     /**
      * @return (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      * 
      */
     private String name;
@@ -94,7 +95,8 @@ public final class GetAgentKitManagedMemoryEntryResult {
     }
     /**
      * @return (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      * 
      */
     public String name() {

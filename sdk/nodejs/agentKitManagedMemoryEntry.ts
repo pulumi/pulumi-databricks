@@ -61,7 +61,8 @@ export class AgentKitManagedMemoryEntry extends pulumi.CustomResource {
     declare public readonly managedMemoryEntryId: pulumi.Output<string>;
     /**
      * (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -172,7 +173,8 @@ export interface AgentKitManagedMemoryEntryState {
     managedMemoryEntryId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      */
     name?: pulumi.Input<string | undefined>;
     /**

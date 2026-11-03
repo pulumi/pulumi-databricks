@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single user by its internal ID, using a workspace-scoped provider.
+ * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
  *
  * ## Example Usage
  *
@@ -24,15 +24,15 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamUserV2({
- *     userId: "123456789",
+ *     name: "users/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamUserV2(args: GetWorkspaceIamUserV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceIamUserV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", {
+        "name": args.name,
         "providerConfig": args.providerConfig,
-        "userId": args.userId,
     }, opts);
 }
 
@@ -41,13 +41,15 @@ export function getWorkspaceIamUserV2(args: GetWorkspaceIamUserV2Args, opts?: pu
  */
 export interface GetWorkspaceIamUserV2Args {
     /**
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    name: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetWorkspaceIamUserV2ProviderConfig;
-    /**
-     * Internal userId of the user in Databricks
-     */
-    userId: string;
 }
 
 /**
@@ -70,6 +72,17 @@ export interface GetWorkspaceIamUserV2Result {
      * (UserFullName)
      */
     readonly fullName: outputs.GetWorkspaceIamUserV2FullName;
+    /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
     readonly providerConfig?: outputs.GetWorkspaceIamUserV2ProviderConfig;
     /**
      * (string) - Internal userId of the user in Databricks
@@ -85,7 +98,7 @@ export interface GetWorkspaceIamUserV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single user by its internal ID, using a workspace-scoped provider.
+ * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
  *
  * ## Example Usage
  *
@@ -98,15 +111,15 @@ export interface GetWorkspaceIamUserV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamUserV2({
- *     userId: "123456789",
+ *     name: "users/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamUserV2Output(args: GetWorkspaceIamUserV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceIamUserV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", {
+        "name": args.name,
         "providerConfig": args.providerConfig,
-        "userId": args.userId,
     }, opts);
 }
 
@@ -115,11 +128,13 @@ export function getWorkspaceIamUserV2Output(args: GetWorkspaceIamUserV2OutputArg
  */
 export interface GetWorkspaceIamUserV2OutputArgs {
     /**
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    name: pulumi.Input<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.GetWorkspaceIamUserV2ProviderConfigArgs | undefined>;
-    /**
-     * Internal userId of the user in Databricks
-     */
-    userId: pulumi.Input<string>;
 }

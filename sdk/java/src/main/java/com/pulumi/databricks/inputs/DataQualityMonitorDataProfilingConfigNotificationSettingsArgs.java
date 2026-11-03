@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs;
+import com.pulumi.databricks.inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,30 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs
         return Optional.ofNullable(this.onFailure);
     }
 
+    /**
+     * Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     * 
+     */
+    @Import(name="onUnhealthyTable")
+    private @Nullable Output<DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs> onUnhealthyTable;
+
+    /**
+     * @return Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     * 
+     */
+    public Optional<Output<DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs>> onUnhealthyTable() {
+        return Optional.ofNullable(this.onUnhealthyTable);
+    }
+
     private DataQualityMonitorDataProfilingConfigNotificationSettingsArgs() {}
 
     private DataQualityMonitorDataProfilingConfigNotificationSettingsArgs(DataQualityMonitorDataProfilingConfigNotificationSettingsArgs $) {
         this.onFailure = $.onFailure;
+        this.onUnhealthyTable = $.onUnhealthyTable;
     }
 
     public static Builder builder() {
@@ -73,6 +94,31 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs
          */
         public Builder onFailure(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs onFailure) {
             return onFailure(Output.of(onFailure));
+        }
+
+        /**
+         * @param onUnhealthyTable Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+         * recipient gets one notification per important unhealthy table. Only supported on schema
+         * monitors, via `anomalyDetectionConfig`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onUnhealthyTable(@Nullable Output<DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs> onUnhealthyTable) {
+            $.onUnhealthyTable = onUnhealthyTable;
+            return this;
+        }
+
+        /**
+         * @param onUnhealthyTable Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+         * recipient gets one notification per important unhealthy table. Only supported on schema
+         * monitors, via `anomalyDetectionConfig`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onUnhealthyTable(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs onUnhealthyTable) {
+            return onUnhealthyTable(Output.of(onUnhealthyTable));
         }
 
         public DataQualityMonitorDataProfilingConfigNotificationSettingsArgs build() {

@@ -18,6 +18,12 @@ public final class GetAccountIamGroupsV2Result {
     private @Nullable String filter;
     private List<GetAccountIamGroupsV2Group> groups;
     private @Nullable Integer pageSize;
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private String parent;
 
     private GetAccountIamGroupsV2Result() {}
     public Optional<String> filter() {
@@ -28,6 +34,14 @@ public final class GetAccountIamGroupsV2Result {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public String parent() {
+        return this.parent;
     }
 
     public static Builder builder() {
@@ -42,12 +56,14 @@ public final class GetAccountIamGroupsV2Result {
         private @Nullable String filter;
         private List<GetAccountIamGroupsV2Group> groups;
         private @Nullable Integer pageSize;
+        private String parent;
         public Builder() {}
         public Builder(GetAccountIamGroupsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
     	      this.groups = defaults.groups;
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
         }
 
         @CustomType.Setter
@@ -73,11 +89,20 @@ public final class GetAccountIamGroupsV2Result {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamGroupsV2Result", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
         public GetAccountIamGroupsV2Result build() {
             final var _resultValue = new GetAccountIamGroupsV2Result();
             _resultValue.filter = filter;
             _resultValue.groups = groups;
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             return _resultValue;
         }
     }

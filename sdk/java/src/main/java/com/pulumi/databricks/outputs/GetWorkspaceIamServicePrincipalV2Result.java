@@ -39,6 +39,19 @@ public final class GetWorkspaceIamServicePrincipalV2Result {
      * 
      */
     private String externalId;
+    /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private String parent;
     private @Nullable GetWorkspaceIamServicePrincipalV2ProviderConfig providerConfig;
     /**
      * @return (string) - Internal service principal ID of the service principal in Databricks
@@ -83,6 +96,23 @@ public final class GetWorkspaceIamServicePrincipalV2Result {
     public String externalId() {
         return this.externalId;
     }
+    /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
     public Optional<GetWorkspaceIamServicePrincipalV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -108,6 +138,8 @@ public final class GetWorkspaceIamServicePrincipalV2Result {
         private String applicationId;
         private String displayName;
         private String externalId;
+        private String name;
+        private String parent;
         private @Nullable GetWorkspaceIamServicePrincipalV2ProviderConfig providerConfig;
         private String servicePrincipalId;
         public Builder() {}
@@ -118,6 +150,8 @@ public final class GetWorkspaceIamServicePrincipalV2Result {
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
     	      this.externalId = defaults.externalId;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
         }
@@ -163,6 +197,22 @@ public final class GetWorkspaceIamServicePrincipalV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalV2Result", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalV2Result", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetWorkspaceIamServicePrincipalV2ProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -183,6 +233,8 @@ public final class GetWorkspaceIamServicePrincipalV2Result {
             _resultValue.applicationId = applicationId;
             _resultValue.displayName = displayName;
             _resultValue.externalId = externalId;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             _resultValue.servicePrincipalId = servicePrincipalId;
             return _resultValue;

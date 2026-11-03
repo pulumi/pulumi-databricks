@@ -26,7 +26,7 @@ class GetAccountIamWorkspaceAssignmentV2Result:
     """
     A collection of values returned by getAccountIamWorkspaceAssignmentV2.
     """
-    def __init__(__self__, account_id=None, effective_entitlements=None, entitlements=None, principal_id=None, principal_type=None, workspace_id=None):
+    def __init__(__self__, account_id=None, effective_entitlements=None, entitlements=None, name=None, parent=None, principal_id=None, principal_type=None, workspace_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,6 +36,12 @@ class GetAccountIamWorkspaceAssignmentV2Result:
         if entitlements and not isinstance(entitlements, list):
             raise TypeError("Expected argument 'entitlements' to be a list")
         pulumi.set(__self__, "entitlements", entitlements)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if principal_id and not isinstance(principal_id, str):
             raise TypeError("Expected argument 'principal_id' to be a str")
         pulumi.set(__self__, "principal_id", principal_id)
@@ -75,10 +81,32 @@ class GetAccountIamWorkspaceAssignmentV2Result:
         return pulumi.get(self, "entitlements")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        - Workspace-scoped: workspace-assignments/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the workspace that contains the assignment,
+        `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+        APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> _builtins.str:
         """
-        (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        created and cannot be changed afterwards; to assign a different principal, create a new
+        assignment
         """
         return pulumi.get(self, "principal_id")
 
@@ -108,20 +136,21 @@ class AwaitableGetAccountIamWorkspaceAssignmentV2Result(GetAccountIamWorkspaceAs
             account_id=self.account_id,
             effective_entitlements=self.effective_entitlements,
             entitlements=self.entitlements,
+            name=self.name,
+            parent=self.parent,
             principal_id=self.principal_id,
             principal_type=self.principal_type,
             workspace_id=self.workspace_id)
 
 
-def get_account_iam_workspace_assignment_v2(principal_id: Optional[_builtins.str] = None,
-                                            workspace_id: Optional[_builtins.str] = None,
+def get_account_iam_workspace_assignment_v2(name: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamWorkspaceAssignmentV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
-    Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+    Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
 
     ## Example Usage
 
@@ -133,17 +162,16 @@ def get_account_iam_workspace_assignment_v2(principal_id: Optional[_builtins.str
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_workspace_assignment_v2(workspace_id="123456789",
-        principal_id="987654321")
+    this = databricks.get_account_iam_workspace_assignment_v2(name="accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
     ```
 
 
-    :param _builtins.str principal_id: The internal ID of the principal (user/sp/group) in Databricks
-    :param _builtins.str workspace_id: The workspace ID where the principal is assigned
+    :param _builtins.str name: The resource name of the workspace assignment. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+           - Workspace-scoped: workspace-assignments/{principal_id}
     """
     __args__ = dict()
-    __args__['principalId'] = principal_id
-    __args__['workspaceId'] = workspace_id
+    __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2', __args__, opts=opts, typ=GetAccountIamWorkspaceAssignmentV2Result).value
 
@@ -151,18 +179,19 @@ def get_account_iam_workspace_assignment_v2(principal_id: Optional[_builtins.str
         account_id=pulumi.get(__ret__, 'account_id'),
         effective_entitlements=pulumi.get(__ret__, 'effective_entitlements'),
         entitlements=pulumi.get(__ret__, 'entitlements'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
         principal_id=pulumi.get(__ret__, 'principal_id'),
         principal_type=pulumi.get(__ret__, 'principal_type'),
         workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_account_iam_workspace_assignment_v2_output(principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                   workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+def get_account_iam_workspace_assignment_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamWorkspaceAssignmentV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
-    Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+    Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
 
     ## Example Usage
 
@@ -174,23 +203,24 @@ def get_account_iam_workspace_assignment_v2_output(principal_id: pulumi.Input[Op
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_workspace_assignment_v2(workspace_id="123456789",
-        principal_id="987654321")
+    this = databricks.get_account_iam_workspace_assignment_v2(name="accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
     ```
 
 
-    :param _builtins.str principal_id: The internal ID of the principal (user/sp/group) in Databricks
-    :param _builtins.str workspace_id: The workspace ID where the principal is assigned
+    :param _builtins.str name: The resource name of the workspace assignment. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+           - Workspace-scoped: workspace-assignments/{principal_id}
     """
     __args__ = dict()
-    __args__['principalId'] = principal_id
-    __args__['workspaceId'] = workspace_id
+    __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2', __args__, opts=opts, typ=GetAccountIamWorkspaceAssignmentV2Result)
     return __ret__.apply(lambda __response__: GetAccountIamWorkspaceAssignmentV2Result(
         account_id=pulumi.get(__response__, 'account_id'),
         effective_entitlements=pulumi.get(__response__, 'effective_entitlements'),
         entitlements=pulumi.get(__response__, 'entitlements'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
         principal_id=pulumi.get(__response__, 'principal_id'),
         principal_type=pulumi.get(__response__, 'principal_type'),
         workspace_id=pulumi.get(__response__, 'workspace_id')))

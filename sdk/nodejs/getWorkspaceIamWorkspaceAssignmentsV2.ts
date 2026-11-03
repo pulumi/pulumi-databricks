@@ -18,6 +18,7 @@ export function getWorkspaceIamWorkspaceAssignmentsV2(args?: GetWorkspaceIamWork
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", {
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -32,6 +33,12 @@ export interface GetWorkspaceIamWorkspaceAssignmentsV2Args {
      */
     pageSize?: number;
     /**
+     * The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     */
+    parent?: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig;
@@ -42,6 +49,12 @@ export interface GetWorkspaceIamWorkspaceAssignmentsV2Args {
  */
 export interface GetWorkspaceIamWorkspaceAssignmentsV2Result {
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     */
+    readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig;
     readonly workspaceAssignments: outputs.GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment[];
 }
@@ -57,6 +70,7 @@ export function getWorkspaceIamWorkspaceAssignmentsV2Output(args?: GetWorkspaceI
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", {
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -70,6 +84,12 @@ export interface GetWorkspaceIamWorkspaceAssignmentsV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

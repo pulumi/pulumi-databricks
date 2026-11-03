@@ -78,7 +78,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
         /// </summary>
-        public readonly bool? SkipBuiltinDashboard;
+        public readonly bool SkipBuiltinDashboard;
         /// <summary>
         /// (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
         /// each expression independently, resulting in a separate slice for each predicate and its
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
         /// warehouse will be used
         /// </summary>
-        public readonly string? WarehouseId;
+        public readonly string WarehouseId;
 
         [OutputConstructor]
         private GetDataQualityMonitorsMonitorDataProfilingConfigResult(
@@ -136,7 +136,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetDataQualityMonitorsMonitorDataProfilingConfigScheduleResult? schedule,
 
-            bool? skipBuiltinDashboard,
+            bool skipBuiltinDashboard,
 
             ImmutableArray<string> slicingExprs,
 
@@ -146,7 +146,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeriesResult? timeSeries,
 
-            string? warehouseId)
+            string warehouseId)
         {
             AssetsDir = assetsDir;
             BaselineTableName = baselineTableName;

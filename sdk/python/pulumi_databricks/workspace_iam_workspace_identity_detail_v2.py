@@ -21,18 +21,33 @@ __all__ = ['WorkspaceIamWorkspaceIdentityDetailV2Args', 'WorkspaceIamWorkspaceId
 @pulumi.input_type
 class WorkspaceIamWorkspaceIdentityDetailV2Args:
     def __init__(__self__, *,
+                 parent: pulumi.Input[_builtins.str],
                  provider_config: pulumi.Input[Optional['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs']] = None,
                  workspace_identity_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceIamWorkspaceIdentityDetailV2 resource.
 
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_identity_status: The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
         """
+        pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if workspace_identity_status is not None:
             pulumi.set(__self__, "workspace_identity_status", workspace_identity_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the parent
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -63,6 +78,8 @@ class WorkspaceIamWorkspaceIdentityDetailV2Args:
 class _WorkspaceIamWorkspaceIdentityDetailV2State:
     def __init__(__self__, *,
                  assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  principal_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs']] = None,
@@ -71,6 +88,9 @@ class _WorkspaceIamWorkspaceIdentityDetailV2State:
         Input properties used for looking up and filtering WorkspaceIamWorkspaceIdentityDetailV2 resources.
 
         :param pulumi.Input[_builtins.str] assignment_type: (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace identity detail.
+               Format: principals/{principal_id}/workspace-identity-detail
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input[_builtins.str] principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         :param pulumi.Input['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -78,6 +98,10 @@ class _WorkspaceIamWorkspaceIdentityDetailV2State:
         """
         if assignment_type is not None:
             pulumi.set(__self__, "assignment_type", assignment_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
         if principal_type is not None:
@@ -98,6 +122,31 @@ class _WorkspaceIamWorkspaceIdentityDetailV2State:
     @assignment_type.setter
     def assignment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assignment_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the workspace identity detail.
+        Format: principals/{principal_id}/workspace-identity-detail
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the parent
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -154,6 +203,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']]] = None,
                  workspace_identity_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -181,15 +231,16 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
         this = databricks.WorkspaceIamWorkspaceIdentityDetailV2("this", workspace_identity_status="ACTIVE")
         ```
 
-        Import the resource by the principal's internal Databricks ID:
+        Import the resource by its name, which contains the principal's internal Databricks ID:
 
         ```sh
-        terraform import databricks_workspace_iam_workspace_identity_detail_v2.this <principal_id>
+        terraform import databricks_workspace_iam_workspace_identity_detail_v2.this principals/<principal_id>/workspace-identity-detail
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_identity_status: The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
         """
@@ -197,7 +248,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[WorkspaceIamWorkspaceIdentityDetailV2Args] = None,
+                 args: WorkspaceIamWorkspaceIdentityDetailV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -223,10 +274,10 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
         this = databricks.WorkspaceIamWorkspaceIdentityDetailV2("this", workspace_identity_status="ACTIVE")
         ```
 
-        Import the resource by the principal's internal Databricks ID:
+        Import the resource by its name, which contains the principal's internal Databricks ID:
 
         ```sh
-        terraform import databricks_workspace_iam_workspace_identity_detail_v2.this <principal_id>
+        terraform import databricks_workspace_iam_workspace_identity_detail_v2.this principals/<principal_id>/workspace-identity-detail
         ```
 
 
@@ -245,6 +296,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']]] = None,
                  workspace_identity_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -256,9 +308,13 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkspaceIamWorkspaceIdentityDetailV2Args.__new__(WorkspaceIamWorkspaceIdentityDetailV2Args)
 
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["workspace_identity_status"] = workspace_identity_status
             __props__.__dict__["assignment_type"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["principal_id"] = None
             __props__.__dict__["principal_type"] = None
         super(WorkspaceIamWorkspaceIdentityDetailV2, __self__).__init__(
@@ -272,6 +328,8 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             principal_type: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']]] = None,
@@ -284,6 +342,9 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assignment_type: (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace identity detail.
+               Format: principals/{principal_id}/workspace-identity-detail
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input[_builtins.str] principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         :param pulumi.Input[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
@@ -294,6 +355,8 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
         __props__ = _WorkspaceIamWorkspaceIdentityDetailV2State.__new__(_WorkspaceIamWorkspaceIdentityDetailV2State)
 
         __props__.__dict__["assignment_type"] = assignment_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["principal_id"] = principal_id
         __props__.__dict__["principal_type"] = principal_type
         __props__.__dict__["provider_config"] = provider_config
@@ -307,6 +370,23 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
         (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
         """
         return pulumi.get(self, "assignment_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the workspace identity detail.
+        Format: principals/{principal_id}/workspace-identity-detail
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the parent
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="principalId")

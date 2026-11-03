@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerContinuous;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
+import com.pulumi.databricks.outputs.JobTriggerJobCompletion;
 import com.pulumi.databricks.outputs.JobTriggerModel;
 import com.pulumi.databricks.outputs.JobTriggerPeriodic;
 import com.pulumi.databricks.outputs.JobTriggerSchedule;
@@ -28,6 +29,7 @@ public final class JobTrigger {
      * 
      */
     private @Nullable JobTriggerFileArrival fileArrival;
+    private @Nullable JobTriggerJobCompletion jobCompletion;
     private @Nullable JobTriggerModel model;
     private @Nullable String pauseStatus;
     /**
@@ -61,6 +63,9 @@ public final class JobTrigger {
      */
     public Optional<JobTriggerFileArrival> fileArrival() {
         return Optional.ofNullable(this.fileArrival);
+    }
+    public Optional<JobTriggerJobCompletion> jobCompletion() {
+        return Optional.ofNullable(this.jobCompletion);
     }
     public Optional<JobTriggerModel> model() {
         return Optional.ofNullable(this.model);
@@ -104,6 +109,7 @@ public final class JobTrigger {
     public static final class Builder {
         private @Nullable JobTriggerContinuous continuous;
         private @Nullable JobTriggerFileArrival fileArrival;
+        private @Nullable JobTriggerJobCompletion jobCompletion;
         private @Nullable JobTriggerModel model;
         private @Nullable String pauseStatus;
         private @Nullable JobTriggerPeriodic periodic;
@@ -115,6 +121,7 @@ public final class JobTrigger {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
     	      this.fileArrival = defaults.fileArrival;
+    	      this.jobCompletion = defaults.jobCompletion;
     	      this.model = defaults.model;
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.periodic = defaults.periodic;
@@ -133,6 +140,12 @@ public final class JobTrigger {
         public Builder fileArrival(@Nullable JobTriggerFileArrival fileArrival) {
 
             this.fileArrival = fileArrival;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jobCompletion(@Nullable JobTriggerJobCompletion jobCompletion) {
+
+            this.jobCompletion = jobCompletion;
             return this;
         }
         @CustomType.Setter
@@ -175,6 +188,7 @@ public final class JobTrigger {
             final var _resultValue = new JobTrigger();
             _resultValue.continuous = continuous;
             _resultValue.fileArrival = fileArrival;
+            _resultValue.jobCompletion = jobCompletion;
             _resultValue.model = model;
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.periodic = periodic;

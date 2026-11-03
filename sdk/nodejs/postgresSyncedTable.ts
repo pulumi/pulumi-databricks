@@ -147,8 +147,7 @@ export class PostgresSyncedTable extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresSyncedTableProviderConfig>;
     /**
-     * Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * Configuration details of the synced table, such as the source table, scheduling policy, etc
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresSyncedTableSpec>;
     /**
@@ -220,8 +219,7 @@ export interface PostgresSyncedTableState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresSyncedTableProviderConfig | undefined>;
     /**
-     * Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * Configuration details of the synced table, such as the source table, scheduling policy, etc
      */
     spec?: pulumi.Input<inputs.PostgresSyncedTableSpec | undefined>;
     /**
@@ -247,8 +245,7 @@ export interface PostgresSyncedTableArgs {
      */
     providerConfig?: pulumi.Input<inputs.PostgresSyncedTableProviderConfig | undefined>;
     /**
-     * Configuration details of the synced table, such as the source table, scheduling policy, etc.
-     * This attribute is specified at creation time and most fields are returned as is on subsequent queries
+     * Configuration details of the synced table, such as the source table, scheduling policy, etc
      */
     spec?: pulumi.Input<inputs.PostgresSyncedTableSpec | undefined>;
     /**

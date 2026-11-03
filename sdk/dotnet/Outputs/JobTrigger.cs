@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         /// </summary>
         public readonly Outputs.JobTriggerFileArrival? FileArrival;
+        public readonly Outputs.JobTriggerJobCompletion? JobCompletion;
         public readonly Outputs.JobTriggerModel? Model;
         public readonly string? PauseStatus;
         /// <summary>
@@ -43,6 +44,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTriggerFileArrival? fileArrival,
 
+            Outputs.JobTriggerJobCompletion? jobCompletion,
+
             Outputs.JobTriggerModel? model,
 
             string? pauseStatus,
@@ -57,6 +60,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Continuous = continuous;
             FileArrival = fileArrival;
+            JobCompletion = jobCompletion;
             Model = model;
             PauseStatus = pauseStatus;
             Periodic = periodic;

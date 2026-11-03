@@ -39,14 +39,14 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom description for the alert. support mustache template
+     * Custom description for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     @Import(name="customDescription")
     private @Nullable Output<String> customDescription;
 
     /**
-     * @return Custom description for the alert. support mustache template
+     * @return Custom description for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     public Optional<Output<String>> customDescription() {
@@ -54,14 +54,14 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom summary for the alert. support mustache template
+     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     @Import(name="customSummary")
     private @Nullable Output<String> customSummary;
 
     /**
-     * @return Custom summary for the alert. support mustache template
+     * @return Custom summary for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     public Optional<Output<String>> customSummary() {
@@ -408,7 +408,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDescription Custom description for the alert. support mustache template
+         * @param customDescription Custom description for the alert. Interpreted according to `customTemplateFormat`
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDescription Custom description for the alert. support mustache template
+         * @param customDescription Custom description for the alert. Interpreted according to `customTemplateFormat`
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSummary Custom summary for the alert. support mustache template
+         * @param customSummary Custom summary for the alert. Interpreted according to `customTemplateFormat`
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSummary Custom summary for the alert. support mustache template
+         * @param customSummary Custom summary for the alert. Interpreted according to `customTemplateFormat`
          * 
          * @return builder
          * 

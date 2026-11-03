@@ -40,6 +40,19 @@ public final class GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
      */
     private String externalId;
     /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    private String parent;
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -88,6 +101,23 @@ public final class GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
         return this.externalId;
     }
     /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -116,6 +146,8 @@ public final class GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
         private String applicationId;
         private String displayName;
         private String externalId;
+        private String name;
+        private String parent;
         private @Nullable GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfig providerConfig;
         private String servicePrincipalId;
         public Builder() {}
@@ -126,6 +158,8 @@ public final class GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
     	      this.externalId = defaults.externalId;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
         }
@@ -171,6 +205,22 @@ public final class GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalsV2ServicePrincipal", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalsV2ServicePrincipal", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -191,6 +241,8 @@ public final class GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
             _resultValue.applicationId = applicationId;
             _resultValue.displayName = displayName;
             _resultValue.externalId = externalId;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             _resultValue.servicePrincipalId = servicePrincipalId;
             return _resultValue;

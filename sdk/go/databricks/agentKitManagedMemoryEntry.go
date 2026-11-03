@@ -29,7 +29,8 @@ type AgentKitManagedMemoryEntry struct {
 	// Optional caller-selected memory entry ID. The service generates an ID when omitted
 	ManagedMemoryEntryId pulumi.StringOutput `pulumi:"managedMemoryEntryId"`
 	// (string) - Resource name in the form
-	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+	// Required for updates; assigned by the service on creation
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
@@ -98,7 +99,8 @@ type agentKitManagedMemoryEntryState struct {
 	// Optional caller-selected memory entry ID. The service generates an ID when omitted
 	ManagedMemoryEntryId *string `pulumi:"managedMemoryEntryId"`
 	// (string) - Resource name in the form
-	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+	// Required for updates; assigned by the service on creation
 	Name *string `pulumi:"name"`
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
@@ -129,7 +131,8 @@ type AgentKitManagedMemoryEntryState struct {
 	// Optional caller-selected memory entry ID. The service generates an ID when omitted
 	ManagedMemoryEntryId pulumi.StringPtrInput
 	// (string) - Resource name in the form
-	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+	// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+	// Required for updates; assigned by the service on creation
 	Name pulumi.StringPtrInput
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
@@ -314,7 +317,8 @@ func (o AgentKitManagedMemoryEntryOutput) ManagedMemoryEntryId() pulumi.StringOu
 }
 
 // (string) - Resource name in the form
-// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+// `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+// Required for updates; assigned by the service on creation
 func (o AgentKitManagedMemoryEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentKitManagedMemoryEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

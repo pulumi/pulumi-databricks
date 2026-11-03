@@ -27,13 +27,16 @@ class GetAccountIamServicePrincipalsV2Result:
     """
     A collection of values returned by getAccountIamServicePrincipalsV2.
     """
-    def __init__(__self__, filter=None, page_size=None, service_principals=None):
+    def __init__(__self__, filter=None, page_size=None, parent=None, service_principals=None):
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if service_principals and not isinstance(service_principals, list):
             raise TypeError("Expected argument 'service_principals' to be a list")
         pulumi.set(__self__, "service_principals", service_principals)
@@ -49,6 +52,15 @@ class GetAccountIamServicePrincipalsV2Result:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the account that contains the service principal,
+        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="servicePrincipals")
     def service_principals(self) -> Sequence['outputs.GetAccountIamServicePrincipalsV2ServicePrincipalResult']:
         return pulumi.get(self, "service_principals")
@@ -62,11 +74,13 @@ class AwaitableGetAccountIamServicePrincipalsV2Result(GetAccountIamServicePrinci
         return GetAccountIamServicePrincipalsV2Result(
             filter=self.filter,
             page_size=self.page_size,
+            parent=self.parent,
             service_principals=self.service_principals)
 
 
 def get_account_iam_service_principals_v2(filter: Optional[_builtins.str] = None,
                                           page_size: Optional[_builtins.int] = None,
+                                          parent: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamServicePrincipalsV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -85,26 +99,31 @@ def get_account_iam_service_principals_v2(filter: Optional[_builtins.str] = None
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_service_principals_v2()
+    this = databricks.get_account_iam_service_principals_v2(parent="accounts/00000000-0000-0000-0000-000000000000")
     ```
 
 
     :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
     :param _builtins.int page_size: The maximum number of service principals to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The parent resource name of the account whose service principals to list.
+           Format: accounts/{account_id}
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2', __args__, opts=opts, typ=GetAccountIamServicePrincipalsV2Result).value
 
     return AwaitableGetAccountIamServicePrincipalsV2Result(
         filter=pulumi.get(__ret__, 'filter'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        parent=pulumi.get(__ret__, 'parent'),
         service_principals=pulumi.get(__ret__, 'service_principals'))
 def get_account_iam_service_principals_v2_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamServicePrincipalsV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -123,20 +142,24 @@ def get_account_iam_service_principals_v2_output(filter: pulumi.Input[Optional[O
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_service_principals_v2()
+    this = databricks.get_account_iam_service_principals_v2(parent="accounts/00000000-0000-0000-0000-000000000000")
     ```
 
 
     :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
     :param _builtins.int page_size: The maximum number of service principals to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The parent resource name of the account whose service principals to list.
+           Format: accounts/{account_id}
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2', __args__, opts=opts, typ=GetAccountIamServicePrincipalsV2Result)
     return __ret__.apply(lambda __response__: GetAccountIamServicePrincipalsV2Result(
         filter=pulumi.get(__response__, 'filter'),
         page_size=pulumi.get(__response__, 'page_size'),
+        parent=pulumi.get(__response__, 'parent'),
         service_principals=pulumi.get(__response__, 'service_principals')))

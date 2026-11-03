@@ -27,7 +27,7 @@ class GetAccountIamUserV2Result:
     """
     A collection of values returned by getAccountIamUserV2.
     """
-    def __init__(__self__, account_id=None, account_user_status=None, external_id=None, full_name=None, user_id=None, username=None):
+    def __init__(__self__, account_id=None, account_user_status=None, external_id=None, full_name=None, name=None, parent=None, user_id=None, username=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,12 @@ class GetAccountIamUserV2Result:
         if full_name and not isinstance(full_name, dict):
             raise TypeError("Expected argument 'full_name' to be a dict")
         pulumi.set(__self__, "full_name", full_name)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         pulumi.set(__self__, "user_id", user_id)
@@ -80,6 +86,25 @@ class GetAccountIamUserV2Result:
         return pulumi.get(self, "full_name")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the user. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/users/{user_id}
+        - Workspace-scoped: users/{user_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> _builtins.str:
         """
@@ -106,18 +131,20 @@ class AwaitableGetAccountIamUserV2Result(GetAccountIamUserV2Result):
             account_user_status=self.account_user_status,
             external_id=self.external_id,
             full_name=self.full_name,
+            name=self.name,
+            parent=self.parent,
             user_id=self.user_id,
             username=self.username)
 
 
-def get_account_iam_user_v2(user_id: Optional[_builtins.str] = None,
+def get_account_iam_user_v2(name: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamUserV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
-    Reads a single account user by its internal ID.
+    Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
 
     ## Example Usage
 
@@ -129,14 +156,16 @@ def get_account_iam_user_v2(user_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_user_v2(user_id="123456789")
+    this = databricks.get_account_iam_user_v2(name="accounts/00000000-0000-0000-0000-000000000000/users/123456789")
     ```
 
 
-    :param _builtins.str user_id: Internal userId of the user in Databricks
+    :param _builtins.str name: The resource name of the user. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/users/{user_id}
+           - Workspace-scoped: users/{user_id}
     """
     __args__ = dict()
-    __args__['userId'] = user_id
+    __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountIamUserV2:getAccountIamUserV2', __args__, opts=opts, typ=GetAccountIamUserV2Result).value
 
@@ -145,16 +174,18 @@ def get_account_iam_user_v2(user_id: Optional[_builtins.str] = None,
         account_user_status=pulumi.get(__ret__, 'account_user_status'),
         external_id=pulumi.get(__ret__, 'external_id'),
         full_name=pulumi.get(__ret__, 'full_name'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
         user_id=pulumi.get(__ret__, 'user_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_account_iam_user_v2_output(user_id: pulumi.Input[Optional[_builtins.str]] = None,
+def get_account_iam_user_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamUserV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
-    Reads a single account user by its internal ID.
+    Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
 
     ## Example Usage
 
@@ -166,14 +197,16 @@ def get_account_iam_user_v2_output(user_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_user_v2(user_id="123456789")
+    this = databricks.get_account_iam_user_v2(name="accounts/00000000-0000-0000-0000-000000000000/users/123456789")
     ```
 
 
-    :param _builtins.str user_id: Internal userId of the user in Databricks
+    :param _builtins.str name: The resource name of the user. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/users/{user_id}
+           - Workspace-scoped: users/{user_id}
     """
     __args__ = dict()
-    __args__['userId'] = user_id
+    __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountIamUserV2:getAccountIamUserV2', __args__, opts=opts, typ=GetAccountIamUserV2Result)
     return __ret__.apply(lambda __response__: GetAccountIamUserV2Result(
@@ -181,5 +214,7 @@ def get_account_iam_user_v2_output(user_id: pulumi.Input[Optional[_builtins.str]
         account_user_status=pulumi.get(__response__, 'account_user_status'),
         external_id=pulumi.get(__response__, 'external_id'),
         full_name=pulumi.get(__response__, 'full_name'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
         user_id=pulumi.get(__response__, 'user_id'),
         username=pulumi.get(__response__, 'username')))

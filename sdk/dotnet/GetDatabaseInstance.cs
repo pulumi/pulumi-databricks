@@ -18,6 +18,8 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single Database Instance.
         /// 
+        /// For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -49,6 +51,8 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single Database Instance.
         /// 
+        /// For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -79,6 +83,8 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// 
         /// This data source can be used to get a single Database Instance.
+        /// 
+        /// For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
         /// 
         /// 
         /// ## Example Usage

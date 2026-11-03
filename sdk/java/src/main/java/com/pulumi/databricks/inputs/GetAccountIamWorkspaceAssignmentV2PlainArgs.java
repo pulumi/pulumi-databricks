@@ -14,40 +14,28 @@ public final class GetAccountIamWorkspaceAssignmentV2PlainArgs extends com.pulum
     public static final GetAccountIamWorkspaceAssignmentV2PlainArgs Empty = new GetAccountIamWorkspaceAssignmentV2PlainArgs();
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      * 
      */
-    @Import(name="principalId", required=true)
-    private String principalId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      * 
      */
-    public String principalId() {
-        return this.principalId;
-    }
-
-    /**
-     * The workspace ID where the principal is assigned
-     * 
-     */
-    @Import(name="workspaceId", required=true)
-    private String workspaceId;
-
-    /**
-     * @return The workspace ID where the principal is assigned
-     * 
-     */
-    public String workspaceId() {
-        return this.workspaceId;
+    public String name() {
+        return this.name;
     }
 
     private GetAccountIamWorkspaceAssignmentV2PlainArgs() {}
 
     private GetAccountIamWorkspaceAssignmentV2PlainArgs(GetAccountIamWorkspaceAssignmentV2PlainArgs $) {
-        this.principalId = $.principalId;
-        this.workspaceId = $.workspaceId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -69,33 +57,21 @@ public final class GetAccountIamWorkspaceAssignmentV2PlainArgs extends com.pulum
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace assignment. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+         * - Workspace-scoped: workspace-assignments/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder principalId(String principalId) {
-            $.principalId = principalId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId The workspace ID where the principal is assigned
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
         public GetAccountIamWorkspaceAssignmentV2PlainArgs build() {
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2PlainArgs", "principalId");
-            }
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2PlainArgs", "workspaceId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2PlainArgs", "name");
             }
             return $;
         }

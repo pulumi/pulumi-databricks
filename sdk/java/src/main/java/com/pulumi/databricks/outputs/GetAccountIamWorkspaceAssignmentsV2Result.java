@@ -16,26 +16,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountIamWorkspaceAssignmentsV2Result {
     private @Nullable Integer pageSize;
-    private List<GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments;
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
      * 
      */
-    private String workspaceId;
+    private String parent;
+    private List<GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments;
 
     private GetAccountIamWorkspaceAssignmentsV2Result() {}
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
-    public List<GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments() {
-        return this.workspaceAssignments;
-    }
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
      * 
      */
-    public String workspaceId() {
-        return this.workspaceId;
+    public String parent() {
+        return this.parent;
+    }
+    public List<GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments() {
+        return this.workspaceAssignments;
     }
 
     public static Builder builder() {
@@ -48,20 +52,28 @@ public final class GetAccountIamWorkspaceAssignmentsV2Result {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer pageSize;
+        private String parent;
         private List<GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments;
-        private String workspaceId;
         public Builder() {}
         public Builder(GetAccountIamWorkspaceAssignmentsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
     	      this.workspaceAssignments = defaults.workspaceAssignments;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentsV2Result", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
@@ -75,19 +87,11 @@ public final class GetAccountIamWorkspaceAssignmentsV2Result {
         public Builder workspaceAssignments(GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment... workspaceAssignments) {
             return workspaceAssignments(List.of(workspaceAssignments));
         }
-        @CustomType.Setter
-        public Builder workspaceId(String workspaceId) {
-            if (workspaceId == null) {
-              throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentsV2Result", "workspaceId");
-            }
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetAccountIamWorkspaceAssignmentsV2Result build() {
             final var _resultValue = new GetAccountIamWorkspaceAssignmentsV2Result();
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             _resultValue.workspaceAssignments = workspaceAssignments;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

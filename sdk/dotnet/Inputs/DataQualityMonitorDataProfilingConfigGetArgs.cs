@@ -63,9 +63,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("monitoredTableName")]
         public Input<string>? MonitoredTableName { get; set; }
 
-        /// <summary>
-        /// Field for specifying notification settings
-        /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsGetArgs>? NotificationSettings { get; set; }
 

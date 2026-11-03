@@ -30,7 +30,21 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Entitlements;
         /// <summary>
-        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        /// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        /// - Workspace-scoped: workspace-assignments/{principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The resource name of the workspace to list assignments of,
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+        /// and any other workspace is rejected
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
+        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        /// created and cannot be changed afterwards; to assign a different principal, create a new
+        /// assignment
         /// </summary>
         public readonly int PrincipalId;
         /// <summary>
@@ -54,6 +68,10 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> entitlements,
 
+            string name,
+
+            string parent,
+
             int principalId,
 
             string principalType,
@@ -65,6 +83,8 @@ namespace Pulumi.Databricks.Outputs
             AccountId = accountId;
             EffectiveEntitlements = effectiveEntitlements;
             Entitlements = entitlements;
+            Name = name;
+            Parent = parent;
             PrincipalId = principalId;
             PrincipalType = principalType;
             ProviderConfig = providerConfig;

@@ -478,11 +478,15 @@ __all__ = [
     'DataClassificationCatalogConfigIncludedSchemas',
     'DataClassificationCatalogConfigProviderConfig',
     'DataQualityMonitorAnomalyDetectionConfig',
+    'DataQualityMonitorAnomalyDetectionConfigNotificationSettings',
+    'DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure',
+    'DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable',
     'DataQualityMonitorDataProfilingConfig',
     'DataQualityMonitorDataProfilingConfigCustomMetric',
     'DataQualityMonitorDataProfilingConfigInferenceLog',
     'DataQualityMonitorDataProfilingConfigNotificationSettings',
     'DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure',
+    'DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable',
     'DataQualityMonitorDataProfilingConfigSchedule',
     'DataQualityMonitorDataProfilingConfigSnapshot',
     'DataQualityMonitorDataProfilingConfigTimeSeries',
@@ -608,6 +612,32 @@ __all__ = [
     'FeatureEngineeringFeatureTimeWindowTumbling',
     'FeatureEngineeringFeatureTimeseriesColumn',
     'FileProviderConfig',
+    'GenieAgentDefinition',
+    'GenieAgentDefinitionBenchmarks',
+    'GenieAgentDefinitionBenchmarksQuestion',
+    'GenieAgentDefinitionBenchmarksQuestionAnswer',
+    'GenieAgentDefinitionConfig',
+    'GenieAgentDefinitionConfigSampleQuestion',
+    'GenieAgentDefinitionDataSources',
+    'GenieAgentDefinitionDataSourcesMcpConnection',
+    'GenieAgentDefinitionDataSourcesTable',
+    'GenieAgentDefinitionDataSourcesTableColumnConfig',
+    'GenieAgentDefinitionDataSourcesVolume',
+    'GenieAgentDefinitionInstructions',
+    'GenieAgentDefinitionInstructionsExampleQuestionSql',
+    'GenieAgentDefinitionInstructionsExampleQuestionSqlParameter',
+    'GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue',
+    'GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange',
+    'GenieAgentDefinitionInstructionsJoinSpec',
+    'GenieAgentDefinitionInstructionsJoinSpecLeft',
+    'GenieAgentDefinitionInstructionsJoinSpecRight',
+    'GenieAgentDefinitionInstructionsSqlFunction',
+    'GenieAgentDefinitionInstructionsSqlSnippets',
+    'GenieAgentDefinitionInstructionsSqlSnippetsExpression',
+    'GenieAgentDefinitionInstructionsSqlSnippetsFilter',
+    'GenieAgentDefinitionInstructionsSqlSnippetsMeasure',
+    'GenieAgentDefinitionInstructionsTextInstruction',
+    'GenieAgentProviderConfig',
     'GitCredentialProviderConfig',
     'GlobalInitScriptProviderConfig',
     'GrantProviderConfig',
@@ -680,6 +710,7 @@ __all__ = [
     'JobJobClusterNewClusterWorkerNodeTypeFlexibility',
     'JobJobClusterNewClusterWorkloadType',
     'JobJobClusterNewClusterWorkloadTypeClients',
+    'JobJobClusterServerlessCompute',
     'JobLibrary',
     'JobLibraryCran',
     'JobLibraryMaven',
@@ -732,6 +763,15 @@ __all__ = [
     'JobSparkPythonTask',
     'JobSparkSubmitTask',
     'JobTask',
+    'JobTaskAiFunctionTask',
+    'JobTaskAiFunctionTaskAiClassify',
+    'JobTaskAiFunctionTaskAiClassifyInlineLabels',
+    'JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel',
+    'JobTaskAiFunctionTaskAiExtract',
+    'JobTaskAiFunctionTaskAiParseDocument',
+    'JobTaskAiFunctionTaskDeltaTable',
+    'JobTaskAiFunctionTaskOutput',
+    'JobTaskAiFunctionTaskVolume',
     'JobTaskAiRuntimeTask',
     'JobTaskAiRuntimeTaskDeployment',
     'JobTaskAiRuntimeTaskDeploymentCompute',
@@ -754,6 +794,15 @@ __all__ = [
     'JobTaskEmailNotifications',
     'JobTaskForEachTask',
     'JobTaskForEachTaskTask',
+    'JobTaskForEachTaskTaskAiFunctionTask',
+    'JobTaskForEachTaskTaskAiFunctionTaskAiClassify',
+    'JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels',
+    'JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel',
+    'JobTaskForEachTaskTaskAiFunctionTaskAiExtract',
+    'JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument',
+    'JobTaskForEachTaskTaskAiFunctionTaskDeltaTable',
+    'JobTaskForEachTaskTaskAiFunctionTaskOutput',
+    'JobTaskForEachTaskTaskAiFunctionTaskVolume',
     'JobTaskForEachTaskTaskAiRuntimeTask',
     'JobTaskForEachTaskTaskAiRuntimeTaskDeployment',
     'JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute',
@@ -918,6 +967,8 @@ __all__ = [
     'JobTriggerContinuous',
     'JobTriggerContinuousMaintenanceWindow',
     'JobTriggerFileArrival',
+    'JobTriggerJobCompletion',
+    'JobTriggerJobCompletionJob',
     'JobTriggerModel',
     'JobTriggerPeriodic',
     'JobTriggerSchedule',
@@ -1142,6 +1193,9 @@ __all__ = [
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions',
@@ -1199,6 +1253,9 @@ __all__ = [
     'PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptions',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions',
@@ -1354,6 +1411,7 @@ __all__ = [
     'RfaAccessRequestDestinationsDestinationSourceSecurable',
     'RfaAccessRequestDestinationsProviderConfig',
     'RfaAccessRequestDestinationsSecurable',
+    'SandboxMetadata',
     'SandboxProviderConfig',
     'SandboxSpec',
     'SandboxSpecCompute',
@@ -2331,22 +2389,30 @@ __all__ = [
     'GetDataClassificationCatalogConfigIncludedSchemasResult',
     'GetDataClassificationCatalogConfigProviderConfigResult',
     'GetDataQualityMonitorAnomalyDetectionConfigResult',
+    'GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsResult',
+    'GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult',
+    'GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult',
     'GetDataQualityMonitorDataProfilingConfigResult',
     'GetDataQualityMonitorDataProfilingConfigCustomMetricResult',
     'GetDataQualityMonitorDataProfilingConfigInferenceLogResult',
     'GetDataQualityMonitorDataProfilingConfigNotificationSettingsResult',
     'GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureResult',
+    'GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult',
     'GetDataQualityMonitorDataProfilingConfigScheduleResult',
     'GetDataQualityMonitorDataProfilingConfigSnapshotResult',
     'GetDataQualityMonitorDataProfilingConfigTimeSeriesResult',
     'GetDataQualityMonitorProviderConfigResult',
     'GetDataQualityMonitorsMonitorResult',
     'GetDataQualityMonitorsMonitorAnomalyDetectionConfigResult',
+    'GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsResult',
+    'GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult',
+    'GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetricResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLogResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult',
+    'GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigScheduleResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigSnapshotResult',
     'GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeriesResult',
@@ -2587,6 +2653,60 @@ __all__ = [
     'GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult',
     'GetFunctionsFunctionRoutineDependenciesDependencyTableResult',
     'GetFunctionsProviderConfigResult',
+    'GetGenieAgentDefinitionResult',
+    'GetGenieAgentDefinitionBenchmarksResult',
+    'GetGenieAgentDefinitionBenchmarksQuestionResult',
+    'GetGenieAgentDefinitionBenchmarksQuestionAnswerResult',
+    'GetGenieAgentDefinitionConfigResult',
+    'GetGenieAgentDefinitionConfigSampleQuestionResult',
+    'GetGenieAgentDefinitionDataSourcesResult',
+    'GetGenieAgentDefinitionDataSourcesMcpConnectionResult',
+    'GetGenieAgentDefinitionDataSourcesTableResult',
+    'GetGenieAgentDefinitionDataSourcesTableColumnConfigResult',
+    'GetGenieAgentDefinitionDataSourcesVolumeResult',
+    'GetGenieAgentDefinitionInstructionsResult',
+    'GetGenieAgentDefinitionInstructionsExampleQuestionSqlResult',
+    'GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult',
+    'GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult',
+    'GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult',
+    'GetGenieAgentDefinitionInstructionsJoinSpecResult',
+    'GetGenieAgentDefinitionInstructionsJoinSpecLeftResult',
+    'GetGenieAgentDefinitionInstructionsJoinSpecRightResult',
+    'GetGenieAgentDefinitionInstructionsSqlFunctionResult',
+    'GetGenieAgentDefinitionInstructionsSqlSnippetsResult',
+    'GetGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult',
+    'GetGenieAgentDefinitionInstructionsSqlSnippetsFilterResult',
+    'GetGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult',
+    'GetGenieAgentDefinitionInstructionsTextInstructionResult',
+    'GetGenieAgentProviderConfigResult',
+    'GetGenieAgentsGenieAgentResult',
+    'GetGenieAgentsGenieAgentDefinitionResult',
+    'GetGenieAgentsGenieAgentDefinitionBenchmarksResult',
+    'GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionResult',
+    'GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswerResult',
+    'GetGenieAgentsGenieAgentDefinitionConfigResult',
+    'GetGenieAgentsGenieAgentDefinitionConfigSampleQuestionResult',
+    'GetGenieAgentsGenieAgentDefinitionDataSourcesResult',
+    'GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnectionResult',
+    'GetGenieAgentsGenieAgentDefinitionDataSourcesTableResult',
+    'GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfigResult',
+    'GetGenieAgentsGenieAgentDefinitionDataSourcesVolumeResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeftResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRightResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunctionResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilterResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult',
+    'GetGenieAgentsGenieAgentDefinitionInstructionsTextInstructionResult',
+    'GetGenieAgentsGenieAgentProviderConfigResult',
+    'GetGenieAgentsProviderConfigResult',
     'GetGroupProviderConfigResult',
     'GetInstancePoolPoolInfoResult',
     'GetInstancePoolPoolInfoAwsAttributesResult',
@@ -3054,6 +3174,7 @@ __all__ = [
     'GetRfaAccessRequestDestinationsDestinationSourceSecurableResult',
     'GetRfaAccessRequestDestinationsProviderConfigResult',
     'GetRfaAccessRequestDestinationsSecurableResult',
+    'GetSandboxMetadataResult',
     'GetSandboxProviderConfigResult',
     'GetSandboxSpecResult',
     'GetSandboxSpecComputeResult',
@@ -3061,6 +3182,7 @@ __all__ = [
     'GetSandboxStatusResult',
     'GetSandboxesProviderConfigResult',
     'GetSandboxesSandboxResult',
+    'GetSandboxesSandboxMetadataResult',
     'GetSandboxesSandboxProviderConfigResult',
     'GetSandboxesSandboxSpecResult',
     'GetSandboxesSandboxSpecComputeResult',
@@ -3971,6 +4093,8 @@ class AccountNetworkPolicyIngress(dict):
                  private_access: Optional['outputs.AccountNetworkPolicyIngressPrivateAccess'] = None,
                  public_access: Optional['outputs.AccountNetworkPolicyIngressPublicAccess'] = None):
         """
+        :param 'AccountNetworkPolicyIngressCrossWorkspaceAccessArgs' cross_workspace_access: The network policy restrictions for cross-workspace access: which other workspaces may
+               access this workspace
         :param 'AccountNetworkPolicyIngressPrivateAccessArgs' private_access: The network policy restrictions for private access.
                Configures how requests arriving over private connectivity are governed
         :param 'AccountNetworkPolicyIngressPublicAccessArgs' public_access: The network policy restrictions for public access to the workspace.
@@ -3986,6 +4110,10 @@ class AccountNetworkPolicyIngress(dict):
     @_builtins.property
     @pulumi.getter(name="crossWorkspaceAccess")
     def cross_workspace_access(self) -> Optional['outputs.AccountNetworkPolicyIngressCrossWorkspaceAccess']:
+        """
+        The network policy restrictions for cross-workspace access: which other workspaces may
+        access this workspace
+        """
         return pulumi.get(self, "cross_workspace_access")
 
     @_builtins.property
@@ -5234,6 +5362,8 @@ class AccountNetworkPolicyIngressDryRun(dict):
                  private_access: Optional['outputs.AccountNetworkPolicyIngressDryRunPrivateAccess'] = None,
                  public_access: Optional['outputs.AccountNetworkPolicyIngressDryRunPublicAccess'] = None):
         """
+        :param 'AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs' cross_workspace_access: The network policy restrictions for cross-workspace access: which other workspaces may
+               access this workspace
         :param 'AccountNetworkPolicyIngressDryRunPrivateAccessArgs' private_access: The network policy restrictions for private access.
                Configures how requests arriving over private connectivity are governed
         :param 'AccountNetworkPolicyIngressDryRunPublicAccessArgs' public_access: The network policy restrictions for public access to the workspace.
@@ -5249,6 +5379,10 @@ class AccountNetworkPolicyIngressDryRun(dict):
     @_builtins.property
     @pulumi.getter(name="crossWorkspaceAccess")
     def cross_workspace_access(self) -> Optional['outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess']:
+        """
+        The network policy restrictions for cross-workspace access: which other workspaces may
+        access this workspace
+        """
         return pulumi.get(self, "cross_workspace_access")
 
     @_builtins.property
@@ -13228,9 +13362,10 @@ class AiGatewayModelProviderServiceConfig(dict):
                  rate_limits: Optional[Sequence['outputs.AiGatewayModelProviderServiceConfigRateLimit']] = None,
                  targets: Optional[Sequence['outputs.AiGatewayModelProviderServiceConfigTarget']] = None):
         """
-        :param _builtins.bool allow_all_targets: When true, accepts any model exposed by the upstream provider; `targets`
-               is not required and does not restrict routability. When false, only
-               models listed in `targets` are routable. Defaults to false
+        :param _builtins.bool allow_all_targets: When true, allows models from the provider's built-in model catalog in
+               addition to explicit `targets`. When false, only models listed in `targets`
+               are routable. Defaults to false. CUSTOM providers have no built-in model
+               catalog and must leave this false and list their models in `targets`
         :param _builtins.bool forward_headers: Whether to forward incoming HTTP headers to the upstream provider. Defaults
                to false and is configured for the entire provider service, not per request.
                Upstream authentication is configured separately in the provider-specific
@@ -13259,8 +13394,9 @@ class AiGatewayModelProviderServiceConfig(dict):
                entry must include at least one `native_api_types` value. When
                `allow_all_targets` is false, at least one entry is required and model
                service destinations can reference only listed models. When
-               `allow_all_targets` is true, any upstream model is routable; entries in
-               this list provide API-type metadata without restricting other models
+               `allow_all_targets` is true, models from the provider's built-in model
+               catalog are also routable. CUSTOM providers must explicitly list their
+               models here and cannot enable `allow_all_targets`
         """
         if allow_all_targets is not None:
             pulumi.set(__self__, "allow_all_targets", allow_all_targets)
@@ -13301,9 +13437,10 @@ class AiGatewayModelProviderServiceConfig(dict):
     @pulumi.getter(name="allowAllTargets")
     def allow_all_targets(self) -> Optional[_builtins.bool]:
         """
-        When true, accepts any model exposed by the upstream provider; `targets`
-        is not required and does not restrict routability. When false, only
-        models listed in `targets` are routable. Defaults to false
+        When true, allows models from the provider's built-in model catalog in
+        addition to explicit `targets`. When false, only models listed in `targets`
+        are routable. Defaults to false. CUSTOM providers have no built-in model
+        catalog and must leave this false and list their models in `targets`
         """
         return pulumi.get(self, "allow_all_targets")
 
@@ -13428,8 +13565,9 @@ class AiGatewayModelProviderServiceConfig(dict):
         entry must include at least one `native_api_types` value. When
         `allow_all_targets` is false, at least one entry is required and model
         service destinations can reference only listed models. When
-        `allow_all_targets` is true, any upstream model is routable; entries in
-        this list provide API-type metadata without restricting other models
+        `allow_all_targets` is true, models from the provider's built-in model
+        catalog are also routable. CUSTOM providers must explicitly list their
+        models here and cannot enable `allow_all_targets`
         """
         return pulumi.get(self, "targets")
 
@@ -16840,7 +16978,7 @@ class AiSearchEndpointEndpointStatus(dict):
                  state: Optional[_builtins.str] = None):
         """
         :param _builtins.str message: (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
-        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         if message is not None:
             pulumi.set(__self__, "message", message)
@@ -16859,7 +16997,7 @@ class AiSearchEndpointEndpointStatus(dict):
     @pulumi.getter
     def state(self) -> Optional[_builtins.str]:
         """
-        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         return pulumi.get(self, "state")
 
@@ -16925,7 +17063,7 @@ class AiSearchEndpointScalingInfo(dict):
         """
         :param _builtins.int requested_target_qps: The requested QPS target for the endpoint. Best-effort; the system does not
                guarantee this QPS will be achieved
-        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         if requested_target_qps is not None:
             pulumi.set(__self__, "requested_target_qps", requested_target_qps)
@@ -16945,7 +17083,7 @@ class AiSearchEndpointScalingInfo(dict):
     @pulumi.getter
     def state(self) -> Optional[_builtins.str]:
         """
-        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         return pulumi.get(self, "state")
 
@@ -25195,6 +25333,8 @@ class DataQualityMonitorAnomalyDetectionConfig(dict):
         suggest = None
         if key == "excludedTableFullNames":
             suggest = "excluded_table_full_names"
+        elif key == "notificationSettings":
+            suggest = "notification_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DataQualityMonitorAnomalyDetectionConfig. Access the value via the '{suggest}' property getter instead.")
@@ -25208,12 +25348,15 @@ class DataQualityMonitorAnomalyDetectionConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 excluded_table_full_names: Optional[Sequence[_builtins.str]] = None):
+                 excluded_table_full_names: Optional[Sequence[_builtins.str]] = None,
+                 notification_settings: Optional['outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings'] = None):
         """
         :param Sequence[_builtins.str] excluded_table_full_names: List of fully qualified table names to exclude from anomaly detection
         """
         if excluded_table_full_names is not None:
             pulumi.set(__self__, "excluded_table_full_names", excluded_table_full_names)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
 
     @_builtins.property
     @pulumi.getter(name="excludedTableFullNames")
@@ -25222,6 +25365,209 @@ class DataQualityMonitorAnomalyDetectionConfig(dict):
         List of fully qualified table names to exclude from anomaly detection
         """
         return pulumi.get(self, "excluded_table_full_names")
+
+    @_builtins.property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings']:
+        return pulumi.get(self, "notification_settings")
+
+
+@pulumi.output_type
+class DataQualityMonitorAnomalyDetectionConfigNotificationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onFailure":
+            suggest = "on_failure"
+        elif key == "onUnhealthyTable":
+            suggest = "on_unhealthy_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataQualityMonitorAnomalyDetectionConfigNotificationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataQualityMonitorAnomalyDetectionConfigNotificationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataQualityMonitorAnomalyDetectionConfigNotificationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 on_failure: Optional['outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure'] = None,
+                 on_unhealthy_table: Optional['outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable'] = None):
+        """
+        :param 'DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs' on_failure: Destinations to send notifications on failure/timeout
+        :param 'DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs' on_unhealthy_table: Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+               recipient gets one notification per important unhealthy table. Only supported on schema
+               monitors, via `anomaly_detection_config`
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_unhealthy_table is not None:
+            pulumi.set(__self__, "on_unhealthy_table", on_unhealthy_table)
+
+    @_builtins.property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional['outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure']:
+        """
+        Destinations to send notifications on failure/timeout
+        """
+        return pulumi.get(self, "on_failure")
+
+    @_builtins.property
+    @pulumi.getter(name="onUnhealthyTable")
+    def on_unhealthy_table(self) -> Optional['outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable']:
+        """
+        Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        recipient gets one notification per important unhealthy table. Only supported on schema
+        monitors, via `anomaly_detection_config`
+        """
+        return pulumi.get(self, "on_unhealthy_table")
+
+
+@pulumi.output_type
+class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationIds":
+            suggest = "destination_ids"
+        elif key == "destinationUserIds":
+            suggest = "destination_user_ids"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
+class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationIds":
+            suggest = "destination_ids"
+        elif key == "destinationUserIds":
+            suggest = "destination_user_ids"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
 
 
 @pulumi.output_type
@@ -25305,7 +25651,6 @@ class DataQualityMonitorDataProfilingConfig(dict):
                The baseline table and the monitored table shall have the same schema
         :param Sequence['DataQualityMonitorDataProfilingConfigCustomMetricArgs'] custom_metrics: Custom metrics
         :param 'DataQualityMonitorDataProfilingConfigInferenceLogArgs' inference_log: `Analysis Configuration` for monitoring inference log tables
-        :param 'DataQualityMonitorDataProfilingConfigNotificationSettingsArgs' notification_settings: Field for specifying notification settings
         :param 'DataQualityMonitorDataProfilingConfigScheduleArgs' schedule: The cron schedule
         :param _builtins.bool skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics
         :param Sequence[_builtins.str] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by
@@ -25435,9 +25780,6 @@ class DataQualityMonitorDataProfilingConfig(dict):
     @_builtins.property
     @pulumi.getter(name="notificationSettings")
     def notification_settings(self) -> Optional['outputs.DataQualityMonitorDataProfilingConfigNotificationSettings']:
-        """
-        Field for specifying notification settings
-        """
         return pulumi.get(self, "notification_settings")
 
     @_builtins.property
@@ -25686,6 +26028,8 @@ class DataQualityMonitorDataProfilingConfigNotificationSettings(dict):
         suggest = None
         if key == "onFailure":
             suggest = "on_failure"
+        elif key == "onUnhealthyTable":
+            suggest = "on_unhealthy_table"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DataQualityMonitorDataProfilingConfigNotificationSettings. Access the value via the '{suggest}' property getter instead.")
@@ -25699,12 +26043,18 @@ class DataQualityMonitorDataProfilingConfigNotificationSettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 on_failure: Optional['outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure'] = None):
+                 on_failure: Optional['outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure'] = None,
+                 on_unhealthy_table: Optional['outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable'] = None):
         """
         :param 'DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs' on_failure: Destinations to send notifications on failure/timeout
+        :param 'DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs' on_unhealthy_table: Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+               recipient gets one notification per important unhealthy table. Only supported on schema
+               monitors, via `anomaly_detection_config`
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
+        if on_unhealthy_table is not None:
+            pulumi.set(__self__, "on_unhealthy_table", on_unhealthy_table)
 
     @_builtins.property
     @pulumi.getter(name="onFailure")
@@ -25714,13 +26064,27 @@ class DataQualityMonitorDataProfilingConfigNotificationSettings(dict):
         """
         return pulumi.get(self, "on_failure")
 
+    @_builtins.property
+    @pulumi.getter(name="onUnhealthyTable")
+    def on_unhealthy_table(self) -> Optional['outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable']:
+        """
+        Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        recipient gets one notification per important unhealthy table. Only supported on schema
+        monitors, via `anomaly_detection_config`
+        """
+        return pulumi.get(self, "on_unhealthy_table")
+
 
 @pulumi.output_type
 class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "emailAddresses":
+        if key == "destinationIds":
+            suggest = "destination_ids"
+        elif key == "destinationUserIds":
+            suggest = "destination_user_ids"
+        elif key == "emailAddresses":
             suggest = "email_addresses"
 
         if suggest:
@@ -25735,12 +26099,116 @@ class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
                  email_addresses: Optional[Sequence[_builtins.str]] = None):
         """
+        :param Sequence[_builtins.str] destination_ids: The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
         :param Sequence[_builtins.str] email_addresses: The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
         """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
         if email_addresses is not None:
             pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
+class DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationIds":
+            suggest = "destination_ids"
+        elif key == "destinationUserIds":
+            suggest = "destination_user_ids"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
 
     @_builtins.property
     @pulumi.getter(name="emailAddresses")
@@ -29851,7 +30319,9 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct(di
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "relativeSd":
+        if key == "relativeError":
+            suggest = "relative_error"
+        elif key == "relativeSd":
             suggest = "relative_sd"
 
         if suggest:
@@ -29867,11 +30337,16 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct(di
 
     def __init__(__self__, *,
                  input: _builtins.str,
+                 relative_error: Optional[_builtins.float] = None,
                  relative_sd: Optional[_builtins.float] = None):
         """
-        :param _builtins.float relative_sd: The maximum relative standard deviation allowed (default defined by Spark)
+        :param _builtins.float relative_sd: The maximum relative standard deviation allowed (default defined by Spark).
+               Deprecated: use relative_error. When relative_error is set, reads return the same value here
+               for clients that don't have relative_error, and a request may only send that value
         """
         pulumi.set(__self__, "input", input)
+        if relative_error is not None:
+            pulumi.set(__self__, "relative_error", relative_error)
         if relative_sd is not None:
             pulumi.set(__self__, "relative_sd", relative_sd)
 
@@ -29881,28 +30356,58 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct(di
         return pulumi.get(self, "input")
 
     @_builtins.property
+    @pulumi.getter(name="relativeError")
+    def relative_error(self) -> Optional[_builtins.float]:
+        return pulumi.get(self, "relative_error")
+
+    @_builtins.property
     @pulumi.getter(name="relativeSd")
     def relative_sd(self) -> Optional[_builtins.float]:
         """
-        The maximum relative standard deviation allowed (default defined by Spark)
+        The maximum relative standard deviation allowed (default defined by Spark).
+        Deprecated: use relative_error. When relative_error is set, reads return the same value here
+        for clients that don't have relative_error, and a request may only send that value
         """
         return pulumi.get(self, "relative_sd")
 
 
 @pulumi.output_type
 class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeError":
+            suggest = "relative_error"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  input: _builtins.str,
                  percentile: _builtins.float,
-                 accuracy: Optional[_builtins.int] = None):
+                 accuracy: Optional[_builtins.int] = None,
+                 relative_error: Optional[_builtins.float] = None):
         """
         :param _builtins.float percentile: The percentile value to compute (between 0 and 1)
-        :param _builtins.int accuracy: The accuracy parameter (higher is more accurate but slower)
+        :param _builtins.int accuracy: The accuracy parameter (higher is more accurate but slower).
+               Deprecated: use relative_error. When relative_error is set, reads return ceil(1 /
+               relative_error) here for clients that don't have relative_error, and a request may only send
+               that value
         """
         pulumi.set(__self__, "input", input)
         pulumi.set(__self__, "percentile", percentile)
         if accuracy is not None:
             pulumi.set(__self__, "accuracy", accuracy)
+        if relative_error is not None:
+            pulumi.set(__self__, "relative_error", relative_error)
 
     @_builtins.property
     @pulumi.getter
@@ -29921,9 +30426,17 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile(dict)
     @pulumi.getter
     def accuracy(self) -> Optional[_builtins.int]:
         """
-        The accuracy parameter (higher is more accurate but slower)
+        The accuracy parameter (higher is more accurate but slower).
+        Deprecated: use relative_error. When relative_error is set, reads return ceil(1 /
+        relative_error) here for clients that don't have relative_error, and a request may only send
+        that value
         """
         return pulumi.get(self, "accuracy")
+
+    @_builtins.property
+    @pulumi.getter(name="relativeError")
+    def relative_error(self) -> Optional[_builtins.float]:
+        return pulumi.get(self, "relative_error")
 
 
 @pulumi.output_type
@@ -30145,7 +30658,8 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(dict):
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
                eligible source data exists.
-               Not currently supported for sawtooth windows or for Features with a stream source
+               For sawtooth windows, start_time must not be later than the time the Feature is created.
+               Not supported for rolling windows on Features with a stream source
         """
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
@@ -30194,7 +30708,8 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(dict):
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
         eligible source data exists.
-        Not currently supported for sawtooth windows or for Features with a stream source
+        For sawtooth windows, start_time must not be later than the time the Feature is created.
+        Not supported for rolling windows on Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -31294,8 +31809,8 @@ class FeatureEngineeringFeatureSourceSdpSource(dict):
         """
         :param Sequence[_builtins.str] input_tables: The full three-part names of the tables the pipeline reads from. Required to materialize this
                feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-               when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-               these tables, and the run fails if it doesn't. At most 100 tables
+               when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+               tables. At most 100 tables
         :param _builtins.str output_table: The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
                The table doesn't need to exist until the pipeline first runs. Required
         :param _builtins.str pipeline_id: The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
@@ -31337,8 +31852,8 @@ class FeatureEngineeringFeatureSourceSdpSource(dict):
         """
         The full three-part names of the tables the pipeline reads from. Required to materialize this
         feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-        when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-        these tables, and the run fails if it doesn't. At most 100 tables
+        when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+        tables. At most 100 tables
         """
         return pulumi.get(self, "input_tables")
 
@@ -31478,7 +31993,8 @@ class FeatureEngineeringFeatureTimeWindow(dict):
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
                eligible source data exists.
-               Not currently supported for sawtooth windows or for Features with a stream source
+               For sawtooth windows, start_time must not be later than the time the Feature is created.
+               Not supported for rolling windows on Features with a stream source
         """
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
@@ -31527,7 +32043,8 @@ class FeatureEngineeringFeatureTimeWindow(dict):
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
         eligible source data exists.
-        Not currently supported for sawtooth windows or for Features with a stream source
+        For sawtooth windows, start_time must not be later than the time the Feature is created.
+        Not supported for rolling windows on Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -31791,6 +32308,1370 @@ class FileProviderConfig(dict):
 
     def get(self, key: str, default = None) -> Any:
         FileProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workspace_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GenieAgentDefinition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataSources":
+            suggest = "data_sources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 benchmarks: Optional['outputs.GenieAgentDefinitionBenchmarks'] = None,
+                 config: Optional['outputs.GenieAgentDefinitionConfig'] = None,
+                 data_sources: Optional['outputs.GenieAgentDefinitionDataSources'] = None,
+                 instructions: Optional['outputs.GenieAgentDefinitionInstructions'] = None):
+        """
+        :param 'GenieAgentDefinitionBenchmarksArgs' benchmarks: Benchmarks for evaluating the quality of the Genie Agent's answers
+        :param 'GenieAgentDefinitionConfigArgs' config: General settings of the Genie Agent
+        :param 'GenieAgentDefinitionDataSourcesArgs' data_sources: The data the Genie Agent can access
+        :param 'GenieAgentDefinitionInstructionsArgs' instructions: Instructions and SQL that guide how the Genie Agent answers questions
+        """
+        if benchmarks is not None:
+            pulumi.set(__self__, "benchmarks", benchmarks)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if data_sources is not None:
+            pulumi.set(__self__, "data_sources", data_sources)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+
+    @_builtins.property
+    @pulumi.getter
+    def benchmarks(self) -> Optional['outputs.GenieAgentDefinitionBenchmarks']:
+        """
+        Benchmarks for evaluating the quality of the Genie Agent's answers
+        """
+        return pulumi.get(self, "benchmarks")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.GenieAgentDefinitionConfig']:
+        """
+        General settings of the Genie Agent
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSources")
+    def data_sources(self) -> Optional['outputs.GenieAgentDefinitionDataSources']:
+        """
+        The data the Genie Agent can access
+        """
+        return pulumi.get(self, "data_sources")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional['outputs.GenieAgentDefinitionInstructions']:
+        """
+        Instructions and SQL that guide how the Genie Agent answers questions
+        """
+        return pulumi.get(self, "instructions")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionBenchmarks(dict):
+    def __init__(__self__, *,
+                 questions: Optional[Sequence['outputs.GenieAgentDefinitionBenchmarksQuestion']] = None):
+        """
+        :param Sequence['GenieAgentDefinitionBenchmarksQuestionArgs'] questions: The benchmark questions, sorted by `id` in descending order
+        """
+        if questions is not None:
+            pulumi.set(__self__, "questions", questions)
+
+    @_builtins.property
+    @pulumi.getter
+    def questions(self) -> Optional[Sequence['outputs.GenieAgentDefinitionBenchmarksQuestion']]:
+        """
+        The benchmark questions, sorted by `id` in descending order
+        """
+        return pulumi.get(self, "questions")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionBenchmarksQuestion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationNote":
+            suggest = "evaluation_note"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionBenchmarksQuestion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionBenchmarksQuestion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionBenchmarksQuestion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str,
+                 answers: Optional[Sequence['outputs.GenieAgentDefinitionBenchmarksQuestionAnswer']] = None,
+                 evaluation_note: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GenieAgentDefinitionBenchmarksQuestionAnswerArgs'] answers: The expected answer. At most one answer is supported; omit it when the question has no
+               expected answer
+        :param _builtins.str evaluation_note: Notes on how to evaluate answers to the question
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+        if answers is not None:
+            pulumi.set(__self__, "answers", answers)
+        if evaluation_note is not None:
+            pulumi.set(__self__, "evaluation_note", evaluation_note)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        return pulumi.get(self, "question")
+
+    @_builtins.property
+    @pulumi.getter
+    def answers(self) -> Optional[Sequence['outputs.GenieAgentDefinitionBenchmarksQuestionAnswer']]:
+        """
+        The expected answer. At most one answer is supported; omit it when the question has no
+        expected answer
+        """
+        return pulumi.get(self, "answers")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationNote")
+    def evaluation_note(self) -> Optional[_builtins.str]:
+        """
+        Notes on how to evaluate answers to the question
+        """
+        return pulumi.get(self, "evaluation_note")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionBenchmarksQuestionAnswer(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 format: _builtins.str):
+        """
+        :param _builtins.str format: The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "format", format)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> _builtins.str:
+        """
+        The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+        """
+        return pulumi.get(self, "format")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sampleQuestions":
+            suggest = "sample_questions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sample_questions: Optional[Sequence['outputs.GenieAgentDefinitionConfigSampleQuestion']] = None):
+        """
+        :param Sequence['GenieAgentDefinitionConfigSampleQuestionArgs'] sample_questions: Sample questions shown to users of the Genie Agent, sorted by `id`
+        """
+        if sample_questions is not None:
+            pulumi.set(__self__, "sample_questions", sample_questions)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleQuestions")
+    def sample_questions(self) -> Optional[Sequence['outputs.GenieAgentDefinitionConfigSampleQuestion']]:
+        """
+        Sample questions shown to users of the Genie Agent, sorted by `id`
+        """
+        return pulumi.get(self, "sample_questions")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionConfigSampleQuestion(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        return pulumi.get(self, "question")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionDataSources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mcpConnections":
+            suggest = "mcp_connections"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionDataSources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionDataSources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionDataSources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mcp_connections: Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesMcpConnection']] = None,
+                 tables: Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesTable']] = None,
+                 volumes: Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesVolume']] = None):
+        """
+        :param Sequence['GenieAgentDefinitionDataSourcesMcpConnectionArgs'] mcp_connections: Unity Catalog MCP connections, sorted by `mcp_connection`
+        :param Sequence['GenieAgentDefinitionDataSourcesTableArgs'] tables: Unity Catalog tables, views, and metric views, in the order they were added
+        :param Sequence['GenieAgentDefinitionDataSourcesVolumeArgs'] volumes: Unity Catalog volumes, in the order they were added
+        """
+        if mcp_connections is not None:
+            pulumi.set(__self__, "mcp_connections", mcp_connections)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpConnections")
+    def mcp_connections(self) -> Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesMcpConnection']]:
+        """
+        Unity Catalog MCP connections, sorted by `mcp_connection`
+        """
+        return pulumi.get(self, "mcp_connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesTable']]:
+        """
+        Unity Catalog tables, views, and metric views, in the order they were added
+        """
+        return pulumi.get(self, "tables")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesVolume']]:
+        """
+        Unity Catalog volumes, in the order they were added
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionDataSourcesMcpConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mcpConnection":
+            suggest = "mcp_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionDataSourcesMcpConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionDataSourcesMcpConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionDataSourcesMcpConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mcp_connection: _builtins.str):
+        """
+        :param _builtins.str mcp_connection: The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+        """
+        pulumi.set(__self__, "mcp_connection", mcp_connection)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpConnection")
+    def mcp_connection(self) -> _builtins.str:
+        """
+        The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+        """
+        return pulumi.get(self, "mcp_connection")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionDataSourcesTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnConfigs":
+            suggest = "column_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionDataSourcesTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionDataSourcesTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionDataSourcesTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 column_configs: Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesTableColumnConfig']] = None,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GenieAgentDefinitionDataSourcesTableColumnConfigArgs'] column_configs: Column settings for the table, sorted by `column`
+        :param _builtins.str description: Description of the Genie Agent.
+               
+               The maximum length is 4,096 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if column_configs is not None:
+            pulumi.set(__self__, "column_configs", column_configs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="columnConfigs")
+    def column_configs(self) -> Optional[Sequence['outputs.GenieAgentDefinitionDataSourcesTableColumnConfig']]:
+        """
+        Column settings for the table, sorted by `column`
+        """
+        return pulumi.get(self, "column_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Genie Agent.
+
+        The maximum length is 4,096 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionDataSourcesTableColumnConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "enableEntityMatching":
+            suggest = "enable_entity_matching"
+        elif key == "enableFormatAssistance":
+            suggest = "enable_format_assistance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionDataSourcesTableColumnConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionDataSourcesTableColumnConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionDataSourcesTableColumnConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 enable_entity_matching: Optional[_builtins.bool] = None,
+                 enable_format_assistance: Optional[_builtins.bool] = None,
+                 exclude: Optional[_builtins.bool] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str column: The name of the column. Must exist in the table or metric view
+        :param _builtins.str description: Description of the Genie Agent.
+               
+               The maximum length is 4,096 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        :param _builtins.str display_name: Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+               create, rename, or move that would collide with an existing Genie Agent's name in the target
+               folder is rejected with ALREADY_EXISTS.
+               
+               The maximum length is 63 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        :param _builtins.bool enable_entity_matching: Whether the Genie Agent indexes the column's values to match them in questions
+        :param _builtins.bool enable_format_assistance: Whether the Genie Agent samples example values from the column to learn its format
+        :param _builtins.bool exclude: Whether the column is hidden from the Genie Agent
+        """
+        pulumi.set(__self__, "column", column)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enable_entity_matching is not None:
+            pulumi.set(__self__, "enable_entity_matching", enable_entity_matching)
+        if enable_format_assistance is not None:
+            pulumi.set(__self__, "enable_format_assistance", enable_format_assistance)
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        The name of the column. Must exist in the table or metric view
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Genie Agent.
+
+        The maximum length is 4,096 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+        create, rename, or move that would collide with an existing Genie Agent's name in the target
+        folder is rejected with ALREADY_EXISTS.
+
+        The maximum length is 63 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enableEntityMatching")
+    def enable_entity_matching(self) -> Optional[_builtins.bool]:
+        """
+        Whether the Genie Agent indexes the column's values to match them in questions
+        """
+        return pulumi.get(self, "enable_entity_matching")
+
+    @_builtins.property
+    @pulumi.getter(name="enableFormatAssistance")
+    def enable_format_assistance(self) -> Optional[_builtins.bool]:
+        """
+        Whether the Genie Agent samples example values from the column to learn its format
+        """
+        return pulumi.get(self, "enable_format_assistance")
+
+    @_builtins.property
+    @pulumi.getter
+    def exclude(self) -> Optional[_builtins.bool]:
+        """
+        Whether the column is hidden from the Genie Agent
+        """
+        return pulumi.get(self, "exclude")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionDataSourcesVolume(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+               within the volume
+        :param _builtins.str description: Description of the Genie Agent.
+               
+               The maximum length is 4,096 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        """
+        pulumi.set(__self__, "path", path)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+        within the volume
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Genie Agent.
+
+        The maximum length is 4,096 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exampleQuestionSqls":
+            suggest = "example_question_sqls"
+        elif key == "joinSpecs":
+            suggest = "join_specs"
+        elif key == "sqlFunctions":
+            suggest = "sql_functions"
+        elif key == "sqlSnippets":
+            suggest = "sql_snippets"
+        elif key == "textInstructions":
+            suggest = "text_instructions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 example_question_sqls: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsExampleQuestionSql']] = None,
+                 join_specs: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsJoinSpec']] = None,
+                 sql_functions: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlFunction']] = None,
+                 sql_snippets: Optional['outputs.GenieAgentDefinitionInstructionsSqlSnippets'] = None,
+                 text_instructions: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsTextInstruction']] = None):
+        """
+        :param Sequence['GenieAgentDefinitionInstructionsExampleQuestionSqlArgs'] example_question_sqls: Example questions paired with the SQL that answers them
+        :param Sequence['GenieAgentDefinitionInstructionsJoinSpecArgs'] join_specs: Predefined joins between tables or metric views
+        :param Sequence['GenieAgentDefinitionInstructionsSqlFunctionArgs'] sql_functions: Unity Catalog SQL functions the generated SQL may call
+        :param 'GenieAgentDefinitionInstructionsSqlSnippetsArgs' sql_snippets: Reusable SQL filters, expressions, and measures
+        :param Sequence['GenieAgentDefinitionInstructionsTextInstructionArgs'] text_instructions: General text instructions. At most one text instruction is supported
+        """
+        if example_question_sqls is not None:
+            pulumi.set(__self__, "example_question_sqls", example_question_sqls)
+        if join_specs is not None:
+            pulumi.set(__self__, "join_specs", join_specs)
+        if sql_functions is not None:
+            pulumi.set(__self__, "sql_functions", sql_functions)
+        if sql_snippets is not None:
+            pulumi.set(__self__, "sql_snippets", sql_snippets)
+        if text_instructions is not None:
+            pulumi.set(__self__, "text_instructions", text_instructions)
+
+    @_builtins.property
+    @pulumi.getter(name="exampleQuestionSqls")
+    def example_question_sqls(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsExampleQuestionSql']]:
+        """
+        Example questions paired with the SQL that answers them
+        """
+        return pulumi.get(self, "example_question_sqls")
+
+    @_builtins.property
+    @pulumi.getter(name="joinSpecs")
+    def join_specs(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsJoinSpec']]:
+        """
+        Predefined joins between tables or metric views
+        """
+        return pulumi.get(self, "join_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlFunctions")
+    def sql_functions(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlFunction']]:
+        """
+        Unity Catalog SQL functions the generated SQL may call
+        """
+        return pulumi.get(self, "sql_functions")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlSnippets")
+    def sql_snippets(self) -> Optional['outputs.GenieAgentDefinitionInstructionsSqlSnippets']:
+        """
+        Reusable SQL filters, expressions, and measures
+        """
+        return pulumi.get(self, "sql_snippets")
+
+    @_builtins.property
+    @pulumi.getter(name="textInstructions")
+    def text_instructions(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsTextInstruction']]:
+        """
+        General text instructions. At most one text instruction is supported
+        """
+        return pulumi.get(self, "text_instructions")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsExampleQuestionSql(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usageGuidance":
+            suggest = "usage_guidance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsExampleQuestionSql. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsExampleQuestionSql.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsExampleQuestionSql.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str,
+                 sql: _builtins.str,
+                 parameters: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameter']] = None,
+                 usage_guidance: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs'] parameters: Parameters used in the SQL, in the order given
+        :param _builtins.str usage_guidance: Guidance on when to use this example
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+        pulumi.set(__self__, "sql", sql)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if usage_guidance is not None:
+            pulumi.set(__self__, "usage_guidance", usage_guidance)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        return pulumi.get(self, "question")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameter']]:
+        """
+        Parameters used in the SQL, in the order given
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="usageGuidance")
+    def usage_guidance(self) -> Optional[_builtins.str]:
+        """
+        Guidance on when to use this example
+        """
+        return pulumi.get(self, "usage_guidance")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsExampleQuestionSqlParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "typeHint":
+            suggest = "type_hint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsExampleQuestionSqlParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsExampleQuestionSqlParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsExampleQuestionSqlParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 default_value: Optional['outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue'] = None,
+                 description: Optional[_builtins.str] = None,
+                 type_hint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+        :param 'GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs' default_value: The parameter's default value
+        :param _builtins.str description: Description of the Genie Agent.
+               
+               The maximum length is 4,096 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        :param _builtins.str type_hint: The parameter's data type, for example `STRING` or `INTEGER`
+        """
+        pulumi.set(__self__, "name", name)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if type_hint is not None:
+            pulumi.set(__self__, "type_hint", type_hint)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional['outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue']:
+        """
+        The parameter's default value
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Genie Agent.
+
+        The maximum length is 4,096 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="typeHint")
+    def type_hint(self) -> Optional[_builtins.str]:
+        """
+        The parameter's data type, for example `STRING` or `INTEGER`
+        """
+        return pulumi.get(self, "type_hint")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueRange":
+            suggest = "value_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 value_range: Optional['outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange'] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs' value_range: The default range
+        :param Sequence[_builtins.str] values: The default values. A single default is a one-element list
+        """
+        if value_range is not None:
+            pulumi.set(__self__, "value_range", value_range)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="valueRange")
+    def value_range(self) -> Optional['outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange']:
+        """
+        The default range
+        """
+        return pulumi.get(self, "value_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The default values. A single default is a one-element list
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange(dict):
+    def __init__(__self__, *,
+                 max: Optional[_builtins.str] = None,
+                 min: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str max: The upper end of the range
+        :param _builtins.str min: The lower end of the range
+        """
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> Optional[_builtins.str]:
+        """
+        The upper end of the range
+        """
+        return pulumi.get(self, "max")
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> Optional[_builtins.str]:
+        """
+        The lower end of the range
+        """
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsJoinSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relationshipType":
+            suggest = "relationship_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsJoinSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsJoinSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsJoinSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 left: 'outputs.GenieAgentDefinitionInstructionsJoinSpecLeft',
+                 right: 'outputs.GenieAgentDefinitionInstructionsJoinSpecRight',
+                 sql: _builtins.str,
+                 comment: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 relationship_type: Optional[_builtins.str] = None):
+        """
+        :param 'GenieAgentDefinitionInstructionsJoinSpecLeftArgs' left: The left side of the join
+        :param 'GenieAgentDefinitionInstructionsJoinSpecRightArgs' right: The right side of the join
+        :param _builtins.str comment: Description of the join's purpose
+        :param _builtins.str relationship_type: How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "right", right)
+        pulumi.set(__self__, "sql", sql)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if relationship_type is not None:
+            pulumi.set(__self__, "relationship_type", relationship_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def left(self) -> 'outputs.GenieAgentDefinitionInstructionsJoinSpecLeft':
+        """
+        The left side of the join
+        """
+        return pulumi.get(self, "left")
+
+    @_builtins.property
+    @pulumi.getter
+    def right(self) -> 'outputs.GenieAgentDefinitionInstructionsJoinSpecRight':
+        """
+        The right side of the join
+        """
+        return pulumi.get(self, "right")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        Description of the join's purpose
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter(name="relationshipType")
+    def relationship_type(self) -> Optional[_builtins.str]:
+        """
+        How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+        """
+        return pulumi.get(self, "relationship_type")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsJoinSpecLeft(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 alias: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "identifier", identifier)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsJoinSpecRight(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 alias: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "identifier", identifier)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsSqlFunction(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 identifier: _builtins.str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identifier", identifier)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        return pulumi.get(self, "identifier")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsSqlSnippets(dict):
+    def __init__(__self__, *,
+                 expressions: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlSnippetsExpression']] = None,
+                 filters: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlSnippetsFilter']] = None,
+                 measures: Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlSnippetsMeasure']] = None):
+        """
+        :param Sequence['GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs'] expressions: Non-aggregated expressions (dimensions), such as `price * units`
+        :param Sequence['GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs'] filters: Filters, such as `state = 'CA'`
+        :param Sequence['GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs'] measures: Aggregated measures, such as `SUM(price * units)`
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if measures is not None:
+            pulumi.set(__self__, "measures", measures)
+
+    @_builtins.property
+    @pulumi.getter
+    def expressions(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlSnippetsExpression']]:
+        """
+        Non-aggregated expressions (dimensions), such as `price * units`
+        """
+        return pulumi.get(self, "expressions")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlSnippetsFilter']]:
+        """
+        Filters, such as `state = 'CA'`
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter
+    def measures(self) -> Optional[Sequence['outputs.GenieAgentDefinitionInstructionsSqlSnippetsMeasure']]:
+        """
+        Aggregated measures, such as `SUM(price * units)`
+        """
+        return pulumi.get(self, "measures")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsSqlSnippetsExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsSqlSnippetsExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsSqlSnippetsExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsSqlSnippetsExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str display_name: Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+               create, rename, or move that would collide with an existing Genie Agent's name in the target
+               folder is rejected with ALREADY_EXISTS.
+               
+               The maximum length is 63 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+        create, rename, or move that would collide with an existing Genie Agent's name in the target
+        folder is rejected with ALREADY_EXISTS.
+
+        The maximum length is 63 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsSqlSnippetsFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsSqlSnippetsFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsSqlSnippetsFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsSqlSnippetsFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str display_name: Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+               create, rename, or move that would collide with an existing Genie Agent's name in the target
+               folder is rejected with ALREADY_EXISTS.
+               
+               The maximum length is 63 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+        create, rename, or move that would collide with an existing Genie Agent's name in the target
+        folder is rejected with ALREADY_EXISTS.
+
+        The maximum length is 63 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsSqlSnippetsMeasure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentDefinitionInstructionsSqlSnippetsMeasure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentDefinitionInstructionsSqlSnippetsMeasure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentDefinitionInstructionsSqlSnippetsMeasure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str display_name: Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+               create, rename, or move that would collide with an existing Genie Agent's name in the target
+               folder is rejected with ALREADY_EXISTS.
+               
+               The maximum length is 63 characters. Requests with a longer value are rejected with
+               INVALID_PARAMETER_VALUE
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+        create, rename, or move that would collide with an existing Genie Agent's name in the target
+        folder is rejected with ALREADY_EXISTS.
+
+        The maximum length is 63 characters. Requests with a longer value are rejected with
+        INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GenieAgentDefinitionInstructionsTextInstruction(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 id: _builtins.str):
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GenieAgentProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenieAgentProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenieAgentProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenieAgentProviderConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -33670,6 +35551,8 @@ class JobJobCluster(dict):
             suggest = "job_cluster_key"
         elif key == "newCluster":
             suggest = "new_cluster"
+        elif key == "serverlessCompute":
+            suggest = "serverless_compute"
         elif key == "serverlessComputeId":
             suggest = "serverless_compute_id"
 
@@ -33687,6 +35570,7 @@ class JobJobCluster(dict):
     def __init__(__self__, *,
                  job_cluster_key: _builtins.str,
                  new_cluster: Optional['outputs.JobJobClusterNewCluster'] = None,
+                 serverless_compute: Optional['outputs.JobJobClusterServerlessCompute'] = None,
                  serverless_compute_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
@@ -33695,6 +35579,8 @@ class JobJobCluster(dict):
         pulumi.set(__self__, "job_cluster_key", job_cluster_key)
         if new_cluster is not None:
             pulumi.set(__self__, "new_cluster", new_cluster)
+        if serverless_compute is not None:
+            pulumi.set(__self__, "serverless_compute", serverless_compute)
         if serverless_compute_id is not None:
             pulumi.set(__self__, "serverless_compute_id", serverless_compute_id)
 
@@ -33713,6 +35599,11 @@ class JobJobCluster(dict):
         Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
         """
         return pulumi.get(self, "new_cluster")
+
+    @_builtins.property
+    @pulumi.getter(name="serverlessCompute")
+    def serverless_compute(self) -> Optional['outputs.JobJobClusterServerlessCompute']:
+        return pulumi.get(self, "serverless_compute")
 
     @_builtins.property
     @pulumi.getter(name="serverlessComputeId")
@@ -35354,6 +37245,36 @@ class JobJobClusterNewClusterWorkloadTypeClients(dict):
     @pulumi.getter
     def notebooks(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "notebooks")
+
+
+@pulumi.output_type
+class JobJobClusterServerlessCompute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyId":
+            suggest = "policy_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterServerlessCompute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterServerlessCompute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterServerlessCompute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_id: Optional[_builtins.str] = None):
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "policy_id")
 
 
 @pulumi.output_type
@@ -37932,6 +39853,8 @@ class JobTask(dict):
         suggest = None
         if key == "taskKey":
             suggest = "task_key"
+        elif key == "aiFunctionTask":
+            suggest = "ai_function_task"
         elif key == "aiRuntimeTask":
             suggest = "ai_runtime_task"
         elif key == "alertTask":
@@ -38016,6 +39939,7 @@ class JobTask(dict):
 
     def __init__(__self__, *,
                  task_key: _builtins.str,
+                 ai_function_task: Optional['outputs.JobTaskAiFunctionTask'] = None,
                  ai_runtime_task: Optional['outputs.JobTaskAiRuntimeTask'] = None,
                  alert_task: Optional['outputs.JobTaskAlertTask'] = None,
                  clean_rooms_notebook_task: Optional['outputs.JobTaskCleanRoomsNotebookTask'] = None,
@@ -38082,6 +40006,8 @@ class JobTask(dict):
         :param 'JobTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         pulumi.set(__self__, "task_key", task_key)
+        if ai_function_task is not None:
+            pulumi.set(__self__, "ai_function_task", ai_function_task)
         if ai_runtime_task is not None:
             pulumi.set(__self__, "ai_runtime_task", ai_runtime_task)
         if alert_task is not None:
@@ -38171,6 +40097,11 @@ class JobTask(dict):
         * `*_task` - (Required) one of the specific task blocks described below:
         """
         return pulumi.get(self, "task_key")
+
+    @_builtins.property
+    @pulumi.getter(name="aiFunctionTask")
+    def ai_function_task(self) -> Optional['outputs.JobTaskAiFunctionTask']:
+        return pulumi.get(self, "ai_function_task")
 
     @_builtins.property
     @pulumi.getter(name="aiRuntimeTask")
@@ -38430,6 +40361,430 @@ class JobTask(dict):
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         return pulumi.get(self, "webhook_notifications")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aiClassify":
+            suggest = "ai_classify"
+        elif key == "aiExtract":
+            suggest = "ai_extract"
+        elif key == "aiParseDocument":
+            suggest = "ai_parse_document"
+        elif key == "deltaTable":
+            suggest = "delta_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskAiFunctionTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskAiFunctionTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskAiFunctionTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output: 'outputs.JobTaskAiFunctionTaskOutput',
+                 ai_classify: Optional['outputs.JobTaskAiFunctionTaskAiClassify'] = None,
+                 ai_extract: Optional['outputs.JobTaskAiFunctionTaskAiExtract'] = None,
+                 ai_parse_document: Optional['outputs.JobTaskAiFunctionTaskAiParseDocument'] = None,
+                 delta_table: Optional['outputs.JobTaskAiFunctionTaskDeltaTable'] = None,
+                 volume: Optional['outputs.JobTaskAiFunctionTaskVolume'] = None):
+        pulumi.set(__self__, "output", output)
+        if ai_classify is not None:
+            pulumi.set(__self__, "ai_classify", ai_classify)
+        if ai_extract is not None:
+            pulumi.set(__self__, "ai_extract", ai_extract)
+        if ai_parse_document is not None:
+            pulumi.set(__self__, "ai_parse_document", ai_parse_document)
+        if delta_table is not None:
+            pulumi.set(__self__, "delta_table", delta_table)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def output(self) -> 'outputs.JobTaskAiFunctionTaskOutput':
+        return pulumi.get(self, "output")
+
+    @_builtins.property
+    @pulumi.getter(name="aiClassify")
+    def ai_classify(self) -> Optional['outputs.JobTaskAiFunctionTaskAiClassify']:
+        return pulumi.get(self, "ai_classify")
+
+    @_builtins.property
+    @pulumi.getter(name="aiExtract")
+    def ai_extract(self) -> Optional['outputs.JobTaskAiFunctionTaskAiExtract']:
+        return pulumi.get(self, "ai_extract")
+
+    @_builtins.property
+    @pulumi.getter(name="aiParseDocument")
+    def ai_parse_document(self) -> Optional['outputs.JobTaskAiFunctionTaskAiParseDocument']:
+        return pulumi.get(self, "ai_parse_document")
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTable")
+    def delta_table(self) -> Optional['outputs.JobTaskAiFunctionTaskDeltaTable']:
+        return pulumi.get(self, "delta_table")
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> Optional['outputs.JobTaskAiFunctionTaskVolume']:
+        return pulumi.get(self, "volume")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskAiClassify(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidenceScores":
+            suggest = "enable_confidence_scores"
+        elif key == "enableRationales":
+            suggest = "enable_rationales"
+        elif key == "inlineLabels":
+            suggest = "inline_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskAiFunctionTaskAiClassify. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskAiFunctionTaskAiClassify.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskAiFunctionTaskAiClassify.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 enable_confidence_scores: Optional[_builtins.bool] = None,
+                 enable_rationales: Optional[_builtins.bool] = None,
+                 inline_labels: Optional['outputs.JobTaskAiFunctionTaskAiClassifyInlineLabels'] = None,
+                 instructions: Optional[_builtins.str] = None,
+                 multilabel: Optional[_builtins.bool] = None):
+        pulumi.set(__self__, "version", version)
+        if enable_confidence_scores is not None:
+            pulumi.set(__self__, "enable_confidence_scores", enable_confidence_scores)
+        if enable_rationales is not None:
+            pulumi.set(__self__, "enable_rationales", enable_rationales)
+        if inline_labels is not None:
+            pulumi.set(__self__, "inline_labels", inline_labels)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+        if multilabel is not None:
+            pulumi.set(__self__, "multilabel", multilabel)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="enableConfidenceScores")
+    def enable_confidence_scores(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_confidence_scores")
+
+    @_builtins.property
+    @pulumi.getter(name="enableRationales")
+    def enable_rationales(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_rationales")
+
+    @_builtins.property
+    @pulumi.getter(name="inlineLabels")
+    def inline_labels(self) -> Optional['outputs.JobTaskAiFunctionTaskAiClassifyInlineLabels']:
+        return pulumi.get(self, "inline_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter
+    def multilabel(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "multilabel")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskAiClassifyInlineLabels(dict):
+    def __init__(__self__, *,
+                 labels: Sequence['outputs.JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel']):
+        pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel']:
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: An optional name for the job. The default value is Untitled.
+        :param _builtins.str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskAiExtract(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCitations":
+            suggest = "enable_citations"
+        elif key == "enableConfidenceScores":
+            suggest = "enable_confidence_scores"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskAiFunctionTaskAiExtract. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskAiFunctionTaskAiExtract.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskAiFunctionTaskAiExtract.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 enable_citations: Optional[_builtins.bool] = None,
+                 enable_confidence_scores: Optional[_builtins.bool] = None,
+                 instructions: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None,
+                 schema: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "version", version)
+        if enable_citations is not None:
+            pulumi.set(__self__, "enable_citations", enable_citations)
+        if enable_confidence_scores is not None:
+            pulumi.set(__self__, "enable_confidence_scores", enable_confidence_scores)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="enableCitations")
+    def enable_citations(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_citations")
+
+    @_builtins.property
+    @pulumi.getter(name="enableConfidenceScores")
+    def enable_confidence_scores(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_confidence_scores")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskAiParseDocument(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "descriptionElementTypes":
+            suggest = "description_element_types"
+        elif key == "imageOutputPath":
+            suggest = "image_output_path"
+        elif key == "pageRange":
+            suggest = "page_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskAiFunctionTaskAiParseDocument. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskAiFunctionTaskAiParseDocument.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskAiFunctionTaskAiParseDocument.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 description_element_types: Optional[Sequence[_builtins.str]] = None,
+                 image_output_path: Optional[_builtins.str] = None,
+                 page_range: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "version", version)
+        if description_element_types is not None:
+            pulumi.set(__self__, "description_element_types", description_element_types)
+        if image_output_path is not None:
+            pulumi.set(__self__, "image_output_path", image_output_path)
+        if page_range is not None:
+            pulumi.set(__self__, "page_range", page_range)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="descriptionElementTypes")
+    def description_element_types(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "description_element_types")
+
+    @_builtins.property
+    @pulumi.getter(name="imageOutputPath")
+    def image_output_path(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "image_output_path")
+
+    @_builtins.property
+    @pulumi.getter(name="pageRange")
+    def page_range(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "page_range")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskDeltaTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputColumn":
+            suggest = "input_column"
+        elif key == "tableName":
+            suggest = "table_name"
+        elif key == "mergeKeyColumns":
+            suggest = "merge_key_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskAiFunctionTaskDeltaTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskAiFunctionTaskDeltaTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskAiFunctionTaskDeltaTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 input_column: _builtins.str,
+                 table_name: _builtins.str,
+                 merge_key_columns: Optional[Sequence[_builtins.str]] = None):
+        pulumi.set(__self__, "input_column", input_column)
+        pulumi.set(__self__, "table_name", table_name)
+        if merge_key_columns is not None:
+            pulumi.set(__self__, "merge_key_columns", merge_key_columns)
+
+    @_builtins.property
+    @pulumi.getter(name="inputColumn")
+    def input_column(self) -> _builtins.str:
+        return pulumi.get(self, "input_column")
+
+    @_builtins.property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> _builtins.str:
+        return pulumi.get(self, "table_name")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeKeyColumns")
+    def merge_key_columns(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "merge_key_columns")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskOutput(dict):
+    def __init__(__self__, *,
+                 catalog: Optional[_builtins.str] = None,
+                 schema: Optional[_builtins.str] = None,
+                 table: Optional[_builtins.str] = None):
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class JobTaskAiFunctionTaskVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "volumePath":
+            suggest = "volume_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskAiFunctionTaskVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskAiFunctionTaskVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskAiFunctionTaskVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 volume_path: _builtins.str):
+        pulumi.set(__self__, "volume_path", volume_path)
+
+    @_builtins.property
+    @pulumi.getter(name="volumePath")
+    def volume_path(self) -> _builtins.str:
+        return pulumi.get(self, "volume_path")
 
 
 @pulumi.output_type
@@ -39715,6 +42070,8 @@ class JobTaskForEachTaskTask(dict):
         suggest = None
         if key == "taskKey":
             suggest = "task_key"
+        elif key == "aiFunctionTask":
+            suggest = "ai_function_task"
         elif key == "aiRuntimeTask":
             suggest = "ai_runtime_task"
         elif key == "alertTask":
@@ -39797,6 +42154,7 @@ class JobTaskForEachTaskTask(dict):
 
     def __init__(__self__, *,
                  task_key: _builtins.str,
+                 ai_function_task: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTask'] = None,
                  ai_runtime_task: Optional['outputs.JobTaskForEachTaskTaskAiRuntimeTask'] = None,
                  alert_task: Optional['outputs.JobTaskForEachTaskTaskAlertTask'] = None,
                  clean_rooms_notebook_task: Optional['outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask'] = None,
@@ -39862,6 +42220,8 @@ class JobTaskForEachTaskTask(dict):
         :param 'JobTaskForEachTaskTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         pulumi.set(__self__, "task_key", task_key)
+        if ai_function_task is not None:
+            pulumi.set(__self__, "ai_function_task", ai_function_task)
         if ai_runtime_task is not None:
             pulumi.set(__self__, "ai_runtime_task", ai_runtime_task)
         if alert_task is not None:
@@ -39949,6 +42309,11 @@ class JobTaskForEachTaskTask(dict):
         * `*_task` - (Required) one of the specific task blocks described below:
         """
         return pulumi.get(self, "task_key")
+
+    @_builtins.property
+    @pulumi.getter(name="aiFunctionTask")
+    def ai_function_task(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTask']:
+        return pulumi.get(self, "ai_function_task")
 
     @_builtins.property
     @pulumi.getter(name="aiRuntimeTask")
@@ -40203,6 +42568,430 @@ class JobTaskForEachTaskTask(dict):
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         return pulumi.get(self, "webhook_notifications")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aiClassify":
+            suggest = "ai_classify"
+        elif key == "aiExtract":
+            suggest = "ai_extract"
+        elif key == "aiParseDocument":
+            suggest = "ai_parse_document"
+        elif key == "deltaTable":
+            suggest = "delta_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskAiFunctionTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output: 'outputs.JobTaskForEachTaskTaskAiFunctionTaskOutput',
+                 ai_classify: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassify'] = None,
+                 ai_extract: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiExtract'] = None,
+                 ai_parse_document: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument'] = None,
+                 delta_table: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskDeltaTable'] = None,
+                 volume: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskVolume'] = None):
+        pulumi.set(__self__, "output", output)
+        if ai_classify is not None:
+            pulumi.set(__self__, "ai_classify", ai_classify)
+        if ai_extract is not None:
+            pulumi.set(__self__, "ai_extract", ai_extract)
+        if ai_parse_document is not None:
+            pulumi.set(__self__, "ai_parse_document", ai_parse_document)
+        if delta_table is not None:
+            pulumi.set(__self__, "delta_table", delta_table)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def output(self) -> 'outputs.JobTaskForEachTaskTaskAiFunctionTaskOutput':
+        return pulumi.get(self, "output")
+
+    @_builtins.property
+    @pulumi.getter(name="aiClassify")
+    def ai_classify(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassify']:
+        return pulumi.get(self, "ai_classify")
+
+    @_builtins.property
+    @pulumi.getter(name="aiExtract")
+    def ai_extract(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiExtract']:
+        return pulumi.get(self, "ai_extract")
+
+    @_builtins.property
+    @pulumi.getter(name="aiParseDocument")
+    def ai_parse_document(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument']:
+        return pulumi.get(self, "ai_parse_document")
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTable")
+    def delta_table(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskDeltaTable']:
+        return pulumi.get(self, "delta_table")
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskVolume']:
+        return pulumi.get(self, "volume")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskAiClassify(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidenceScores":
+            suggest = "enable_confidence_scores"
+        elif key == "enableRationales":
+            suggest = "enable_rationales"
+        elif key == "inlineLabels":
+            suggest = "inline_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskAiFunctionTaskAiClassify. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskAiClassify.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskAiClassify.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 enable_confidence_scores: Optional[_builtins.bool] = None,
+                 enable_rationales: Optional[_builtins.bool] = None,
+                 inline_labels: Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels'] = None,
+                 instructions: Optional[_builtins.str] = None,
+                 multilabel: Optional[_builtins.bool] = None):
+        pulumi.set(__self__, "version", version)
+        if enable_confidence_scores is not None:
+            pulumi.set(__self__, "enable_confidence_scores", enable_confidence_scores)
+        if enable_rationales is not None:
+            pulumi.set(__self__, "enable_rationales", enable_rationales)
+        if inline_labels is not None:
+            pulumi.set(__self__, "inline_labels", inline_labels)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+        if multilabel is not None:
+            pulumi.set(__self__, "multilabel", multilabel)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="enableConfidenceScores")
+    def enable_confidence_scores(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_confidence_scores")
+
+    @_builtins.property
+    @pulumi.getter(name="enableRationales")
+    def enable_rationales(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_rationales")
+
+    @_builtins.property
+    @pulumi.getter(name="inlineLabels")
+    def inline_labels(self) -> Optional['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels']:
+        return pulumi.get(self, "inline_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter
+    def multilabel(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "multilabel")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels(dict):
+    def __init__(__self__, *,
+                 labels: Sequence['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel']):
+        pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel']:
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: An optional name for the job. The default value is Untitled.
+        :param _builtins.str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskAiExtract(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCitations":
+            suggest = "enable_citations"
+        elif key == "enableConfidenceScores":
+            suggest = "enable_confidence_scores"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskAiFunctionTaskAiExtract. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskAiExtract.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskAiExtract.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 enable_citations: Optional[_builtins.bool] = None,
+                 enable_confidence_scores: Optional[_builtins.bool] = None,
+                 instructions: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None,
+                 schema: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "version", version)
+        if enable_citations is not None:
+            pulumi.set(__self__, "enable_citations", enable_citations)
+        if enable_confidence_scores is not None:
+            pulumi.set(__self__, "enable_confidence_scores", enable_confidence_scores)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="enableCitations")
+    def enable_citations(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_citations")
+
+    @_builtins.property
+    @pulumi.getter(name="enableConfidenceScores")
+    def enable_confidence_scores(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_confidence_scores")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "descriptionElementTypes":
+            suggest = "description_element_types"
+        elif key == "imageOutputPath":
+            suggest = "image_output_path"
+        elif key == "pageRange":
+            suggest = "page_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 description_element_types: Optional[Sequence[_builtins.str]] = None,
+                 image_output_path: Optional[_builtins.str] = None,
+                 page_range: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "version", version)
+        if description_element_types is not None:
+            pulumi.set(__self__, "description_element_types", description_element_types)
+        if image_output_path is not None:
+            pulumi.set(__self__, "image_output_path", image_output_path)
+        if page_range is not None:
+            pulumi.set(__self__, "page_range", page_range)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="descriptionElementTypes")
+    def description_element_types(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "description_element_types")
+
+    @_builtins.property
+    @pulumi.getter(name="imageOutputPath")
+    def image_output_path(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "image_output_path")
+
+    @_builtins.property
+    @pulumi.getter(name="pageRange")
+    def page_range(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "page_range")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskDeltaTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputColumn":
+            suggest = "input_column"
+        elif key == "tableName":
+            suggest = "table_name"
+        elif key == "mergeKeyColumns":
+            suggest = "merge_key_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskAiFunctionTaskDeltaTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskDeltaTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskDeltaTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 input_column: _builtins.str,
+                 table_name: _builtins.str,
+                 merge_key_columns: Optional[Sequence[_builtins.str]] = None):
+        pulumi.set(__self__, "input_column", input_column)
+        pulumi.set(__self__, "table_name", table_name)
+        if merge_key_columns is not None:
+            pulumi.set(__self__, "merge_key_columns", merge_key_columns)
+
+    @_builtins.property
+    @pulumi.getter(name="inputColumn")
+    def input_column(self) -> _builtins.str:
+        return pulumi.get(self, "input_column")
+
+    @_builtins.property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> _builtins.str:
+        return pulumi.get(self, "table_name")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeKeyColumns")
+    def merge_key_columns(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "merge_key_columns")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskOutput(dict):
+    def __init__(__self__, *,
+                 catalog: Optional[_builtins.str] = None,
+                 schema: Optional[_builtins.str] = None,
+                 table: Optional[_builtins.str] = None):
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskAiFunctionTaskVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "volumePath":
+            suggest = "volume_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskAiFunctionTaskVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskAiFunctionTaskVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 volume_path: _builtins.str):
+        pulumi.set(__self__, "volume_path", volume_path)
+
+    @_builtins.property
+    @pulumi.getter(name="volumePath")
+    def volume_path(self) -> _builtins.str:
+        return pulumi.get(self, "volume_path")
 
 
 @pulumi.output_type
@@ -48939,6 +51728,8 @@ class JobTrigger(dict):
         suggest = None
         if key == "fileArrival":
             suggest = "file_arrival"
+        elif key == "jobCompletion":
+            suggest = "job_completion"
         elif key == "pauseStatus":
             suggest = "pause_status"
         elif key == "sqlCondition":
@@ -48960,6 +51751,7 @@ class JobTrigger(dict):
     def __init__(__self__, *,
                  continuous: Optional['outputs.JobTriggerContinuous'] = None,
                  file_arrival: Optional['outputs.JobTriggerFileArrival'] = None,
+                 job_completion: Optional['outputs.JobTriggerJobCompletion'] = None,
                  model: Optional['outputs.JobTriggerModel'] = None,
                  pause_status: Optional[_builtins.str] = None,
                  periodic: Optional['outputs.JobTriggerPeriodic'] = None,
@@ -48977,6 +51769,8 @@ class JobTrigger(dict):
             pulumi.set(__self__, "continuous", continuous)
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
+        if job_completion is not None:
+            pulumi.set(__self__, "job_completion", job_completion)
         if model is not None:
             pulumi.set(__self__, "model", model)
         if pause_status is not None:
@@ -49005,6 +51799,11 @@ class JobTrigger(dict):
         configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         """
         return pulumi.get(self, "file_arrival")
+
+    @_builtins.property
+    @pulumi.getter(name="jobCompletion")
+    def job_completion(self) -> Optional['outputs.JobTriggerJobCompletion']:
+        return pulumi.get(self, "job_completion")
 
     @_builtins.property
     @pulumi.getter
@@ -49200,6 +51999,91 @@ class JobTriggerFileArrival(dict):
     @pulumi.getter(name="waitAfterLastChangeSeconds")
     def wait_after_last_change_seconds(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "wait_after_last_change_seconds")
+
+
+@pulumi.output_type
+class JobTriggerJobCompletion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ifStatus":
+            suggest = "if_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTriggerJobCompletion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTriggerJobCompletion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTriggerJobCompletion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jobs: Sequence['outputs.JobTriggerJobCompletionJob'],
+                 if_status: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "jobs", jobs)
+        if if_status is not None:
+            pulumi.set(__self__, "if_status", if_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def jobs(self) -> Sequence['outputs.JobTriggerJobCompletionJob']:
+        return pulumi.get(self, "jobs")
+
+    @_builtins.property
+    @pulumi.getter(name="ifStatus")
+    def if_status(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "if_status")
+
+
+@pulumi.output_type
+class JobTriggerJobCompletionJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTriggerJobCompletionJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTriggerJobCompletionJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTriggerJobCompletionJob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_id: _builtins.str,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str job_id: (String) ID of the job
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> _builtins.str:
+        """
+        (String) ID of the job
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
 
 
 @pulumi.output_type
@@ -55876,13 +58760,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -56154,13 +59038,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -59872,6 +62756,8 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
             suggest = "marketo_options"
         elif key == "metaAdsOptions":
             suggest = "meta_ads_options"
+        elif key == "onedriveOptions":
+            suggest = "onedrive_options"
         elif key == "outlookOptions":
             suggest = "outlook_options"
         elif key == "rabbitmqOptions":
@@ -59908,6 +62794,7 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
                  linkedin_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions'] = None,
                  marketo_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions'] = None,
                  meta_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions'] = None,
+                 onedrive_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions'] = None,
                  outlook_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions'] = None,
                  rabbitmq_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions'] = None,
                  reddit_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions'] = None,
@@ -59933,6 +62820,8 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
             pulumi.set(__self__, "marketo_options", marketo_options)
         if meta_ads_options is not None:
             pulumi.set(__self__, "meta_ads_options", meta_ads_options)
+        if onedrive_options is not None:
+            pulumi.set(__self__, "onedrive_options", onedrive_options)
         if outlook_options is not None:
             pulumi.set(__self__, "outlook_options", outlook_options)
         if rabbitmq_options is not None:
@@ -59992,6 +62881,11 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
     @pulumi.getter(name="metaAdsOptions")
     def meta_ads_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions']:
         return pulumi.get(self, "meta_ads_options")
+
+    @_builtins.property
+    @pulumi.getter(name="onedriveOptions")
+    def onedrive_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions']:
+        return pulumi.get(self, "onedrive_options")
 
     @_builtins.property
     @pulumi.getter(name="outlookOptions")
@@ -61676,6 +64570,238 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCusto
 
 
 @pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "fileIngestionOptions":
+            suggest = "file_ingestion_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: Optional[_builtins.str] = None,
+                 file_ingestion_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions'] = None,
+                 url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str url: URL of the Lakeflow Declarative Pipeline on the given workspace.
+        """
+        if entity_type is not None:
+            pulumi.set(__self__, "entity_type", entity_type)
+        if file_ingestion_options is not None:
+            pulumi.set(__self__, "file_ingestion_options", file_ingestion_options)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "entity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="fileIngestionOptions")
+    def file_ingestion_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions']:
+        return pulumi.get(self, "file_ingestion_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the Lakeflow Declarative Pipeline on the given workspace.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "corruptRecordColumn":
+            suggest = "corrupt_record_column"
+        elif key == "fileFilters":
+            suggest = "file_filters"
+        elif key == "formatOptions":
+            suggest = "format_options"
+        elif key == "ignoreCorruptFiles":
+            suggest = "ignore_corrupt_files"
+        elif key == "inferColumnTypes":
+            suggest = "infer_column_types"
+        elif key == "readerCaseSensitive":
+            suggest = "reader_case_sensitive"
+        elif key == "rescuedDataColumn":
+            suggest = "rescued_data_column"
+        elif key == "schemaEvolutionMode":
+            suggest = "schema_evolution_mode"
+        elif key == "schemaHints":
+            suggest = "schema_hints"
+        elif key == "singleVariantColumn":
+            suggest = "single_variant_column"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 corrupt_record_column: Optional[_builtins.str] = None,
+                 file_filters: Optional[Sequence['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter']] = None,
+                 format: Optional[_builtins.str] = None,
+                 format_options: Optional[Mapping[str, _builtins.str]] = None,
+                 ignore_corrupt_files: Optional[_builtins.bool] = None,
+                 infer_column_types: Optional[_builtins.bool] = None,
+                 reader_case_sensitive: Optional[_builtins.bool] = None,
+                 rescued_data_column: Optional[_builtins.str] = None,
+                 schema_evolution_mode: Optional[_builtins.str] = None,
+                 schema_hints: Optional[_builtins.str] = None,
+                 single_variant_column: Optional[_builtins.str] = None):
+        if corrupt_record_column is not None:
+            pulumi.set(__self__, "corrupt_record_column", corrupt_record_column)
+        if file_filters is not None:
+            pulumi.set(__self__, "file_filters", file_filters)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if format_options is not None:
+            pulumi.set(__self__, "format_options", format_options)
+        if ignore_corrupt_files is not None:
+            pulumi.set(__self__, "ignore_corrupt_files", ignore_corrupt_files)
+        if infer_column_types is not None:
+            pulumi.set(__self__, "infer_column_types", infer_column_types)
+        if reader_case_sensitive is not None:
+            pulumi.set(__self__, "reader_case_sensitive", reader_case_sensitive)
+        if rescued_data_column is not None:
+            pulumi.set(__self__, "rescued_data_column", rescued_data_column)
+        if schema_evolution_mode is not None:
+            pulumi.set(__self__, "schema_evolution_mode", schema_evolution_mode)
+        if schema_hints is not None:
+            pulumi.set(__self__, "schema_hints", schema_hints)
+        if single_variant_column is not None:
+            pulumi.set(__self__, "single_variant_column", single_variant_column)
+
+    @_builtins.property
+    @pulumi.getter(name="corruptRecordColumn")
+    def corrupt_record_column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "corrupt_record_column")
+
+    @_builtins.property
+    @pulumi.getter(name="fileFilters")
+    def file_filters(self) -> Optional[Sequence['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter']]:
+        return pulumi.get(self, "file_filters")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "format")
+
+    @_builtins.property
+    @pulumi.getter(name="formatOptions")
+    def format_options(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "format_options")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreCorruptFiles")
+    def ignore_corrupt_files(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ignore_corrupt_files")
+
+    @_builtins.property
+    @pulumi.getter(name="inferColumnTypes")
+    def infer_column_types(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "infer_column_types")
+
+    @_builtins.property
+    @pulumi.getter(name="readerCaseSensitive")
+    def reader_case_sensitive(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "reader_case_sensitive")
+
+    @_builtins.property
+    @pulumi.getter(name="rescuedDataColumn")
+    def rescued_data_column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "rescued_data_column")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaEvolutionMode")
+    def schema_evolution_mode(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema_evolution_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaHints")
+    def schema_hints(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema_hints")
+
+    @_builtins.property
+    @pulumi.getter(name="singleVariantColumn")
+    def single_variant_column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "single_variant_column")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modifiedAfter":
+            suggest = "modified_after"
+        elif key == "modifiedBefore":
+            suggest = "modified_before"
+        elif key == "pathFilter":
+            suggest = "path_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 modified_after: Optional[_builtins.str] = None,
+                 modified_before: Optional[_builtins.str] = None,
+                 path_filter: Optional[_builtins.str] = None):
+        if modified_after is not None:
+            pulumi.set(__self__, "modified_after", modified_after)
+        if modified_before is not None:
+            pulumi.set(__self__, "modified_before", modified_before)
+        if path_filter is not None:
+            pulumi.set(__self__, "path_filter", path_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAfter")
+    def modified_after(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "modified_after")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedBefore")
+    def modified_before(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "modified_before")
+
+    @_builtins.property
+    @pulumi.getter(name="pathFilter")
+    def path_filter(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "path_filter")
+
+
+@pulumi.output_type
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -63217,6 +66343,8 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
             suggest = "marketo_options"
         elif key == "metaAdsOptions":
             suggest = "meta_ads_options"
+        elif key == "onedriveOptions":
+            suggest = "onedrive_options"
         elif key == "outlookOptions":
             suggest = "outlook_options"
         elif key == "rabbitmqOptions":
@@ -63253,6 +66381,7 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
                  linkedin_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions'] = None,
                  marketo_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions'] = None,
                  meta_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions'] = None,
+                 onedrive_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions'] = None,
                  outlook_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions'] = None,
                  rabbitmq_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions'] = None,
                  reddit_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions'] = None,
@@ -63278,6 +66407,8 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
             pulumi.set(__self__, "marketo_options", marketo_options)
         if meta_ads_options is not None:
             pulumi.set(__self__, "meta_ads_options", meta_ads_options)
+        if onedrive_options is not None:
+            pulumi.set(__self__, "onedrive_options", onedrive_options)
         if outlook_options is not None:
             pulumi.set(__self__, "outlook_options", outlook_options)
         if rabbitmq_options is not None:
@@ -63337,6 +66468,11 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
     @pulumi.getter(name="metaAdsOptions")
     def meta_ads_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions']:
         return pulumi.get(self, "meta_ads_options")
+
+    @_builtins.property
+    @pulumi.getter(name="onedriveOptions")
+    def onedrive_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions']:
+        return pulumi.get(self, "onedrive_options")
 
     @_builtins.property
     @pulumi.getter(name="outlookOptions")
@@ -65018,6 +68154,238 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustom
     @pulumi.getter(name="timeIncrement")
     def time_increment(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "time_increment")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "fileIngestionOptions":
+            suggest = "file_ingestion_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: Optional[_builtins.str] = None,
+                 file_ingestion_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions'] = None,
+                 url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str url: URL of the Lakeflow Declarative Pipeline on the given workspace.
+        """
+        if entity_type is not None:
+            pulumi.set(__self__, "entity_type", entity_type)
+        if file_ingestion_options is not None:
+            pulumi.set(__self__, "file_ingestion_options", file_ingestion_options)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "entity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="fileIngestionOptions")
+    def file_ingestion_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions']:
+        return pulumi.get(self, "file_ingestion_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the Lakeflow Declarative Pipeline on the given workspace.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "corruptRecordColumn":
+            suggest = "corrupt_record_column"
+        elif key == "fileFilters":
+            suggest = "file_filters"
+        elif key == "formatOptions":
+            suggest = "format_options"
+        elif key == "ignoreCorruptFiles":
+            suggest = "ignore_corrupt_files"
+        elif key == "inferColumnTypes":
+            suggest = "infer_column_types"
+        elif key == "readerCaseSensitive":
+            suggest = "reader_case_sensitive"
+        elif key == "rescuedDataColumn":
+            suggest = "rescued_data_column"
+        elif key == "schemaEvolutionMode":
+            suggest = "schema_evolution_mode"
+        elif key == "schemaHints":
+            suggest = "schema_hints"
+        elif key == "singleVariantColumn":
+            suggest = "single_variant_column"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 corrupt_record_column: Optional[_builtins.str] = None,
+                 file_filters: Optional[Sequence['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter']] = None,
+                 format: Optional[_builtins.str] = None,
+                 format_options: Optional[Mapping[str, _builtins.str]] = None,
+                 ignore_corrupt_files: Optional[_builtins.bool] = None,
+                 infer_column_types: Optional[_builtins.bool] = None,
+                 reader_case_sensitive: Optional[_builtins.bool] = None,
+                 rescued_data_column: Optional[_builtins.str] = None,
+                 schema_evolution_mode: Optional[_builtins.str] = None,
+                 schema_hints: Optional[_builtins.str] = None,
+                 single_variant_column: Optional[_builtins.str] = None):
+        if corrupt_record_column is not None:
+            pulumi.set(__self__, "corrupt_record_column", corrupt_record_column)
+        if file_filters is not None:
+            pulumi.set(__self__, "file_filters", file_filters)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if format_options is not None:
+            pulumi.set(__self__, "format_options", format_options)
+        if ignore_corrupt_files is not None:
+            pulumi.set(__self__, "ignore_corrupt_files", ignore_corrupt_files)
+        if infer_column_types is not None:
+            pulumi.set(__self__, "infer_column_types", infer_column_types)
+        if reader_case_sensitive is not None:
+            pulumi.set(__self__, "reader_case_sensitive", reader_case_sensitive)
+        if rescued_data_column is not None:
+            pulumi.set(__self__, "rescued_data_column", rescued_data_column)
+        if schema_evolution_mode is not None:
+            pulumi.set(__self__, "schema_evolution_mode", schema_evolution_mode)
+        if schema_hints is not None:
+            pulumi.set(__self__, "schema_hints", schema_hints)
+        if single_variant_column is not None:
+            pulumi.set(__self__, "single_variant_column", single_variant_column)
+
+    @_builtins.property
+    @pulumi.getter(name="corruptRecordColumn")
+    def corrupt_record_column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "corrupt_record_column")
+
+    @_builtins.property
+    @pulumi.getter(name="fileFilters")
+    def file_filters(self) -> Optional[Sequence['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter']]:
+        return pulumi.get(self, "file_filters")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "format")
+
+    @_builtins.property
+    @pulumi.getter(name="formatOptions")
+    def format_options(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "format_options")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreCorruptFiles")
+    def ignore_corrupt_files(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ignore_corrupt_files")
+
+    @_builtins.property
+    @pulumi.getter(name="inferColumnTypes")
+    def infer_column_types(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "infer_column_types")
+
+    @_builtins.property
+    @pulumi.getter(name="readerCaseSensitive")
+    def reader_case_sensitive(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "reader_case_sensitive")
+
+    @_builtins.property
+    @pulumi.getter(name="rescuedDataColumn")
+    def rescued_data_column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "rescued_data_column")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaEvolutionMode")
+    def schema_evolution_mode(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema_evolution_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaHints")
+    def schema_hints(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "schema_hints")
+
+    @_builtins.property
+    @pulumi.getter(name="singleVariantColumn")
+    def single_variant_column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "single_variant_column")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modifiedAfter":
+            suggest = "modified_after"
+        elif key == "modifiedBefore":
+            suggest = "modified_before"
+        elif key == "pathFilter":
+            suggest = "path_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 modified_after: Optional[_builtins.str] = None,
+                 modified_before: Optional[_builtins.str] = None,
+                 path_filter: Optional[_builtins.str] = None):
+        if modified_after is not None:
+            pulumi.set(__self__, "modified_after", modified_after)
+        if modified_before is not None:
+            pulumi.set(__self__, "modified_before", modified_before)
+        if path_filter is not None:
+            pulumi.set(__self__, "path_filter", path_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAfter")
+    def modified_after(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "modified_after")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedBefore")
+    def modified_before(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "modified_before")
+
+    @_builtins.property
+    @pulumi.getter(name="pathFilter")
+    def path_filter(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "path_filter")
 
 
 @pulumi.output_type
@@ -73616,7 +76984,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurable(dict):
         :param _builtins.str provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -73647,7 +77015,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurable(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -73719,7 +77087,7 @@ class RfaAccessRequestDestinationsSecurable(dict):
         :param _builtins.str provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -73751,9 +77119,47 @@ class RfaAccessRequestDestinationsSecurable(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class SandboxMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTags":
+            suggest = "custom_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SandboxMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SandboxMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SandboxMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] custom_tags: Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+               1 and 512 characters, and values must not exceed 256 characters
+        """
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+        1 and 512 characters, and values must not exceed 256 characters
+        """
+        return pulumi.get(self, "custom_tags")
 
 
 @pulumi.output_type
@@ -73881,9 +77287,9 @@ class SandboxSpecEnvironment(dict):
     def __init__(__self__, *,
                  image_uri: Optional[_builtins.str] = None):
         """
-        :param _builtins.str image_uri: A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-               sandbox environment. When set, this image is used as the environment instead of resolving a
-               managed image from `environment_version`
+        :param _builtins.str image_uri: The Unity Catalog container image to use for the sandbox environment
+               (for example, `catalog.schema.folder.image:tag`). See
+               [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
         """
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
@@ -73892,9 +77298,9 @@ class SandboxSpecEnvironment(dict):
     @pulumi.getter(name="imageUri")
     def image_uri(self) -> Optional[_builtins.str]:
         """
-        A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-        sandbox environment. When set, this image is used as the environment instead of resolving a
-        managed image from `environment_version`
+        The Unity Catalog container image to use for the sandbox environment
+        (for example, `catalog.schema.folder.image:tag`). See
+        [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
         """
         return pulumi.get(self, "image_uri")
 
@@ -79794,13 +83200,20 @@ class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult(dict):
                  external_id: _builtins.str,
                  group_id: _builtins.int,
                  membership_source: _builtins.str,
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  principal_id: _builtins.int,
                  principal_type: _builtins.str):
         """
         :param _builtins.str display_name: (string) - Display name of the principal
-        :param _builtins.str external_id: (string) - The external ID of the principal in Databricks
-        :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
+        :param _builtins.str external_id: (string) - The external ID of the principal in the customer's IdP
+        :param _builtins.int group_id: (integer) - The internal ID of the group this member belongs to
         :param _builtins.str membership_source: (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        :param _builtins.str name: (string) - The resource name of the group membership. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+               - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        :param _builtins.str parent: The parent resource name of the group whose direct members to list.
+               Format: accounts/{account_id}/groups/{group_id}
         :param _builtins.int principal_id: (integer) - Internal ID of the principal in Databricks
         :param _builtins.str principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         """
@@ -79808,6 +83221,8 @@ class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult(dict):
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "membership_source", membership_source)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "principal_type", principal_type)
 
@@ -79823,7 +83238,7 @@ class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult(dict):
     @pulumi.getter(name="externalId")
     def external_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the principal in Databricks
+        (string) - The external ID of the principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
 
@@ -79831,7 +83246,7 @@ class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.int:
         """
-        Required. Internal ID of the group in Databricks whose direct members are being listed
+        (integer) - The internal ID of the group this member belongs to
         """
         return pulumi.get(self, "group_id")
 
@@ -79842,6 +83257,25 @@ class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult(dict):
         (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         """
         return pulumi.get(self, "membership_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group membership. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The parent resource name of the group whose direct members to list.
+        Format: accounts/{account_id}/groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -79895,17 +83329,26 @@ class GetAccountIamGroupsV2GroupResult(dict):
                  account_id: _builtins.str,
                  external_id: _builtins.str,
                  group_id: _builtins.str,
-                 group_name: _builtins.str):
+                 group_name: _builtins.str,
+                 name: _builtins.str,
+                 parent: _builtins.str):
         """
         :param _builtins.str account_id: (string) - The parent account ID for group in Databricks
         :param _builtins.str external_id: (string) - ExternalId of the group in the customer's IdP
         :param _builtins.str group_id: (string) - Internal group ID of the group in Databricks
         :param _builtins.str group_name: (string) - Display name of the group
+        :param _builtins.str name: (string) - The resource name of the group. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
+        :param _builtins.str parent: The parent resource name of the account whose groups to list.
+               Format: accounts/{account_id}
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -79939,6 +83382,25 @@ class GetAccountIamGroupsV2GroupResult(dict):
         """
         return pulumi.get(self, "group_name")
 
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The parent resource name of the account whose groups to list.
+        Format: accounts/{account_id}
+        """
+        return pulumi.get(self, "parent")
+
 
 @pulumi.output_type
 class GetAccountIamServicePrincipalsV2ServicePrincipalResult(dict):
@@ -79948,6 +83410,8 @@ class GetAccountIamServicePrincipalsV2ServicePrincipalResult(dict):
                  application_id: _builtins.str,
                  display_name: _builtins.str,
                  external_id: _builtins.str,
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  service_principal_id: _builtins.str):
         """
         :param _builtins.str account_id: (string) - The parent account ID for the service principal in Databricks
@@ -79956,6 +83420,11 @@ class GetAccountIamServicePrincipalsV2ServicePrincipalResult(dict):
                afterwards; when omitted, the server generates one
         :param _builtins.str display_name: (string) - Display name of the service principal
         :param _builtins.str external_id: (string) - ExternalId of the service principal in the customer's IdP
+        :param _builtins.str name: (string) - The resource name of the service principal. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+               - Workspace-scoped: service-principals/{service_principal_id}
+        :param _builtins.str parent: The parent resource name of the account whose service principals to list.
+               Format: accounts/{account_id}
         :param _builtins.str service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -79963,6 +83432,8 @@ class GetAccountIamServicePrincipalsV2ServicePrincipalResult(dict):
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
 
     @_builtins.property
@@ -80005,6 +83476,25 @@ class GetAccountIamServicePrincipalsV2ServicePrincipalResult(dict):
         (string) - ExternalId of the service principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The parent resource name of the account whose service principals to list.
+        Format: accounts/{account_id}
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
@@ -80053,6 +83543,8 @@ class GetAccountIamUsersV2UserResult(dict):
                  account_user_status: _builtins.str,
                  external_id: _builtins.str,
                  full_name: 'outputs.GetAccountIamUsersV2UserFullNameResult',
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  user_id: _builtins.str,
                  username: _builtins.str):
         """
@@ -80060,6 +83552,11 @@ class GetAccountIamUsersV2UserResult(dict):
         :param _builtins.str account_user_status: (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param _builtins.str external_id: (string) - ExternalId of the user in the customer's IdP
         :param 'GetAccountIamUsersV2UserFullNameArgs' full_name: (UserFullName)
+        :param _builtins.str name: (string) - The resource name of the user. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/users/{user_id}
+               - Workspace-scoped: users/{user_id}
+        :param _builtins.str parent: The parent resource name of the account whose users to list.
+               Format: accounts/{account_id}
         :param _builtins.str user_id: (string) - Internal userId of the user in Databricks
         :param _builtins.str username: (string) - Username/email of the user
         """
@@ -80067,6 +83564,8 @@ class GetAccountIamUsersV2UserResult(dict):
         pulumi.set(__self__, "account_user_status", account_user_status)
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "user_id", user_id)
         pulumi.set(__self__, "username", username)
 
@@ -80101,6 +83600,25 @@ class GetAccountIamUsersV2UserResult(dict):
         (UserFullName)
         """
         return pulumi.get(self, "full_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the user. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/users/{user_id}
+        - Workspace-scoped: users/{user_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The parent resource name of the account whose users to list.
+        Format: accounts/{account_id}
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="userId")
@@ -80156,6 +83674,8 @@ class GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
                  account_id: _builtins.str,
                  effective_entitlements: Sequence[_builtins.str],
                  entitlements: Sequence[_builtins.str],
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  principal_id: _builtins.int,
                  principal_type: _builtins.str,
                  workspace_id: _builtins.int):
@@ -80167,13 +83687,22 @@ class GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
                client-settable field. Create and update manage exactly this set, including entitlements the
                principal also holds through a group.
                List responses leave this field empty. Get a single principal to read its entitlements
-        :param _builtins.int principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        :param _builtins.str name: (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+               - Workspace-scoped: workspace-assignments/{principal_id}
+        :param _builtins.str parent: The parent resource name of the workspace whose assignments to list.
+               Format: accounts/{account_id}/workspaces/{workspace_id}
+        :param _builtins.int principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+               created and cannot be changed afterwards; to assign a different principal, create a new
+               assignment
         :param _builtins.str principal_type: (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
-        :param _builtins.int workspace_id: Required. The workspace ID for which the workspace assignments are being fetched
+        :param _builtins.int workspace_id: (integer) - The workspace ID where the principal is assigned
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "effective_entitlements", effective_entitlements)
         pulumi.set(__self__, "entitlements", entitlements)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "principal_type", principal_type)
         pulumi.set(__self__, "workspace_id", workspace_id)
@@ -80207,10 +83736,31 @@ class GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
         return pulumi.get(self, "entitlements")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        - Workspace-scoped: workspace-assignments/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The parent resource name of the workspace whose assignments to list.
+        Format: accounts/{account_id}/workspaces/{workspace_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> _builtins.int:
         """
-        (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        created and cannot be changed afterwards; to assign a different principal, create a new
+        assignment
         """
         return pulumi.get(self, "principal_id")
 
@@ -80226,7 +83776,7 @@ class GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.int:
         """
-        Required. The workspace ID for which the workspace assignments are being fetched
+        (integer) - The workspace ID where the principal is assigned
         """
         return pulumi.get(self, "workspace_id")
 
@@ -80592,7 +84142,8 @@ class GetAccountNetworkPoliciesItemIngressResult(dict):
                  private_access: Optional['outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetAccountNetworkPoliciesItemIngressPublicAccessResult'] = None):
         """
-        :param 'GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        :param 'GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+               access this workspace
         :param 'GetAccountNetworkPoliciesItemIngressPrivateAccessArgs' private_access: (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
                Configures how requests arriving over private connectivity are governed
         :param 'GetAccountNetworkPoliciesItemIngressPublicAccessArgs' public_access: (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
@@ -80609,7 +84160,8 @@ class GetAccountNetworkPoliciesItemIngressResult(dict):
     @pulumi.getter(name="crossWorkspaceAccess")
     def cross_workspace_access(self) -> Optional['outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessResult']:
         """
-        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+        access this workspace
         """
         return pulumi.get(self, "cross_workspace_access")
 
@@ -81575,7 +85127,8 @@ class GetAccountNetworkPoliciesItemIngressDryRunResult(dict):
                  private_access: Optional['outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessResult'] = None):
         """
-        :param 'GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        :param 'GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+               access this workspace
         :param 'GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessArgs' private_access: (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
                Configures how requests arriving over private connectivity are governed
         :param 'GetAccountNetworkPoliciesItemIngressDryRunPublicAccessArgs' public_access: (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
@@ -81592,7 +85145,8 @@ class GetAccountNetworkPoliciesItemIngressDryRunResult(dict):
     @pulumi.getter(name="crossWorkspaceAccess")
     def cross_workspace_access(self) -> Optional['outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessResult']:
         """
-        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+        access this workspace
         """
         return pulumi.get(self, "cross_workspace_access")
 
@@ -86858,7 +90412,8 @@ class GetAccountNetworkPolicyIngressResult(dict):
                  private_access: Optional['outputs.GetAccountNetworkPolicyIngressPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetAccountNetworkPolicyIngressPublicAccessResult'] = None):
         """
-        :param 'GetAccountNetworkPolicyIngressCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        :param 'GetAccountNetworkPolicyIngressCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+               access this workspace
         :param 'GetAccountNetworkPolicyIngressPrivateAccessArgs' private_access: (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
                Configures how requests arriving over private connectivity are governed
         :param 'GetAccountNetworkPolicyIngressPublicAccessArgs' public_access: (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
@@ -86875,7 +90430,8 @@ class GetAccountNetworkPolicyIngressResult(dict):
     @pulumi.getter(name="crossWorkspaceAccess")
     def cross_workspace_access(self) -> Optional['outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessResult']:
         """
-        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+        access this workspace
         """
         return pulumi.get(self, "cross_workspace_access")
 
@@ -87841,7 +91397,8 @@ class GetAccountNetworkPolicyIngressDryRunResult(dict):
                  private_access: Optional['outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessResult'] = None):
         """
-        :param 'GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        :param 'GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs' cross_workspace_access: (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+               access this workspace
         :param 'GetAccountNetworkPolicyIngressDryRunPrivateAccessArgs' private_access: (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
                Configures how requests arriving over private connectivity are governed
         :param 'GetAccountNetworkPolicyIngressDryRunPublicAccessArgs' public_access: (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
@@ -87858,7 +91415,8 @@ class GetAccountNetworkPolicyIngressDryRunResult(dict):
     @pulumi.getter(name="crossWorkspaceAccess")
     def cross_workspace_access(self) -> Optional['outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessResult']:
         """
-        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+        access this workspace
         """
         return pulumi.get(self, "cross_workspace_access")
 
@@ -93794,7 +97352,8 @@ class GetAgentKitManagedMemoryEntriesManagedMemoryEntryResult(dict):
         :param _builtins.str create_time: (string) - Time when the entry was created
         :param _builtins.str description: (string) - Human-readable description of the memory entry
         :param _builtins.str name: (string) - Resource name in the form
-               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+               Required for updates; assigned by the service on creation
         :param _builtins.str path: (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
                Paths must begin with `/` and must not contain empty, `.` or `..` segments
         :param _builtins.str session_id: Optional session identifier. When set, only entries with this exact `session_id` are
@@ -93852,7 +97411,8 @@ class GetAgentKitManagedMemoryEntriesManagedMemoryEntryResult(dict):
     def name(self) -> _builtins.str:
         """
         (string) - Resource name in the form
-        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+        Required for updates; assigned by the service on creation
         """
         return pulumi.get(self, "name")
 
@@ -95096,9 +98656,10 @@ class GetAiGatewayModelProviderServiceConfigResult(dict):
                  rate_limits: Optional[Sequence['outputs.GetAiGatewayModelProviderServiceConfigRateLimitResult']] = None,
                  targets: Optional[Sequence['outputs.GetAiGatewayModelProviderServiceConfigTargetResult']] = None):
         """
-        :param _builtins.bool allow_all_targets: (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
-               is not required and does not restrict routability. When false, only
-               models listed in `targets` are routable. Defaults to false
+        :param _builtins.bool allow_all_targets: (boolean) - When true, allows models from the provider's built-in model catalog in
+               addition to explicit `targets`. When false, only models listed in `targets`
+               are routable. Defaults to false. CUSTOM providers have no built-in model
+               catalog and must leave this false and list their models in `targets`
         :param 'GetAiGatewayModelProviderServiceConfigAmazonBedrockArgs' amazon_bedrock: (ModelProviderServiceConfigAmazonBedrockProviderConfig)
         :param 'GetAiGatewayModelProviderServiceConfigAnthropicArgs' anthropic: (ModelProviderServiceConfigAnthropicProviderConfig)
         :param 'GetAiGatewayModelProviderServiceConfigAzureOpenaiArgs' azure_openai: (ModelProviderServiceConfigAzureOpenAiProviderConfig)
@@ -95135,8 +98696,9 @@ class GetAiGatewayModelProviderServiceConfigResult(dict):
                entry must include at least one `native_api_types` value. When
                `allow_all_targets` is false, at least one entry is required and model
                service destinations can reference only listed models. When
-               `allow_all_targets` is true, any upstream model is routable; entries in
-               this list provide API-type metadata without restricting other models
+               `allow_all_targets` is true, models from the provider's built-in model
+               catalog are also routable. CUSTOM providers must explicitly list their
+               models here and cannot enable `allow_all_targets`
         """
         if allow_all_targets is not None:
             pulumi.set(__self__, "allow_all_targets", allow_all_targets)
@@ -95177,9 +98739,10 @@ class GetAiGatewayModelProviderServiceConfigResult(dict):
     @pulumi.getter(name="allowAllTargets")
     def allow_all_targets(self) -> Optional[_builtins.bool]:
         """
-        (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
-        is not required and does not restrict routability. When false, only
-        models listed in `targets` are routable. Defaults to false
+        (boolean) - When true, allows models from the provider's built-in model catalog in
+        addition to explicit `targets`. When false, only models listed in `targets`
+        are routable. Defaults to false. CUSTOM providers have no built-in model
+        catalog and must leave this false and list their models in `targets`
         """
         return pulumi.get(self, "allow_all_targets")
 
@@ -95328,8 +98891,9 @@ class GetAiGatewayModelProviderServiceConfigResult(dict):
         entry must include at least one `native_api_types` value. When
         `allow_all_targets` is false, at least one entry is required and model
         service destinations can reference only listed models. When
-        `allow_all_targets` is true, any upstream model is routable; entries in
-        this list provide API-type metadata without restricting other models
+        `allow_all_targets` is true, models from the provider's built-in model
+        catalog are also routable. CUSTOM providers must explicitly list their
+        models here and cannot enable `allow_all_targets`
         """
         return pulumi.get(self, "targets")
 
@@ -97481,9 +101045,10 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigResult(dict):
                  rate_limits: Optional[Sequence['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigRateLimitResult']] = None,
                  targets: Optional[Sequence['outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigTargetResult']] = None):
         """
-        :param _builtins.bool allow_all_targets: (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
-               is not required and does not restrict routability. When false, only
-               models listed in `targets` are routable. Defaults to false
+        :param _builtins.bool allow_all_targets: (boolean) - When true, allows models from the provider's built-in model catalog in
+               addition to explicit `targets`. When false, only models listed in `targets`
+               are routable. Defaults to false. CUSTOM providers have no built-in model
+               catalog and must leave this false and list their models in `targets`
         :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockArgs' amazon_bedrock: (ModelProviderServiceConfigAmazonBedrockProviderConfig)
         :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicArgs' anthropic: (ModelProviderServiceConfigAnthropicProviderConfig)
         :param 'GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiArgs' azure_openai: (ModelProviderServiceConfigAzureOpenAiProviderConfig)
@@ -97520,8 +101085,9 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigResult(dict):
                entry must include at least one `native_api_types` value. When
                `allow_all_targets` is false, at least one entry is required and model
                service destinations can reference only listed models. When
-               `allow_all_targets` is true, any upstream model is routable; entries in
-               this list provide API-type metadata without restricting other models
+               `allow_all_targets` is true, models from the provider's built-in model
+               catalog are also routable. CUSTOM providers must explicitly list their
+               models here and cannot enable `allow_all_targets`
         """
         if allow_all_targets is not None:
             pulumi.set(__self__, "allow_all_targets", allow_all_targets)
@@ -97562,9 +101128,10 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigResult(dict):
     @pulumi.getter(name="allowAllTargets")
     def allow_all_targets(self) -> Optional[_builtins.bool]:
         """
-        (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
-        is not required and does not restrict routability. When false, only
-        models listed in `targets` are routable. Defaults to false
+        (boolean) - When true, allows models from the provider's built-in model catalog in
+        addition to explicit `targets`. When false, only models listed in `targets`
+        are routable. Defaults to false. CUSTOM providers have no built-in model
+        catalog and must leave this false and list their models in `targets`
         """
         return pulumi.get(self, "allow_all_targets")
 
@@ -97713,8 +101280,9 @@ class GetAiGatewayModelProviderServicesModelProviderServiceConfigResult(dict):
         entry must include at least one `native_api_types` value. When
         `allow_all_targets` is false, at least one entry is required and model
         service destinations can reference only listed models. When
-        `allow_all_targets` is true, any upstream model is routable; entries in
-        this list provide API-type metadata without restricting other models
+        `allow_all_targets` is true, models from the provider's built-in model
+        catalog are also routable. CUSTOM providers must explicitly list their
+        models here and cannot enable `allow_all_targets`
         """
         return pulumi.get(self, "targets")
 
@@ -101561,7 +105129,7 @@ class GetAiSearchEndpointEndpointStatusResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.str message: (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
-        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         pulumi.set(__self__, "message", message)
         pulumi.set(__self__, "state", state)
@@ -101578,7 +105146,7 @@ class GetAiSearchEndpointEndpointStatusResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         return pulumi.get(self, "state")
 
@@ -101607,7 +105175,7 @@ class GetAiSearchEndpointScalingInfoResult(dict):
                  state: _builtins.str,
                  requested_target_qps: Optional[_builtins.int] = None):
         """
-        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         :param _builtins.int requested_target_qps: (integer) - The requested QPS target for the endpoint. Best-effort; the system does not
                guarantee this QPS will be achieved
         """
@@ -101619,7 +105187,7 @@ class GetAiSearchEndpointScalingInfoResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         return pulumi.get(self, "state")
 
@@ -101996,7 +105564,7 @@ class GetAiSearchEndpointsEndpointEndpointStatusResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.str message: (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
-        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         pulumi.set(__self__, "message", message)
         pulumi.set(__self__, "state", state)
@@ -102013,7 +105581,7 @@ class GetAiSearchEndpointsEndpointEndpointStatusResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         return pulumi.get(self, "state")
 
@@ -102042,7 +105610,7 @@ class GetAiSearchEndpointsEndpointScalingInfoResult(dict):
                  state: _builtins.str,
                  requested_target_qps: Optional[_builtins.int] = None):
         """
-        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        :param _builtins.str state: (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         :param _builtins.int requested_target_qps: (integer) - The requested QPS target for the endpoint. Best-effort; the system does not
                guarantee this QPS will be achieved
         """
@@ -102054,7 +105622,7 @@ class GetAiSearchEndpointsEndpointScalingInfoResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         """
         return pulumi.get(self, "state")
 
@@ -103628,8 +107196,8 @@ class GetAlertsV2AlertResult(dict):
                  provider_config: Optional['outputs.GetAlertsV2AlertProviderConfigResult'] = None):
         """
         :param _builtins.str create_time: (string) - The timestamp indicating when the alert was created
-        :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
-        :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
+        :param _builtins.str custom_description: (string) - Custom description for the alert. Interpreted according to `custom_template_format`
+        :param _builtins.str custom_summary: (string) - Custom summary for the alert. Interpreted according to `custom_template_format`
         :param _builtins.str custom_template_format: (string) - The format used to interpret the `custom_summary` and `custom_description` templates.
         :param _builtins.str display_name: (string) - The display name of the alert
         :param 'GetAlertsV2AlertEffectiveRunAsArgs' effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -103688,7 +107256,7 @@ class GetAlertsV2AlertResult(dict):
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> _builtins.str:
         """
-        (string) - Custom description for the alert. support mustache template
+        (string) - Custom description for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_description")
 
@@ -103696,7 +107264,7 @@ class GetAlertsV2AlertResult(dict):
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> _builtins.str:
         """
-        (string) - Custom summary for the alert. support mustache template
+        (string) - Custom summary for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -114274,12 +117842,16 @@ class GetDataClassificationCatalogConfigProviderConfigResult(dict):
 @pulumi.output_type
 class GetDataQualityMonitorAnomalyDetectionConfigResult(dict):
     def __init__(__self__, *,
-                 excluded_table_full_names: Optional[Sequence[_builtins.str]] = None):
+                 excluded_table_full_names: Optional[Sequence[_builtins.str]] = None,
+                 notification_settings: Optional['outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsResult'] = None):
         """
         :param Sequence[_builtins.str] excluded_table_full_names: (list of string) - List of fully qualified table names to exclude from anomaly detection
+        :param 'GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs' notification_settings: (NotificationSettings) - Field for specifying notification settings
         """
         if excluded_table_full_names is not None:
             pulumi.set(__self__, "excluded_table_full_names", excluded_table_full_names)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
 
     @_builtins.property
     @pulumi.getter(name="excludedTableFullNames")
@@ -114288,6 +117860,151 @@ class GetDataQualityMonitorAnomalyDetectionConfigResult(dict):
         (list of string) - List of fully qualified table names to exclude from anomaly detection
         """
         return pulumi.get(self, "excluded_table_full_names")
+
+    @_builtins.property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsResult']:
+        """
+        (NotificationSettings) - Field for specifying notification settings
+        """
+        return pulumi.get(self, "notification_settings")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsResult(dict):
+    def __init__(__self__, *,
+                 on_failure: Optional['outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult'] = None,
+                 on_unhealthy_table: Optional['outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult'] = None):
+        """
+        :param 'GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs' on_failure: (NotificationDestination) - Destinations to send notifications on failure/timeout
+        :param 'GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs' on_unhealthy_table: (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+               recipient gets one notification per important unhealthy table. Only supported on schema
+               monitors, via `anomaly_detection_config`
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_unhealthy_table is not None:
+            pulumi.set(__self__, "on_unhealthy_table", on_unhealthy_table)
+
+    @_builtins.property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional['outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult']:
+        """
+        (NotificationDestination) - Destinations to send notifications on failure/timeout
+        """
+        return pulumi.get(self, "on_failure")
+
+    @_builtins.property
+    @pulumi.getter(name="onUnhealthyTable")
+    def on_unhealthy_table(self) -> Optional['outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult']:
+        """
+        (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        recipient gets one notification per important unhealthy table. Only supported on schema
+        monitors, via `anomaly_detection_config`
+        """
+        return pulumi.get(self, "on_unhealthy_table")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult(dict):
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult(dict):
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
 
 
 @pulumi.output_type
@@ -114301,18 +118018,18 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
                  monitored_table_name: _builtins.str,
                  output_schema_id: _builtins.str,
                  profile_metrics_table_name: _builtins.str,
+                 skip_builtin_dashboard: _builtins.bool,
                  status: _builtins.str,
+                 warehouse_id: _builtins.str,
                  assets_dir: Optional[_builtins.str] = None,
                  baseline_table_name: Optional[_builtins.str] = None,
                  custom_metrics: Optional[Sequence['outputs.GetDataQualityMonitorDataProfilingConfigCustomMetricResult']] = None,
                  inference_log: Optional['outputs.GetDataQualityMonitorDataProfilingConfigInferenceLogResult'] = None,
                  notification_settings: Optional['outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsResult'] = None,
                  schedule: Optional['outputs.GetDataQualityMonitorDataProfilingConfigScheduleResult'] = None,
-                 skip_builtin_dashboard: Optional[_builtins.bool] = None,
                  slicing_exprs: Optional[Sequence[_builtins.str]] = None,
                  snapshot: Optional['outputs.GetDataQualityMonitorDataProfilingConfigSnapshotResult'] = None,
-                 time_series: Optional['outputs.GetDataQualityMonitorDataProfilingConfigTimeSeriesResult'] = None,
-                 warehouse_id: Optional[_builtins.str] = None):
+                 time_series: Optional['outputs.GetDataQualityMonitorDataProfilingConfigTimeSeriesResult'] = None):
         """
         :param _builtins.str dashboard_id: (string) - Id of dashboard that visualizes the computed metrics.
                This can be empty if the monitor is in PENDING state
@@ -114325,7 +118042,10 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
         :param _builtins.str monitored_table_name: (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
         :param _builtins.str output_schema_id: (string) - ID of the schema where output tables are created
         :param _builtins.str profile_metrics_table_name: (string) - Table that stores profile metrics data. Format: `catalog.schema.table_name`
+        :param _builtins.bool skip_builtin_dashboard: (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
         :param _builtins.str status: (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+        :param _builtins.str warehouse_id: (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+               warehouse will be used
         :param _builtins.str assets_dir: (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
                assets. Normally prepopulated to a default user location via UI and Python APIs
         :param _builtins.str baseline_table_name: (string) - Baseline table name.
@@ -114335,7 +118055,6 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
         :param 'GetDataQualityMonitorDataProfilingConfigInferenceLogArgs' inference_log: (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
         :param 'GetDataQualityMonitorDataProfilingConfigNotificationSettingsArgs' notification_settings: (NotificationSettings) - Field for specifying notification settings
         :param 'GetDataQualityMonitorDataProfilingConfigScheduleArgs' schedule: (CronSchedule) - The cron schedule
-        :param _builtins.bool skip_builtin_dashboard: (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
         :param Sequence[_builtins.str] slicing_exprs: (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
                each expression independently, resulting in a separate slice for each predicate and its
                complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
@@ -114344,8 +118063,6 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
                generate slices
         :param 'GetDataQualityMonitorDataProfilingConfigSnapshotArgs' snapshot: (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
         :param 'GetDataQualityMonitorDataProfilingConfigTimeSeriesArgs' time_series: (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
-        :param _builtins.str warehouse_id: (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-               warehouse will be used
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
         pulumi.set(__self__, "drift_metrics_table_name", drift_metrics_table_name)
@@ -114355,7 +118072,9 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
         pulumi.set(__self__, "monitored_table_name", monitored_table_name)
         pulumi.set(__self__, "output_schema_id", output_schema_id)
         pulumi.set(__self__, "profile_metrics_table_name", profile_metrics_table_name)
+        pulumi.set(__self__, "skip_builtin_dashboard", skip_builtin_dashboard)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
         if assets_dir is not None:
             pulumi.set(__self__, "assets_dir", assets_dir)
         if baseline_table_name is not None:
@@ -114368,16 +118087,12 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
             pulumi.set(__self__, "notification_settings", notification_settings)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
-        if skip_builtin_dashboard is not None:
-            pulumi.set(__self__, "skip_builtin_dashboard", skip_builtin_dashboard)
         if slicing_exprs is not None:
             pulumi.set(__self__, "slicing_exprs", slicing_exprs)
         if snapshot is not None:
             pulumi.set(__self__, "snapshot", snapshot)
         if time_series is not None:
             pulumi.set(__self__, "time_series", time_series)
-        if warehouse_id is not None:
-            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
@@ -114447,12 +118162,29 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
         return pulumi.get(self, "profile_metrics_table_name")
 
     @_builtins.property
+    @pulumi.getter(name="skipBuiltinDashboard")
+    def skip_builtin_dashboard(self) -> _builtins.bool:
+        """
+        (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
+        """
+        return pulumi.get(self, "skip_builtin_dashboard")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
         (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> _builtins.str:
+        """
+        (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+        warehouse will be used
+        """
+        return pulumi.get(self, "warehouse_id")
 
     @_builtins.property
     @pulumi.getter(name="assetsDir")
@@ -114506,14 +118238,6 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
         return pulumi.get(self, "schedule")
 
     @_builtins.property
-    @pulumi.getter(name="skipBuiltinDashboard")
-    def skip_builtin_dashboard(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
-        """
-        return pulumi.get(self, "skip_builtin_dashboard")
-
-    @_builtins.property
     @pulumi.getter(name="slicingExprs")
     def slicing_exprs(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -114541,15 +118265,6 @@ class GetDataQualityMonitorDataProfilingConfigResult(dict):
         (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
         """
         return pulumi.get(self, "time_series")
-
-    @_builtins.property
-    @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[_builtins.str]:
-        """
-        (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-        warehouse will be used
-        """
-        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -114693,12 +118408,18 @@ class GetDataQualityMonitorDataProfilingConfigInferenceLogResult(dict):
 @pulumi.output_type
 class GetDataQualityMonitorDataProfilingConfigNotificationSettingsResult(dict):
     def __init__(__self__, *,
-                 on_failure: Optional['outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureResult'] = None):
+                 on_failure: Optional['outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureResult'] = None,
+                 on_unhealthy_table: Optional['outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult'] = None):
         """
         :param 'GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs' on_failure: (NotificationDestination) - Destinations to send notifications on failure/timeout
+        :param 'GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs' on_unhealthy_table: (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+               recipient gets one notification per important unhealthy table. Only supported on schema
+               monitors, via `anomaly_detection_config`
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
+        if on_unhealthy_table is not None:
+            pulumi.set(__self__, "on_unhealthy_table", on_unhealthy_table)
 
     @_builtins.property
     @pulumi.getter(name="onFailure")
@@ -114708,16 +118429,109 @@ class GetDataQualityMonitorDataProfilingConfigNotificationSettingsResult(dict):
         """
         return pulumi.get(self, "on_failure")
 
+    @_builtins.property
+    @pulumi.getter(name="onUnhealthyTable")
+    def on_unhealthy_table(self) -> Optional['outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult']:
+        """
+        (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        recipient gets one notification per important unhealthy table. Only supported on schema
+        monitors, via `anomaly_detection_config`
+        """
+        return pulumi.get(self, "on_unhealthy_table")
+
 
 @pulumi.output_type
 class GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureResult(dict):
     def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
                  email_addresses: Optional[Sequence[_builtins.str]] = None):
         """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
         :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
         """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
         if email_addresses is not None:
             pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult(dict):
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
 
     @_builtins.property
     @pulumi.getter(name="emailAddresses")
@@ -114893,12 +118707,16 @@ class GetDataQualityMonitorsMonitorResult(dict):
 @pulumi.output_type
 class GetDataQualityMonitorsMonitorAnomalyDetectionConfigResult(dict):
     def __init__(__self__, *,
-                 excluded_table_full_names: Optional[Sequence[_builtins.str]] = None):
+                 excluded_table_full_names: Optional[Sequence[_builtins.str]] = None,
+                 notification_settings: Optional['outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsResult'] = None):
         """
         :param Sequence[_builtins.str] excluded_table_full_names: (list of string) - List of fully qualified table names to exclude from anomaly detection
+        :param 'GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsArgs' notification_settings: (NotificationSettings) - Field for specifying notification settings
         """
         if excluded_table_full_names is not None:
             pulumi.set(__self__, "excluded_table_full_names", excluded_table_full_names)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
 
     @_builtins.property
     @pulumi.getter(name="excludedTableFullNames")
@@ -114907,6 +118725,151 @@ class GetDataQualityMonitorsMonitorAnomalyDetectionConfigResult(dict):
         (list of string) - List of fully qualified table names to exclude from anomaly detection
         """
         return pulumi.get(self, "excluded_table_full_names")
+
+    @_builtins.property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsResult']:
+        """
+        (NotificationSettings) - Field for specifying notification settings
+        """
+        return pulumi.get(self, "notification_settings")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsResult(dict):
+    def __init__(__self__, *,
+                 on_failure: Optional['outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult'] = None,
+                 on_unhealthy_table: Optional['outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult'] = None):
+        """
+        :param 'GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs' on_failure: (NotificationDestination) - Destinations to send notifications on failure/timeout
+        :param 'GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs' on_unhealthy_table: (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+               recipient gets one notification per important unhealthy table. Only supported on schema
+               monitors, via `anomaly_detection_config`
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_unhealthy_table is not None:
+            pulumi.set(__self__, "on_unhealthy_table", on_unhealthy_table)
+
+    @_builtins.property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional['outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult']:
+        """
+        (NotificationDestination) - Destinations to send notifications on failure/timeout
+        """
+        return pulumi.get(self, "on_failure")
+
+    @_builtins.property
+    @pulumi.getter(name="onUnhealthyTable")
+    def on_unhealthy_table(self) -> Optional['outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult']:
+        """
+        (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        recipient gets one notification per important unhealthy table. Only supported on schema
+        monitors, via `anomaly_detection_config`
+        """
+        return pulumi.get(self, "on_unhealthy_table")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailureResult(dict):
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableResult(dict):
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
 
 
 @pulumi.output_type
@@ -114920,18 +118883,18 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
                  monitored_table_name: _builtins.str,
                  output_schema_id: _builtins.str,
                  profile_metrics_table_name: _builtins.str,
+                 skip_builtin_dashboard: _builtins.bool,
                  status: _builtins.str,
+                 warehouse_id: _builtins.str,
                  assets_dir: Optional[_builtins.str] = None,
                  baseline_table_name: Optional[_builtins.str] = None,
                  custom_metrics: Optional[Sequence['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetricResult']] = None,
                  inference_log: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLogResult'] = None,
                  notification_settings: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsResult'] = None,
                  schedule: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigScheduleResult'] = None,
-                 skip_builtin_dashboard: Optional[_builtins.bool] = None,
                  slicing_exprs: Optional[Sequence[_builtins.str]] = None,
                  snapshot: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigSnapshotResult'] = None,
-                 time_series: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeriesResult'] = None,
-                 warehouse_id: Optional[_builtins.str] = None):
+                 time_series: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeriesResult'] = None):
         """
         :param _builtins.str dashboard_id: (string) - Id of dashboard that visualizes the computed metrics.
                This can be empty if the monitor is in PENDING state
@@ -114944,7 +118907,10 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
         :param _builtins.str monitored_table_name: (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
         :param _builtins.str output_schema_id: (string) - ID of the schema where output tables are created
         :param _builtins.str profile_metrics_table_name: (string) - Table that stores profile metrics data. Format: `catalog.schema.table_name`
+        :param _builtins.bool skip_builtin_dashboard: (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
         :param _builtins.str status: (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+        :param _builtins.str warehouse_id: (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+               warehouse will be used
         :param _builtins.str assets_dir: (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
                assets. Normally prepopulated to a default user location via UI and Python APIs
         :param _builtins.str baseline_table_name: (string) - Baseline table name.
@@ -114954,7 +118920,6 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
         :param 'GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLogArgs' inference_log: (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
         :param 'GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsArgs' notification_settings: (NotificationSettings) - Field for specifying notification settings
         :param 'GetDataQualityMonitorsMonitorDataProfilingConfigScheduleArgs' schedule: (CronSchedule) - The cron schedule
-        :param _builtins.bool skip_builtin_dashboard: (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
         :param Sequence[_builtins.str] slicing_exprs: (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
                each expression independently, resulting in a separate slice for each predicate and its
                complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
@@ -114963,8 +118928,6 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
                generate slices
         :param 'GetDataQualityMonitorsMonitorDataProfilingConfigSnapshotArgs' snapshot: (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
         :param 'GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeriesArgs' time_series: (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
-        :param _builtins.str warehouse_id: (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-               warehouse will be used
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
         pulumi.set(__self__, "drift_metrics_table_name", drift_metrics_table_name)
@@ -114974,7 +118937,9 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
         pulumi.set(__self__, "monitored_table_name", monitored_table_name)
         pulumi.set(__self__, "output_schema_id", output_schema_id)
         pulumi.set(__self__, "profile_metrics_table_name", profile_metrics_table_name)
+        pulumi.set(__self__, "skip_builtin_dashboard", skip_builtin_dashboard)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
         if assets_dir is not None:
             pulumi.set(__self__, "assets_dir", assets_dir)
         if baseline_table_name is not None:
@@ -114987,16 +118952,12 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
             pulumi.set(__self__, "notification_settings", notification_settings)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
-        if skip_builtin_dashboard is not None:
-            pulumi.set(__self__, "skip_builtin_dashboard", skip_builtin_dashboard)
         if slicing_exprs is not None:
             pulumi.set(__self__, "slicing_exprs", slicing_exprs)
         if snapshot is not None:
             pulumi.set(__self__, "snapshot", snapshot)
         if time_series is not None:
             pulumi.set(__self__, "time_series", time_series)
-        if warehouse_id is not None:
-            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
@@ -115066,12 +119027,29 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
         return pulumi.get(self, "profile_metrics_table_name")
 
     @_builtins.property
+    @pulumi.getter(name="skipBuiltinDashboard")
+    def skip_builtin_dashboard(self) -> _builtins.bool:
+        """
+        (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
+        """
+        return pulumi.get(self, "skip_builtin_dashboard")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
         (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> _builtins.str:
+        """
+        (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+        warehouse will be used
+        """
+        return pulumi.get(self, "warehouse_id")
 
     @_builtins.property
     @pulumi.getter(name="assetsDir")
@@ -115125,14 +119103,6 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
         return pulumi.get(self, "schedule")
 
     @_builtins.property
-    @pulumi.getter(name="skipBuiltinDashboard")
-    def skip_builtin_dashboard(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
-        """
-        return pulumi.get(self, "skip_builtin_dashboard")
-
-    @_builtins.property
     @pulumi.getter(name="slicingExprs")
     def slicing_exprs(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -115160,15 +119130,6 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigResult(dict):
         (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
         """
         return pulumi.get(self, "time_series")
-
-    @_builtins.property
-    @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[_builtins.str]:
-        """
-        (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-        warehouse will be used
-        """
-        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -115312,12 +119273,18 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLogResult(dict):
 @pulumi.output_type
 class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsResult(dict):
     def __init__(__self__, *,
-                 on_failure: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult'] = None):
+                 on_failure: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult'] = None,
+                 on_unhealthy_table: Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult'] = None):
         """
         :param 'GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureArgs' on_failure: (NotificationDestination) - Destinations to send notifications on failure/timeout
+        :param 'GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs' on_unhealthy_table: (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+               recipient gets one notification per important unhealthy table. Only supported on schema
+               monitors, via `anomaly_detection_config`
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
+        if on_unhealthy_table is not None:
+            pulumi.set(__self__, "on_unhealthy_table", on_unhealthy_table)
 
     @_builtins.property
     @pulumi.getter(name="onFailure")
@@ -115327,16 +119294,109 @@ class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsResult
         """
         return pulumi.get(self, "on_failure")
 
+    @_builtins.property
+    @pulumi.getter(name="onUnhealthyTable")
+    def on_unhealthy_table(self) -> Optional['outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult']:
+        """
+        (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        recipient gets one notification per important unhealthy table. Only supported on schema
+        monitors, via `anomaly_detection_config`
+        """
+        return pulumi.get(self, "on_unhealthy_table")
+
 
 @pulumi.output_type
 class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult(dict):
     def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
                  email_addresses: Optional[Sequence[_builtins.str]] = None):
         """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
         :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
         """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
         if email_addresses is not None:
             pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
+class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableResult(dict):
+    def __init__(__self__, *,
+                 destination_ids: Optional[Sequence[_builtins.str]] = None,
+                 destination_user_ids: Optional[Sequence[_builtins.int]] = None,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] destination_ids: (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+               destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+               25 destination IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.int] destination_user_ids: (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+               Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        :param Sequence[_builtins.str] email_addresses: (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if destination_ids is not None:
+            pulumi.set(__self__, "destination_ids", destination_ids)
+        if destination_user_ids is not None:
+            pulumi.set(__self__, "destination_user_ids", destination_user_ids)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        25 destination IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUserIds")
+    def destination_user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        Only supported on schema monitors, via `anomaly_detection_config`; rejected on table monitors
+        """
+        return pulumi.get(self, "destination_user_ids")
 
     @_builtins.property
     @pulumi.getter(name="emailAddresses")
@@ -121561,12 +125621,22 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionResult(dict):
 class GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctResult(dict):
     def __init__(__self__, *,
                  input: _builtins.str,
+                 relative_error: Optional[_builtins.float] = None,
                  relative_sd: Optional[_builtins.float] = None):
         """
         :param _builtins.str input: (string) - The input column from which the sample variance is computed
-        :param _builtins.float relative_sd: (number) - The maximum relative standard deviation allowed (default defined by Spark)
+        :param _builtins.float relative_error: (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+               result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+               between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+               gives this error.
+               If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
+        :param _builtins.float relative_sd: (number) - The maximum relative standard deviation allowed (default defined by Spark).
+               Deprecated: use relative_error. When relative_error is set, reads return the same value here
+               for clients that don't have relative_error, and a request may only send that value
         """
         pulumi.set(__self__, "input", input)
+        if relative_error is not None:
+            pulumi.set(__self__, "relative_error", relative_error)
         if relative_sd is not None:
             pulumi.set(__self__, "relative_sd", relative_sd)
 
@@ -121579,10 +125649,24 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct
         return pulumi.get(self, "input")
 
     @_builtins.property
+    @pulumi.getter(name="relativeError")
+    def relative_error(self) -> Optional[_builtins.float]:
+        """
+        (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+        result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+        between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+        gives this error.
+        If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
+        """
+        return pulumi.get(self, "relative_error")
+
+    @_builtins.property
     @pulumi.getter(name="relativeSd")
     def relative_sd(self) -> Optional[_builtins.float]:
         """
-        (number) - The maximum relative standard deviation allowed (default defined by Spark)
+        (number) - The maximum relative standard deviation allowed (default defined by Spark).
+        Deprecated: use relative_error. When relative_error is set, reads return the same value here
+        for clients that don't have relative_error, and a request may only send that value
         """
         return pulumi.get(self, "relative_sd")
 
@@ -121592,16 +125676,27 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileRes
     def __init__(__self__, *,
                  input: _builtins.str,
                  percentile: _builtins.float,
-                 accuracy: Optional[_builtins.int] = None):
+                 accuracy: Optional[_builtins.int] = None,
+                 relative_error: Optional[_builtins.float] = None):
         """
         :param _builtins.str input: (string) - The input column from which the sample variance is computed
         :param _builtins.float percentile: (number) - The percentile value to compute (between 0 and 1)
-        :param _builtins.int accuracy: (integer) - The accuracy parameter (higher is more accurate but slower)
+        :param _builtins.int accuracy: (integer) - The accuracy parameter (higher is more accurate but slower).
+               Deprecated: use relative_error. When relative_error is set, reads return ceil(1 /
+               relative_error) here for clients that don't have relative_error, and a request may only send
+               that value
+        :param _builtins.float relative_error: (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+               result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+               between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+               gives this error.
+               If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
         """
         pulumi.set(__self__, "input", input)
         pulumi.set(__self__, "percentile", percentile)
         if accuracy is not None:
             pulumi.set(__self__, "accuracy", accuracy)
+        if relative_error is not None:
+            pulumi.set(__self__, "relative_error", relative_error)
 
     @_builtins.property
     @pulumi.getter
@@ -121623,9 +125718,24 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileRes
     @pulumi.getter
     def accuracy(self) -> Optional[_builtins.int]:
         """
-        (integer) - The accuracy parameter (higher is more accurate but slower)
+        (integer) - The accuracy parameter (higher is more accurate but slower).
+        Deprecated: use relative_error. When relative_error is set, reads return ceil(1 /
+        relative_error) here for clients that don't have relative_error, and a request may only send
+        that value
         """
         return pulumi.get(self, "accuracy")
+
+    @_builtins.property
+    @pulumi.getter(name="relativeError")
+    def relative_error(self) -> Optional[_builtins.float]:
+        """
+        (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+        result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+        between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+        gives this error.
+        If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
+        """
+        return pulumi.get(self, "relative_error")
 
 
 @pulumi.output_type
@@ -121927,7 +126037,8 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(di
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
                eligible source data exists.
-               Not currently supported for sawtooth windows or for Features with a stream source
+               For sawtooth windows, start_time must not be later than the time the Feature is created.
+               Not supported for rolling windows on Features with a stream source
         :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs' tumbling: (TumblingWindow)
         """
         if continuous is not None:
@@ -121986,7 +126097,8 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(di
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
         eligible source data exists.
-        Not currently supported for sawtooth windows or for Features with a stream source
+        For sawtooth windows, start_time must not be later than the time the Feature is created.
+        Not supported for rolling windows on Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -122889,8 +127001,8 @@ class GetFeatureEngineeringFeatureSourceSdpSourceResult(dict):
         :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
         :param Sequence[_builtins.str] input_tables: (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
                feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-               when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-               these tables, and the run fails if it doesn't. At most 100 tables
+               when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+               tables. At most 100 tables
         :param _builtins.str output_table: (string) - The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
                The table doesn't need to exist until the pipeline first runs. Required
         :param _builtins.str pipeline_id: (string) - The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
@@ -122948,8 +127060,8 @@ class GetFeatureEngineeringFeatureSourceSdpSourceResult(dict):
         """
         (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
         feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-        when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-        these tables, and the run fails if it doesn't. At most 100 tables
+        when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+        tables. At most 100 tables
         """
         return pulumi.get(self, "input_tables")
 
@@ -123065,7 +127177,8 @@ class GetFeatureEngineeringFeatureTimeWindowResult(dict):
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
                eligible source data exists.
-               Not currently supported for sawtooth windows or for Features with a stream source
+               For sawtooth windows, start_time must not be later than the time the Feature is created.
+               Not supported for rolling windows on Features with a stream source
         :param 'GetFeatureEngineeringFeatureTimeWindowTumblingArgs' tumbling: (TumblingWindow)
         """
         if continuous is not None:
@@ -123124,7 +127237,8 @@ class GetFeatureEngineeringFeatureTimeWindowResult(dict):
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
         eligible source data exists.
-        Not currently supported for sawtooth windows or for Features with a stream source
+        For sawtooth windows, start_time must not be later than the time the Feature is created.
+        Not supported for rolling windows on Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -123907,12 +128021,22 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionResult(dict
 class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCountDistinctResult(dict):
     def __init__(__self__, *,
                  input: _builtins.str,
+                 relative_error: Optional[_builtins.float] = None,
                  relative_sd: Optional[_builtins.float] = None):
         """
         :param _builtins.str input: (string) - The input column from which the sample variance is computed
-        :param _builtins.float relative_sd: (number) - The maximum relative standard deviation allowed (default defined by Spark)
+        :param _builtins.float relative_error: (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+               result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+               between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+               gives this error.
+               If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
+        :param _builtins.float relative_sd: (number) - The maximum relative standard deviation allowed (default defined by Spark).
+               Deprecated: use relative_error. When relative_error is set, reads return the same value here
+               for clients that don't have relative_error, and a request may only send that value
         """
         pulumi.set(__self__, "input", input)
+        if relative_error is not None:
+            pulumi.set(__self__, "relative_error", relative_error)
         if relative_sd is not None:
             pulumi.set(__self__, "relative_sd", relative_sd)
 
@@ -123925,10 +128049,24 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCount
         return pulumi.get(self, "input")
 
     @_builtins.property
+    @pulumi.getter(name="relativeError")
+    def relative_error(self) -> Optional[_builtins.float]:
+        """
+        (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+        result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+        between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+        gives this error.
+        If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
+        """
+        return pulumi.get(self, "relative_error")
+
+    @_builtins.property
     @pulumi.getter(name="relativeSd")
     def relative_sd(self) -> Optional[_builtins.float]:
         """
-        (number) - The maximum relative standard deviation allowed (default defined by Spark)
+        (number) - The maximum relative standard deviation allowed (default defined by Spark).
+        Deprecated: use relative_error. When relative_error is set, reads return the same value here
+        for clients that don't have relative_error, and a request may only send that value
         """
         return pulumi.get(self, "relative_sd")
 
@@ -123938,16 +128076,27 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPerce
     def __init__(__self__, *,
                  input: _builtins.str,
                  percentile: _builtins.float,
-                 accuracy: Optional[_builtins.int] = None):
+                 accuracy: Optional[_builtins.int] = None,
+                 relative_error: Optional[_builtins.float] = None):
         """
         :param _builtins.str input: (string) - The input column from which the sample variance is computed
         :param _builtins.float percentile: (number) - The percentile value to compute (between 0 and 1)
-        :param _builtins.int accuracy: (integer) - The accuracy parameter (higher is more accurate but slower)
+        :param _builtins.int accuracy: (integer) - The accuracy parameter (higher is more accurate but slower).
+               Deprecated: use relative_error. When relative_error is set, reads return ceil(1 /
+               relative_error) here for clients that don't have relative_error, and a request may only send
+               that value
+        :param _builtins.float relative_error: (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+               result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+               between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+               gives this error.
+               If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
         """
         pulumi.set(__self__, "input", input)
         pulumi.set(__self__, "percentile", percentile)
         if accuracy is not None:
             pulumi.set(__self__, "accuracy", accuracy)
+        if relative_error is not None:
+            pulumi.set(__self__, "relative_error", relative_error)
 
     @_builtins.property
     @pulumi.getter
@@ -123969,9 +128118,24 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPerce
     @pulumi.getter
     def accuracy(self) -> Optional[_builtins.int]:
         """
-        (integer) - The accuracy parameter (higher is more accurate but slower)
+        (integer) - The accuracy parameter (higher is more accurate but slower).
+        Deprecated: use relative_error. When relative_error is set, reads return ceil(1 /
+        relative_error) here for clients that don't have relative_error, and a request may only send
+        that value
         """
         return pulumi.get(self, "accuracy")
+
+    @_builtins.property
+    @pulumi.getter(name="relativeError")
+    def relative_error(self) -> Optional[_builtins.float]:
+        """
+        (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+        result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+        between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+        gives this error.
+        If neither relative_error nor accuracy is set, 0.01 is default chosen at feature creation
+        """
+        return pulumi.get(self, "relative_error")
 
 
 @pulumi.output_type
@@ -124273,7 +128437,8 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowR
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
                eligible source data exists.
-               Not currently supported for sawtooth windows or for Features with a stream source
+               For sawtooth windows, start_time must not be later than the time the Feature is created.
+               Not supported for rolling windows on Features with a stream source
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingArgs' tumbling: (TumblingWindow)
         """
         if continuous is not None:
@@ -124332,7 +128497,8 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowR
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
         eligible source data exists.
-        Not currently supported for sawtooth windows or for Features with a stream source
+        For sawtooth windows, start_time must not be later than the time the Feature is created.
+        Not supported for rolling windows on Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -125235,8 +129401,8 @@ class GetFeatureEngineeringFeaturesFeatureSourceSdpSourceResult(dict):
         :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
         :param Sequence[_builtins.str] input_tables: (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
                feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-               when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-               these tables, and the run fails if it doesn't. At most 100 tables
+               when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+               tables. At most 100 tables
         :param _builtins.str output_table: (string) - The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
                The table doesn't need to exist until the pipeline first runs. Required
         :param _builtins.str pipeline_id: (string) - The ID of the Spark Declarative Pipeline that Feature Store runs to produce this source, before
@@ -125294,8 +129460,8 @@ class GetFeatureEngineeringFeaturesFeatureSourceSdpSourceResult(dict):
         """
         (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
         feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-        when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-        these tables, and the run fails if it doesn't. At most 100 tables
+        when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+        tables. At most 100 tables
         """
         return pulumi.get(self, "input_tables")
 
@@ -125411,7 +129577,8 @@ class GetFeatureEngineeringFeaturesFeatureTimeWindowResult(dict):
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
                eligible source data exists.
-               Not currently supported for sawtooth windows or for Features with a stream source
+               For sawtooth windows, start_time must not be later than the time the Feature is created.
+               Not supported for rolling windows on Features with a stream source
         :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingArgs' tumbling: (TumblingWindow)
         """
         if continuous is not None:
@@ -125470,7 +129637,8 @@ class GetFeatureEngineeringFeaturesFeatureTimeWindowResult(dict):
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
         eligible source data exists.
-        Not currently supported for sawtooth windows or for Features with a stream source
+        For sawtooth windows, start_time must not be later than the time the Feature is created.
+        Not supported for rolling windows on Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -126553,6 +130721,2529 @@ class GetFunctionsProviderConfigResult(dict):
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionResult(dict):
+    def __init__(__self__, *,
+                 benchmarks: Optional['outputs.GetGenieAgentDefinitionBenchmarksResult'] = None,
+                 config: Optional['outputs.GetGenieAgentDefinitionConfigResult'] = None,
+                 data_sources: Optional['outputs.GetGenieAgentDefinitionDataSourcesResult'] = None,
+                 instructions: Optional['outputs.GetGenieAgentDefinitionInstructionsResult'] = None):
+        """
+        :param 'GetGenieAgentDefinitionBenchmarksArgs' benchmarks: (GenieAgentBenchmarks) - Benchmarks for evaluating the quality of the Genie Agent's answers
+        :param 'GetGenieAgentDefinitionConfigArgs' config: (GenieAgentConfig) - General settings of the Genie Agent
+        :param 'GetGenieAgentDefinitionDataSourcesArgs' data_sources: (GenieAgentDataSources) - The data the Genie Agent can access
+        :param 'GetGenieAgentDefinitionInstructionsArgs' instructions: (GenieAgentInstructions) - Instructions and SQL that guide how the Genie Agent answers questions
+        """
+        if benchmarks is not None:
+            pulumi.set(__self__, "benchmarks", benchmarks)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if data_sources is not None:
+            pulumi.set(__self__, "data_sources", data_sources)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+
+    @_builtins.property
+    @pulumi.getter
+    def benchmarks(self) -> Optional['outputs.GetGenieAgentDefinitionBenchmarksResult']:
+        """
+        (GenieAgentBenchmarks) - Benchmarks for evaluating the quality of the Genie Agent's answers
+        """
+        return pulumi.get(self, "benchmarks")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.GetGenieAgentDefinitionConfigResult']:
+        """
+        (GenieAgentConfig) - General settings of the Genie Agent
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSources")
+    def data_sources(self) -> Optional['outputs.GetGenieAgentDefinitionDataSourcesResult']:
+        """
+        (GenieAgentDataSources) - The data the Genie Agent can access
+        """
+        return pulumi.get(self, "data_sources")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional['outputs.GetGenieAgentDefinitionInstructionsResult']:
+        """
+        (GenieAgentInstructions) - Instructions and SQL that guide how the Genie Agent answers questions
+        """
+        return pulumi.get(self, "instructions")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionBenchmarksResult(dict):
+    def __init__(__self__, *,
+                 questions: Optional[Sequence['outputs.GetGenieAgentDefinitionBenchmarksQuestionResult']] = None):
+        """
+        :param Sequence['GetGenieAgentDefinitionBenchmarksQuestionArgs'] questions: (list of GenieAgentBenchmarkQuestion) - The benchmark questions, sorted by `id` in descending order
+        """
+        if questions is not None:
+            pulumi.set(__self__, "questions", questions)
+
+    @_builtins.property
+    @pulumi.getter
+    def questions(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionBenchmarksQuestionResult']]:
+        """
+        (list of GenieAgentBenchmarkQuestion) - The benchmark questions, sorted by `id` in descending order
+        """
+        return pulumi.get(self, "questions")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionBenchmarksQuestionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str,
+                 answers: Optional[Sequence['outputs.GetGenieAgentDefinitionBenchmarksQuestionAnswerResult']] = None,
+                 evaluation_note: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str question: (string) - The text of the question
+        :param Sequence['GetGenieAgentDefinitionBenchmarksQuestionAnswerArgs'] answers: (list of GenieAgentBenchmarkAnswer) - The expected answer. At most one answer is supported; omit it when the question has no
+               expected answer
+        :param _builtins.str evaluation_note: (string) - Notes on how to evaluate answers to the question
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+        if answers is not None:
+            pulumi.set(__self__, "answers", answers)
+        if evaluation_note is not None:
+            pulumi.set(__self__, "evaluation_note", evaluation_note)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        """
+        (string) - The text of the question
+        """
+        return pulumi.get(self, "question")
+
+    @_builtins.property
+    @pulumi.getter
+    def answers(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionBenchmarksQuestionAnswerResult']]:
+        """
+        (list of GenieAgentBenchmarkAnswer) - The expected answer. At most one answer is supported; omit it when the question has no
+        expected answer
+        """
+        return pulumi.get(self, "answers")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationNote")
+    def evaluation_note(self) -> Optional[_builtins.str]:
+        """
+        (string) - Notes on how to evaluate answers to the question
+        """
+        return pulumi.get(self, "evaluation_note")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionBenchmarksQuestionAnswerResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 format: _builtins.str):
+        """
+        :param _builtins.str content: (string) - The text of the instruction
+        :param _builtins.str format: (string) - The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "format", format)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        (string) - The text of the instruction
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> _builtins.str:
+        """
+        (string) - The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+        """
+        return pulumi.get(self, "format")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionConfigResult(dict):
+    def __init__(__self__, *,
+                 sample_questions: Optional[Sequence['outputs.GetGenieAgentDefinitionConfigSampleQuestionResult']] = None):
+        """
+        :param Sequence['GetGenieAgentDefinitionConfigSampleQuestionArgs'] sample_questions: (list of GenieAgentSampleQuestion) - Sample questions shown to users of the Genie Agent, sorted by `id`
+        """
+        if sample_questions is not None:
+            pulumi.set(__self__, "sample_questions", sample_questions)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleQuestions")
+    def sample_questions(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionConfigSampleQuestionResult']]:
+        """
+        (list of GenieAgentSampleQuestion) - Sample questions shown to users of the Genie Agent, sorted by `id`
+        """
+        return pulumi.get(self, "sample_questions")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionConfigSampleQuestionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str question: (string) - The text of the question
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        """
+        (string) - The text of the question
+        """
+        return pulumi.get(self, "question")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionDataSourcesResult(dict):
+    def __init__(__self__, *,
+                 mcp_connections: Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesMcpConnectionResult']] = None,
+                 tables: Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesTableResult']] = None,
+                 volumes: Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesVolumeResult']] = None):
+        """
+        :param Sequence['GetGenieAgentDefinitionDataSourcesMcpConnectionArgs'] mcp_connections: (list of GenieAgentMcpConnection) - Unity Catalog MCP connections, sorted by `mcp_connection`
+        :param Sequence['GetGenieAgentDefinitionDataSourcesTableArgs'] tables: (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+        :param Sequence['GetGenieAgentDefinitionDataSourcesVolumeArgs'] volumes: (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+        """
+        if mcp_connections is not None:
+            pulumi.set(__self__, "mcp_connections", mcp_connections)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpConnections")
+    def mcp_connections(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesMcpConnectionResult']]:
+        """
+        (list of GenieAgentMcpConnection) - Unity Catalog MCP connections, sorted by `mcp_connection`
+        """
+        return pulumi.get(self, "mcp_connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesTableResult']]:
+        """
+        (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+        """
+        return pulumi.get(self, "tables")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesVolumeResult']]:
+        """
+        (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionDataSourcesMcpConnectionResult(dict):
+    def __init__(__self__, *,
+                 mcp_connection: _builtins.str):
+        """
+        :param _builtins.str mcp_connection: (string) - The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+        """
+        pulumi.set(__self__, "mcp_connection", mcp_connection)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpConnection")
+    def mcp_connection(self) -> _builtins.str:
+        """
+        (string) - The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+        """
+        return pulumi.get(self, "mcp_connection")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionDataSourcesTableResult(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 column_configs: Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesTableColumnConfigResult']] = None,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        :param Sequence['GetGenieAgentDefinitionDataSourcesTableColumnConfigArgs'] column_configs: (list of GenieAgentColumnConfig) - Column settings for the table, sorted by `column`
+        :param _builtins.str description: (string) - Description of the volume
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if column_configs is not None:
+            pulumi.set(__self__, "column_configs", column_configs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="columnConfigs")
+    def column_configs(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionDataSourcesTableColumnConfigResult']]:
+        """
+        (list of GenieAgentColumnConfig) - Column settings for the table, sorted by `column`
+        """
+        return pulumi.get(self, "column_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionDataSourcesTableColumnConfigResult(dict):
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 enable_entity_matching: Optional[_builtins.bool] = None,
+                 enable_format_assistance: Optional[_builtins.bool] = None,
+                 exclude: Optional[_builtins.bool] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str column: (string) - The name of the column. Must exist in the table or metric view
+        :param _builtins.str description: (string) - Description of the volume
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.bool enable_entity_matching: (boolean) - Whether the Genie Agent indexes the column's values to match them in questions
+        :param _builtins.bool enable_format_assistance: (boolean) - Whether the Genie Agent samples example values from the column to learn its format
+        :param _builtins.bool exclude: (boolean) - Whether the column is hidden from the Genie Agent
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "column", column)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enable_entity_matching is not None:
+            pulumi.set(__self__, "enable_entity_matching", enable_entity_matching)
+        if enable_format_assistance is not None:
+            pulumi.set(__self__, "enable_format_assistance", enable_format_assistance)
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        (string) - The name of the column. Must exist in the table or metric view
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enableEntityMatching")
+    def enable_entity_matching(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the Genie Agent indexes the column's values to match them in questions
+        """
+        return pulumi.get(self, "enable_entity_matching")
+
+    @_builtins.property
+    @pulumi.getter(name="enableFormatAssistance")
+    def enable_format_assistance(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the Genie Agent samples example values from the column to learn its format
+        """
+        return pulumi.get(self, "enable_format_assistance")
+
+    @_builtins.property
+    @pulumi.getter
+    def exclude(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the column is hidden from the Genie Agent
+        """
+        return pulumi.get(self, "exclude")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionDataSourcesVolumeResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: (string) - The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+               within the volume
+        :param _builtins.str description: (string) - Description of the volume
+        """
+        pulumi.set(__self__, "path", path)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        (string) - The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+        within the volume
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsResult(dict):
+    def __init__(__self__, *,
+                 example_question_sqls: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlResult']] = None,
+                 join_specs: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsJoinSpecResult']] = None,
+                 sql_functions: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlFunctionResult']] = None,
+                 sql_snippets: Optional['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsResult'] = None,
+                 text_instructions: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsTextInstructionResult']] = None):
+        """
+        :param Sequence['GetGenieAgentDefinitionInstructionsExampleQuestionSqlArgs'] example_question_sqls: (list of GenieAgentExampleQuestionSql) - Example questions paired with the SQL that answers them
+        :param Sequence['GetGenieAgentDefinitionInstructionsJoinSpecArgs'] join_specs: (list of GenieAgentJoinSpec) - Predefined joins between tables or metric views
+        :param Sequence['GetGenieAgentDefinitionInstructionsSqlFunctionArgs'] sql_functions: (list of GenieAgentSqlFunction) - Unity Catalog SQL functions the generated SQL may call
+        :param 'GetGenieAgentDefinitionInstructionsSqlSnippetsArgs' sql_snippets: (GenieAgentSqlSnippets) - Reusable SQL filters, expressions, and measures
+        :param Sequence['GetGenieAgentDefinitionInstructionsTextInstructionArgs'] text_instructions: (list of GenieAgentTextInstruction) - General text instructions. At most one text instruction is supported
+        """
+        if example_question_sqls is not None:
+            pulumi.set(__self__, "example_question_sqls", example_question_sqls)
+        if join_specs is not None:
+            pulumi.set(__self__, "join_specs", join_specs)
+        if sql_functions is not None:
+            pulumi.set(__self__, "sql_functions", sql_functions)
+        if sql_snippets is not None:
+            pulumi.set(__self__, "sql_snippets", sql_snippets)
+        if text_instructions is not None:
+            pulumi.set(__self__, "text_instructions", text_instructions)
+
+    @_builtins.property
+    @pulumi.getter(name="exampleQuestionSqls")
+    def example_question_sqls(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlResult']]:
+        """
+        (list of GenieAgentExampleQuestionSql) - Example questions paired with the SQL that answers them
+        """
+        return pulumi.get(self, "example_question_sqls")
+
+    @_builtins.property
+    @pulumi.getter(name="joinSpecs")
+    def join_specs(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsJoinSpecResult']]:
+        """
+        (list of GenieAgentJoinSpec) - Predefined joins between tables or metric views
+        """
+        return pulumi.get(self, "join_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlFunctions")
+    def sql_functions(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlFunctionResult']]:
+        """
+        (list of GenieAgentSqlFunction) - Unity Catalog SQL functions the generated SQL may call
+        """
+        return pulumi.get(self, "sql_functions")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlSnippets")
+    def sql_snippets(self) -> Optional['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsResult']:
+        """
+        (GenieAgentSqlSnippets) - Reusable SQL filters, expressions, and measures
+        """
+        return pulumi.get(self, "sql_snippets")
+
+    @_builtins.property
+    @pulumi.getter(name="textInstructions")
+    def text_instructions(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsTextInstructionResult']]:
+        """
+        (list of GenieAgentTextInstruction) - General text instructions. At most one text instruction is supported
+        """
+        return pulumi.get(self, "text_instructions")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsExampleQuestionSqlResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str,
+                 sql: _builtins.str,
+                 parameters: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult']] = None,
+                 usage_guidance: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str question: (string) - The text of the question
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param Sequence['GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs'] parameters: (list of GenieAgentSqlParameter) - Parameters used in the SQL, in the order given
+        :param _builtins.str usage_guidance: (string) - Guidance on when to use this example
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+        pulumi.set(__self__, "sql", sql)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if usage_guidance is not None:
+            pulumi.set(__self__, "usage_guidance", usage_guidance)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        """
+        (string) - The text of the question
+        """
+        return pulumi.get(self, "question")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult']]:
+        """
+        (list of GenieAgentSqlParameter) - Parameters used in the SQL, in the order given
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="usageGuidance")
+    def usage_guidance(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use this example
+        """
+        return pulumi.get(self, "usage_guidance")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 default_value: Optional['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult'] = None,
+                 description: Optional[_builtins.str] = None,
+                 type_hint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+        :param 'GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs' default_value: (GenieAgentSqlParameterDefaultValue) - The parameter's default value
+        :param _builtins.str description: (string) - Description of the volume
+        :param _builtins.str type_hint: (string) - The parameter's data type, for example `STRING` or `INTEGER`
+        """
+        pulumi.set(__self__, "name", name)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if type_hint is not None:
+            pulumi.set(__self__, "type_hint", type_hint)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult']:
+        """
+        (GenieAgentSqlParameterDefaultValue) - The parameter's default value
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="typeHint")
+    def type_hint(self) -> Optional[_builtins.str]:
+        """
+        (string) - The parameter's data type, for example `STRING` or `INTEGER`
+        """
+        return pulumi.get(self, "type_hint")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult(dict):
+    def __init__(__self__, *,
+                 value_range: Optional['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult'] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs' value_range: (GenieAgentSqlParameterDefaultRange) - The default range
+        :param Sequence[_builtins.str] values: (list of string) - The default values. A single default is a one-element list
+        """
+        if value_range is not None:
+            pulumi.set(__self__, "value_range", value_range)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="valueRange")
+    def value_range(self) -> Optional['outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult']:
+        """
+        (GenieAgentSqlParameterDefaultRange) - The default range
+        """
+        return pulumi.get(self, "value_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The default values. A single default is a one-element list
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult(dict):
+    def __init__(__self__, *,
+                 max: Optional[_builtins.str] = None,
+                 min: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str max: (string) - The upper end of the range
+        :param _builtins.str min: (string) - The lower end of the range
+        """
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> Optional[_builtins.str]:
+        """
+        (string) - The upper end of the range
+        """
+        return pulumi.get(self, "max")
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> Optional[_builtins.str]:
+        """
+        (string) - The lower end of the range
+        """
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsJoinSpecResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 left: 'outputs.GetGenieAgentDefinitionInstructionsJoinSpecLeftResult',
+                 right: 'outputs.GetGenieAgentDefinitionInstructionsJoinSpecRightResult',
+                 sql: _builtins.str,
+                 comment: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 relationship_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param 'GetGenieAgentDefinitionInstructionsJoinSpecLeftArgs' left: (GenieAgentJoinSource) - The left side of the join
+        :param 'GetGenieAgentDefinitionInstructionsJoinSpecRightArgs' right: (GenieAgentJoinSource) - The right side of the join
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str comment: (string) - Description of the join's purpose
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param _builtins.str relationship_type: (string) - How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "right", right)
+        pulumi.set(__self__, "sql", sql)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if relationship_type is not None:
+            pulumi.set(__self__, "relationship_type", relationship_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def left(self) -> 'outputs.GetGenieAgentDefinitionInstructionsJoinSpecLeftResult':
+        """
+        (GenieAgentJoinSource) - The left side of the join
+        """
+        return pulumi.get(self, "left")
+
+    @_builtins.property
+    @pulumi.getter
+    def right(self) -> 'outputs.GetGenieAgentDefinitionInstructionsJoinSpecRightResult':
+        """
+        (GenieAgentJoinSource) - The right side of the join
+        """
+        return pulumi.get(self, "right")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the join's purpose
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter(name="relationshipType")
+    def relationship_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+        """
+        return pulumi.get(self, "relationship_type")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsJoinSpecLeftResult(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsJoinSpecRightResult(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsSqlFunctionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 identifier: _builtins.str):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identifier", identifier)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsSqlSnippetsResult(dict):
+    def __init__(__self__, *,
+                 expressions: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult']] = None,
+                 filters: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsFilterResult']] = None,
+                 measures: Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult']] = None):
+        """
+        :param Sequence['GetGenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs'] expressions: (list of GenieAgentSqlExpression) - Non-aggregated expressions (dimensions), such as `price * units`
+        :param Sequence['GetGenieAgentDefinitionInstructionsSqlSnippetsFilterArgs'] filters: (list of GenieAgentSqlFilter) - Filters, such as `state = 'CA'`
+        :param Sequence['GetGenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs'] measures: (list of GenieAgentSqlMeasure) - Aggregated measures, such as `SUM(price * units)`
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if measures is not None:
+            pulumi.set(__self__, "measures", measures)
+
+    @_builtins.property
+    @pulumi.getter
+    def expressions(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult']]:
+        """
+        (list of GenieAgentSqlExpression) - Non-aggregated expressions (dimensions), such as `price * units`
+        """
+        return pulumi.get(self, "expressions")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsFilterResult']]:
+        """
+        (list of GenieAgentSqlFilter) - Filters, such as `state = 'CA'`
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter
+    def measures(self) -> Optional[Sequence['outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult']]:
+        """
+        (list of GenieAgentSqlMeasure) - Aggregated measures, such as `SUM(price * units)`
+        """
+        return pulumi.get(self, "measures")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsSqlSnippetsFilterResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentDefinitionInstructionsTextInstructionResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 id: _builtins.str):
+        """
+        :param _builtins.str content: (string) - The text of the instruction
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        (string) - The text of the instruction
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetGenieAgentProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 definition: 'outputs.GetGenieAgentsGenieAgentDefinitionResult',
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 effective_parent_path: _builtins.str,
+                 etag: _builtins.str,
+                 name: _builtins.str,
+                 parent_path: _builtins.str,
+                 update_time: _builtins.str,
+                 warehouse_id: _builtins.str,
+                 provider_config: Optional['outputs.GetGenieAgentsGenieAgentProviderConfigResult'] = None):
+        """
+        :param _builtins.str create_time: (string) - Time when the Genie Agent was created
+        :param 'GetGenieAgentsGenieAgentDefinitionArgs' definition: (GenieAgentDefinition) - The definition of the Genie Agent: its sample questions, data sources, instructions, and
+               benchmarks. Must set at least one field. Returned on get and on list with
+               `GENIE_AGENT_VIEW_FULL`. Create and update return a submitted definition unchanged; one the
+               service would store differently, or with a column config the workspace can't keep (unknown
+               column, or a display name while those are disabled), is rejected with INVALID_PARAMETER_VALUE
+        :param _builtins.str description: (string) - Description of the volume
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str effective_parent_path: (string) - The workspace folder that contains the Genie Agent
+        :param _builtins.str etag: (string) - Weak etag of `definition` only; metadata changes do not affect it. Send it on update or
+               delete to detect concurrent definition changes
+        :param _builtins.str name: (string) - The name of the parameter in the SQL
+        :param _builtins.str parent_path: (string) - The workspace folder to create the Genie Agent in. If omitted, the caller's home folder is
+               used. Returned exactly as submitted; see `effective_parent_path` for the current folder. On
+               update, setting it moves the Genie Agent and clearing it does not. At most 4,096 characters
+        :param _builtins.str update_time: (string) - Time when the Genie Agent was last modified
+        :param _builtins.str warehouse_id: (string) - Warehouse associated with the Genie Agent
+        :param 'GetGenieAgentsGenieAgentProviderConfigArgs' provider_config: Configure the provider for management through account provider.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "effective_parent_path", effective_parent_path)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent_path", parent_path)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Time when the Genie Agent was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def definition(self) -> 'outputs.GetGenieAgentsGenieAgentDefinitionResult':
+        """
+        (GenieAgentDefinition) - The definition of the Genie Agent: its sample questions, data sources, instructions, and
+        benchmarks. Must set at least one field. Returned on get and on list with
+        `GENIE_AGENT_VIEW_FULL`. Create and update return a submitted definition unchanged; one the
+        service would store differently, or with a column config the workspace can't keep (unknown
+        column, or a display name while those are disabled), is rejected with INVALID_PARAMETER_VALUE
+        """
+        return pulumi.get(self, "definition")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveParentPath")
+    def effective_parent_path(self) -> _builtins.str:
+        """
+        (string) - The workspace folder that contains the Genie Agent
+        """
+        return pulumi.get(self, "effective_parent_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        """
+        (string) - Weak etag of `definition` only; metadata changes do not affect it. Send it on update or
+        delete to detect concurrent definition changes
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The name of the parameter in the SQL
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> _builtins.str:
+        """
+        (string) - The workspace folder to create the Genie Agent in. If omitted, the caller's home folder is
+        used. Returned exactly as submitted; see `effective_parent_path` for the current folder. On
+        update, setting it moves the Genie Agent and clearing it does not. At most 4,096 characters
+        """
+        return pulumi.get(self, "parent_path")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Time when the Genie Agent was last modified
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> _builtins.str:
+        """
+        (string) - Warehouse associated with the Genie Agent
+        """
+        return pulumi.get(self, "warehouse_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetGenieAgentsGenieAgentProviderConfigResult']:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionResult(dict):
+    def __init__(__self__, *,
+                 benchmarks: Optional['outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksResult'] = None,
+                 config: Optional['outputs.GetGenieAgentsGenieAgentDefinitionConfigResult'] = None,
+                 data_sources: Optional['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesResult'] = None,
+                 instructions: Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsResult'] = None):
+        """
+        :param 'GetGenieAgentsGenieAgentDefinitionBenchmarksArgs' benchmarks: (GenieAgentBenchmarks) - Benchmarks for evaluating the quality of the Genie Agent's answers
+        :param 'GetGenieAgentsGenieAgentDefinitionConfigArgs' config: (GenieAgentConfig) - General settings of the Genie Agent
+        :param 'GetGenieAgentsGenieAgentDefinitionDataSourcesArgs' data_sources: (GenieAgentDataSources) - The data the Genie Agent can access
+        :param 'GetGenieAgentsGenieAgentDefinitionInstructionsArgs' instructions: (GenieAgentInstructions) - Instructions and SQL that guide how the Genie Agent answers questions
+        """
+        if benchmarks is not None:
+            pulumi.set(__self__, "benchmarks", benchmarks)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if data_sources is not None:
+            pulumi.set(__self__, "data_sources", data_sources)
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+
+    @_builtins.property
+    @pulumi.getter
+    def benchmarks(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksResult']:
+        """
+        (GenieAgentBenchmarks) - Benchmarks for evaluating the quality of the Genie Agent's answers
+        """
+        return pulumi.get(self, "benchmarks")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionConfigResult']:
+        """
+        (GenieAgentConfig) - General settings of the Genie Agent
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSources")
+    def data_sources(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesResult']:
+        """
+        (GenieAgentDataSources) - The data the Genie Agent can access
+        """
+        return pulumi.get(self, "data_sources")
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsResult']:
+        """
+        (GenieAgentInstructions) - Instructions and SQL that guide how the Genie Agent answers questions
+        """
+        return pulumi.get(self, "instructions")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionBenchmarksResult(dict):
+    def __init__(__self__, *,
+                 questions: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionResult']] = None):
+        """
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionArgs'] questions: (list of GenieAgentBenchmarkQuestion) - The benchmark questions, sorted by `id` in descending order
+        """
+        if questions is not None:
+            pulumi.set(__self__, "questions", questions)
+
+    @_builtins.property
+    @pulumi.getter
+    def questions(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionResult']]:
+        """
+        (list of GenieAgentBenchmarkQuestion) - The benchmark questions, sorted by `id` in descending order
+        """
+        return pulumi.get(self, "questions")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str,
+                 answers: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswerResult']] = None,
+                 evaluation_note: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str question: (string) - The text of the question
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswerArgs'] answers: (list of GenieAgentBenchmarkAnswer) - The expected answer. At most one answer is supported; omit it when the question has no
+               expected answer
+        :param _builtins.str evaluation_note: (string) - Notes on how to evaluate answers to the question
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+        if answers is not None:
+            pulumi.set(__self__, "answers", answers)
+        if evaluation_note is not None:
+            pulumi.set(__self__, "evaluation_note", evaluation_note)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        """
+        (string) - The text of the question
+        """
+        return pulumi.get(self, "question")
+
+    @_builtins.property
+    @pulumi.getter
+    def answers(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswerResult']]:
+        """
+        (list of GenieAgentBenchmarkAnswer) - The expected answer. At most one answer is supported; omit it when the question has no
+        expected answer
+        """
+        return pulumi.get(self, "answers")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationNote")
+    def evaluation_note(self) -> Optional[_builtins.str]:
+        """
+        (string) - Notes on how to evaluate answers to the question
+        """
+        return pulumi.get(self, "evaluation_note")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswerResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 format: _builtins.str):
+        """
+        :param _builtins.str content: (string) - The text of the instruction
+        :param _builtins.str format: (string) - The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "format", format)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        (string) - The text of the instruction
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> _builtins.str:
+        """
+        (string) - The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+        """
+        return pulumi.get(self, "format")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionConfigResult(dict):
+    def __init__(__self__, *,
+                 sample_questions: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionConfigSampleQuestionResult']] = None):
+        """
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionConfigSampleQuestionArgs'] sample_questions: (list of GenieAgentSampleQuestion) - Sample questions shown to users of the Genie Agent, sorted by `id`
+        """
+        if sample_questions is not None:
+            pulumi.set(__self__, "sample_questions", sample_questions)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleQuestions")
+    def sample_questions(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionConfigSampleQuestionResult']]:
+        """
+        (list of GenieAgentSampleQuestion) - Sample questions shown to users of the Genie Agent, sorted by `id`
+        """
+        return pulumi.get(self, "sample_questions")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionConfigSampleQuestionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str question: (string) - The text of the question
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        """
+        (string) - The text of the question
+        """
+        return pulumi.get(self, "question")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionDataSourcesResult(dict):
+    def __init__(__self__, *,
+                 mcp_connections: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnectionResult']] = None,
+                 tables: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTableResult']] = None,
+                 volumes: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesVolumeResult']] = None):
+        """
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnectionArgs'] mcp_connections: (list of GenieAgentMcpConnection) - Unity Catalog MCP connections, sorted by `mcp_connection`
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionDataSourcesTableArgs'] tables: (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionDataSourcesVolumeArgs'] volumes: (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+        """
+        if mcp_connections is not None:
+            pulumi.set(__self__, "mcp_connections", mcp_connections)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpConnections")
+    def mcp_connections(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnectionResult']]:
+        """
+        (list of GenieAgentMcpConnection) - Unity Catalog MCP connections, sorted by `mcp_connection`
+        """
+        return pulumi.get(self, "mcp_connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTableResult']]:
+        """
+        (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+        """
+        return pulumi.get(self, "tables")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesVolumeResult']]:
+        """
+        (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnectionResult(dict):
+    def __init__(__self__, *,
+                 mcp_connection: _builtins.str):
+        """
+        :param _builtins.str mcp_connection: (string) - The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+        """
+        pulumi.set(__self__, "mcp_connection", mcp_connection)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpConnection")
+    def mcp_connection(self) -> _builtins.str:
+        """
+        (string) - The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+        """
+        return pulumi.get(self, "mcp_connection")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionDataSourcesTableResult(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 column_configs: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfigResult']] = None,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfigArgs'] column_configs: (list of GenieAgentColumnConfig) - Column settings for the table, sorted by `column`
+        :param _builtins.str description: (string) - Description of the volume
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if column_configs is not None:
+            pulumi.set(__self__, "column_configs", column_configs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="columnConfigs")
+    def column_configs(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfigResult']]:
+        """
+        (list of GenieAgentColumnConfig) - Column settings for the table, sorted by `column`
+        """
+        return pulumi.get(self, "column_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfigResult(dict):
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 enable_entity_matching: Optional[_builtins.bool] = None,
+                 enable_format_assistance: Optional[_builtins.bool] = None,
+                 exclude: Optional[_builtins.bool] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str column: (string) - The name of the column. Must exist in the table or metric view
+        :param _builtins.str description: (string) - Description of the volume
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.bool enable_entity_matching: (boolean) - Whether the Genie Agent indexes the column's values to match them in questions
+        :param _builtins.bool enable_format_assistance: (boolean) - Whether the Genie Agent samples example values from the column to learn its format
+        :param _builtins.bool exclude: (boolean) - Whether the column is hidden from the Genie Agent
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "column", column)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enable_entity_matching is not None:
+            pulumi.set(__self__, "enable_entity_matching", enable_entity_matching)
+        if enable_format_assistance is not None:
+            pulumi.set(__self__, "enable_format_assistance", enable_format_assistance)
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        (string) - The name of the column. Must exist in the table or metric view
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enableEntityMatching")
+    def enable_entity_matching(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the Genie Agent indexes the column's values to match them in questions
+        """
+        return pulumi.get(self, "enable_entity_matching")
+
+    @_builtins.property
+    @pulumi.getter(name="enableFormatAssistance")
+    def enable_format_assistance(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the Genie Agent samples example values from the column to learn its format
+        """
+        return pulumi.get(self, "enable_format_assistance")
+
+    @_builtins.property
+    @pulumi.getter
+    def exclude(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the column is hidden from the Genie Agent
+        """
+        return pulumi.get(self, "exclude")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionDataSourcesVolumeResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: (string) - The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+               within the volume
+        :param _builtins.str description: (string) - Description of the volume
+        """
+        pulumi.set(__self__, "path", path)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        (string) - The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+        within the volume
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsResult(dict):
+    def __init__(__self__, *,
+                 example_question_sqls: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlResult']] = None,
+                 join_specs: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecResult']] = None,
+                 sql_functions: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunctionResult']] = None,
+                 sql_snippets: Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsResult'] = None,
+                 text_instructions: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsTextInstructionResult']] = None):
+        """
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlArgs'] example_question_sqls: (list of GenieAgentExampleQuestionSql) - Example questions paired with the SQL that answers them
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecArgs'] join_specs: (list of GenieAgentJoinSpec) - Predefined joins between tables or metric views
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunctionArgs'] sql_functions: (list of GenieAgentSqlFunction) - Unity Catalog SQL functions the generated SQL may call
+        :param 'GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsArgs' sql_snippets: (GenieAgentSqlSnippets) - Reusable SQL filters, expressions, and measures
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsTextInstructionArgs'] text_instructions: (list of GenieAgentTextInstruction) - General text instructions. At most one text instruction is supported
+        """
+        if example_question_sqls is not None:
+            pulumi.set(__self__, "example_question_sqls", example_question_sqls)
+        if join_specs is not None:
+            pulumi.set(__self__, "join_specs", join_specs)
+        if sql_functions is not None:
+            pulumi.set(__self__, "sql_functions", sql_functions)
+        if sql_snippets is not None:
+            pulumi.set(__self__, "sql_snippets", sql_snippets)
+        if text_instructions is not None:
+            pulumi.set(__self__, "text_instructions", text_instructions)
+
+    @_builtins.property
+    @pulumi.getter(name="exampleQuestionSqls")
+    def example_question_sqls(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlResult']]:
+        """
+        (list of GenieAgentExampleQuestionSql) - Example questions paired with the SQL that answers them
+        """
+        return pulumi.get(self, "example_question_sqls")
+
+    @_builtins.property
+    @pulumi.getter(name="joinSpecs")
+    def join_specs(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecResult']]:
+        """
+        (list of GenieAgentJoinSpec) - Predefined joins between tables or metric views
+        """
+        return pulumi.get(self, "join_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlFunctions")
+    def sql_functions(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunctionResult']]:
+        """
+        (list of GenieAgentSqlFunction) - Unity Catalog SQL functions the generated SQL may call
+        """
+        return pulumi.get(self, "sql_functions")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlSnippets")
+    def sql_snippets(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsResult']:
+        """
+        (GenieAgentSqlSnippets) - Reusable SQL filters, expressions, and measures
+        """
+        return pulumi.get(self, "sql_snippets")
+
+    @_builtins.property
+    @pulumi.getter(name="textInstructions")
+    def text_instructions(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsTextInstructionResult']]:
+        """
+        (list of GenieAgentTextInstruction) - General text instructions. At most one text instruction is supported
+        """
+        return pulumi.get(self, "text_instructions")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 question: _builtins.str,
+                 sql: _builtins.str,
+                 parameters: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult']] = None,
+                 usage_guidance: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str question: (string) - The text of the question
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs'] parameters: (list of GenieAgentSqlParameter) - Parameters used in the SQL, in the order given
+        :param _builtins.str usage_guidance: (string) - Guidance on when to use this example
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "question", question)
+        pulumi.set(__self__, "sql", sql)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if usage_guidance is not None:
+            pulumi.set(__self__, "usage_guidance", usage_guidance)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def question(self) -> _builtins.str:
+        """
+        (string) - The text of the question
+        """
+        return pulumi.get(self, "question")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult']]:
+        """
+        (list of GenieAgentSqlParameter) - Parameters used in the SQL, in the order given
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="usageGuidance")
+    def usage_guidance(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use this example
+        """
+        return pulumi.get(self, "usage_guidance")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 default_value: Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult'] = None,
+                 description: Optional[_builtins.str] = None,
+                 type_hint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: (string) - The name of the parameter in the SQL
+        :param 'GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs' default_value: (GenieAgentSqlParameterDefaultValue) - The parameter's default value
+        :param _builtins.str description: (string) - Description of the volume
+        :param _builtins.str type_hint: (string) - The parameter's data type, for example `STRING` or `INTEGER`
+        """
+        pulumi.set(__self__, "name", name)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if type_hint is not None:
+            pulumi.set(__self__, "type_hint", type_hint)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The name of the parameter in the SQL
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult']:
+        """
+        (GenieAgentSqlParameterDefaultValue) - The parameter's default value
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the volume
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="typeHint")
+    def type_hint(self) -> Optional[_builtins.str]:
+        """
+        (string) - The parameter's data type, for example `STRING` or `INTEGER`
+        """
+        return pulumi.get(self, "type_hint")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueResult(dict):
+    def __init__(__self__, *,
+                 value_range: Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult'] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs' value_range: (GenieAgentSqlParameterDefaultRange) - The default range
+        :param Sequence[_builtins.str] values: (list of string) - The default values. A single default is a one-element list
+        """
+        if value_range is not None:
+            pulumi.set(__self__, "value_range", value_range)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="valueRange")
+    def value_range(self) -> Optional['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult']:
+        """
+        (GenieAgentSqlParameterDefaultRange) - The default range
+        """
+        return pulumi.get(self, "value_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The default values. A single default is a one-element list
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeResult(dict):
+    def __init__(__self__, *,
+                 max: Optional[_builtins.str] = None,
+                 min: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str max: (string) - The upper end of the range
+        :param _builtins.str min: (string) - The lower end of the range
+        """
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> Optional[_builtins.str]:
+        """
+        (string) - The upper end of the range
+        """
+        return pulumi.get(self, "max")
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> Optional[_builtins.str]:
+        """
+        (string) - The lower end of the range
+        """
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 left: 'outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeftResult',
+                 right: 'outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRightResult',
+                 sql: _builtins.str,
+                 comment: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 relationship_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param 'GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeftArgs' left: (GenieAgentJoinSource) - The left side of the join
+        :param 'GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRightArgs' right: (GenieAgentJoinSource) - The right side of the join
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str comment: (string) - Description of the join's purpose
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param _builtins.str relationship_type: (string) - How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "right", right)
+        pulumi.set(__self__, "sql", sql)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if relationship_type is not None:
+            pulumi.set(__self__, "relationship_type", relationship_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def left(self) -> 'outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeftResult':
+        """
+        (GenieAgentJoinSource) - The left side of the join
+        """
+        return pulumi.get(self, "left")
+
+    @_builtins.property
+    @pulumi.getter
+    def right(self) -> 'outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRightResult':
+        """
+        (GenieAgentJoinSource) - The right side of the join
+        """
+        return pulumi.get(self, "right")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - Description of the join's purpose
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter(name="relationshipType")
+    def relationship_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+        """
+        return pulumi.get(self, "relationship_type")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeftResult(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRightResult(dict):
+    def __init__(__self__, *,
+                 identifier: _builtins.str,
+                 alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunctionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 identifier: _builtins.str):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str identifier: (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identifier", identifier)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        (string) - The full three-level name, for example `catalog.schema.table`
+        """
+        return pulumi.get(self, "identifier")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsResult(dict):
+    def __init__(__self__, *,
+                 expressions: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult']] = None,
+                 filters: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilterResult']] = None,
+                 measures: Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult']] = None):
+        """
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs'] expressions: (list of GenieAgentSqlExpression) - Non-aggregated expressions (dimensions), such as `price * units`
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilterArgs'] filters: (list of GenieAgentSqlFilter) - Filters, such as `state = 'CA'`
+        :param Sequence['GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs'] measures: (list of GenieAgentSqlMeasure) - Aggregated measures, such as `SUM(price * units)`
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if measures is not None:
+            pulumi.set(__self__, "measures", measures)
+
+    @_builtins.property
+    @pulumi.getter
+    def expressions(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult']]:
+        """
+        (list of GenieAgentSqlExpression) - Non-aggregated expressions (dimensions), such as `price * units`
+        """
+        return pulumi.get(self, "expressions")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilterResult']]:
+        """
+        (list of GenieAgentSqlFilter) - Filters, such as `state = 'CA'`
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter
+    def measures(self) -> Optional[Sequence['outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult']]:
+        """
+        (list of GenieAgentSqlMeasure) - Aggregated measures, such as `SUM(price * units)`
+        """
+        return pulumi.get(self, "measures")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpressionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilterResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasureResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 sql: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        :param _builtins.str sql: (string) - The SQL of the measure
+        :param _builtins.str alias: (string) - The alias the Genie Agent uses for the measure in generated SQL
+        :param _builtins.str display_name: (string) - Display name of the measure
+        :param _builtins.str instruction: (string) - Guidance on when to use the measure
+        :param Sequence[_builtins.str] synonyms: (list of string) - Synonyms for the measure
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sql", sql)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sql(self) -> _builtins.str:
+        """
+        (string) - The SQL of the measure
+        """
+        return pulumi.get(self, "sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - The alias the Genie Agent uses for the measure in generated SQL
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Display name of the measure
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        (string) - Guidance on when to use the measure
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Synonyms for the measure
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentDefinitionInstructionsTextInstructionResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 id: _builtins.str):
+        """
+        :param _builtins.str content: (string) - The text of the instruction
+        :param _builtins.str id: (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+               Agent
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        (string) - The text of the instruction
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+        Agent
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetGenieAgentsGenieAgentProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetGenieAgentsProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
 
@@ -137518,7 +144209,7 @@ class GetPolicyInfosPolicyResult(dict):
                the new options will replace the existing options as a whole
         :param Sequence[_builtins.str] except_principals: (list of string) - Optional list of user or group names that should be excluded from the policy
         :param _builtins.str for_securable_type: (string) - Type of securables that the policy should take effect on.
-               Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param Sequence['GetPolicyInfosPolicyGovernedTagArgs'] governed_tags: (list of GovernedTagReference) - Governed tag keys and values referenced by this policy's conditions and function arguments. Output only
         :param 'GetPolicyInfosPolicyGrantArgs' grant: (GrantOptions) - Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
@@ -137622,7 +144313,7 @@ class GetPolicyInfosPolicyResult(dict):
     def for_securable_type(self) -> _builtins.str:
         """
         (string) - Type of securables that the policy should take effect on.
-        Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
 
@@ -145622,7 +152313,7 @@ class GetRfaAccessRequestDestinationsDestinationSourceSecurableResult(dict):
         :param _builtins.str provider_share: (string) - Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: (string) - Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -145653,7 +152344,7 @@ class GetRfaAccessRequestDestinationsDestinationSourceSecurableResult(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         (string) - Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -145687,7 +152378,7 @@ class GetRfaAccessRequestDestinationsSecurableResult(dict):
         :param _builtins.str provider_share: (string) - Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: (string) - Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -145718,9 +152409,30 @@ class GetRfaAccessRequestDestinationsSecurableResult(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         (string) - Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetSandboxMetadataResult(dict):
+    def __init__(__self__, *,
+                 custom_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] custom_tags: (object) - Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+               1 and 512 characters, and values must not exceed 256 characters
+        """
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (object) - Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+        1 and 512 characters, and values must not exceed 256 characters
+        """
+        return pulumi.get(self, "custom_tags")
 
 
 @pulumi.output_type
@@ -145796,9 +152508,9 @@ class GetSandboxSpecEnvironmentResult(dict):
     def __init__(__self__, *,
                  image_uri: Optional[_builtins.str] = None):
         """
-        :param _builtins.str image_uri: (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-               sandbox environment. When set, this image is used as the environment instead of resolving a
-               managed image from `environment_version`
+        :param _builtins.str image_uri: (string) - The Unity Catalog container image to use for the sandbox environment
+               (for example, `catalog.schema.folder.image:tag`). See
+               [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
         """
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
@@ -145807,9 +152519,9 @@ class GetSandboxSpecEnvironmentResult(dict):
     @pulumi.getter(name="imageUri")
     def image_uri(self) -> Optional[_builtins.str]:
         """
-        (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-        sandbox environment. When set, this image is used as the environment instead of resolving a
-        managed image from `environment_version`
+        (string) - The Unity Catalog container image to use for the sandbox environment
+        (for example, `catalog.schema.folder.image:tag`). See
+        [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
         """
         return pulumi.get(self, "image_uri")
 
@@ -145855,6 +152567,7 @@ class GetSandboxesSandboxResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
                  display_name: _builtins.str,
+                 metadata: 'outputs.GetSandboxesSandboxMetadataResult',
                  name: _builtins.str,
                  spec: 'outputs.GetSandboxesSandboxSpecResult',
                  status: 'outputs.GetSandboxesSandboxStatusResult',
@@ -145863,6 +152576,7 @@ class GetSandboxesSandboxResult(dict):
         """
         :param _builtins.str create_time: (string) - Output only. The creation time of the sandbox
         :param _builtins.str display_name: (string) - Human-readable display label for the sandbox. At most 256 characters
+        :param 'GetSandboxesSandboxMetadataArgs' metadata: (SandboxMetadata) - Metadata associated with the sandbox
         :param _builtins.str name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
                `sandbox_id`; any value supplied in a create or update request body is ignored
         :param 'GetSandboxesSandboxSpecArgs' spec: (SandboxSpec) - The desired configuration of the sandbox, supplied by the caller at creation time
@@ -145872,6 +152586,7 @@ class GetSandboxesSandboxResult(dict):
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "spec", spec)
         pulumi.set(__self__, "status", status)
@@ -145894,6 +152609,14 @@ class GetSandboxesSandboxResult(dict):
         (string) - Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.GetSandboxesSandboxMetadataResult':
+        """
+        (SandboxMetadata) - Metadata associated with the sandbox
+        """
+        return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter
@@ -145935,6 +152658,27 @@ class GetSandboxesSandboxResult(dict):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+
+@pulumi.output_type
+class GetSandboxesSandboxMetadataResult(dict):
+    def __init__(__self__, *,
+                 custom_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] custom_tags: (object) - Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+               1 and 512 characters, and values must not exceed 256 characters
+        """
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (object) - Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+        1 and 512 characters, and values must not exceed 256 characters
+        """
+        return pulumi.get(self, "custom_tags")
 
 
 @pulumi.output_type
@@ -146010,9 +152754,9 @@ class GetSandboxesSandboxSpecEnvironmentResult(dict):
     def __init__(__self__, *,
                  image_uri: Optional[_builtins.str] = None):
         """
-        :param _builtins.str image_uri: (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-               sandbox environment. When set, this image is used as the environment instead of resolving a
-               managed image from `environment_version`
+        :param _builtins.str image_uri: (string) - The Unity Catalog container image to use for the sandbox environment
+               (for example, `catalog.schema.folder.image:tag`). See
+               [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
         """
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
@@ -146021,9 +152765,9 @@ class GetSandboxesSandboxSpecEnvironmentResult(dict):
     @pulumi.getter(name="imageUri")
     def image_uri(self) -> Optional[_builtins.str]:
         """
-        (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-        sandbox environment. When set, this image is used as the environment instead of resolving a
-        managed image from `environment_version`
+        (string) - The Unity Catalog container image to use for the sandbox environment
+        (for example, `catalog.schema.folder.image:tag`). See
+        [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
         """
         return pulumi.get(self, "image_uri")
 
@@ -151930,14 +158674,21 @@ class GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberResult(dict):
                  external_id: _builtins.str,
                  group_id: _builtins.int,
                  membership_source: _builtins.str,
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  principal_id: _builtins.int,
                  principal_type: _builtins.str,
                  provider_config: Optional['outputs.GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigResult'] = None):
         """
         :param _builtins.str display_name: (string) - Display name of the principal
-        :param _builtins.str external_id: (string) - The external ID of the principal in Databricks
-        :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
+        :param _builtins.str external_id: (string) - The external ID of the principal in the customer's IdP
+        :param _builtins.int group_id: (integer) - The internal ID of the group this member belongs to
         :param _builtins.str membership_source: (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        :param _builtins.str name: (string) - The resource name of the group membership. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+               - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        :param _builtins.str parent: The parent resource name of the group whose direct members to list.
+               Format: groups/{group_id}
         :param _builtins.int principal_id: (integer) - Internal ID of the principal in Databricks
         :param _builtins.str principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         :param 'GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigArgs' provider_config: Configure the provider for management through account provider.
@@ -151946,6 +158697,8 @@ class GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberResult(dict):
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "membership_source", membership_source)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "principal_type", principal_type)
         if provider_config is not None:
@@ -151963,7 +158716,7 @@ class GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberResult(dict):
     @pulumi.getter(name="externalId")
     def external_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the principal in Databricks
+        (string) - The external ID of the principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
 
@@ -151971,7 +158724,7 @@ class GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberResult(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.int:
         """
-        Required. Internal ID of the group in Databricks whose direct members are being listed
+        (integer) - The internal ID of the group this member belongs to
         """
         return pulumi.get(self, "group_id")
 
@@ -151982,6 +158735,25 @@ class GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberResult(dict):
         (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         """
         return pulumi.get(self, "membership_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group membership. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The parent resource name of the group whose direct members to list.
+        Format: groups/{group_id}
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -152152,18 +158924,27 @@ class GetWorkspaceIamGroupsV2GroupResult(dict):
                  external_id: _builtins.str,
                  group_id: _builtins.str,
                  group_name: _builtins.str,
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  provider_config: Optional['outputs.GetWorkspaceIamGroupsV2GroupProviderConfigResult'] = None):
         """
         :param _builtins.str account_id: (string) - The parent account ID for group in Databricks
         :param _builtins.str external_id: (string) - ExternalId of the group in the customer's IdP
         :param _builtins.str group_id: (string) - Internal group ID of the group in Databricks
         :param _builtins.str group_name: (string) - Display name of the group
+        :param _builtins.str name: (string) - The resource name of the group. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
+        :param _builtins.str parent: The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+               defaults to the account of the calling workspace, and any other account is rejected
         :param 'GetWorkspaceIamGroupsV2GroupProviderConfigArgs' provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
 
@@ -152198,6 +158979,25 @@ class GetWorkspaceIamGroupsV2GroupResult(dict):
         (string) - Display name of the group
         """
         return pulumi.get(self, "group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+        defaults to the account of the calling workspace, and any other account is rejected
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -152288,6 +159088,8 @@ class GetWorkspaceIamServicePrincipalsV2ServicePrincipalResult(dict):
                  application_id: _builtins.str,
                  display_name: _builtins.str,
                  external_id: _builtins.str,
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  service_principal_id: _builtins.str,
                  provider_config: Optional['outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfigResult'] = None):
         """
@@ -152297,6 +159099,11 @@ class GetWorkspaceIamServicePrincipalsV2ServicePrincipalResult(dict):
                afterwards; when omitted, the server generates one
         :param _builtins.str display_name: (string) - Display name of the service principal
         :param _builtins.str external_id: (string) - ExternalId of the service principal in the customer's IdP
+        :param _builtins.str name: (string) - The resource name of the service principal. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+               - Workspace-scoped: service-principals/{service_principal_id}
+        :param _builtins.str parent: The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+               defaults to the account of the calling workspace, and any other account is rejected
         :param _builtins.str service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         :param 'GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfigArgs' provider_config: Configure the provider for management through account provider.
         """
@@ -152305,6 +159112,8 @@ class GetWorkspaceIamServicePrincipalsV2ServicePrincipalResult(dict):
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
@@ -152349,6 +159158,25 @@ class GetWorkspaceIamServicePrincipalsV2ServicePrincipalResult(dict):
         (string) - ExternalId of the service principal in the customer's IdP
         """
         return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the service principal. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        - Workspace-scoped: service-principals/{service_principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+        defaults to the account of the calling workspace, and any other account is rejected
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
@@ -152459,6 +159287,8 @@ class GetWorkspaceIamUsersV2UserResult(dict):
                  account_user_status: _builtins.str,
                  external_id: _builtins.str,
                  full_name: 'outputs.GetWorkspaceIamUsersV2UserFullNameResult',
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  user_id: _builtins.str,
                  username: _builtins.str,
                  provider_config: Optional['outputs.GetWorkspaceIamUsersV2UserProviderConfigResult'] = None):
@@ -152467,6 +159297,11 @@ class GetWorkspaceIamUsersV2UserResult(dict):
         :param _builtins.str account_user_status: (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param _builtins.str external_id: (string) - ExternalId of the user in the customer's IdP
         :param 'GetWorkspaceIamUsersV2UserFullNameArgs' full_name: (UserFullName)
+        :param _builtins.str name: (string) - The resource name of the user. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/users/{user_id}
+               - Workspace-scoped: users/{user_id}
+        :param _builtins.str parent: The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+               defaults to the account of the calling workspace, and any other account is rejected
         :param _builtins.str user_id: (string) - Internal userId of the user in Databricks
         :param _builtins.str username: (string) - Username/email of the user
         :param 'GetWorkspaceIamUsersV2UserProviderConfigArgs' provider_config: Configure the provider for management through account provider.
@@ -152475,6 +159310,8 @@ class GetWorkspaceIamUsersV2UserResult(dict):
         pulumi.set(__self__, "account_user_status", account_user_status)
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "user_id", user_id)
         pulumi.set(__self__, "username", username)
         if provider_config is not None:
@@ -152511,6 +159348,25 @@ class GetWorkspaceIamUsersV2UserResult(dict):
         (UserFullName)
         """
         return pulumi.get(self, "full_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the user. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/users/{user_id}
+        - Workspace-scoped: users/{user_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+        defaults to the account of the calling workspace, and any other account is rejected
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="userId")
@@ -152628,6 +159484,8 @@ class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
                  account_id: _builtins.str,
                  effective_entitlements: Sequence[_builtins.str],
                  entitlements: Sequence[_builtins.str],
+                 name: _builtins.str,
+                 parent: _builtins.str,
                  principal_id: _builtins.int,
                  principal_type: _builtins.str,
                  workspace_id: _builtins.int,
@@ -152640,7 +159498,15 @@ class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
                client-settable field. Create and update manage exactly this set, including entitlements the
                principal also holds through a group.
                List responses leave this field empty. Get a single principal to read its entitlements
-        :param _builtins.int principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        :param _builtins.str name: (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+               - Workspace-scoped: workspace-assignments/{principal_id}
+        :param _builtins.str parent: The resource name of the workspace to list assignments of,
+               `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+               and any other workspace is rejected
+        :param _builtins.int principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+               created and cannot be changed afterwards; to assign a different principal, create a new
+               assignment
         :param _builtins.str principal_type: (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         :param _builtins.int workspace_id: (integer) - The workspace ID where the principal is assigned
         :param 'GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentProviderConfigArgs' provider_config: Configure the provider for management through account provider.
@@ -152648,6 +159514,8 @@ class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "effective_entitlements", effective_entitlements)
         pulumi.set(__self__, "entitlements", entitlements)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "principal_type", principal_type)
         pulumi.set(__self__, "workspace_id", workspace_id)
@@ -152683,10 +159551,32 @@ class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentResult(dict):
         return pulumi.get(self, "entitlements")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+        - Workspace-scoped: workspace-assignments/{principal_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        The resource name of the workspace to list assignments of,
+        `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+        and any other workspace is rejected
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> _builtins.int:
         """
-        (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+        created and cannot be changed afterwards; to assign a different principal, create a new
+        assignment
         """
         return pulumi.get(self, "principal_id")
 

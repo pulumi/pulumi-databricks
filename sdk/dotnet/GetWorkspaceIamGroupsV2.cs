@@ -119,6 +119,13 @@ namespace Pulumi.Databricks
         public int? PageSize { get; set; }
 
         /// <summary>
+        /// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// </summary>
+        [Input("parent")]
+        public string? Parent { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -146,6 +153,13 @@ namespace Pulumi.Databricks
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
+        /// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -164,6 +178,11 @@ namespace Pulumi.Databricks
         public readonly string? Filter;
         public readonly ImmutableArray<Outputs.GetWorkspaceIamGroupsV2GroupResult> Groups;
         public readonly int? PageSize;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string? Parent;
         public readonly Outputs.GetWorkspaceIamGroupsV2ProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
@@ -174,11 +193,14 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            string? parent,
+
             Outputs.GetWorkspaceIamGroupsV2ProviderConfigResult? providerConfig)
         {
             Filter = filter;
             Groups = groups;
             PageSize = pageSize;
+            Parent = parent;
             ProviderConfig = providerConfig;
         }
     }

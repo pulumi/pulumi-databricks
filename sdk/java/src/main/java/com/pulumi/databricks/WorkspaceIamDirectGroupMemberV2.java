@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new WorkspaceIamDirectGroupMemberV2("this", WorkspaceIamDirectGroupMemberV2Args.builder()
- *             .groupId(123456789)
+ *             .parent("groups/123456789")
  *             .principalId("987654321")
  *             .build());
  * 
@@ -81,14 +81,14 @@ public class WorkspaceIamDirectGroupMemberV2 extends com.pulumi.resources.Custom
         return this.displayName;
     }
     /**
-     * (string) - The external ID of the principal in Databricks
+     * (string) - The external ID of the principal in the customer&#39;s IdP
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output<String> externalId;
 
     /**
-     * @return (string) - The external ID of the principal in Databricks
+     * @return (string) - The external ID of the principal in the customer&#39;s IdP
      * 
      */
     public Output<String> externalId() {
@@ -121,6 +121,44 @@ public class WorkspaceIamDirectGroupMemberV2 extends com.pulumi.resources.Custom
      */
     public Output<String> membershipSource() {
         return this.membershipSource;
+    }
+    /**
+     * (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * Internal ID of the principal in Databricks

@@ -138,6 +138,9 @@ namespace Pulumi.Databricks
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        [Input("billingWorkspaceId")]
+        public int? BillingWorkspaceId { get; set; }
+
         /// <summary>
         /// Time in epoch milliseconds when this object was created.
         /// </summary>
@@ -187,6 +190,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("billingWorkspaceId")]
+        public Input<int>? BillingWorkspaceId { get; set; }
 
         /// <summary>
         /// Time in epoch milliseconds when this object was created.
@@ -238,6 +244,7 @@ namespace Pulumi.Databricks
         /// The Databricks account ID associated with this network configuration.
         /// </summary>
         public readonly string AccountId;
+        public readonly int BillingWorkspaceId;
         /// <summary>
         /// Time in epoch milliseconds when this object was created.
         /// </summary>
@@ -271,6 +278,8 @@ namespace Pulumi.Databricks
         private GetMwsNetworkConnectivityConfigResult(
             string accountId,
 
+            int billingWorkspaceId,
+
             int creationTime,
 
             Outputs.GetMwsNetworkConnectivityConfigEgressConfigResult egressConfig,
@@ -286,6 +295,7 @@ namespace Pulumi.Databricks
             int updatedTime)
         {
             AccountId = accountId;
+            BillingWorkspaceId = billingWorkspaceId;
             CreationTime = creationTime;
             EgressConfig = egressConfig;
             Id = id;

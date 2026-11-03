@@ -13,6 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngress
     {
+        /// <summary>
+        /// The network policy restrictions for cross-workspace access: which other workspaces may
+        /// access this workspace
+        /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccess? CrossWorkspaceAccess;
         /// <summary>
         /// The network policy restrictions for private access.

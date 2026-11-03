@@ -68,10 +68,10 @@ namespace Pulumi.Databricks
     public partial class SqlEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        /// Idle minutes before the warehouse stops. Defaults to `120` for PRO/CLASSIC and `10` for REALTIME. Use `0` to disable autostop. REALTIME requires `0` or at least `5`.
         /// </summary>
         [Output("autoStopMins")]
-        public Output<int?> AutoStopMins { get; private set; } = null!;
+        public Output<int> AutoStopMins { get; private set; } = null!;
 
         /// <summary>
         /// block, consisting of following fields:
@@ -91,25 +91,29 @@ namespace Pulumi.Databricks
         [Output("creatorName")]
         public Output<string> CreatorName { get; private set; } = null!;
 
+        /// <summary>
+        /// (Read-only, REALTIME only) Compute version label; empty if the API omits it.
+        /// </summary>
         [Output("customerVersionLabel")]
-        public Output<string?> CustomerVersionLabel { get; private set; } = null!;
+        public Output<string> CustomerVersionLabel { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind a Databricks SQL query to an endpoint. Empty for REALTIME resources.
         /// </summary>
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
+        /// Whether to enable [Photon](https://databricks.com/product/delta-engine). Enabled by default. Must be `True` for REALTIME.
         /// </summary>
         [Output("enablePhoton")]
         public Output<bool?> EnablePhoton { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
+        /// Whether to use serverless compute. Set explicitly to avoid workspace-dependent defaults.
         /// 
-        /// * If omitted, the default is `False` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `True` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
+        /// * For REALTIME, defaults to `True` and cannot be set to `False`.
+        /// * For PRO/CLASSIC, defaults to `False`. Workspaces that created a warehouse through the API between September 1, 2022 and April 30, 2023 (November 1, 2022 to May 19, 2023 on Azure) retain a default of `True` if enabled for serverless and meeting its [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements). Workspace admins may need to accept updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms) in the SQL UI.
         /// </summary>
         [Output("enableServerlessCompute")]
         public Output<bool> EnableServerlessCompute { get; private set; } = null!;
@@ -129,17 +133,20 @@ namespace Pulumi.Databricks
         [Output("jdbcUrl")]
         public Output<string> JdbcUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum compute capacity in DBU/hour. Must be a positive integer; the server enforces capacity limits. Omit to preserve the server value; `0` cannot clear it.
+        /// </summary>
         [Output("maxDbu")]
-        public Output<int?> MaxDbu { get; private set; } = null!;
+        public Output<int> MaxDbu { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        /// Maximum number of clusters available when a SQL warehouse is running. Defaults to `1`. Must be `1` for REALTIME warehouses.
         /// </summary>
         [Output("maxNumClusters")]
         public Output<int?> MaxNumClusters { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
+        /// Minimum number of clusters available when a SQL warehouse is running. The default is `1`. Must be `1` for REALTIME warehouses.
         /// </summary>
         [Output("minNumClusters")]
         public Output<int?> MinNumClusters { get; private set; } = null!;
@@ -151,7 +158,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to skip waiting for the SQL warehouse to start after creation. Default is `False`. When set to `True`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        /// Skip waiting for `RUNNING` after creation. Defaults to `False`. Has no effect for REALTIME warehouses, which are created stopped.
         /// </summary>
         [Output("noWait")]
         public Output<bool?> NoWait { get; private set; } = null!;
@@ -180,11 +187,8 @@ namespace Pulumi.Databricks
         [Output("providerConfig")]
         public Output<Outputs.SqlEndpointProviderConfig> ProviderConfig { get; private set; } = null!;
 
-        [Output("reydenClusterSizeMultiplier")]
-        public Output<double?> ReydenClusterSizeMultiplier { get; private set; } = null!;
-
         /// <summary>
-        /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
+        /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. Defaults to `COST_OPTIMIZED`, the only accepted value for REALTIME.
         /// </summary>
         [Output("spotInstancePolicy")]
         public Output<string?> SpotInstancePolicy { get; private set; } = null!;
@@ -201,8 +205,11 @@ namespace Pulumi.Databricks
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// Statement timeout in seconds: a nonnegative integer. Omit to preserve the server setting; Pulumi supplies no default. Use `0` to clear the warehouse override and use the runtime fallback.
+        /// </summary>
         [Output("statementTimeout")]
-        public Output<int?> StatementTimeout { get; private set; } = null!;
+        public Output<int> StatementTimeout { get; private set; } = null!;
 
         /// <summary>
         /// Databricks tags all endpoint resources with these tags.
@@ -211,7 +218,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.SqlEndpointTags?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `EnableServerlessCompute` has the value `True` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO`, `CLASSIC`, or `REALTIME`. REALTIME must be selected explicitly; changing an existing warehouse to or from REALTIME is not supported. When omitted, defaults to `PRO` if `EnableServerlessCompute` is `True`, otherwise `CLASSIC`. Serverless PRO/CLASSIC warehouses must use `PRO`.
         /// </summary>
         [Output("warehouseType")]
         public Output<string?> WarehouseType { get; private set; } = null!;
@@ -263,7 +270,7 @@ namespace Pulumi.Databricks
     public sealed class SqlEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        /// Idle minutes before the warehouse stops. Defaults to `120` for PRO/CLASSIC and `10` for REALTIME. Use `0` to disable autostop. REALTIME requires `0` or at least `5`.
         /// </summary>
         [Input("autoStopMins")]
         public Input<int>? AutoStopMins { get; set; }
@@ -280,25 +287,23 @@ namespace Pulumi.Databricks
         [Input("clusterSize", required: true)]
         public Input<string> ClusterSize { get; set; } = null!;
 
-        [Input("customerVersionLabel")]
-        public Input<string>? CustomerVersionLabel { get; set; }
-
         /// <summary>
-        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind a Databricks SQL query to an endpoint. Empty for REALTIME resources.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
 
         /// <summary>
-        /// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
+        /// Whether to enable [Photon](https://databricks.com/product/delta-engine). Enabled by default. Must be `True` for REALTIME.
         /// </summary>
         [Input("enablePhoton")]
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
+        /// Whether to use serverless compute. Set explicitly to avoid workspace-dependent defaults.
         /// 
-        /// * If omitted, the default is `False` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `True` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
+        /// * For REALTIME, defaults to `True` and cannot be set to `False`.
+        /// * For PRO/CLASSIC, defaults to `False`. Workspaces that created a warehouse through the API between September 1, 2022 and April 30, 2023 (November 1, 2022 to May 19, 2023 on Azure) retain a default of `True` if enabled for serverless and meeting its [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements). Workspace admins may need to accept updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms) in the SQL UI.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -306,17 +311,20 @@ namespace Pulumi.Databricks
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 
+        /// <summary>
+        /// Maximum compute capacity in DBU/hour. Must be a positive integer; the server enforces capacity limits. Omit to preserve the server value; `0` cannot clear it.
+        /// </summary>
         [Input("maxDbu")]
         public Input<int>? MaxDbu { get; set; }
 
         /// <summary>
-        /// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        /// Maximum number of clusters available when a SQL warehouse is running. Defaults to `1`. Must be `1` for REALTIME warehouses.
         /// </summary>
         [Input("maxNumClusters")]
         public Input<int>? MaxNumClusters { get; set; }
 
         /// <summary>
-        /// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
+        /// Minimum number of clusters available when a SQL warehouse is running. The default is `1`. Must be `1` for REALTIME warehouses.
         /// </summary>
         [Input("minNumClusters")]
         public Input<int>? MinNumClusters { get; set; }
@@ -328,7 +336,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether to skip waiting for the SQL warehouse to start after creation. Default is `False`. When set to `True`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        /// Skip waiting for `RUNNING` after creation. Defaults to `False`. Has no effect for REALTIME warehouses, which are created stopped.
         /// </summary>
         [Input("noWait")]
         public Input<bool>? NoWait { get; set; }
@@ -339,11 +347,8 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.SqlEndpointProviderConfigArgs>? ProviderConfig { get; set; }
 
-        [Input("reydenClusterSizeMultiplier")]
-        public Input<double>? ReydenClusterSizeMultiplier { get; set; }
-
         /// <summary>
-        /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
+        /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. Defaults to `COST_OPTIMIZED`, the only accepted value for REALTIME.
         /// </summary>
         [Input("spotInstancePolicy")]
         public Input<string>? SpotInstancePolicy { get; set; }
@@ -354,6 +359,9 @@ namespace Pulumi.Databricks
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
 
+        /// <summary>
+        /// Statement timeout in seconds: a nonnegative integer. Omit to preserve the server setting; Pulumi supplies no default. Use `0` to clear the warehouse override and use the runtime fallback.
+        /// </summary>
         [Input("statementTimeout")]
         public Input<int>? StatementTimeout { get; set; }
 
@@ -364,7 +372,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.SqlEndpointTagsArgs>? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `EnableServerlessCompute` has the value `True` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO`, `CLASSIC`, or `REALTIME`. REALTIME must be selected explicitly; changing an existing warehouse to or from REALTIME is not supported. When omitted, defaults to `PRO` if `EnableServerlessCompute` is `True`, otherwise `CLASSIC`. Serverless PRO/CLASSIC warehouses must use `PRO`.
         /// </summary>
         [Input("warehouseType")]
         public Input<string>? WarehouseType { get; set; }
@@ -378,7 +386,7 @@ namespace Pulumi.Databricks
     public sealed class SqlEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        /// Idle minutes before the warehouse stops. Defaults to `120` for PRO/CLASSIC and `10` for REALTIME. Use `0` to disable autostop. REALTIME requires `0` or at least `5`.
         /// </summary>
         [Input("autoStopMins")]
         public Input<int>? AutoStopMins { get; set; }
@@ -401,25 +409,29 @@ namespace Pulumi.Databricks
         [Input("creatorName")]
         public Input<string>? CreatorName { get; set; }
 
+        /// <summary>
+        /// (Read-only, REALTIME only) Compute version label; empty if the API omits it.
+        /// </summary>
         [Input("customerVersionLabel")]
         public Input<string>? CustomerVersionLabel { get; set; }
 
         /// <summary>
-        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind a Databricks SQL query to an endpoint. Empty for REALTIME resources.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
 
         /// <summary>
-        /// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
+        /// Whether to enable [Photon](https://databricks.com/product/delta-engine). Enabled by default. Must be `True` for REALTIME.
         /// </summary>
         [Input("enablePhoton")]
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
+        /// Whether to use serverless compute. Set explicitly to avoid workspace-dependent defaults.
         /// 
-        /// * If omitted, the default is `False` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `True` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
+        /// * For REALTIME, defaults to `True` and cannot be set to `False`.
+        /// * For PRO/CLASSIC, defaults to `False`. Workspaces that created a warehouse through the API between September 1, 2022 and April 30, 2023 (November 1, 2022 to May 19, 2023 on Azure) retain a default of `True` if enabled for serverless and meeting its [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements). Workspace admins may need to accept updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms) in the SQL UI.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -445,17 +457,20 @@ namespace Pulumi.Databricks
         [Input("jdbcUrl")]
         public Input<string>? JdbcUrl { get; set; }
 
+        /// <summary>
+        /// Maximum compute capacity in DBU/hour. Must be a positive integer; the server enforces capacity limits. Omit to preserve the server value; `0` cannot clear it.
+        /// </summary>
         [Input("maxDbu")]
         public Input<int>? MaxDbu { get; set; }
 
         /// <summary>
-        /// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        /// Maximum number of clusters available when a SQL warehouse is running. Defaults to `1`. Must be `1` for REALTIME warehouses.
         /// </summary>
         [Input("maxNumClusters")]
         public Input<int>? MaxNumClusters { get; set; }
 
         /// <summary>
-        /// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
+        /// Minimum number of clusters available when a SQL warehouse is running. The default is `1`. Must be `1` for REALTIME warehouses.
         /// </summary>
         [Input("minNumClusters")]
         public Input<int>? MinNumClusters { get; set; }
@@ -467,7 +482,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether to skip waiting for the SQL warehouse to start after creation. Default is `False`. When set to `True`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        /// Skip waiting for `RUNNING` after creation. Defaults to `False`. Has no effect for REALTIME warehouses, which are created stopped.
         /// </summary>
         [Input("noWait")]
         public Input<bool>? NoWait { get; set; }
@@ -496,11 +511,8 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.SqlEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
 
-        [Input("reydenClusterSizeMultiplier")]
-        public Input<double>? ReydenClusterSizeMultiplier { get; set; }
-
         /// <summary>
-        /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
+        /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. Defaults to `COST_OPTIMIZED`, the only accepted value for REALTIME.
         /// </summary>
         [Input("spotInstancePolicy")]
         public Input<string>? SpotInstancePolicy { get; set; }
@@ -517,6 +529,9 @@ namespace Pulumi.Databricks
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Statement timeout in seconds: a nonnegative integer. Omit to preserve the server setting; Pulumi supplies no default. Use `0` to clear the warehouse override and use the runtime fallback.
+        /// </summary>
         [Input("statementTimeout")]
         public Input<int>? StatementTimeout { get; set; }
 
@@ -527,7 +542,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.SqlEndpointTagsGetArgs>? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `EnableServerlessCompute` has the value `True` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO`, `CLASSIC`, or `REALTIME`. REALTIME must be selected explicitly; changing an existing warehouse to or from REALTIME is not supported. When omitted, defaults to `PRO` if `EnableServerlessCompute` is `True`, otherwise `CLASSIC`. Serverless PRO/CLASSIC warehouses must use `PRO`.
         /// </summary>
         [Input("warehouseType")]
         public Input<string>? WarehouseType { get; set; }

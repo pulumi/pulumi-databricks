@@ -14,24 +14,28 @@ public final class GetAccountIamUserV2PlainArgs extends com.pulumi.resources.Inv
     public static final GetAccountIamUserV2PlainArgs Empty = new GetAccountIamUserV2PlainArgs();
 
     /**
-     * Internal userId of the user in Databricks
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
      * 
      */
-    @Import(name="userId", required=true)
-    private String userId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return Internal userId of the user in Databricks
+     * @return The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
      * 
      */
-    public String userId() {
-        return this.userId;
+    public String name() {
+        return this.name;
     }
 
     private GetAccountIamUserV2PlainArgs() {}
 
     private GetAccountIamUserV2PlainArgs(GetAccountIamUserV2PlainArgs $) {
-        this.userId = $.userId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -53,19 +57,21 @@ public final class GetAccountIamUserV2PlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param userId Internal userId of the user in Databricks
+         * @param name The resource name of the user. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/users/{user_id}
+         * - Workspace-scoped: users/{user_id}
          * 
          * @return builder
          * 
          */
-        public Builder userId(String userId) {
-            $.userId = userId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
         public GetAccountIamUserV2PlainArgs build() {
-            if ($.userId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamUserV2PlainArgs", "userId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamUserV2PlainArgs", "name");
             }
             return $;
         }

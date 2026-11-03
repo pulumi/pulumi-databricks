@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
             set => _excludedTableFullNames = value;
         }
 
+        [Input("notificationSettings")]
+        public Input<Inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsGetArgs>? NotificationSettings { get; set; }
+
         public DataQualityMonitorAnomalyDetectionConfigGetArgs()
         {
         }

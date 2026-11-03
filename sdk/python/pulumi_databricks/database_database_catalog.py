@@ -221,6 +221,8 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
 
         Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
 
+        For new workloads, Databricks recommends the `PostgresCatalog` resource.
+
         ## Example Usage
 
         ### Example
@@ -283,6 +285,8 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         [API Documentation](https://docs.databricks.com/api/workspace/database)
 
         Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
+
+        For new workloads, Databricks recommends the `PostgresCatalog` resource.
 
         ## Example Usage
 

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account group by its internal ID.
+        /// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamGroupV2.Invoke(new()
         ///     {
-        ///         GroupId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
         ///     });
         /// 
         /// });
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account group by its internal ID.
+        /// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamGroupV2.Invoke(new()
         ///     {
-        ///         GroupId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account group by its internal ID.
+        /// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamGroupV2.Invoke(new()
         ///     {
-        ///         GroupId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
         ///     });
         /// 
         /// });
@@ -115,10 +115,12 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamGroupV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Internal group ID of the group in Databricks
+        /// The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
         /// </summary>
-        [Input("groupId", required: true)]
-        public string GroupId { get; set; } = null!;
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         public GetAccountIamGroupV2Args()
         {
@@ -129,10 +131,12 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamGroupV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Internal group ID of the group in Databricks
+        /// The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
         /// </summary>
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GetAccountIamGroupV2InvokeArgs()
         {
@@ -160,6 +164,17 @@ namespace Pulumi.Databricks
         /// (string) - Display name of the group
         /// </summary>
         public readonly string GroupName;
+        /// <summary>
+        /// (string) - The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string Parent;
 
         [OutputConstructor]
         private GetAccountIamGroupV2Result(
@@ -169,12 +184,18 @@ namespace Pulumi.Databricks
 
             string groupId,
 
-            string groupName)
+            string groupName,
+
+            string name,
+
+            string parent)
         {
             AccountId = accountId;
             ExternalId = externalId;
             GroupId = groupId;
             GroupName = groupName;
+            Name = name;
+            Parent = parent;
         }
     }
 }

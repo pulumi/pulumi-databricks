@@ -17,6 +17,7 @@ public final class GetMwsNetworkConnectivityConfigResult {
      * 
      */
     private String accountId;
+    private Integer billingWorkspaceId;
     /**
      * @return Time in epoch milliseconds when this object was created.
      * 
@@ -60,6 +61,9 @@ public final class GetMwsNetworkConnectivityConfigResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    public Integer billingWorkspaceId() {
+        return this.billingWorkspaceId;
     }
     /**
      * @return Time in epoch milliseconds when this object was created.
@@ -121,6 +125,7 @@ public final class GetMwsNetworkConnectivityConfigResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Integer billingWorkspaceId;
         private Integer creationTime;
         private GetMwsNetworkConnectivityConfigEgressConfig egressConfig;
         private String id;
@@ -132,6 +137,7 @@ public final class GetMwsNetworkConnectivityConfigResult {
         public Builder(GetMwsNetworkConnectivityConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.billingWorkspaceId = defaults.billingWorkspaceId;
     	      this.creationTime = defaults.creationTime;
     	      this.egressConfig = defaults.egressConfig;
     	      this.id = defaults.id;
@@ -147,6 +153,14 @@ public final class GetMwsNetworkConnectivityConfigResult {
               throw new MissingRequiredPropertyException("GetMwsNetworkConnectivityConfigResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder billingWorkspaceId(Integer billingWorkspaceId) {
+            if (billingWorkspaceId == null) {
+              throw new MissingRequiredPropertyException("GetMwsNetworkConnectivityConfigResult", "billingWorkspaceId");
+            }
+            this.billingWorkspaceId = billingWorkspaceId;
             return this;
         }
         @CustomType.Setter
@@ -208,6 +222,7 @@ public final class GetMwsNetworkConnectivityConfigResult {
         public GetMwsNetworkConnectivityConfigResult build() {
             final var _resultValue = new GetMwsNetworkConnectivityConfigResult();
             _resultValue.accountId = accountId;
+            _resultValue.billingWorkspaceId = billingWorkspaceId;
             _resultValue.creationTime = creationTime;
             _resultValue.egressConfig = egressConfig;
             _resultValue.id = id;

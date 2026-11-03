@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
+import com.pulumi.databricks.outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,13 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettings {
      * 
      */
     private @Nullable DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure onFailure;
+    /**
+     * @return Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     * 
+     */
+    private @Nullable DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable onUnhealthyTable;
 
     private DataQualityMonitorDataProfilingConfigNotificationSettings() {}
     /**
@@ -24,6 +32,15 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettings {
      */
     public Optional<DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure> onFailure() {
         return Optional.ofNullable(this.onFailure);
+    }
+    /**
+     * @return Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     * 
+     */
+    public Optional<DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable> onUnhealthyTable() {
+        return Optional.ofNullable(this.onUnhealthyTable);
     }
 
     public static Builder builder() {
@@ -36,10 +53,12 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure onFailure;
+        private @Nullable DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable onUnhealthyTable;
         public Builder() {}
         public Builder(DataQualityMonitorDataProfilingConfigNotificationSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.onFailure = defaults.onFailure;
+    	      this.onUnhealthyTable = defaults.onUnhealthyTable;
         }
 
         @CustomType.Setter
@@ -48,9 +67,16 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettings {
             this.onFailure = onFailure;
             return this;
         }
+        @CustomType.Setter
+        public Builder onUnhealthyTable(@Nullable DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable onUnhealthyTable) {
+
+            this.onUnhealthyTable = onUnhealthyTable;
+            return this;
+        }
         public DataQualityMonitorDataProfilingConfigNotificationSettings build() {
             final var _resultValue = new DataQualityMonitorDataProfilingConfigNotificationSettings();
             _resultValue.onFailure = onFailure;
+            _resultValue.onUnhealthyTable = onUnhealthyTable;
             return _resultValue;
         }
     }

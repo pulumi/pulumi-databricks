@@ -82,6 +82,8 @@ class _WorkspaceIamGroupV2State:
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['WorkspaceIamGroupV2ProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkspaceIamGroupV2 resources.
@@ -90,6 +92,11 @@ class _WorkspaceIamGroupV2State:
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input['WorkspaceIamGroupV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if account_id is not None:
@@ -100,6 +107,10 @@ class _WorkspaceIamGroupV2State:
             pulumi.set(__self__, "group_id", group_id)
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
 
@@ -150,6 +161,33 @@ class _WorkspaceIamGroupV2State:
     @group_name.setter
     def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -264,6 +302,8 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["account_id"] = None
             __props__.__dict__["group_id"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["parent"] = None
         super(WorkspaceIamGroupV2, __self__).__init__(
             'databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2',
             resource_name,
@@ -278,6 +318,8 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']]] = None) -> 'WorkspaceIamGroupV2':
         """
         Get an existing WorkspaceIamGroupV2 resource's state with the given name, id, and optional extra
@@ -290,6 +332,11 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -300,6 +347,8 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["group_name"] = group_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
         return WorkspaceIamGroupV2(resource_name, opts=opts, __props__=__props__)
 
@@ -334,6 +383,25 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         Display name of the group
         """
         return pulumi.get(self, "group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")

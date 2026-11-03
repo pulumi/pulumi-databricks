@@ -96,7 +96,7 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
                                provider_config: Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict', 'outputs.GetDataQualityRefreshesProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityRefreshesResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
@@ -158,7 +158,7 @@ def get_data_quality_refreshes_output(object_id: pulumi.Input[Optional[_builtins
                                       provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict', 'outputs.GetDataQualityRefreshesProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRefreshesResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 

@@ -35,25 +35,27 @@ public final class GetAccountIamWorkspaceAssignmentsV2Args extends com.pulumi.re
     }
 
     /**
-     * Required. The workspace ID for which the workspace assignments are being fetched
+     * The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
      * 
      */
-    @Import(name="workspaceId", required=true)
-    private Output<String> workspaceId;
+    @Import(name="parent", required=true)
+    private Output<String> parent;
 
     /**
-     * @return Required. The workspace ID for which the workspace assignments are being fetched
+     * @return The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
      * 
      */
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    public Output<String> parent() {
+        return this.parent;
     }
 
     private GetAccountIamWorkspaceAssignmentsV2Args() {}
 
     private GetAccountIamWorkspaceAssignmentsV2Args(GetAccountIamWorkspaceAssignmentsV2Args $) {
         this.pageSize = $.pageSize;
-        this.workspaceId = $.workspaceId;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -98,29 +100,31 @@ public final class GetAccountIamWorkspaceAssignmentsV2Args extends com.pulumi.re
         }
 
         /**
-         * @param workspaceId Required. The workspace ID for which the workspace assignments are being fetched
+         * @param parent The parent resource name of the workspace whose assignments to list.
+         * Format: accounts/{account_id}/workspaces/{workspace_id}
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
             return this;
         }
 
         /**
-         * @param workspaceId Required. The workspace ID for which the workspace assignments are being fetched
+         * @param parent The parent resource name of the workspace whose assignments to list.
+         * Format: accounts/{account_id}/workspaces/{workspace_id}
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         public GetAccountIamWorkspaceAssignmentsV2Args build() {
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentsV2Args", "workspaceId");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentsV2Args", "parent");
             }
             return $;
         }

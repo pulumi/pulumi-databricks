@@ -15,7 +15,7 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
-// Reads a single account service principal by its internal ID.
+// Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetAccountIamServicePrincipalV2(ctx, &databricks.LookupAccountIamServicePrincipalV2Args{
-//				ServicePrincipalId: "123456789",
+//				Name: "accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,8 +58,10 @@ func LookupAccountIamServicePrincipalV2(ctx *pulumi.Context, args *LookupAccount
 
 // A collection of arguments for invoking getAccountIamServicePrincipalV2.
 type LookupAccountIamServicePrincipalV2Args struct {
-	// Internal service principal ID of the service principal in Databricks
-	ServicePrincipalId string `pulumi:"servicePrincipalId"`
+	// The resource name of the service principal. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+	// - Workspace-scoped: service-principals/{service_principal_id}
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamServicePrincipalV2.
@@ -75,6 +77,13 @@ type LookupAccountIamServicePrincipalV2Result struct {
 	DisplayName string `pulumi:"displayName"`
 	// (string) - ExternalId of the service principal in the customer's IdP
 	ExternalId string `pulumi:"externalId"`
+	// (string) - The resource name of the service principal. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+	// - Workspace-scoped: service-principals/{service_principal_id}
+	Name string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 	// (string) - Internal service principal ID of the service principal in Databricks
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
@@ -86,8 +95,10 @@ func LookupAccountIamServicePrincipalV2Output(ctx *pulumi.Context, args LookupAc
 
 // A collection of arguments for invoking getAccountIamServicePrincipalV2.
 type LookupAccountIamServicePrincipalV2OutputArgs struct {
-	// Internal service principal ID of the service principal in Databricks
-	ServicePrincipalId pulumi.StringInput `pulumi:"servicePrincipalId"`
+	// The resource name of the service principal. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+	// - Workspace-scoped: service-principals/{service_principal_id}
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountIamServicePrincipalV2OutputArgs) ElementType() reflect.Type {
@@ -133,6 +144,19 @@ func (o LookupAccountIamServicePrincipalV2ResultOutput) DisplayName() pulumi.Str
 // (string) - ExternalId of the service principal in the customer's IdP
 func (o LookupAccountIamServicePrincipalV2ResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamServicePrincipalV2Result) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the service principal. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+// - Workspace-scoped: service-principals/{service_principal_id}
+func (o LookupAccountIamServicePrincipalV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamServicePrincipalV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the service principal,
+// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+func (o LookupAccountIamServicePrincipalV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamServicePrincipalV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 // (string) - Internal service principal ID of the service principal in Databricks

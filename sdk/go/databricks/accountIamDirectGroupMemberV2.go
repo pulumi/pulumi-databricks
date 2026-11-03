@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewAccountIamDirectGroupMemberV2(ctx, "this", &databricks.AccountIamDirectGroupMemberV2Args{
-//				GroupId:     pulumi.Int(123456789),
+//				Parent:      pulumi.String("accounts/00000000-0000-0000-0000-000000000000/groups/123456789"),
 //				PrincipalId: pulumi.String("987654321"),
 //			})
 //			if err != nil {
@@ -55,12 +55,21 @@ type AccountIamDirectGroupMemberV2 struct {
 
 	// (string) - Display name of the principal
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// (string) - The external ID of the principal in Databricks
+	// (string) - The external ID of the principal in the customer's IdP
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// (integer) - The internal ID of the group this member belongs to
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
 	// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
 	MembershipSource pulumi.StringOutput `pulumi:"membershipSource"`
+	// (string) - The resource name of the group membership. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+	// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Internal ID of the principal in Databricks
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -74,6 +83,9 @@ func NewAccountIamDirectGroupMemberV2(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	if args.PrincipalId == nil {
 		return nil, errors.New("invalid value for required argument 'PrincipalId'")
 	}
@@ -102,12 +114,21 @@ func GetAccountIamDirectGroupMemberV2(ctx *pulumi.Context,
 type accountIamDirectGroupMemberV2State struct {
 	// (string) - Display name of the principal
 	DisplayName *string `pulumi:"displayName"`
-	// (string) - The external ID of the principal in Databricks
+	// (string) - The external ID of the principal in the customer's IdP
 	ExternalId *string `pulumi:"externalId"`
 	// (integer) - The internal ID of the group this member belongs to
 	GroupId *int `pulumi:"groupId"`
 	// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
 	MembershipSource *string `pulumi:"membershipSource"`
+	// (string) - The resource name of the group membership. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+	// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+	Name *string `pulumi:"name"`
+	// The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent *string `pulumi:"parent"`
 	// Internal ID of the principal in Databricks
 	PrincipalId *string `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -117,12 +138,21 @@ type accountIamDirectGroupMemberV2State struct {
 type AccountIamDirectGroupMemberV2State struct {
 	// (string) - Display name of the principal
 	DisplayName pulumi.StringPtrInput
-	// (string) - The external ID of the principal in Databricks
+	// (string) - The external ID of the principal in the customer's IdP
 	ExternalId pulumi.StringPtrInput
 	// (integer) - The internal ID of the group this member belongs to
 	GroupId pulumi.IntPtrInput
 	// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
 	MembershipSource pulumi.StringPtrInput
+	// (string) - The resource name of the group membership. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+	// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+	Name pulumi.StringPtrInput
+	// The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent pulumi.StringPtrInput
 	// Internal ID of the principal in Databricks
 	PrincipalId pulumi.StringPtrInput
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -136,6 +166,11 @@ func (AccountIamDirectGroupMemberV2State) ElementType() reflect.Type {
 type accountIamDirectGroupMemberV2Args struct {
 	// (integer) - The internal ID of the group this member belongs to
 	GroupId *int `pulumi:"groupId"`
+	// The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent string `pulumi:"parent"`
 	// Internal ID of the principal in Databricks
 	PrincipalId string `pulumi:"principalId"`
 }
@@ -144,6 +179,11 @@ type accountIamDirectGroupMemberV2Args struct {
 type AccountIamDirectGroupMemberV2Args struct {
 	// (integer) - The internal ID of the group this member belongs to
 	GroupId pulumi.IntPtrInput
+	// The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent pulumi.StringInput
 	// Internal ID of the principal in Databricks
 	PrincipalId pulumi.StringInput
 }
@@ -240,7 +280,7 @@ func (o AccountIamDirectGroupMemberV2Output) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountIamDirectGroupMemberV2) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - The external ID of the principal in Databricks
+// (string) - The external ID of the principal in the customer's IdP
 func (o AccountIamDirectGroupMemberV2Output) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountIamDirectGroupMemberV2) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
 }
@@ -253,6 +293,21 @@ func (o AccountIamDirectGroupMemberV2Output) GroupId() pulumi.IntOutput {
 // (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
 func (o AccountIamDirectGroupMemberV2Output) MembershipSource() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountIamDirectGroupMemberV2) pulumi.StringOutput { return v.MembershipSource }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the group membership. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+func (o AccountIamDirectGroupMemberV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamDirectGroupMemberV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the group that contains the membership. The format depends on the API
+// that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o AccountIamDirectGroupMemberV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamDirectGroupMemberV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // Internal ID of the principal in Databricks

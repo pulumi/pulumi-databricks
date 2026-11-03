@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.BudgetState;
 import com.pulumi.databricks.outputs.BudgetAlertConfiguration;
 import com.pulumi.databricks.outputs.BudgetFilter;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -357,6 +358,12 @@ public class Budget extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<BudgetFilter>> filter() {
         return Codegen.optional(this.filter);
+    }
+    @Export(name="includeExternalSpend", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> includeExternalSpend;
+
+    public Output<Optional<Boolean>> includeExternalSpend() {
+        return Codegen.optional(this.includeExternalSpend);
     }
     /**
      * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)

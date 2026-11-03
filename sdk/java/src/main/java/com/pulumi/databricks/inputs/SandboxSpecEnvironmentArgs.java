@@ -16,18 +16,18 @@ public final class SandboxSpecEnvironmentArgs extends com.pulumi.resources.Resou
     public static final SandboxSpecEnvironmentArgs Empty = new SandboxSpecEnvironmentArgs();
 
     /**
-     * A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      * 
      */
     @Import(name="imageUri")
     private @Nullable Output<String> imageUri;
 
     /**
-     * @return A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * @return The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      * 
      */
     public Optional<Output<String>> imageUri() {
@@ -59,9 +59,9 @@ public final class SandboxSpecEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param imageUri A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-         * sandbox environment. When set, this image is used as the environment instead of resolving a
-         * managed image from `environmentVersion`
+         * @param imageUri The Unity Catalog container image to use for the sandbox environment
+         * (for example, `catalog.schema.folder.image:tag`). See
+         * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
          * 
          * @return builder
          * 
@@ -72,9 +72,9 @@ public final class SandboxSpecEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param imageUri A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-         * sandbox environment. When set, this image is used as the environment instead of resolving a
-         * managed image from `environmentVersion`
+         * @param imageUri The Unity Catalog container image to use for the sandbox environment
+         * (for example, `catalog.schema.folder.image:tag`). See
+         * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
          * 
          * @return builder
          * 

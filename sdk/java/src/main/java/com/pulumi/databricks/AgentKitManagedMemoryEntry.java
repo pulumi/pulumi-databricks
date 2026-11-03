@@ -95,7 +95,8 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
     }
     /**
      * (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -103,7 +104,8 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
 
     /**
      * @return (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      * 
      */
     public Output<String> name() {

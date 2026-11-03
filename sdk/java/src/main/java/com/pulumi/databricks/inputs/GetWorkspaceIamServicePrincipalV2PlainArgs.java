@@ -17,6 +17,25 @@ public final class GetWorkspaceIamServicePrincipalV2PlainArgs extends com.pulumi
     public static final GetWorkspaceIamServicePrincipalV2PlainArgs Empty = new GetWorkspaceIamServicePrincipalV2PlainArgs();
 
     /**
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    @Import(name="name", required=true)
+    private String name;
+
+    /**
+     * @return The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -31,26 +50,11 @@ public final class GetWorkspaceIamServicePrincipalV2PlainArgs extends com.pulumi
         return Optional.ofNullable(this.providerConfig);
     }
 
-    /**
-     * Internal service principal ID of the service principal in Databricks
-     * 
-     */
-    @Import(name="servicePrincipalId", required=true)
-    private String servicePrincipalId;
-
-    /**
-     * @return Internal service principal ID of the service principal in Databricks
-     * 
-     */
-    public String servicePrincipalId() {
-        return this.servicePrincipalId;
-    }
-
     private GetWorkspaceIamServicePrincipalV2PlainArgs() {}
 
     private GetWorkspaceIamServicePrincipalV2PlainArgs(GetWorkspaceIamServicePrincipalV2PlainArgs $) {
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
-        this.servicePrincipalId = $.servicePrincipalId;
     }
 
     public static Builder builder() {
@@ -72,6 +76,19 @@ public final class GetWorkspaceIamServicePrincipalV2PlainArgs extends com.pulumi
         }
 
         /**
+         * @param name The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
          * @param providerConfig Configure the provider for management through account provider.
          * 
          * @return builder
@@ -82,20 +99,9 @@ public final class GetWorkspaceIamServicePrincipalV2PlainArgs extends com.pulumi
             return this;
         }
 
-        /**
-         * @param servicePrincipalId Internal service principal ID of the service principal in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder servicePrincipalId(String servicePrincipalId) {
-            $.servicePrincipalId = servicePrincipalId;
-            return this;
-        }
-
         public GetWorkspaceIamServicePrincipalV2PlainArgs build() {
-            if ($.servicePrincipalId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalV2PlainArgs", "servicePrincipalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalV2PlainArgs", "name");
             }
             return $;
         }

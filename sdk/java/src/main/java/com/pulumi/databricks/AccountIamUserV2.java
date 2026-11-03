@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var this_ = new AccountIamUserV2("this", AccountIamUserV2Args.builder()
+ *             .parent("accounts/00000000-0000-0000-0000-000000000000")
  *             .username("jane.doe}{@literal @}{@code example.com")
  *             .accountUserStatus("ACTIVE")
  *             .fullName(AccountIamUserV2FullNameArgs.builder()
@@ -117,6 +118,40 @@ public class AccountIamUserV2 extends com.pulumi.resources.CustomResource {
 
     public Output<AccountIamUserV2FullName> fullName() {
         return this.fullName;
+    }
+    /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * (string) - Internal userId of the user in Databricks

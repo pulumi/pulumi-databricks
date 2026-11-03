@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new AccountIamGroupV2("this", AccountIamGroupV2Args.builder()
+ *             .parent("accounts/00000000-0000-0000-0000-000000000000")
  *             .groupName("data-engineers")
  *             .build());
  * 
@@ -119,6 +120,40 @@ public class AccountIamGroupV2 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> groupName() {
         return Codegen.optional(this.groupName);
     }
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
 
     /**
      *
@@ -132,7 +167,7 @@ public class AccountIamGroupV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountIamGroupV2(java.lang.String name, @Nullable AccountIamGroupV2Args args) {
+    public AccountIamGroupV2(java.lang.String name, AccountIamGroupV2Args args) {
         this(name, args, null);
     }
     /**
@@ -141,7 +176,7 @@ public class AccountIamGroupV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountIamGroupV2(java.lang.String name, @Nullable AccountIamGroupV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AccountIamGroupV2(java.lang.String name, AccountIamGroupV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/accountIamGroupV2:AccountIamGroupV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -149,7 +184,7 @@ public class AccountIamGroupV2 extends com.pulumi.resources.CustomResource {
         super("databricks:index/accountIamGroupV2:AccountIamGroupV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AccountIamGroupV2Args makeArgs(@Nullable AccountIamGroupV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AccountIamGroupV2Args makeArgs(AccountIamGroupV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

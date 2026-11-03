@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,21 +17,6 @@ import javax.annotation.Nullable;
 public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWorkspaceIamDirectGroupMembersV2Args Empty = new GetWorkspaceIamDirectGroupMembersV2Args();
-
-    /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     * 
-     */
-    @Import(name="groupId", required=true)
-    private Output<Integer> groupId;
-
-    /**
-     * @return Required. Internal ID of the group in Databricks whose direct members are being listed
-     * 
-     */
-    public Output<Integer> groupId() {
-        return this.groupId;
-    }
 
     /**
      * The maximum number of members to return. The service may return fewer than this value.
@@ -47,6 +33,23 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
      */
     public Optional<Output<Integer>> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
 
     /**
@@ -67,8 +70,8 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
     private GetWorkspaceIamDirectGroupMembersV2Args() {}
 
     private GetWorkspaceIamDirectGroupMembersV2Args(GetWorkspaceIamDirectGroupMembersV2Args $) {
-        this.groupId = $.groupId;
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
 
@@ -88,27 +91,6 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
 
         public Builder(GetWorkspaceIamDirectGroupMembersV2Args defaults) {
             $ = new GetWorkspaceIamDirectGroupMembersV2Args(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param groupId Required. Internal ID of the group in Databricks whose direct members are being listed
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(Output<Integer> groupId) {
-            $.groupId = groupId;
-            return this;
-        }
-
-        /**
-         * @param groupId Required. Internal ID of the group in Databricks whose direct members are being listed
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(Integer groupId) {
-            return groupId(Output.of(groupId));
         }
 
         /**
@@ -135,6 +117,29 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
         }
 
         /**
+         * @param parent The parent resource name of the group whose direct members to list.
+         * Format: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The parent resource name of the group whose direct members to list.
+         * Format: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
+        /**
          * @param providerConfig Configure the provider for management through account provider.
          * 
          * @return builder
@@ -156,8 +161,8 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
         }
 
         public GetWorkspaceIamDirectGroupMembersV2Args build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2Args", "groupId");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2Args", "parent");
             }
             return $;
         }

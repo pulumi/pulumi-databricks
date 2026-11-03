@@ -44,7 +44,8 @@ export function getAiGatewayMcpServices(args?: GetAiGatewayMcpServicesArgs, opts
 export interface GetAiGatewayMcpServicesArgs {
     /**
      * Maximum number of MCP services to return. Defaults to 200 when unset or 0;
-     * the maximum is 200. Use `pageToken` to retrieve additional pages
+     * the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+     * `pageToken` to retrieve additional pages
      */
     pageSize?: number;
     /**
@@ -113,7 +114,8 @@ export function getAiGatewayMcpServicesOutput(args?: GetAiGatewayMcpServicesOutp
 export interface GetAiGatewayMcpServicesOutputArgs {
     /**
      * Maximum number of MCP services to return. Defaults to 200 when unset or 0;
-     * the maximum is 200. Use `pageToken` to retrieve additional pages
+     * the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+     * `pageToken` to retrieve additional pages
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

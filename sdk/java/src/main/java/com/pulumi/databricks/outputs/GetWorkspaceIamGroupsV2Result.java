@@ -19,6 +19,12 @@ public final class GetWorkspaceIamGroupsV2Result {
     private @Nullable String filter;
     private List<GetWorkspaceIamGroupsV2Group> groups;
     private @Nullable Integer pageSize;
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private @Nullable String parent;
     private @Nullable GetWorkspaceIamGroupsV2ProviderConfig providerConfig;
 
     private GetWorkspaceIamGroupsV2Result() {}
@@ -30,6 +36,14 @@ public final class GetWorkspaceIamGroupsV2Result {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
     }
     public Optional<GetWorkspaceIamGroupsV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -47,6 +61,7 @@ public final class GetWorkspaceIamGroupsV2Result {
         private @Nullable String filter;
         private List<GetWorkspaceIamGroupsV2Group> groups;
         private @Nullable Integer pageSize;
+        private @Nullable String parent;
         private @Nullable GetWorkspaceIamGroupsV2ProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetWorkspaceIamGroupsV2Result defaults) {
@@ -54,6 +69,7 @@ public final class GetWorkspaceIamGroupsV2Result {
     	      this.filter = defaults.filter;
     	      this.groups = defaults.groups;
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
         }
 
@@ -81,6 +97,12 @@ public final class GetWorkspaceIamGroupsV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder parent(@Nullable String parent) {
+
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetWorkspaceIamGroupsV2ProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -91,6 +113,7 @@ public final class GetWorkspaceIamGroupsV2Result {
             _resultValue.filter = filter;
             _resultValue.groups = groups;
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }

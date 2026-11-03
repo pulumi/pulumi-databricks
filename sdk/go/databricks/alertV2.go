@@ -83,9 +83,9 @@ type AlertV2 struct {
 
 	// (string) - The timestamp indicating when the alert was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Custom description for the alert. support mustache template
+	// Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription pulumi.StringPtrOutput `pulumi:"customDescription"`
-	// Custom summary for the alert. support mustache template
+	// Custom summary for the alert. Interpreted according to `customTemplateFormat`
 	CustomSummary pulumi.StringPtrOutput `pulumi:"customSummary"`
 	// The format used to interpret the `customSummary` and `customDescription` templates.
 	//
@@ -192,9 +192,9 @@ func GetAlertV2(ctx *pulumi.Context,
 type alertV2State struct {
 	// (string) - The timestamp indicating when the alert was created
 	CreateTime *string `pulumi:"createTime"`
-	// Custom description for the alert. support mustache template
+	// Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription *string `pulumi:"customDescription"`
-	// Custom summary for the alert. support mustache template
+	// Custom summary for the alert. Interpreted according to `customTemplateFormat`
 	CustomSummary *string `pulumi:"customSummary"`
 	// The format used to interpret the `customSummary` and `customDescription` templates.
 	//
@@ -257,9 +257,9 @@ type alertV2State struct {
 type AlertV2State struct {
 	// (string) - The timestamp indicating when the alert was created
 	CreateTime pulumi.StringPtrInput
-	// Custom description for the alert. support mustache template
+	// Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription pulumi.StringPtrInput
-	// Custom summary for the alert. support mustache template
+	// Custom summary for the alert. Interpreted according to `customTemplateFormat`
 	CustomSummary pulumi.StringPtrInput
 	// The format used to interpret the `customSummary` and `customDescription` templates.
 	//
@@ -324,9 +324,9 @@ func (AlertV2State) ElementType() reflect.Type {
 }
 
 type alertV2Args struct {
-	// Custom description for the alert. support mustache template
+	// Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription *string `pulumi:"customDescription"`
-	// Custom summary for the alert. support mustache template
+	// Custom summary for the alert. Interpreted according to `customTemplateFormat`
 	CustomSummary *string `pulumi:"customSummary"`
 	// The format used to interpret the `customSummary` and `customDescription` templates.
 	//
@@ -378,9 +378,9 @@ type alertV2Args struct {
 
 // The set of arguments for constructing a AlertV2 resource.
 type AlertV2Args struct {
-	// Custom description for the alert. support mustache template
+	// Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription pulumi.StringPtrInput
-	// Custom summary for the alert. support mustache template
+	// Custom summary for the alert. Interpreted according to `customTemplateFormat`
 	CustomSummary pulumi.StringPtrInput
 	// The format used to interpret the `customSummary` and `customDescription` templates.
 	//
@@ -522,12 +522,12 @@ func (o AlertV2Output) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Custom description for the alert. support mustache template
+// Custom description for the alert. Interpreted according to `customTemplateFormat`
 func (o AlertV2Output) CustomDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.CustomDescription }).(pulumi.StringPtrOutput)
 }
 
-// Custom summary for the alert. support mustache template
+// Custom summary for the alert. Interpreted according to `customTemplateFormat`
 func (o AlertV2Output) CustomSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.CustomSummary }).(pulumi.StringPtrOutput)
 }

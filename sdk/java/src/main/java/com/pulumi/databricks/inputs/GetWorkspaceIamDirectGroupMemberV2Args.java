@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,33 +18,22 @@ public final class GetWorkspaceIamDirectGroupMemberV2Args extends com.pulumi.res
     public static final GetWorkspaceIamDirectGroupMemberV2Args Empty = new GetWorkspaceIamDirectGroupMemberV2Args();
 
     /**
-     * The internal ID of the group this member belongs to
+     * The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
      * 
      */
-    @Import(name="groupId", required=true)
-    private Output<Integer> groupId;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return The internal ID of the group this member belongs to
+     * @return The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
      * 
      */
-    public Output<Integer> groupId() {
-        return this.groupId;
-    }
-
-    /**
-     * Internal ID of the principal in Databricks
-     * 
-     */
-    @Import(name="principalId", required=true)
-    private Output<String> principalId;
-
-    /**
-     * @return Internal ID of the principal in Databricks
-     * 
-     */
-    public Output<String> principalId() {
-        return this.principalId;
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -66,8 +54,7 @@ public final class GetWorkspaceIamDirectGroupMemberV2Args extends com.pulumi.res
     private GetWorkspaceIamDirectGroupMemberV2Args() {}
 
     private GetWorkspaceIamDirectGroupMemberV2Args(GetWorkspaceIamDirectGroupMemberV2Args $) {
-        this.groupId = $.groupId;
-        this.principalId = $.principalId;
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
     }
 
@@ -90,45 +77,28 @@ public final class GetWorkspaceIamDirectGroupMemberV2Args extends com.pulumi.res
         }
 
         /**
-         * @param groupId The internal ID of the group this member belongs to
+         * @param name The resource name of the group membership. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(Output<Integer> groupId) {
-            $.groupId = groupId;
+        public Builder name(Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param groupId The internal ID of the group this member belongs to
+         * @param name The resource name of the group membership. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(Integer groupId) {
-            return groupId(Output.of(groupId));
-        }
-
-        /**
-         * @param principalId Internal ID of the principal in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principalId(Output<String> principalId) {
-            $.principalId = principalId;
-            return this;
-        }
-
-        /**
-         * @param principalId Internal ID of the principal in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principalId(String principalId) {
-            return principalId(Output.of(principalId));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -153,11 +123,8 @@ public final class GetWorkspaceIamDirectGroupMemberV2Args extends com.pulumi.res
         }
 
         public GetWorkspaceIamDirectGroupMemberV2Args build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMemberV2Args", "groupId");
-            }
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMemberV2Args", "principalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMemberV2Args", "name");
             }
             return $;
         }
