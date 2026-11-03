@@ -61,6 +61,10 @@ export interface GetSandboxResult {
      */
     readonly displayName: string;
     /**
+     * (SandboxMetadata) - Metadata associated with the sandbox
+     */
+    readonly metadata: outputs.GetSandboxMetadata;
+    /**
      * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
      * `sandboxId`; any value supplied in a create or update request body is ignored
      */

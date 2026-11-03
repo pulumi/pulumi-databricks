@@ -59,6 +59,13 @@ type WorkspaceIamGroupV2 struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// Display name of the group
 	GroupName pulumi.StringPtrOutput `pulumi:"groupName"`
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceIamGroupV2ProviderConfigOutput `pulumi:"providerConfig"`
 }
@@ -101,6 +108,13 @@ type workspaceIamGroupV2State struct {
 	GroupId *string `pulumi:"groupId"`
 	// Display name of the group
 	GroupName *string `pulumi:"groupName"`
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name *string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *WorkspaceIamGroupV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -114,6 +128,13 @@ type WorkspaceIamGroupV2State struct {
 	GroupId pulumi.StringPtrInput
 	// Display name of the group
 	GroupName pulumi.StringPtrInput
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name pulumi.StringPtrInput
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceIamGroupV2ProviderConfigPtrInput
 }
@@ -246,6 +267,19 @@ func (o WorkspaceIamGroupV2Output) GroupId() pulumi.StringOutput {
 // Display name of the group
 func (o WorkspaceIamGroupV2Output) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceIamGroupV2) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The resource name of the group. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o WorkspaceIamGroupV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceIamGroupV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o WorkspaceIamGroupV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceIamGroupV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // Configure the provider for management through account provider.

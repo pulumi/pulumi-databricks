@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,21 +15,6 @@ import javax.annotation.Nullable;
 public final class GetAccountIamDirectGroupMembersV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAccountIamDirectGroupMembersV2PlainArgs Empty = new GetAccountIamDirectGroupMembersV2PlainArgs();
-
-    /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     * 
-     */
-    @Import(name="groupId", required=true)
-    private Integer groupId;
-
-    /**
-     * @return Required. Internal ID of the group in Databricks whose direct members are being listed
-     * 
-     */
-    public Integer groupId() {
-        return this.groupId;
-    }
 
     /**
      * The maximum number of members to return. The service may return fewer than this value.
@@ -47,11 +33,28 @@ public final class GetAccountIamDirectGroupMembersV2PlainArgs extends com.pulumi
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     * 
+     */
+    @Import(name="parent", required=true)
+    private String parent;
+
+    /**
+     * @return The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+
     private GetAccountIamDirectGroupMembersV2PlainArgs() {}
 
     private GetAccountIamDirectGroupMembersV2PlainArgs(GetAccountIamDirectGroupMembersV2PlainArgs $) {
-        this.groupId = $.groupId;
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -73,17 +76,6 @@ public final class GetAccountIamDirectGroupMembersV2PlainArgs extends com.pulumi
         }
 
         /**
-         * @param groupId Required. Internal ID of the group in Databricks whose direct members are being listed
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(Integer groupId) {
-            $.groupId = groupId;
-            return this;
-        }
-
-        /**
          * @param pageSize The maximum number of members to return. The service may return fewer than this value.
          * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
          * 
@@ -95,9 +87,21 @@ public final class GetAccountIamDirectGroupMembersV2PlainArgs extends com.pulumi
             return this;
         }
 
+        /**
+         * @param parent The parent resource name of the group whose direct members to list.
+         * Format: accounts/{account_id}/groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            $.parent = parent;
+            return this;
+        }
+
         public GetAccountIamDirectGroupMembersV2PlainArgs build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMembersV2PlainArgs", "groupId");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMembersV2PlainArgs", "parent");
             }
             return $;
         }

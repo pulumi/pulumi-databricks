@@ -120,14 +120,54 @@ public class WorkspaceIamWorkspaceAssignmentV2 extends com.pulumi.resources.Cust
         return Codegen.optional(this.entitlements);
     }
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+    /**
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     public Output<String> principalId() {

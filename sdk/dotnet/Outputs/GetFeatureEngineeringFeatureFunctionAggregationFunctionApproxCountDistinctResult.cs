@@ -18,7 +18,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Input;
         /// <summary>
-        /// (number) - The maximum relative standard deviation allowed (default defined by Spark)
+        /// (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+        /// result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+        /// between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+        /// gives this error.
+        /// If neither RelativeError nor accuracy is set, 0.01 is default chosen at feature creation
+        /// </summary>
+        public readonly double? RelativeError;
+        /// <summary>
+        /// (number) - The maximum relative standard deviation allowed (default defined by Spark).
+        /// Deprecated: use relative_error. When RelativeError is set, reads return the same value here
+        /// for clients that don't have relative_error, and a request may only send that value
         /// </summary>
         public readonly double? RelativeSd;
 
@@ -26,9 +36,12 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctResult(
             string input,
 
+            double? relativeError,
+
             double? relativeSd)
         {
             Input = input;
+            RelativeError = relativeError;
             RelativeSd = relativeSd;
         }
     }

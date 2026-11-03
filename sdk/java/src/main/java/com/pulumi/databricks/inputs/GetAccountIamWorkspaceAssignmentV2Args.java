@@ -15,40 +15,28 @@ public final class GetAccountIamWorkspaceAssignmentV2Args extends com.pulumi.res
     public static final GetAccountIamWorkspaceAssignmentV2Args Empty = new GetAccountIamWorkspaceAssignmentV2Args();
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      * 
      */
-    @Import(name="principalId", required=true)
-    private Output<String> principalId;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
      * 
      */
-    public Output<String> principalId() {
-        return this.principalId;
-    }
-
-    /**
-     * The workspace ID where the principal is assigned
-     * 
-     */
-    @Import(name="workspaceId", required=true)
-    private Output<String> workspaceId;
-
-    /**
-     * @return The workspace ID where the principal is assigned
-     * 
-     */
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    public Output<String> name() {
+        return this.name;
     }
 
     private GetAccountIamWorkspaceAssignmentV2Args() {}
 
     private GetAccountIamWorkspaceAssignmentV2Args(GetAccountIamWorkspaceAssignmentV2Args $) {
-        this.principalId = $.principalId;
-        this.workspaceId = $.workspaceId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -70,53 +58,33 @@ public final class GetAccountIamWorkspaceAssignmentV2Args extends com.pulumi.res
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace assignment. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+         * - Workspace-scoped: workspace-assignments/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder principalId(Output<String> principalId) {
-            $.principalId = principalId;
+        public Builder name(Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace assignment. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+         * - Workspace-scoped: workspace-assignments/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder principalId(String principalId) {
-            return principalId(Output.of(principalId));
-        }
-
-        /**
-         * @param workspaceId The workspace ID where the principal is assigned
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId The workspace ID where the principal is assigned
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public GetAccountIamWorkspaceAssignmentV2Args build() {
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2Args", "principalId");
-            }
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2Args", "workspaceId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentV2Args", "name");
             }
             return $;
         }

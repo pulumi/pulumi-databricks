@@ -32,7 +32,8 @@ public final class FeatureEngineeringFeatureTimeWindow {
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      * 
      */
     private @Nullable String startTime;
@@ -63,7 +64,8 @@ public final class FeatureEngineeringFeatureTimeWindow {
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      * 
      */
     public Optional<String> startTime() {

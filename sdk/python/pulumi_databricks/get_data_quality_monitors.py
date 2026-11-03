@@ -70,7 +70,7 @@ def get_data_quality_monitors(page_size: Optional[_builtins.int] = None,
                               provider_config: Optional[Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict', 'outputs.GetDataQualityMonitorsProviderConfigResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityMonitorsResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
@@ -114,7 +114,7 @@ def get_data_quality_monitors_output(page_size: pulumi.Input[Optional[Optional[_
                                      provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict', 'outputs.GetDataQualityMonitorsProviderConfigResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityMonitorsResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 

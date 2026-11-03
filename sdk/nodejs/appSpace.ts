@@ -7,9 +7,59 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ *
+ * App Spaces group related Databricks Apps and share configuration across them. Resources, user API scopes, and the usage policy configured on a space are available to every app in the space.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Example
+ *
+ * This example creates an app space in the workspace with the specified name.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.AppSpace("this", {
+ *     name: "my-space",
+ *     description: "My app space for team applications.",
+ * });
+ * ```
+ *
+ * ### Example with Resources
+ *
+ * This example creates an app space that gives all of its apps access to a SQL warehouse and a secret.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const withResources = new databricks.AppSpace("with_resources", {
+ *     name: "analytics-space",
+ *     description: "Shared resources for analytics apps",
+ *     resources: [
+ *         {
+ *             name: "warehouse",
+ *             sqlWarehouse: {
+ *                 id: "e9ca293f79a74b5c",
+ *                 permission: "CAN_USE",
+ *             },
+ *         },
+ *         {
+ *             name: "api-key",
+ *             secret: {
+ *                 scope: "my-scope",
+ *                 key: "my-key",
+ *                 permission: "READ",
+ *             },
+ *         },
+ *     ],
+ *     userApiScopes: ["sql"],
+ * });
+ * ```
  */
 export class AppSpace extends pulumi.CustomResource {
     /**

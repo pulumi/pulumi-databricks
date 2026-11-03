@@ -120,28 +120,28 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Custom description for the alert. support mustache template
+     * Custom description for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     @Export(name="customDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDescription;
 
     /**
-     * @return Custom description for the alert. support mustache template
+     * @return Custom description for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     public Output<Optional<String>> customDescription() {
         return Codegen.optional(this.customDescription);
     }
     /**
-     * Custom summary for the alert. support mustache template
+     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     @Export(name="customSummary", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSummary;
 
     /**
-     * @return Custom summary for the alert. support mustache template
+     * @return Custom summary for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     public Output<Optional<String>> customSummary() {

@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? RequestedTargetQps;
         /// <summary>
-        /// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        /// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         /// </summary>
         public readonly string State;
 

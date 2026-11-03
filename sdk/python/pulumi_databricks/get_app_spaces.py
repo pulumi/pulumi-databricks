@@ -70,9 +70,24 @@ def get_app_spaces(page_size: Optional[_builtins.int] = None,
                    provider_config: Optional[Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict', 'outputs.GetAppSpacesProviderConfigResult']] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppSpacesResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
+    This data source can be used to fetch the list of app spaces within the workspace.
+    The list can then be accessed via the data object's `spaces` field.
+
+    ## Example Usage
+
+    Getting a list of all app spaces:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_app_spaces()
+    pulumi.export("allAppSpaces", all.spaces)
+    ```
 
 
     :param _builtins.int page_size: Upper bound for items returned
@@ -92,9 +107,24 @@ def get_app_spaces_output(page_size: pulumi.Input[Optional[Optional[_builtins.in
                           provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict', 'outputs.GetAppSpacesProviderConfigResult']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppSpacesResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
+    This data source can be used to fetch the list of app spaces within the workspace.
+    The list can then be accessed via the data object's `spaces` field.
+
+    ## Example Usage
+
+    Getting a list of all app spaces:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_app_spaces()
+    pulumi.export("allAppSpaces", all.spaces)
+    ```
 
 
     :param _builtins.int page_size: Upper bound for items returned

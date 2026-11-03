@@ -325,6 +325,11 @@ export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
 utilities.lazyLoad(exports, ["File"], () => require("./file"));
 
+export { GenieAgentArgs, GenieAgentState } from "./genieAgent";
+export type GenieAgent = import("./genieAgent").GenieAgent;
+export const GenieAgent: typeof import("./genieAgent").GenieAgent = null as any;
+utilities.lazyLoad(exports, ["GenieAgent"], () => require("./genieAgent"));
+
 export { GetAccountFederationPoliciesArgs, GetAccountFederationPoliciesResult, GetAccountFederationPoliciesOutputArgs } from "./getAccountFederationPolicies";
 export const getAccountFederationPolicies: typeof import("./getAccountFederationPolicies").getAccountFederationPolicies = null as any;
 export const getAccountFederationPoliciesOutput: typeof import("./getAccountFederationPolicies").getAccountFederationPoliciesOutput = null as any;
@@ -799,6 +804,16 @@ export { GetFunctionsArgs, GetFunctionsResult, GetFunctionsOutputArgs } from "./
 export const getFunctions: typeof import("./getFunctions").getFunctions = null as any;
 export const getFunctionsOutput: typeof import("./getFunctions").getFunctionsOutput = null as any;
 utilities.lazyLoad(exports, ["getFunctions","getFunctionsOutput"], () => require("./getFunctions"));
+
+export { GetGenieAgentArgs, GetGenieAgentResult, GetGenieAgentOutputArgs } from "./getGenieAgent";
+export const getGenieAgent: typeof import("./getGenieAgent").getGenieAgent = null as any;
+export const getGenieAgentOutput: typeof import("./getGenieAgent").getGenieAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getGenieAgent","getGenieAgentOutput"], () => require("./getGenieAgent"));
+
+export { GetGenieAgentsArgs, GetGenieAgentsResult, GetGenieAgentsOutputArgs } from "./getGenieAgents";
+export const getGenieAgents: typeof import("./getGenieAgents").getGenieAgents = null as any;
+export const getGenieAgentsOutput: typeof import("./getGenieAgents").getGenieAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getGenieAgents","getGenieAgentsOutput"], () => require("./getGenieAgents"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
@@ -2045,6 +2060,8 @@ const _module = {
                 return new FeatureEngineeringFeature(name, <any>undefined, { urn })
             case "databricks:index/file:File":
                 return new File(name, <any>undefined, { urn })
+            case "databricks:index/genieAgent:GenieAgent":
+                return new GenieAgent(name, <any>undefined, { urn })
             case "databricks:index/gitCredential:GitCredential":
                 return new GitCredential(name, <any>undefined, { urn })
             case "databricks:index/globalInitScript:GlobalInitScript":
@@ -2340,6 +2357,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _m
 pulumi.runtime.registerResourceModule("databricks", "index/externalMetadata", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringFeature", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/genieAgent", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/globalInitScript", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/grant", _module)

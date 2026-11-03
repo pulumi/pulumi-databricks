@@ -36,6 +36,7 @@ export function getMwsNetworkConnectivityConfig(args: GetMwsNetworkConnectivityC
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", {
         "accountId": args.accountId,
+        "billingWorkspaceId": args.billingWorkspaceId,
         "creationTime": args.creationTime,
         "egressConfig": args.egressConfig,
         "name": args.name,
@@ -53,6 +54,7 @@ export interface GetMwsNetworkConnectivityConfigArgs {
      * The Databricks account ID associated with this network configuration.
      */
     accountId?: string;
+    billingWorkspaceId?: number;
     /**
      * Time in epoch milliseconds when this object was created.
      */
@@ -87,6 +89,7 @@ export interface GetMwsNetworkConnectivityConfigResult {
      * The Databricks account ID associated with this network configuration.
      */
     readonly accountId: string;
+    readonly billingWorkspaceId: number;
     /**
      * Time in epoch milliseconds when this object was created.
      */
@@ -146,6 +149,7 @@ export function getMwsNetworkConnectivityConfigOutput(args: GetMwsNetworkConnect
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", {
         "accountId": args.accountId,
+        "billingWorkspaceId": args.billingWorkspaceId,
         "creationTime": args.creationTime,
         "egressConfig": args.egressConfig,
         "name": args.name,
@@ -163,6 +167,7 @@ export interface GetMwsNetworkConnectivityConfigOutputArgs {
      * The Databricks account ID associated with this network configuration.
      */
     accountId?: pulumi.Input<string | undefined>;
+    billingWorkspaceId?: pulumi.Input<number | undefined>;
     /**
      * Time in epoch milliseconds when this object was created.
      */

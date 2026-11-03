@@ -87,13 +87,13 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Custom description for the alert. support mustache template
+        /// Custom description for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Output("customDescription")]
         public Output<string?> CustomDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Custom summary for the alert. support mustache template
+        /// Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Output("customSummary")]
         public Output<string?> CustomSummary { get; private set; } = null!;
@@ -261,13 +261,13 @@ namespace Pulumi.Databricks
     public sealed class AlertV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom description for the alert. support mustache template
+        /// Custom description for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
         /// <summary>
-        /// Custom summary for the alert. support mustache template
+        /// Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
@@ -383,13 +383,13 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Custom description for the alert. support mustache template
+        /// Custom description for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
         /// <summary>
-        /// Custom summary for the alert. support mustache template
+        /// Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }

@@ -73,7 +73,8 @@ type GetSqlWarehouseArgs struct {
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName          *string `pulumi:"creatorName"`
+	CreatorName *string `pulumi:"creatorName"`
+	// REALTIME compute version label; empty if the API omits it.
 	CustomerVersionLabel *string `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId *string `pulumi:"dataSourceId"`
@@ -88,7 +89,8 @@ type GetSqlWarehouseArgs struct {
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
-	MaxDbu  *int    `pulumi:"maxDbu"`
+	// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+	MaxDbu *int `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running.
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
@@ -106,11 +108,12 @@ type GetSqlWarehouseArgs struct {
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
-	State            *string `pulumi:"state"`
-	StatementTimeout *int    `pulumi:"statementTimeout"`
+	State *string `pulumi:"state"`
+	// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+	StatementTimeout *int `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags *GetSqlWarehouseTags `pulumi:"tags"`
-	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+	// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 	WarehouseType *string `pulumi:"warehouseType"`
 }
 
@@ -123,7 +126,8 @@ type GetSqlWarehouseResult struct {
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName          string `pulumi:"creatorName"`
+	CreatorName string `pulumi:"creatorName"`
+	// REALTIME compute version label; empty if the API omits it.
 	CustomerVersionLabel string `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId string `pulumi:"dataSourceId"`
@@ -138,7 +142,8 @@ type GetSqlWarehouseResult struct {
 	InstanceProfileArn string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl string `pulumi:"jdbcUrl"`
-	MaxDbu  int    `pulumi:"maxDbu"`
+	// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+	MaxDbu int `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running.
 	MaxNumClusters int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
@@ -156,11 +161,12 @@ type GetSqlWarehouseResult struct {
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
-	State            string `pulumi:"state"`
-	StatementTimeout int    `pulumi:"statementTimeout"`
+	State string `pulumi:"state"`
+	// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+	StatementTimeout int `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTags `pulumi:"tags"`
-	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+	// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 	WarehouseType string `pulumi:"warehouseType"`
 }
 
@@ -178,7 +184,8 @@ type GetSqlWarehouseOutputArgs struct {
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringPtrInput `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
-	CreatorName          pulumi.StringPtrInput `pulumi:"creatorName"`
+	CreatorName pulumi.StringPtrInput `pulumi:"creatorName"`
+	// REALTIME compute version label; empty if the API omits it.
 	CustomerVersionLabel pulumi.StringPtrInput `pulumi:"customerVersionLabel"`
 	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
@@ -193,7 +200,8 @@ type GetSqlWarehouseOutputArgs struct {
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput `pulumi:"jdbcUrl"`
-	MaxDbu  pulumi.IntPtrInput    `pulumi:"maxDbu"`
+	// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+	MaxDbu pulumi.IntPtrInput `pulumi:"maxDbu"`
 	// Maximum number of clusters available when a SQL warehouse is running.
 	MaxNumClusters pulumi.IntPtrInput `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
@@ -211,11 +219,12 @@ type GetSqlWarehouseOutputArgs struct {
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
-	State            pulumi.StringPtrInput `pulumi:"state"`
-	StatementTimeout pulumi.IntPtrInput    `pulumi:"statementTimeout"`
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+	StatementTimeout pulumi.IntPtrInput `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTagsPtrInput `pulumi:"tags"`
-	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+	// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 	WarehouseType pulumi.StringPtrInput `pulumi:"warehouseType"`
 }
 
@@ -258,6 +267,7 @@ func (o GetSqlWarehouseResultOutput) CreatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.CreatorName }).(pulumi.StringOutput)
 }
 
+// REALTIME compute version label; empty if the API omits it.
 func (o GetSqlWarehouseResultOutput) CustomerVersionLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.CustomerVersionLabel }).(pulumi.StringOutput)
 }
@@ -296,6 +306,7 @@ func (o GetSqlWarehouseResultOutput) JdbcUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.JdbcUrl }).(pulumi.StringOutput)
 }
 
+// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
 func (o GetSqlWarehouseResultOutput) MaxDbu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.MaxDbu }).(pulumi.IntOutput)
 }
@@ -348,6 +359,7 @@ func (o GetSqlWarehouseResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
 func (o GetSqlWarehouseResultOutput) StatementTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.StatementTimeout }).(pulumi.IntOutput)
 }
@@ -357,7 +369,7 @@ func (o GetSqlWarehouseResultOutput) Tags() GetSqlWarehouseTagsOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseTags { return v.Tags }).(GetSqlWarehouseTagsOutput)
 }
 
-// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 func (o GetSqlWarehouseResultOutput) WarehouseType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.WarehouseType }).(pulumi.StringOutput)
 }

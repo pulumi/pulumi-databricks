@@ -29,6 +29,17 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - Display name of the group
         /// </summary>
         public readonly string GroupName;
+        /// <summary>
+        /// (string) - The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The parent resource name of the account whose groups to list.
+        /// Format: accounts/{account_id}
+        /// </summary>
+        public readonly string Parent;
 
         [OutputConstructor]
         private GetAccountIamGroupsV2GroupResult(
@@ -38,12 +49,18 @@ namespace Pulumi.Databricks.Outputs
 
             string groupId,
 
-            string groupName)
+            string groupName,
+
+            string name,
+
+            string parent)
         {
             AccountId = accountId;
             ExternalId = externalId;
             GroupId = groupId;
             GroupName = groupName;
+            Name = name;
+            Parent = parent;
         }
     }
 }

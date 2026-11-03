@@ -82,9 +82,17 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.creatorName);
     }
 
+    /**
+     * REALTIME compute version label; empty if the API omits it.
+     * 
+     */
     @Import(name="customerVersionLabel")
     private @Nullable String customerVersionLabel;
 
+    /**
+     * @return REALTIME compute version label; empty if the API omits it.
+     * 
+     */
     public Optional<String> customerVersionLabel() {
         return Optional.ofNullable(this.customerVersionLabel);
     }
@@ -186,9 +194,17 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.jdbcUrl);
     }
 
+    /**
+     * Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     * 
+     */
     @Import(name="maxDbu")
     private @Nullable Integer maxDbu;
 
+    /**
+     * @return Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+     * 
+     */
     public Optional<Integer> maxDbu() {
         return Optional.ofNullable(this.maxDbu);
     }
@@ -327,9 +343,17 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * 
+     */
     @Import(name="statementTimeout")
     private @Nullable Integer statementTimeout;
 
+    /**
+     * @return Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * 
+     */
     public Optional<Integer> statementTimeout() {
         return Optional.ofNullable(this.statementTimeout);
     }
@@ -350,14 +374,14 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     @Import(name="warehouseType")
     private @Nullable String warehouseType;
 
     /**
-     * @return SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+     * @return SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     public Optional<String> warehouseType() {
@@ -457,6 +481,12 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param customerVersionLabel REALTIME compute version label; empty if the API omits it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customerVersionLabel(@Nullable String customerVersionLabel) {
             $.customerVersionLabel = customerVersionLabel;
             return this;
@@ -533,6 +563,12 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param maxDbu Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxDbu(@Nullable Integer maxDbu) {
             $.maxDbu = maxDbu;
             return this;
@@ -636,6 +672,12 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param statementTimeout Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statementTimeout(@Nullable Integer statementTimeout) {
             $.statementTimeout = statementTimeout;
             return this;
@@ -653,7 +695,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param warehouseType SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+         * @param warehouseType SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
          * 
          * @return builder
          * 

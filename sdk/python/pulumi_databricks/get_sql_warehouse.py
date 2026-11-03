@@ -143,6 +143,9 @@ class GetSqlWarehouseResult:
     @_builtins.property
     @pulumi.getter(name="customerVersionLabel")
     def customer_version_label(self) -> _builtins.str:
+        """
+        REALTIME compute version label; empty if the API omits it.
+        """
         return pulumi.get(self, "customer_version_label")
 
     @_builtins.property
@@ -201,6 +204,9 @@ class GetSqlWarehouseResult:
     @_builtins.property
     @pulumi.getter(name="maxDbu")
     def max_dbu(self) -> _builtins.int:
+        """
+        Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+        """
         return pulumi.get(self, "max_dbu")
 
     @_builtins.property
@@ -280,6 +286,9 @@ class GetSqlWarehouseResult:
     @_builtins.property
     @pulumi.getter(name="statementTimeout")
     def statement_timeout(self) -> _builtins.int:
+        """
+        Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        """
         return pulumi.get(self, "statement_timeout")
 
     @_builtins.property
@@ -294,7 +303,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="warehouseType")
     def warehouse_type(self) -> _builtins.str:
         """
-        SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+        SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         """
         return pulumi.get(self, "warehouse_type")
 
@@ -401,12 +410,14 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult'] channel: block, consisting of following fields:
     :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
     :param _builtins.str creator_name: The username of the user who created the endpoint.
+    :param _builtins.str customer_version_label: REALTIME compute version label; empty if the API omits it.
     :param _builtins.str data_source_id: (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param _builtins.bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param _builtins.bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
     :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict', 'outputs.GetSqlWarehouseHealthResult'] health: Health status of the endpoint.
     :param _builtins.str id: The ID of the SQL warehouse.
     :param _builtins.str jdbc_url: JDBC connection string.
+    :param _builtins.int max_dbu: Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
     :param _builtins.int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
     :param _builtins.int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
     :param _builtins.str name: Name of the SQL warehouse to search (case-sensitive).
@@ -415,8 +426,9 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param _builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param _builtins.str state: The current state of the endpoint.
+    :param _builtins.int statement_timeout: Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult'] tags: tags used for SQL warehouse resources.
-    :param _builtins.str warehouse_type: SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+    :param _builtins.str warehouse_type: SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins
@@ -543,12 +555,14 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult'] channel: block, consisting of following fields:
     :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
     :param _builtins.str creator_name: The username of the user who created the endpoint.
+    :param _builtins.str customer_version_label: REALTIME compute version label; empty if the API omits it.
     :param _builtins.str data_source_id: (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param _builtins.bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param _builtins.bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
     :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict', 'outputs.GetSqlWarehouseHealthResult'] health: Health status of the endpoint.
     :param _builtins.str id: The ID of the SQL warehouse.
     :param _builtins.str jdbc_url: JDBC connection string.
+    :param _builtins.int max_dbu: Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
     :param _builtins.int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
     :param _builtins.int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
     :param _builtins.str name: Name of the SQL warehouse to search (case-sensitive).
@@ -557,8 +571,9 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param _builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param _builtins.str state: The current state of the endpoint.
+    :param _builtins.int statement_timeout: Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult'] tags: tags used for SQL warehouse resources.
-    :param _builtins.str warehouse_type: SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+    :param _builtins.str warehouse_type: SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins

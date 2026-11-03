@@ -12,18 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSandboxSpecEnvironment {
     /**
-     * @return (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * @return (string) - The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      * 
      */
     private @Nullable String imageUri;
 
     private GetSandboxSpecEnvironment() {}
     /**
-     * @return (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * @return (string) - The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      * 
      */
     public Optional<String> imageUri() {

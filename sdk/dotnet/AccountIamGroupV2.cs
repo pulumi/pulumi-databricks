@@ -34,6 +34,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.AccountIamGroupV2("this", new()
     ///     {
+    ///         Parent = "accounts/00000000-0000-0000-0000-000000000000",
     ///         GroupName = "data-engineers",
     ///     });
     /// 
@@ -67,6 +68,21 @@ namespace Pulumi.Databricks
         [Output("groupName")]
         public Output<string?> GroupName { get; private set; } = null!;
 
+        /// <summary>
+        /// (string) - The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AccountIamGroupV2 resource with the given unique name, arguments, and options.
@@ -75,7 +91,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccountIamGroupV2(string name, AccountIamGroupV2Args? args = null, CustomResourceOptions? options = null)
+        public AccountIamGroupV2(string name, AccountIamGroupV2Args args, CustomResourceOptions? options = null)
             : base("databricks:index/accountIamGroupV2:AccountIamGroupV2", name, args ?? new AccountIamGroupV2Args(), MakeResourceOptions(options, ""))
         {
         }
@@ -125,6 +141,13 @@ namespace Pulumi.Databricks
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
+        /// <summary>
+        /// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
         public AccountIamGroupV2Args()
         {
         }
@@ -156,6 +179,21 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// (string) - The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         public AccountIamGroupV2State()
         {

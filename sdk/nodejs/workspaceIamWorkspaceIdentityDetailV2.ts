@@ -30,10 +30,10 @@ import * as utilities from "./utilities";
  * const _this = new databricks.WorkspaceIamWorkspaceIdentityDetailV2("this", {workspaceIdentityStatus: "ACTIVE"});
  * ```
  *
- * Import the resource by the principal's internal Databricks ID:
+ * Import the resource by its name, which contains the principal's internal Databricks ID:
  *
  * ```sh
- * terraform import databricks_workspace_iam_workspace_identity_detail_v2.this <principal_id>
+ * terraform import databricks_workspace_iam_workspace_identity_detail_v2.this principals/<principal_id>/workspace-identity-detail
  * ```
  */
 export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource {
@@ -69,6 +69,15 @@ export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource
      */
     declare public /*out*/ readonly assignmentType: pulumi.Output<string>;
     /**
+     * (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource name of the parent
+     */
+    declare public readonly parent: pulumi.Output<string>;
+    /**
      * (integer) - The internal ID of the principal (user/sp/group) in Databricks
      */
     declare public /*out*/ readonly principalId: pulumi.Output<string>;
@@ -92,22 +101,29 @@ export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: WorkspaceIamWorkspaceIdentityDetailV2Args, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: WorkspaceIamWorkspaceIdentityDetailV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkspaceIamWorkspaceIdentityDetailV2Args | WorkspaceIamWorkspaceIdentityDetailV2State, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceIamWorkspaceIdentityDetailV2State | undefined;
             resourceInputs["assignmentType"] = state?.assignmentType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["principalId"] = state?.principalId;
             resourceInputs["principalType"] = state?.principalType;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["workspaceIdentityStatus"] = state?.workspaceIdentityStatus;
         } else {
             const args = argsOrState as WorkspaceIamWorkspaceIdentityDetailV2Args | undefined;
+            if (args?.parent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["workspaceIdentityStatus"] = args?.workspaceIdentityStatus;
             resourceInputs["assignmentType"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["principalId"] = undefined /*out*/;
             resourceInputs["principalType"] = undefined /*out*/;
         }
@@ -124,6 +140,15 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2State {
      * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
      */
     assignmentType?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the parent
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The internal ID of the principal (user/sp/group) in Databricks
      */
@@ -146,6 +171,10 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2State {
  * The set of arguments for constructing a WorkspaceIamWorkspaceIdentityDetailV2 resource.
  */
 export interface WorkspaceIamWorkspaceIdentityDetailV2Args {
+    /**
+     * The resource name of the parent
+     */
+    parent: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider.
      */

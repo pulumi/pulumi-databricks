@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngress {
+    /**
+     * @return The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     * 
+     */
     private @Nullable AccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess;
     /**
      * @return The network policy restrictions for private access.
@@ -28,6 +33,11 @@ public final class AccountNetworkPolicyIngress {
     private @Nullable AccountNetworkPolicyIngressPublicAccess publicAccess;
 
     private AccountNetworkPolicyIngress() {}
+    /**
+     * @return The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     * 
+     */
     public Optional<AccountNetworkPolicyIngressCrossWorkspaceAccess> crossWorkspaceAccess() {
         return Optional.ofNullable(this.crossWorkspaceAccess);
     }

@@ -179,8 +179,7 @@ type PostgresSyncedTable struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSyncedTableProviderConfigOutput `pulumi:"providerConfig"`
-	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec PostgresSyncedTableSpecOutput `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status PostgresSyncedTableStatusOutput `pulumi:"status"`
@@ -230,8 +229,7 @@ type postgresSyncedTableState struct {
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresSyncedTableProviderConfig `pulumi:"providerConfig"`
-	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec *PostgresSyncedTableSpec `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status *PostgresSyncedTableStatus `pulumi:"status"`
@@ -249,8 +247,7 @@ type PostgresSyncedTableState struct {
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSyncedTableProviderConfigPtrInput
-	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec PostgresSyncedTableSpecPtrInput
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status PostgresSyncedTableStatusPtrInput
@@ -267,8 +264,7 @@ func (PostgresSyncedTableState) ElementType() reflect.Type {
 type postgresSyncedTableArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresSyncedTableProviderConfig `pulumi:"providerConfig"`
-	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec *PostgresSyncedTableSpec `pulumi:"spec"`
 	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId string `pulumi:"syncedTableId"`
@@ -278,8 +274,7 @@ type postgresSyncedTableArgs struct {
 type PostgresSyncedTableArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSyncedTableProviderConfigPtrInput
-	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec PostgresSyncedTableSpecPtrInput
 	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId pulumi.StringInput
@@ -388,8 +383,7 @@ func (o PostgresSyncedTableOutput) ProviderConfig() PostgresSyncedTableProviderC
 	return o.ApplyT(func(v *PostgresSyncedTable) PostgresSyncedTableProviderConfigOutput { return v.ProviderConfig }).(PostgresSyncedTableProviderConfigOutput)
 }
 
-// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+// Configuration details of the synced table, such as the source table, scheduling policy, etc
 func (o PostgresSyncedTableOutput) Spec() PostgresSyncedTableSpecOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) PostgresSyncedTableSpecOutput { return v.Spec }).(PostgresSyncedTableSpecOutput)
 }

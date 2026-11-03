@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,12 +13,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure {
     /**
+     * @return (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    private @Nullable List<String> destinationIds;
+    /**
+     * @return (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    private @Nullable List<Integer> destinationUserIds;
+    /**
      * @return (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      * 
      */
     private @Nullable List<String> emailAddresses;
 
     private GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure() {}
+    /**
+     * @return (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    public List<String> destinationIds() {
+        return this.destinationIds == null ? List.of() : this.destinationIds;
+    }
+    /**
+     * @return (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    public List<Integer> destinationUserIds() {
+        return this.destinationUserIds == null ? List.of() : this.destinationUserIds;
+    }
     /**
      * @return (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      * 
@@ -35,13 +68,35 @@ public final class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationS
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> destinationIds;
+        private @Nullable List<Integer> destinationUserIds;
         private @Nullable List<String> emailAddresses;
         public Builder() {}
         public Builder(GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.destinationIds = defaults.destinationIds;
+    	      this.destinationUserIds = defaults.destinationUserIds;
     	      this.emailAddresses = defaults.emailAddresses;
         }
 
+        @CustomType.Setter
+        public Builder destinationIds(@Nullable List<String> destinationIds) {
+
+            this.destinationIds = destinationIds;
+            return this;
+        }
+        public Builder destinationIds(String... destinationIds) {
+            return destinationIds(List.of(destinationIds));
+        }
+        @CustomType.Setter
+        public Builder destinationUserIds(@Nullable List<Integer> destinationUserIds) {
+
+            this.destinationUserIds = destinationUserIds;
+            return this;
+        }
+        public Builder destinationUserIds(Integer... destinationUserIds) {
+            return destinationUserIds(List.of(destinationUserIds));
+        }
         @CustomType.Setter
         public Builder emailAddresses(@Nullable List<String> emailAddresses) {
 
@@ -53,6 +108,8 @@ public final class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationS
         }
         public GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure build() {
             final var _resultValue = new GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure();
+            _resultValue.destinationIds = destinationIds;
+            _resultValue.destinationUserIds = destinationUserIds;
             _resultValue.emailAddresses = emailAddresses;
             return _resultValue;
         }

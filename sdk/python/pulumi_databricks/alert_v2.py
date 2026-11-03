@@ -41,8 +41,8 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -157,7 +157,7 @@ class AlertV2Args:
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom description for the alert. support mustache template
+        Custom description for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_description")
 
@@ -169,7 +169,7 @@ class AlertV2Args:
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom summary for the alert. support mustache template
+        Custom summary for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -312,8 +312,8 @@ class _AlertV2State:
         Input properties used for looking up and filtering AlertV2 resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -410,7 +410,7 @@ class _AlertV2State:
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom description for the alert. support mustache template
+        Custom description for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_description")
 
@@ -422,7 +422,7 @@ class _AlertV2State:
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom summary for the alert. support mustache template
+        Custom summary for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -717,8 +717,8 @@ class AlertV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -915,8 +915,8 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -995,7 +995,7 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Custom description for the alert. support mustache template
+        Custom description for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_description")
 
@@ -1003,7 +1003,7 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Custom summary for the alert. support mustache template
+        Custom summary for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 

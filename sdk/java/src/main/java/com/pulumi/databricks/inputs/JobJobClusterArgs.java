@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterArgs;
+import com.pulumi.databricks.inputs.JobJobClusterServerlessComputeArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,13 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.newCluster);
     }
 
+    @Import(name="serverlessCompute")
+    private @Nullable Output<JobJobClusterServerlessComputeArgs> serverlessCompute;
+
+    public Optional<Output<JobJobClusterServerlessComputeArgs>> serverlessCompute() {
+        return Optional.ofNullable(this.serverlessCompute);
+    }
+
     @Import(name="serverlessComputeId")
     private @Nullable Output<String> serverlessComputeId;
 
@@ -59,6 +67,7 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
     private JobJobClusterArgs(JobJobClusterArgs $) {
         this.jobClusterKey = $.jobClusterKey;
         this.newCluster = $.newCluster;
+        this.serverlessCompute = $.serverlessCompute;
         this.serverlessComputeId = $.serverlessComputeId;
     }
 
@@ -120,6 +129,15 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder newCluster(JobJobClusterNewClusterArgs newCluster) {
             return newCluster(Output.of(newCluster));
+        }
+
+        public Builder serverlessCompute(@Nullable Output<JobJobClusterServerlessComputeArgs> serverlessCompute) {
+            $.serverlessCompute = serverlessCompute;
+            return this;
+        }
+
+        public Builder serverlessCompute(JobJobClusterServerlessComputeArgs serverlessCompute) {
+            return serverlessCompute(Output.of(serverlessCompute));
         }
 
         public Builder serverlessComputeId(@Nullable Output<String> serverlessComputeId) {

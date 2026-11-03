@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// (SandboxMetadata) - Metadata associated with the sandbox
+        /// </summary>
+        public readonly Outputs.GetSandboxesSandboxMetadataResult Metadata;
+        /// <summary>
         /// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
         /// `SandboxId`; any value supplied in a create or update request body is ignored
         /// </summary>
@@ -49,6 +53,8 @@ namespace Pulumi.Databricks.Outputs
 
             string displayName,
 
+            Outputs.GetSandboxesSandboxMetadataResult metadata,
+
             string name,
 
             Outputs.GetSandboxesSandboxProviderConfigResult? providerConfig,
@@ -61,6 +67,7 @@ namespace Pulumi.Databricks.Outputs
         {
             CreateTime = createTime;
             DisplayName = displayName;
+            Metadata = metadata;
             Name = name;
             ProviderConfig = providerConfig;
             Spec = spec;

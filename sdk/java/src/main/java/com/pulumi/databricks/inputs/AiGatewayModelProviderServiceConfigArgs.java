@@ -30,18 +30,20 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
     public static final AiGatewayModelProviderServiceConfigArgs Empty = new AiGatewayModelProviderServiceConfigArgs();
 
     /**
-     * When true, accepts any model exposed by the upstream provider; `targets`
-     * is not required and does not restrict routability. When false, only
-     * models listed in `targets` are routable. Defaults to false
+     * When true, allows models from the provider&#39;s built-in model catalog in
+     * addition to explicit `targets`. When false, only models listed in `targets`
+     * are routable. Defaults to false. CUSTOM providers have no built-in model
+     * catalog and must leave this false and list their models in `targets`
      * 
      */
     @Import(name="allowAllTargets")
     private @Nullable Output<Boolean> allowAllTargets;
 
     /**
-     * @return When true, accepts any model exposed by the upstream provider; `targets`
-     * is not required and does not restrict routability. When false, only
-     * models listed in `targets` are routable. Defaults to false
+     * @return When true, allows models from the provider&#39;s built-in model catalog in
+     * addition to explicit `targets`. When false, only models listed in `targets`
+     * are routable. Defaults to false. CUSTOM providers have no built-in model
+     * catalog and must leave this false and list their models in `targets`
      * 
      */
     public Optional<Output<Boolean>> allowAllTargets() {
@@ -248,8 +250,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
      * entry must include at least one `nativeApiTypes` value. When
      * `allowAllTargets` is false, at least one entry is required and model
      * service destinations can reference only listed models. When
-     * `allowAllTargets` is true, any upstream model is routable; entries in
-     * this list provide API-type metadata without restricting other models
+     * `allowAllTargets` is true, models from the provider&#39;s built-in model
+     * catalog are also routable. CUSTOM providers must explicitly list their
+     * models here and cannot enable `allowAllTargets`
      * 
      */
     @Import(name="targets")
@@ -260,8 +263,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
      * entry must include at least one `nativeApiTypes` value. When
      * `allowAllTargets` is false, at least one entry is required and model
      * service destinations can reference only listed models. When
-     * `allowAllTargets` is true, any upstream model is routable; entries in
-     * this list provide API-type metadata without restricting other models
+     * `allowAllTargets` is true, models from the provider&#39;s built-in model
+     * catalog are also routable. CUSTOM providers must explicitly list their
+     * models here and cannot enable `allowAllTargets`
      * 
      */
     public Optional<Output<List<AiGatewayModelProviderServiceConfigTargetArgs>>> targets() {
@@ -309,9 +313,10 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param allowAllTargets When true, accepts any model exposed by the upstream provider; `targets`
-         * is not required and does not restrict routability. When false, only
-         * models listed in `targets` are routable. Defaults to false
+         * @param allowAllTargets When true, allows models from the provider&#39;s built-in model catalog in
+         * addition to explicit `targets`. When false, only models listed in `targets`
+         * are routable. Defaults to false. CUSTOM providers have no built-in model
+         * catalog and must leave this false and list their models in `targets`
          * 
          * @return builder
          * 
@@ -322,9 +327,10 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param allowAllTargets When true, accepts any model exposed by the upstream provider; `targets`
-         * is not required and does not restrict routability. When false, only
-         * models listed in `targets` are routable. Defaults to false
+         * @param allowAllTargets When true, allows models from the provider&#39;s built-in model catalog in
+         * addition to explicit `targets`. When false, only models listed in `targets`
+         * are routable. Defaults to false. CUSTOM providers have no built-in model
+         * catalog and must leave this false and list their models in `targets`
          * 
          * @return builder
          * 
@@ -602,8 +608,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
          * entry must include at least one `nativeApiTypes` value. When
          * `allowAllTargets` is false, at least one entry is required and model
          * service destinations can reference only listed models. When
-         * `allowAllTargets` is true, any upstream model is routable; entries in
-         * this list provide API-type metadata without restricting other models
+         * `allowAllTargets` is true, models from the provider&#39;s built-in model
+         * catalog are also routable. CUSTOM providers must explicitly list their
+         * models here and cannot enable `allowAllTargets`
          * 
          * @return builder
          * 
@@ -618,8 +625,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
          * entry must include at least one `nativeApiTypes` value. When
          * `allowAllTargets` is false, at least one entry is required and model
          * service destinations can reference only listed models. When
-         * `allowAllTargets` is true, any upstream model is routable; entries in
-         * this list provide API-type metadata without restricting other models
+         * `allowAllTargets` is true, models from the provider&#39;s built-in model
+         * catalog are also routable. CUSTOM providers must explicitly list their
+         * models here and cannot enable `allowAllTargets`
          * 
          * @return builder
          * 
@@ -633,8 +641,9 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
          * entry must include at least one `nativeApiTypes` value. When
          * `allowAllTargets` is false, at least one entry is required and model
          * service destinations can reference only listed models. When
-         * `allowAllTargets` is true, any upstream model is routable; entries in
-         * this list provide API-type metadata without restricting other models
+         * `allowAllTargets` is true, models from the provider&#39;s built-in model
+         * catalog are also routable. CUSTOM providers must explicitly list their
+         * models here and cannot enable `allowAllTargets`
          * 
          * @return builder
          * 

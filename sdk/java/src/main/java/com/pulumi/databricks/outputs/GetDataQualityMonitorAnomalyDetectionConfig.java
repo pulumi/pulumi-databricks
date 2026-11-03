@@ -4,9 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -16,6 +18,11 @@ public final class GetDataQualityMonitorAnomalyDetectionConfig {
      * 
      */
     private @Nullable List<String> excludedTableFullNames;
+    /**
+     * @return (NotificationSettings) - Field for specifying notification settings
+     * 
+     */
+    private @Nullable GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings;
 
     private GetDataQualityMonitorAnomalyDetectionConfig() {}
     /**
@@ -24,6 +31,13 @@ public final class GetDataQualityMonitorAnomalyDetectionConfig {
      */
     public List<String> excludedTableFullNames() {
         return this.excludedTableFullNames == null ? List.of() : this.excludedTableFullNames;
+    }
+    /**
+     * @return (NotificationSettings) - Field for specifying notification settings
+     * 
+     */
+    public Optional<GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
 
     public static Builder builder() {
@@ -36,10 +50,12 @@ public final class GetDataQualityMonitorAnomalyDetectionConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedTableFullNames;
+        private @Nullable GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings;
         public Builder() {}
         public Builder(GetDataQualityMonitorAnomalyDetectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedTableFullNames = defaults.excludedTableFullNames;
+    	      this.notificationSettings = defaults.notificationSettings;
         }
 
         @CustomType.Setter
@@ -51,9 +67,16 @@ public final class GetDataQualityMonitorAnomalyDetectionConfig {
         public Builder excludedTableFullNames(String... excludedTableFullNames) {
             return excludedTableFullNames(List.of(excludedTableFullNames));
         }
+        @CustomType.Setter
+        public Builder notificationSettings(@Nullable GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings) {
+
+            this.notificationSettings = notificationSettings;
+            return this;
+        }
         public GetDataQualityMonitorAnomalyDetectionConfig build() {
             final var _resultValue = new GetDataQualityMonitorAnomalyDetectionConfig();
             _resultValue.excludedTableFullNames = excludedTableFullNames;
+            _resultValue.notificationSettings = notificationSettings;
             return _resultValue;
         }
     }

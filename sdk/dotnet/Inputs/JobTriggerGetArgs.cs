@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("fileArrival")]
         public Input<Inputs.JobTriggerFileArrivalGetArgs>? FileArrival { get; set; }
 
+        [Input("jobCompletion")]
+        public Input<Inputs.JobTriggerJobCompletionGetArgs>? JobCompletion { get; set; }
+
         [Input("model")]
         public Input<Inputs.JobTriggerModelGetArgs>? Model { get; set; }
 

@@ -97,7 +97,8 @@ class GetAgentKitManagedMemoryEntryResult:
     def name(self) -> _builtins.str:
         """
         (string) - Resource name in the form
-        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+        Required for updates; assigned by the service on creation
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +170,8 @@ def get_agent_kit_managed_memory_entry(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Resource name in the form
-           `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+           `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+           Required for updates; assigned by the service on creation
     :param Union['GetAgentKitManagedMemoryEntryProviderConfigArgs', 'GetAgentKitManagedMemoryEntryProviderConfigArgsDict', 'outputs.GetAgentKitManagedMemoryEntryProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -199,7 +201,8 @@ def get_agent_kit_managed_memory_entry_output(name: pulumi.Input[Optional[_built
 
 
     :param _builtins.str name: Resource name in the form
-           `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+           `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+           Required for updates; assigned by the service on creation
     :param Union['GetAgentKitManagedMemoryEntryProviderConfigArgs', 'GetAgentKitManagedMemoryEntryProviderConfigArgsDict', 'outputs.GetAgentKitManagedMemoryEntryProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

@@ -64,7 +64,8 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      * 
      */
     @Import(name="startTime")
@@ -78,7 +79,8 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -177,7 +179,8 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
          * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
          * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
          * eligible source data exists.
-         * Not currently supported for sawtooth windows or for Features with a stream source
+         * For sawtooth windows, startTime must not be later than the time the Feature is created.
+         * Not supported for rolling windows on Features with a stream source
          * 
          * @return builder
          * 
@@ -195,7 +198,8 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
          * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
          * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
          * eligible source data exists.
-         * Not currently supported for sawtooth windows or for Features with a stream source
+         * For sawtooth windows, startTime must not be later than the time the Feature is created.
+         * Not supported for rolling windows on Features with a stream source
          * 
          * @return builder
          * 

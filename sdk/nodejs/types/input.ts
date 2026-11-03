@@ -175,6 +175,10 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 }
 
 export interface AccountNetworkPolicyIngress {
+    /**
+     * The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     */
     crossWorkspaceAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccess | undefined>;
     /**
      * The network policy restrictions for private access.
@@ -393,6 +397,10 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSe
 }
 
 export interface AccountNetworkPolicyIngressDryRun {
+    /**
+     * The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     */
     crossWorkspaceAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess | undefined>;
     /**
      * The network policy restrictions for private access.
@@ -1892,9 +1900,10 @@ export interface AiGatewayMcpServiceProviderConfig {
 
 export interface AiGatewayModelProviderServiceConfig {
     /**
-     * When true, accepts any model exposed by the upstream provider; `targets`
-     * is not required and does not restrict routability. When false, only
-     * models listed in `targets` are routable. Defaults to false
+     * When true, allows models from the provider's built-in model catalog in
+     * addition to explicit `targets`. When false, only models listed in `targets`
+     * are routable. Defaults to false. CUSTOM providers have no built-in model
+     * catalog and must leave this false and list their models in `targets`
      */
     allowAllTargets?: pulumi.Input<boolean | undefined>;
     amazonBedrock?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrock | undefined>;
@@ -1955,8 +1964,9 @@ export interface AiGatewayModelProviderServiceConfig {
      * entry must include at least one `nativeApiTypes` value. When
      * `allowAllTargets` is false, at least one entry is required and model
      * service destinations can reference only listed models. When
-     * `allowAllTargets` is true, any upstream model is routable; entries in
-     * this list provide API-type metadata without restricting other models
+     * `allowAllTargets` is true, models from the provider's built-in model
+     * catalog are also routable. CUSTOM providers must explicitly list their
+     * models here and cannot enable `allowAllTargets`
      */
     targets?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelProviderServiceConfigTarget>[] | undefined>;
 }
@@ -2955,7 +2965,7 @@ export interface AiSearchEndpointEndpointStatus {
      */
     message?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state?: pulumi.Input<string | undefined>;
 }
@@ -2974,7 +2984,7 @@ export interface AiSearchEndpointScalingInfo {
      */
     requestedTargetQps?: pulumi.Input<number | undefined>;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state?: pulumi.Input<string | undefined>;
 }
@@ -5010,6 +5020,58 @@ export interface DataQualityMonitorAnomalyDetectionConfig {
      * List of fully qualified table names to exclude from anomaly detection
      */
     excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notificationSettings?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings | undefined>;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+    /**
+     * Destinations to send notifications on failure/timeout
+     */
+    onFailure?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure | undefined>;
+    /**
+     * Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable | undefined>;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
@@ -5038,9 +5100,6 @@ export interface DataQualityMonitorDataProfilingConfig {
     latestMonitorFailureMessage?: pulumi.Input<string | undefined>;
     monitorVersion?: pulumi.Input<number | undefined>;
     monitoredTableName?: pulumi.Input<string | undefined>;
-    /**
-     * Field for specifying notification settings
-     */
     notificationSettings?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettings | undefined>;
     /**
      * ID of the schema where output tables are created
@@ -5130,9 +5189,46 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
      * Destinations to send notifications on failure/timeout
      */
     onFailure?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure | undefined>;
+    /**
+     * Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      */
@@ -6112,15 +6208,21 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunction {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
     input: pulumi.Input<string>;
+    relativeError?: pulumi.Input<number | undefined>;
     /**
-     * The maximum relative standard deviation allowed (default defined by Spark)
+     * The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don't have relative_error, and a request may only send that value
      */
     relativeSd?: pulumi.Input<number | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
     /**
-     * The accuracy parameter (higher is more accurate but slower)
+     * The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don't have relative_error, and a request may only send
+     * that value
      */
     accuracy?: pulumi.Input<number | undefined>;
     input: pulumi.Input<string>;
@@ -6128,6 +6230,7 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPerce
      * The percentile value to compute (between 0 and 1)
      */
     percentile: pulumi.Input<number>;
+    relativeError?: pulumi.Input<number | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionAvg {
@@ -6202,7 +6305,8 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow 
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: pulumi.Input<string | undefined>;
     tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling | undefined>;
@@ -6440,8 +6544,8 @@ export interface FeatureEngineeringFeatureSourceSdpSource {
     /**
      * The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-     * these tables, and the run fails if it doesn't. At most 100 tables
+     * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+     * tables. At most 100 tables
      */
     inputTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -6491,7 +6595,8 @@ export interface FeatureEngineeringFeatureTimeWindow {
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: pulumi.Input<string | undefined>;
     tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowTumbling | undefined>;
@@ -6536,6 +6641,349 @@ export interface FeatureEngineeringFeatureTimeseriesColumn {
 }
 
 export interface FileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GenieAgentDefinition {
+    /**
+     * Benchmarks for evaluating the quality of the Genie Agent's answers
+     */
+    benchmarks?: pulumi.Input<inputs.GenieAgentDefinitionBenchmarks | undefined>;
+    /**
+     * General settings of the Genie Agent
+     */
+    config?: pulumi.Input<inputs.GenieAgentDefinitionConfig | undefined>;
+    /**
+     * The data the Genie Agent can access
+     */
+    dataSources?: pulumi.Input<inputs.GenieAgentDefinitionDataSources | undefined>;
+    /**
+     * Instructions and SQL that guide how the Genie Agent answers questions
+     */
+    instructions?: pulumi.Input<inputs.GenieAgentDefinitionInstructions | undefined>;
+}
+
+export interface GenieAgentDefinitionBenchmarks {
+    /**
+     * The benchmark questions, sorted by `id` in descending order
+     */
+    questions?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionBenchmarksQuestion>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionBenchmarksQuestion {
+    /**
+     * The expected answer. At most one answer is supported; omit it when the question has no
+     * expected answer
+     */
+    answers?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionBenchmarksQuestionAnswer>[] | undefined>;
+    /**
+     * Notes on how to evaluate answers to the question
+     */
+    evaluationNote?: pulumi.Input<string | undefined>;
+    id: pulumi.Input<string>;
+    question: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionBenchmarksQuestionAnswer {
+    content: pulumi.Input<string>;
+    /**
+     * The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+     */
+    format: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionConfig {
+    /**
+     * Sample questions shown to users of the Genie Agent, sorted by `id`
+     */
+    sampleQuestions?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionConfigSampleQuestion>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionConfigSampleQuestion {
+    id: pulumi.Input<string>;
+    question: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionDataSources {
+    /**
+     * Unity Catalog MCP connections, sorted by `mcpConnection`
+     */
+    mcpConnections?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesMcpConnection>[] | undefined>;
+    /**
+     * Unity Catalog tables, views, and metric views, in the order they were added
+     */
+    tables?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesTable>[] | undefined>;
+    /**
+     * Unity Catalog volumes, in the order they were added
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesVolume>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionDataSourcesMcpConnection {
+    /**
+     * The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+     */
+    mcpConnection: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionDataSourcesTable {
+    /**
+     * Column settings for the table, sorted by `column`
+     */
+    columnConfigs?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesTableColumnConfig>[] | undefined>;
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: pulumi.Input<string | undefined>;
+    identifier: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionDataSourcesTableColumnConfig {
+    /**
+     * The name of the column. Must exist in the table or metric view
+     */
+    column: pulumi.Input<string>;
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Genie Agent indexes the column's values to match them in questions
+     */
+    enableEntityMatching?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the Genie Agent samples example values from the column to learn its format
+     */
+    enableFormatAssistance?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the column is hidden from the Genie Agent
+     */
+    exclude?: pulumi.Input<boolean | undefined>;
+    synonyms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionDataSourcesVolume {
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+     * within the volume
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionInstructions {
+    /**
+     * Example questions paired with the SQL that answers them
+     */
+    exampleQuestionSqls?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsExampleQuestionSql>[] | undefined>;
+    /**
+     * Predefined joins between tables or metric views
+     */
+    joinSpecs?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsJoinSpec>[] | undefined>;
+    /**
+     * Unity Catalog SQL functions the generated SQL may call
+     */
+    sqlFunctions?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsSqlFunction>[] | undefined>;
+    /**
+     * Reusable SQL filters, expressions, and measures
+     */
+    sqlSnippets?: pulumi.Input<inputs.GenieAgentDefinitionInstructionsSqlSnippets | undefined>;
+    /**
+     * General text instructions. At most one text instruction is supported
+     */
+    textInstructions?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsTextInstruction>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSql {
+    id: pulumi.Input<string>;
+    /**
+     * Parameters used in the SQL, in the order given
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameter>[] | undefined>;
+    question: pulumi.Input<string>;
+    sql: pulumi.Input<string>;
+    /**
+     * Guidance on when to use this example
+     */
+    usageGuidance?: pulumi.Input<string | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSqlParameter {
+    /**
+     * The parameter's default value
+     */
+    defaultValue?: pulumi.Input<inputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue | undefined>;
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The parameter's data type, for example `STRING` or `INTEGER`
+     */
+    typeHint?: pulumi.Input<string | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+    /**
+     * The default range
+     */
+    valueRange?: pulumi.Input<inputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange | undefined>;
+    /**
+     * The default values. A single default is a one-element list
+     */
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+    /**
+     * The upper end of the range
+     */
+    max?: pulumi.Input<string | undefined>;
+    /**
+     * The lower end of the range
+     */
+    min?: pulumi.Input<string | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsJoinSpec {
+    /**
+     * Description of the join's purpose
+     */
+    comment?: pulumi.Input<string | undefined>;
+    id: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
+    /**
+     * The left side of the join
+     */
+    left: pulumi.Input<inputs.GenieAgentDefinitionInstructionsJoinSpecLeft>;
+    /**
+     * How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+     */
+    relationshipType?: pulumi.Input<string | undefined>;
+    /**
+     * The right side of the join
+     */
+    right: pulumi.Input<inputs.GenieAgentDefinitionInstructionsJoinSpecRight>;
+    sql: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionInstructionsJoinSpecLeft {
+    alias?: pulumi.Input<string | undefined>;
+    identifier: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionInstructionsJoinSpecRight {
+    alias?: pulumi.Input<string | undefined>;
+    identifier: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlFunction {
+    id: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippets {
+    /**
+     * Non-aggregated expressions (dimensions), such as `price * units`
+     */
+    expressions?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsSqlSnippetsExpression>[] | undefined>;
+    /**
+     * Filters, such as `state = 'CA'`
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsSqlSnippetsFilter>[] | undefined>;
+    /**
+     * Aggregated measures, such as `SUM(price * units)`
+     */
+    measures?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionInstructionsSqlSnippetsMeasure>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippetsExpression {
+    alias?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    id: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
+    sql: pulumi.Input<string>;
+    synonyms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippetsFilter {
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    id: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
+    sql: pulumi.Input<string>;
+    synonyms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+    alias?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    id: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
+    sql: pulumi.Input<string>;
+    synonyms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface GenieAgentDefinitionInstructionsTextInstruction {
+    content: pulumi.Input<string>;
+    id: pulumi.Input<string>;
+}
+
+export interface GenieAgentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -9911,6 +10359,34 @@ export interface GetFunctionsProviderConfig {
 }
 
 export interface GetFunctionsProviderConfigArgs {
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetGenieAgentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetGenieAgentProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetGenieAgentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetGenieAgentsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
@@ -17960,6 +18436,7 @@ export interface JobJobCluster {
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
     newCluster?: pulumi.Input<inputs.JobJobClusterNewCluster | undefined>;
+    serverlessCompute?: pulumi.Input<inputs.JobJobClusterServerlessCompute | undefined>;
     serverlessComputeId?: pulumi.Input<string | undefined>;
 }
 
@@ -18218,6 +18695,10 @@ export interface JobJobClusterNewClusterWorkloadType {
 export interface JobJobClusterNewClusterWorkloadTypeClients {
     jobs?: pulumi.Input<boolean | undefined>;
     notebooks?: pulumi.Input<boolean | undefined>;
+}
+
+export interface JobJobClusterServerlessCompute {
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobLibrary {
@@ -18701,6 +19182,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    aiFunctionTask?: pulumi.Input<inputs.JobTaskAiFunctionTask | undefined>;
     aiRuntimeTask?: pulumi.Input<inputs.JobTaskAiRuntimeTask | undefined>;
     alertTask?: pulumi.Input<inputs.JobTaskAlertTask | undefined>;
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask | undefined>;
@@ -18805,6 +19287,71 @@ export interface JobTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications | undefined>;
+}
+
+export interface JobTaskAiFunctionTask {
+    aiClassify?: pulumi.Input<inputs.JobTaskAiFunctionTaskAiClassify | undefined>;
+    aiExtract?: pulumi.Input<inputs.JobTaskAiFunctionTaskAiExtract | undefined>;
+    aiParseDocument?: pulumi.Input<inputs.JobTaskAiFunctionTaskAiParseDocument | undefined>;
+    deltaTable?: pulumi.Input<inputs.JobTaskAiFunctionTaskDeltaTable | undefined>;
+    output: pulumi.Input<inputs.JobTaskAiFunctionTaskOutput>;
+    volume?: pulumi.Input<inputs.JobTaskAiFunctionTaskVolume | undefined>;
+}
+
+export interface JobTaskAiFunctionTaskAiClassify {
+    enableConfidenceScores?: pulumi.Input<boolean | undefined>;
+    enableRationales?: pulumi.Input<boolean | undefined>;
+    inlineLabels?: pulumi.Input<inputs.JobTaskAiFunctionTaskAiClassifyInlineLabels | undefined>;
+    instructions?: pulumi.Input<string | undefined>;
+    multilabel?: pulumi.Input<boolean | undefined>;
+    version: pulumi.Input<string>;
+}
+
+export interface JobTaskAiFunctionTaskAiClassifyInlineLabels {
+    labels: pulumi.Input<pulumi.Input<inputs.JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel>[]>;
+}
+
+export interface JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface JobTaskAiFunctionTaskAiExtract {
+    enableCitations?: pulumi.Input<boolean | undefined>;
+    enableConfidenceScores?: pulumi.Input<boolean | undefined>;
+    instructions?: pulumi.Input<string | undefined>;
+    mode?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    version: pulumi.Input<string>;
+}
+
+export interface JobTaskAiFunctionTaskAiParseDocument {
+    descriptionElementTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    imageOutputPath?: pulumi.Input<string | undefined>;
+    pageRange?: pulumi.Input<string | undefined>;
+    version: pulumi.Input<string>;
+}
+
+export interface JobTaskAiFunctionTaskDeltaTable {
+    inputColumn: pulumi.Input<string>;
+    mergeKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tableName: pulumi.Input<string>;
+}
+
+export interface JobTaskAiFunctionTaskOutput {
+    catalog?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    table?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTaskAiFunctionTaskVolume {
+    volumePath: pulumi.Input<string>;
 }
 
 export interface JobTaskAiRuntimeTask {
@@ -19081,6 +19628,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    aiFunctionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTask | undefined>;
     aiRuntimeTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTask | undefined>;
     alertTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTask | undefined>;
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask | undefined>;
@@ -19184,6 +19732,71 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTask {
+    aiClassify?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassify | undefined>;
+    aiExtract?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskAiExtract | undefined>;
+    aiParseDocument?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument | undefined>;
+    deltaTable?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskDeltaTable | undefined>;
+    output: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskOutput>;
+    volume?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskVolume | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiClassify {
+    enableConfidenceScores?: pulumi.Input<boolean | undefined>;
+    enableRationales?: pulumi.Input<boolean | undefined>;
+    inlineLabels?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels | undefined>;
+    instructions?: pulumi.Input<string | undefined>;
+    multilabel?: pulumi.Input<boolean | undefined>;
+    version: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels {
+    labels: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel>[]>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiExtract {
+    enableCitations?: pulumi.Input<boolean | undefined>;
+    enableConfidenceScores?: pulumi.Input<boolean | undefined>;
+    instructions?: pulumi.Input<string | undefined>;
+    mode?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    version: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument {
+    descriptionElementTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    imageOutputPath?: pulumi.Input<string | undefined>;
+    pageRange?: pulumi.Input<string | undefined>;
+    version: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskDeltaTable {
+    inputColumn: pulumi.Input<string>;
+    mergeKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tableName: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskOutput {
+    catalog?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    table?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskVolume {
+    volumePath: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
@@ -21013,6 +21626,7 @@ export interface JobTrigger {
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
     fileArrival?: pulumi.Input<inputs.JobTriggerFileArrival | undefined>;
+    jobCompletion?: pulumi.Input<inputs.JobTriggerJobCompletion | undefined>;
     model?: pulumi.Input<inputs.JobTriggerModel | undefined>;
     pauseStatus?: pulumi.Input<string | undefined>;
     /**
@@ -21056,6 +21670,22 @@ export interface JobTriggerFileArrival {
      */
     url: pulumi.Input<string>;
     waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
+}
+
+export interface JobTriggerJobCompletion {
+    ifStatus?: pulumi.Input<string | undefined>;
+    jobs: pulumi.Input<pulumi.Input<inputs.JobTriggerJobCompletionJob>[]>;
+}
+
+export interface JobTriggerJobCompletionJob {
+    /**
+     * (String) ID of the job
+     */
+    jobId: pulumi.Input<string>;
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobTriggerModel {
@@ -22566,11 +23196,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -22637,11 +23267,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -23298,6 +23928,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     linkedinAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions | undefined>;
     marketoOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions | undefined>;
     metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions | undefined>;
+    onedriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions | undefined>;
     outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions | undefined>;
     rabbitmqOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions | undefined>;
     redditAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions | undefined>;
@@ -23526,6 +24157,35 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsO
     timeIncrement?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions {
+    entityType?: pulumi.Input<string | undefined>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions | undefined>;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: pulumi.Input<string | undefined>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter>[] | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    ignoreCorruptFiles?: pulumi.Input<boolean | undefined>;
+    inferColumnTypes?: pulumi.Input<boolean | undefined>;
+    readerCaseSensitive?: pulumi.Input<boolean | undefined>;
+    rescuedDataColumn?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
+    singleVariantColumn?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: pulumi.Input<string | undefined>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
+    pathFilter?: pulumi.Input<string | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions {
     attachmentMode?: pulumi.Input<string | undefined>;
     bodyFormat?: pulumi.Input<string | undefined>;
@@ -23733,6 +24393,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     linkedinAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions | undefined>;
     marketoOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions | undefined>;
     metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions | undefined>;
+    onedriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions | undefined>;
     outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions | undefined>;
     rabbitmqOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions | undefined>;
     redditAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions | undefined>;
@@ -23959,6 +24620,35 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOp
     breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     level?: pulumi.Input<string | undefined>;
     timeIncrement?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions {
+    entityType?: pulumi.Input<string | undefined>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions | undefined>;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: pulumi.Input<string | undefined>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter>[] | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    ignoreCorruptFiles?: pulumi.Input<boolean | undefined>;
+    inferColumnTypes?: pulumi.Input<boolean | undefined>;
+    readerCaseSensitive?: pulumi.Input<boolean | undefined>;
+    rescuedDataColumn?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
+    singleVariantColumn?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: pulumi.Input<string | undefined>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
+    pathFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions {
@@ -25847,7 +26537,7 @@ export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: pulumi.Input<string | undefined>;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -25872,9 +26562,17 @@ export interface RfaAccessRequestDestinationsSecurable {
     providerShare?: pulumi.Input<string | undefined>;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: pulumi.Input<string | undefined>;
+}
+
+export interface SandboxMetadata {
+    /**
+     * Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+     * 1 and 512 characters, and values must not exceed 256 characters
+     */
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface SandboxProviderConfig {
@@ -25904,9 +26602,9 @@ export interface SandboxSpecCompute {
 
 export interface SandboxSpecEnvironment {
     /**
-     * A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      */
     imageUri?: pulumi.Input<string | undefined>;
 }

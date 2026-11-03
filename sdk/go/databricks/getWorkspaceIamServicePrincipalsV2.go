@@ -61,14 +61,20 @@ type GetWorkspaceIamServicePrincipalsV2Args struct {
 	// The maximum number of SPs to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+	// defaults to the account of the calling workspace, and any other account is rejected
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamServicePrincipalsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getWorkspaceIamServicePrincipalsV2.
 type GetWorkspaceIamServicePrincipalsV2Result struct {
-	Filter            *string                                              `pulumi:"filter"`
-	PageSize          *int                                                 `pulumi:"pageSize"`
+	Filter   *string `pulumi:"filter"`
+	PageSize *int    `pulumi:"pageSize"`
+	// (string) - The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent            *string                                              `pulumi:"parent"`
 	ProviderConfig    *GetWorkspaceIamServicePrincipalsV2ProviderConfig    `pulumi:"providerConfig"`
 	ServicePrincipals []GetWorkspaceIamServicePrincipalsV2ServicePrincipal `pulumi:"servicePrincipals"`
 }
@@ -85,6 +91,9 @@ type GetWorkspaceIamServicePrincipalsV2OutputArgs struct {
 	// The maximum number of SPs to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+	// defaults to the account of the calling workspace, and any other account is rejected
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamServicePrincipalsV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -114,6 +123,12 @@ func (o GetWorkspaceIamServicePrincipalsV2ResultOutput) Filter() pulumi.StringPt
 
 func (o GetWorkspaceIamServicePrincipalsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceIamServicePrincipalsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the account that contains the service principal,
+// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+func (o GetWorkspaceIamServicePrincipalsV2ResultOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceIamServicePrincipalsV2Result) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 func (o GetWorkspaceIamServicePrincipalsV2ResultOutput) ProviderConfig() GetWorkspaceIamServicePrincipalsV2ProviderConfigPtrOutput {

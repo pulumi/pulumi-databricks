@@ -32,6 +32,13 @@ public final class GetMwsNetworkConnectivityConfigPlainArgs extends com.pulumi.r
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="billingWorkspaceId")
+    private @Nullable Integer billingWorkspaceId;
+
+    public Optional<Integer> billingWorkspaceId() {
+        return Optional.ofNullable(this.billingWorkspaceId);
+    }
+
     /**
      * Time in epoch milliseconds when this object was created.
      * 
@@ -126,6 +133,7 @@ public final class GetMwsNetworkConnectivityConfigPlainArgs extends com.pulumi.r
 
     private GetMwsNetworkConnectivityConfigPlainArgs(GetMwsNetworkConnectivityConfigPlainArgs $) {
         this.accountId = $.accountId;
+        this.billingWorkspaceId = $.billingWorkspaceId;
         this.creationTime = $.creationTime;
         this.egressConfig = $.egressConfig;
         this.name = $.name;
@@ -160,6 +168,11 @@ public final class GetMwsNetworkConnectivityConfigPlainArgs extends com.pulumi.r
          */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        public Builder billingWorkspaceId(@Nullable Integer billingWorkspaceId) {
+            $.billingWorkspaceId = billingWorkspaceId;
             return this;
         }
 

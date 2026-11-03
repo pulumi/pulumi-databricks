@@ -62,6 +62,12 @@ namespace Pulumi.Databricks
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Metadata associated with the sandbox
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.SandboxMetadata?> Metadata { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
         /// `SandboxId`; any value supplied in a create or update request body is ignored
         /// </summary>
@@ -151,6 +157,12 @@ namespace Pulumi.Databricks
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Metadata associated with the sandbox
+        /// </summary>
+        [Input("metadata")]
+        public Input<Inputs.SandboxMetadataArgs>? Metadata { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -187,6 +199,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Metadata associated with the sandbox
+        /// </summary>
+        [Input("metadata")]
+        public Input<Inputs.SandboxMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
         /// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from

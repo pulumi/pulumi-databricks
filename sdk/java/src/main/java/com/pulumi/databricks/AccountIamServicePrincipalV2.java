@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new AccountIamServicePrincipalV2("this", AccountIamServicePrincipalV2Args.builder()
+ *             .parent("accounts/00000000-0000-0000-0000-000000000000")
  *             .displayName("ci-runner")
  *             .accountSpStatus("ACTIVE")
  *             .build());
@@ -135,6 +136,40 @@ public class AccountIamServicePrincipalV2 extends com.pulumi.resources.CustomRes
      */
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
+    }
+    /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * (string) - Internal service principal ID of the service principal in Databricks

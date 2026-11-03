@@ -231,6 +231,9 @@ namespace Pulumi.Databricks
         [Input("creatorName")]
         public string? CreatorName { get; set; }
 
+        /// <summary>
+        /// REALTIME compute version label; empty if the API omits it.
+        /// </summary>
         [Input("customerVersionLabel")]
         public string? CustomerVersionLabel { get; set; }
 
@@ -273,6 +276,9 @@ namespace Pulumi.Databricks
         [Input("jdbcUrl")]
         public string? JdbcUrl { get; set; }
 
+        /// <summary>
+        /// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+        /// </summary>
         [Input("maxDbu")]
         public int? MaxDbu { get; set; }
 
@@ -330,6 +336,9 @@ namespace Pulumi.Databricks
         [Input("state")]
         public string? State { get; set; }
 
+        /// <summary>
+        /// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        /// </summary>
         [Input("statementTimeout")]
         public int? StatementTimeout { get; set; }
 
@@ -340,7 +349,7 @@ namespace Pulumi.Databricks
         public Inputs.GetSqlWarehouseTagsArgs? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+        /// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         /// </summary>
         [Input("warehouseType")]
         public string? WarehouseType { get; set; }
@@ -377,6 +386,9 @@ namespace Pulumi.Databricks
         [Input("creatorName")]
         public Input<string>? CreatorName { get; set; }
 
+        /// <summary>
+        /// REALTIME compute version label; empty if the API omits it.
+        /// </summary>
         [Input("customerVersionLabel")]
         public Input<string>? CustomerVersionLabel { get; set; }
 
@@ -419,6 +431,9 @@ namespace Pulumi.Databricks
         [Input("jdbcUrl")]
         public Input<string>? JdbcUrl { get; set; }
 
+        /// <summary>
+        /// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+        /// </summary>
         [Input("maxDbu")]
         public Input<int>? MaxDbu { get; set; }
 
@@ -476,6 +491,9 @@ namespace Pulumi.Databricks
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        /// </summary>
         [Input("statementTimeout")]
         public Input<int>? StatementTimeout { get; set; }
 
@@ -486,7 +504,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetSqlWarehouseTagsInputArgs>? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+        /// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         /// </summary>
         [Input("warehouseType")]
         public Input<string>? WarehouseType { get; set; }
@@ -517,6 +535,9 @@ namespace Pulumi.Databricks
         /// The username of the user who created the endpoint.
         /// </summary>
         public readonly string CreatorName;
+        /// <summary>
+        /// REALTIME compute version label; empty if the API omits it.
+        /// </summary>
         public readonly string CustomerVersionLabel;
         /// <summary>
         /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -543,6 +564,9 @@ namespace Pulumi.Databricks
         /// JDBC connection string.
         /// </summary>
         public readonly string JdbcUrl;
+        /// <summary>
+        /// Configured maximum compute capacity in DBU per hour for a REALTIME warehouse. Returns `0` when the API omits the field.
+        /// </summary>
         public readonly int MaxDbu;
         /// <summary>
         /// Maximum number of clusters available when a SQL warehouse is running.
@@ -578,13 +602,16 @@ namespace Pulumi.Databricks
         /// The current state of the endpoint.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        /// </summary>
         public readonly int StatementTimeout;
         /// <summary>
         /// tags used for SQL warehouse resources.
         /// </summary>
         public readonly Outputs.GetSqlWarehouseTagsResult Tags;
         /// <summary>
-        /// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
+        /// SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         /// </summary>
         public readonly string WarehouseType;
 

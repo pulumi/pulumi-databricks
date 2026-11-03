@@ -33,13 +33,18 @@ class PostgresRoleArgs:
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
-               error.
+               error. This requires `role_id` to be set. Without `role_id`, the request
+               follows the normal create path and fails if the role name already exists.
                
-               When the role already exists, the provided `role` spec fully replaces the
-               existing one: `membership_roles` is overwritten, not merged. Leaving
+               When the role already exists, only mutable fields are updated.
+               Attributes omitted from the request retain their current values.
+               Set an attribute explicitly to false to disable it.
+               `identity_type`, `auth_method`, and `postgres_role` retain their
+               existing values; supplied values for these fields are ignored.
+               `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
-               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-               memberships when using this field
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+               of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
@@ -83,13 +88,18 @@ class PostgresRoleArgs:
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the role if it already exists instead of returning an
-        error.
+        error. This requires `role_id` to be set. Without `role_id`, the request
+        follows the normal create path and fails if the role name already exists.
 
-        When the role already exists, the provided `role` spec fully replaces the
-        existing one: `membership_roles` is overwritten, not merged. Leaving
+        When the role already exists, only mutable fields are updated.
+        Attributes omitted from the request retain their current values.
+        Set an attribute explicitly to false to disable it.
+        `identity_type`, `auth_method`, and `postgres_role` retain their
+        existing values; supplied values for these fields are ignored.
+        `membership_roles` is overwritten, not merged. Leaving
         `membership_roles` empty clears all of the role's existing memberships,
-        including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-        memberships when using this field
+        including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+        of memberships when using this field
         """
         return pulumi.get(self, "replace_existing")
 
@@ -144,13 +154,18 @@ class _PostgresRoleState:
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
-               error.
+               error. This requires `role_id` to be set. Without `role_id`, the request
+               follows the normal create path and fails if the role name already exists.
                
-               When the role already exists, the provided `role` spec fully replaces the
-               existing one: `membership_roles` is overwritten, not merged. Leaving
+               When the role already exists, only mutable fields are updated.
+               Attributes omitted from the request retain their current values.
+               Set an attribute explicitly to false to disable it.
+               `identity_type`, `auth_method`, and `postgres_role` retain their
+               existing values; supplied values for these fields are ignored.
+               `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
-               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-               memberships when using this field
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+               of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         :param pulumi.Input['PostgresRoleStatusArgs'] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -230,13 +245,18 @@ class _PostgresRoleState:
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the role if it already exists instead of returning an
-        error.
+        error. This requires `role_id` to be set. Without `role_id`, the request
+        follows the normal create path and fails if the role name already exists.
 
-        When the role already exists, the provided `role` spec fully replaces the
-        existing one: `membership_roles` is overwritten, not merged. Leaving
+        When the role already exists, only mutable fields are updated.
+        Attributes omitted from the request retain their current values.
+        Set an attribute explicitly to false to disable it.
+        `identity_type`, `auth_method`, and `postgres_role` retain their
+        existing values; supplied values for these fields are ignored.
+        `membership_roles` is overwritten, not merged. Leaving
         `membership_roles` empty clears all of the role's existing memberships,
-        including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-        memberships when using this field
+        including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+        of memberships when using this field
         """
         return pulumi.get(self, "replace_existing")
 
@@ -494,13 +514,18 @@ class PostgresRole(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
-               error.
+               error. This requires `role_id` to be set. Without `role_id`, the request
+               follows the normal create path and fails if the role name already exists.
                
-               When the role already exists, the provided `role` spec fully replaces the
-               existing one: `membership_roles` is overwritten, not merged. Leaving
+               When the role already exists, only mutable fields are updated.
+               Attributes omitted from the request retain their current values.
+               Set an attribute explicitly to false to disable it.
+               `identity_type`, `auth_method`, and `postgres_role` retain their
+               existing values; supplied values for these fields are ignored.
+               `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
-               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-               memberships when using this field
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+               of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
@@ -766,13 +791,18 @@ class PostgresRole(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
-               error.
+               error. This requires `role_id` to be set. Without `role_id`, the request
+               follows the normal create path and fails if the role name already exists.
                
-               When the role already exists, the provided `role` spec fully replaces the
-               existing one: `membership_roles` is overwritten, not merged. Leaving
+               When the role already exists, only mutable fields are updated.
+               Attributes omitted from the request retain their current values.
+               Set an attribute explicitly to false to disable it.
+               `identity_type`, `auth_method`, and `postgres_role` retain their
+               existing values; supplied values for these fields are ignored.
+               `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
-               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-               memberships when using this field
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+               of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         :param pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict', 'outputs.PostgresRoleStatus']] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -832,13 +862,18 @@ class PostgresRole(pulumi.CustomResource):
     def replace_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         If true, update the role if it already exists instead of returning an
-        error.
+        error. This requires `role_id` to be set. Without `role_id`, the request
+        follows the normal create path and fails if the role name already exists.
 
-        When the role already exists, the provided `role` spec fully replaces the
-        existing one: `membership_roles` is overwritten, not merged. Leaving
+        When the role already exists, only mutable fields are updated.
+        Attributes omitted from the request retain their current values.
+        Set an attribute explicitly to false to disable it.
+        `identity_type`, `auth_method`, and `postgres_role` retain their
+        existing values; supplied values for these fields are ignored.
+        `membership_roles` is overwritten, not merged. Leaving
         `membership_roles` empty clears all of the role's existing memberships,
-        including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-        memberships when using this field
+        including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+        of memberships when using this field
         """
         return pulumi.get(self, "replace_existing")
 

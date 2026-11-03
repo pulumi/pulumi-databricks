@@ -38,9 +38,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? LatestMonitorFailureMessage;
         public readonly int? MonitorVersion;
         public readonly string? MonitoredTableName;
-        /// <summary>
-        /// Field for specifying notification settings
-        /// </summary>
         public readonly Outputs.DataQualityMonitorDataProfilingConfigNotificationSettings? NotificationSettings;
         /// <summary>
         /// ID of the schema where output tables are created

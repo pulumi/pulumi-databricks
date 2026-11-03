@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,16 +52,21 @@ import (
 //
 // ```
 //
-// Import the resource by the principal's internal Databricks ID:
+// Import the resource by its name, which contains the principal's internal Databricks ID:
 //
 // ```sh
-// terraform import databricks_workspace_iam_workspace_identity_detail_v2.this <principal_id>
+// terraform import databricks_workspace_iam_workspace_identity_detail_v2.this principals/<principal_id>/workspace-identity-detail
 // ```
 type WorkspaceIamWorkspaceIdentityDetailV2 struct {
 	pulumi.CustomResourceState
 
 	// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
 	AssignmentType pulumi.StringOutput `pulumi:"assignmentType"`
+	// (string) - The resource name of the workspace identity detail.
+	// Format: principals/{principal_id}/workspace-identity-detail
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the parent
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// (integer) - The internal ID of the principal (user/sp/group) in Databricks
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -75,9 +81,12 @@ type WorkspaceIamWorkspaceIdentityDetailV2 struct {
 func NewWorkspaceIamWorkspaceIdentityDetailV2(ctx *pulumi.Context,
 	name string, args *WorkspaceIamWorkspaceIdentityDetailV2Args, opts ...pulumi.ResourceOption) (*WorkspaceIamWorkspaceIdentityDetailV2, error) {
 	if args == nil {
-		args = &WorkspaceIamWorkspaceIdentityDetailV2Args{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkspaceIamWorkspaceIdentityDetailV2
 	err := ctx.RegisterResource("databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2", name, args, &resource, opts...)
@@ -103,6 +112,11 @@ func GetWorkspaceIamWorkspaceIdentityDetailV2(ctx *pulumi.Context,
 type workspaceIamWorkspaceIdentityDetailV2State struct {
 	// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
 	AssignmentType *string `pulumi:"assignmentType"`
+	// (string) - The resource name of the workspace identity detail.
+	// Format: principals/{principal_id}/workspace-identity-detail
+	Name *string `pulumi:"name"`
+	// The resource name of the parent
+	Parent *string `pulumi:"parent"`
 	// (integer) - The internal ID of the principal (user/sp/group) in Databricks
 	PrincipalId *string `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -116,6 +130,11 @@ type workspaceIamWorkspaceIdentityDetailV2State struct {
 type WorkspaceIamWorkspaceIdentityDetailV2State struct {
 	// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
 	AssignmentType pulumi.StringPtrInput
+	// (string) - The resource name of the workspace identity detail.
+	// Format: principals/{principal_id}/workspace-identity-detail
+	Name pulumi.StringPtrInput
+	// The resource name of the parent
+	Parent pulumi.StringPtrInput
 	// (integer) - The internal ID of the principal (user/sp/group) in Databricks
 	PrincipalId pulumi.StringPtrInput
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -131,6 +150,8 @@ func (WorkspaceIamWorkspaceIdentityDetailV2State) ElementType() reflect.Type {
 }
 
 type workspaceIamWorkspaceIdentityDetailV2Args struct {
+	// The resource name of the parent
+	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig `pulumi:"providerConfig"`
 	// The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
@@ -139,6 +160,8 @@ type workspaceIamWorkspaceIdentityDetailV2Args struct {
 
 // The set of arguments for constructing a WorkspaceIamWorkspaceIdentityDetailV2 resource.
 type WorkspaceIamWorkspaceIdentityDetailV2Args struct {
+	// The resource name of the parent
+	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigPtrInput
 	// The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
@@ -235,6 +258,17 @@ func (o WorkspaceIamWorkspaceIdentityDetailV2Output) ToWorkspaceIamWorkspaceIden
 // (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
 func (o WorkspaceIamWorkspaceIdentityDetailV2Output) AssignmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceIamWorkspaceIdentityDetailV2) pulumi.StringOutput { return v.AssignmentType }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the workspace identity detail.
+// Format: principals/{principal_id}/workspace-identity-detail
+func (o WorkspaceIamWorkspaceIdentityDetailV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceIamWorkspaceIdentityDetailV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the parent
+func (o WorkspaceIamWorkspaceIdentityDetailV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceIamWorkspaceIdentityDetailV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // (integer) - The internal ID of the principal (user/sp/group) in Databricks

@@ -17,18 +17,20 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs extends com
     public static final GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs Empty = new GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs();
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
      * 
      */
-    @Import(name="principalId", required=true)
-    private String principalId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
      * 
      */
-    public String principalId() {
-        return this.principalId;
+    public String name() {
+        return this.name;
     }
 
     /**
@@ -49,7 +51,7 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs extends com
     private GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs() {}
 
     private GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs(GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs $) {
-        this.principalId = $.principalId;
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
     }
 
@@ -72,13 +74,14 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs extends com
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name The resource name of the workspace identity detail.
+         * Format: principals/{principal_id}/workspace-identity-detail
          * 
          * @return builder
          * 
          */
-        public Builder principalId(String principalId) {
-            $.principalId = principalId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
@@ -94,8 +97,8 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs extends com
         }
 
         public GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs build() {
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs", "principalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs", "name");
             }
             return $;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskAiFunctionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskAiRuntimeTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskAlertTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs;
@@ -45,6 +46,13 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskForEachTaskTaskArgs Empty = new JobTaskForEachTaskTaskArgs();
+
+    @Import(name="aiFunctionTask")
+    private @Nullable Output<JobTaskForEachTaskTaskAiFunctionTaskArgs> aiFunctionTask;
+
+    public Optional<Output<JobTaskForEachTaskTaskAiFunctionTaskArgs>> aiFunctionTask() {
+        return Optional.ofNullable(this.aiFunctionTask);
+    }
 
     @Import(name="aiRuntimeTask")
     private @Nullable Output<JobTaskForEachTaskTaskAiRuntimeTaskArgs> aiRuntimeTask;
@@ -495,6 +503,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
     private JobTaskForEachTaskTaskArgs() {}
 
     private JobTaskForEachTaskTaskArgs(JobTaskForEachTaskTaskArgs $) {
+        this.aiFunctionTask = $.aiFunctionTask;
         this.aiRuntimeTask = $.aiRuntimeTask;
         this.alertTask = $.alertTask;
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
@@ -553,6 +562,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
         public Builder(JobTaskForEachTaskTaskArgs defaults) {
             $ = new JobTaskForEachTaskTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aiFunctionTask(@Nullable Output<JobTaskForEachTaskTaskAiFunctionTaskArgs> aiFunctionTask) {
+            $.aiFunctionTask = aiFunctionTask;
+            return this;
+        }
+
+        public Builder aiFunctionTask(JobTaskForEachTaskTaskAiFunctionTaskArgs aiFunctionTask) {
+            return aiFunctionTask(Output.of(aiFunctionTask));
         }
 
         public Builder aiRuntimeTask(@Nullable Output<JobTaskForEachTaskTaskAiRuntimeTaskArgs> aiRuntimeTask) {

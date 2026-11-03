@@ -15,7 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
     /**
-     * @return The accuracy parameter (higher is more accurate but slower)
+     * @return The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+     * that value
      * 
      */
     private @Nullable Integer accuracy;
@@ -25,10 +28,14 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
      * 
      */
     private Double percentile;
+    private @Nullable Double relativeError;
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile() {}
     /**
-     * @return The accuracy parameter (higher is more accurate but slower)
+     * @return The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+     * that value
      * 
      */
     public Optional<Integer> accuracy() {
@@ -44,6 +51,9 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
     public Double percentile() {
         return this.percentile;
     }
+    public Optional<Double> relativeError() {
+        return Optional.ofNullable(this.relativeError);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -57,12 +67,14 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
         private @Nullable Integer accuracy;
         private String input;
         private Double percentile;
+        private @Nullable Double relativeError;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accuracy = defaults.accuracy;
     	      this.input = defaults.input;
     	      this.percentile = defaults.percentile;
+    	      this.relativeError = defaults.relativeError;
         }
 
         @CustomType.Setter
@@ -87,11 +99,18 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
             this.percentile = percentile;
             return this;
         }
+        @CustomType.Setter
+        public Builder relativeError(@Nullable Double relativeError) {
+
+            this.relativeError = relativeError;
+            return this;
+        }
         public FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile();
             _resultValue.accuracy = accuracy;
             _resultValue.input = input;
             _resultValue.percentile = percentile;
+            _resultValue.relativeError = relativeError;
             return _resultValue;
         }
     }

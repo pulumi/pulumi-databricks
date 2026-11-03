@@ -14,13 +14,32 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult
     {
         /// <summary>
+        /// (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        /// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        /// 25 destination IDs is supported.
+        /// Only supported on schema monitors, via `AnomalyDetectionConfig`; rejected on table monitors
+        /// </summary>
+        public readonly ImmutableArray<string> DestinationIds;
+        /// <summary>
+        /// (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        /// Only supported on schema monitors, via `AnomalyDetectionConfig`; rejected on table monitors
+        /// </summary>
+        public readonly ImmutableArray<int> DestinationUserIds;
+        /// <summary>
         /// (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
         /// </summary>
         public readonly ImmutableArray<string> EmailAddresses;
 
         [OutputConstructor]
-        private GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult(ImmutableArray<string> emailAddresses)
+        private GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailureResult(
+            ImmutableArray<string> destinationIds,
+
+            ImmutableArray<int> destinationUserIds,
+
+            ImmutableArray<string> emailAddresses)
         {
+            DestinationIds = destinationIds;
+            DestinationUserIds = destinationUserIds;
             EmailAddresses = emailAddresses;
         }
     }

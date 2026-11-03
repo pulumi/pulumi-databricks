@@ -149,6 +149,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureEngineeringFeature{}
 	case "databricks:index/file:File":
 		r = &File{}
+	case "databricks:index/genieAgent:GenieAgent":
+		r = &GenieAgent{}
 	case "databricks:index/gitCredential:GitCredential":
 		r = &GitCredential{}
 	case "databricks:index/globalInitScript:GlobalInitScript":
@@ -724,6 +726,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/file",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/genieAgent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

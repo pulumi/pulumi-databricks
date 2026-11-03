@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account service principal by its internal ID.
+        /// Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamServicePrincipalV2.Invoke(new()
         ///     {
-        ///         ServicePrincipalId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789",
         ///     });
         /// 
         /// });
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account service principal by its internal ID.
+        /// Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamServicePrincipalV2.Invoke(new()
         ///     {
-        ///         ServicePrincipalId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account service principal by its internal ID.
+        /// Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamServicePrincipalV2.Invoke(new()
         ///     {
-        ///         ServicePrincipalId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789",
         ///     });
         /// 
         /// });
@@ -115,10 +115,12 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Internal service principal ID of the service principal in Databricks
+        /// The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
         /// </summary>
-        [Input("servicePrincipalId", required: true)]
-        public string ServicePrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         public GetAccountIamServicePrincipalV2Args()
         {
@@ -129,10 +131,12 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Internal service principal ID of the service principal in Databricks
+        /// The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
         /// </summary>
-        [Input("servicePrincipalId", required: true)]
-        public Input<string> ServicePrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GetAccountIamServicePrincipalV2InvokeArgs()
         {
@@ -166,6 +170,17 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
+        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the service principal,
+        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
         /// (string) - Internal service principal ID of the service principal in Databricks
         /// </summary>
         public readonly string ServicePrincipalId;
@@ -182,6 +197,10 @@ namespace Pulumi.Databricks
 
             string externalId,
 
+            string name,
+
+            string parent,
+
             string servicePrincipalId)
         {
             AccountId = accountId;
@@ -189,6 +208,8 @@ namespace Pulumi.Databricks
             ApplicationId = applicationId;
             DisplayName = displayName;
             ExternalId = externalId;
+            Name = name;
+            Parent = parent;
             ServicePrincipalId = servicePrincipalId;
         }
     }

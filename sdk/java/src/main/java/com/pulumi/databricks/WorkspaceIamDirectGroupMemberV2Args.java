@@ -34,6 +34,27 @@ public final class WorkspaceIamDirectGroupMemberV2Args extends com.pulumi.resour
     }
 
     /**
+     * The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+
+    /**
      * Internal ID of the principal in Databricks
      * 
      */
@@ -67,6 +88,7 @@ public final class WorkspaceIamDirectGroupMemberV2Args extends com.pulumi.resour
 
     private WorkspaceIamDirectGroupMemberV2Args(WorkspaceIamDirectGroupMemberV2Args $) {
         this.groupId = $.groupId;
+        this.parent = $.parent;
         this.principalId = $.principalId;
         this.providerConfig = $.providerConfig;
     }
@@ -108,6 +130,33 @@ public final class WorkspaceIamDirectGroupMemberV2Args extends com.pulumi.resour
          */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param parent The resource name of the group that contains the membership. The format depends on the API
+         * that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the group that contains the membership. The format depends on the API
+         * that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}
+         * - Workspace-scoped: groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**
@@ -153,6 +202,9 @@ public final class WorkspaceIamDirectGroupMemberV2Args extends com.pulumi.resour
         }
 
         public WorkspaceIamDirectGroupMemberV2Args build() {
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("WorkspaceIamDirectGroupMemberV2Args", "parent");
+            }
             if ($.principalId == null) {
                 throw new MissingRequiredPropertyException("WorkspaceIamDirectGroupMemberV2Args", "principalId");
             }

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+        /// Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -36,8 +36,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamDirectGroupMemberV2.Invoke(new()
         ///     {
-        ///         GroupId = 123456789,
-        ///         PrincipalId = "987654321",
+        ///         Name = "groups/123456789/direct-members/987654321",
         ///     });
         /// 
         /// });
@@ -51,7 +50,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+        /// Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -71,8 +70,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamDirectGroupMemberV2.Invoke(new()
         ///     {
-        ///         GroupId = 123456789,
-        ///         PrincipalId = "987654321",
+        ///         Name = "groups/123456789/direct-members/987654321",
         ///     });
         /// 
         /// });
@@ -86,7 +84,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+        /// Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -106,8 +104,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamDirectGroupMemberV2.Invoke(new()
         ///     {
-        ///         GroupId = 123456789,
-        ///         PrincipalId = "987654321",
+        ///         Name = "groups/123456789/direct-members/987654321",
         ///     });
         /// 
         /// });
@@ -121,16 +118,12 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamDirectGroupMemberV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The internal ID of the group this member belongs to
+        /// The resource name of the group membership. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
         /// </summary>
-        [Input("groupId", required: true)]
-        public int GroupId { get; set; }
-
-        /// <summary>
-        /// Internal ID of the principal in Databricks
-        /// </summary>
-        [Input("principalId", required: true)]
-        public string PrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider.
@@ -147,16 +140,12 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamDirectGroupMemberV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The internal ID of the group this member belongs to
+        /// The resource name of the group membership. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
         /// </summary>
-        [Input("groupId", required: true)]
-        public Input<int> GroupId { get; set; } = null!;
-
-        /// <summary>
-        /// Internal ID of the principal in Databricks
-        /// </summary>
-        [Input("principalId", required: true)]
-        public Input<string> PrincipalId { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider.
@@ -179,7 +168,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The external ID of the principal in Databricks
+        /// (string) - The external ID of the principal in the customer's IdP
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
@@ -190,6 +179,19 @@ namespace Pulumi.Databricks
         /// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         /// </summary>
         public readonly string MembershipSource;
+        /// <summary>
+        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the group that contains the membership. The format depends on the API
+        /// that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        public readonly string Parent;
         /// <summary>
         /// (integer) - Internal ID of the principal in Databricks
         /// </summary>
@@ -210,6 +212,10 @@ namespace Pulumi.Databricks
 
             string membershipSource,
 
+            string name,
+
+            string parent,
+
             string principalId,
 
             string principalType,
@@ -220,6 +226,8 @@ namespace Pulumi.Databricks
             ExternalId = externalId;
             GroupId = groupId;
             MembershipSource = membershipSource;
+            Name = name;
+            Parent = parent;
             PrincipalId = principalId;
             PrincipalType = principalType;
             ProviderConfig = providerConfig;

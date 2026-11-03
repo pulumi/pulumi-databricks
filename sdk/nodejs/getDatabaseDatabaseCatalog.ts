@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * This data source can be used to get a single Database Catalog.
  *
+ * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
+ *
  * ## Example Usage
  *
  * Referring to a Database Catalog by name:
@@ -80,6 +82,8 @@ export interface GetDatabaseDatabaseCatalogResult {
  * [API Documentation](https://docs.databricks.com/api/workspace/database)
  *
  * This data source can be used to get a single Database Catalog.
+ *
+ * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
  *
  * ## Example Usage
  *

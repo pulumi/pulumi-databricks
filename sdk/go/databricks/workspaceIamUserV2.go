@@ -64,6 +64,13 @@ type WorkspaceIamUserV2 struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId pulumi.StringPtrOutput           `pulumi:"externalId"`
 	FullName   WorkspaceIamUserV2FullNameOutput `pulumi:"fullName"`
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceIamUserV2ProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - Internal userId of the user in Databricks
@@ -118,6 +125,13 @@ type workspaceIamUserV2State struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId *string                     `pulumi:"externalId"`
 	FullName   *WorkspaceIamUserV2FullName `pulumi:"fullName"`
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name *string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *WorkspaceIamUserV2ProviderConfig `pulumi:"providerConfig"`
 	// (string) - Internal userId of the user in Databricks
@@ -134,6 +148,13 @@ type WorkspaceIamUserV2State struct {
 	// ExternalId of the user in the customer's IdP
 	ExternalId pulumi.StringPtrInput
 	FullName   WorkspaceIamUserV2FullNamePtrInput
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name pulumi.StringPtrInput
+	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceIamUserV2ProviderConfigPtrInput
 	// (string) - Internal userId of the user in Databricks
@@ -275,6 +296,19 @@ func (o WorkspaceIamUserV2Output) ExternalId() pulumi.StringPtrOutput {
 
 func (o WorkspaceIamUserV2Output) FullName() WorkspaceIamUserV2FullNameOutput {
 	return o.ApplyT(func(v *WorkspaceIamUserV2) WorkspaceIamUserV2FullNameOutput { return v.FullName }).(WorkspaceIamUserV2FullNameOutput)
+}
+
+// (string) - The resource name of the user. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/users/{user_id}
+// - Workspace-scoped: users/{user_id}
+func (o WorkspaceIamUserV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceIamUserV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o WorkspaceIamUserV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceIamUserV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // Configure the provider for management through account provider.

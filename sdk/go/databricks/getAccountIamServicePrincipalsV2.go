@@ -35,7 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetAccountIamServicePrincipalsV2(ctx, &databricks.GetAccountIamServicePrincipalsV2Args{}, nil)
+//			_, err := databricks.GetAccountIamServicePrincipalsV2(ctx, &databricks.GetAccountIamServicePrincipalsV2Args{
+//				Parent: "accounts/00000000-0000-0000-0000-000000000000",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -61,12 +63,18 @@ type GetAccountIamServicePrincipalsV2Args struct {
 	// The maximum number of service principals to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The parent resource name of the account whose service principals to list.
+	// Format: accounts/{account_id}
+	Parent string `pulumi:"parent"`
 }
 
 // A collection of values returned by getAccountIamServicePrincipalsV2.
 type GetAccountIamServicePrincipalsV2Result struct {
-	Filter            *string                                            `pulumi:"filter"`
-	PageSize          *int                                               `pulumi:"pageSize"`
+	Filter   *string `pulumi:"filter"`
+	PageSize *int    `pulumi:"pageSize"`
+	// (string) - The resource name of the account that contains the service principal,
+	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	Parent            string                                             `pulumi:"parent"`
 	ServicePrincipals []GetAccountIamServicePrincipalsV2ServicePrincipal `pulumi:"servicePrincipals"`
 }
 
@@ -82,6 +90,9 @@ type GetAccountIamServicePrincipalsV2OutputArgs struct {
 	// The maximum number of service principals to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The parent resource name of the account whose service principals to list.
+	// Format: accounts/{account_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
 func (GetAccountIamServicePrincipalsV2OutputArgs) ElementType() reflect.Type {
@@ -109,6 +120,12 @@ func (o GetAccountIamServicePrincipalsV2ResultOutput) Filter() pulumi.StringPtrO
 
 func (o GetAccountIamServicePrincipalsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccountIamServicePrincipalsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the account that contains the service principal,
+// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+func (o GetAccountIamServicePrincipalsV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIamServicePrincipalsV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func (o GetAccountIamServicePrincipalsV2ResultOutput) ServicePrincipals() GetAccountIamServicePrincipalsV2ServicePrincipalArrayOutput {

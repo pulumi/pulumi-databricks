@@ -53,6 +53,14 @@ namespace Pulumi.Databricks
         public int? PageSize { get; set; }
 
         /// <summary>
+        /// The resource name of the workspace to list assignments of,
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+        /// and any other workspace is rejected
+        /// </summary>
+        [Input("parent")]
+        public string? Parent { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -74,6 +82,14 @@ namespace Pulumi.Databricks
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
+        /// The resource name of the workspace to list assignments of,
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+        /// and any other workspace is rejected
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -90,6 +106,12 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceAssignmentsV2Result
     {
         public readonly int? PageSize;
+        /// <summary>
+        /// (string) - The resource name of the workspace that contains the assignment,
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+        /// APIs return it
+        /// </summary>
+        public readonly string? Parent;
         public readonly Outputs.GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> WorkspaceAssignments;
 
@@ -97,11 +119,14 @@ namespace Pulumi.Databricks
         private GetWorkspaceIamWorkspaceAssignmentsV2Result(
             int? pageSize,
 
+            string? parent,
+
             Outputs.GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> workspaceAssignments)
         {
             PageSize = pageSize;
+            Parent = parent;
             ProviderConfig = providerConfig;
             WorkspaceAssignments = workspaceAssignments;
         }

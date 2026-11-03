@@ -22,6 +22,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions? LinkedinAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions? MarketoOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions? MetaAdsOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions? OnedriveOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions? OutlookOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions? RabbitmqOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions? RedditAdsOptions;
@@ -50,6 +51,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions? metaAdsOptions,
 
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions? onedriveOptions,
+
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions? outlookOptions,
 
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions? rabbitmqOptions,
@@ -73,6 +76,7 @@ namespace Pulumi.Databricks.Outputs
             LinkedinAdsOptions = linkedinAdsOptions;
             MarketoOptions = marketoOptions;
             MetaAdsOptions = metaAdsOptions;
+            OnedriveOptions = onedriveOptions;
             OutlookOptions = outlookOptions;
             RabbitmqOptions = rabbitmqOptions;
             RedditAdsOptions = redditAdsOptions;

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,10 +32,18 @@ public final class DataQualityMonitorAnomalyDetectionConfigArgs extends com.pulu
         return Optional.ofNullable(this.excludedTableFullNames);
     }
 
+    @Import(name="notificationSettings")
+    private @Nullable Output<DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs> notificationSettings;
+
+    public Optional<Output<DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+
     private DataQualityMonitorAnomalyDetectionConfigArgs() {}
 
     private DataQualityMonitorAnomalyDetectionConfigArgs(DataQualityMonitorAnomalyDetectionConfigArgs $) {
         this.excludedTableFullNames = $.excludedTableFullNames;
+        this.notificationSettings = $.notificationSettings;
     }
 
     public static Builder builder() {
@@ -84,6 +93,15 @@ public final class DataQualityMonitorAnomalyDetectionConfigArgs extends com.pulu
          */
         public Builder excludedTableFullNames(String... excludedTableFullNames) {
             return excludedTableFullNames(List.of(excludedTableFullNames));
+        }
+
+        public Builder notificationSettings(@Nullable Output<DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        public Builder notificationSettings(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         public DataQualityMonitorAnomalyDetectionConfigArgs build() {

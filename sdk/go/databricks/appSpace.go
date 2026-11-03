@@ -11,9 +11,91 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/apps)
+//
+// App Spaces group related Databricks Apps and share configuration across them. Resources, user API scopes, and the usage policy configured on a space are available to every app in the space.
+//
+// ## Example Usage
+//
+// ### Basic Example
+//
+// This example creates an app space in the workspace with the specified name.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAppSpace(ctx, "this", &databricks.AppSpaceArgs{
+//				Name:        pulumi.String("my-space"),
+//				Description: pulumi.String("My app space for team applications."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Example with Resources
+//
+// This example creates an app space that gives all of its apps access to a SQL warehouse and a secret.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAppSpace(ctx, "with_resources", &databricks.AppSpaceArgs{
+//				Name:        pulumi.String("analytics-space"),
+//				Description: pulumi.String("Shared resources for analytics apps"),
+//				Resources: databricks.AppSpaceResourceArray{
+//					&databricks.AppSpaceResourceArgs{
+//						Name: pulumi.String("warehouse"),
+//						SqlWarehouse: &databricks.AppSpaceResourceSqlWarehouseArgs{
+//							Id:         pulumi.String("e9ca293f79a74b5c"),
+//							Permission: pulumi.String("CAN_USE"),
+//						},
+//					},
+//					&databricks.AppSpaceResourceArgs{
+//						Name: pulumi.String("api-key"),
+//						Secret: &databricks.AppSpaceResourceSecretArgs{
+//							Scope:      pulumi.String("my-scope"),
+//							Key:        pulumi.String("my-key"),
+//							Permission: pulumi.String("READ"),
+//						},
+//					},
+//				},
+//				UserApiScopes: pulumi.StringArray{
+//					pulumi.String("sql"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AppSpace struct {
 	pulumi.CustomResourceState
 

@@ -70,14 +70,56 @@ public final class AccountIamWorkspaceAssignmentV2State extends com.pulumi.resou
     }
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     @Import(name="principalId")
     private @Nullable Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     public Optional<Output<String>> principalId() {
@@ -120,6 +162,8 @@ public final class AccountIamWorkspaceAssignmentV2State extends com.pulumi.resou
         this.accountId = $.accountId;
         this.effectiveEntitlements = $.effectiveEntitlements;
         this.entitlements = $.entitlements;
+        this.name = $.name;
+        this.parent = $.parent;
         this.principalId = $.principalId;
         this.principalType = $.principalType;
         this.workspaceId = $.workspaceId;
@@ -239,7 +283,59 @@ public final class AccountIamWorkspaceAssignmentV2State extends com.pulumi.resou
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param name (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+         * - Workspace-scoped: workspace-assignments/{principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+         * - Workspace-scoped: workspace-assignments/{principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param parent The resource name of the workspace that contains the assignment,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+         * APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the workspace that contains the assignment,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+         * APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
+        /**
+         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+         * created and cannot be changed afterwards; to assign a different principal, create a new
+         * assignment
          * 
          * @return builder
          * 
@@ -250,7 +346,9 @@ public final class AccountIamWorkspaceAssignmentV2State extends com.pulumi.resou
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+         * created and cannot be changed afterwards; to assign a different principal, create a new
+         * assignment
          * 
          * @return builder
          * 

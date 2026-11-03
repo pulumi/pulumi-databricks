@@ -258,9 +258,22 @@ def get_app_space(name: Optional[_builtins.str] = None,
                   provider_config: Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict', 'outputs.GetAppSpaceProviderConfigResult']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppSpaceResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
+    This data source can be used to get a single app space.
+
+    ## Example Usage
+
+    Referring to an app space by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_app_space(name="my-space")
+    ```
 
 
     :param _builtins.str name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
@@ -296,9 +309,22 @@ def get_app_space_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                          provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict', 'outputs.GetAppSpaceProviderConfigResult']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppSpaceResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
+    This data source can be used to get a single app space.
+
+    ## Example Usage
+
+    Referring to an app space by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_app_space(name="my-space")
+    ```
 
 
     :param _builtins.str name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.

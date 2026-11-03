@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single service principal by its internal ID, using a workspace-scoped provider.
+        /// Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
         /// 
         /// 
         /// ## Example Usage
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamServicePrincipalV2.Invoke(new()
         ///     {
-        ///         ServicePrincipalId = "123456789",
+        ///         Name = "service-principals/123456789",
         ///     });
         /// 
         /// });
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single service principal by its internal ID, using a workspace-scoped provider.
+        /// Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
         /// 
         /// 
         /// ## Example Usage
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamServicePrincipalV2.Invoke(new()
         ///     {
-        ///         ServicePrincipalId = "123456789",
+        ///         Name = "service-principals/123456789",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single service principal by its internal ID, using a workspace-scoped provider.
+        /// Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
         /// 
         /// 
         /// ## Example Usage
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamServicePrincipalV2.Invoke(new()
         ///     {
-        ///         ServicePrincipalId = "123456789",
+        ///         Name = "service-principals/123456789",
         ///     });
         /// 
         /// });
@@ -115,16 +115,18 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamServicePrincipalV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
         public Inputs.GetWorkspaceIamServicePrincipalV2ProviderConfigArgs? ProviderConfig { get; set; }
-
-        /// <summary>
-        /// Internal service principal ID of the service principal in Databricks
-        /// </summary>
-        [Input("servicePrincipalId", required: true)]
-        public string ServicePrincipalId { get; set; } = null!;
 
         public GetWorkspaceIamServicePrincipalV2Args()
         {
@@ -135,16 +137,18 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamServicePrincipalV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.GetWorkspaceIamServicePrincipalV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
-
-        /// <summary>
-        /// Internal service principal ID of the service principal in Databricks
-        /// </summary>
-        [Input("servicePrincipalId", required: true)]
-        public Input<string> ServicePrincipalId { get; set; } = null!;
 
         public GetWorkspaceIamServicePrincipalV2InvokeArgs()
         {
@@ -177,6 +181,17 @@ namespace Pulumi.Databricks
         /// (string) - ExternalId of the service principal in the customer's IdP
         /// </summary>
         public readonly string ExternalId;
+        /// <summary>
+        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the service principal,
+        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string Parent;
         public readonly Outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - Internal service principal ID of the service principal in Databricks
@@ -195,6 +210,10 @@ namespace Pulumi.Databricks
 
             string externalId,
 
+            string name,
+
+            string parent,
+
             Outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult? providerConfig,
 
             string servicePrincipalId)
@@ -204,6 +223,8 @@ namespace Pulumi.Databricks
             ApplicationId = applicationId;
             DisplayName = displayName;
             ExternalId = externalId;
+            Name = name;
+            Parent = parent;
             ProviderConfig = providerConfig;
             ServicePrincipalId = servicePrincipalId;
         }

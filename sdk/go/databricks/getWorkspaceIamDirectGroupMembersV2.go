@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetWorkspaceIamDirectGroupMembersV2(ctx, &databricks.GetWorkspaceIamDirectGroupMembersV2Args{
-//				GroupId: 123456789,
+//				Parent: "groups/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,11 +58,12 @@ func GetWorkspaceIamDirectGroupMembersV2(ctx *pulumi.Context, args *GetWorkspace
 
 // A collection of arguments for invoking getWorkspaceIamDirectGroupMembersV2.
 type GetWorkspaceIamDirectGroupMembersV2Args struct {
-	// Required. Internal ID of the group in Databricks whose direct members are being listed
-	GroupId int `pulumi:"groupId"`
 	// The maximum number of members to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The parent resource name of the group whose direct members to list.
+	// Format: groups/{group_id}
+	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamDirectGroupMembersV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -70,9 +71,12 @@ type GetWorkspaceIamDirectGroupMembersV2Args struct {
 // A collection of values returned by getWorkspaceIamDirectGroupMembersV2.
 type GetWorkspaceIamDirectGroupMembersV2Result struct {
 	DirectGroupMembers []GetWorkspaceIamDirectGroupMembersV2DirectGroupMember `pulumi:"directGroupMembers"`
-	// (integer) - The internal ID of the group this member belongs to
-	GroupId        int                                                `pulumi:"groupId"`
-	PageSize       *int                                               `pulumi:"pageSize"`
+	PageSize           *int                                                   `pulumi:"pageSize"`
+	// (string) - The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent         string                                             `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamDirectGroupMembersV2ProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -83,11 +87,12 @@ func GetWorkspaceIamDirectGroupMembersV2Output(ctx *pulumi.Context, args GetWork
 
 // A collection of arguments for invoking getWorkspaceIamDirectGroupMembersV2.
 type GetWorkspaceIamDirectGroupMembersV2OutputArgs struct {
-	// Required. Internal ID of the group in Databricks whose direct members are being listed
-	GroupId pulumi.IntInput `pulumi:"groupId"`
 	// The maximum number of members to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The parent resource name of the group whose direct members to list.
+	// Format: groups/{group_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -117,13 +122,16 @@ func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) DirectGroupMembers() Ge
 	}).(GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberArrayOutput)
 }
 
-// (integer) - The internal ID of the group this member belongs to
-func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkspaceIamDirectGroupMembersV2Result) int { return v.GroupId }).(pulumi.IntOutput)
-}
-
 func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceIamDirectGroupMembersV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the group that contains the membership. The format depends on the API
+// that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceIamDirectGroupMembersV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) ProviderConfig() GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrOutput {

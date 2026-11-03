@@ -17,7 +17,7 @@ export function getAccountIamWorkspaceAssignmentsV2(args: GetAccountIamWorkspace
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", {
         "pageSize": args.pageSize,
-        "workspaceId": args.workspaceId,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -31,9 +31,10 @@ export interface GetAccountIamWorkspaceAssignmentsV2Args {
      */
     pageSize?: number;
     /**
-     * Required. The workspace ID for which the workspace assignments are being fetched
+     * The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
      */
-    workspaceId: string;
+    parent: string;
 }
 
 /**
@@ -41,11 +42,13 @@ export interface GetAccountIamWorkspaceAssignmentsV2Args {
  */
 export interface GetAccountIamWorkspaceAssignmentsV2Result {
     readonly pageSize?: number;
-    readonly workspaceAssignments: outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment[];
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
      */
-    readonly workspaceId: string;
+    readonly parent: string;
+    readonly workspaceAssignments: outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment[];
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -58,7 +61,7 @@ export function getAccountIamWorkspaceAssignmentsV2Output(args: GetAccountIamWor
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", {
         "pageSize": args.pageSize,
-        "workspaceId": args.workspaceId,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -72,7 +75,8 @@ export interface GetAccountIamWorkspaceAssignmentsV2OutputArgs {
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * Required. The workspace ID for which the workspace assignments are being fetched
+     * The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
      */
-    workspaceId: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
 }

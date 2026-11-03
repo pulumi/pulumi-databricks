@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,21 +16,6 @@ import javax.annotation.Nullable;
 public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAccountIamDirectGroupMembersV2Args Empty = new GetAccountIamDirectGroupMembersV2Args();
-
-    /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     * 
-     */
-    @Import(name="groupId", required=true)
-    private Output<Integer> groupId;
-
-    /**
-     * @return Required. Internal ID of the group in Databricks whose direct members are being listed
-     * 
-     */
-    public Output<Integer> groupId() {
-        return this.groupId;
-    }
 
     /**
      * The maximum number of members to return. The service may return fewer than this value.
@@ -48,11 +34,28 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+
     private GetAccountIamDirectGroupMembersV2Args() {}
 
     private GetAccountIamDirectGroupMembersV2Args(GetAccountIamDirectGroupMembersV2Args $) {
-        this.groupId = $.groupId;
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -71,27 +74,6 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
 
         public Builder(GetAccountIamDirectGroupMembersV2Args defaults) {
             $ = new GetAccountIamDirectGroupMembersV2Args(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param groupId Required. Internal ID of the group in Databricks whose direct members are being listed
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(Output<Integer> groupId) {
-            $.groupId = groupId;
-            return this;
-        }
-
-        /**
-         * @param groupId Required. Internal ID of the group in Databricks whose direct members are being listed
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(Integer groupId) {
-            return groupId(Output.of(groupId));
         }
 
         /**
@@ -117,9 +99,32 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
             return pageSize(Output.of(pageSize));
         }
 
+        /**
+         * @param parent The parent resource name of the group whose direct members to list.
+         * Format: accounts/{account_id}/groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The parent resource name of the group whose direct members to list.
+         * Format: accounts/{account_id}/groups/{group_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
         public GetAccountIamDirectGroupMembersV2Args build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMembersV2Args", "groupId");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMembersV2Args", "parent");
             }
             return $;
         }

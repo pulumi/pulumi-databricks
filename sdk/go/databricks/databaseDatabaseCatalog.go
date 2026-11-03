@@ -18,6 +18,8 @@ import (
 //
 // Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
 //
+// For new workloads, Databricks recommends the `PostgresCatalog` resource.
+//
 // ## Example Usage
 //
 // ### Example

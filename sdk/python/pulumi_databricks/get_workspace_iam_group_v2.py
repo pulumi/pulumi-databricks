@@ -28,7 +28,7 @@ class GetWorkspaceIamGroupV2Result:
     """
     A collection of values returned by getWorkspaceIamGroupV2.
     """
-    def __init__(__self__, account_id=None, external_id=None, group_id=None, group_name=None, provider_config=None):
+    def __init__(__self__, account_id=None, external_id=None, group_id=None, group_name=None, name=None, parent=None, provider_config=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,6 +41,12 @@ class GetWorkspaceIamGroupV2Result:
         if group_name and not isinstance(group_name, str):
             raise TypeError("Expected argument 'group_name' to be a str")
         pulumi.set(__self__, "group_name", group_name)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -78,6 +84,25 @@ class GetWorkspaceIamGroupV2Result:
         return pulumi.get(self, "group_name")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetWorkspaceIamGroupV2ProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -93,10 +118,12 @@ class AwaitableGetWorkspaceIamGroupV2Result(GetWorkspaceIamGroupV2Result):
             external_id=self.external_id,
             group_id=self.group_id,
             group_name=self.group_name,
+            name=self.name,
+            parent=self.parent,
             provider_config=self.provider_config)
 
 
-def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
+def get_workspace_iam_group_v2(name: Optional[_builtins.str] = None,
                                provider_config: Optional[Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamGroupV2Result:
     """
@@ -104,7 +131,7 @@ def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
-    Reads a single group by its internal ID, using a workspace-scoped provider.
+    Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
 
     ## Example Usage
 
@@ -116,15 +143,17 @@ def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_workspace_iam_group_v2(group_id="123456789")
+    this = databricks.get_workspace_iam_group_v2(name="groups/123456789")
     ```
 
 
-    :param _builtins.str group_id: Internal group ID of the group in Databricks
+    :param _builtins.str name: The resource name of the group. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/groups/{group_id}
+           - Workspace-scoped: groups/{group_id}
     :param Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
-    __args__['groupId'] = group_id
+    __args__['name'] = name
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2', __args__, opts=opts, typ=GetWorkspaceIamGroupV2Result).value
@@ -134,8 +163,10 @@ def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
         external_id=pulumi.get(__ret__, 'external_id'),
         group_id=pulumi.get(__ret__, 'group_id'),
         group_name=pulumi.get(__ret__, 'group_name'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_workspace_iam_group_v2_output(group_id: pulumi.Input[Optional[_builtins.str]] = None,
+def get_workspace_iam_group_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                       provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamGroupV2Result]:
     """
@@ -143,7 +174,7 @@ def get_workspace_iam_group_v2_output(group_id: pulumi.Input[Optional[_builtins.
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
-    Reads a single group by its internal ID, using a workspace-scoped provider.
+    Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
 
     ## Example Usage
 
@@ -155,15 +186,17 @@ def get_workspace_iam_group_v2_output(group_id: pulumi.Input[Optional[_builtins.
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_workspace_iam_group_v2(group_id="123456789")
+    this = databricks.get_workspace_iam_group_v2(name="groups/123456789")
     ```
 
 
-    :param _builtins.str group_id: Internal group ID of the group in Databricks
+    :param _builtins.str name: The resource name of the group. The format depends on the API that returned it:
+           - Account-scoped: accounts/{account_id}/groups/{group_id}
+           - Workspace-scoped: groups/{group_id}
     :param Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
-    __args__['groupId'] = group_id
+    __args__['name'] = name
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2', __args__, opts=opts, typ=GetWorkspaceIamGroupV2Result)
@@ -172,4 +205,6 @@ def get_workspace_iam_group_v2_output(group_id: pulumi.Input[Optional[_builtins.
         external_id=pulumi.get(__response__, 'external_id'),
         group_id=pulumi.get(__response__, 'group_id'),
         group_name=pulumi.get(__response__, 'group_name'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config')))

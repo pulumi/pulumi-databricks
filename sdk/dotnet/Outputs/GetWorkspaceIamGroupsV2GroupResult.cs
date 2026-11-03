@@ -30,6 +30,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
+        /// (string) - The resource name of the group. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetWorkspaceIamGroupsV2GroupProviderConfigResult? ProviderConfig;
@@ -44,12 +55,18 @@ namespace Pulumi.Databricks.Outputs
 
             string groupName,
 
+            string name,
+
+            string parent,
+
             Outputs.GetWorkspaceIamGroupsV2GroupProviderConfigResult? providerConfig)
         {
             AccountId = accountId;
             ExternalId = externalId;
             GroupId = groupId;
             GroupName = groupName;
+            Name = name;
+            Parent = parent;
             ProviderConfig = providerConfig;
         }
     }

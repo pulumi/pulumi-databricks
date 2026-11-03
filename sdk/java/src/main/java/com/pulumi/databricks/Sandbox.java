@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SandboxArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SandboxState;
+import com.pulumi.databricks.outputs.SandboxMetadata;
 import com.pulumi.databricks.outputs.SandboxProviderConfig;
 import com.pulumi.databricks.outputs.SandboxSpec;
 import com.pulumi.databricks.outputs.SandboxStatus;
@@ -99,6 +100,20 @@ public class Sandbox extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * Metadata associated with the sandbox
+     * 
+     */
+    @Export(name="metadata", refs={SandboxMetadata.class}, tree="[0]")
+    private Output</* @Nullable */ SandboxMetadata> metadata;
+
+    /**
+     * @return Metadata associated with the sandbox
+     * 
+     */
+    public Output<Optional<SandboxMetadata>> metadata() {
+        return Codegen.optional(this.metadata);
     }
     /**
      * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from

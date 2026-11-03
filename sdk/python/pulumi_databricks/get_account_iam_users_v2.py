@@ -27,13 +27,16 @@ class GetAccountIamUsersV2Result:
     """
     A collection of values returned by getAccountIamUsersV2.
     """
-    def __init__(__self__, filter=None, page_size=None, users=None):
+    def __init__(__self__, filter=None, page_size=None, parent=None, users=None):
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
@@ -50,6 +53,15 @@ class GetAccountIamUsersV2Result:
 
     @_builtins.property
     @pulumi.getter
+    def parent(self) -> _builtins.str:
+        """
+        (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
+    @pulumi.getter
     def users(self) -> Sequence['outputs.GetAccountIamUsersV2UserResult']:
         return pulumi.get(self, "users")
 
@@ -62,11 +74,13 @@ class AwaitableGetAccountIamUsersV2Result(GetAccountIamUsersV2Result):
         return GetAccountIamUsersV2Result(
             filter=self.filter,
             page_size=self.page_size,
+            parent=self.parent,
             users=self.users)
 
 
 def get_account_iam_users_v2(filter: Optional[_builtins.str] = None,
                              page_size: Optional[_builtins.int] = None,
+                             parent: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamUsersV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -85,26 +99,31 @@ def get_account_iam_users_v2(filter: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_users_v2()
+    this = databricks.get_account_iam_users_v2(parent="accounts/00000000-0000-0000-0000-000000000000")
     ```
 
 
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
     :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The parent resource name of the account whose users to list.
+           Format: accounts/{account_id}
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountIamUsersV2:getAccountIamUsersV2', __args__, opts=opts, typ=GetAccountIamUsersV2Result).value
 
     return AwaitableGetAccountIamUsersV2Result(
         filter=pulumi.get(__ret__, 'filter'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        parent=pulumi.get(__ret__, 'parent'),
         users=pulumi.get(__ret__, 'users'))
 def get_account_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                    parent: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamUsersV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -123,20 +142,24 @@ def get_account_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_account_iam_users_v2()
+    this = databricks.get_account_iam_users_v2(parent="accounts/00000000-0000-0000-0000-000000000000")
     ```
 
 
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
     :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The parent resource name of the account whose users to list.
+           Format: accounts/{account_id}
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountIamUsersV2:getAccountIamUsersV2', __args__, opts=opts, typ=GetAccountIamUsersV2Result)
     return __ret__.apply(lambda __response__: GetAccountIamUsersV2Result(
         filter=pulumi.get(__response__, 'filter'),
         page_size=pulumi.get(__response__, 'page_size'),
+        parent=pulumi.get(__response__, 'parent'),
         users=pulumi.get(__response__, 'users')))

@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,40 +14,28 @@ public final class GetAccountIamDirectGroupMemberV2PlainArgs extends com.pulumi.
     public static final GetAccountIamDirectGroupMemberV2PlainArgs Empty = new GetAccountIamDirectGroupMemberV2PlainArgs();
 
     /**
-     * The internal ID of the group this member belongs to
+     * The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
      * 
      */
-    @Import(name="groupId", required=true)
-    private Integer groupId;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
-     * @return The internal ID of the group this member belongs to
+     * @return The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
      * 
      */
-    public Integer groupId() {
-        return this.groupId;
-    }
-
-    /**
-     * Internal ID of the principal in Databricks
-     * 
-     */
-    @Import(name="principalId", required=true)
-    private String principalId;
-
-    /**
-     * @return Internal ID of the principal in Databricks
-     * 
-     */
-    public String principalId() {
-        return this.principalId;
+    public String name() {
+        return this.name;
     }
 
     private GetAccountIamDirectGroupMemberV2PlainArgs() {}
 
     private GetAccountIamDirectGroupMemberV2PlainArgs(GetAccountIamDirectGroupMemberV2PlainArgs $) {
-        this.groupId = $.groupId;
-        this.principalId = $.principalId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -70,33 +57,21 @@ public final class GetAccountIamDirectGroupMemberV2PlainArgs extends com.pulumi.
         }
 
         /**
-         * @param groupId The internal ID of the group this member belongs to
+         * @param name The resource name of the group membership. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder groupId(Integer groupId) {
-            $.groupId = groupId;
-            return this;
-        }
-
-        /**
-         * @param principalId Internal ID of the principal in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principalId(String principalId) {
-            $.principalId = principalId;
+        public Builder name(String name) {
+            $.name = name;
             return this;
         }
 
         public GetAccountIamDirectGroupMemberV2PlainArgs build() {
-            if ($.groupId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMemberV2PlainArgs", "groupId");
-            }
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMemberV2PlainArgs", "principalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamDirectGroupMemberV2PlainArgs", "name");
             }
             return $;
         }

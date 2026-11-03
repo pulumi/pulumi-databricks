@@ -41,7 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewAccountIamWorkspaceAssignmentV2(ctx, "this", &databricks.AccountIamWorkspaceAssignmentV2Args{
-//				WorkspaceId: pulumi.String("123456789"),
+//				Parent:      pulumi.String("accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789"),
 //				PrincipalId: pulumi.String("987654321"),
 //				Entitlements: pulumi.StringArray{
 //					pulumi.String("WORKSPACE_ACCESS"),
@@ -68,7 +68,17 @@ type AccountIamWorkspaceAssignmentV2 struct {
 	// principal also holds through a group.
 	// List responses leave this field empty. Get a single principal to read its entitlements
 	Entitlements pulumi.StringArrayOutput `pulumi:"entitlements"`
-	// The internal ID of the principal (user/sp/group) in Databricks
+	// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+	// - Workspace-scoped: workspace-assignments/{principal_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+	// created and cannot be changed afterwards; to assign a different principal, create a new
+	// assignment
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 	PrincipalType pulumi.StringOutput `pulumi:"principalType"`
@@ -83,6 +93,9 @@ func NewAccountIamWorkspaceAssignmentV2(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	if args.PrincipalId == nil {
 		return nil, errors.New("invalid value for required argument 'PrincipalId'")
 	}
@@ -119,7 +132,17 @@ type accountIamWorkspaceAssignmentV2State struct {
 	// principal also holds through a group.
 	// List responses leave this field empty. Get a single principal to read its entitlements
 	Entitlements []string `pulumi:"entitlements"`
-	// The internal ID of the principal (user/sp/group) in Databricks
+	// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+	// - Workspace-scoped: workspace-assignments/{principal_id}
+	Name *string `pulumi:"name"`
+	// The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent *string `pulumi:"parent"`
+	// The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+	// created and cannot be changed afterwards; to assign a different principal, create a new
+	// assignment
 	PrincipalId *string `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 	PrincipalType *string `pulumi:"principalType"`
@@ -138,7 +161,17 @@ type AccountIamWorkspaceAssignmentV2State struct {
 	// principal also holds through a group.
 	// List responses leave this field empty. Get a single principal to read its entitlements
 	Entitlements pulumi.StringArrayInput
-	// The internal ID of the principal (user/sp/group) in Databricks
+	// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+	// - Workspace-scoped: workspace-assignments/{principal_id}
+	Name pulumi.StringPtrInput
+	// The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent pulumi.StringPtrInput
+	// The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+	// created and cannot be changed afterwards; to assign a different principal, create a new
+	// assignment
 	PrincipalId pulumi.StringPtrInput
 	// (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 	PrincipalType pulumi.StringPtrInput
@@ -156,7 +189,13 @@ type accountIamWorkspaceAssignmentV2Args struct {
 	// principal also holds through a group.
 	// List responses leave this field empty. Get a single principal to read its entitlements
 	Entitlements []string `pulumi:"entitlements"`
-	// The internal ID of the principal (user/sp/group) in Databricks
+	// The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent string `pulumi:"parent"`
+	// The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+	// created and cannot be changed afterwards; to assign a different principal, create a new
+	// assignment
 	PrincipalId string `pulumi:"principalId"`
 	// (integer) - The workspace ID where the principal is assigned
 	WorkspaceId *string `pulumi:"workspaceId"`
@@ -169,7 +208,13 @@ type AccountIamWorkspaceAssignmentV2Args struct {
 	// principal also holds through a group.
 	// List responses leave this field empty. Get a single principal to read its entitlements
 	Entitlements pulumi.StringArrayInput
-	// The internal ID of the principal (user/sp/group) in Databricks
+	// The resource name of the workspace that contains the assignment,
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+	// APIs return it
+	Parent pulumi.StringInput
+	// The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+	// created and cannot be changed afterwards; to assign a different principal, create a new
+	// assignment
 	PrincipalId pulumi.StringInput
 	// (integer) - The workspace ID where the principal is assigned
 	WorkspaceId pulumi.StringPtrInput
@@ -281,7 +326,23 @@ func (o AccountIamWorkspaceAssignmentV2Output) Entitlements() pulumi.StringArray
 	return o.ApplyT(func(v *AccountIamWorkspaceAssignmentV2) pulumi.StringArrayOutput { return v.Entitlements }).(pulumi.StringArrayOutput)
 }
 
-// The internal ID of the principal (user/sp/group) in Databricks
+// (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+// - Workspace-scoped: workspace-assignments/{principal_id}
+func (o AccountIamWorkspaceAssignmentV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamWorkspaceAssignmentV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the workspace that contains the assignment,
+// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+// APIs return it
+func (o AccountIamWorkspaceAssignmentV2Output) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountIamWorkspaceAssignmentV2) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+// created and cannot be changed afterwards; to assign a different principal, create a new
+// assignment
 func (o AccountIamWorkspaceAssignmentV2Output) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountIamWorkspaceAssignmentV2) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
 }

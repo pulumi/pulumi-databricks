@@ -64,11 +64,11 @@ export interface GetAlertV2Result {
      */
     readonly createTime: string;
     /**
-     * (string) - Custom description for the alert. support mustache template
+     * (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
      */
     readonly customDescription: string;
     /**
-     * (string) - Custom summary for the alert. support mustache template
+     * (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
      */
     readonly customSummary: string;
     /**

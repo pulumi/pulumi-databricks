@@ -28,10 +28,13 @@ class GetMwsNetworkConnectivityConfigResult:
     """
     A collection of values returned by getMwsNetworkConnectivityConfig.
     """
-    def __init__(__self__, account_id=None, creation_time=None, egress_config=None, id=None, name=None, network_connectivity_config_id=None, region=None, updated_time=None):
+    def __init__(__self__, account_id=None, billing_workspace_id=None, creation_time=None, egress_config=None, id=None, name=None, network_connectivity_config_id=None, region=None, updated_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if billing_workspace_id and not isinstance(billing_workspace_id, int):
+            raise TypeError("Expected argument 'billing_workspace_id' to be a int")
+        pulumi.set(__self__, "billing_workspace_id", billing_workspace_id)
         if creation_time and not isinstance(creation_time, int):
             raise TypeError("Expected argument 'creation_time' to be a int")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -61,6 +64,11 @@ class GetMwsNetworkConnectivityConfigResult:
         The Databricks account ID associated with this network configuration.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="billingWorkspaceId")
+    def billing_workspace_id(self) -> _builtins.int:
+        return pulumi.get(self, "billing_workspace_id")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
@@ -126,6 +134,7 @@ class AwaitableGetMwsNetworkConnectivityConfigResult(GetMwsNetworkConnectivityCo
             yield self
         return GetMwsNetworkConnectivityConfigResult(
             account_id=self.account_id,
+            billing_workspace_id=self.billing_workspace_id,
             creation_time=self.creation_time,
             egress_config=self.egress_config,
             id=self.id,
@@ -136,6 +145,7 @@ class AwaitableGetMwsNetworkConnectivityConfigResult(GetMwsNetworkConnectivityCo
 
 
 def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = None,
+                                        billing_workspace_id: Optional[_builtins.int] = None,
                                         creation_time: Optional[_builtins.int] = None,
                                         egress_config: Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult']] = None,
                                         name: Optional[_builtins.str] = None,
@@ -178,6 +188,7 @@ def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = No
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['billingWorkspaceId'] = billing_workspace_id
     __args__['creationTime'] = creation_time
     __args__['egressConfig'] = egress_config
     __args__['name'] = name
@@ -189,6 +200,7 @@ def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = No
 
     return AwaitableGetMwsNetworkConnectivityConfigResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        billing_workspace_id=pulumi.get(__ret__, 'billing_workspace_id'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
         egress_config=pulumi.get(__ret__, 'egress_config'),
         id=pulumi.get(__ret__, 'id'),
@@ -197,6 +209,7 @@ def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = No
         region=pulumi.get(__ret__, 'region'),
         updated_time=pulumi.get(__ret__, 'updated_time'))
 def get_mws_network_connectivity_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               billing_workspace_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                creation_time: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                egress_config: pulumi.Input[Optional[Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult']]]] = None,
                                                name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -239,6 +252,7 @@ def get_mws_network_connectivity_config_output(account_id: pulumi.Input[Optional
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['billingWorkspaceId'] = billing_workspace_id
     __args__['creationTime'] = creation_time
     __args__['egressConfig'] = egress_config
     __args__['name'] = name
@@ -249,6 +263,7 @@ def get_mws_network_connectivity_config_output(account_id: pulumi.Input[Optional
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig', __args__, opts=opts, typ=GetMwsNetworkConnectivityConfigResult)
     return __ret__.apply(lambda __response__: GetMwsNetworkConnectivityConfigResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        billing_workspace_id=pulumi.get(__response__, 'billing_workspace_id'),
         creation_time=pulumi.get(__response__, 'creation_time'),
         egress_config=pulumi.get(__response__, 'egress_config'),
         id=pulumi.get(__response__, 'id'),

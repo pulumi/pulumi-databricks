@@ -24,15 +24,15 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamDirectGroupMembersV2({
- *     groupId: 123456789,
+ *     parent: "groups/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamDirectGroupMembersV2(args: GetWorkspaceIamDirectGroupMembersV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceIamDirectGroupMembersV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", {
-        "groupId": args.groupId,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -42,14 +42,15 @@ export function getWorkspaceIamDirectGroupMembersV2(args: GetWorkspaceIamDirectG
  */
 export interface GetWorkspaceIamDirectGroupMembersV2Args {
     /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     */
-    groupId: number;
-    /**
      * The maximum number of members to return. The service may return fewer than this value.
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     */
+    parent: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -61,11 +62,14 @@ export interface GetWorkspaceIamDirectGroupMembersV2Args {
  */
 export interface GetWorkspaceIamDirectGroupMembersV2Result {
     readonly directGroupMembers: outputs.GetWorkspaceIamDirectGroupMembersV2DirectGroupMember[];
-    /**
-     * (integer) - The internal ID of the group this member belongs to
-     */
-    readonly groupId: number;
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the group that contains the membership. The format depends on the API
+     * that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    readonly parent: string;
     readonly providerConfig?: outputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfig;
 }
 /**
@@ -86,15 +90,15 @@ export interface GetWorkspaceIamDirectGroupMembersV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamDirectGroupMembersV2({
- *     groupId: 123456789,
+ *     parent: "groups/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamDirectGroupMembersV2Output(args: GetWorkspaceIamDirectGroupMembersV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceIamDirectGroupMembersV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", {
-        "groupId": args.groupId,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -104,14 +108,15 @@ export function getWorkspaceIamDirectGroupMembersV2Output(args: GetWorkspaceIamD
  */
 export interface GetWorkspaceIamDirectGroupMembersV2OutputArgs {
     /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
-     */
-    groupId: pulumi.Input<number>;
-    /**
      * The maximum number of members to return. The service may return fewer than this value.
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     */
+    parent: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider.
      */

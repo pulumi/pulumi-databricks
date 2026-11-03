@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.WorkspaceIamDirectGroupMemberV2("this", new()
     ///     {
-    ///         GroupId = 123456789,
+    ///         Parent = "groups/123456789",
     ///         PrincipalId = "987654321",
     ///     });
     /// 
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The external ID of the principal in Databricks
+        /// (string) - The external ID of the principal in the customer's IdP
         /// </summary>
         [Output("externalId")]
         public Output<string> ExternalId { get; private set; } = null!;
@@ -68,6 +68,23 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("membershipSource")]
         public Output<string> MembershipSource { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the group that contains the membership. The format depends on the API
+        /// that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// Internal ID of the principal in Databricks
@@ -140,6 +157,15 @@ namespace Pulumi.Databricks
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
+        /// The resource name of the group that contains the membership. The format depends on the API
+        /// that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
         /// Internal ID of the principal in Databricks
         /// </summary>
         [Input("principalId", required: true)]
@@ -166,7 +192,7 @@ namespace Pulumi.Databricks
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// (string) - The external ID of the principal in Databricks
+        /// (string) - The external ID of the principal in the customer's IdP
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
@@ -182,6 +208,23 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("membershipSource")]
         public Input<string>? MembershipSource { get; set; }
+
+        /// <summary>
+        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The resource name of the group that contains the membership. The format depends on the API
+        /// that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
+        /// - Workspace-scoped: groups/{group_id}
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Internal ID of the principal in Databricks

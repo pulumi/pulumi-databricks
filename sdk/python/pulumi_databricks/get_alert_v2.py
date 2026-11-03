@@ -99,7 +99,7 @@ class GetAlertV2Result:
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> _builtins.str:
         """
-        (string) - Custom description for the alert. support mustache template
+        (string) - Custom description for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_description")
 
@@ -107,7 +107,7 @@ class GetAlertV2Result:
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> _builtins.str:
         """
-        (string) - Custom summary for the alert. support mustache template
+        (string) - Custom summary for the alert. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 

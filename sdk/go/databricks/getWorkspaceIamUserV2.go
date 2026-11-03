@@ -15,7 +15,7 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
-// Reads a single user by its internal ID, using a workspace-scoped provider.
+// Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetWorkspaceIamUserV2(ctx, &databricks.LookupWorkspaceIamUserV2Args{
-//				UserId: "123456789",
+//				Name: "users/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,10 +58,12 @@ func LookupWorkspaceIamUserV2(ctx *pulumi.Context, args *LookupWorkspaceIamUserV
 
 // A collection of arguments for invoking getWorkspaceIamUserV2.
 type LookupWorkspaceIamUserV2Args struct {
+	// The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamUserV2ProviderConfig `pulumi:"providerConfig"`
-	// Internal userId of the user in Databricks
-	UserId string `pulumi:"userId"`
 }
 
 // A collection of values returned by getWorkspaceIamUserV2.
@@ -73,7 +75,14 @@ type LookupWorkspaceIamUserV2Result struct {
 	// (string) - ExternalId of the user in the customer's IdP
 	ExternalId string `pulumi:"externalId"`
 	// (UserFullName)
-	FullName       GetWorkspaceIamUserV2FullName        `pulumi:"fullName"`
+	FullName GetWorkspaceIamUserV2FullName `pulumi:"fullName"`
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent         string                               `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamUserV2ProviderConfig `pulumi:"providerConfig"`
 	// (string) - Internal userId of the user in Databricks
 	UserId string `pulumi:"userId"`
@@ -88,10 +97,12 @@ func LookupWorkspaceIamUserV2Output(ctx *pulumi.Context, args LookupWorkspaceIam
 
 // A collection of arguments for invoking getWorkspaceIamUserV2.
 type LookupWorkspaceIamUserV2OutputArgs struct {
+	// The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamUserV2ProviderConfigPtrInput `pulumi:"providerConfig"`
-	// Internal userId of the user in Databricks
-	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (LookupWorkspaceIamUserV2OutputArgs) ElementType() reflect.Type {
@@ -131,6 +142,19 @@ func (o LookupWorkspaceIamUserV2ResultOutput) ExternalId() pulumi.StringOutput {
 // (UserFullName)
 func (o LookupWorkspaceIamUserV2ResultOutput) FullName() GetWorkspaceIamUserV2FullNameOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamUserV2Result) GetWorkspaceIamUserV2FullName { return v.FullName }).(GetWorkspaceIamUserV2FullNameOutput)
+}
+
+// (string) - The resource name of the user. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/users/{user_id}
+// - Workspace-scoped: users/{user_id}
+func (o LookupWorkspaceIamUserV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceIamUserV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o LookupWorkspaceIamUserV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceIamUserV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkspaceIamUserV2ResultOutput) ProviderConfig() GetWorkspaceIamUserV2ProviderConfigPtrOutput {

@@ -23,17 +23,21 @@ class AccountIamUserV2Args:
     def __init__(__self__, *,
                  account_user_status: pulumi.Input[_builtins.str],
                  full_name: pulumi.Input['AccountIamUserV2FullNameArgs'],
+                 parent: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
                  external_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountIamUserV2 resource.
 
         :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] username: Username/email of the user
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
         """
         pulumi.set(__self__, "account_user_status", account_user_status)
         pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "username", username)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
@@ -58,6 +62,19 @@ class AccountIamUserV2Args:
     @full_name.setter
     def full_name(self, value: pulumi.Input['AccountIamUserV2FullNameArgs']):
         pulumi.set(self, "full_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
@@ -91,6 +108,8 @@ class _AccountIamUserV2State:
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional['AccountIamUserV2FullNameArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -99,6 +118,11 @@ class _AccountIamUserV2State:
         :param pulumi.Input[_builtins.str] account_id: (string) - The accountId parent of the user in Databricks
         :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the user. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/users/{user_id}
+               - Workspace-scoped: users/{user_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] user_id: (string) - Internal userId of the user in Databricks
         :param pulumi.Input[_builtins.str] username: Username/email of the user
         """
@@ -110,6 +134,10 @@ class _AccountIamUserV2State:
             pulumi.set(__self__, "external_id", external_id)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if username is not None:
@@ -161,6 +189,33 @@ class _AccountIamUserV2State:
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the user. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/users/{user_id}
+        - Workspace-scoped: users/{user_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -194,6 +249,7 @@ class AccountIamUserV2(pulumi.CustomResource):
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict', 'outputs.AccountIamUserV2FullName']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -216,6 +272,7 @@ class AccountIamUserV2(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.AccountIamUserV2("this",
+            parent="accounts/00000000-0000-0000-0000-000000000000",
             username="jane.doe@example.com",
             account_user_status="ACTIVE",
             full_name={
@@ -229,6 +286,8 @@ class AccountIamUserV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] username: Username/email of the user
         """
         ...
@@ -257,6 +316,7 @@ class AccountIamUserV2(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.AccountIamUserV2("this",
+            parent="accounts/00000000-0000-0000-0000-000000000000",
             username="jane.doe@example.com",
             account_user_status="ACTIVE",
             full_name={
@@ -284,6 +344,7 @@ class AccountIamUserV2(pulumi.CustomResource):
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict', 'outputs.AccountIamUserV2FullName']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -301,10 +362,14 @@ class AccountIamUserV2(pulumi.CustomResource):
             if full_name is None and not opts.urn:
                 raise TypeError("Missing required property 'full_name'")
             __props__.__dict__["full_name"] = full_name
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["account_id"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["user_id"] = None
         super(AccountIamUserV2, __self__).__init__(
             'databricks:index/accountIamUserV2:AccountIamUserV2',
@@ -320,6 +385,8 @@ class AccountIamUserV2(pulumi.CustomResource):
             account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
             full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict', 'outputs.AccountIamUserV2FullName']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamUserV2':
         """
@@ -332,6 +399,11 @@ class AccountIamUserV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: (string) - The accountId parent of the user in Databricks
         :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the user. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/users/{user_id}
+               - Workspace-scoped: users/{user_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] user_id: (string) - Internal userId of the user in Databricks
         :param pulumi.Input[_builtins.str] username: Username/email of the user
         """
@@ -343,6 +415,8 @@ class AccountIamUserV2(pulumi.CustomResource):
         __props__.__dict__["account_user_status"] = account_user_status
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["full_name"] = full_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["username"] = username
         return AccountIamUserV2(resource_name, opts=opts, __props__=__props__)
@@ -375,6 +449,25 @@ class AccountIamUserV2(pulumi.CustomResource):
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output['outputs.AccountIamUserV2FullName']:
         return pulumi.get(self, "full_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the user. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/users/{user_id}
+        - Workspace-scoped: users/{user_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="userId")

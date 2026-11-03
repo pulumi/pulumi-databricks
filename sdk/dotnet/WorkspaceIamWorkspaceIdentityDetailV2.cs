@@ -42,10 +42,10 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// Import the resource by the principal's internal Databricks ID:
+    /// Import the resource by its name, which contains the principal's internal Databricks ID:
     /// 
     /// ```sh
-    /// terraform import databricks_workspace_iam_workspace_identity_detail_v2.this &lt;principal_id&gt;
+    /// terraform import databricks_workspace_iam_workspace_identity_detail_v2.this principals/&lt;principal_id&gt;/workspace-identity-detail
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2")]
@@ -56,6 +56,19 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("assignmentType")]
         public Output<string> AssignmentType { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The resource name of the workspace identity detail.
+        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the parent
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
@@ -89,7 +102,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public WorkspaceIamWorkspaceIdentityDetailV2(string name, WorkspaceIamWorkspaceIdentityDetailV2Args? args = null, CustomResourceOptions? options = null)
+        public WorkspaceIamWorkspaceIdentityDetailV2(string name, WorkspaceIamWorkspaceIdentityDetailV2Args args, CustomResourceOptions? options = null)
             : base("databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2", name, args ?? new WorkspaceIamWorkspaceIdentityDetailV2Args(), MakeResourceOptions(options, ""))
         {
         }
@@ -128,6 +141,12 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceIamWorkspaceIdentityDetailV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the parent
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -152,6 +171,19 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("assignmentType")]
         public Input<string>? AssignmentType { get; set; }
+
+        /// <summary>
+        /// (string) - The resource name of the workspace identity detail.
+        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The resource name of the parent
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// (integer) - The internal ID of the principal (user/sp/group) in Databricks

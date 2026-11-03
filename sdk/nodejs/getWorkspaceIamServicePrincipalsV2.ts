@@ -32,6 +32,7 @@ export function getWorkspaceIamServicePrincipalsV2(args?: GetWorkspaceIamService
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -50,6 +51,11 @@ export interface GetWorkspaceIamServicePrincipalsV2Args {
      */
     pageSize?: number;
     /**
+     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent?: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetWorkspaceIamServicePrincipalsV2ProviderConfig;
@@ -61,6 +67,11 @@ export interface GetWorkspaceIamServicePrincipalsV2Args {
 export interface GetWorkspaceIamServicePrincipalsV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfig;
     readonly servicePrincipals: outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipal[];
 }
@@ -90,6 +101,7 @@ export function getWorkspaceIamServicePrincipalsV2Output(args?: GetWorkspaceIamS
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -107,6 +119,11 @@ export interface GetWorkspaceIamServicePrincipalsV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

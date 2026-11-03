@@ -71,6 +71,10 @@ export class Sandbox extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
+     * Metadata associated with the sandbox
+     */
+    declare public readonly metadata: pulumi.Output<outputs.SandboxMetadata | undefined>;
+    /**
      * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
      * `sandboxId`; any value supplied in a create or update request body is ignored
      */
@@ -111,6 +115,7 @@ export class Sandbox extends pulumi.CustomResource {
             const state = argsOrState as SandboxState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["sandboxId"] = state?.sandboxId;
@@ -123,6 +128,7 @@ export class Sandbox extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sandboxId'");
             }
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["metadata"] = args?.metadata;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["sandboxId"] = args?.sandboxId;
             resourceInputs["spec"] = args?.spec;
@@ -148,6 +154,10 @@ export interface SandboxState {
      * Human-readable display label for the sandbox. At most 256 characters
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Metadata associated with the sandbox
+     */
+    metadata?: pulumi.Input<inputs.SandboxMetadata | undefined>;
     /**
      * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
      * `sandboxId`; any value supplied in a create or update request body is ignored
@@ -183,6 +193,10 @@ export interface SandboxArgs {
      * Human-readable display label for the sandbox. At most 256 characters
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Metadata associated with the sandbox
+     */
+    metadata?: pulumi.Input<inputs.SandboxMetadata | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

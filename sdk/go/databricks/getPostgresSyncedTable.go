@@ -76,8 +76,7 @@ type LookupPostgresSyncedTableResult struct {
 	// where (catalog, schema, table) are the UC entity names.
 	Name           string                                `pulumi:"name"`
 	ProviderConfig *GetPostgresSyncedTableProviderConfig `pulumi:"providerConfig"`
-	// (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc.
-	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+	// (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec GetPostgresSyncedTableSpec `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status GetPostgresSyncedTableStatus `pulumi:"status"`
@@ -139,8 +138,7 @@ func (o LookupPostgresSyncedTableResultOutput) ProviderConfig() GetPostgresSynce
 	return o.ApplyT(func(v LookupPostgresSyncedTableResult) *GetPostgresSyncedTableProviderConfig { return v.ProviderConfig }).(GetPostgresSyncedTableProviderConfigPtrOutput)
 }
 
-// (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc.
-// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+// (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc
 func (o LookupPostgresSyncedTableResultOutput) Spec() GetPostgresSyncedTableSpecOutput {
 	return o.ApplyT(func(v LookupPostgresSyncedTableResult) GetPostgresSyncedTableSpec { return v.Spec }).(GetPostgresSyncedTableSpecOutput)
 }

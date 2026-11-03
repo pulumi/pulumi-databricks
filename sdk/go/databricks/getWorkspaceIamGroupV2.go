@@ -15,7 +15,7 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
-// Reads a single group by its internal ID, using a workspace-scoped provider.
+// Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetWorkspaceIamGroupV2(ctx, &databricks.LookupWorkspaceIamGroupV2Args{
-//				GroupId: "123456789",
+//				Name: "groups/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,8 +58,10 @@ func LookupWorkspaceIamGroupV2(ctx *pulumi.Context, args *LookupWorkspaceIamGrou
 
 // A collection of arguments for invoking getWorkspaceIamGroupV2.
 type LookupWorkspaceIamGroupV2Args struct {
-	// Internal group ID of the group in Databricks
-	GroupId string `pulumi:"groupId"`
+	// The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamGroupV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -73,7 +75,14 @@ type LookupWorkspaceIamGroupV2Result struct {
 	// (string) - Internal group ID of the group in Databricks
 	GroupId string `pulumi:"groupId"`
 	// (string) - Display name of the group
-	GroupName      string                                `pulumi:"groupName"`
+	GroupName string `pulumi:"groupName"`
+	// (string) - The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent         string                                `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamGroupV2ProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -84,8 +93,10 @@ func LookupWorkspaceIamGroupV2Output(ctx *pulumi.Context, args LookupWorkspaceIa
 
 // A collection of arguments for invoking getWorkspaceIamGroupV2.
 type LookupWorkspaceIamGroupV2OutputArgs struct {
-	// Internal group ID of the group in Databricks
-	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The resource name of the group. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamGroupV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -127,6 +138,19 @@ func (o LookupWorkspaceIamGroupV2ResultOutput) GroupId() pulumi.StringOutput {
 // (string) - Display name of the group
 func (o LookupWorkspaceIamGroupV2ResultOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamGroupV2Result) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the group. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o LookupWorkspaceIamGroupV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceIamGroupV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o LookupWorkspaceIamGroupV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceIamGroupV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkspaceIamGroupV2ResultOutput) ProviderConfig() GetWorkspaceIamGroupV2ProviderConfigPtrOutput {

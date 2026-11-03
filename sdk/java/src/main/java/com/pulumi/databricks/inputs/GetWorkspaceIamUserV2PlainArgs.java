@@ -17,6 +17,25 @@ public final class GetWorkspaceIamUserV2PlainArgs extends com.pulumi.resources.I
     public static final GetWorkspaceIamUserV2PlainArgs Empty = new GetWorkspaceIamUserV2PlainArgs();
 
     /**
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    @Import(name="name", required=true)
+    private String name;
+
+    /**
+     * @return The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -31,26 +50,11 @@ public final class GetWorkspaceIamUserV2PlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.providerConfig);
     }
 
-    /**
-     * Internal userId of the user in Databricks
-     * 
-     */
-    @Import(name="userId", required=true)
-    private String userId;
-
-    /**
-     * @return Internal userId of the user in Databricks
-     * 
-     */
-    public String userId() {
-        return this.userId;
-    }
-
     private GetWorkspaceIamUserV2PlainArgs() {}
 
     private GetWorkspaceIamUserV2PlainArgs(GetWorkspaceIamUserV2PlainArgs $) {
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
-        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -72,6 +76,19 @@ public final class GetWorkspaceIamUserV2PlainArgs extends com.pulumi.resources.I
         }
 
         /**
+         * @param name The resource name of the user. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/users/{user_id}
+         * - Workspace-scoped: users/{user_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
          * @param providerConfig Configure the provider for management through account provider.
          * 
          * @return builder
@@ -82,20 +99,9 @@ public final class GetWorkspaceIamUserV2PlainArgs extends com.pulumi.resources.I
             return this;
         }
 
-        /**
-         * @param userId Internal userId of the user in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userId(String userId) {
-            $.userId = userId;
-            return this;
-        }
-
         public GetWorkspaceIamUserV2PlainArgs build() {
-            if ($.userId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamUserV2PlainArgs", "userId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamUserV2PlainArgs", "name");
             }
             return $;
         }

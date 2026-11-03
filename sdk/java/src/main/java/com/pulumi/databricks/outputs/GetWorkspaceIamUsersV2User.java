@@ -35,6 +35,19 @@ public final class GetWorkspaceIamUsersV2User {
      */
     private GetWorkspaceIamUsersV2UserFullName fullName;
     /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    private String parent;
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -80,6 +93,23 @@ public final class GetWorkspaceIamUsersV2User {
         return this.fullName;
     }
     /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -114,6 +144,8 @@ public final class GetWorkspaceIamUsersV2User {
         private String accountUserStatus;
         private String externalId;
         private GetWorkspaceIamUsersV2UserFullName fullName;
+        private String name;
+        private String parent;
         private @Nullable GetWorkspaceIamUsersV2UserProviderConfig providerConfig;
         private String userId;
         private String username;
@@ -124,6 +156,8 @@ public final class GetWorkspaceIamUsersV2User {
     	      this.accountUserStatus = defaults.accountUserStatus;
     	      this.externalId = defaults.externalId;
     	      this.fullName = defaults.fullName;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.userId = defaults.userId;
     	      this.username = defaults.username;
@@ -162,6 +196,22 @@ public final class GetWorkspaceIamUsersV2User {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamUsersV2User", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamUsersV2User", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetWorkspaceIamUsersV2UserProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -189,6 +239,8 @@ public final class GetWorkspaceIamUsersV2User {
             _resultValue.accountUserStatus = accountUserStatus;
             _resultValue.externalId = externalId;
             _resultValue.fullName = fullName;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             _resultValue.userId = userId;
             _resultValue.username = username;

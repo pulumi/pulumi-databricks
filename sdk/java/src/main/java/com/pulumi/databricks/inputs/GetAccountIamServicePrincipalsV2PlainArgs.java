@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,11 +48,29 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    @Import(name="parent", required=true)
+    private String parent;
+
+    /**
+     * @return The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+
     private GetAccountIamServicePrincipalsV2PlainArgs() {}
 
     private GetAccountIamServicePrincipalsV2PlainArgs(GetAccountIamServicePrincipalsV2PlainArgs $) {
         this.filter = $.filter;
         this.pageSize = $.pageSize;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -95,7 +114,22 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
             return this;
         }
 
+        /**
+         * @param parent The parent resource name of the account whose service principals to list.
+         * Format: accounts/{account_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            $.parent = parent;
+            return this;
+        }
+
         public GetAccountIamServicePrincipalsV2PlainArgs build() {
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalsV2PlainArgs", "parent");
+            }
             return $;
         }
     }

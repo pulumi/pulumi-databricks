@@ -15,7 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile {
     /**
-     * @return (integer) - The accuracy parameter (higher is more accurate but slower)
+     * @return (integer) - The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+     * that value
      * 
      */
     private @Nullable Integer accuracy;
@@ -29,10 +32,22 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
      * 
      */
     private Double percentile;
+    /**
+     * @return (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     * 
+     */
+    private @Nullable Double relativeError;
 
     private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile() {}
     /**
-     * @return (integer) - The accuracy parameter (higher is more accurate but slower)
+     * @return (integer) - The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+     * that value
      * 
      */
     public Optional<Integer> accuracy() {
@@ -52,6 +67,17 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
     public Double percentile() {
         return this.percentile;
     }
+    /**
+     * @return (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     * 
+     */
+    public Optional<Double> relativeError() {
+        return Optional.ofNullable(this.relativeError);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,12 +91,14 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
         private @Nullable Integer accuracy;
         private String input;
         private Double percentile;
+        private @Nullable Double relativeError;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accuracy = defaults.accuracy;
     	      this.input = defaults.input;
     	      this.percentile = defaults.percentile;
+    	      this.relativeError = defaults.relativeError;
         }
 
         @CustomType.Setter
@@ -95,11 +123,18 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
             this.percentile = percentile;
             return this;
         }
+        @CustomType.Setter
+        public Builder relativeError(@Nullable Double relativeError) {
+
+            this.relativeError = relativeError;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile();
             _resultValue.accuracy = accuracy;
             _resultValue.input = input;
             _resultValue.percentile = percentile;
+            _resultValue.relativeError = relativeError;
             return _resultValue;
         }
     }

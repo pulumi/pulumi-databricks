@@ -39,6 +39,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("metaAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsGetArgs>? MetaAdsOptions { get; set; }
 
+        [Input("onedriveOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsGetArgs>? OnedriveOptions { get; set; }
+
         [Input("outlookOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsGetArgs>? OutlookOptions { get; set; }
 

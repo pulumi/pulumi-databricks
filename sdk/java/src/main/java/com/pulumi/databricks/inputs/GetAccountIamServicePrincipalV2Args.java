@@ -15,24 +15,28 @@ public final class GetAccountIamServicePrincipalV2Args extends com.pulumi.resour
     public static final GetAccountIamServicePrincipalV2Args Empty = new GetAccountIamServicePrincipalV2Args();
 
     /**
-     * Internal service principal ID of the service principal in Databricks
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
      * 
      */
-    @Import(name="servicePrincipalId", required=true)
-    private Output<String> servicePrincipalId;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return Internal service principal ID of the service principal in Databricks
+     * @return The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
      * 
      */
-    public Output<String> servicePrincipalId() {
-        return this.servicePrincipalId;
+    public Output<String> name() {
+        return this.name;
     }
 
     private GetAccountIamServicePrincipalV2Args() {}
 
     private GetAccountIamServicePrincipalV2Args(GetAccountIamServicePrincipalV2Args $) {
-        this.servicePrincipalId = $.servicePrincipalId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -54,29 +58,33 @@ public final class GetAccountIamServicePrincipalV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param servicePrincipalId Internal service principal ID of the service principal in Databricks
+         * @param name The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder servicePrincipalId(Output<String> servicePrincipalId) {
-            $.servicePrincipalId = servicePrincipalId;
+        public Builder name(Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param servicePrincipalId Internal service principal ID of the service principal in Databricks
+         * @param name The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
          * 
          * @return builder
          * 
          */
-        public Builder servicePrincipalId(String servicePrincipalId) {
-            return servicePrincipalId(Output.of(servicePrincipalId));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public GetAccountIamServicePrincipalV2Args build() {
-            if ($.servicePrincipalId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalV2Args", "servicePrincipalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamServicePrincipalV2Args", "name");
             }
             return $;
         }

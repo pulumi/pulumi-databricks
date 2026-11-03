@@ -17,6 +17,8 @@ import (
 //
 // Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
 //
+// For new workloads, Databricks recommends the `PostgresProject` resource, which supports the latest Lakebase features.
+//
 // ## Example Usage
 //
 // ### Basic Example

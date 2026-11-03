@@ -1507,6 +1507,36 @@
                         "fields": {
                             "excluded_table_full_names": {
                                 "maxItemsOne": false
+                            },
+                            "notification_settings": {
+                                "fields": {
+                                    "on_failure": {
+                                        "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    },
+                                    "on_unhealthy_table": {
+                                        "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     },
@@ -1533,6 +1563,25 @@
                                 "fields": {
                                     "on_failure": {
                                         "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    },
+                                    "on_unhealthy_table": {
+                                        "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
                                             "email_addresses": {
                                                 "maxItemsOne": false
                                             }
@@ -1913,6 +1962,132 @@
                 "fields": {
                     "provider_config": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "databricks_genie_agent": {
+                "current": "databricks:index/genieAgent:GenieAgent",
+                "majorVersion": 1,
+                "fields": {
+                    "definition": {
+                        "fields": {
+                            "benchmarks": {
+                                "fields": {
+                                    "questions": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "answer": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "config": {
+                                "fields": {
+                                    "sample_questions": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "data_sources": {
+                                "fields": {
+                                    "mcp_connections": {
+                                        "maxItemsOne": false
+                                    },
+                                    "tables": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "column_configs": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "synonyms": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "volumes": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "instructions": {
+                                "fields": {
+                                    "example_question_sqls": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "default_value": {
+                                                                "fields": {
+                                                                    "values": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "join_specs": {
+                                        "maxItemsOne": false
+                                    },
+                                    "sql_functions": {
+                                        "maxItemsOne": false
+                                    },
+                                    "sql_snippets": {
+                                        "fields": {
+                                            "expressions": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "synonyms": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "filters": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "synonyms": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "measures": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "synonyms": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "text_instructions": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2372,6 +2547,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "serverless_compute": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -2632,6 +2810,59 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "ai_function_task": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ai_classify": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "inline_labels": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "labels": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ai_extract": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ai_parse_document": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "description_element_types": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "delta_table": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "merge_key_columns": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "output": {
+                                                "maxItemsOne": true
+                                            },
+                                            "volume": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "ai_runtime_task": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2767,6 +2998,59 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "ai_function_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ai_classify": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "inline_labels": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "labels": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "ai_extract": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "ai_parse_document": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "description_element_types": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "delta_table": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "merge_key_columns": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "output": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "volume": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "ai_runtime_task": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -3683,6 +3967,16 @@
                                 "file_arrival": {
                                     "maxItemsOne": true
                                 },
+                                "job_completion": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "jobs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "model": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -3728,6 +4022,16 @@
                                 },
                                 "file_arrival": {
                                     "maxItemsOne": true
+                                },
+                                "job_completion": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "jobs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "model": {
                                     "maxItemsOne": true,
@@ -5098,6 +5402,23 @@
                                                                             }
                                                                         }
                                                                     },
+                                                                    "onedrive_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "file_ingestion_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file_filters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
                                                                     "outlook_options": {
                                                                         "maxItemsOne": true,
                                                                         "elem": {
@@ -5516,6 +5837,23 @@
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "onedrive_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "file_ingestion_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file_filters": {
                                                                                                 "maxItemsOne": false
                                                                                             }
                                                                                         }
@@ -9472,6 +9810,36 @@
                         "fields": {
                             "excluded_table_full_names": {
                                 "maxItemsOne": false
+                            },
+                            "notification_settings": {
+                                "fields": {
+                                    "on_failure": {
+                                        "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    },
+                                    "on_unhealthy_table": {
+                                        "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     },
@@ -9498,6 +9866,25 @@
                                 "fields": {
                                     "on_failure": {
                                         "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    },
+                                    "on_unhealthy_table": {
+                                        "fields": {
+                                            "destination_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destination_user_ids": {
+                                                "maxItemsOne": false
+                                            },
                                             "email_addresses": {
                                                 "maxItemsOne": false
                                             }
@@ -9531,6 +9918,36 @@
                                     "fields": {
                                         "excluded_table_full_names": {
                                             "maxItemsOne": false
+                                        },
+                                        "notification_settings": {
+                                            "fields": {
+                                                "on_failure": {
+                                                    "fields": {
+                                                        "destination_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "destination_user_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "email_addresses": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "on_unhealthy_table": {
+                                                    "fields": {
+                                                        "destination_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "destination_user_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "email_addresses": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 },
@@ -9557,6 +9974,25 @@
                                             "fields": {
                                                 "on_failure": {
                                                     "fields": {
+                                                        "destination_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "destination_user_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "email_addresses": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "on_unhealthy_table": {
+                                                    "fields": {
+                                                        "destination_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "destination_user_ids": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "email_addresses": {
                                                             "maxItemsOne": false
                                                         }
@@ -10189,6 +10625,265 @@
                                     "fields": {
                                         "dependencies": {
                                             "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_genie_agent": {
+                "current": "databricks:index/getGenieAgent:getGenieAgent",
+                "majorVersion": 1,
+                "fields": {
+                    "definition": {
+                        "fields": {
+                            "benchmarks": {
+                                "fields": {
+                                    "questions": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "answer": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "config": {
+                                "fields": {
+                                    "sample_questions": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "data_sources": {
+                                "fields": {
+                                    "mcp_connections": {
+                                        "maxItemsOne": false
+                                    },
+                                    "tables": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "column_configs": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "synonyms": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "volumes": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "instructions": {
+                                "fields": {
+                                    "example_question_sqls": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "default_value": {
+                                                                "fields": {
+                                                                    "values": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "join_specs": {
+                                        "maxItemsOne": false
+                                    },
+                                    "sql_functions": {
+                                        "maxItemsOne": false
+                                    },
+                                    "sql_snippets": {
+                                        "fields": {
+                                            "expressions": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "synonyms": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "filters": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "synonyms": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "measures": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "synonyms": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "text_instructions": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_genie_agents": {
+                "current": "databricks:index/getGenieAgents:getGenieAgents",
+                "majorVersion": 1,
+                "fields": {
+                    "genie_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "definition": {
+                                    "fields": {
+                                        "benchmarks": {
+                                            "fields": {
+                                                "questions": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "answer": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "fields": {
+                                                "sample_questions": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "data_sources": {
+                                            "fields": {
+                                                "mcp_connections": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "tables": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "column_configs": {
+                                                                "maxItemsOne": false,
+                                                                "elem": {
+                                                                    "fields": {
+                                                                        "synonyms": {
+                                                                            "maxItemsOne": false
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "volumes": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "instructions": {
+                                            "fields": {
+                                                "example_question_sqls": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "parameters": {
+                                                                "maxItemsOne": false,
+                                                                "elem": {
+                                                                    "fields": {
+                                                                        "default_value": {
+                                                                            "fields": {
+                                                                                "values": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "join_specs": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "sql_functions": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "sql_snippets": {
+                                                    "fields": {
+                                                        "expressions": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "synonyms": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "filters": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "synonyms": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "measures": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "synonyms": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "text_instructions": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13312,6 +14007,11 @@
                     "kind": "missing"
                 }
             },
+            "databricks_genie_agent": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_knowledge_assistant": {},
             "databricks_knowledge_assistant_knowledge_source": {},
             "databricks_library": {
@@ -13619,6 +14319,7 @@
             "databricks:index/externalMetadata:ExternalMetadata": 1,
             "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature": 1,
             "databricks:index/file:File": 0,
+            "databricks:index/genieAgent:GenieAgent": 1,
             "databricks:index/gitCredential:GitCredential": 0,
             "databricks:index/globalInitScript:GlobalInitScript": 0,
             "databricks:index/grant:Grant": 0,
@@ -13829,6 +14530,8 @@
             "databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature": 1,
             "databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures": 1,
             "databricks:index/getFunctions:getFunctions": 1,
+            "databricks:index/getGenieAgent:getGenieAgent": 1,
+            "databricks:index/getGenieAgents:getGenieAgents": 1,
             "databricks:index/getGroup:getGroup": 0,
             "databricks:index/getInstancePool:getInstancePool": 0,
             "databricks:index/getInstanceProfiles:getInstanceProfiles": 0,
@@ -17017,6 +17720,9 @@
             "databricks_file": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_genie_agent": [
+                "provider_config.workspace_id"
+            ],
             "databricks_git_credential": [
                 "provider_config.$.workspace_id"
             ],
@@ -17062,7 +17768,9 @@
                 "task.$.for_each_task.$.task.$.new_cluster.$.provider_config.$.workspace_id",
                 "task.$.library.$.provider_config.$.workspace_id",
                 "task.$.new_cluster.$.library.$.provider_config.$.workspace_id",
-                "task.$.new_cluster.$.provider_config.$.workspace_id"
+                "task.$.new_cluster.$.provider_config.$.workspace_id",
+                "trigger.$.job_completion.$.jobs.$.workspace_id",
+                "triggers.$.job_completion.$.jobs.$.workspace_id"
             ],
             "databricks_knowledge_assistant": [
                 "provider_config.workspace_id"
@@ -17346,8 +18054,7 @@
                 "workspace_id"
             ],
             "databricks_account_iam_workspace_assignments_v2": [
-                "workspace_assignments.$.workspace_id",
-                "workspace_id"
+                "workspace_assignments.$.workspace_id"
             ],
             "databricks_agent_kit_managed_memory_entries": [
                 "managed_memory_entries.$.provider_config.workspace_id",
@@ -17562,6 +18269,13 @@
                 "provider_config.workspace_id"
             ],
             "databricks_functions": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_genie_agent": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_genie_agents": [
+                "genie_agents.$.provider_config.workspace_id",
                 "provider_config.workspace_id"
             ],
             "databricks_group": [

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single user by its internal ID, using a workspace-scoped provider.
+        /// Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
         /// 
         /// 
         /// ## Example Usage
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamUserV2.Invoke(new()
         ///     {
-        ///         UserId = "123456789",
+        ///         Name = "users/123456789",
         ///     });
         /// 
         /// });
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single user by its internal ID, using a workspace-scoped provider.
+        /// Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
         /// 
         /// 
         /// ## Example Usage
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamUserV2.Invoke(new()
         ///     {
-        ///         UserId = "123456789",
+        ///         Name = "users/123456789",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
-        /// Reads a single user by its internal ID, using a workspace-scoped provider.
+        /// Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
         /// 
         /// 
         /// ## Example Usage
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetWorkspaceIamUserV2.Invoke(new()
         ///     {
-        ///         UserId = "123456789",
+        ///         Name = "users/123456789",
         ///     });
         /// 
         /// });
@@ -115,16 +115,18 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamUserV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
         public Inputs.GetWorkspaceIamUserV2ProviderConfigArgs? ProviderConfig { get; set; }
-
-        /// <summary>
-        /// Internal userId of the user in Databricks
-        /// </summary>
-        [Input("userId", required: true)]
-        public string UserId { get; set; } = null!;
 
         public GetWorkspaceIamUserV2Args()
         {
@@ -135,16 +137,18 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamUserV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.GetWorkspaceIamUserV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
-
-        /// <summary>
-        /// Internal userId of the user in Databricks
-        /// </summary>
-        [Input("userId", required: true)]
-        public Input<string> UserId { get; set; } = null!;
 
         public GetWorkspaceIamUserV2InvokeArgs()
         {
@@ -172,6 +176,17 @@ namespace Pulumi.Databricks
         /// (UserFullName)
         /// </summary>
         public readonly Outputs.GetWorkspaceIamUserV2FullNameResult FullName;
+        /// <summary>
+        /// (string) - The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string Parent;
         public readonly Outputs.GetWorkspaceIamUserV2ProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - Internal userId of the user in Databricks
@@ -192,6 +207,10 @@ namespace Pulumi.Databricks
 
             Outputs.GetWorkspaceIamUserV2FullNameResult fullName,
 
+            string name,
+
+            string parent,
+
             Outputs.GetWorkspaceIamUserV2ProviderConfigResult? providerConfig,
 
             string userId,
@@ -202,6 +221,8 @@ namespace Pulumi.Databricks
             AccountUserStatus = accountUserStatus;
             ExternalId = externalId;
             FullName = fullName;
+            Name = name;
+            Parent = parent;
             ProviderConfig = providerConfig;
             UserId = userId;
             Username = username;

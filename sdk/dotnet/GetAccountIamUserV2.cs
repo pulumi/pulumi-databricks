@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account user by its internal ID.
+        /// Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamUserV2.Invoke(new()
         ///     {
-        ///         UserId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/users/123456789",
         ///     });
         /// 
         /// });
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account user by its internal ID.
+        /// Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamUserV2.Invoke(new()
         ///     {
-        ///         UserId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/users/123456789",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
-        /// Reads a single account user by its internal ID.
+        /// Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
         /// 
         /// 
         /// ## Example Usage
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAccountIamUserV2.Invoke(new()
         ///     {
-        ///         UserId = "123456789",
+        ///         Name = "accounts/00000000-0000-0000-0000-000000000000/users/123456789",
         ///     });
         /// 
         /// });
@@ -115,10 +115,12 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamUserV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Internal userId of the user in Databricks
+        /// The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
         /// </summary>
-        [Input("userId", required: true)]
-        public string UserId { get; set; } = null!;
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         public GetAccountIamUserV2Args()
         {
@@ -129,10 +131,12 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamUserV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Internal userId of the user in Databricks
+        /// The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
         /// </summary>
-        [Input("userId", required: true)]
-        public Input<string> UserId { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GetAccountIamUserV2InvokeArgs()
         {
@@ -161,6 +165,17 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountIamUserV2FullNameResult FullName;
         /// <summary>
+        /// (string) - The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string Parent;
+        /// <summary>
         /// (string) - Internal userId of the user in Databricks
         /// </summary>
         public readonly string UserId;
@@ -179,6 +194,10 @@ namespace Pulumi.Databricks
 
             Outputs.GetAccountIamUserV2FullNameResult fullName,
 
+            string name,
+
+            string parent,
+
             string userId,
 
             string username)
@@ -187,6 +206,8 @@ namespace Pulumi.Databricks
             AccountUserStatus = accountUserStatus;
             ExternalId = externalId;
             FullName = fullName;
+            Name = name;
+            Parent = parent;
             UserId = userId;
             Username = username;
         }

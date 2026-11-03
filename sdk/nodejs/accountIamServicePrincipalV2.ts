@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.AccountIamServicePrincipalV2("this", {
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
  *     displayName: "ci-runner",
  *     accountSpStatus: "ACTIVE",
  * });
@@ -79,6 +80,17 @@ export class AccountIamServicePrincipalV2 extends pulumi.CustomResource {
      */
     declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    declare public readonly parent: pulumi.Output<string>;
+    /**
      * (string) - Internal service principal ID of the service principal in Databricks
      */
     declare public /*out*/ readonly servicePrincipalId: pulumi.Output<string>;
@@ -101,6 +113,8 @@ export class AccountIamServicePrincipalV2 extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
         } else {
             const args = argsOrState as AccountIamServicePrincipalV2Args | undefined;
@@ -110,11 +124,16 @@ export class AccountIamServicePrincipalV2 extends pulumi.CustomResource {
             if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            if (args?.parent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             resourceInputs["accountSpStatus"] = args?.accountSpStatus;
             resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -148,6 +167,17 @@ export interface AccountIamServicePrincipalV2State {
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
+    /**
      * (string) - Internal service principal ID of the service principal in Databricks
      */
     servicePrincipalId?: pulumi.Input<string | undefined>;
@@ -174,4 +204,9 @@ export interface AccountIamServicePrincipalV2Args {
      * ExternalId of the service principal in the customer's IdP
      */
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    parent: pulumi.Input<string>;
 }

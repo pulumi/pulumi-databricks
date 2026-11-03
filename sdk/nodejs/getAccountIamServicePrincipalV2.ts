@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single account service principal by its internal ID.
+ * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
  *
  * ## Example Usage
  *
@@ -22,14 +22,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamServicePrincipalV2({
- *     servicePrincipalId: "123456789",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789",
  * });
  * ```
  */
 export function getAccountIamServicePrincipalV2(args: GetAccountIamServicePrincipalV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamServicePrincipalV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", {
-        "servicePrincipalId": args.servicePrincipalId,
+        "name": args.name,
     }, opts);
 }
 
@@ -38,9 +38,11 @@ export function getAccountIamServicePrincipalV2(args: GetAccountIamServicePrinci
  */
 export interface GetAccountIamServicePrincipalV2Args {
     /**
-     * Internal service principal ID of the service principal in Databricks
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
      */
-    servicePrincipalId: string;
+    name: string;
 }
 
 /**
@@ -69,6 +71,17 @@ export interface GetAccountIamServicePrincipalV2Result {
      */
     readonly externalId: string;
     /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
+    /**
      * (string) - Internal service principal ID of the service principal in Databricks
      */
     readonly servicePrincipalId: string;
@@ -78,7 +91,7 @@ export interface GetAccountIamServicePrincipalV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
- * Reads a single account service principal by its internal ID.
+ * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
  *
  * ## Example Usage
  *
@@ -91,14 +104,14 @@ export interface GetAccountIamServicePrincipalV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getAccountIamServicePrincipalV2({
- *     servicePrincipalId: "123456789",
+ *     name: "accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789",
  * });
  * ```
  */
 export function getAccountIamServicePrincipalV2Output(args: GetAccountIamServicePrincipalV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamServicePrincipalV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", {
-        "servicePrincipalId": args.servicePrincipalId,
+        "name": args.name,
     }, opts);
 }
 
@@ -107,7 +120,9 @@ export function getAccountIamServicePrincipalV2Output(args: GetAccountIamService
  */
 export interface GetAccountIamServicePrincipalV2OutputArgs {
     /**
-     * Internal service principal ID of the service principal in Databricks
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
      */
-    servicePrincipalId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

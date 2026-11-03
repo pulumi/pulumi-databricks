@@ -15,7 +15,7 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
-// Reads a single account user by its internal ID.
+// Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetAccountIamUserV2(ctx, &databricks.LookupAccountIamUserV2Args{
-//				UserId: "123456789",
+//				Name: "accounts/00000000-0000-0000-0000-000000000000/users/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,8 +58,10 @@ func LookupAccountIamUserV2(ctx *pulumi.Context, args *LookupAccountIamUserV2Arg
 
 // A collection of arguments for invoking getAccountIamUserV2.
 type LookupAccountIamUserV2Args struct {
-	// Internal userId of the user in Databricks
-	UserId string `pulumi:"userId"`
+	// The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamUserV2.
@@ -72,6 +74,13 @@ type LookupAccountIamUserV2Result struct {
 	ExternalId string `pulumi:"externalId"`
 	// (UserFullName)
 	FullName GetAccountIamUserV2FullName `pulumi:"fullName"`
+	// (string) - The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name string `pulumi:"name"`
+	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+	// account-scoped and workspace-scoped APIs return it
+	Parent string `pulumi:"parent"`
 	// (string) - Internal userId of the user in Databricks
 	UserId string `pulumi:"userId"`
 	// (string) - Username/email of the user
@@ -85,8 +94,10 @@ func LookupAccountIamUserV2Output(ctx *pulumi.Context, args LookupAccountIamUser
 
 // A collection of arguments for invoking getAccountIamUserV2.
 type LookupAccountIamUserV2OutputArgs struct {
-	// Internal userId of the user in Databricks
-	UserId pulumi.StringInput `pulumi:"userId"`
+	// The resource name of the user. The format depends on the API that returned it:
+	// - Account-scoped: accounts/{account_id}/users/{user_id}
+	// - Workspace-scoped: users/{user_id}
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountIamUserV2OutputArgs) ElementType() reflect.Type {
@@ -126,6 +137,19 @@ func (o LookupAccountIamUserV2ResultOutput) ExternalId() pulumi.StringOutput {
 // (UserFullName)
 func (o LookupAccountIamUserV2ResultOutput) FullName() GetAccountIamUserV2FullNameOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) GetAccountIamUserV2FullName { return v.FullName }).(GetAccountIamUserV2FullNameOutput)
+}
+
+// (string) - The resource name of the user. The format depends on the API that returned it:
+// - Account-scoped: accounts/{account_id}/users/{user_id}
+// - Workspace-scoped: users/{user_id}
+func (o LookupAccountIamUserV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+// account-scoped and workspace-scoped APIs return it
+func (o LookupAccountIamUserV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 // (string) - Internal userId of the user in Databricks

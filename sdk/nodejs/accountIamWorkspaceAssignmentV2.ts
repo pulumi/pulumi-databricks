@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.AccountIamWorkspaceAssignmentV2("this", {
- *     workspaceId: "123456789",
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789",
  *     principalId: "987654321",
  *     entitlements: ["WORKSPACE_ACCESS"],
  * });
@@ -77,7 +77,21 @@ export class AccountIamWorkspaceAssignmentV2 extends pulumi.CustomResource {
      */
     declare public readonly entitlements: pulumi.Output<string[] | undefined>;
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     */
+    declare public readonly parent: pulumi.Output<string>;
+    /**
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      */
     declare public readonly principalId: pulumi.Output<string>;
     /**
@@ -105,19 +119,26 @@ export class AccountIamWorkspaceAssignmentV2 extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["effectiveEntitlements"] = state?.effectiveEntitlements;
             resourceInputs["entitlements"] = state?.entitlements;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["principalId"] = state?.principalId;
             resourceInputs["principalType"] = state?.principalType;
             resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as AccountIamWorkspaceAssignmentV2Args | undefined;
+            if (args?.parent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
             resourceInputs["entitlements"] = args?.entitlements;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["principalId"] = args?.principalId;
             resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["effectiveEntitlements"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["principalType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,7 +167,21 @@ export interface AccountIamWorkspaceAssignmentV2State {
      */
     entitlements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
+    /**
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      */
     principalId?: pulumi.Input<string | undefined>;
     /**
@@ -171,7 +206,15 @@ export interface AccountIamWorkspaceAssignmentV2Args {
      */
     entitlements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     */
+    parent: pulumi.Input<string>;
+    /**
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      */
     principalId: pulumi.Input<string>;
     /**

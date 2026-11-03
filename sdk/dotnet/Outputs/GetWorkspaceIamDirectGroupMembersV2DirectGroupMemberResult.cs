@@ -18,17 +18,28 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The external ID of the principal in Databricks
+        /// (string) - The external ID of the principal in the customer's IdP
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// Required. Internal ID of the group in Databricks whose direct members are being listed
+        /// (integer) - The internal ID of the group this member belongs to
         /// </summary>
         public readonly int GroupId;
         /// <summary>
         /// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         /// </summary>
         public readonly string MembershipSource;
+        /// <summary>
+        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The parent resource name of the group whose direct members to list.
+        /// Format: groups/{group_id}
+        /// </summary>
+        public readonly string Parent;
         /// <summary>
         /// (integer) - Internal ID of the principal in Databricks
         /// </summary>
@@ -52,6 +63,10 @@ namespace Pulumi.Databricks.Outputs
 
             string membershipSource,
 
+            string name,
+
+            string parent,
+
             int principalId,
 
             string principalType,
@@ -62,6 +77,8 @@ namespace Pulumi.Databricks.Outputs
             ExternalId = externalId;
             GroupId = groupId;
             MembershipSource = membershipSource;
+            Name = name;
+            Parent = parent;
             PrincipalId = principalId;
             PrincipalType = principalType;
             ProviderConfig = providerConfig;

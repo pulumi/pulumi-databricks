@@ -39,14 +39,37 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
     }
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+
+    /**
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     public Output<String> principalId() {
@@ -72,6 +95,7 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
 
     private AccountIamWorkspaceAssignmentV2Args(AccountIamWorkspaceAssignmentV2Args $) {
         this.entitlements = $.entitlements;
+        this.parent = $.parent;
         this.principalId = $.principalId;
         this.workspaceId = $.workspaceId;
     }
@@ -135,7 +159,34 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param parent The resource name of the workspace that contains the assignment,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+         * APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the workspace that contains the assignment,
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+         * APIs return it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
+        /**
+         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+         * created and cannot be changed afterwards; to assign a different principal, create a new
+         * assignment
          * 
          * @return builder
          * 
@@ -146,7 +197,9 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+         * created and cannot be changed afterwards; to assign a different principal, create a new
+         * assignment
          * 
          * @return builder
          * 
@@ -177,6 +230,9 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         public AccountIamWorkspaceAssignmentV2Args build() {
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AccountIamWorkspaceAssignmentV2Args", "parent");
+            }
             if ($.principalId == null) {
                 throw new MissingRequiredPropertyException("AccountIamWorkspaceAssignmentV2Args", "principalId");
             }

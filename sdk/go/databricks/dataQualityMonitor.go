@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 //
@@ -25,6 +25,8 @@ import (
 //   - **USE_CATALOG** on the table's parent catalog
 //   - **USE_SCHEMA** on the table's parent schema
 //   - be an owner of the table.
+//
+// For a `schema` monitor, `anomaly_detection_config.notification_settings` manages the schema's alert, the same alert shown under **Manage alerts** in the Data Quality Monitoring UI. Because the provider updates the whole `anomalyDetectionConfig`, a monitor without `notificationSettings` deletes an alert that was set up in the UI. To stop alerts, remove the `notificationSettings` block. Don't set it to an empty value: the API accepts it and deletes the alert, but the apply then fails because the API returns no `notificationSettings`.
 //
 // > **Note** This resource can only be used with a workspace-level provider!
 //
@@ -53,6 +55,45 @@ import (
 //				ObjectType:             pulumi.String("schema"),
 //				ObjectId:               this.SchemaId,
 //				AnomalyDetectionConfig: &databricks.DataQualityMonitorAnomalyDetectionConfigArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To alert workspace users or notification destinations when anomaly detection finds unhealthy tables in the schema, set `notificationSettings`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDataQualityMonitor(ctx, "with_alerts", &databricks.DataQualityMonitorArgs{
+//				ObjectType: pulumi.String("schema"),
+//				ObjectId:   pulumi.Any(this.SchemaId),
+//				AnomalyDetectionConfig: &databricks.DataQualityMonitorAnomalyDetectionConfigArgs{
+//					NotificationSettings: &databricks.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs{
+//						OnUnhealthyTable: &databricks.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs{
+//							DestinationUserIds: pulumi.IntArray{
+//								pulumi.Int("<user-id>"),
+//							},
+//							DestinationIds: pulumi.StringArray{
+//								pulumi.String("<notification-destination-id>"),
+//							},
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

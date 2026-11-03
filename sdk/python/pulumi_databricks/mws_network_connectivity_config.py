@@ -23,6 +23,7 @@ class MwsNetworkConnectivityConfigArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_workspace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  egress_config: pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,8 @@ class MwsNetworkConnectivityConfigArgs:
         pulumi.set(__self__, "region", region)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if billing_workspace_id is not None:
+            pulumi.set(__self__, "billing_workspace_id", billing_workspace_id)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if egress_config is not None:
@@ -72,6 +75,15 @@ class MwsNetworkConnectivityConfigArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="billingWorkspaceId")
+    def billing_workspace_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "billing_workspace_id")
+
+    @billing_workspace_id.setter
+    def billing_workspace_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "billing_workspace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
@@ -138,6 +150,7 @@ class MwsNetworkConnectivityConfigArgs:
 class _MwsNetworkConnectivityConfigState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_workspace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  egress_config: pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -156,6 +169,8 @@ class _MwsNetworkConnectivityConfigState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if billing_workspace_id is not None:
+            pulumi.set(__self__, "billing_workspace_id", billing_workspace_id)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if egress_config is not None:
@@ -177,6 +192,15 @@ class _MwsNetworkConnectivityConfigState:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="billingWorkspaceId")
+    def billing_workspace_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "billing_workspace_id")
+
+    @billing_workspace_id.setter
+    def billing_workspace_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "billing_workspace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
@@ -258,6 +282,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_workspace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -362,6 +387,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_workspace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -378,6 +404,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
             __props__ = MwsNetworkConnectivityConfigArgs.__new__(MwsNetworkConnectivityConfigArgs)
 
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["billing_workspace_id"] = billing_workspace_id
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["egress_config"] = egress_config
             __props__.__dict__["name"] = name
@@ -397,6 +424,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_workspace_id: pulumi.Input[Optional[_builtins.int]] = None,
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
             egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -422,6 +450,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         __props__ = _MwsNetworkConnectivityConfigState.__new__(_MwsNetworkConnectivityConfigState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["billing_workspace_id"] = billing_workspace_id
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["egress_config"] = egress_config
         __props__.__dict__["name"] = name
@@ -434,6 +463,11 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="billingWorkspaceId")
+    def billing_workspace_id(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "billing_workspace_id")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")

@@ -33,12 +33,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAccountIamGroupsV2.Invoke();
+        ///     var @this = Databricks.GetAccountIamGroupsV2.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountIamGroupsV2Result> InvokeAsync(GetAccountIamGroupsV2Args? args = null, InvokeOptions? options = null)
+        public static Task<GetAccountIamGroupsV2Result> InvokeAsync(GetAccountIamGroupsV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamGroupsV2Result>("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", args ?? new GetAccountIamGroupsV2Args(), options.WithDefaults());
 
         /// <summary>
@@ -63,12 +66,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAccountIamGroupsV2.Invoke();
+        ///     var @this = Databricks.GetAccountIamGroupsV2.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountIamGroupsV2Result> Invoke(GetAccountIamGroupsV2InvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetAccountIamGroupsV2Result> Invoke(GetAccountIamGroupsV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamGroupsV2Result>("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", args ?? new GetAccountIamGroupsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -93,7 +99,10 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAccountIamGroupsV2.Invoke();
+        ///     var @this = Databricks.GetAccountIamGroupsV2.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
         /// });
         /// ```
@@ -118,6 +127,13 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// The parent resource name of the account whose groups to list.
+        /// Format: accounts/{account_id}
+        /// </summary>
+        [Input("parent", required: true)]
+        public string Parent { get; set; } = null!;
+
         public GetAccountIamGroupsV2Args()
         {
         }
@@ -139,6 +155,13 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// The parent resource name of the account whose groups to list.
+        /// Format: accounts/{account_id}
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
         public GetAccountIamGroupsV2InvokeArgs()
         {
         }
@@ -152,6 +175,11 @@ namespace Pulumi.Databricks
         public readonly string? Filter;
         public readonly ImmutableArray<Outputs.GetAccountIamGroupsV2GroupResult> Groups;
         public readonly int? PageSize;
+        /// <summary>
+        /// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        public readonly string Parent;
 
         [OutputConstructor]
         private GetAccountIamGroupsV2Result(
@@ -159,11 +187,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetAccountIamGroupsV2GroupResult> groups,
 
-            int? pageSize)
+            int? pageSize,
+
+            string parent)
         {
             Filter = filter;
             Groups = groups;
             PageSize = pageSize;
+            Parent = parent;
         }
     }
 }

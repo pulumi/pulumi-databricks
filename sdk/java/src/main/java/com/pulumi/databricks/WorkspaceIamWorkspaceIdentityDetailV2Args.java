@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkspaceIamWorkspaceIdentityDetailV2Args Empty = new WorkspaceIamWorkspaceIdentityDetailV2Args();
+
+    /**
+     * The resource name of the parent
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the parent
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
 
     /**
      * Configure the provider for management through account provider.
@@ -49,6 +65,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.
     private WorkspaceIamWorkspaceIdentityDetailV2Args() {}
 
     private WorkspaceIamWorkspaceIdentityDetailV2Args(WorkspaceIamWorkspaceIdentityDetailV2Args $) {
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
         this.workspaceIdentityStatus = $.workspaceIdentityStatus;
     }
@@ -69,6 +86,27 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.
 
         public Builder(WorkspaceIamWorkspaceIdentityDetailV2Args defaults) {
             $ = new WorkspaceIamWorkspaceIdentityDetailV2Args(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**
@@ -114,6 +152,9 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.
         }
 
         public WorkspaceIamWorkspaceIdentityDetailV2Args build() {
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("WorkspaceIamWorkspaceIdentityDetailV2Args", "parent");
+            }
             return $;
         }
     }

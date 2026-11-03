@@ -4,9 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -16,6 +18,7 @@ public final class DataQualityMonitorAnomalyDetectionConfig {
      * 
      */
     private @Nullable List<String> excludedTableFullNames;
+    private @Nullable DataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings;
 
     private DataQualityMonitorAnomalyDetectionConfig() {}
     /**
@@ -24,6 +27,9 @@ public final class DataQualityMonitorAnomalyDetectionConfig {
      */
     public List<String> excludedTableFullNames() {
         return this.excludedTableFullNames == null ? List.of() : this.excludedTableFullNames;
+    }
+    public Optional<DataQualityMonitorAnomalyDetectionConfigNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
 
     public static Builder builder() {
@@ -36,10 +42,12 @@ public final class DataQualityMonitorAnomalyDetectionConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedTableFullNames;
+        private @Nullable DataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings;
         public Builder() {}
         public Builder(DataQualityMonitorAnomalyDetectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedTableFullNames = defaults.excludedTableFullNames;
+    	      this.notificationSettings = defaults.notificationSettings;
         }
 
         @CustomType.Setter
@@ -51,9 +59,16 @@ public final class DataQualityMonitorAnomalyDetectionConfig {
         public Builder excludedTableFullNames(String... excludedTableFullNames) {
             return excludedTableFullNames(List.of(excludedTableFullNames));
         }
+        @CustomType.Setter
+        public Builder notificationSettings(@Nullable DataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings) {
+
+            this.notificationSettings = notificationSettings;
+            return this;
+        }
         public DataQualityMonitorAnomalyDetectionConfig build() {
             final var _resultValue = new DataQualityMonitorAnomalyDetectionConfig();
             _resultValue.excludedTableFullNames = excludedTableFullNames;
+            _resultValue.notificationSettings = notificationSettings;
             return _resultValue;
         }
     }

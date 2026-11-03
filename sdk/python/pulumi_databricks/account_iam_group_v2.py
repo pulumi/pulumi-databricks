@@ -19,18 +19,35 @@ __all__ = ['AccountIamGroupV2Args', 'AccountIamGroupV2']
 @pulumi.input_type
 class AccountIamGroupV2Args:
     def __init__(__self__, *,
+                 parent: pulumi.Input[_builtins.str],
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountIamGroupV2 resource.
 
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
         """
+        pulumi.set(__self__, "parent", parent)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
@@ -63,7 +80,9 @@ class _AccountIamGroupV2State:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountIamGroupV2 resources.
 
@@ -71,6 +90,11 @@ class _AccountIamGroupV2State:
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -80,6 +104,10 @@ class _AccountIamGroupV2State:
             pulumi.set(__self__, "group_id", group_id)
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -129,6 +157,33 @@ class _AccountIamGroupV2State:
     def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
 
 @pulumi.type_token("databricks:index/accountIamGroupV2:AccountIamGroupV2")
 class AccountIamGroupV2(pulumi.CustomResource):
@@ -138,6 +193,7 @@ class AccountIamGroupV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -158,7 +214,9 @@ class AccountIamGroupV2(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.AccountIamGroupV2("this", group_name="data-engineers")
+        this = databricks.AccountIamGroupV2("this",
+            parent="accounts/00000000-0000-0000-0000-000000000000",
+            group_name="data-engineers")
         ```
 
 
@@ -166,12 +224,14 @@ class AccountIamGroupV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AccountIamGroupV2Args] = None,
+                 args: AccountIamGroupV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -192,7 +252,9 @@ class AccountIamGroupV2(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.AccountIamGroupV2("this", group_name="data-engineers")
+        this = databricks.AccountIamGroupV2("this",
+            parent="accounts/00000000-0000-0000-0000-000000000000",
+            group_name="data-engineers")
         ```
 
 
@@ -213,6 +275,7 @@ class AccountIamGroupV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -224,8 +287,12 @@ class AccountIamGroupV2(pulumi.CustomResource):
 
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["group_name"] = group_name
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["account_id"] = None
             __props__.__dict__["group_id"] = None
+            __props__.__dict__["name"] = None
         super(AccountIamGroupV2, __self__).__init__(
             'databricks:index/accountIamGroupV2:AccountIamGroupV2',
             resource_name,
@@ -239,7 +306,9 @@ class AccountIamGroupV2(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamGroupV2':
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamGroupV2':
         """
         Get an existing AccountIamGroupV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -251,6 +320,11 @@ class AccountIamGroupV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group. The format depends on the API that returned it:
+               - Account-scoped: accounts/{account_id}/groups/{group_id}
+               - Workspace-scoped: groups/{group_id}
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+               account-scoped and workspace-scoped APIs return it
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -260,6 +334,8 @@ class AccountIamGroupV2(pulumi.CustomResource):
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["group_name"] = group_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         return AccountIamGroupV2(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -293,4 +369,23 @@ class AccountIamGroupV2(pulumi.CustomResource):
         Display name of the group
         """
         return pulumi.get(self, "group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The resource name of the group. The format depends on the API that returned it:
+        - Account-scoped: accounts/{account_id}/groups/{group_id}
+        - Workspace-scoped: groups/{group_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
 

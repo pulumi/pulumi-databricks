@@ -198,7 +198,8 @@ class _AgentKitManagedMemoryEntryState:
         :param pulumi.Input[_builtins.str] description: Human-readable description of the memory entry
         :param pulumi.Input[_builtins.str] managed_memory_entry_id: Optional caller-selected memory entry ID. The service generates an ID when omitted
         :param pulumi.Input[_builtins.str] name: (string) - Resource name in the form
-               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+               Required for updates; assigned by the service on creation
         :param pulumi.Input[_builtins.str] parent: Memory store that will contain the entry, in the form
                `memory-stores/{managed_memory_store_id}`
         :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and optional session.
@@ -299,7 +300,8 @@ class _AgentKitManagedMemoryEntryState:
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Resource name in the form
-        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+        Required for updates; assigned by the service on creation
         """
         return pulumi.get(self, "name")
 
@@ -518,7 +520,8 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Human-readable description of the memory entry
         :param pulumi.Input[_builtins.str] managed_memory_entry_id: Optional caller-selected memory entry ID. The service generates an ID when omitted
         :param pulumi.Input[_builtins.str] name: (string) - Resource name in the form
-               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+               `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+               Required for updates; assigned by the service on creation
         :param pulumi.Input[_builtins.str] parent: Memory store that will contain the entry, in the form
                `memory-stores/{managed_memory_store_id}`
         :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and optional session.
@@ -592,7 +595,8 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         (string) - Resource name in the form
-        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+        `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+        Required for updates; assigned by the service on creation
         """
         return pulumi.get(self, "name")
 

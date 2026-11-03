@@ -19,14 +19,20 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs();
 
     /**
-     * The accuracy parameter (higher is more accurate but slower)
+     * The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+     * that value
      * 
      */
     @Import(name="accuracy")
     private @Nullable Output<Integer> accuracy;
 
     /**
-     * @return The accuracy parameter (higher is more accurate but slower)
+     * @return The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+     * that value
      * 
      */
     public Optional<Output<Integer>> accuracy() {
@@ -55,12 +61,20 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
         return this.percentile;
     }
 
+    @Import(name="relativeError")
+    private @Nullable Output<Double> relativeError;
+
+    public Optional<Output<Double>> relativeError() {
+        return Optional.ofNullable(this.relativeError);
+    }
+
     private FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs() {}
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs(FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs $) {
         this.accuracy = $.accuracy;
         this.input = $.input;
         this.percentile = $.percentile;
+        this.relativeError = $.relativeError;
     }
 
     public static Builder builder() {
@@ -82,7 +96,10 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
         }
 
         /**
-         * @param accuracy The accuracy parameter (higher is more accurate but slower)
+         * @param accuracy The accuracy parameter (higher is more accurate but slower).
+         * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+         * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+         * that value
          * 
          * @return builder
          * 
@@ -93,7 +110,10 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
         }
 
         /**
-         * @param accuracy The accuracy parameter (higher is more accurate but slower)
+         * @param accuracy The accuracy parameter (higher is more accurate but slower).
+         * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+         * relative_error) here for clients that don&#39;t have relative_error, and a request may only send
+         * that value
          * 
          * @return builder
          * 
@@ -130,6 +150,15 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxPer
          */
         public Builder percentile(Double percentile) {
             return percentile(Output.of(percentile));
+        }
+
+        public Builder relativeError(@Nullable Output<Double> relativeError) {
+            $.relativeError = relativeError;
+            return this;
+        }
+
+        public Builder relativeError(Double relativeError) {
+            return relativeError(Output.of(relativeError));
         }
 
         public FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs build() {

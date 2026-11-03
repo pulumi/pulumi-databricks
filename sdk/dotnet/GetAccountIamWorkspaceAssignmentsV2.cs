@@ -53,10 +53,11 @@ namespace Pulumi.Databricks
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Required. The workspace ID for which the workspace assignments are being fetched
+        /// The parent resource name of the workspace whose assignments to list.
+        /// Format: accounts/{account_id}/workspaces/{workspace_id}
         /// </summary>
-        [Input("workspaceId", required: true)]
-        public string WorkspaceId { get; set; } = null!;
+        [Input("parent", required: true)]
+        public string Parent { get; set; } = null!;
 
         public GetAccountIamWorkspaceAssignmentsV2Args()
         {
@@ -74,10 +75,11 @@ namespace Pulumi.Databricks
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Required. The workspace ID for which the workspace assignments are being fetched
+        /// The parent resource name of the workspace whose assignments to list.
+        /// Format: accounts/{account_id}/workspaces/{workspace_id}
         /// </summary>
-        [Input("workspaceId", required: true)]
-        public Input<string> WorkspaceId { get; set; } = null!;
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
 
         public GetAccountIamWorkspaceAssignmentsV2InvokeArgs()
         {
@@ -90,23 +92,25 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamWorkspaceAssignmentsV2Result
     {
         public readonly int? PageSize;
-        public readonly ImmutableArray<Outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> WorkspaceAssignments;
         /// <summary>
-        /// (integer) - The workspace ID where the principal is assigned
+        /// (string) - The resource name of the workspace that contains the assignment,
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+        /// APIs return it
         /// </summary>
-        public readonly string WorkspaceId;
+        public readonly string Parent;
+        public readonly ImmutableArray<Outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> WorkspaceAssignments;
 
         [OutputConstructor]
         private GetAccountIamWorkspaceAssignmentsV2Result(
             int? pageSize,
 
-            ImmutableArray<Outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> workspaceAssignments,
+            string parent,
 
-            string workspaceId)
+            ImmutableArray<Outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> workspaceAssignments)
         {
             PageSize = pageSize;
+            Parent = parent;
             WorkspaceAssignments = workspaceAssignments;
-            WorkspaceId = workspaceId;
         }
     }
 }

@@ -11,12 +11,25 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+ * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+ *
+ * ## Example Usage
+ *
+ * Example usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getWorkspaceIamWorkspaceIdentityDetailV2({
+ *     name: "principals/987654321/workspace-identity-detail",
+ * });
+ * ```
  */
 export function getWorkspaceIamWorkspaceIdentityDetailV2(args: GetWorkspaceIamWorkspaceIdentityDetailV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceIamWorkspaceIdentityDetailV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", {
-        "principalId": args.principalId,
+        "name": args.name,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -26,9 +39,10 @@ export function getWorkspaceIamWorkspaceIdentityDetailV2(args: GetWorkspaceIamWo
  */
 export interface GetWorkspaceIamWorkspaceIdentityDetailV2Args {
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
      */
-    principalId: string;
+    name: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -43,6 +57,11 @@ export interface GetWorkspaceIamWorkspaceIdentityDetailV2Result {
      * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
      */
     readonly assignmentType: string;
+    /**
+     * (string) - The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
+     */
+    readonly name: string;
     /**
      * (integer) - The internal ID of the principal (user/sp/group) in Databricks
      */
@@ -62,12 +81,25 @@ export interface GetWorkspaceIamWorkspaceIdentityDetailV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+ * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+ *
+ * ## Example Usage
+ *
+ * Example usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getWorkspaceIamWorkspaceIdentityDetailV2({
+ *     name: "principals/987654321/workspace-identity-detail",
+ * });
+ * ```
  */
 export function getWorkspaceIamWorkspaceIdentityDetailV2Output(args: GetWorkspaceIamWorkspaceIdentityDetailV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", {
-        "principalId": args.principalId,
+        "name": args.name,
         "providerConfig": args.providerConfig,
     }, opts);
 }
@@ -77,9 +109,10 @@ export function getWorkspaceIamWorkspaceIdentityDetailV2Output(args: GetWorkspac
  */
 export interface GetWorkspaceIamWorkspaceIdentityDetailV2OutputArgs {
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The resource name of the workspace identity detail.
+     * Format: principals/{principal_id}/workspace-identity-detail
      */
-    principalId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider.
      */

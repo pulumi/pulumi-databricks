@@ -33,8 +33,8 @@ public final class FeatureEngineeringFeatureSourceSdpSourceArgs extends com.pulu
     /**
      * The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-     * these tables, and the run fails if it doesn&#39;t. At most 100 tables
+     * when the feature is created. Feature Store doesn&#39;t confirm that the pipeline reads from these
+     * tables. At most 100 tables
      * 
      */
     @Import(name="inputTables")
@@ -43,8 +43,8 @@ public final class FeatureEngineeringFeatureSourceSdpSourceArgs extends com.pulu
     /**
      * @return The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-     * these tables, and the run fails if it doesn&#39;t. At most 100 tables
+     * when the feature is created. Feature Store doesn&#39;t confirm that the pipeline reads from these
+     * tables. At most 100 tables
      * 
      */
     public Optional<Output<List<String>>> inputTables() {
@@ -166,8 +166,8 @@ public final class FeatureEngineeringFeatureSourceSdpSourceArgs extends com.pulu
         /**
          * @param inputTables The full three-part names of the tables the pipeline reads from. Required to materialize this
          * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-         * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-         * these tables, and the run fails if it doesn&#39;t. At most 100 tables
+         * when the feature is created. Feature Store doesn&#39;t confirm that the pipeline reads from these
+         * tables. At most 100 tables
          * 
          * @return builder
          * 
@@ -180,8 +180,8 @@ public final class FeatureEngineeringFeatureSourceSdpSourceArgs extends com.pulu
         /**
          * @param inputTables The full three-part names of the tables the pipeline reads from. Required to materialize this
          * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-         * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-         * these tables, and the run fails if it doesn&#39;t. At most 100 tables
+         * when the feature is created. Feature Store doesn&#39;t confirm that the pipeline reads from these
+         * tables. At most 100 tables
          * 
          * @return builder
          * 
@@ -193,8 +193,8 @@ public final class FeatureEngineeringFeatureSourceSdpSourceArgs extends com.pulu
         /**
          * @param inputTables The full three-part names of the tables the pipeline reads from. Required to materialize this
          * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-         * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-         * these tables, and the run fails if it doesn&#39;t. At most 100 tables
+         * when the feature is created. Feature Store doesn&#39;t confirm that the pipeline reads from these
+         * tables. At most 100 tables
          * 
          * @return builder
          * 

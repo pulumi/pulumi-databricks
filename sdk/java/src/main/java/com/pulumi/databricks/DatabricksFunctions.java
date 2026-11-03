@@ -194,6 +194,10 @@ import com.pulumi.databricks.inputs.GetFeatureEngineeringFeaturesArgs;
 import com.pulumi.databricks.inputs.GetFeatureEngineeringFeaturesPlainArgs;
 import com.pulumi.databricks.inputs.GetFunctionsArgs;
 import com.pulumi.databricks.inputs.GetFunctionsPlainArgs;
+import com.pulumi.databricks.inputs.GetGenieAgentArgs;
+import com.pulumi.databricks.inputs.GetGenieAgentPlainArgs;
+import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+import com.pulumi.databricks.inputs.GetGenieAgentsPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
 import com.pulumi.databricks.inputs.GetGroupPlainArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolArgs;
@@ -503,6 +507,8 @@ import com.pulumi.databricks.outputs.GetExternalMetadatasResult;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureResult;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesResult;
 import com.pulumi.databricks.outputs.GetFunctionsResult;
+import com.pulumi.databricks.outputs.GetGenieAgentResult;
+import com.pulumi.databricks.outputs.GetGenieAgentsResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetInstanceProfilesResult;
@@ -1211,7 +1217,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * Reads a single direct group membership in an account by its resource name, `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -1242,8 +1248,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -1260,7 +1265,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * Reads a single direct group membership in an account by its resource name, `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -1291,8 +1296,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -1309,7 +1313,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * Reads a single direct group membership in an account by its resource name, `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -1340,8 +1344,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -1358,7 +1361,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * Reads a single direct group membership in an account by its resource name, `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -1389,8 +1392,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -1407,7 +1409,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * Reads a single direct group membership in an account by its resource name, `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -1438,8 +1440,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -1487,7 +1488,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -1535,7 +1536,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -1583,7 +1584,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -1631,7 +1632,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -1679,7 +1680,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -2476,7 +2477,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account group by its internal ID.
+     * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
      * 
      * ## Example Usage
      * 
@@ -2507,7 +2508,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -2524,7 +2525,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account group by its internal ID.
+     * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
      * 
      * ## Example Usage
      * 
@@ -2555,7 +2556,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -2572,7 +2573,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account group by its internal ID.
+     * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
      * 
      * ## Example Usage
      * 
@@ -2603,7 +2604,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -2620,7 +2621,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account group by its internal ID.
+     * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
      * 
      * ## Example Usage
      * 
@@ -2651,7 +2652,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -2668,7 +2669,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account group by its internal ID.
+     * Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
      * 
      * ## Example Usage
      * 
@@ -2699,7 +2700,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/groups/123456789")
      *             .build());
      * 
      *     }
@@ -2747,100 +2748,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetAccountIamGroupsV2Result> getAccountIamGroupsV2() {
-        return getAccountIamGroupsV2(GetAccountIamGroupsV2Args.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
-     * 
-     * Lists the groups in an account.
-     * 
-     * ## Example Usage
-     * 
-     * Example usage:
-     * 
-     * List all account groups.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetAccountIamGroupsV2Result> getAccountIamGroupsV2Plain() {
-        return getAccountIamGroupsV2Plain(GetAccountIamGroupsV2PlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
-     * 
-     * Lists the groups in an account.
-     * 
-     * ## Example Usage
-     * 
-     * Example usage:
-     * 
-     * List all account groups.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -2888,6 +2796,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -2935,6 +2844,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -2982,6 +2892,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3029,6 +2940,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3045,7 +2957,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account service principal by its internal ID.
+     * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -3076,7 +2988,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -3093,7 +3005,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account service principal by its internal ID.
+     * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -3124,7 +3036,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -3141,7 +3053,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account service principal by its internal ID.
+     * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -3172,7 +3084,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -3189,7 +3101,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account service principal by its internal ID.
+     * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -3220,7 +3132,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -3237,7 +3149,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account service principal by its internal ID.
+     * Reads a single account service principal by its resource name, `accounts/{account_id}/service-principals/{service_principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -3268,7 +3180,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -3316,100 +3228,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2() {
-        return getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
-     * 
-     * Lists the service principals in an account.
-     * 
-     * ## Example Usage
-     * 
-     * Example usage:
-     * 
-     * List all account service principals.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2Plain() {
-        return getAccountIamServicePrincipalsV2Plain(GetAccountIamServicePrincipalsV2PlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
-     * 
-     * Lists the service principals in an account.
-     * 
-     * ## Example Usage
-     * 
-     * Example usage:
-     * 
-     * List all account service principals.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3457,6 +3276,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3504,6 +3324,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3551,6 +3372,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3598,6 +3420,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -3614,7 +3437,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account user by its internal ID.
+     * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
      * 
      * ## Example Usage
      * 
@@ -3645,7 +3468,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/users/123456789")
      *             .build());
      * 
      *     }
@@ -3662,7 +3485,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account user by its internal ID.
+     * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
      * 
      * ## Example Usage
      * 
@@ -3693,7 +3516,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/users/123456789")
      *             .build());
      * 
      *     }
@@ -3710,7 +3533,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account user by its internal ID.
+     * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
      * 
      * ## Example Usage
      * 
@@ -3741,7 +3564,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/users/123456789")
      *             .build());
      * 
      *     }
@@ -3758,7 +3581,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account user by its internal ID.
+     * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
      * 
      * ## Example Usage
      * 
@@ -3789,7 +3612,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/users/123456789")
      *             .build());
      * 
      *     }
@@ -3806,7 +3629,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single account user by its internal ID.
+     * Reads a single account user by its resource name, `accounts/{account_id}/users/{user_id}`.
      * 
      * ## Example Usage
      * 
@@ -3837,7 +3660,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/users/123456789")
      *             .build());
      * 
      *     }
@@ -3885,100 +3708,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetAccountIamUsersV2Result> getAccountIamUsersV2() {
-        return getAccountIamUsersV2(GetAccountIamUsersV2Args.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
-     * 
-     * Lists the users in an account.
-     * 
-     * ## Example Usage
-     * 
-     * Example usage:
-     * 
-     * List all account users.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetAccountIamUsersV2Result> getAccountIamUsersV2Plain() {
-        return getAccountIamUsersV2Plain(GetAccountIamUsersV2PlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
-     * 
-     * Lists the users in an account.
-     * 
-     * ## Example Usage
-     * 
-     * Example usage:
-     * 
-     * List all account users.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -4026,6 +3756,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -4073,6 +3804,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -4120,6 +3852,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -4167,6 +3900,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .parent("accounts/00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
@@ -4183,7 +3917,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -4214,8 +3948,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
-     *             .workspaceId("123456789")
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -4232,7 +3965,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -4263,8 +3996,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
-     *             .workspaceId("123456789")
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -4281,7 +4013,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -4312,8 +4044,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
-     *             .workspaceId("123456789")
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -4330,7 +4061,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -4361,8 +4092,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
-     *             .workspaceId("123456789")
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -4379,7 +4109,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
-     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -4410,8 +4140,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
-     *             .workspaceId("123456789")
-     *             .principalId("987654321")
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/workspaces/123456789/workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -9217,108 +8946,559 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to get a single app space.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an app space by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAppSpace(GetAppSpaceArgs.builder()
+     *             .name("my-space")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args) {
         return getAppSpace(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to get a single app space.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an app space by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAppSpace(GetAppSpaceArgs.builder()
+     *             .name("my-space")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAppSpaceResult> getAppSpacePlain(GetAppSpacePlainArgs args) {
         return getAppSpacePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to get a single app space.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an app space by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAppSpace(GetAppSpaceArgs.builder()
+     *             .name("my-space")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to get a single app space.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an app space by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAppSpace(GetAppSpaceArgs.builder()
+     *             .name("my-space")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to get a single app space.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an app space by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAppSpace(GetAppSpaceArgs.builder()
+     *             .name("my-space")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAppSpaceResult> getAppSpacePlain(GetAppSpacePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces() {
         return getAppSpaces(GetAppSpacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain() {
         return getAppSpacesPlain(GetAppSpacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args) {
         return getAppSpaces(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain(GetAppSpacesPlainArgs args) {
         return getAppSpacesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAppSpaces:getAppSpaces", TypeShape.of(GetAppSpacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAppSpaces:getAppSpaces", TypeShape.of(GetAppSpacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
+     * This data source can be used to fetch the list of app spaces within the workspace.
+     * The list can then be accessed via the data object&#39;s `spaces` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all app spaces:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppSpaces(GetAppSpacesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allAppSpaces", all.spaces());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain(GetAppSpacesPlainArgs args, InvokeOptions options) {
@@ -16497,7 +16677,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16559,7 +16739,7 @@ public final class DatabricksFunctions {
         return getDataQualityMonitor(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16621,7 +16801,7 @@ public final class DatabricksFunctions {
         return getDataQualityMonitorPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16683,7 +16863,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitor:getDataQualityMonitor", TypeShape.of(GetDataQualityMonitorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16745,7 +16925,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitor:getDataQualityMonitor", TypeShape.of(GetDataQualityMonitorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16807,7 +16987,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityMonitor:getDataQualityMonitor", TypeShape.of(GetDataQualityMonitorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16862,7 +17042,7 @@ public final class DatabricksFunctions {
         return getDataQualityMonitors(GetDataQualityMonitorsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16917,7 +17097,7 @@ public final class DatabricksFunctions {
         return getDataQualityMonitorsPlain(GetDataQualityMonitorsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -16972,7 +17152,7 @@ public final class DatabricksFunctions {
         return getDataQualityMonitors(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17027,7 +17207,7 @@ public final class DatabricksFunctions {
         return getDataQualityMonitorsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17082,7 +17262,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitors:getDataQualityMonitors", TypeShape.of(GetDataQualityMonitorsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17137,7 +17317,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitors:getDataQualityMonitors", TypeShape.of(GetDataQualityMonitorsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17192,7 +17372,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityMonitors:getDataQualityMonitors", TypeShape.of(GetDataQualityMonitorsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17254,7 +17434,7 @@ public final class DatabricksFunctions {
         return getDataQualityRefresh(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17316,7 +17496,7 @@ public final class DatabricksFunctions {
         return getDataQualityRefreshPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17378,7 +17558,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityRefresh:getDataQualityRefresh", TypeShape.of(GetDataQualityRefreshResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17440,7 +17620,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityRefresh:getDataQualityRefresh", TypeShape.of(GetDataQualityRefreshResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17502,7 +17682,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityRefresh:getDataQualityRefresh", TypeShape.of(GetDataQualityRefreshResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17564,7 +17744,7 @@ public final class DatabricksFunctions {
         return getDataQualityRefreshes(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17626,7 +17806,7 @@ public final class DatabricksFunctions {
         return getDataQualityRefreshesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17688,7 +17868,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", TypeShape.of(GetDataQualityRefreshesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17750,7 +17930,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", TypeShape.of(GetDataQualityRefreshesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
@@ -17818,6 +17998,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Database Catalog.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Catalog by name:
@@ -17863,6 +18045,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Catalog.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
      * 
      * ## Example Usage
      * 
@@ -17910,6 +18094,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Database Catalog.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Catalog by name:
@@ -17956,6 +18142,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Database Catalog.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Catalog by name:
@@ -18001,6 +18189,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Catalog.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresCatalog` data source.
      * 
      * ## Example Usage
      * 
@@ -18093,6 +18283,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Database Instance.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Instance by name:
@@ -18138,6 +18330,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Instance.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
      * 
      * ## Example Usage
      * 
@@ -18185,6 +18379,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Database Instance.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Instance by name:
@@ -18231,6 +18427,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Database Instance.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Instance by name:
@@ -18276,6 +18474,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Instance.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresProject` data source.
      * 
      * ## Example Usage
      * 
@@ -18324,6 +18524,8 @@ public final class DatabricksFunctions {
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
+     * 
      * ## Example Usage
      * 
      * Getting a list of all Database Instances:
@@ -18370,6 +18572,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
+     * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
      * 
      * ## Example Usage
      * 
@@ -18418,6 +18622,8 @@ public final class DatabricksFunctions {
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
+     * 
      * ## Example Usage
      * 
      * Getting a list of all Database Instances:
@@ -18464,6 +18670,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
+     * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
      * 
      * ## Example Usage
      * 
@@ -18512,6 +18720,8 @@ public final class DatabricksFunctions {
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
+     * 
      * ## Example Usage
      * 
      * Getting a list of all Database Instances:
@@ -18558,6 +18768,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
+     * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
      * 
      * ## Example Usage
      * 
@@ -18606,6 +18818,8 @@ public final class DatabricksFunctions {
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
+     * For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
+     * 
      * ## Example Usage
      * 
      * Getting a list of all Database Instances:
@@ -18651,6 +18865,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Synced Database Table.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
      * 
      * ## Example Usage
      * 
@@ -18698,6 +18914,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Synced Database Table.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Instance by name:
@@ -18743,6 +18961,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Synced Database Table.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
      * 
      * ## Example Usage
      * 
@@ -18790,6 +19010,8 @@ public final class DatabricksFunctions {
      * 
      * This data source can be used to get a single Synced Database Table.
      * 
+     * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
+     * 
      * ## Example Usage
      * 
      * Referring to a Database Instance by name:
@@ -18835,6 +19057,8 @@ public final class DatabricksFunctions {
      * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Synced Database Table.
+     * 
+     * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
      * 
      * ## Example Usage
      * 
@@ -24611,6 +24835,527 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getFunctions:getFunctions", TypeShape.of(GetFunctionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
+     * 
+     * ## Example Usage
+     * 
+     * The following example looks up an existing Genie Agent by its resource name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getGenieAgent(GetGenieAgentArgs.builder()
+     *             .name("agents/1234567890abcdef")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentResult> getGenieAgent(GetGenieAgentArgs args) {
+        return getGenieAgent(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
+     * 
+     * ## Example Usage
+     * 
+     * The following example looks up an existing Genie Agent by its resource name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getGenieAgent(GetGenieAgentArgs.builder()
+     *             .name("agents/1234567890abcdef")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGenieAgentResult> getGenieAgentPlain(GetGenieAgentPlainArgs args) {
+        return getGenieAgentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
+     * 
+     * ## Example Usage
+     * 
+     * The following example looks up an existing Genie Agent by its resource name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getGenieAgent(GetGenieAgentArgs.builder()
+     *             .name("agents/1234567890abcdef")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentResult> getGenieAgent(GetGenieAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getGenieAgent:getGenieAgent", TypeShape.of(GetGenieAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
+     * 
+     * ## Example Usage
+     * 
+     * The following example looks up an existing Genie Agent by its resource name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getGenieAgent(GetGenieAgentArgs.builder()
+     *             .name("agents/1234567890abcdef")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentResult> getGenieAgent(GetGenieAgentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getGenieAgent:getGenieAgent", TypeShape.of(GetGenieAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
+     * 
+     * ## Example Usage
+     * 
+     * The following example looks up an existing Genie Agent by its resource name.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getGenieAgent(GetGenieAgentArgs.builder()
+     *             .name("agents/1234567890abcdef")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGenieAgentResult> getGenieAgentPlain(GetGenieAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getGenieAgent:getGenieAgent", TypeShape.of(GetGenieAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentsResult> getGenieAgents() {
+        return getGenieAgents(GetGenieAgentsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGenieAgentsResult> getGenieAgentsPlain() {
+        return getGenieAgentsPlain(GetGenieAgentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentsResult> getGenieAgents(GetGenieAgentsArgs args) {
+        return getGenieAgents(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGenieAgentsResult> getGenieAgentsPlain(GetGenieAgentsPlainArgs args) {
+        return getGenieAgentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentsResult> getGenieAgents(GetGenieAgentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getGenieAgents:getGenieAgents", TypeShape.of(GetGenieAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGenieAgentsResult> getGenieAgents(GetGenieAgentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getGenieAgents:getGenieAgents", TypeShape.of(GetGenieAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists all Genie Agents in the workspace.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGenieAgentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getGenieAgents(GetGenieAgentsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGenieAgentsResult> getGenieAgentsPlain(GetGenieAgentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getGenieAgents:getGenieAgents", TypeShape.of(GetGenieAgentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about databricks.Group members, entitlements and roles.
@@ -49468,7 +50213,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -49500,8 +50245,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -49518,7 +50262,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -49550,8 +50294,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -49568,7 +50311,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -49600,8 +50343,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -49618,7 +50360,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -49650,8 +50392,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -49668,7 +50409,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -49700,8 +50441,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
-     *             .groupId(123456789)
-     *             .principalId("987654321")
+     *             .name("groups/123456789/direct-members/987654321")
      *             .build());
      * 
      *     }
@@ -49749,7 +50489,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("groups/123456789")
      *             .build());
      * 
      *     }
@@ -49797,7 +50537,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("groups/123456789")
      *             .build());
      * 
      *     }
@@ -49845,7 +50585,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("groups/123456789")
      *             .build());
      * 
      *     }
@@ -49893,7 +50633,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("groups/123456789")
      *             .build());
      * 
      *     }
@@ -49941,7 +50681,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
-     *             .groupId(123456789)
+     *             .parent("groups/123456789")
      *             .build());
      * 
      *     }
@@ -50798,7 +51538,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -50829,7 +51569,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("groups/123456789")
      *             .build());
      * 
      *     }
@@ -50846,7 +51586,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -50877,7 +51617,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("groups/123456789")
      *             .build());
      * 
      *     }
@@ -50894,7 +51634,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -50925,7 +51665,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("groups/123456789")
      *             .build());
      * 
      *     }
@@ -50942,7 +51682,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -50973,7 +51713,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("groups/123456789")
      *             .build());
      * 
      *     }
@@ -50990,7 +51730,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51021,7 +51761,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
-     *             .groupId("123456789")
+     *             .name("groups/123456789")
      *             .build());
      * 
      *     }
@@ -51367,7 +52107,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51398,7 +52138,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -51415,7 +52155,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51446,7 +52186,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -51463,7 +52203,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51494,7 +52234,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -51511,7 +52251,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51542,7 +52282,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -51559,7 +52299,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51590,7 +52330,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
-     *             .servicePrincipalId("123456789")
+     *             .name("service-principals/123456789")
      *             .build());
      * 
      *     }
@@ -51936,7 +52676,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -51967,7 +52707,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("users/123456789")
      *             .build());
      * 
      *     }
@@ -51984,7 +52724,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -52015,7 +52755,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("users/123456789")
      *             .build());
      * 
      *     }
@@ -52032,7 +52772,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -52063,7 +52803,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("users/123456789")
      *             .build());
      * 
      *     }
@@ -52080,7 +52820,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -52111,7 +52851,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("users/123456789")
      *             .build());
      * 
      *     }
@@ -52128,7 +52868,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * Reads a single user by its resource name, `users/{user_id}`, using a workspace-scoped provider.
      * 
      * ## Example Usage
      * 
@@ -52159,7 +52899,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
-     *             .userId("123456789")
+     *             .name("users/123456789")
      *             .build());
      * 
      *     }
@@ -52505,7 +53245,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -52537,7 +53277,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
-     *             .principalId("987654321")
+     *             .name("workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -52554,7 +53294,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -52586,7 +53326,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
-     *             .principalId("987654321")
+     *             .name("workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -52603,7 +53343,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -52635,7 +53375,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
-     *             .principalId("987654321")
+     *             .name("workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -52652,7 +53392,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -52684,7 +53424,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
-     *             .principalId("987654321")
+     *             .name("workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -52701,7 +53441,7 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * Reads a single workspace assignment, scoped to the workspace, by its resource name, `workspace-assignments/{principal_id}`.
      * 
      * ## Example Usage
      * 
@@ -52733,7 +53473,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
-     *             .principalId("987654321")
+     *             .name("workspace-assignments/987654321")
      *             .build());
      * 
      *     }
@@ -52827,7 +53567,42 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args.builder()
+     *             .name("principals/987654321/workspace-identity-detail")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args args) {
@@ -52838,7 +53613,42 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args.builder()
+     *             .name("principals/987654321/workspace-identity-detail")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2Plain(GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs args) {
@@ -52849,7 +53659,42 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args.builder()
+     *             .name("principals/987654321/workspace-identity-detail")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args args, InvokeOptions options) {
@@ -52860,7 +53705,42 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args.builder()
+     *             .name("principals/987654321/workspace-identity-detail")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args args, InvokeOutputOptions options) {
@@ -52871,7 +53751,42 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
-     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args.builder()
+     *             .name("principals/987654321/workspace-identity-detail")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2Plain(GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs args, InvokeOptions options) {

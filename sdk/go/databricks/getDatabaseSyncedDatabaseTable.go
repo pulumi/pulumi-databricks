@@ -17,6 +17,8 @@ import (
 //
 // This data source can be used to get a single Synced Database Table.
 //
+// For new workloads, Databricks recommends the `PostgresSyncedTable` data source.
+//
 // ## Example Usage
 //
 // Referring to a Database Instance by name:

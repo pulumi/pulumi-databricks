@@ -447,9 +447,57 @@ class AppSpace(pulumi.CustomResource):
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
+        App Spaces group related Databricks Apps and share configuration across them. Resources, user API scopes, and the usage policy configured on a space are available to every app in the space.
+
+        ## Example Usage
+
+        ### Basic Example
+
+        This example creates an app space in the workspace with the specified name.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AppSpace("this",
+            name="my-space",
+            description="My app space for team applications.")
+        ```
+
+        ### Example with Resources
+
+        This example creates an app space that gives all of its apps access to a SQL warehouse and a secret.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        with_resources = databricks.AppSpace("with_resources",
+            name="analytics-space",
+            description="Shared resources for analytics apps",
+            resources=[
+                {
+                    "name": "warehouse",
+                    "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_USE",
+                    },
+                },
+                {
+                    "name": "api-key",
+                    "secret": {
+                        "scope": "my-scope",
+                        "key": "my-key",
+                        "permission": "READ",
+                    },
+                },
+            ],
+            user_api_scopes=["sql"])
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -472,9 +520,57 @@ class AppSpace(pulumi.CustomResource):
                  args: Optional[AppSpaceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
+        App Spaces group related Databricks Apps and share configuration across them. Resources, user API scopes, and the usage policy configured on a space are available to every app in the space.
+
+        ## Example Usage
+
+        ### Basic Example
+
+        This example creates an app space in the workspace with the specified name.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AppSpace("this",
+            name="my-space",
+            description="My app space for team applications.")
+        ```
+
+        ### Example with Resources
+
+        This example creates an app space that gives all of its apps access to a SQL warehouse and a secret.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        with_resources = databricks.AppSpace("with_resources",
+            name="analytics-space",
+            description="Shared resources for analytics apps",
+            resources=[
+                {
+                    "name": "warehouse",
+                    "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_USE",
+                    },
+                },
+                {
+                    "name": "api-key",
+                    "secret": {
+                        "scope": "my-scope",
+                        "key": "my-key",
+                        "permission": "READ",
+                    },
+                },
+            ],
+            user_api_scopes=["sql"])
+        ```
 
 
         :param str resource_name: The name of the resource.

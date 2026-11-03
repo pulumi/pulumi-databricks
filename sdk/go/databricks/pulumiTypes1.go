@@ -13,6 +13,554 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DisableLegacyAccessSettingDisableLegacyAccess struct {
+	// The boolean value for the setting.
+	Value bool `pulumi:"value"`
+}
+
+// DisableLegacyAccessSettingDisableLegacyAccessInput is an input type that accepts DisableLegacyAccessSettingDisableLegacyAccessArgs and DisableLegacyAccessSettingDisableLegacyAccessOutput values.
+// You can construct a concrete instance of `DisableLegacyAccessSettingDisableLegacyAccessInput` via:
+//
+//	DisableLegacyAccessSettingDisableLegacyAccessArgs{...}
+type DisableLegacyAccessSettingDisableLegacyAccessInput interface {
+	pulumi.Input
+
+	ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput
+	ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput
+}
+
+type DisableLegacyAccessSettingDisableLegacyAccessArgs struct {
+	// The boolean value for the setting.
+	Value pulumi.BoolInput `pulumi:"value"`
+}
+
+func (DisableLegacyAccessSettingDisableLegacyAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return i.ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessOutput)
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return i.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessOutput).ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyAccessSettingDisableLegacyAccessPtrInput is an input type that accepts DisableLegacyAccessSettingDisableLegacyAccessArgs, DisableLegacyAccessSettingDisableLegacyAccessPtr and DisableLegacyAccessSettingDisableLegacyAccessPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyAccessSettingDisableLegacyAccessPtrInput` via:
+//
+//	        DisableLegacyAccessSettingDisableLegacyAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyAccessSettingDisableLegacyAccessPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput
+	ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput
+}
+
+type disableLegacyAccessSettingDisableLegacyAccessPtrType DisableLegacyAccessSettingDisableLegacyAccessArgs
+
+func DisableLegacyAccessSettingDisableLegacyAccessPtr(v *DisableLegacyAccessSettingDisableLegacyAccessArgs) DisableLegacyAccessSettingDisableLegacyAccessPtrInput {
+	return (*disableLegacyAccessSettingDisableLegacyAccessPtrType)(v)
+}
+
+func (*disableLegacyAccessSettingDisableLegacyAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (i *disableLegacyAccessSettingDisableLegacyAccessPtrType) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return i.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyAccessSettingDisableLegacyAccessPtrType) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput)
+}
+
+type DisableLegacyAccessSettingDisableLegacyAccessOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyAccessSettingDisableLegacyAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyAccessSettingDisableLegacyAccess) *DisableLegacyAccessSettingDisableLegacyAccess {
+		return &v
+	}).(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisableLegacyAccessSettingDisableLegacyAccess) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+type DisableLegacyAccessSettingDisableLegacyAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Elem() DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSettingDisableLegacyAccess) DisableLegacyAccessSettingDisableLegacyAccess {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyAccessSettingDisableLegacyAccess
+		return ret
+	}).(DisableLegacyAccessSettingDisableLegacyAccessOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSettingDisableLegacyAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DisableLegacyAccessSettingProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// DisableLegacyAccessSettingProviderConfigInput is an input type that accepts DisableLegacyAccessSettingProviderConfigArgs and DisableLegacyAccessSettingProviderConfigOutput values.
+// You can construct a concrete instance of `DisableLegacyAccessSettingProviderConfigInput` via:
+//
+//	DisableLegacyAccessSettingProviderConfigArgs{...}
+type DisableLegacyAccessSettingProviderConfigInput interface {
+	pulumi.Input
+
+	ToDisableLegacyAccessSettingProviderConfigOutput() DisableLegacyAccessSettingProviderConfigOutput
+	ToDisableLegacyAccessSettingProviderConfigOutputWithContext(context.Context) DisableLegacyAccessSettingProviderConfigOutput
+}
+
+type DisableLegacyAccessSettingProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (DisableLegacyAccessSettingProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
+}
+
+func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigOutput() DisableLegacyAccessSettingProviderConfigOutput {
+	return i.ToDisableLegacyAccessSettingProviderConfigOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingProviderConfigOutput)
+}
+
+func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return i.ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingProviderConfigOutput).ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyAccessSettingProviderConfigPtrInput is an input type that accepts DisableLegacyAccessSettingProviderConfigArgs, DisableLegacyAccessSettingProviderConfigPtr and DisableLegacyAccessSettingProviderConfigPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyAccessSettingProviderConfigPtrInput` via:
+//
+//	        DisableLegacyAccessSettingProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyAccessSettingProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput
+	ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput
+}
+
+type disableLegacyAccessSettingProviderConfigPtrType DisableLegacyAccessSettingProviderConfigArgs
+
+func DisableLegacyAccessSettingProviderConfigPtr(v *DisableLegacyAccessSettingProviderConfigArgs) DisableLegacyAccessSettingProviderConfigPtrInput {
+	return (*disableLegacyAccessSettingProviderConfigPtrType)(v)
+}
+
+func (*disableLegacyAccessSettingProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
+}
+
+func (i *disableLegacyAccessSettingProviderConfigPtrType) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return i.ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyAccessSettingProviderConfigPtrType) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingProviderConfigPtrOutput)
+}
+
+type DisableLegacyAccessSettingProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyAccessSettingProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
+}
+
+func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigOutput() DisableLegacyAccessSettingProviderConfigOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return o.ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyAccessSettingProviderConfig) *DisableLegacyAccessSettingProviderConfig {
+		return &v
+	}).(DisableLegacyAccessSettingProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DisableLegacyAccessSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DisableLegacyAccessSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type DisableLegacyAccessSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyAccessSettingProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
+}
+
+func (o DisableLegacyAccessSettingProviderConfigPtrOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingProviderConfigPtrOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingProviderConfigPtrOutput) Elem() DisableLegacyAccessSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSettingProviderConfig) DisableLegacyAccessSettingProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyAccessSettingProviderConfig
+		return ret
+	}).(DisableLegacyAccessSettingProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DisableLegacyAccessSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSettingProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfs struct {
+	// The boolean value for the setting.
+	Value bool `pulumi:"value"`
+}
+
+// DisableLegacyDbfsSettingDisableLegacyDbfsInput is an input type that accepts DisableLegacyDbfsSettingDisableLegacyDbfsArgs and DisableLegacyDbfsSettingDisableLegacyDbfsOutput values.
+// You can construct a concrete instance of `DisableLegacyDbfsSettingDisableLegacyDbfsInput` via:
+//
+//	DisableLegacyDbfsSettingDisableLegacyDbfsArgs{...}
+type DisableLegacyDbfsSettingDisableLegacyDbfsInput interface {
+	pulumi.Input
+
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfsArgs struct {
+	// The boolean value for the setting.
+	Value pulumi.BoolInput `pulumi:"value"`
+}
+
+func (DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput)
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput).ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput is an input type that accepts DisableLegacyDbfsSettingDisableLegacyDbfsArgs, DisableLegacyDbfsSettingDisableLegacyDbfsPtr and DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput` via:
+//
+//	        DisableLegacyDbfsSettingDisableLegacyDbfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput
+}
+
+type disableLegacyDbfsSettingDisableLegacyDbfsPtrType DisableLegacyDbfsSettingDisableLegacyDbfsArgs
+
+func DisableLegacyDbfsSettingDisableLegacyDbfsPtr(v *DisableLegacyDbfsSettingDisableLegacyDbfsArgs) DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput {
+	return (*disableLegacyDbfsSettingDisableLegacyDbfsPtrType)(v)
+}
+
+func (*disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (i *disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput)
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfsOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyDbfsSettingDisableLegacyDbfs) *DisableLegacyDbfsSettingDisableLegacyDbfs {
+		return &v
+	}).(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisableLegacyDbfsSettingDisableLegacyDbfs) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Elem() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSettingDisableLegacyDbfs) DisableLegacyDbfsSettingDisableLegacyDbfs {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyDbfsSettingDisableLegacyDbfs
+		return ret
+	}).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSettingDisableLegacyDbfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DisableLegacyDbfsSettingProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// DisableLegacyDbfsSettingProviderConfigInput is an input type that accepts DisableLegacyDbfsSettingProviderConfigArgs and DisableLegacyDbfsSettingProviderConfigOutput values.
+// You can construct a concrete instance of `DisableLegacyDbfsSettingProviderConfigInput` via:
+//
+//	DisableLegacyDbfsSettingProviderConfigArgs{...}
+type DisableLegacyDbfsSettingProviderConfigInput interface {
+	pulumi.Input
+
+	ToDisableLegacyDbfsSettingProviderConfigOutput() DisableLegacyDbfsSettingProviderConfigOutput
+	ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(context.Context) DisableLegacyDbfsSettingProviderConfigOutput
+}
+
+type DisableLegacyDbfsSettingProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (DisableLegacyDbfsSettingProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
+}
+
+func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigOutput() DisableLegacyDbfsSettingProviderConfigOutput {
+	return i.ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingProviderConfigOutput)
+}
+
+func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return i.ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingProviderConfigOutput).ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyDbfsSettingProviderConfigPtrInput is an input type that accepts DisableLegacyDbfsSettingProviderConfigArgs, DisableLegacyDbfsSettingProviderConfigPtr and DisableLegacyDbfsSettingProviderConfigPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyDbfsSettingProviderConfigPtrInput` via:
+//
+//	        DisableLegacyDbfsSettingProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyDbfsSettingProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput
+	ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput
+}
+
+type disableLegacyDbfsSettingProviderConfigPtrType DisableLegacyDbfsSettingProviderConfigArgs
+
+func DisableLegacyDbfsSettingProviderConfigPtr(v *DisableLegacyDbfsSettingProviderConfigArgs) DisableLegacyDbfsSettingProviderConfigPtrInput {
+	return (*disableLegacyDbfsSettingProviderConfigPtrType)(v)
+}
+
+func (*disableLegacyDbfsSettingProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
+}
+
+func (i *disableLegacyDbfsSettingProviderConfigPtrType) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return i.ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyDbfsSettingProviderConfigPtrType) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingProviderConfigPtrOutput)
+}
+
+type DisableLegacyDbfsSettingProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyDbfsSettingProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigOutput() DisableLegacyDbfsSettingProviderConfigOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return o.ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyDbfsSettingProviderConfig) *DisableLegacyDbfsSettingProviderConfig {
+		return &v
+	}).(DisableLegacyDbfsSettingProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DisableLegacyDbfsSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DisableLegacyDbfsSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type DisableLegacyDbfsSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyDbfsSettingProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) Elem() DisableLegacyDbfsSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSettingProviderConfig) DisableLegacyDbfsSettingProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyDbfsSettingProviderConfig
+		return ret
+	}).(DisableLegacyDbfsSettingProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSettingProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type DisableLegacyFeaturesSettingDisableLegacyFeatures struct {
 	// The boolean value for the setting.
 	Value bool `pulumi:"value"`
@@ -6724,8 +7272,11 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionPtrOutput) VarSamp()
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct struct {
-	Input string `pulumi:"input"`
-	// The maximum relative standard deviation allowed (default defined by Spark)
+	Input         string   `pulumi:"input"`
+	RelativeError *float64 `pulumi:"relativeError"`
+	// The maximum relative standard deviation allowed (default defined by Spark).
+	// Deprecated: use relative_error. When relativeError is set, reads return the same value here
+	// for clients that don't have relative_error, and a request may only send that value
 	RelativeSd *float64 `pulumi:"relativeSd"`
 }
 
@@ -6741,8 +7292,11 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctInpu
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctArgs struct {
-	Input pulumi.StringInput `pulumi:"input"`
-	// The maximum relative standard deviation allowed (default defined by Spark)
+	Input         pulumi.StringInput     `pulumi:"input"`
+	RelativeError pulumi.Float64PtrInput `pulumi:"relativeError"`
+	// The maximum relative standard deviation allowed (default defined by Spark).
+	// Deprecated: use relative_error. When relativeError is set, reads return the same value here
+	// for clients that don't have relative_error, and a request may only send that value
 	RelativeSd pulumi.Float64PtrInput `pulumi:"relativeSd"`
 }
 
@@ -6827,7 +7381,15 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctO
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct) string { return v.Input }).(pulumi.StringOutput)
 }
 
-// The maximum relative standard deviation allowed (default defined by Spark)
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctOutput) RelativeError() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct) *float64 {
+		return v.RelativeError
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum relative standard deviation allowed (default defined by Spark).
+// Deprecated: use relative_error. When relativeError is set, reads return the same value here
+// for clients that don't have relative_error, and a request may only send that value
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctOutput) RelativeSd() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct) *float64 {
 		return v.RelativeSd
@@ -6867,7 +7429,18 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum relative standard deviation allowed (default defined by Spark)
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctPtrOutput) RelativeError() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeError
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum relative standard deviation allowed (default defined by Spark).
+// Deprecated: use relative_error. When relativeError is set, reads return the same value here
+// for clients that don't have relative_error, and a request may only send that value
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctPtrOutput) RelativeSd() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct) *float64 {
 		if v == nil {
@@ -6878,11 +7451,15 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctP
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile struct {
-	// The accuracy parameter (higher is more accurate but slower)
+	// The accuracy parameter (higher is more accurate but slower).
+	// Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+	// relative_error) here for clients that don't have relative_error, and a request may only send
+	// that value
 	Accuracy *int   `pulumi:"accuracy"`
 	Input    string `pulumi:"input"`
 	// The percentile value to compute (between 0 and 1)
-	Percentile float64 `pulumi:"percentile"`
+	Percentile    float64  `pulumi:"percentile"`
+	RelativeError *float64 `pulumi:"relativeError"`
 }
 
 // FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileInput is an input type that accepts FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs and FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileOutput values.
@@ -6897,11 +7474,15 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileInput i
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs struct {
-	// The accuracy parameter (higher is more accurate but slower)
+	// The accuracy parameter (higher is more accurate but slower).
+	// Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+	// relative_error) here for clients that don't have relative_error, and a request may only send
+	// that value
 	Accuracy pulumi.IntPtrInput `pulumi:"accuracy"`
 	Input    pulumi.StringInput `pulumi:"input"`
 	// The percentile value to compute (between 0 and 1)
-	Percentile pulumi.Float64Input `pulumi:"percentile"`
+	Percentile    pulumi.Float64Input    `pulumi:"percentile"`
+	RelativeError pulumi.Float64PtrInput `pulumi:"relativeError"`
 }
 
 func (FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileArgs) ElementType() reflect.Type {
@@ -6981,7 +7562,10 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileOutp
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentilePtrOutput)
 }
 
-// The accuracy parameter (higher is more accurate but slower)
+// The accuracy parameter (higher is more accurate but slower).
+// Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+// relative_error) here for clients that don't have relative_error, and a request may only send
+// that value
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileOutput) Accuracy() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile) *int { return v.Accuracy }).(pulumi.IntPtrOutput)
 }
@@ -6995,6 +7579,12 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileOutp
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile) float64 {
 		return v.Percentile
 	}).(pulumi.Float64Output)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileOutput) RelativeError() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile) *float64 {
+		return v.RelativeError
+	}).(pulumi.Float64PtrOutput)
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentilePtrOutput struct{ *pulumi.OutputState }
@@ -7021,7 +7611,10 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentilePtrO
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentileOutput)
 }
 
-// The accuracy parameter (higher is more accurate but slower)
+// The accuracy parameter (higher is more accurate but slower).
+// Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+// relative_error) here for clients that don't have relative_error, and a request may only send
+// that value
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentilePtrOutput) Accuracy() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile) *int {
 		if v == nil {
@@ -7047,6 +7640,15 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentilePtrO
 			return nil
 		}
 		return &v.Percentile
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentilePtrOutput) RelativeError() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeError
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -8852,7 +9454,8 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow struct {
 	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 	// eligible source data exists.
-	// Not currently supported for sawtooth windows or for Features with a stream source
+	// For sawtooth windows, startTime must not be later than the time the Feature is created.
+	// Not supported for rolling windows on Features with a stream source
 	StartTime *string                                                                 `pulumi:"startTime"`
 	Tumbling  *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling `pulumi:"tumbling"`
 }
@@ -8881,7 +9484,8 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs struct {
 	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 	// eligible source data exists.
-	// Not currently supported for sawtooth windows or for Features with a stream source
+	// For sawtooth windows, startTime must not be later than the time the Feature is created.
+	// Not supported for rolling windows on Features with a stream source
 	StartTime pulumi.StringPtrInput                                                          `pulumi:"startTime"`
 	Tumbling  FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingPtrInput `pulumi:"tumbling"`
 }
@@ -8995,7 +9599,8 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) Sl
 // tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 // full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 // eligible source data exists.
-// Not currently supported for sawtooth windows or for Features with a stream source
+// For sawtooth windows, startTime must not be later than the time the Feature is created.
+// Not supported for rolling windows on Features with a stream source
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -9074,7 +9679,8 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput)
 // tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 // full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 // eligible source data exists.
-// Not currently supported for sawtooth windows or for Features with a stream source
+// For sawtooth windows, startTime must not be later than the time the Feature is created.
+// Not supported for rolling windows on Features with a stream source
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *string {
 		if v == nil {
@@ -12821,8 +13427,8 @@ type FeatureEngineeringFeatureSourceSdpSource struct {
 	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part names of the tables the pipeline reads from. Required to materialize this
 	// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-	// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-	// these tables, and the run fails if it doesn't. At most 100 tables
+	// when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+	// tables. At most 100 tables
 	InputTables []string `pulumi:"inputTables"`
 	// The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
 	// The table doesn't need to exist until the pipeline first runs. Required
@@ -12855,8 +13461,8 @@ type FeatureEngineeringFeatureSourceSdpSourceArgs struct {
 	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
 	// The full three-part names of the tables the pipeline reads from. Required to materialize this
 	// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-	// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-	// these tables, and the run fails if it doesn't. At most 100 tables
+	// when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+	// tables. At most 100 tables
 	InputTables pulumi.StringArrayInput `pulumi:"inputTables"`
 	// The full three-part (catalog, schema, table) name of the pipeline's output table to read from.
 	// The table doesn't need to exist until the pipeline first runs. Required
@@ -12960,8 +13566,8 @@ func (o FeatureEngineeringFeatureSourceSdpSourceOutput) FilterCondition() pulumi
 
 // The full three-part names of the tables the pipeline reads from. Required to materialize this
 // feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-// these tables, and the run fails if it doesn't. At most 100 tables
+// when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+// tables. At most 100 tables
 func (o FeatureEngineeringFeatureSourceSdpSourceOutput) InputTables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceSdpSource) []string { return v.InputTables }).(pulumi.StringArrayOutput)
 }
@@ -13035,8 +13641,8 @@ func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) FilterCondition() pul
 
 // The full three-part names of the tables the pipeline reads from. Required to materialize this
 // feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-// these tables, and the run fails if it doesn't. At most 100 tables
+// when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+// tables. At most 100 tables
 func (o FeatureEngineeringFeatureSourceSdpSourcePtrOutput) InputTables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceSdpSource) []string {
 		if v == nil {
@@ -13286,7 +13892,8 @@ type FeatureEngineeringFeatureTimeWindow struct {
 	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 	// eligible source data exists.
-	// Not currently supported for sawtooth windows or for Features with a stream source
+	// For sawtooth windows, startTime must not be later than the time the Feature is created.
+	// Not supported for rolling windows on Features with a stream source
 	StartTime *string                                      `pulumi:"startTime"`
 	Tumbling  *FeatureEngineeringFeatureTimeWindowTumbling `pulumi:"tumbling"`
 }
@@ -13315,7 +13922,8 @@ type FeatureEngineeringFeatureTimeWindowArgs struct {
 	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 	// eligible source data exists.
-	// Not currently supported for sawtooth windows or for Features with a stream source
+	// For sawtooth windows, startTime must not be later than the time the Feature is created.
+	// Not supported for rolling windows on Features with a stream source
 	StartTime pulumi.StringPtrInput                               `pulumi:"startTime"`
 	Tumbling  FeatureEngineeringFeatureTimeWindowTumblingPtrInput `pulumi:"tumbling"`
 }
@@ -13429,7 +14037,8 @@ func (o FeatureEngineeringFeatureTimeWindowOutput) Sliding() FeatureEngineeringF
 // tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 // full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 // eligible source data exists.
-// Not currently supported for sawtooth windows or for Features with a stream source
+// For sawtooth windows, startTime must not be later than the time the Feature is created.
+// Not supported for rolling windows on Features with a stream source
 func (o FeatureEngineeringFeatureTimeWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -13508,7 +14117,8 @@ func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Sliding() FeatureEngineeri
 // tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 // full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
 // eligible source data exists.
-// Not currently supported for sawtooth windows or for Features with a stream source
+// For sawtooth windows, startTime must not be later than the time the Feature is created.
+// Not supported for rolling windows on Features with a stream source
 func (o FeatureEngineeringFeatureTimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *string {
 		if v == nil {
@@ -14583,6 +15193,3487 @@ func (o FileProviderConfigPtrOutput) Elem() FileProviderConfigOutput {
 // Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 func (o FileProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GenieAgentDefinition struct {
+	// Benchmarks for evaluating the quality of the Genie Agent's answers
+	Benchmarks *GenieAgentDefinitionBenchmarks `pulumi:"benchmarks"`
+	// General settings of the Genie Agent
+	Config *GenieAgentDefinitionConfig `pulumi:"config"`
+	// The data the Genie Agent can access
+	DataSources *GenieAgentDefinitionDataSources `pulumi:"dataSources"`
+	// Instructions and SQL that guide how the Genie Agent answers questions
+	Instructions *GenieAgentDefinitionInstructions `pulumi:"instructions"`
+}
+
+// GenieAgentDefinitionInput is an input type that accepts GenieAgentDefinitionArgs and GenieAgentDefinitionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInput` via:
+//
+//	GenieAgentDefinitionArgs{...}
+type GenieAgentDefinitionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionOutput() GenieAgentDefinitionOutput
+	ToGenieAgentDefinitionOutputWithContext(context.Context) GenieAgentDefinitionOutput
+}
+
+type GenieAgentDefinitionArgs struct {
+	// Benchmarks for evaluating the quality of the Genie Agent's answers
+	Benchmarks GenieAgentDefinitionBenchmarksPtrInput `pulumi:"benchmarks"`
+	// General settings of the Genie Agent
+	Config GenieAgentDefinitionConfigPtrInput `pulumi:"config"`
+	// The data the Genie Agent can access
+	DataSources GenieAgentDefinitionDataSourcesPtrInput `pulumi:"dataSources"`
+	// Instructions and SQL that guide how the Genie Agent answers questions
+	Instructions GenieAgentDefinitionInstructionsPtrInput `pulumi:"instructions"`
+}
+
+func (GenieAgentDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinition)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionArgs) ToGenieAgentDefinitionOutput() GenieAgentDefinitionOutput {
+	return i.ToGenieAgentDefinitionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionArgs) ToGenieAgentDefinitionOutputWithContext(ctx context.Context) GenieAgentDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionOutput)
+}
+
+func (i GenieAgentDefinitionArgs) ToGenieAgentDefinitionPtrOutput() GenieAgentDefinitionPtrOutput {
+	return i.ToGenieAgentDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionArgs) ToGenieAgentDefinitionPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionOutput).ToGenieAgentDefinitionPtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionPtrInput is an input type that accepts GenieAgentDefinitionArgs, GenieAgentDefinitionPtr and GenieAgentDefinitionPtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionPtrInput` via:
+//
+//	        GenieAgentDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionPtrOutput() GenieAgentDefinitionPtrOutput
+	ToGenieAgentDefinitionPtrOutputWithContext(context.Context) GenieAgentDefinitionPtrOutput
+}
+
+type genieAgentDefinitionPtrType GenieAgentDefinitionArgs
+
+func GenieAgentDefinitionPtr(v *GenieAgentDefinitionArgs) GenieAgentDefinitionPtrInput {
+	return (*genieAgentDefinitionPtrType)(v)
+}
+
+func (*genieAgentDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinition)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionPtrType) ToGenieAgentDefinitionPtrOutput() GenieAgentDefinitionPtrOutput {
+	return i.ToGenieAgentDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionPtrType) ToGenieAgentDefinitionPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionPtrOutput)
+}
+
+type GenieAgentDefinitionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinition)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionOutput) ToGenieAgentDefinitionOutput() GenieAgentDefinitionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionOutput) ToGenieAgentDefinitionOutputWithContext(ctx context.Context) GenieAgentDefinitionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionOutput) ToGenieAgentDefinitionPtrOutput() GenieAgentDefinitionPtrOutput {
+	return o.ToGenieAgentDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionOutput) ToGenieAgentDefinitionPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinition) *GenieAgentDefinition {
+		return &v
+	}).(GenieAgentDefinitionPtrOutput)
+}
+
+// Benchmarks for evaluating the quality of the Genie Agent's answers
+func (o GenieAgentDefinitionOutput) Benchmarks() GenieAgentDefinitionBenchmarksPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinition) *GenieAgentDefinitionBenchmarks { return v.Benchmarks }).(GenieAgentDefinitionBenchmarksPtrOutput)
+}
+
+// General settings of the Genie Agent
+func (o GenieAgentDefinitionOutput) Config() GenieAgentDefinitionConfigPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinition) *GenieAgentDefinitionConfig { return v.Config }).(GenieAgentDefinitionConfigPtrOutput)
+}
+
+// The data the Genie Agent can access
+func (o GenieAgentDefinitionOutput) DataSources() GenieAgentDefinitionDataSourcesPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinition) *GenieAgentDefinitionDataSources { return v.DataSources }).(GenieAgentDefinitionDataSourcesPtrOutput)
+}
+
+// Instructions and SQL that guide how the Genie Agent answers questions
+func (o GenieAgentDefinitionOutput) Instructions() GenieAgentDefinitionInstructionsPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinition) *GenieAgentDefinitionInstructions { return v.Instructions }).(GenieAgentDefinitionInstructionsPtrOutput)
+}
+
+type GenieAgentDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinition)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionPtrOutput) ToGenieAgentDefinitionPtrOutput() GenieAgentDefinitionPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionPtrOutput) ToGenieAgentDefinitionPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionPtrOutput) Elem() GenieAgentDefinitionOutput {
+	return o.ApplyT(func(v *GenieAgentDefinition) GenieAgentDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinition
+		return ret
+	}).(GenieAgentDefinitionOutput)
+}
+
+// Benchmarks for evaluating the quality of the Genie Agent's answers
+func (o GenieAgentDefinitionPtrOutput) Benchmarks() GenieAgentDefinitionBenchmarksPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinition) *GenieAgentDefinitionBenchmarks {
+		if v == nil {
+			return nil
+		}
+		return v.Benchmarks
+	}).(GenieAgentDefinitionBenchmarksPtrOutput)
+}
+
+// General settings of the Genie Agent
+func (o GenieAgentDefinitionPtrOutput) Config() GenieAgentDefinitionConfigPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinition) *GenieAgentDefinitionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(GenieAgentDefinitionConfigPtrOutput)
+}
+
+// The data the Genie Agent can access
+func (o GenieAgentDefinitionPtrOutput) DataSources() GenieAgentDefinitionDataSourcesPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinition) *GenieAgentDefinitionDataSources {
+		if v == nil {
+			return nil
+		}
+		return v.DataSources
+	}).(GenieAgentDefinitionDataSourcesPtrOutput)
+}
+
+// Instructions and SQL that guide how the Genie Agent answers questions
+func (o GenieAgentDefinitionPtrOutput) Instructions() GenieAgentDefinitionInstructionsPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinition) *GenieAgentDefinitionInstructions {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(GenieAgentDefinitionInstructionsPtrOutput)
+}
+
+type GenieAgentDefinitionBenchmarks struct {
+	// The benchmark questions, sorted by `id` in descending order
+	Questions []GenieAgentDefinitionBenchmarksQuestion `pulumi:"questions"`
+}
+
+// GenieAgentDefinitionBenchmarksInput is an input type that accepts GenieAgentDefinitionBenchmarksArgs and GenieAgentDefinitionBenchmarksOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionBenchmarksInput` via:
+//
+//	GenieAgentDefinitionBenchmarksArgs{...}
+type GenieAgentDefinitionBenchmarksInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionBenchmarksOutput() GenieAgentDefinitionBenchmarksOutput
+	ToGenieAgentDefinitionBenchmarksOutputWithContext(context.Context) GenieAgentDefinitionBenchmarksOutput
+}
+
+type GenieAgentDefinitionBenchmarksArgs struct {
+	// The benchmark questions, sorted by `id` in descending order
+	Questions GenieAgentDefinitionBenchmarksQuestionArrayInput `pulumi:"questions"`
+}
+
+func (GenieAgentDefinitionBenchmarksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionBenchmarks)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionBenchmarksArgs) ToGenieAgentDefinitionBenchmarksOutput() GenieAgentDefinitionBenchmarksOutput {
+	return i.ToGenieAgentDefinitionBenchmarksOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionBenchmarksArgs) ToGenieAgentDefinitionBenchmarksOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksOutput)
+}
+
+func (i GenieAgentDefinitionBenchmarksArgs) ToGenieAgentDefinitionBenchmarksPtrOutput() GenieAgentDefinitionBenchmarksPtrOutput {
+	return i.ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionBenchmarksArgs) ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksOutput).ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionBenchmarksPtrInput is an input type that accepts GenieAgentDefinitionBenchmarksArgs, GenieAgentDefinitionBenchmarksPtr and GenieAgentDefinitionBenchmarksPtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionBenchmarksPtrInput` via:
+//
+//	        GenieAgentDefinitionBenchmarksArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionBenchmarksPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionBenchmarksPtrOutput() GenieAgentDefinitionBenchmarksPtrOutput
+	ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(context.Context) GenieAgentDefinitionBenchmarksPtrOutput
+}
+
+type genieAgentDefinitionBenchmarksPtrType GenieAgentDefinitionBenchmarksArgs
+
+func GenieAgentDefinitionBenchmarksPtr(v *GenieAgentDefinitionBenchmarksArgs) GenieAgentDefinitionBenchmarksPtrInput {
+	return (*genieAgentDefinitionBenchmarksPtrType)(v)
+}
+
+func (*genieAgentDefinitionBenchmarksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionBenchmarks)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionBenchmarksPtrType) ToGenieAgentDefinitionBenchmarksPtrOutput() GenieAgentDefinitionBenchmarksPtrOutput {
+	return i.ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionBenchmarksPtrType) ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksPtrOutput)
+}
+
+type GenieAgentDefinitionBenchmarksOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionBenchmarksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionBenchmarks)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionBenchmarksOutput) ToGenieAgentDefinitionBenchmarksOutput() GenieAgentDefinitionBenchmarksOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksOutput) ToGenieAgentDefinitionBenchmarksOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksOutput) ToGenieAgentDefinitionBenchmarksPtrOutput() GenieAgentDefinitionBenchmarksPtrOutput {
+	return o.ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionBenchmarksOutput) ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionBenchmarks) *GenieAgentDefinitionBenchmarks {
+		return &v
+	}).(GenieAgentDefinitionBenchmarksPtrOutput)
+}
+
+// The benchmark questions, sorted by `id` in descending order
+func (o GenieAgentDefinitionBenchmarksOutput) Questions() GenieAgentDefinitionBenchmarksQuestionArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarks) []GenieAgentDefinitionBenchmarksQuestion { return v.Questions }).(GenieAgentDefinitionBenchmarksQuestionArrayOutput)
+}
+
+type GenieAgentDefinitionBenchmarksPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionBenchmarksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionBenchmarks)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionBenchmarksPtrOutput) ToGenieAgentDefinitionBenchmarksPtrOutput() GenieAgentDefinitionBenchmarksPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksPtrOutput) ToGenieAgentDefinitionBenchmarksPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksPtrOutput) Elem() GenieAgentDefinitionBenchmarksOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionBenchmarks) GenieAgentDefinitionBenchmarks {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionBenchmarks
+		return ret
+	}).(GenieAgentDefinitionBenchmarksOutput)
+}
+
+// The benchmark questions, sorted by `id` in descending order
+func (o GenieAgentDefinitionBenchmarksPtrOutput) Questions() GenieAgentDefinitionBenchmarksQuestionArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionBenchmarks) []GenieAgentDefinitionBenchmarksQuestion {
+		if v == nil {
+			return nil
+		}
+		return v.Questions
+	}).(GenieAgentDefinitionBenchmarksQuestionArrayOutput)
+}
+
+type GenieAgentDefinitionBenchmarksQuestion struct {
+	// The expected answer. At most one answer is supported; omit it when the question has no
+	// expected answer
+	Answers []GenieAgentDefinitionBenchmarksQuestionAnswer `pulumi:"answers"`
+	// Notes on how to evaluate answers to the question
+	EvaluationNote *string `pulumi:"evaluationNote"`
+	Id             string  `pulumi:"id"`
+	Question       string  `pulumi:"question"`
+}
+
+// GenieAgentDefinitionBenchmarksQuestionInput is an input type that accepts GenieAgentDefinitionBenchmarksQuestionArgs and GenieAgentDefinitionBenchmarksQuestionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionBenchmarksQuestionInput` via:
+//
+//	GenieAgentDefinitionBenchmarksQuestionArgs{...}
+type GenieAgentDefinitionBenchmarksQuestionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionBenchmarksQuestionOutput() GenieAgentDefinitionBenchmarksQuestionOutput
+	ToGenieAgentDefinitionBenchmarksQuestionOutputWithContext(context.Context) GenieAgentDefinitionBenchmarksQuestionOutput
+}
+
+type GenieAgentDefinitionBenchmarksQuestionArgs struct {
+	// The expected answer. At most one answer is supported; omit it when the question has no
+	// expected answer
+	Answers GenieAgentDefinitionBenchmarksQuestionAnswerArrayInput `pulumi:"answers"`
+	// Notes on how to evaluate answers to the question
+	EvaluationNote pulumi.StringPtrInput `pulumi:"evaluationNote"`
+	Id             pulumi.StringInput    `pulumi:"id"`
+	Question       pulumi.StringInput    `pulumi:"question"`
+}
+
+func (GenieAgentDefinitionBenchmarksQuestionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestion)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionArgs) ToGenieAgentDefinitionBenchmarksQuestionOutput() GenieAgentDefinitionBenchmarksQuestionOutput {
+	return i.ToGenieAgentDefinitionBenchmarksQuestionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionArgs) ToGenieAgentDefinitionBenchmarksQuestionOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksQuestionOutput)
+}
+
+// GenieAgentDefinitionBenchmarksQuestionArrayInput is an input type that accepts GenieAgentDefinitionBenchmarksQuestionArray and GenieAgentDefinitionBenchmarksQuestionArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionBenchmarksQuestionArrayInput` via:
+//
+//	GenieAgentDefinitionBenchmarksQuestionArray{ GenieAgentDefinitionBenchmarksQuestionArgs{...} }
+type GenieAgentDefinitionBenchmarksQuestionArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionBenchmarksQuestionArrayOutput() GenieAgentDefinitionBenchmarksQuestionArrayOutput
+	ToGenieAgentDefinitionBenchmarksQuestionArrayOutputWithContext(context.Context) GenieAgentDefinitionBenchmarksQuestionArrayOutput
+}
+
+type GenieAgentDefinitionBenchmarksQuestionArray []GenieAgentDefinitionBenchmarksQuestionInput
+
+func (GenieAgentDefinitionBenchmarksQuestionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionBenchmarksQuestion)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionArray) ToGenieAgentDefinitionBenchmarksQuestionArrayOutput() GenieAgentDefinitionBenchmarksQuestionArrayOutput {
+	return i.ToGenieAgentDefinitionBenchmarksQuestionArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionArray) ToGenieAgentDefinitionBenchmarksQuestionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksQuestionArrayOutput)
+}
+
+type GenieAgentDefinitionBenchmarksQuestionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionBenchmarksQuestionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestion)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionOutput) ToGenieAgentDefinitionBenchmarksQuestionOutput() GenieAgentDefinitionBenchmarksQuestionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionOutput) ToGenieAgentDefinitionBenchmarksQuestionOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionOutput {
+	return o
+}
+
+// The expected answer. At most one answer is supported; omit it when the question has no
+// expected answer
+func (o GenieAgentDefinitionBenchmarksQuestionOutput) Answers() GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarksQuestion) []GenieAgentDefinitionBenchmarksQuestionAnswer {
+		return v.Answers
+	}).(GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput)
+}
+
+// Notes on how to evaluate answers to the question
+func (o GenieAgentDefinitionBenchmarksQuestionOutput) EvaluationNote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarksQuestion) *string { return v.EvaluationNote }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarksQuestion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionOutput) Question() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarksQuestion) string { return v.Question }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionBenchmarksQuestionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionBenchmarksQuestionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionBenchmarksQuestion)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionArrayOutput) ToGenieAgentDefinitionBenchmarksQuestionArrayOutput() GenieAgentDefinitionBenchmarksQuestionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionArrayOutput) ToGenieAgentDefinitionBenchmarksQuestionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionBenchmarksQuestionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionBenchmarksQuestion {
+		return vs[0].([]GenieAgentDefinitionBenchmarksQuestion)[vs[1].(int)]
+	}).(GenieAgentDefinitionBenchmarksQuestionOutput)
+}
+
+type GenieAgentDefinitionBenchmarksQuestionAnswer struct {
+	Content string `pulumi:"content"`
+	// The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+	Format string `pulumi:"format"`
+}
+
+// GenieAgentDefinitionBenchmarksQuestionAnswerInput is an input type that accepts GenieAgentDefinitionBenchmarksQuestionAnswerArgs and GenieAgentDefinitionBenchmarksQuestionAnswerOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionBenchmarksQuestionAnswerInput` via:
+//
+//	GenieAgentDefinitionBenchmarksQuestionAnswerArgs{...}
+type GenieAgentDefinitionBenchmarksQuestionAnswerInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionBenchmarksQuestionAnswerOutput() GenieAgentDefinitionBenchmarksQuestionAnswerOutput
+	ToGenieAgentDefinitionBenchmarksQuestionAnswerOutputWithContext(context.Context) GenieAgentDefinitionBenchmarksQuestionAnswerOutput
+}
+
+type GenieAgentDefinitionBenchmarksQuestionAnswerArgs struct {
+	Content pulumi.StringInput `pulumi:"content"`
+	// The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+	Format pulumi.StringInput `pulumi:"format"`
+}
+
+func (GenieAgentDefinitionBenchmarksQuestionAnswerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestionAnswer)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionAnswerArgs) ToGenieAgentDefinitionBenchmarksQuestionAnswerOutput() GenieAgentDefinitionBenchmarksQuestionAnswerOutput {
+	return i.ToGenieAgentDefinitionBenchmarksQuestionAnswerOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionAnswerArgs) ToGenieAgentDefinitionBenchmarksQuestionAnswerOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionAnswerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksQuestionAnswerOutput)
+}
+
+// GenieAgentDefinitionBenchmarksQuestionAnswerArrayInput is an input type that accepts GenieAgentDefinitionBenchmarksQuestionAnswerArray and GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionBenchmarksQuestionAnswerArrayInput` via:
+//
+//	GenieAgentDefinitionBenchmarksQuestionAnswerArray{ GenieAgentDefinitionBenchmarksQuestionAnswerArgs{...} }
+type GenieAgentDefinitionBenchmarksQuestionAnswerArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput() GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput
+	ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutputWithContext(context.Context) GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput
+}
+
+type GenieAgentDefinitionBenchmarksQuestionAnswerArray []GenieAgentDefinitionBenchmarksQuestionAnswerInput
+
+func (GenieAgentDefinitionBenchmarksQuestionAnswerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionBenchmarksQuestionAnswer)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionAnswerArray) ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput() GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput {
+	return i.ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionBenchmarksQuestionAnswerArray) ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput)
+}
+
+type GenieAgentDefinitionBenchmarksQuestionAnswerOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionBenchmarksQuestionAnswerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestionAnswer)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerOutput) ToGenieAgentDefinitionBenchmarksQuestionAnswerOutput() GenieAgentDefinitionBenchmarksQuestionAnswerOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerOutput) ToGenieAgentDefinitionBenchmarksQuestionAnswerOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionAnswerOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarksQuestionAnswer) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionBenchmarksQuestionAnswer) string { return v.Format }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionBenchmarksQuestionAnswer)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput) ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput() GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput) ToGenieAgentDefinitionBenchmarksQuestionAnswerArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionBenchmarksQuestionAnswerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionBenchmarksQuestionAnswer {
+		return vs[0].([]GenieAgentDefinitionBenchmarksQuestionAnswer)[vs[1].(int)]
+	}).(GenieAgentDefinitionBenchmarksQuestionAnswerOutput)
+}
+
+type GenieAgentDefinitionConfig struct {
+	// Sample questions shown to users of the Genie Agent, sorted by `id`
+	SampleQuestions []GenieAgentDefinitionConfigSampleQuestion `pulumi:"sampleQuestions"`
+}
+
+// GenieAgentDefinitionConfigInput is an input type that accepts GenieAgentDefinitionConfigArgs and GenieAgentDefinitionConfigOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionConfigInput` via:
+//
+//	GenieAgentDefinitionConfigArgs{...}
+type GenieAgentDefinitionConfigInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionConfigOutput() GenieAgentDefinitionConfigOutput
+	ToGenieAgentDefinitionConfigOutputWithContext(context.Context) GenieAgentDefinitionConfigOutput
+}
+
+type GenieAgentDefinitionConfigArgs struct {
+	// Sample questions shown to users of the Genie Agent, sorted by `id`
+	SampleQuestions GenieAgentDefinitionConfigSampleQuestionArrayInput `pulumi:"sampleQuestions"`
+}
+
+func (GenieAgentDefinitionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionConfig)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionConfigArgs) ToGenieAgentDefinitionConfigOutput() GenieAgentDefinitionConfigOutput {
+	return i.ToGenieAgentDefinitionConfigOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionConfigArgs) ToGenieAgentDefinitionConfigOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionConfigOutput)
+}
+
+func (i GenieAgentDefinitionConfigArgs) ToGenieAgentDefinitionConfigPtrOutput() GenieAgentDefinitionConfigPtrOutput {
+	return i.ToGenieAgentDefinitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionConfigArgs) ToGenieAgentDefinitionConfigPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionConfigOutput).ToGenieAgentDefinitionConfigPtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionConfigPtrInput is an input type that accepts GenieAgentDefinitionConfigArgs, GenieAgentDefinitionConfigPtr and GenieAgentDefinitionConfigPtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionConfigPtrInput` via:
+//
+//	        GenieAgentDefinitionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionConfigPtrOutput() GenieAgentDefinitionConfigPtrOutput
+	ToGenieAgentDefinitionConfigPtrOutputWithContext(context.Context) GenieAgentDefinitionConfigPtrOutput
+}
+
+type genieAgentDefinitionConfigPtrType GenieAgentDefinitionConfigArgs
+
+func GenieAgentDefinitionConfigPtr(v *GenieAgentDefinitionConfigArgs) GenieAgentDefinitionConfigPtrInput {
+	return (*genieAgentDefinitionConfigPtrType)(v)
+}
+
+func (*genieAgentDefinitionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionConfig)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionConfigPtrType) ToGenieAgentDefinitionConfigPtrOutput() GenieAgentDefinitionConfigPtrOutput {
+	return i.ToGenieAgentDefinitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionConfigPtrType) ToGenieAgentDefinitionConfigPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionConfigPtrOutput)
+}
+
+type GenieAgentDefinitionConfigOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionConfig)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionConfigOutput) ToGenieAgentDefinitionConfigOutput() GenieAgentDefinitionConfigOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigOutput) ToGenieAgentDefinitionConfigOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigOutput) ToGenieAgentDefinitionConfigPtrOutput() GenieAgentDefinitionConfigPtrOutput {
+	return o.ToGenieAgentDefinitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionConfigOutput) ToGenieAgentDefinitionConfigPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionConfig) *GenieAgentDefinitionConfig {
+		return &v
+	}).(GenieAgentDefinitionConfigPtrOutput)
+}
+
+// Sample questions shown to users of the Genie Agent, sorted by `id`
+func (o GenieAgentDefinitionConfigOutput) SampleQuestions() GenieAgentDefinitionConfigSampleQuestionArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionConfig) []GenieAgentDefinitionConfigSampleQuestion {
+		return v.SampleQuestions
+	}).(GenieAgentDefinitionConfigSampleQuestionArrayOutput)
+}
+
+type GenieAgentDefinitionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionConfig)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionConfigPtrOutput) ToGenieAgentDefinitionConfigPtrOutput() GenieAgentDefinitionConfigPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigPtrOutput) ToGenieAgentDefinitionConfigPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigPtrOutput) Elem() GenieAgentDefinitionConfigOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionConfig) GenieAgentDefinitionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionConfig
+		return ret
+	}).(GenieAgentDefinitionConfigOutput)
+}
+
+// Sample questions shown to users of the Genie Agent, sorted by `id`
+func (o GenieAgentDefinitionConfigPtrOutput) SampleQuestions() GenieAgentDefinitionConfigSampleQuestionArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionConfig) []GenieAgentDefinitionConfigSampleQuestion {
+		if v == nil {
+			return nil
+		}
+		return v.SampleQuestions
+	}).(GenieAgentDefinitionConfigSampleQuestionArrayOutput)
+}
+
+type GenieAgentDefinitionConfigSampleQuestion struct {
+	Id       string `pulumi:"id"`
+	Question string `pulumi:"question"`
+}
+
+// GenieAgentDefinitionConfigSampleQuestionInput is an input type that accepts GenieAgentDefinitionConfigSampleQuestionArgs and GenieAgentDefinitionConfigSampleQuestionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionConfigSampleQuestionInput` via:
+//
+//	GenieAgentDefinitionConfigSampleQuestionArgs{...}
+type GenieAgentDefinitionConfigSampleQuestionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionConfigSampleQuestionOutput() GenieAgentDefinitionConfigSampleQuestionOutput
+	ToGenieAgentDefinitionConfigSampleQuestionOutputWithContext(context.Context) GenieAgentDefinitionConfigSampleQuestionOutput
+}
+
+type GenieAgentDefinitionConfigSampleQuestionArgs struct {
+	Id       pulumi.StringInput `pulumi:"id"`
+	Question pulumi.StringInput `pulumi:"question"`
+}
+
+func (GenieAgentDefinitionConfigSampleQuestionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionConfigSampleQuestion)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionConfigSampleQuestionArgs) ToGenieAgentDefinitionConfigSampleQuestionOutput() GenieAgentDefinitionConfigSampleQuestionOutput {
+	return i.ToGenieAgentDefinitionConfigSampleQuestionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionConfigSampleQuestionArgs) ToGenieAgentDefinitionConfigSampleQuestionOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigSampleQuestionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionConfigSampleQuestionOutput)
+}
+
+// GenieAgentDefinitionConfigSampleQuestionArrayInput is an input type that accepts GenieAgentDefinitionConfigSampleQuestionArray and GenieAgentDefinitionConfigSampleQuestionArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionConfigSampleQuestionArrayInput` via:
+//
+//	GenieAgentDefinitionConfigSampleQuestionArray{ GenieAgentDefinitionConfigSampleQuestionArgs{...} }
+type GenieAgentDefinitionConfigSampleQuestionArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionConfigSampleQuestionArrayOutput() GenieAgentDefinitionConfigSampleQuestionArrayOutput
+	ToGenieAgentDefinitionConfigSampleQuestionArrayOutputWithContext(context.Context) GenieAgentDefinitionConfigSampleQuestionArrayOutput
+}
+
+type GenieAgentDefinitionConfigSampleQuestionArray []GenieAgentDefinitionConfigSampleQuestionInput
+
+func (GenieAgentDefinitionConfigSampleQuestionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionConfigSampleQuestion)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionConfigSampleQuestionArray) ToGenieAgentDefinitionConfigSampleQuestionArrayOutput() GenieAgentDefinitionConfigSampleQuestionArrayOutput {
+	return i.ToGenieAgentDefinitionConfigSampleQuestionArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionConfigSampleQuestionArray) ToGenieAgentDefinitionConfigSampleQuestionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigSampleQuestionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionConfigSampleQuestionArrayOutput)
+}
+
+type GenieAgentDefinitionConfigSampleQuestionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionConfigSampleQuestionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionConfigSampleQuestion)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionOutput) ToGenieAgentDefinitionConfigSampleQuestionOutput() GenieAgentDefinitionConfigSampleQuestionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionOutput) ToGenieAgentDefinitionConfigSampleQuestionOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigSampleQuestionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionConfigSampleQuestion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionOutput) Question() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionConfigSampleQuestion) string { return v.Question }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionConfigSampleQuestionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionConfigSampleQuestionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionConfigSampleQuestion)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionArrayOutput) ToGenieAgentDefinitionConfigSampleQuestionArrayOutput() GenieAgentDefinitionConfigSampleQuestionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionArrayOutput) ToGenieAgentDefinitionConfigSampleQuestionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionConfigSampleQuestionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionConfigSampleQuestionArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionConfigSampleQuestionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionConfigSampleQuestion {
+		return vs[0].([]GenieAgentDefinitionConfigSampleQuestion)[vs[1].(int)]
+	}).(GenieAgentDefinitionConfigSampleQuestionOutput)
+}
+
+type GenieAgentDefinitionDataSources struct {
+	// Unity Catalog MCP connections, sorted by `mcpConnection`
+	McpConnections []GenieAgentDefinitionDataSourcesMcpConnection `pulumi:"mcpConnections"`
+	// Unity Catalog tables, views, and metric views, in the order they were added
+	Tables []GenieAgentDefinitionDataSourcesTable `pulumi:"tables"`
+	// Unity Catalog volumes, in the order they were added
+	Volumes []GenieAgentDefinitionDataSourcesVolume `pulumi:"volumes"`
+}
+
+// GenieAgentDefinitionDataSourcesInput is an input type that accepts GenieAgentDefinitionDataSourcesArgs and GenieAgentDefinitionDataSourcesOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesInput` via:
+//
+//	GenieAgentDefinitionDataSourcesArgs{...}
+type GenieAgentDefinitionDataSourcesInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesOutput() GenieAgentDefinitionDataSourcesOutput
+	ToGenieAgentDefinitionDataSourcesOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesOutput
+}
+
+type GenieAgentDefinitionDataSourcesArgs struct {
+	// Unity Catalog MCP connections, sorted by `mcpConnection`
+	McpConnections GenieAgentDefinitionDataSourcesMcpConnectionArrayInput `pulumi:"mcpConnections"`
+	// Unity Catalog tables, views, and metric views, in the order they were added
+	Tables GenieAgentDefinitionDataSourcesTableArrayInput `pulumi:"tables"`
+	// Unity Catalog volumes, in the order they were added
+	Volumes GenieAgentDefinitionDataSourcesVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (GenieAgentDefinitionDataSourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSources)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesArgs) ToGenieAgentDefinitionDataSourcesOutput() GenieAgentDefinitionDataSourcesOutput {
+	return i.ToGenieAgentDefinitionDataSourcesOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesArgs) ToGenieAgentDefinitionDataSourcesOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesOutput)
+}
+
+func (i GenieAgentDefinitionDataSourcesArgs) ToGenieAgentDefinitionDataSourcesPtrOutput() GenieAgentDefinitionDataSourcesPtrOutput {
+	return i.ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesArgs) ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesOutput).ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionDataSourcesPtrInput is an input type that accepts GenieAgentDefinitionDataSourcesArgs, GenieAgentDefinitionDataSourcesPtr and GenieAgentDefinitionDataSourcesPtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesPtrInput` via:
+//
+//	        GenieAgentDefinitionDataSourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionDataSourcesPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesPtrOutput() GenieAgentDefinitionDataSourcesPtrOutput
+	ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesPtrOutput
+}
+
+type genieAgentDefinitionDataSourcesPtrType GenieAgentDefinitionDataSourcesArgs
+
+func GenieAgentDefinitionDataSourcesPtr(v *GenieAgentDefinitionDataSourcesArgs) GenieAgentDefinitionDataSourcesPtrInput {
+	return (*genieAgentDefinitionDataSourcesPtrType)(v)
+}
+
+func (*genieAgentDefinitionDataSourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionDataSources)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionDataSourcesPtrType) ToGenieAgentDefinitionDataSourcesPtrOutput() GenieAgentDefinitionDataSourcesPtrOutput {
+	return i.ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionDataSourcesPtrType) ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesPtrOutput)
+}
+
+type GenieAgentDefinitionDataSourcesOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSources)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesOutput) ToGenieAgentDefinitionDataSourcesOutput() GenieAgentDefinitionDataSourcesOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesOutput) ToGenieAgentDefinitionDataSourcesOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesOutput) ToGenieAgentDefinitionDataSourcesPtrOutput() GenieAgentDefinitionDataSourcesPtrOutput {
+	return o.ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionDataSourcesOutput) ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionDataSources) *GenieAgentDefinitionDataSources {
+		return &v
+	}).(GenieAgentDefinitionDataSourcesPtrOutput)
+}
+
+// Unity Catalog MCP connections, sorted by `mcpConnection`
+func (o GenieAgentDefinitionDataSourcesOutput) McpConnections() GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSources) []GenieAgentDefinitionDataSourcesMcpConnection {
+		return v.McpConnections
+	}).(GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput)
+}
+
+// Unity Catalog tables, views, and metric views, in the order they were added
+func (o GenieAgentDefinitionDataSourcesOutput) Tables() GenieAgentDefinitionDataSourcesTableArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSources) []GenieAgentDefinitionDataSourcesTable { return v.Tables }).(GenieAgentDefinitionDataSourcesTableArrayOutput)
+}
+
+// Unity Catalog volumes, in the order they were added
+func (o GenieAgentDefinitionDataSourcesOutput) Volumes() GenieAgentDefinitionDataSourcesVolumeArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSources) []GenieAgentDefinitionDataSourcesVolume { return v.Volumes }).(GenieAgentDefinitionDataSourcesVolumeArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionDataSources)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesPtrOutput) ToGenieAgentDefinitionDataSourcesPtrOutput() GenieAgentDefinitionDataSourcesPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesPtrOutput) ToGenieAgentDefinitionDataSourcesPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesPtrOutput) Elem() GenieAgentDefinitionDataSourcesOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionDataSources) GenieAgentDefinitionDataSources {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionDataSources
+		return ret
+	}).(GenieAgentDefinitionDataSourcesOutput)
+}
+
+// Unity Catalog MCP connections, sorted by `mcpConnection`
+func (o GenieAgentDefinitionDataSourcesPtrOutput) McpConnections() GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionDataSources) []GenieAgentDefinitionDataSourcesMcpConnection {
+		if v == nil {
+			return nil
+		}
+		return v.McpConnections
+	}).(GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput)
+}
+
+// Unity Catalog tables, views, and metric views, in the order they were added
+func (o GenieAgentDefinitionDataSourcesPtrOutput) Tables() GenieAgentDefinitionDataSourcesTableArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionDataSources) []GenieAgentDefinitionDataSourcesTable {
+		if v == nil {
+			return nil
+		}
+		return v.Tables
+	}).(GenieAgentDefinitionDataSourcesTableArrayOutput)
+}
+
+// Unity Catalog volumes, in the order they were added
+func (o GenieAgentDefinitionDataSourcesPtrOutput) Volumes() GenieAgentDefinitionDataSourcesVolumeArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionDataSources) []GenieAgentDefinitionDataSourcesVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(GenieAgentDefinitionDataSourcesVolumeArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesMcpConnection struct {
+	// The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+	McpConnection string `pulumi:"mcpConnection"`
+}
+
+// GenieAgentDefinitionDataSourcesMcpConnectionInput is an input type that accepts GenieAgentDefinitionDataSourcesMcpConnectionArgs and GenieAgentDefinitionDataSourcesMcpConnectionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesMcpConnectionInput` via:
+//
+//	GenieAgentDefinitionDataSourcesMcpConnectionArgs{...}
+type GenieAgentDefinitionDataSourcesMcpConnectionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesMcpConnectionOutput() GenieAgentDefinitionDataSourcesMcpConnectionOutput
+	ToGenieAgentDefinitionDataSourcesMcpConnectionOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesMcpConnectionOutput
+}
+
+type GenieAgentDefinitionDataSourcesMcpConnectionArgs struct {
+	// The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+	McpConnection pulumi.StringInput `pulumi:"mcpConnection"`
+}
+
+func (GenieAgentDefinitionDataSourcesMcpConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesMcpConnection)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesMcpConnectionArgs) ToGenieAgentDefinitionDataSourcesMcpConnectionOutput() GenieAgentDefinitionDataSourcesMcpConnectionOutput {
+	return i.ToGenieAgentDefinitionDataSourcesMcpConnectionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesMcpConnectionArgs) ToGenieAgentDefinitionDataSourcesMcpConnectionOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesMcpConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesMcpConnectionOutput)
+}
+
+// GenieAgentDefinitionDataSourcesMcpConnectionArrayInput is an input type that accepts GenieAgentDefinitionDataSourcesMcpConnectionArray and GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesMcpConnectionArrayInput` via:
+//
+//	GenieAgentDefinitionDataSourcesMcpConnectionArray{ GenieAgentDefinitionDataSourcesMcpConnectionArgs{...} }
+type GenieAgentDefinitionDataSourcesMcpConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutput() GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput
+	ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput
+}
+
+type GenieAgentDefinitionDataSourcesMcpConnectionArray []GenieAgentDefinitionDataSourcesMcpConnectionInput
+
+func (GenieAgentDefinitionDataSourcesMcpConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesMcpConnection)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesMcpConnectionArray) ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutput() GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput {
+	return i.ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesMcpConnectionArray) ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesMcpConnectionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesMcpConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesMcpConnection)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesMcpConnectionOutput) ToGenieAgentDefinitionDataSourcesMcpConnectionOutput() GenieAgentDefinitionDataSourcesMcpConnectionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesMcpConnectionOutput) ToGenieAgentDefinitionDataSourcesMcpConnectionOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesMcpConnectionOutput {
+	return o
+}
+
+// The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+func (o GenieAgentDefinitionDataSourcesMcpConnectionOutput) McpConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesMcpConnection) string { return v.McpConnection }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesMcpConnection)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput) ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutput() GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput) ToGenieAgentDefinitionDataSourcesMcpConnectionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionDataSourcesMcpConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionDataSourcesMcpConnection {
+		return vs[0].([]GenieAgentDefinitionDataSourcesMcpConnection)[vs[1].(int)]
+	}).(GenieAgentDefinitionDataSourcesMcpConnectionOutput)
+}
+
+type GenieAgentDefinitionDataSourcesTable struct {
+	// Column settings for the table, sorted by `column`
+	ColumnConfigs []GenieAgentDefinitionDataSourcesTableColumnConfig `pulumi:"columnConfigs"`
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description *string `pulumi:"description"`
+	Identifier  string  `pulumi:"identifier"`
+}
+
+// GenieAgentDefinitionDataSourcesTableInput is an input type that accepts GenieAgentDefinitionDataSourcesTableArgs and GenieAgentDefinitionDataSourcesTableOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesTableInput` via:
+//
+//	GenieAgentDefinitionDataSourcesTableArgs{...}
+type GenieAgentDefinitionDataSourcesTableInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesTableOutput() GenieAgentDefinitionDataSourcesTableOutput
+	ToGenieAgentDefinitionDataSourcesTableOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesTableOutput
+}
+
+type GenieAgentDefinitionDataSourcesTableArgs struct {
+	// Column settings for the table, sorted by `column`
+	ColumnConfigs GenieAgentDefinitionDataSourcesTableColumnConfigArrayInput `pulumi:"columnConfigs"`
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Identifier  pulumi.StringInput    `pulumi:"identifier"`
+}
+
+func (GenieAgentDefinitionDataSourcesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesTable)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesTableArgs) ToGenieAgentDefinitionDataSourcesTableOutput() GenieAgentDefinitionDataSourcesTableOutput {
+	return i.ToGenieAgentDefinitionDataSourcesTableOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesTableArgs) ToGenieAgentDefinitionDataSourcesTableOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesTableOutput)
+}
+
+// GenieAgentDefinitionDataSourcesTableArrayInput is an input type that accepts GenieAgentDefinitionDataSourcesTableArray and GenieAgentDefinitionDataSourcesTableArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesTableArrayInput` via:
+//
+//	GenieAgentDefinitionDataSourcesTableArray{ GenieAgentDefinitionDataSourcesTableArgs{...} }
+type GenieAgentDefinitionDataSourcesTableArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesTableArrayOutput() GenieAgentDefinitionDataSourcesTableArrayOutput
+	ToGenieAgentDefinitionDataSourcesTableArrayOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesTableArrayOutput
+}
+
+type GenieAgentDefinitionDataSourcesTableArray []GenieAgentDefinitionDataSourcesTableInput
+
+func (GenieAgentDefinitionDataSourcesTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesTable)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesTableArray) ToGenieAgentDefinitionDataSourcesTableArrayOutput() GenieAgentDefinitionDataSourcesTableArrayOutput {
+	return i.ToGenieAgentDefinitionDataSourcesTableArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesTableArray) ToGenieAgentDefinitionDataSourcesTableArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesTableArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesTableOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesTable)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesTableOutput) ToGenieAgentDefinitionDataSourcesTableOutput() GenieAgentDefinitionDataSourcesTableOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesTableOutput) ToGenieAgentDefinitionDataSourcesTableOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableOutput {
+	return o
+}
+
+// Column settings for the table, sorted by `column`
+func (o GenieAgentDefinitionDataSourcesTableOutput) ColumnConfigs() GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTable) []GenieAgentDefinitionDataSourcesTableColumnConfig {
+		return v.ColumnConfigs
+	}).(GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput)
+}
+
+// Description of the Genie Agent.
+//
+// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionDataSourcesTableOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTable) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionDataSourcesTableOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTable) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionDataSourcesTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesTable)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesTableArrayOutput) ToGenieAgentDefinitionDataSourcesTableArrayOutput() GenieAgentDefinitionDataSourcesTableArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesTableArrayOutput) ToGenieAgentDefinitionDataSourcesTableArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesTableArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionDataSourcesTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionDataSourcesTable {
+		return vs[0].([]GenieAgentDefinitionDataSourcesTable)[vs[1].(int)]
+	}).(GenieAgentDefinitionDataSourcesTableOutput)
+}
+
+type GenieAgentDefinitionDataSourcesTableColumnConfig struct {
+	// The name of the column. Must exist in the table or metric view
+	Column string `pulumi:"column"`
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description *string `pulumi:"description"`
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName *string `pulumi:"displayName"`
+	// Whether the Genie Agent indexes the column's values to match them in questions
+	EnableEntityMatching *bool `pulumi:"enableEntityMatching"`
+	// Whether the Genie Agent samples example values from the column to learn its format
+	EnableFormatAssistance *bool `pulumi:"enableFormatAssistance"`
+	// Whether the column is hidden from the Genie Agent
+	Exclude  *bool    `pulumi:"exclude"`
+	Synonyms []string `pulumi:"synonyms"`
+}
+
+// GenieAgentDefinitionDataSourcesTableColumnConfigInput is an input type that accepts GenieAgentDefinitionDataSourcesTableColumnConfigArgs and GenieAgentDefinitionDataSourcesTableColumnConfigOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesTableColumnConfigInput` via:
+//
+//	GenieAgentDefinitionDataSourcesTableColumnConfigArgs{...}
+type GenieAgentDefinitionDataSourcesTableColumnConfigInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesTableColumnConfigOutput() GenieAgentDefinitionDataSourcesTableColumnConfigOutput
+	ToGenieAgentDefinitionDataSourcesTableColumnConfigOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesTableColumnConfigOutput
+}
+
+type GenieAgentDefinitionDataSourcesTableColumnConfigArgs struct {
+	// The name of the column. Must exist in the table or metric view
+	Column pulumi.StringInput `pulumi:"column"`
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether the Genie Agent indexes the column's values to match them in questions
+	EnableEntityMatching pulumi.BoolPtrInput `pulumi:"enableEntityMatching"`
+	// Whether the Genie Agent samples example values from the column to learn its format
+	EnableFormatAssistance pulumi.BoolPtrInput `pulumi:"enableFormatAssistance"`
+	// Whether the column is hidden from the Genie Agent
+	Exclude  pulumi.BoolPtrInput     `pulumi:"exclude"`
+	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (GenieAgentDefinitionDataSourcesTableColumnConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesTableColumnConfig)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesTableColumnConfigArgs) ToGenieAgentDefinitionDataSourcesTableColumnConfigOutput() GenieAgentDefinitionDataSourcesTableColumnConfigOutput {
+	return i.ToGenieAgentDefinitionDataSourcesTableColumnConfigOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesTableColumnConfigArgs) ToGenieAgentDefinitionDataSourcesTableColumnConfigOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableColumnConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesTableColumnConfigOutput)
+}
+
+// GenieAgentDefinitionDataSourcesTableColumnConfigArrayInput is an input type that accepts GenieAgentDefinitionDataSourcesTableColumnConfigArray and GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesTableColumnConfigArrayInput` via:
+//
+//	GenieAgentDefinitionDataSourcesTableColumnConfigArray{ GenieAgentDefinitionDataSourcesTableColumnConfigArgs{...} }
+type GenieAgentDefinitionDataSourcesTableColumnConfigArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput() GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput
+	ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput
+}
+
+type GenieAgentDefinitionDataSourcesTableColumnConfigArray []GenieAgentDefinitionDataSourcesTableColumnConfigInput
+
+func (GenieAgentDefinitionDataSourcesTableColumnConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesTableColumnConfig)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesTableColumnConfigArray) ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput() GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput {
+	return i.ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesTableColumnConfigArray) ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesTableColumnConfigOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesTableColumnConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesTableColumnConfig)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) ToGenieAgentDefinitionDataSourcesTableColumnConfigOutput() GenieAgentDefinitionDataSourcesTableColumnConfigOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) ToGenieAgentDefinitionDataSourcesTableColumnConfigOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableColumnConfigOutput {
+	return o
+}
+
+// The name of the column. Must exist in the table or metric view
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Description of the Genie Agent.
+//
+// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+// create, rename, or move that would collide with an existing Genie Agent's name in the target
+// folder is rejected with ALREADY_EXISTS.
+//
+// The maximum length is 63 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Whether the Genie Agent indexes the column's values to match them in questions
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) EnableEntityMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) *bool { return v.EnableEntityMatching }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the Genie Agent samples example values from the column to learn its format
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) EnableFormatAssistance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) *bool { return v.EnableFormatAssistance }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the column is hidden from the Genie Agent
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) Exclude() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) *bool { return v.Exclude }).(pulumi.BoolPtrOutput)
+}
+
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesTableColumnConfig) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesTableColumnConfig)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput) ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput() GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput) ToGenieAgentDefinitionDataSourcesTableColumnConfigArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionDataSourcesTableColumnConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionDataSourcesTableColumnConfig {
+		return vs[0].([]GenieAgentDefinitionDataSourcesTableColumnConfig)[vs[1].(int)]
+	}).(GenieAgentDefinitionDataSourcesTableColumnConfigOutput)
+}
+
+type GenieAgentDefinitionDataSourcesVolume struct {
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description *string `pulumi:"description"`
+	// The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+	// within the volume
+	Path string `pulumi:"path"`
+}
+
+// GenieAgentDefinitionDataSourcesVolumeInput is an input type that accepts GenieAgentDefinitionDataSourcesVolumeArgs and GenieAgentDefinitionDataSourcesVolumeOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesVolumeInput` via:
+//
+//	GenieAgentDefinitionDataSourcesVolumeArgs{...}
+type GenieAgentDefinitionDataSourcesVolumeInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesVolumeOutput() GenieAgentDefinitionDataSourcesVolumeOutput
+	ToGenieAgentDefinitionDataSourcesVolumeOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesVolumeOutput
+}
+
+type GenieAgentDefinitionDataSourcesVolumeArgs struct {
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+	// within the volume
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GenieAgentDefinitionDataSourcesVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesVolume)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesVolumeArgs) ToGenieAgentDefinitionDataSourcesVolumeOutput() GenieAgentDefinitionDataSourcesVolumeOutput {
+	return i.ToGenieAgentDefinitionDataSourcesVolumeOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesVolumeArgs) ToGenieAgentDefinitionDataSourcesVolumeOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesVolumeOutput)
+}
+
+// GenieAgentDefinitionDataSourcesVolumeArrayInput is an input type that accepts GenieAgentDefinitionDataSourcesVolumeArray and GenieAgentDefinitionDataSourcesVolumeArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionDataSourcesVolumeArrayInput` via:
+//
+//	GenieAgentDefinitionDataSourcesVolumeArray{ GenieAgentDefinitionDataSourcesVolumeArgs{...} }
+type GenieAgentDefinitionDataSourcesVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionDataSourcesVolumeArrayOutput() GenieAgentDefinitionDataSourcesVolumeArrayOutput
+	ToGenieAgentDefinitionDataSourcesVolumeArrayOutputWithContext(context.Context) GenieAgentDefinitionDataSourcesVolumeArrayOutput
+}
+
+type GenieAgentDefinitionDataSourcesVolumeArray []GenieAgentDefinitionDataSourcesVolumeInput
+
+func (GenieAgentDefinitionDataSourcesVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesVolume)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionDataSourcesVolumeArray) ToGenieAgentDefinitionDataSourcesVolumeArrayOutput() GenieAgentDefinitionDataSourcesVolumeArrayOutput {
+	return i.ToGenieAgentDefinitionDataSourcesVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionDataSourcesVolumeArray) ToGenieAgentDefinitionDataSourcesVolumeArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionDataSourcesVolumeArrayOutput)
+}
+
+type GenieAgentDefinitionDataSourcesVolumeOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionDataSourcesVolume)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesVolumeOutput) ToGenieAgentDefinitionDataSourcesVolumeOutput() GenieAgentDefinitionDataSourcesVolumeOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesVolumeOutput) ToGenieAgentDefinitionDataSourcesVolumeOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesVolumeOutput {
+	return o
+}
+
+// Description of the Genie Agent.
+//
+// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionDataSourcesVolumeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesVolume) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+// within the volume
+func (o GenieAgentDefinitionDataSourcesVolumeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionDataSourcesVolume) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionDataSourcesVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionDataSourcesVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionDataSourcesVolume)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionDataSourcesVolumeArrayOutput) ToGenieAgentDefinitionDataSourcesVolumeArrayOutput() GenieAgentDefinitionDataSourcesVolumeArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesVolumeArrayOutput) ToGenieAgentDefinitionDataSourcesVolumeArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionDataSourcesVolumeArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionDataSourcesVolumeArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionDataSourcesVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionDataSourcesVolume {
+		return vs[0].([]GenieAgentDefinitionDataSourcesVolume)[vs[1].(int)]
+	}).(GenieAgentDefinitionDataSourcesVolumeOutput)
+}
+
+type GenieAgentDefinitionInstructions struct {
+	// Example questions paired with the SQL that answers them
+	ExampleQuestionSqls []GenieAgentDefinitionInstructionsExampleQuestionSql `pulumi:"exampleQuestionSqls"`
+	// Predefined joins between tables or metric views
+	JoinSpecs []GenieAgentDefinitionInstructionsJoinSpec `pulumi:"joinSpecs"`
+	// Unity Catalog SQL functions the generated SQL may call
+	SqlFunctions []GenieAgentDefinitionInstructionsSqlFunction `pulumi:"sqlFunctions"`
+	// Reusable SQL filters, expressions, and measures
+	SqlSnippets *GenieAgentDefinitionInstructionsSqlSnippets `pulumi:"sqlSnippets"`
+	// General text instructions. At most one text instruction is supported
+	TextInstructions []GenieAgentDefinitionInstructionsTextInstruction `pulumi:"textInstructions"`
+}
+
+// GenieAgentDefinitionInstructionsInput is an input type that accepts GenieAgentDefinitionInstructionsArgs and GenieAgentDefinitionInstructionsOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsInput` via:
+//
+//	GenieAgentDefinitionInstructionsArgs{...}
+type GenieAgentDefinitionInstructionsInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsOutput() GenieAgentDefinitionInstructionsOutput
+	ToGenieAgentDefinitionInstructionsOutputWithContext(context.Context) GenieAgentDefinitionInstructionsOutput
+}
+
+type GenieAgentDefinitionInstructionsArgs struct {
+	// Example questions paired with the SQL that answers them
+	ExampleQuestionSqls GenieAgentDefinitionInstructionsExampleQuestionSqlArrayInput `pulumi:"exampleQuestionSqls"`
+	// Predefined joins between tables or metric views
+	JoinSpecs GenieAgentDefinitionInstructionsJoinSpecArrayInput `pulumi:"joinSpecs"`
+	// Unity Catalog SQL functions the generated SQL may call
+	SqlFunctions GenieAgentDefinitionInstructionsSqlFunctionArrayInput `pulumi:"sqlFunctions"`
+	// Reusable SQL filters, expressions, and measures
+	SqlSnippets GenieAgentDefinitionInstructionsSqlSnippetsPtrInput `pulumi:"sqlSnippets"`
+	// General text instructions. At most one text instruction is supported
+	TextInstructions GenieAgentDefinitionInstructionsTextInstructionArrayInput `pulumi:"textInstructions"`
+}
+
+func (GenieAgentDefinitionInstructionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructions)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsArgs) ToGenieAgentDefinitionInstructionsOutput() GenieAgentDefinitionInstructionsOutput {
+	return i.ToGenieAgentDefinitionInstructionsOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsArgs) ToGenieAgentDefinitionInstructionsOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsOutput)
+}
+
+func (i GenieAgentDefinitionInstructionsArgs) ToGenieAgentDefinitionInstructionsPtrOutput() GenieAgentDefinitionInstructionsPtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsArgs) ToGenieAgentDefinitionInstructionsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsOutput).ToGenieAgentDefinitionInstructionsPtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionInstructionsPtrInput is an input type that accepts GenieAgentDefinitionInstructionsArgs, GenieAgentDefinitionInstructionsPtr and GenieAgentDefinitionInstructionsPtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsPtrInput` via:
+//
+//	        GenieAgentDefinitionInstructionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionInstructionsPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsPtrOutput() GenieAgentDefinitionInstructionsPtrOutput
+	ToGenieAgentDefinitionInstructionsPtrOutputWithContext(context.Context) GenieAgentDefinitionInstructionsPtrOutput
+}
+
+type genieAgentDefinitionInstructionsPtrType GenieAgentDefinitionInstructionsArgs
+
+func GenieAgentDefinitionInstructionsPtr(v *GenieAgentDefinitionInstructionsArgs) GenieAgentDefinitionInstructionsPtrInput {
+	return (*genieAgentDefinitionInstructionsPtrType)(v)
+}
+
+func (*genieAgentDefinitionInstructionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructions)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionInstructionsPtrType) ToGenieAgentDefinitionInstructionsPtrOutput() GenieAgentDefinitionInstructionsPtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionInstructionsPtrType) ToGenieAgentDefinitionInstructionsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsPtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructions)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsOutput) ToGenieAgentDefinitionInstructionsOutput() GenieAgentDefinitionInstructionsOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsOutput) ToGenieAgentDefinitionInstructionsOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsOutput) ToGenieAgentDefinitionInstructionsPtrOutput() GenieAgentDefinitionInstructionsPtrOutput {
+	return o.ToGenieAgentDefinitionInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionInstructionsOutput) ToGenieAgentDefinitionInstructionsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionInstructions) *GenieAgentDefinitionInstructions {
+		return &v
+	}).(GenieAgentDefinitionInstructionsPtrOutput)
+}
+
+// Example questions paired with the SQL that answers them
+func (o GenieAgentDefinitionInstructionsOutput) ExampleQuestionSqls() GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsExampleQuestionSql {
+		return v.ExampleQuestionSqls
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput)
+}
+
+// Predefined joins between tables or metric views
+func (o GenieAgentDefinitionInstructionsOutput) JoinSpecs() GenieAgentDefinitionInstructionsJoinSpecArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsJoinSpec {
+		return v.JoinSpecs
+	}).(GenieAgentDefinitionInstructionsJoinSpecArrayOutput)
+}
+
+// Unity Catalog SQL functions the generated SQL may call
+func (o GenieAgentDefinitionInstructionsOutput) SqlFunctions() GenieAgentDefinitionInstructionsSqlFunctionArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsSqlFunction {
+		return v.SqlFunctions
+	}).(GenieAgentDefinitionInstructionsSqlFunctionArrayOutput)
+}
+
+// Reusable SQL filters, expressions, and measures
+func (o GenieAgentDefinitionInstructionsOutput) SqlSnippets() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructions) *GenieAgentDefinitionInstructionsSqlSnippets {
+		return v.SqlSnippets
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput)
+}
+
+// General text instructions. At most one text instruction is supported
+func (o GenieAgentDefinitionInstructionsOutput) TextInstructions() GenieAgentDefinitionInstructionsTextInstructionArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsTextInstruction {
+		return v.TextInstructions
+	}).(GenieAgentDefinitionInstructionsTextInstructionArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructions)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsPtrOutput) ToGenieAgentDefinitionInstructionsPtrOutput() GenieAgentDefinitionInstructionsPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsPtrOutput) ToGenieAgentDefinitionInstructionsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsPtrOutput) Elem() GenieAgentDefinitionInstructionsOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructions) GenieAgentDefinitionInstructions {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionInstructions
+		return ret
+	}).(GenieAgentDefinitionInstructionsOutput)
+}
+
+// Example questions paired with the SQL that answers them
+func (o GenieAgentDefinitionInstructionsPtrOutput) ExampleQuestionSqls() GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsExampleQuestionSql {
+		if v == nil {
+			return nil
+		}
+		return v.ExampleQuestionSqls
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput)
+}
+
+// Predefined joins between tables or metric views
+func (o GenieAgentDefinitionInstructionsPtrOutput) JoinSpecs() GenieAgentDefinitionInstructionsJoinSpecArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsJoinSpec {
+		if v == nil {
+			return nil
+		}
+		return v.JoinSpecs
+	}).(GenieAgentDefinitionInstructionsJoinSpecArrayOutput)
+}
+
+// Unity Catalog SQL functions the generated SQL may call
+func (o GenieAgentDefinitionInstructionsPtrOutput) SqlFunctions() GenieAgentDefinitionInstructionsSqlFunctionArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsSqlFunction {
+		if v == nil {
+			return nil
+		}
+		return v.SqlFunctions
+	}).(GenieAgentDefinitionInstructionsSqlFunctionArrayOutput)
+}
+
+// Reusable SQL filters, expressions, and measures
+func (o GenieAgentDefinitionInstructionsPtrOutput) SqlSnippets() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructions) *GenieAgentDefinitionInstructionsSqlSnippets {
+		if v == nil {
+			return nil
+		}
+		return v.SqlSnippets
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput)
+}
+
+// General text instructions. At most one text instruction is supported
+func (o GenieAgentDefinitionInstructionsPtrOutput) TextInstructions() GenieAgentDefinitionInstructionsTextInstructionArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructions) []GenieAgentDefinitionInstructionsTextInstruction {
+		if v == nil {
+			return nil
+		}
+		return v.TextInstructions
+	}).(GenieAgentDefinitionInstructionsTextInstructionArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSql struct {
+	Id string `pulumi:"id"`
+	// Parameters used in the SQL, in the order given
+	Parameters []GenieAgentDefinitionInstructionsExampleQuestionSqlParameter `pulumi:"parameters"`
+	Question   string                                                        `pulumi:"question"`
+	Sql        string                                                        `pulumi:"sql"`
+	// Guidance on when to use this example
+	UsageGuidance *string `pulumi:"usageGuidance"`
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlArgs and GenieAgentDefinitionInstructionsExampleQuestionSqlOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlInput` via:
+//
+//	GenieAgentDefinitionInstructionsExampleQuestionSqlArgs{...}
+type GenieAgentDefinitionInstructionsExampleQuestionSqlInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlOutput
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+	// Parameters used in the SQL, in the order given
+	Parameters GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayInput `pulumi:"parameters"`
+	Question   pulumi.StringInput                                                    `pulumi:"question"`
+	Sql        pulumi.StringInput                                                    `pulumi:"sql"`
+	// Guidance on when to use this example
+	UsageGuidance pulumi.StringPtrInput `pulumi:"usageGuidance"`
+}
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSql)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlOutput)
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlArrayInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlArray and GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsExampleQuestionSqlArray{ GenieAgentDefinitionInstructionsExampleQuestionSqlArgs{...} }
+type GenieAgentDefinitionInstructionsExampleQuestionSqlArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlArray []GenieAgentDefinitionInstructionsExampleQuestionSqlInput
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsExampleQuestionSql)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlArray) ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlArray) ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSql)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSql) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Parameters used in the SQL, in the order given
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) Parameters() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSql) []GenieAgentDefinitionInstructionsExampleQuestionSqlParameter {
+		return v.Parameters
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) Question() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSql) string { return v.Question }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) Sql() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSql) string { return v.Sql }).(pulumi.StringOutput)
+}
+
+// Guidance on when to use this example
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlOutput) UsageGuidance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSql) *string { return v.UsageGuidance }).(pulumi.StringPtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsExampleQuestionSql)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsExampleQuestionSqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsExampleQuestionSql {
+		return vs[0].([]GenieAgentDefinitionInstructionsExampleQuestionSql)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameter struct {
+	// The parameter's default value
+	DefaultValue *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue `pulumi:"defaultValue"`
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description *string `pulumi:"description"`
+	// (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+	Name string `pulumi:"name"`
+	// The parameter's data type, for example `STRING` or `INTEGER`
+	TypeHint *string `pulumi:"typeHint"`
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlParameterInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs and GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlParameterInput` via:
+//
+//	GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs{...}
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs struct {
+	// The parameter's default value
+	DefaultValue GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrInput `pulumi:"defaultValue"`
+	// Description of the Genie Agent.
+	//
+	// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter's data type, for example `STRING` or `INTEGER`
+	TypeHint pulumi.StringPtrInput `pulumi:"typeHint"`
+}
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameter)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput)
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray and GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray{ GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs{...} }
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray []GenieAgentDefinitionInstructionsExampleQuestionSqlParameterInput
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsExampleQuestionSqlParameter)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameter)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput {
+	return o
+}
+
+// The parameter's default value
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) DefaultValue() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameter) *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+		return v.DefaultValue
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput)
+}
+
+// Description of the Genie Agent.
+//
+// The maximum length is 4,096 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameter's data type, for example `STRING` or `INTEGER`
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput) TypeHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameter) *string { return v.TypeHint }).(pulumi.StringPtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsExampleQuestionSqlParameter)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsExampleQuestionSqlParameter {
+		return vs[0].([]GenieAgentDefinitionInstructionsExampleQuestionSqlParameter)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue struct {
+	// The default range
+	ValueRange *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange `pulumi:"valueRange"`
+	// The default values. A single default is a one-element list
+	Values []string `pulumi:"values"`
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs and GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueInput` via:
+//
+//	GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs{...}
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs struct {
+	// The default range
+	ValueRange GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrInput `pulumi:"valueRange"`
+	// The default values. A single default is a one-element list
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput)
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput).ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs, GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtr and GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrInput` via:
+//
+//	        GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput
+}
+
+type genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrType GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs
+
+func GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtr(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrInput {
+	return (*genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrType)(v)
+}
+
+func (*genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrType) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrType) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return o.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue) *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+		return &v
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput)
+}
+
+// The default range
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) ValueRange() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue) *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+		return v.ValueRange
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput)
+}
+
+// The default values. A single default is a one-element list
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput) Elem() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue
+		return ret
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput)
+}
+
+// The default range
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput) ValueRange() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue) *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+		if v == nil {
+			return nil
+		}
+		return v.ValueRange
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput)
+}
+
+// The default values. A single default is a one-element list
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange struct {
+	// The upper end of the range
+	Max *string `pulumi:"max"`
+	// The lower end of the range
+	Min *string `pulumi:"min"`
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs and GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeInput` via:
+//
+//	GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs{...}
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs struct {
+	// The upper end of the range
+	Max pulumi.StringPtrInput `pulumi:"max"`
+	// The lower end of the range
+	Min pulumi.StringPtrInput `pulumi:"min"`
+}
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput)
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput).ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrInput is an input type that accepts GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs, GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtr and GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrInput` via:
+//
+//	        GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput
+	ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput
+}
+
+type genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrType GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs
+
+func GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtr(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrInput {
+	return (*genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrType)(v)
+}
+
+func (*genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrType) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrType) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return o.ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange) *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+		return &v
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput)
+}
+
+// The upper end of the range
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) Max() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange) *string {
+		return v.Max
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lower end of the range
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput) Min() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange) *string {
+		return v.Min
+	}).(pulumi.StringPtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput) ToGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput) Elem() GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange) GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange
+		return ret
+	}).(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput)
+}
+
+// The upper end of the range
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput) Max() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lower end of the range
+func (o GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput) Min() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.StringPtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpec struct {
+	// Description of the join's purpose
+	Comment     *string `pulumi:"comment"`
+	Id          string  `pulumi:"id"`
+	Instruction *string `pulumi:"instruction"`
+	// The left side of the join
+	Left GenieAgentDefinitionInstructionsJoinSpecLeft `pulumi:"left"`
+	// How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+	RelationshipType *string `pulumi:"relationshipType"`
+	// The right side of the join
+	Right GenieAgentDefinitionInstructionsJoinSpecRight `pulumi:"right"`
+	Sql   string                                        `pulumi:"sql"`
+}
+
+// GenieAgentDefinitionInstructionsJoinSpecInput is an input type that accepts GenieAgentDefinitionInstructionsJoinSpecArgs and GenieAgentDefinitionInstructionsJoinSpecOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsJoinSpecInput` via:
+//
+//	GenieAgentDefinitionInstructionsJoinSpecArgs{...}
+type GenieAgentDefinitionInstructionsJoinSpecInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsJoinSpecOutput() GenieAgentDefinitionInstructionsJoinSpecOutput
+	ToGenieAgentDefinitionInstructionsJoinSpecOutputWithContext(context.Context) GenieAgentDefinitionInstructionsJoinSpecOutput
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecArgs struct {
+	// Description of the join's purpose
+	Comment     pulumi.StringPtrInput `pulumi:"comment"`
+	Id          pulumi.StringInput    `pulumi:"id"`
+	Instruction pulumi.StringPtrInput `pulumi:"instruction"`
+	// The left side of the join
+	Left GenieAgentDefinitionInstructionsJoinSpecLeftInput `pulumi:"left"`
+	// How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+	RelationshipType pulumi.StringPtrInput `pulumi:"relationshipType"`
+	// The right side of the join
+	Right GenieAgentDefinitionInstructionsJoinSpecRightInput `pulumi:"right"`
+	Sql   pulumi.StringInput                                 `pulumi:"sql"`
+}
+
+func (GenieAgentDefinitionInstructionsJoinSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpec)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecArgs) ToGenieAgentDefinitionInstructionsJoinSpecOutput() GenieAgentDefinitionInstructionsJoinSpecOutput {
+	return i.ToGenieAgentDefinitionInstructionsJoinSpecOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecArgs) ToGenieAgentDefinitionInstructionsJoinSpecOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsJoinSpecOutput)
+}
+
+// GenieAgentDefinitionInstructionsJoinSpecArrayInput is an input type that accepts GenieAgentDefinitionInstructionsJoinSpecArray and GenieAgentDefinitionInstructionsJoinSpecArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsJoinSpecArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsJoinSpecArray{ GenieAgentDefinitionInstructionsJoinSpecArgs{...} }
+type GenieAgentDefinitionInstructionsJoinSpecArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsJoinSpecArrayOutput() GenieAgentDefinitionInstructionsJoinSpecArrayOutput
+	ToGenieAgentDefinitionInstructionsJoinSpecArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsJoinSpecArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecArray []GenieAgentDefinitionInstructionsJoinSpecInput
+
+func (GenieAgentDefinitionInstructionsJoinSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsJoinSpec)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecArray) ToGenieAgentDefinitionInstructionsJoinSpecArrayOutput() GenieAgentDefinitionInstructionsJoinSpecArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsJoinSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecArray) ToGenieAgentDefinitionInstructionsJoinSpecArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsJoinSpecArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsJoinSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpec)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) ToGenieAgentDefinitionInstructionsJoinSpecOutput() GenieAgentDefinitionInstructionsJoinSpecOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) ToGenieAgentDefinitionInstructionsJoinSpecOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecOutput {
+	return o
+}
+
+// Description of the join's purpose
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+}
+
+// The left side of the join
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) Left() GenieAgentDefinitionInstructionsJoinSpecLeftOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) GenieAgentDefinitionInstructionsJoinSpecLeft {
+		return v.Left
+	}).(GenieAgentDefinitionInstructionsJoinSpecLeftOutput)
+}
+
+// How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) RelationshipType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) *string { return v.RelationshipType }).(pulumi.StringPtrOutput)
+}
+
+// The right side of the join
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) Right() GenieAgentDefinitionInstructionsJoinSpecRightOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) GenieAgentDefinitionInstructionsJoinSpecRight {
+		return v.Right
+	}).(GenieAgentDefinitionInstructionsJoinSpecRightOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecOutput) Sql() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpec) string { return v.Sql }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsJoinSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsJoinSpec)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecArrayOutput) ToGenieAgentDefinitionInstructionsJoinSpecArrayOutput() GenieAgentDefinitionInstructionsJoinSpecArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecArrayOutput) ToGenieAgentDefinitionInstructionsJoinSpecArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsJoinSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsJoinSpec {
+		return vs[0].([]GenieAgentDefinitionInstructionsJoinSpec)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsJoinSpecOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecLeft struct {
+	Alias      *string `pulumi:"alias"`
+	Identifier string  `pulumi:"identifier"`
+}
+
+// GenieAgentDefinitionInstructionsJoinSpecLeftInput is an input type that accepts GenieAgentDefinitionInstructionsJoinSpecLeftArgs and GenieAgentDefinitionInstructionsJoinSpecLeftOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsJoinSpecLeftInput` via:
+//
+//	GenieAgentDefinitionInstructionsJoinSpecLeftArgs{...}
+type GenieAgentDefinitionInstructionsJoinSpecLeftInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsJoinSpecLeftOutput() GenieAgentDefinitionInstructionsJoinSpecLeftOutput
+	ToGenieAgentDefinitionInstructionsJoinSpecLeftOutputWithContext(context.Context) GenieAgentDefinitionInstructionsJoinSpecLeftOutput
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecLeftArgs struct {
+	Alias      pulumi.StringPtrInput `pulumi:"alias"`
+	Identifier pulumi.StringInput    `pulumi:"identifier"`
+}
+
+func (GenieAgentDefinitionInstructionsJoinSpecLeftArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecLeft)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecLeftArgs) ToGenieAgentDefinitionInstructionsJoinSpecLeftOutput() GenieAgentDefinitionInstructionsJoinSpecLeftOutput {
+	return i.ToGenieAgentDefinitionInstructionsJoinSpecLeftOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecLeftArgs) ToGenieAgentDefinitionInstructionsJoinSpecLeftOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecLeftOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsJoinSpecLeftOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecLeftOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsJoinSpecLeftOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecLeft)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecLeftOutput) ToGenieAgentDefinitionInstructionsJoinSpecLeftOutput() GenieAgentDefinitionInstructionsJoinSpecLeftOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecLeftOutput) ToGenieAgentDefinitionInstructionsJoinSpecLeftOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecLeftOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecLeftOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpecLeft) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecLeftOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpecLeft) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecRight struct {
+	Alias      *string `pulumi:"alias"`
+	Identifier string  `pulumi:"identifier"`
+}
+
+// GenieAgentDefinitionInstructionsJoinSpecRightInput is an input type that accepts GenieAgentDefinitionInstructionsJoinSpecRightArgs and GenieAgentDefinitionInstructionsJoinSpecRightOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsJoinSpecRightInput` via:
+//
+//	GenieAgentDefinitionInstructionsJoinSpecRightArgs{...}
+type GenieAgentDefinitionInstructionsJoinSpecRightInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsJoinSpecRightOutput() GenieAgentDefinitionInstructionsJoinSpecRightOutput
+	ToGenieAgentDefinitionInstructionsJoinSpecRightOutputWithContext(context.Context) GenieAgentDefinitionInstructionsJoinSpecRightOutput
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecRightArgs struct {
+	Alias      pulumi.StringPtrInput `pulumi:"alias"`
+	Identifier pulumi.StringInput    `pulumi:"identifier"`
+}
+
+func (GenieAgentDefinitionInstructionsJoinSpecRightArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecRight)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecRightArgs) ToGenieAgentDefinitionInstructionsJoinSpecRightOutput() GenieAgentDefinitionInstructionsJoinSpecRightOutput {
+	return i.ToGenieAgentDefinitionInstructionsJoinSpecRightOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsJoinSpecRightArgs) ToGenieAgentDefinitionInstructionsJoinSpecRightOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecRightOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsJoinSpecRightOutput)
+}
+
+type GenieAgentDefinitionInstructionsJoinSpecRightOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsJoinSpecRightOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecRight)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecRightOutput) ToGenieAgentDefinitionInstructionsJoinSpecRightOutput() GenieAgentDefinitionInstructionsJoinSpecRightOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecRightOutput) ToGenieAgentDefinitionInstructionsJoinSpecRightOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsJoinSpecRightOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecRightOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpecRight) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsJoinSpecRightOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsJoinSpecRight) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlFunction struct {
+	Id         string `pulumi:"id"`
+	Identifier string `pulumi:"identifier"`
+}
+
+// GenieAgentDefinitionInstructionsSqlFunctionInput is an input type that accepts GenieAgentDefinitionInstructionsSqlFunctionArgs and GenieAgentDefinitionInstructionsSqlFunctionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlFunctionInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlFunctionArgs{...}
+type GenieAgentDefinitionInstructionsSqlFunctionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlFunctionOutput() GenieAgentDefinitionInstructionsSqlFunctionOutput
+	ToGenieAgentDefinitionInstructionsSqlFunctionOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlFunctionOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlFunctionArgs struct {
+	Id         pulumi.StringInput `pulumi:"id"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+}
+
+func (GenieAgentDefinitionInstructionsSqlFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlFunction)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlFunctionArgs) ToGenieAgentDefinitionInstructionsSqlFunctionOutput() GenieAgentDefinitionInstructionsSqlFunctionOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlFunctionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlFunctionArgs) ToGenieAgentDefinitionInstructionsSqlFunctionOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlFunctionOutput)
+}
+
+// GenieAgentDefinitionInstructionsSqlFunctionArrayInput is an input type that accepts GenieAgentDefinitionInstructionsSqlFunctionArray and GenieAgentDefinitionInstructionsSqlFunctionArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlFunctionArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlFunctionArray{ GenieAgentDefinitionInstructionsSqlFunctionArgs{...} }
+type GenieAgentDefinitionInstructionsSqlFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutput() GenieAgentDefinitionInstructionsSqlFunctionArrayOutput
+	ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlFunctionArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlFunctionArray []GenieAgentDefinitionInstructionsSqlFunctionInput
+
+func (GenieAgentDefinitionInstructionsSqlFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlFunction)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlFunctionArray) ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutput() GenieAgentDefinitionInstructionsSqlFunctionArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlFunctionArray) ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlFunctionArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlFunctionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlFunction)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionOutput) ToGenieAgentDefinitionInstructionsSqlFunctionOutput() GenieAgentDefinitionInstructionsSqlFunctionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionOutput) ToGenieAgentDefinitionInstructionsSqlFunctionOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlFunctionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlFunction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlFunction) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlFunction)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionArrayOutput) ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutput() GenieAgentDefinitionInstructionsSqlFunctionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionArrayOutput) ToGenieAgentDefinitionInstructionsSqlFunctionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlFunctionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlFunctionArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsSqlFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsSqlFunction {
+		return vs[0].([]GenieAgentDefinitionInstructionsSqlFunction)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsSqlFunctionOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippets struct {
+	// Non-aggregated expressions (dimensions), such as `price * units`
+	Expressions []GenieAgentDefinitionInstructionsSqlSnippetsExpression `pulumi:"expressions"`
+	// Filters, such as `state = 'CA'`
+	Filters []GenieAgentDefinitionInstructionsSqlSnippetsFilter `pulumi:"filters"`
+	// Aggregated measures, such as `SUM(price * units)`
+	Measures []GenieAgentDefinitionInstructionsSqlSnippetsMeasure `pulumi:"measures"`
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsArgs and GenieAgentDefinitionInstructionsSqlSnippetsOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsArgs{...}
+type GenieAgentDefinitionInstructionsSqlSnippetsInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsOutput() GenieAgentDefinitionInstructionsSqlSnippetsOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsArgs struct {
+	// Non-aggregated expressions (dimensions), such as `price * units`
+	Expressions GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayInput `pulumi:"expressions"`
+	// Filters, such as `state = 'CA'`
+	Filters GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayInput `pulumi:"filters"`
+	// Aggregated measures, such as `SUM(price * units)`
+	Measures GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayInput `pulumi:"measures"`
+}
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippets)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsOutput() GenieAgentDefinitionInstructionsSqlSnippetsOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsOutput)
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutput() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsOutput).ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(ctx)
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsPtrInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsArgs, GenieAgentDefinitionInstructionsSqlSnippetsPtr and GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsPtrInput` via:
+//
+//	        GenieAgentDefinitionInstructionsSqlSnippetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentDefinitionInstructionsSqlSnippetsPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutput() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput
+}
+
+type genieAgentDefinitionInstructionsSqlSnippetsPtrType GenieAgentDefinitionInstructionsSqlSnippetsArgs
+
+func GenieAgentDefinitionInstructionsSqlSnippetsPtr(v *GenieAgentDefinitionInstructionsSqlSnippetsArgs) GenieAgentDefinitionInstructionsSqlSnippetsPtrInput {
+	return (*genieAgentDefinitionInstructionsSqlSnippetsPtrType)(v)
+}
+
+func (*genieAgentDefinitionInstructionsSqlSnippetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructionsSqlSnippets)(nil)).Elem()
+}
+
+func (i *genieAgentDefinitionInstructionsSqlSnippetsPtrType) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutput() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentDefinitionInstructionsSqlSnippetsPtrType) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippets)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsOutput() GenieAgentDefinitionInstructionsSqlSnippetsOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutput() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return o.ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentDefinitionInstructionsSqlSnippets) *GenieAgentDefinitionInstructionsSqlSnippets {
+		return &v
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput)
+}
+
+// Non-aggregated expressions (dimensions), such as `price * units`
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) Expressions() GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippets) []GenieAgentDefinitionInstructionsSqlSnippetsExpression {
+		return v.Expressions
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput)
+}
+
+// Filters, such as `state = 'CA'`
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) Filters() GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippets) []GenieAgentDefinitionInstructionsSqlSnippetsFilter {
+		return v.Filters
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput)
+}
+
+// Aggregated measures, such as `SUM(price * units)`
+func (o GenieAgentDefinitionInstructionsSqlSnippetsOutput) Measures() GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippets) []GenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+		return v.Measures
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentDefinitionInstructionsSqlSnippets)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutput() GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsPtrOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) Elem() GenieAgentDefinitionInstructionsSqlSnippetsOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsSqlSnippets) GenieAgentDefinitionInstructionsSqlSnippets {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentDefinitionInstructionsSqlSnippets
+		return ret
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsOutput)
+}
+
+// Non-aggregated expressions (dimensions), such as `price * units`
+func (o GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) Expressions() GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsSqlSnippets) []GenieAgentDefinitionInstructionsSqlSnippetsExpression {
+		if v == nil {
+			return nil
+		}
+		return v.Expressions
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput)
+}
+
+// Filters, such as `state = 'CA'`
+func (o GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) Filters() GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsSqlSnippets) []GenieAgentDefinitionInstructionsSqlSnippetsFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput)
+}
+
+// Aggregated measures, such as `SUM(price * units)`
+func (o GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput) Measures() GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput {
+	return o.ApplyT(func(v *GenieAgentDefinitionInstructionsSqlSnippets) []GenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+		if v == nil {
+			return nil
+		}
+		return v.Measures
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsExpression struct {
+	Alias *string `pulumi:"alias"`
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName *string  `pulumi:"displayName"`
+	Id          string   `pulumi:"id"`
+	Instruction *string  `pulumi:"instruction"`
+	Sql         string   `pulumi:"sql"`
+	Synonyms    []string `pulumi:"synonyms"`
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsExpressionInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs and GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsExpressionInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs{...}
+type GenieAgentDefinitionInstructionsSqlSnippetsExpressionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput() GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs struct {
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName pulumi.StringPtrInput   `pulumi:"displayName"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Instruction pulumi.StringPtrInput   `pulumi:"instruction"`
+	Sql         pulumi.StringInput      `pulumi:"sql"`
+	Synonyms    pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsExpression)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput() GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput)
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray and GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray{ GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs{...} }
+type GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray []GenieAgentDefinitionInstructionsSqlSnippetsExpressionInput
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlSnippetsExpression)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsExpression)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput() GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsExpression) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+// create, rename, or move that would collide with an existing Genie Agent's name in the target
+// folder is rejected with ALREADY_EXISTS.
+//
+// The maximum length is 63 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsExpression) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsExpression) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsExpression) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) Sql() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsExpression) string { return v.Sql }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsExpression) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlSnippetsExpression)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsSqlSnippetsExpression {
+		return vs[0].([]GenieAgentDefinitionInstructionsSqlSnippetsExpression)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsFilter struct {
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName *string  `pulumi:"displayName"`
+	Id          string   `pulumi:"id"`
+	Instruction *string  `pulumi:"instruction"`
+	Sql         string   `pulumi:"sql"`
+	Synonyms    []string `pulumi:"synonyms"`
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsFilterInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs and GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsFilterInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs{...}
+type GenieAgentDefinitionInstructionsSqlSnippetsFilterInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutput() GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs struct {
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName pulumi.StringPtrInput   `pulumi:"displayName"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Instruction pulumi.StringPtrInput   `pulumi:"instruction"`
+	Sql         pulumi.StringInput      `pulumi:"sql"`
+	Synonyms    pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsFilter)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutput() GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput)
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsFilterArray and GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsFilterArray{ GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs{...} }
+type GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsFilterArray []GenieAgentDefinitionInstructionsSqlSnippetsFilterInput
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlSnippetsFilter)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsFilterArray) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsFilterArray) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsFilter)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutput() GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput {
+	return o
+}
+
+// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+// create, rename, or move that would collide with an existing Genie Agent's name in the target
+// folder is rejected with ALREADY_EXISTS.
+//
+// The maximum length is 63 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsFilter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsFilter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsFilter) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) Sql() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsFilter) string { return v.Sql }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsFilter) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlSnippetsFilter)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsSqlSnippetsFilter {
+		return vs[0].([]GenieAgentDefinitionInstructionsSqlSnippetsFilter)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasure struct {
+	Alias *string `pulumi:"alias"`
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName *string  `pulumi:"displayName"`
+	Id          string   `pulumi:"id"`
+	Instruction *string  `pulumi:"instruction"`
+	Sql         string   `pulumi:"sql"`
+	Synonyms    []string `pulumi:"synonyms"`
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsMeasureInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs and GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsMeasureInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs{...}
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasureInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput() GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs struct {
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+	// create, rename, or move that would collide with an existing Genie Agent's name in the target
+	// folder is rejected with ALREADY_EXISTS.
+	//
+	// The maximum length is 63 characters. Requests with a longer value are rejected with
+	// INVALID_PARAMETER_VALUE
+	DisplayName pulumi.StringPtrInput   `pulumi:"displayName"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Instruction pulumi.StringPtrInput   `pulumi:"instruction"`
+	Sql         pulumi.StringInput      `pulumi:"sql"`
+	Synonyms    pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsMeasure)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput() GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput)
+}
+
+// GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayInput is an input type that accepts GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray and GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray{ GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs{...} }
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput
+	ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray []GenieAgentDefinitionInstructionsSqlSnippetsMeasureInput
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlSnippetsMeasure)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsMeasure)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput() GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsMeasure) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+// create, rename, or move that would collide with an existing Genie Agent's name in the target
+// folder is rejected with ALREADY_EXISTS.
+//
+// The maximum length is 63 characters. Requests with a longer value are rejected with
+// INVALID_PARAMETER_VALUE
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsMeasure) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsMeasure) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsMeasure) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) Sql() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsMeasure) string { return v.Sql }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsSqlSnippetsMeasure) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsSqlSnippetsMeasure)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput() GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput) ToGenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+		return vs[0].([]GenieAgentDefinitionInstructionsSqlSnippetsMeasure)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput)
+}
+
+type GenieAgentDefinitionInstructionsTextInstruction struct {
+	Content string `pulumi:"content"`
+	Id      string `pulumi:"id"`
+}
+
+// GenieAgentDefinitionInstructionsTextInstructionInput is an input type that accepts GenieAgentDefinitionInstructionsTextInstructionArgs and GenieAgentDefinitionInstructionsTextInstructionOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsTextInstructionInput` via:
+//
+//	GenieAgentDefinitionInstructionsTextInstructionArgs{...}
+type GenieAgentDefinitionInstructionsTextInstructionInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsTextInstructionOutput() GenieAgentDefinitionInstructionsTextInstructionOutput
+	ToGenieAgentDefinitionInstructionsTextInstructionOutputWithContext(context.Context) GenieAgentDefinitionInstructionsTextInstructionOutput
+}
+
+type GenieAgentDefinitionInstructionsTextInstructionArgs struct {
+	Content pulumi.StringInput `pulumi:"content"`
+	Id      pulumi.StringInput `pulumi:"id"`
+}
+
+func (GenieAgentDefinitionInstructionsTextInstructionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsTextInstruction)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsTextInstructionArgs) ToGenieAgentDefinitionInstructionsTextInstructionOutput() GenieAgentDefinitionInstructionsTextInstructionOutput {
+	return i.ToGenieAgentDefinitionInstructionsTextInstructionOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsTextInstructionArgs) ToGenieAgentDefinitionInstructionsTextInstructionOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsTextInstructionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsTextInstructionOutput)
+}
+
+// GenieAgentDefinitionInstructionsTextInstructionArrayInput is an input type that accepts GenieAgentDefinitionInstructionsTextInstructionArray and GenieAgentDefinitionInstructionsTextInstructionArrayOutput values.
+// You can construct a concrete instance of `GenieAgentDefinitionInstructionsTextInstructionArrayInput` via:
+//
+//	GenieAgentDefinitionInstructionsTextInstructionArray{ GenieAgentDefinitionInstructionsTextInstructionArgs{...} }
+type GenieAgentDefinitionInstructionsTextInstructionArrayInput interface {
+	pulumi.Input
+
+	ToGenieAgentDefinitionInstructionsTextInstructionArrayOutput() GenieAgentDefinitionInstructionsTextInstructionArrayOutput
+	ToGenieAgentDefinitionInstructionsTextInstructionArrayOutputWithContext(context.Context) GenieAgentDefinitionInstructionsTextInstructionArrayOutput
+}
+
+type GenieAgentDefinitionInstructionsTextInstructionArray []GenieAgentDefinitionInstructionsTextInstructionInput
+
+func (GenieAgentDefinitionInstructionsTextInstructionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsTextInstruction)(nil)).Elem()
+}
+
+func (i GenieAgentDefinitionInstructionsTextInstructionArray) ToGenieAgentDefinitionInstructionsTextInstructionArrayOutput() GenieAgentDefinitionInstructionsTextInstructionArrayOutput {
+	return i.ToGenieAgentDefinitionInstructionsTextInstructionArrayOutputWithContext(context.Background())
+}
+
+func (i GenieAgentDefinitionInstructionsTextInstructionArray) ToGenieAgentDefinitionInstructionsTextInstructionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsTextInstructionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentDefinitionInstructionsTextInstructionArrayOutput)
+}
+
+type GenieAgentDefinitionInstructionsTextInstructionOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsTextInstructionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentDefinitionInstructionsTextInstruction)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionOutput) ToGenieAgentDefinitionInstructionsTextInstructionOutput() GenieAgentDefinitionInstructionsTextInstructionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionOutput) ToGenieAgentDefinitionInstructionsTextInstructionOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsTextInstructionOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsTextInstruction) string { return v.Content }).(pulumi.StringOutput)
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GenieAgentDefinitionInstructionsTextInstruction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GenieAgentDefinitionInstructionsTextInstructionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentDefinitionInstructionsTextInstructionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenieAgentDefinitionInstructionsTextInstruction)(nil)).Elem()
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionArrayOutput) ToGenieAgentDefinitionInstructionsTextInstructionArrayOutput() GenieAgentDefinitionInstructionsTextInstructionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionArrayOutput) ToGenieAgentDefinitionInstructionsTextInstructionArrayOutputWithContext(ctx context.Context) GenieAgentDefinitionInstructionsTextInstructionArrayOutput {
+	return o
+}
+
+func (o GenieAgentDefinitionInstructionsTextInstructionArrayOutput) Index(i pulumi.IntInput) GenieAgentDefinitionInstructionsTextInstructionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenieAgentDefinitionInstructionsTextInstruction {
+		return vs[0].([]GenieAgentDefinitionInstructionsTextInstruction)[vs[1].(int)]
+	}).(GenieAgentDefinitionInstructionsTextInstructionOutput)
+}
+
+type GenieAgentProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// GenieAgentProviderConfigInput is an input type that accepts GenieAgentProviderConfigArgs and GenieAgentProviderConfigOutput values.
+// You can construct a concrete instance of `GenieAgentProviderConfigInput` via:
+//
+//	GenieAgentProviderConfigArgs{...}
+type GenieAgentProviderConfigInput interface {
+	pulumi.Input
+
+	ToGenieAgentProviderConfigOutput() GenieAgentProviderConfigOutput
+	ToGenieAgentProviderConfigOutputWithContext(context.Context) GenieAgentProviderConfigOutput
+}
+
+type GenieAgentProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GenieAgentProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentProviderConfig)(nil)).Elem()
+}
+
+func (i GenieAgentProviderConfigArgs) ToGenieAgentProviderConfigOutput() GenieAgentProviderConfigOutput {
+	return i.ToGenieAgentProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GenieAgentProviderConfigArgs) ToGenieAgentProviderConfigOutputWithContext(ctx context.Context) GenieAgentProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentProviderConfigOutput)
+}
+
+func (i GenieAgentProviderConfigArgs) ToGenieAgentProviderConfigPtrOutput() GenieAgentProviderConfigPtrOutput {
+	return i.ToGenieAgentProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GenieAgentProviderConfigArgs) ToGenieAgentProviderConfigPtrOutputWithContext(ctx context.Context) GenieAgentProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentProviderConfigOutput).ToGenieAgentProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GenieAgentProviderConfigPtrInput is an input type that accepts GenieAgentProviderConfigArgs, GenieAgentProviderConfigPtr and GenieAgentProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GenieAgentProviderConfigPtrInput` via:
+//
+//	        GenieAgentProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenieAgentProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGenieAgentProviderConfigPtrOutput() GenieAgentProviderConfigPtrOutput
+	ToGenieAgentProviderConfigPtrOutputWithContext(context.Context) GenieAgentProviderConfigPtrOutput
+}
+
+type genieAgentProviderConfigPtrType GenieAgentProviderConfigArgs
+
+func GenieAgentProviderConfigPtr(v *GenieAgentProviderConfigArgs) GenieAgentProviderConfigPtrInput {
+	return (*genieAgentProviderConfigPtrType)(v)
+}
+
+func (*genieAgentProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentProviderConfig)(nil)).Elem()
+}
+
+func (i *genieAgentProviderConfigPtrType) ToGenieAgentProviderConfigPtrOutput() GenieAgentProviderConfigPtrOutput {
+	return i.ToGenieAgentProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *genieAgentProviderConfigPtrType) ToGenieAgentProviderConfigPtrOutputWithContext(ctx context.Context) GenieAgentProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenieAgentProviderConfigPtrOutput)
+}
+
+type GenieAgentProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenieAgentProviderConfig)(nil)).Elem()
+}
+
+func (o GenieAgentProviderConfigOutput) ToGenieAgentProviderConfigOutput() GenieAgentProviderConfigOutput {
+	return o
+}
+
+func (o GenieAgentProviderConfigOutput) ToGenieAgentProviderConfigOutputWithContext(ctx context.Context) GenieAgentProviderConfigOutput {
+	return o
+}
+
+func (o GenieAgentProviderConfigOutput) ToGenieAgentProviderConfigPtrOutput() GenieAgentProviderConfigPtrOutput {
+	return o.ToGenieAgentProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GenieAgentProviderConfigOutput) ToGenieAgentProviderConfigPtrOutputWithContext(ctx context.Context) GenieAgentProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenieAgentProviderConfig) *GenieAgentProviderConfig {
+		return &v
+	}).(GenieAgentProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GenieAgentProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenieAgentProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type GenieAgentProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GenieAgentProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenieAgentProviderConfig)(nil)).Elem()
+}
+
+func (o GenieAgentProviderConfigPtrOutput) ToGenieAgentProviderConfigPtrOutput() GenieAgentProviderConfigPtrOutput {
+	return o
+}
+
+func (o GenieAgentProviderConfigPtrOutput) ToGenieAgentProviderConfigPtrOutputWithContext(ctx context.Context) GenieAgentProviderConfigPtrOutput {
+	return o
+}
+
+func (o GenieAgentProviderConfigPtrOutput) Elem() GenieAgentProviderConfigOutput {
+	return o.ApplyT(func(v *GenieAgentProviderConfig) GenieAgentProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GenieAgentProviderConfig
+		return ret
+	}).(GenieAgentProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GenieAgentProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenieAgentProviderConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -20682,8 +24773,9 @@ type JobJobCluster struct {
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 	JobClusterKey string `pulumi:"jobClusterKey"`
 	// Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-	NewCluster          *JobJobClusterNewCluster `pulumi:"newCluster"`
-	ServerlessComputeId *string                  `pulumi:"serverlessComputeId"`
+	NewCluster          *JobJobClusterNewCluster        `pulumi:"newCluster"`
+	ServerlessCompute   *JobJobClusterServerlessCompute `pulumi:"serverlessCompute"`
+	ServerlessComputeId *string                         `pulumi:"serverlessComputeId"`
 }
 
 // JobJobClusterInput is an input type that accepts JobJobClusterArgs and JobJobClusterOutput values.
@@ -20701,8 +24793,9 @@ type JobJobClusterArgs struct {
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 	JobClusterKey pulumi.StringInput `pulumi:"jobClusterKey"`
 	// Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-	NewCluster          JobJobClusterNewClusterPtrInput `pulumi:"newCluster"`
-	ServerlessComputeId pulumi.StringPtrInput           `pulumi:"serverlessComputeId"`
+	NewCluster          JobJobClusterNewClusterPtrInput        `pulumi:"newCluster"`
+	ServerlessCompute   JobJobClusterServerlessComputePtrInput `pulumi:"serverlessCompute"`
+	ServerlessComputeId pulumi.StringPtrInput                  `pulumi:"serverlessComputeId"`
 }
 
 func (JobJobClusterArgs) ElementType() reflect.Type {
@@ -20764,6 +24857,10 @@ func (o JobJobClusterOutput) JobClusterKey() pulumi.StringOutput {
 // Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
 func (o JobJobClusterOutput) NewCluster() JobJobClusterNewClusterPtrOutput {
 	return o.ApplyT(func(v JobJobCluster) *JobJobClusterNewCluster { return v.NewCluster }).(JobJobClusterNewClusterPtrOutput)
+}
+
+func (o JobJobClusterOutput) ServerlessCompute() JobJobClusterServerlessComputePtrOutput {
+	return o.ApplyT(func(v JobJobCluster) *JobJobClusterServerlessCompute { return v.ServerlessCompute }).(JobJobClusterServerlessComputePtrOutput)
 }
 
 func (o JobJobClusterOutput) ServerlessComputeId() pulumi.StringPtrOutput {
@@ -26244,6 +30341,139 @@ func (o JobJobClusterNewClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.
 		}
 		return v.Notebooks
 	}).(pulumi.BoolPtrOutput)
+}
+
+type JobJobClusterServerlessCompute struct {
+	PolicyId *string `pulumi:"policyId"`
+}
+
+// JobJobClusterServerlessComputeInput is an input type that accepts JobJobClusterServerlessComputeArgs and JobJobClusterServerlessComputeOutput values.
+// You can construct a concrete instance of `JobJobClusterServerlessComputeInput` via:
+//
+//	JobJobClusterServerlessComputeArgs{...}
+type JobJobClusterServerlessComputeInput interface {
+	pulumi.Input
+
+	ToJobJobClusterServerlessComputeOutput() JobJobClusterServerlessComputeOutput
+	ToJobJobClusterServerlessComputeOutputWithContext(context.Context) JobJobClusterServerlessComputeOutput
+}
+
+type JobJobClusterServerlessComputeArgs struct {
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+}
+
+func (JobJobClusterServerlessComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterServerlessCompute)(nil)).Elem()
+}
+
+func (i JobJobClusterServerlessComputeArgs) ToJobJobClusterServerlessComputeOutput() JobJobClusterServerlessComputeOutput {
+	return i.ToJobJobClusterServerlessComputeOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterServerlessComputeArgs) ToJobJobClusterServerlessComputeOutputWithContext(ctx context.Context) JobJobClusterServerlessComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterServerlessComputeOutput)
+}
+
+func (i JobJobClusterServerlessComputeArgs) ToJobJobClusterServerlessComputePtrOutput() JobJobClusterServerlessComputePtrOutput {
+	return i.ToJobJobClusterServerlessComputePtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterServerlessComputeArgs) ToJobJobClusterServerlessComputePtrOutputWithContext(ctx context.Context) JobJobClusterServerlessComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterServerlessComputeOutput).ToJobJobClusterServerlessComputePtrOutputWithContext(ctx)
+}
+
+// JobJobClusterServerlessComputePtrInput is an input type that accepts JobJobClusterServerlessComputeArgs, JobJobClusterServerlessComputePtr and JobJobClusterServerlessComputePtrOutput values.
+// You can construct a concrete instance of `JobJobClusterServerlessComputePtrInput` via:
+//
+//	        JobJobClusterServerlessComputeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterServerlessComputePtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterServerlessComputePtrOutput() JobJobClusterServerlessComputePtrOutput
+	ToJobJobClusterServerlessComputePtrOutputWithContext(context.Context) JobJobClusterServerlessComputePtrOutput
+}
+
+type jobJobClusterServerlessComputePtrType JobJobClusterServerlessComputeArgs
+
+func JobJobClusterServerlessComputePtr(v *JobJobClusterServerlessComputeArgs) JobJobClusterServerlessComputePtrInput {
+	return (*jobJobClusterServerlessComputePtrType)(v)
+}
+
+func (*jobJobClusterServerlessComputePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterServerlessCompute)(nil)).Elem()
+}
+
+func (i *jobJobClusterServerlessComputePtrType) ToJobJobClusterServerlessComputePtrOutput() JobJobClusterServerlessComputePtrOutput {
+	return i.ToJobJobClusterServerlessComputePtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterServerlessComputePtrType) ToJobJobClusterServerlessComputePtrOutputWithContext(ctx context.Context) JobJobClusterServerlessComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterServerlessComputePtrOutput)
+}
+
+type JobJobClusterServerlessComputeOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterServerlessComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterServerlessCompute)(nil)).Elem()
+}
+
+func (o JobJobClusterServerlessComputeOutput) ToJobJobClusterServerlessComputeOutput() JobJobClusterServerlessComputeOutput {
+	return o
+}
+
+func (o JobJobClusterServerlessComputeOutput) ToJobJobClusterServerlessComputeOutputWithContext(ctx context.Context) JobJobClusterServerlessComputeOutput {
+	return o
+}
+
+func (o JobJobClusterServerlessComputeOutput) ToJobJobClusterServerlessComputePtrOutput() JobJobClusterServerlessComputePtrOutput {
+	return o.ToJobJobClusterServerlessComputePtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterServerlessComputeOutput) ToJobJobClusterServerlessComputePtrOutputWithContext(ctx context.Context) JobJobClusterServerlessComputePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterServerlessCompute) *JobJobClusterServerlessCompute {
+		return &v
+	}).(JobJobClusterServerlessComputePtrOutput)
+}
+
+func (o JobJobClusterServerlessComputeOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterServerlessCompute) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterServerlessComputePtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterServerlessComputePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterServerlessCompute)(nil)).Elem()
+}
+
+func (o JobJobClusterServerlessComputePtrOutput) ToJobJobClusterServerlessComputePtrOutput() JobJobClusterServerlessComputePtrOutput {
+	return o
+}
+
+func (o JobJobClusterServerlessComputePtrOutput) ToJobJobClusterServerlessComputePtrOutputWithContext(ctx context.Context) JobJobClusterServerlessComputePtrOutput {
+	return o
+}
+
+func (o JobJobClusterServerlessComputePtrOutput) Elem() JobJobClusterServerlessComputeOutput {
+	return o.ApplyT(func(v *JobJobClusterServerlessCompute) JobJobClusterServerlessCompute {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterServerlessCompute
+		return ret
+	}).(JobJobClusterServerlessComputeOutput)
+}
+
+func (o JobJobClusterServerlessComputePtrOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterServerlessCompute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyId
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobLibrary struct {
@@ -34800,6 +39030,7 @@ func (o JobSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTask struct {
+	AiFunctionTask         *JobTaskAiFunctionTask         `pulumi:"aiFunctionTask"`
 	AiRuntimeTask          *JobTaskAiRuntimeTask          `pulumi:"aiRuntimeTask"`
 	AlertTask              *JobTaskAlertTask              `pulumi:"alertTask"`
 	CleanRoomsNotebookTask *JobTaskCleanRoomsNotebookTask `pulumi:"cleanRoomsNotebookTask"`
@@ -34878,6 +39109,7 @@ type JobTaskInput interface {
 }
 
 type JobTaskArgs struct {
+	AiFunctionTask         JobTaskAiFunctionTaskPtrInput         `pulumi:"aiFunctionTask"`
 	AiRuntimeTask          JobTaskAiRuntimeTaskPtrInput          `pulumi:"aiRuntimeTask"`
 	AlertTask              JobTaskAlertTaskPtrInput              `pulumi:"alertTask"`
 	CleanRoomsNotebookTask JobTaskCleanRoomsNotebookTaskPtrInput `pulumi:"cleanRoomsNotebookTask"`
@@ -34993,6 +39225,10 @@ func (o JobTaskOutput) ToJobTaskOutput() JobTaskOutput {
 
 func (o JobTaskOutput) ToJobTaskOutputWithContext(ctx context.Context) JobTaskOutput {
 	return o
+}
+
+func (o JobTaskOutput) AiFunctionTask() JobTaskAiFunctionTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskAiFunctionTask { return v.AiFunctionTask }).(JobTaskAiFunctionTaskPtrOutput)
 }
 
 func (o JobTaskOutput) AiRuntimeTask() JobTaskAiRuntimeTaskPtrOutput {
@@ -35200,6 +39436,1510 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTask {
 		return vs[0].([]JobTask)[vs[1].(int)]
 	}).(JobTaskOutput)
+}
+
+type JobTaskAiFunctionTask struct {
+	AiClassify      *JobTaskAiFunctionTaskAiClassify      `pulumi:"aiClassify"`
+	AiExtract       *JobTaskAiFunctionTaskAiExtract       `pulumi:"aiExtract"`
+	AiParseDocument *JobTaskAiFunctionTaskAiParseDocument `pulumi:"aiParseDocument"`
+	DeltaTable      *JobTaskAiFunctionTaskDeltaTable      `pulumi:"deltaTable"`
+	Output          JobTaskAiFunctionTaskOutputType       `pulumi:"output"`
+	Volume          *JobTaskAiFunctionTaskVolume          `pulumi:"volume"`
+}
+
+// JobTaskAiFunctionTaskInput is an input type that accepts JobTaskAiFunctionTaskArgs and JobTaskAiFunctionTaskOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskInput` via:
+//
+//	JobTaskAiFunctionTaskArgs{...}
+type JobTaskAiFunctionTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskOutput() JobTaskAiFunctionTaskOutput
+	ToJobTaskAiFunctionTaskOutputWithContext(context.Context) JobTaskAiFunctionTaskOutput
+}
+
+type JobTaskAiFunctionTaskArgs struct {
+	AiClassify      JobTaskAiFunctionTaskAiClassifyPtrInput      `pulumi:"aiClassify"`
+	AiExtract       JobTaskAiFunctionTaskAiExtractPtrInput       `pulumi:"aiExtract"`
+	AiParseDocument JobTaskAiFunctionTaskAiParseDocumentPtrInput `pulumi:"aiParseDocument"`
+	DeltaTable      JobTaskAiFunctionTaskDeltaTablePtrInput      `pulumi:"deltaTable"`
+	Output          JobTaskAiFunctionTaskOutputTypeInput         `pulumi:"output"`
+	Volume          JobTaskAiFunctionTaskVolumePtrInput          `pulumi:"volume"`
+}
+
+func (JobTaskAiFunctionTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskArgs) ToJobTaskAiFunctionTaskOutput() JobTaskAiFunctionTaskOutput {
+	return i.ToJobTaskAiFunctionTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskArgs) ToJobTaskAiFunctionTaskOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskOutput)
+}
+
+func (i JobTaskAiFunctionTaskArgs) ToJobTaskAiFunctionTaskPtrOutput() JobTaskAiFunctionTaskPtrOutput {
+	return i.ToJobTaskAiFunctionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskArgs) ToJobTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskOutput).ToJobTaskAiFunctionTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskPtrInput is an input type that accepts JobTaskAiFunctionTaskArgs, JobTaskAiFunctionTaskPtr and JobTaskAiFunctionTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskPtrInput` via:
+//
+//	        JobTaskAiFunctionTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskPtrOutput() JobTaskAiFunctionTaskPtrOutput
+	ToJobTaskAiFunctionTaskPtrOutputWithContext(context.Context) JobTaskAiFunctionTaskPtrOutput
+}
+
+type jobTaskAiFunctionTaskPtrType JobTaskAiFunctionTaskArgs
+
+func JobTaskAiFunctionTaskPtr(v *JobTaskAiFunctionTaskArgs) JobTaskAiFunctionTaskPtrInput {
+	return (*jobTaskAiFunctionTaskPtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskPtrType) ToJobTaskAiFunctionTaskPtrOutput() JobTaskAiFunctionTaskPtrOutput {
+	return i.ToJobTaskAiFunctionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskPtrType) ToJobTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskPtrOutput)
+}
+
+type JobTaskAiFunctionTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskOutput) ToJobTaskAiFunctionTaskOutput() JobTaskAiFunctionTaskOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskOutput) ToJobTaskAiFunctionTaskOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskOutput) ToJobTaskAiFunctionTaskPtrOutput() JobTaskAiFunctionTaskPtrOutput {
+	return o.ToJobTaskAiFunctionTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskOutput) ToJobTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTask) *JobTaskAiFunctionTask {
+		return &v
+	}).(JobTaskAiFunctionTaskPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutput) AiClassify() JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTask) *JobTaskAiFunctionTaskAiClassify { return v.AiClassify }).(JobTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutput) AiExtract() JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTask) *JobTaskAiFunctionTaskAiExtract { return v.AiExtract }).(JobTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutput) AiParseDocument() JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTask) *JobTaskAiFunctionTaskAiParseDocument { return v.AiParseDocument }).(JobTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutput) DeltaTable() JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTask) *JobTaskAiFunctionTaskDeltaTable { return v.DeltaTable }).(JobTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutput) Output() JobTaskAiFunctionTaskOutputTypeOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTask) JobTaskAiFunctionTaskOutputType { return v.Output }).(JobTaskAiFunctionTaskOutputTypeOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutput) Volume() JobTaskAiFunctionTaskVolumePtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTask) *JobTaskAiFunctionTaskVolume { return v.Volume }).(JobTaskAiFunctionTaskVolumePtrOutput)
+}
+
+type JobTaskAiFunctionTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) ToJobTaskAiFunctionTaskPtrOutput() JobTaskAiFunctionTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) ToJobTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) Elem() JobTaskAiFunctionTaskOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) JobTaskAiFunctionTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTask
+		return ret
+	}).(JobTaskAiFunctionTaskOutput)
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) AiClassify() JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) *JobTaskAiFunctionTaskAiClassify {
+		if v == nil {
+			return nil
+		}
+		return v.AiClassify
+	}).(JobTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) AiExtract() JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) *JobTaskAiFunctionTaskAiExtract {
+		if v == nil {
+			return nil
+		}
+		return v.AiExtract
+	}).(JobTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) AiParseDocument() JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) *JobTaskAiFunctionTaskAiParseDocument {
+		if v == nil {
+			return nil
+		}
+		return v.AiParseDocument
+	}).(JobTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) DeltaTable() JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) *JobTaskAiFunctionTaskDeltaTable {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaTable
+	}).(JobTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) Output() JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) *JobTaskAiFunctionTaskOutputType {
+		if v == nil {
+			return nil
+		}
+		return &v.Output
+	}).(JobTaskAiFunctionTaskOutputTypePtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskPtrOutput) Volume() JobTaskAiFunctionTaskVolumePtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTask) *JobTaskAiFunctionTaskVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volume
+	}).(JobTaskAiFunctionTaskVolumePtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassify struct {
+	EnableConfidenceScores *bool                                        `pulumi:"enableConfidenceScores"`
+	EnableRationales       *bool                                        `pulumi:"enableRationales"`
+	InlineLabels           *JobTaskAiFunctionTaskAiClassifyInlineLabels `pulumi:"inlineLabels"`
+	Instructions           *string                                      `pulumi:"instructions"`
+	Multilabel             *bool                                        `pulumi:"multilabel"`
+	Version                string                                       `pulumi:"version"`
+}
+
+// JobTaskAiFunctionTaskAiClassifyInput is an input type that accepts JobTaskAiFunctionTaskAiClassifyArgs and JobTaskAiFunctionTaskAiClassifyOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiClassifyInput` via:
+//
+//	JobTaskAiFunctionTaskAiClassifyArgs{...}
+type JobTaskAiFunctionTaskAiClassifyInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiClassifyOutput() JobTaskAiFunctionTaskAiClassifyOutput
+	ToJobTaskAiFunctionTaskAiClassifyOutputWithContext(context.Context) JobTaskAiFunctionTaskAiClassifyOutput
+}
+
+type JobTaskAiFunctionTaskAiClassifyArgs struct {
+	EnableConfidenceScores pulumi.BoolPtrInput                                 `pulumi:"enableConfidenceScores"`
+	EnableRationales       pulumi.BoolPtrInput                                 `pulumi:"enableRationales"`
+	InlineLabels           JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput `pulumi:"inlineLabels"`
+	Instructions           pulumi.StringPtrInput                               `pulumi:"instructions"`
+	Multilabel             pulumi.BoolPtrInput                                 `pulumi:"multilabel"`
+	Version                pulumi.StringInput                                  `pulumi:"version"`
+}
+
+func (JobTaskAiFunctionTaskAiClassifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyArgs) ToJobTaskAiFunctionTaskAiClassifyOutput() JobTaskAiFunctionTaskAiClassifyOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyArgs) ToJobTaskAiFunctionTaskAiClassifyOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyOutput)
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyArgs) ToJobTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyArgs) ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyOutput).ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskAiClassifyPtrInput is an input type that accepts JobTaskAiFunctionTaskAiClassifyArgs, JobTaskAiFunctionTaskAiClassifyPtr and JobTaskAiFunctionTaskAiClassifyPtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiClassifyPtrInput` via:
+//
+//	        JobTaskAiFunctionTaskAiClassifyArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskAiClassifyPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskAiFunctionTaskAiClassifyPtrOutput
+	ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Context) JobTaskAiFunctionTaskAiClassifyPtrOutput
+}
+
+type jobTaskAiFunctionTaskAiClassifyPtrType JobTaskAiFunctionTaskAiClassifyArgs
+
+func JobTaskAiFunctionTaskAiClassifyPtr(v *JobTaskAiFunctionTaskAiClassifyArgs) JobTaskAiFunctionTaskAiClassifyPtrInput {
+	return (*jobTaskAiFunctionTaskAiClassifyPtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskAiClassifyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskAiClassifyPtrType) ToJobTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskAiClassifyPtrType) ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiClassifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) ToJobTaskAiFunctionTaskAiClassifyOutput() JobTaskAiFunctionTaskAiClassifyOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) ToJobTaskAiFunctionTaskAiClassifyOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) ToJobTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskAiClassify) *JobTaskAiFunctionTaskAiClassify {
+		return &v
+	}).(JobTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassify) *bool { return v.EnableConfidenceScores }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) EnableRationales() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassify) *bool { return v.EnableRationales }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) InlineLabels() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassify) *JobTaskAiFunctionTaskAiClassifyInlineLabels {
+		return v.InlineLabels
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassify) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) Multilabel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassify) *bool { return v.Multilabel }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassify) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiClassifyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) ToJobTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) ToJobTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) Elem() JobTaskAiFunctionTaskAiClassifyOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) JobTaskAiFunctionTaskAiClassify {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskAiClassify
+		return ret
+	}).(JobTaskAiFunctionTaskAiClassifyOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidenceScores
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) EnableRationales() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRationales
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) InlineLabels() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) *JobTaskAiFunctionTaskAiClassifyInlineLabels {
+		if v == nil {
+			return nil
+		}
+		return v.InlineLabels
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) Multilabel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Multilabel
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabels struct {
+	Labels []JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel `pulumi:"labels"`
+}
+
+// JobTaskAiFunctionTaskAiClassifyInlineLabelsInput is an input type that accepts JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs and JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiClassifyInlineLabelsInput` via:
+//
+//	JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs{...}
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs struct {
+	Labels JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput `pulumi:"labels"`
+}
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput)
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput).ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput is an input type that accepts JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs, JobTaskAiFunctionTaskAiClassifyInlineLabelsPtr and JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput` via:
+//
+//	        JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput
+}
+
+type jobTaskAiFunctionTaskAiClassifyInlineLabelsPtrType JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs
+
+func JobTaskAiFunctionTaskAiClassifyInlineLabelsPtr(v *JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs) JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput {
+	return (*jobTaskAiFunctionTaskAiClassifyInlineLabelsPtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskAiClassifyInlineLabelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskAiClassifyInlineLabelsPtrType) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskAiClassifyInlineLabelsPtrType) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskAiClassifyInlineLabels) *JobTaskAiFunctionTaskAiClassifyInlineLabels {
+		return &v
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput) Labels() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassifyInlineLabels) []JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+		return v.Labels
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) Elem() JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassifyInlineLabels) JobTaskAiFunctionTaskAiClassifyInlineLabels {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskAiClassifyInlineLabels
+		return ret
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) Labels() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiClassifyInlineLabels) []JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel struct {
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+	Description *string `pulumi:"description"`
+	// An optional name for the job. The default value is Untitled.
+	Name string `pulumi:"name"`
+}
+
+// JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput is an input type that accepts JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs and JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput` via:
+//
+//	JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs{...}
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs struct {
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// An optional name for the job. The default value is Untitled.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput)
+}
+
+// JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput is an input type that accepts JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray and JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput` via:
+//
+//	JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray{ JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs{...} }
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput
+	ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray []JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return i.ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return o
+}
+
+// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An optional name for the job. The default value is Untitled.
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput() JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) ToJobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) Index(i pulumi.IntInput) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+		return vs[0].([]JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel)[vs[1].(int)]
+	}).(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput)
+}
+
+type JobTaskAiFunctionTaskAiExtract struct {
+	EnableCitations        *bool   `pulumi:"enableCitations"`
+	EnableConfidenceScores *bool   `pulumi:"enableConfidenceScores"`
+	Instructions           *string `pulumi:"instructions"`
+	Mode                   *string `pulumi:"mode"`
+	Schema                 *string `pulumi:"schema"`
+	Version                string  `pulumi:"version"`
+}
+
+// JobTaskAiFunctionTaskAiExtractInput is an input type that accepts JobTaskAiFunctionTaskAiExtractArgs and JobTaskAiFunctionTaskAiExtractOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiExtractInput` via:
+//
+//	JobTaskAiFunctionTaskAiExtractArgs{...}
+type JobTaskAiFunctionTaskAiExtractInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiExtractOutput() JobTaskAiFunctionTaskAiExtractOutput
+	ToJobTaskAiFunctionTaskAiExtractOutputWithContext(context.Context) JobTaskAiFunctionTaskAiExtractOutput
+}
+
+type JobTaskAiFunctionTaskAiExtractArgs struct {
+	EnableCitations        pulumi.BoolPtrInput   `pulumi:"enableCitations"`
+	EnableConfidenceScores pulumi.BoolPtrInput   `pulumi:"enableConfidenceScores"`
+	Instructions           pulumi.StringPtrInput `pulumi:"instructions"`
+	Mode                   pulumi.StringPtrInput `pulumi:"mode"`
+	Schema                 pulumi.StringPtrInput `pulumi:"schema"`
+	Version                pulumi.StringInput    `pulumi:"version"`
+}
+
+func (JobTaskAiFunctionTaskAiExtractArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskAiExtractArgs) ToJobTaskAiFunctionTaskAiExtractOutput() JobTaskAiFunctionTaskAiExtractOutput {
+	return i.ToJobTaskAiFunctionTaskAiExtractOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiExtractArgs) ToJobTaskAiFunctionTaskAiExtractOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiExtractOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiExtractOutput)
+}
+
+func (i JobTaskAiFunctionTaskAiExtractArgs) ToJobTaskAiFunctionTaskAiExtractPtrOutput() JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiExtractArgs) ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiExtractOutput).ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskAiExtractPtrInput is an input type that accepts JobTaskAiFunctionTaskAiExtractArgs, JobTaskAiFunctionTaskAiExtractPtr and JobTaskAiFunctionTaskAiExtractPtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiExtractPtrInput` via:
+//
+//	        JobTaskAiFunctionTaskAiExtractArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskAiExtractPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiExtractPtrOutput() JobTaskAiFunctionTaskAiExtractPtrOutput
+	ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Context) JobTaskAiFunctionTaskAiExtractPtrOutput
+}
+
+type jobTaskAiFunctionTaskAiExtractPtrType JobTaskAiFunctionTaskAiExtractArgs
+
+func JobTaskAiFunctionTaskAiExtractPtr(v *JobTaskAiFunctionTaskAiExtractArgs) JobTaskAiFunctionTaskAiExtractPtrInput {
+	return (*jobTaskAiFunctionTaskAiExtractPtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskAiExtractPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskAiExtractPtrType) ToJobTaskAiFunctionTaskAiExtractPtrOutput() JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskAiExtractPtrType) ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiExtractOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiExtractOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) ToJobTaskAiFunctionTaskAiExtractOutput() JobTaskAiFunctionTaskAiExtractOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) ToJobTaskAiFunctionTaskAiExtractOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiExtractOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) ToJobTaskAiFunctionTaskAiExtractPtrOutput() JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskAiExtract) *JobTaskAiFunctionTaskAiExtract {
+		return &v
+	}).(JobTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) EnableCitations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiExtract) *bool { return v.EnableCitations }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiExtract) *bool { return v.EnableConfidenceScores }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiExtract) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiExtract) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiExtract) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiExtract) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type JobTaskAiFunctionTaskAiExtractPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiExtractPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) ToJobTaskAiFunctionTaskAiExtractPtrOutput() JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) ToJobTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiExtractPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) Elem() JobTaskAiFunctionTaskAiExtractOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) JobTaskAiFunctionTaskAiExtract {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskAiExtract
+		return ret
+	}).(JobTaskAiFunctionTaskAiExtractOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) EnableCitations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCitations
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidenceScores
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiExtractPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiParseDocument struct {
+	DescriptionElementTypes []string `pulumi:"descriptionElementTypes"`
+	ImageOutputPath         *string  `pulumi:"imageOutputPath"`
+	PageRange               *string  `pulumi:"pageRange"`
+	Version                 string   `pulumi:"version"`
+}
+
+// JobTaskAiFunctionTaskAiParseDocumentInput is an input type that accepts JobTaskAiFunctionTaskAiParseDocumentArgs and JobTaskAiFunctionTaskAiParseDocumentOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiParseDocumentInput` via:
+//
+//	JobTaskAiFunctionTaskAiParseDocumentArgs{...}
+type JobTaskAiFunctionTaskAiParseDocumentInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiParseDocumentOutput() JobTaskAiFunctionTaskAiParseDocumentOutput
+	ToJobTaskAiFunctionTaskAiParseDocumentOutputWithContext(context.Context) JobTaskAiFunctionTaskAiParseDocumentOutput
+}
+
+type JobTaskAiFunctionTaskAiParseDocumentArgs struct {
+	DescriptionElementTypes pulumi.StringArrayInput `pulumi:"descriptionElementTypes"`
+	ImageOutputPath         pulumi.StringPtrInput   `pulumi:"imageOutputPath"`
+	PageRange               pulumi.StringPtrInput   `pulumi:"pageRange"`
+	Version                 pulumi.StringInput      `pulumi:"version"`
+}
+
+func (JobTaskAiFunctionTaskAiParseDocumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskAiFunctionTaskAiParseDocumentOutput() JobTaskAiFunctionTaskAiParseDocumentOutput {
+	return i.ToJobTaskAiFunctionTaskAiParseDocumentOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskAiFunctionTaskAiParseDocumentOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiParseDocumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiParseDocumentOutput)
+}
+
+func (i JobTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiParseDocumentOutput).ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskAiParseDocumentPtrInput is an input type that accepts JobTaskAiFunctionTaskAiParseDocumentArgs, JobTaskAiFunctionTaskAiParseDocumentPtr and JobTaskAiFunctionTaskAiParseDocumentPtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskAiParseDocumentPtrInput` via:
+//
+//	        JobTaskAiFunctionTaskAiParseDocumentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskAiParseDocumentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskAiFunctionTaskAiParseDocumentPtrOutput
+	ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Context) JobTaskAiFunctionTaskAiParseDocumentPtrOutput
+}
+
+type jobTaskAiFunctionTaskAiParseDocumentPtrType JobTaskAiFunctionTaskAiParseDocumentArgs
+
+func JobTaskAiFunctionTaskAiParseDocumentPtr(v *JobTaskAiFunctionTaskAiParseDocumentArgs) JobTaskAiFunctionTaskAiParseDocumentPtrInput {
+	return (*jobTaskAiFunctionTaskAiParseDocumentPtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskAiParseDocumentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskAiParseDocumentPtrType) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return i.ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskAiParseDocumentPtrType) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+type JobTaskAiFunctionTaskAiParseDocumentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiParseDocumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskAiFunctionTaskAiParseDocumentOutput() JobTaskAiFunctionTaskAiParseDocumentOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskAiFunctionTaskAiParseDocumentOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiParseDocumentOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskAiParseDocument) *JobTaskAiFunctionTaskAiParseDocument {
+		return &v
+	}).(JobTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) DescriptionElementTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiParseDocument) []string { return v.DescriptionElementTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) ImageOutputPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiParseDocument) *string { return v.ImageOutputPath }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) PageRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiParseDocument) *string { return v.PageRange }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskAiParseDocument) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type JobTaskAiFunctionTaskAiParseDocumentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskAiParseDocumentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) ToJobTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) Elem() JobTaskAiFunctionTaskAiParseDocumentOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiParseDocument) JobTaskAiFunctionTaskAiParseDocument {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskAiParseDocument
+		return ret
+	}).(JobTaskAiFunctionTaskAiParseDocumentOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) DescriptionElementTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiParseDocument) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DescriptionElementTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) ImageOutputPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiParseDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageOutputPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) PageRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiParseDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageRange
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskAiParseDocumentPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskAiParseDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskAiFunctionTaskDeltaTable struct {
+	InputColumn     string   `pulumi:"inputColumn"`
+	MergeKeyColumns []string `pulumi:"mergeKeyColumns"`
+	TableName       string   `pulumi:"tableName"`
+}
+
+// JobTaskAiFunctionTaskDeltaTableInput is an input type that accepts JobTaskAiFunctionTaskDeltaTableArgs and JobTaskAiFunctionTaskDeltaTableOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskDeltaTableInput` via:
+//
+//	JobTaskAiFunctionTaskDeltaTableArgs{...}
+type JobTaskAiFunctionTaskDeltaTableInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskDeltaTableOutput() JobTaskAiFunctionTaskDeltaTableOutput
+	ToJobTaskAiFunctionTaskDeltaTableOutputWithContext(context.Context) JobTaskAiFunctionTaskDeltaTableOutput
+}
+
+type JobTaskAiFunctionTaskDeltaTableArgs struct {
+	InputColumn     pulumi.StringInput      `pulumi:"inputColumn"`
+	MergeKeyColumns pulumi.StringArrayInput `pulumi:"mergeKeyColumns"`
+	TableName       pulumi.StringInput      `pulumi:"tableName"`
+}
+
+func (JobTaskAiFunctionTaskDeltaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskDeltaTableArgs) ToJobTaskAiFunctionTaskDeltaTableOutput() JobTaskAiFunctionTaskDeltaTableOutput {
+	return i.ToJobTaskAiFunctionTaskDeltaTableOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskDeltaTableArgs) ToJobTaskAiFunctionTaskDeltaTableOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskDeltaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskDeltaTableOutput)
+}
+
+func (i JobTaskAiFunctionTaskDeltaTableArgs) ToJobTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return i.ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskDeltaTableArgs) ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskDeltaTableOutput).ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskDeltaTablePtrInput is an input type that accepts JobTaskAiFunctionTaskDeltaTableArgs, JobTaskAiFunctionTaskDeltaTablePtr and JobTaskAiFunctionTaskDeltaTablePtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskDeltaTablePtrInput` via:
+//
+//	        JobTaskAiFunctionTaskDeltaTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskDeltaTablePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskAiFunctionTaskDeltaTablePtrOutput
+	ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Context) JobTaskAiFunctionTaskDeltaTablePtrOutput
+}
+
+type jobTaskAiFunctionTaskDeltaTablePtrType JobTaskAiFunctionTaskDeltaTableArgs
+
+func JobTaskAiFunctionTaskDeltaTablePtr(v *JobTaskAiFunctionTaskDeltaTableArgs) JobTaskAiFunctionTaskDeltaTablePtrInput {
+	return (*jobTaskAiFunctionTaskDeltaTablePtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskDeltaTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskDeltaTablePtrType) ToJobTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return i.ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskDeltaTablePtrType) ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+type JobTaskAiFunctionTaskDeltaTableOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskDeltaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) ToJobTaskAiFunctionTaskDeltaTableOutput() JobTaskAiFunctionTaskDeltaTableOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) ToJobTaskAiFunctionTaskDeltaTableOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskDeltaTableOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) ToJobTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskDeltaTable) *JobTaskAiFunctionTaskDeltaTable {
+		return &v
+	}).(JobTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) InputColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskDeltaTable) string { return v.InputColumn }).(pulumi.StringOutput)
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) MergeKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskDeltaTable) []string { return v.MergeKeyColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskAiFunctionTaskDeltaTableOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskDeltaTable) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+type JobTaskAiFunctionTaskDeltaTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskDeltaTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskDeltaTablePtrOutput) ToJobTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskDeltaTablePtrOutput) ToJobTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskDeltaTablePtrOutput) Elem() JobTaskAiFunctionTaskDeltaTableOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskDeltaTable) JobTaskAiFunctionTaskDeltaTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskDeltaTable
+		return ret
+	}).(JobTaskAiFunctionTaskDeltaTableOutput)
+}
+
+func (o JobTaskAiFunctionTaskDeltaTablePtrOutput) InputColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskDeltaTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InputColumn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskDeltaTablePtrOutput) MergeKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskDeltaTable) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MergeKeyColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskAiFunctionTaskDeltaTablePtrOutput) TableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskDeltaTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskAiFunctionTaskOutputType struct {
+	Catalog *string `pulumi:"catalog"`
+	Schema  *string `pulumi:"schema"`
+	Table   *string `pulumi:"table"`
+}
+
+// JobTaskAiFunctionTaskOutputTypeInput is an input type that accepts JobTaskAiFunctionTaskOutputTypeArgs and JobTaskAiFunctionTaskOutputTypeOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskOutputTypeInput` via:
+//
+//	JobTaskAiFunctionTaskOutputTypeArgs{...}
+type JobTaskAiFunctionTaskOutputTypeInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskOutputTypeOutput() JobTaskAiFunctionTaskOutputTypeOutput
+	ToJobTaskAiFunctionTaskOutputTypeOutputWithContext(context.Context) JobTaskAiFunctionTaskOutputTypeOutput
+}
+
+type JobTaskAiFunctionTaskOutputTypeArgs struct {
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	Schema  pulumi.StringPtrInput `pulumi:"schema"`
+	Table   pulumi.StringPtrInput `pulumi:"table"`
+}
+
+func (JobTaskAiFunctionTaskOutputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskOutputTypeArgs) ToJobTaskAiFunctionTaskOutputTypeOutput() JobTaskAiFunctionTaskOutputTypeOutput {
+	return i.ToJobTaskAiFunctionTaskOutputTypeOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskOutputTypeArgs) ToJobTaskAiFunctionTaskOutputTypeOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskOutputTypeOutput)
+}
+
+func (i JobTaskAiFunctionTaskOutputTypeArgs) ToJobTaskAiFunctionTaskOutputTypePtrOutput() JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return i.ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskOutputTypeArgs) ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskOutputTypeOutput).ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskOutputTypePtrInput is an input type that accepts JobTaskAiFunctionTaskOutputTypeArgs, JobTaskAiFunctionTaskOutputTypePtr and JobTaskAiFunctionTaskOutputTypePtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskOutputTypePtrInput` via:
+//
+//	        JobTaskAiFunctionTaskOutputTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskOutputTypePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskOutputTypePtrOutput() JobTaskAiFunctionTaskOutputTypePtrOutput
+	ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Context) JobTaskAiFunctionTaskOutputTypePtrOutput
+}
+
+type jobTaskAiFunctionTaskOutputTypePtrType JobTaskAiFunctionTaskOutputTypeArgs
+
+func JobTaskAiFunctionTaskOutputTypePtr(v *JobTaskAiFunctionTaskOutputTypeArgs) JobTaskAiFunctionTaskOutputTypePtrInput {
+	return (*jobTaskAiFunctionTaskOutputTypePtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskOutputTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskOutputTypePtrType) ToJobTaskAiFunctionTaskOutputTypePtrOutput() JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return i.ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskOutputTypePtrType) ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskOutputTypePtrOutput)
+}
+
+type JobTaskAiFunctionTaskOutputTypeOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskOutputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) ToJobTaskAiFunctionTaskOutputTypeOutput() JobTaskAiFunctionTaskOutputTypeOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) ToJobTaskAiFunctionTaskOutputTypeOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutputTypeOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) ToJobTaskAiFunctionTaskOutputTypePtrOutput() JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return o.ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskOutputType) *JobTaskAiFunctionTaskOutputType {
+		return &v
+	}).(JobTaskAiFunctionTaskOutputTypePtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskOutputType) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskOutputType) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutputTypeOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskOutputType) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskAiFunctionTaskOutputTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskOutputTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskOutputTypePtrOutput) ToJobTaskAiFunctionTaskOutputTypePtrOutput() JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskOutputTypePtrOutput) ToJobTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskOutputTypePtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskOutputTypePtrOutput) Elem() JobTaskAiFunctionTaskOutputTypeOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskOutputType) JobTaskAiFunctionTaskOutputType {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskOutputType
+		return ret
+	}).(JobTaskAiFunctionTaskOutputTypeOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutputTypePtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskOutputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Catalog
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutputTypePtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskOutputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskOutputTypePtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskOutputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskAiFunctionTaskVolume struct {
+	VolumePath string `pulumi:"volumePath"`
+}
+
+// JobTaskAiFunctionTaskVolumeInput is an input type that accepts JobTaskAiFunctionTaskVolumeArgs and JobTaskAiFunctionTaskVolumeOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskVolumeInput` via:
+//
+//	JobTaskAiFunctionTaskVolumeArgs{...}
+type JobTaskAiFunctionTaskVolumeInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskVolumeOutput() JobTaskAiFunctionTaskVolumeOutput
+	ToJobTaskAiFunctionTaskVolumeOutputWithContext(context.Context) JobTaskAiFunctionTaskVolumeOutput
+}
+
+type JobTaskAiFunctionTaskVolumeArgs struct {
+	VolumePath pulumi.StringInput `pulumi:"volumePath"`
+}
+
+func (JobTaskAiFunctionTaskVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (i JobTaskAiFunctionTaskVolumeArgs) ToJobTaskAiFunctionTaskVolumeOutput() JobTaskAiFunctionTaskVolumeOutput {
+	return i.ToJobTaskAiFunctionTaskVolumeOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskVolumeArgs) ToJobTaskAiFunctionTaskVolumeOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskVolumeOutput)
+}
+
+func (i JobTaskAiFunctionTaskVolumeArgs) ToJobTaskAiFunctionTaskVolumePtrOutput() JobTaskAiFunctionTaskVolumePtrOutput {
+	return i.ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskAiFunctionTaskVolumeArgs) ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskVolumeOutput).ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(ctx)
+}
+
+// JobTaskAiFunctionTaskVolumePtrInput is an input type that accepts JobTaskAiFunctionTaskVolumeArgs, JobTaskAiFunctionTaskVolumePtr and JobTaskAiFunctionTaskVolumePtrOutput values.
+// You can construct a concrete instance of `JobTaskAiFunctionTaskVolumePtrInput` via:
+//
+//	        JobTaskAiFunctionTaskVolumeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskAiFunctionTaskVolumePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskAiFunctionTaskVolumePtrOutput() JobTaskAiFunctionTaskVolumePtrOutput
+	ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(context.Context) JobTaskAiFunctionTaskVolumePtrOutput
+}
+
+type jobTaskAiFunctionTaskVolumePtrType JobTaskAiFunctionTaskVolumeArgs
+
+func JobTaskAiFunctionTaskVolumePtr(v *JobTaskAiFunctionTaskVolumeArgs) JobTaskAiFunctionTaskVolumePtrInput {
+	return (*jobTaskAiFunctionTaskVolumePtrType)(v)
+}
+
+func (*jobTaskAiFunctionTaskVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (i *jobTaskAiFunctionTaskVolumePtrType) ToJobTaskAiFunctionTaskVolumePtrOutput() JobTaskAiFunctionTaskVolumePtrOutput {
+	return i.ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskAiFunctionTaskVolumePtrType) ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskAiFunctionTaskVolumePtrOutput)
+}
+
+type JobTaskAiFunctionTaskVolumeOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskVolumeOutput) ToJobTaskAiFunctionTaskVolumeOutput() JobTaskAiFunctionTaskVolumeOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskVolumeOutput) ToJobTaskAiFunctionTaskVolumeOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskVolumeOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskVolumeOutput) ToJobTaskAiFunctionTaskVolumePtrOutput() JobTaskAiFunctionTaskVolumePtrOutput {
+	return o.ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskAiFunctionTaskVolumeOutput) ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskAiFunctionTaskVolume) *JobTaskAiFunctionTaskVolume {
+		return &v
+	}).(JobTaskAiFunctionTaskVolumePtrOutput)
+}
+
+func (o JobTaskAiFunctionTaskVolumeOutput) VolumePath() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskAiFunctionTaskVolume) string { return v.VolumePath }).(pulumi.StringOutput)
+}
+
+type JobTaskAiFunctionTaskVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskAiFunctionTaskVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (o JobTaskAiFunctionTaskVolumePtrOutput) ToJobTaskAiFunctionTaskVolumePtrOutput() JobTaskAiFunctionTaskVolumePtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskVolumePtrOutput) ToJobTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskAiFunctionTaskVolumePtrOutput {
+	return o
+}
+
+func (o JobTaskAiFunctionTaskVolumePtrOutput) Elem() JobTaskAiFunctionTaskVolumeOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskVolume) JobTaskAiFunctionTaskVolume {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskAiFunctionTaskVolume
+		return ret
+	}).(JobTaskAiFunctionTaskVolumeOutput)
+}
+
+func (o JobTaskAiFunctionTaskVolumePtrOutput) VolumePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiFunctionTaskVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VolumePath
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskAiRuntimeTask struct {
@@ -38644,6 +44384,7 @@ func (o JobTaskForEachTaskPtrOutput) Task() JobTaskForEachTaskTaskPtrOutput {
 }
 
 type JobTaskForEachTaskTask struct {
+	AiFunctionTask         *JobTaskForEachTaskTaskAiFunctionTask         `pulumi:"aiFunctionTask"`
 	AiRuntimeTask          *JobTaskForEachTaskTaskAiRuntimeTask          `pulumi:"aiRuntimeTask"`
 	AlertTask              *JobTaskForEachTaskTaskAlertTask              `pulumi:"alertTask"`
 	CleanRoomsNotebookTask *JobTaskForEachTaskTaskCleanRoomsNotebookTask `pulumi:"cleanRoomsNotebookTask"`
@@ -38721,6 +44462,7 @@ type JobTaskForEachTaskTaskInput interface {
 }
 
 type JobTaskForEachTaskTaskArgs struct {
+	AiFunctionTask         JobTaskForEachTaskTaskAiFunctionTaskPtrInput         `pulumi:"aiFunctionTask"`
 	AiRuntimeTask          JobTaskForEachTaskTaskAiRuntimeTaskPtrInput          `pulumi:"aiRuntimeTask"`
 	AlertTask              JobTaskForEachTaskTaskAlertTaskPtrInput              `pulumi:"alertTask"`
 	CleanRoomsNotebookTask JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrInput `pulumi:"cleanRoomsNotebookTask"`
@@ -38861,6 +44603,10 @@ func (o JobTaskForEachTaskTaskOutput) ToJobTaskForEachTaskTaskPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTask) *JobTaskForEachTaskTask {
 		return &v
 	}).(JobTaskForEachTaskTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskOutput) AiFunctionTask() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskAiFunctionTask { return v.AiFunctionTask }).(JobTaskForEachTaskTaskAiFunctionTaskPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskOutput) AiRuntimeTask() JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput {
@@ -39074,6 +44820,15 @@ func (o JobTaskForEachTaskTaskPtrOutput) Elem() JobTaskForEachTaskTaskOutput {
 		var ret JobTaskForEachTaskTask
 		return ret
 	}).(JobTaskForEachTaskTaskOutput)
+}
+
+func (o JobTaskForEachTaskTaskPtrOutput) AiFunctionTask() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskAiFunctionTask {
+		if v == nil {
+			return nil
+		}
+		return v.AiFunctionTask
+	}).(JobTaskForEachTaskTaskAiFunctionTaskPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskPtrOutput) AiRuntimeTask() JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput {
@@ -39457,6 +45212,1522 @@ func (o JobTaskForEachTaskTaskPtrOutput) WebhookNotifications() JobTaskForEachTa
 		}
 		return v.WebhookNotifications
 	}).(JobTaskForEachTaskTaskWebhookNotificationsPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTask struct {
+	AiClassify      *JobTaskForEachTaskTaskAiFunctionTaskAiClassify      `pulumi:"aiClassify"`
+	AiExtract       *JobTaskForEachTaskTaskAiFunctionTaskAiExtract       `pulumi:"aiExtract"`
+	AiParseDocument *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument `pulumi:"aiParseDocument"`
+	DeltaTable      *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable      `pulumi:"deltaTable"`
+	Output          JobTaskForEachTaskTaskAiFunctionTaskOutputType       `pulumi:"output"`
+	Volume          *JobTaskForEachTaskTaskAiFunctionTaskVolume          `pulumi:"volume"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskArgs and JobTaskForEachTaskTaskAiFunctionTaskOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskOutput() JobTaskForEachTaskTaskAiFunctionTaskOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskArgs struct {
+	AiClassify      JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrInput      `pulumi:"aiClassify"`
+	AiExtract       JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrInput       `pulumi:"aiExtract"`
+	AiParseDocument JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrInput `pulumi:"aiParseDocument"`
+	DeltaTable      JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrInput      `pulumi:"deltaTable"`
+	Output          JobTaskForEachTaskTaskAiFunctionTaskOutputTypeInput         `pulumi:"output"`
+	Volume          JobTaskForEachTaskTaskAiFunctionTaskVolumePtrInput          `pulumi:"volume"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskArgs) ToJobTaskForEachTaskTaskAiFunctionTaskOutput() JobTaskForEachTaskTaskAiFunctionTaskOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskArgs) ToJobTaskForEachTaskTaskAiFunctionTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskArgs) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskArgs) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskOutput).ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskPtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskArgs, JobTaskForEachTaskTaskAiFunctionTaskPtr and JobTaskForEachTaskTaskAiFunctionTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskPtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskPtrType JobTaskForEachTaskTaskAiFunctionTaskArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskPtr(v *JobTaskForEachTaskTaskAiFunctionTaskArgs) JobTaskForEachTaskTaskAiFunctionTaskPtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutput() JobTaskForEachTaskTaskAiFunctionTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTask {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) AiClassify() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskAiClassify {
+		return v.AiClassify
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) AiExtract() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskAiExtract {
+		return v.AiExtract
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) AiParseDocument() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument {
+		return v.AiParseDocument
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) DeltaTable() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable {
+		return v.DeltaTable
+	}).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) Output() JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTask) JobTaskForEachTaskTaskAiFunctionTaskOutputType {
+		return v.Output
+	}).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutput) Volume() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskVolume {
+		return v.Volume
+	}).(JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) JobTaskForEachTaskTaskAiFunctionTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTask
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) AiClassify() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskAiClassify {
+		if v == nil {
+			return nil
+		}
+		return v.AiClassify
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) AiExtract() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskAiExtract {
+		if v == nil {
+			return nil
+		}
+		return v.AiExtract
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) AiParseDocument() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument {
+		if v == nil {
+			return nil
+		}
+		return v.AiParseDocument
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) DeltaTable() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaTable
+	}).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) Output() JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskOutputType {
+		if v == nil {
+			return nil
+		}
+		return &v.Output
+	}).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskPtrOutput) Volume() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTask) *JobTaskForEachTaskTaskAiFunctionTaskVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volume
+	}).(JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassify struct {
+	EnableConfidenceScores *bool                                                       `pulumi:"enableConfidenceScores"`
+	EnableRationales       *bool                                                       `pulumi:"enableRationales"`
+	InlineLabels           *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels `pulumi:"inlineLabels"`
+	Instructions           *string                                                     `pulumi:"instructions"`
+	Multilabel             *bool                                                       `pulumi:"multilabel"`
+	Version                string                                                      `pulumi:"version"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs and JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs struct {
+	EnableConfidenceScores pulumi.BoolPtrInput                                                `pulumi:"enableConfidenceScores"`
+	EnableRationales       pulumi.BoolPtrInput                                                `pulumi:"enableRationales"`
+	InlineLabels           JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput `pulumi:"inlineLabels"`
+	Instructions           pulumi.StringPtrInput                                              `pulumi:"instructions"`
+	Multilabel             pulumi.BoolPtrInput                                                `pulumi:"multilabel"`
+	Version                pulumi.StringInput                                                 `pulumi:"version"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput).ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs, JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtr and JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrType JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtr(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *JobTaskForEachTaskTaskAiFunctionTaskAiClassify {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *bool { return v.EnableConfidenceScores }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) EnableRationales() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *bool { return v.EnableRationales }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) InlineLabels() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels {
+		return v.InlineLabels
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) Multilabel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *bool { return v.Multilabel }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassify) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiClassify)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) JobTaskForEachTaskTaskAiFunctionTaskAiClassify {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskAiClassify
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidenceScores
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) EnableRationales() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRationales
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) InlineLabels() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels {
+		if v == nil {
+			return nil
+		}
+		return v.InlineLabels
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) Multilabel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Multilabel
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels struct {
+	Labels []JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel `pulumi:"labels"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs and JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs struct {
+	Labels JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput `pulumi:"labels"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput).ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs, JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtr and JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrType JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtr(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels) *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput) Labels() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels) []JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+		return v.Labels
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput) Labels() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels) []JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel struct {
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+	Description *string `pulumi:"description"`
+	// An optional name for the job. The default value is Untitled.
+	Name string `pulumi:"name"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs and JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs struct {
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// An optional name for the job. The default value is Untitled.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray and JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray{ JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs{...} }
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray []JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return o
+}
+
+// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An optional name for the job. The default value is Untitled.
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput() JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput) Index(i pulumi.IntInput) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+		return vs[0].([]JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel)[vs[1].(int)]
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiExtract struct {
+	EnableCitations        *bool   `pulumi:"enableCitations"`
+	EnableConfidenceScores *bool   `pulumi:"enableConfidenceScores"`
+	Instructions           *string `pulumi:"instructions"`
+	Mode                   *string `pulumi:"mode"`
+	Schema                 *string `pulumi:"schema"`
+	Version                string  `pulumi:"version"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiExtractInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs and JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiExtractInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskAiExtractInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs struct {
+	EnableCitations        pulumi.BoolPtrInput   `pulumi:"enableCitations"`
+	EnableConfidenceScores pulumi.BoolPtrInput   `pulumi:"enableConfidenceScores"`
+	Instructions           pulumi.StringPtrInput `pulumi:"instructions"`
+	Mode                   pulumi.StringPtrInput `pulumi:"mode"`
+	Schema                 pulumi.StringPtrInput `pulumi:"schema"`
+	Version                pulumi.StringInput    `pulumi:"version"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput).ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs, JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtr and JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrType JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtr(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs) JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *JobTaskForEachTaskTaskAiFunctionTaskAiExtract {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) EnableCitations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *bool { return v.EnableCitations }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *bool { return v.EnableConfidenceScores }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiExtract) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiExtract)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) JobTaskForEachTaskTaskAiFunctionTaskAiExtract {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskAiExtract
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) EnableCitations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCitations
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) EnableConfidenceScores() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidenceScores
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument struct {
+	DescriptionElementTypes []string `pulumi:"descriptionElementTypes"`
+	ImageOutputPath         *string  `pulumi:"imageOutputPath"`
+	PageRange               *string  `pulumi:"pageRange"`
+	Version                 string   `pulumi:"version"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs and JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs struct {
+	DescriptionElementTypes pulumi.StringArrayInput `pulumi:"descriptionElementTypes"`
+	ImageOutputPath         pulumi.StringPtrInput   `pulumi:"imageOutputPath"`
+	PageRange               pulumi.StringPtrInput   `pulumi:"pageRange"`
+	Version                 pulumi.StringInput      `pulumi:"version"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput).ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs, JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtr and JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrType JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtr(v *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrType) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) DescriptionElementTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) []string { return v.DescriptionElementTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) ImageOutputPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) *string { return v.ImageOutputPath }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) PageRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) *string { return v.PageRange }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) DescriptionElementTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DescriptionElementTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) ImageOutputPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageOutputPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) PageRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageRange
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskDeltaTable struct {
+	InputColumn     string   `pulumi:"inputColumn"`
+	MergeKeyColumns []string `pulumi:"mergeKeyColumns"`
+	TableName       string   `pulumi:"tableName"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskDeltaTableInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs and JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskDeltaTableInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskDeltaTableInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs struct {
+	InputColumn     pulumi.StringInput      `pulumi:"inputColumn"`
+	MergeKeyColumns pulumi.StringArrayInput `pulumi:"mergeKeyColumns"`
+	TableName       pulumi.StringInput      `pulumi:"tableName"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput).ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs, JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtr and JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrType JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtr(v *JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs) JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrType) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrType) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) InputColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) string { return v.InputColumn }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) MergeKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) []string { return v.MergeKeyColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskDeltaTable)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) JobTaskForEachTaskTaskAiFunctionTaskDeltaTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskDeltaTable
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) InputColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InputColumn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) MergeKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MergeKeyColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput) TableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskDeltaTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskOutputType struct {
+	Catalog *string `pulumi:"catalog"`
+	Schema  *string `pulumi:"schema"`
+	Table   *string `pulumi:"table"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskOutputTypeInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs and JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskOutputTypeInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskOutputTypeInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs struct {
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	Schema  pulumi.StringPtrInput `pulumi:"schema"`
+	Table   pulumi.StringPtrInput `pulumi:"table"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput).ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs, JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtr and JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrType JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtr(v *JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs) JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrType) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrType) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskOutputType) *JobTaskForEachTaskTaskAiFunctionTaskOutputType {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskOutputType) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskOutputType) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskOutputType) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskOutputType)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskOutputType) JobTaskForEachTaskTaskAiFunctionTaskOutputType {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskOutputType
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskOutputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Catalog
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskOutputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskOutputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskVolume struct {
+	VolumePath string `pulumi:"volumePath"`
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskVolumeInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs and JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskVolumeInput` via:
+//
+//	JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs{...}
+type JobTaskForEachTaskTaskAiFunctionTaskVolumeInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs struct {
+	VolumePath pulumi.StringInput `pulumi:"volumePath"`
+}
+
+func (JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput)
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput).ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskAiFunctionTaskVolumePtrInput is an input type that accepts JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs, JobTaskForEachTaskTaskAiFunctionTaskVolumePtr and JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskAiFunctionTaskVolumePtrInput` via:
+//
+//	        JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskAiFunctionTaskVolumePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput
+	ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput
+}
+
+type jobTaskForEachTaskTaskAiFunctionTaskVolumePtrType JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs
+
+func JobTaskForEachTaskTaskAiFunctionTaskVolumePtr(v *JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs) JobTaskForEachTaskTaskAiFunctionTaskVolumePtrInput {
+	return (*jobTaskForEachTaskTaskAiFunctionTaskVolumePtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskAiFunctionTaskVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskVolumePtrType) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return i.ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskAiFunctionTaskVolumePtrType) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskVolumeOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return o.ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskAiFunctionTaskVolume) *JobTaskForEachTaskTaskAiFunctionTaskVolume {
+		return &v
+	}).(JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput) VolumePath() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiFunctionTaskVolume) string { return v.VolumePath }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskAiFunctionTaskVolume)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput() JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput) ToJobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput) Elem() JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskVolume) JobTaskForEachTaskTaskAiFunctionTaskVolume {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskAiFunctionTaskVolume
+		return ret
+	}).(JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput) VolumePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiFunctionTaskVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VolumePath
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskForEachTaskTaskAiRuntimeTask struct {
@@ -66319,9 +73590,10 @@ type JobTrigger struct {
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous *JobTriggerContinuous `pulumi:"continuous"`
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-	FileArrival *JobTriggerFileArrival `pulumi:"fileArrival"`
-	Model       *JobTriggerModel       `pulumi:"model"`
-	PauseStatus *string                `pulumi:"pauseStatus"`
+	FileArrival   *JobTriggerFileArrival   `pulumi:"fileArrival"`
+	JobCompletion *JobTriggerJobCompletion `pulumi:"jobCompletion"`
+	Model         *JobTriggerModel         `pulumi:"model"`
+	PauseStatus   *string                  `pulumi:"pauseStatus"`
 	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	Periodic *JobTriggerPeriodic `pulumi:"periodic"`
 	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -66346,9 +73618,10 @@ type JobTriggerArgs struct {
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous JobTriggerContinuousPtrInput `pulumi:"continuous"`
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-	FileArrival JobTriggerFileArrivalPtrInput `pulumi:"fileArrival"`
-	Model       JobTriggerModelPtrInput       `pulumi:"model"`
-	PauseStatus pulumi.StringPtrInput         `pulumi:"pauseStatus"`
+	FileArrival   JobTriggerFileArrivalPtrInput   `pulumi:"fileArrival"`
+	JobCompletion JobTriggerJobCompletionPtrInput `pulumi:"jobCompletion"`
+	Model         JobTriggerModelPtrInput         `pulumi:"model"`
+	PauseStatus   pulumi.StringPtrInput           `pulumi:"pauseStatus"`
 	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	Periodic JobTriggerPeriodicPtrInput `pulumi:"periodic"`
 	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -66470,6 +73743,10 @@ func (o JobTriggerOutput) FileArrival() JobTriggerFileArrivalPtrOutput {
 	return o.ApplyT(func(v JobTrigger) *JobTriggerFileArrival { return v.FileArrival }).(JobTriggerFileArrivalPtrOutput)
 }
 
+func (o JobTriggerOutput) JobCompletion() JobTriggerJobCompletionPtrOutput {
+	return o.ApplyT(func(v JobTrigger) *JobTriggerJobCompletion { return v.JobCompletion }).(JobTriggerJobCompletionPtrOutput)
+}
+
 func (o JobTriggerOutput) Model() JobTriggerModelPtrOutput {
 	return o.ApplyT(func(v JobTrigger) *JobTriggerModel { return v.Model }).(JobTriggerModelPtrOutput)
 }
@@ -66539,6 +73816,15 @@ func (o JobTriggerPtrOutput) FileArrival() JobTriggerFileArrivalPtrOutput {
 		}
 		return v.FileArrival
 	}).(JobTriggerFileArrivalPtrOutput)
+}
+
+func (o JobTriggerPtrOutput) JobCompletion() JobTriggerJobCompletionPtrOutput {
+	return o.ApplyT(func(v *JobTrigger) *JobTriggerJobCompletion {
+		if v == nil {
+			return nil
+		}
+		return v.JobCompletion
+	}).(JobTriggerJobCompletionPtrOutput)
 }
 
 func (o JobTriggerPtrOutput) Model() JobTriggerModelPtrOutput {
@@ -67110,6 +74396,260 @@ func (o JobTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntP
 		}
 		return v.WaitAfterLastChangeSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+type JobTriggerJobCompletion struct {
+	IfStatus *string                      `pulumi:"ifStatus"`
+	Jobs     []JobTriggerJobCompletionJob `pulumi:"jobs"`
+}
+
+// JobTriggerJobCompletionInput is an input type that accepts JobTriggerJobCompletionArgs and JobTriggerJobCompletionOutput values.
+// You can construct a concrete instance of `JobTriggerJobCompletionInput` via:
+//
+//	JobTriggerJobCompletionArgs{...}
+type JobTriggerJobCompletionInput interface {
+	pulumi.Input
+
+	ToJobTriggerJobCompletionOutput() JobTriggerJobCompletionOutput
+	ToJobTriggerJobCompletionOutputWithContext(context.Context) JobTriggerJobCompletionOutput
+}
+
+type JobTriggerJobCompletionArgs struct {
+	IfStatus pulumi.StringPtrInput                `pulumi:"ifStatus"`
+	Jobs     JobTriggerJobCompletionJobArrayInput `pulumi:"jobs"`
+}
+
+func (JobTriggerJobCompletionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerJobCompletion)(nil)).Elem()
+}
+
+func (i JobTriggerJobCompletionArgs) ToJobTriggerJobCompletionOutput() JobTriggerJobCompletionOutput {
+	return i.ToJobTriggerJobCompletionOutputWithContext(context.Background())
+}
+
+func (i JobTriggerJobCompletionArgs) ToJobTriggerJobCompletionOutputWithContext(ctx context.Context) JobTriggerJobCompletionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerJobCompletionOutput)
+}
+
+func (i JobTriggerJobCompletionArgs) ToJobTriggerJobCompletionPtrOutput() JobTriggerJobCompletionPtrOutput {
+	return i.ToJobTriggerJobCompletionPtrOutputWithContext(context.Background())
+}
+
+func (i JobTriggerJobCompletionArgs) ToJobTriggerJobCompletionPtrOutputWithContext(ctx context.Context) JobTriggerJobCompletionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerJobCompletionOutput).ToJobTriggerJobCompletionPtrOutputWithContext(ctx)
+}
+
+// JobTriggerJobCompletionPtrInput is an input type that accepts JobTriggerJobCompletionArgs, JobTriggerJobCompletionPtr and JobTriggerJobCompletionPtrOutput values.
+// You can construct a concrete instance of `JobTriggerJobCompletionPtrInput` via:
+//
+//	        JobTriggerJobCompletionArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTriggerJobCompletionPtrInput interface {
+	pulumi.Input
+
+	ToJobTriggerJobCompletionPtrOutput() JobTriggerJobCompletionPtrOutput
+	ToJobTriggerJobCompletionPtrOutputWithContext(context.Context) JobTriggerJobCompletionPtrOutput
+}
+
+type jobTriggerJobCompletionPtrType JobTriggerJobCompletionArgs
+
+func JobTriggerJobCompletionPtr(v *JobTriggerJobCompletionArgs) JobTriggerJobCompletionPtrInput {
+	return (*jobTriggerJobCompletionPtrType)(v)
+}
+
+func (*jobTriggerJobCompletionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTriggerJobCompletion)(nil)).Elem()
+}
+
+func (i *jobTriggerJobCompletionPtrType) ToJobTriggerJobCompletionPtrOutput() JobTriggerJobCompletionPtrOutput {
+	return i.ToJobTriggerJobCompletionPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTriggerJobCompletionPtrType) ToJobTriggerJobCompletionPtrOutputWithContext(ctx context.Context) JobTriggerJobCompletionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerJobCompletionPtrOutput)
+}
+
+type JobTriggerJobCompletionOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerJobCompletionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerJobCompletion)(nil)).Elem()
+}
+
+func (o JobTriggerJobCompletionOutput) ToJobTriggerJobCompletionOutput() JobTriggerJobCompletionOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionOutput) ToJobTriggerJobCompletionOutputWithContext(ctx context.Context) JobTriggerJobCompletionOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionOutput) ToJobTriggerJobCompletionPtrOutput() JobTriggerJobCompletionPtrOutput {
+	return o.ToJobTriggerJobCompletionPtrOutputWithContext(context.Background())
+}
+
+func (o JobTriggerJobCompletionOutput) ToJobTriggerJobCompletionPtrOutputWithContext(ctx context.Context) JobTriggerJobCompletionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTriggerJobCompletion) *JobTriggerJobCompletion {
+		return &v
+	}).(JobTriggerJobCompletionPtrOutput)
+}
+
+func (o JobTriggerJobCompletionOutput) IfStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTriggerJobCompletion) *string { return v.IfStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTriggerJobCompletionOutput) Jobs() JobTriggerJobCompletionJobArrayOutput {
+	return o.ApplyT(func(v JobTriggerJobCompletion) []JobTriggerJobCompletionJob { return v.Jobs }).(JobTriggerJobCompletionJobArrayOutput)
+}
+
+type JobTriggerJobCompletionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerJobCompletionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTriggerJobCompletion)(nil)).Elem()
+}
+
+func (o JobTriggerJobCompletionPtrOutput) ToJobTriggerJobCompletionPtrOutput() JobTriggerJobCompletionPtrOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionPtrOutput) ToJobTriggerJobCompletionPtrOutputWithContext(ctx context.Context) JobTriggerJobCompletionPtrOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionPtrOutput) Elem() JobTriggerJobCompletionOutput {
+	return o.ApplyT(func(v *JobTriggerJobCompletion) JobTriggerJobCompletion {
+		if v != nil {
+			return *v
+		}
+		var ret JobTriggerJobCompletion
+		return ret
+	}).(JobTriggerJobCompletionOutput)
+}
+
+func (o JobTriggerJobCompletionPtrOutput) IfStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTriggerJobCompletion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IfStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTriggerJobCompletionPtrOutput) Jobs() JobTriggerJobCompletionJobArrayOutput {
+	return o.ApplyT(func(v *JobTriggerJobCompletion) []JobTriggerJobCompletionJob {
+		if v == nil {
+			return nil
+		}
+		return v.Jobs
+	}).(JobTriggerJobCompletionJobArrayOutput)
+}
+
+type JobTriggerJobCompletionJob struct {
+	// (String) ID of the job
+	JobId string `pulumi:"jobId"`
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// JobTriggerJobCompletionJobInput is an input type that accepts JobTriggerJobCompletionJobArgs and JobTriggerJobCompletionJobOutput values.
+// You can construct a concrete instance of `JobTriggerJobCompletionJobInput` via:
+//
+//	JobTriggerJobCompletionJobArgs{...}
+type JobTriggerJobCompletionJobInput interface {
+	pulumi.Input
+
+	ToJobTriggerJobCompletionJobOutput() JobTriggerJobCompletionJobOutput
+	ToJobTriggerJobCompletionJobOutputWithContext(context.Context) JobTriggerJobCompletionJobOutput
+}
+
+type JobTriggerJobCompletionJobArgs struct {
+	// (String) ID of the job
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (JobTriggerJobCompletionJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerJobCompletionJob)(nil)).Elem()
+}
+
+func (i JobTriggerJobCompletionJobArgs) ToJobTriggerJobCompletionJobOutput() JobTriggerJobCompletionJobOutput {
+	return i.ToJobTriggerJobCompletionJobOutputWithContext(context.Background())
+}
+
+func (i JobTriggerJobCompletionJobArgs) ToJobTriggerJobCompletionJobOutputWithContext(ctx context.Context) JobTriggerJobCompletionJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerJobCompletionJobOutput)
+}
+
+// JobTriggerJobCompletionJobArrayInput is an input type that accepts JobTriggerJobCompletionJobArray and JobTriggerJobCompletionJobArrayOutput values.
+// You can construct a concrete instance of `JobTriggerJobCompletionJobArrayInput` via:
+//
+//	JobTriggerJobCompletionJobArray{ JobTriggerJobCompletionJobArgs{...} }
+type JobTriggerJobCompletionJobArrayInput interface {
+	pulumi.Input
+
+	ToJobTriggerJobCompletionJobArrayOutput() JobTriggerJobCompletionJobArrayOutput
+	ToJobTriggerJobCompletionJobArrayOutputWithContext(context.Context) JobTriggerJobCompletionJobArrayOutput
+}
+
+type JobTriggerJobCompletionJobArray []JobTriggerJobCompletionJobInput
+
+func (JobTriggerJobCompletionJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTriggerJobCompletionJob)(nil)).Elem()
+}
+
+func (i JobTriggerJobCompletionJobArray) ToJobTriggerJobCompletionJobArrayOutput() JobTriggerJobCompletionJobArrayOutput {
+	return i.ToJobTriggerJobCompletionJobArrayOutputWithContext(context.Background())
+}
+
+func (i JobTriggerJobCompletionJobArray) ToJobTriggerJobCompletionJobArrayOutputWithContext(ctx context.Context) JobTriggerJobCompletionJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerJobCompletionJobArrayOutput)
+}
+
+type JobTriggerJobCompletionJobOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerJobCompletionJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerJobCompletionJob)(nil)).Elem()
+}
+
+func (o JobTriggerJobCompletionJobOutput) ToJobTriggerJobCompletionJobOutput() JobTriggerJobCompletionJobOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionJobOutput) ToJobTriggerJobCompletionJobOutputWithContext(ctx context.Context) JobTriggerJobCompletionJobOutput {
+	return o
+}
+
+// (String) ID of the job
+func (o JobTriggerJobCompletionJobOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTriggerJobCompletionJob) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o JobTriggerJobCompletionJobOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTriggerJobCompletionJob) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type JobTriggerJobCompletionJobArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerJobCompletionJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTriggerJobCompletionJob)(nil)).Elem()
+}
+
+func (o JobTriggerJobCompletionJobArrayOutput) ToJobTriggerJobCompletionJobArrayOutput() JobTriggerJobCompletionJobArrayOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionJobArrayOutput) ToJobTriggerJobCompletionJobArrayOutputWithContext(ctx context.Context) JobTriggerJobCompletionJobArrayOutput {
+	return o
+}
+
+func (o JobTriggerJobCompletionJobArrayOutput) Index(i pulumi.IntInput) JobTriggerJobCompletionJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTriggerJobCompletionJob {
+		return vs[0].([]JobTriggerJobCompletionJob)[vs[1].(int)]
+	}).(JobTriggerJobCompletionJobOutput)
 }
 
 type JobTriggerModel struct {
@@ -74023,8758 +81563,15 @@ func (o MlflowExperimentTraceLocationUcTraceLocationPtrOutput) TablePrefix() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-type MlflowModelProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// MlflowModelProviderConfigInput is an input type that accepts MlflowModelProviderConfigArgs and MlflowModelProviderConfigOutput values.
-// You can construct a concrete instance of `MlflowModelProviderConfigInput` via:
-//
-//	MlflowModelProviderConfigArgs{...}
-type MlflowModelProviderConfigInput interface {
-	pulumi.Input
-
-	ToMlflowModelProviderConfigOutput() MlflowModelProviderConfigOutput
-	ToMlflowModelProviderConfigOutputWithContext(context.Context) MlflowModelProviderConfigOutput
-}
-
-type MlflowModelProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (MlflowModelProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowModelProviderConfig)(nil)).Elem()
-}
-
-func (i MlflowModelProviderConfigArgs) ToMlflowModelProviderConfigOutput() MlflowModelProviderConfigOutput {
-	return i.ToMlflowModelProviderConfigOutputWithContext(context.Background())
-}
-
-func (i MlflowModelProviderConfigArgs) ToMlflowModelProviderConfigOutputWithContext(ctx context.Context) MlflowModelProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelProviderConfigOutput)
-}
-
-func (i MlflowModelProviderConfigArgs) ToMlflowModelProviderConfigPtrOutput() MlflowModelProviderConfigPtrOutput {
-	return i.ToMlflowModelProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MlflowModelProviderConfigArgs) ToMlflowModelProviderConfigPtrOutputWithContext(ctx context.Context) MlflowModelProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelProviderConfigOutput).ToMlflowModelProviderConfigPtrOutputWithContext(ctx)
-}
-
-// MlflowModelProviderConfigPtrInput is an input type that accepts MlflowModelProviderConfigArgs, MlflowModelProviderConfigPtr and MlflowModelProviderConfigPtrOutput values.
-// You can construct a concrete instance of `MlflowModelProviderConfigPtrInput` via:
-//
-//	        MlflowModelProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MlflowModelProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToMlflowModelProviderConfigPtrOutput() MlflowModelProviderConfigPtrOutput
-	ToMlflowModelProviderConfigPtrOutputWithContext(context.Context) MlflowModelProviderConfigPtrOutput
-}
-
-type mlflowModelProviderConfigPtrType MlflowModelProviderConfigArgs
-
-func MlflowModelProviderConfigPtr(v *MlflowModelProviderConfigArgs) MlflowModelProviderConfigPtrInput {
-	return (*mlflowModelProviderConfigPtrType)(v)
-}
-
-func (*mlflowModelProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowModelProviderConfig)(nil)).Elem()
-}
-
-func (i *mlflowModelProviderConfigPtrType) ToMlflowModelProviderConfigPtrOutput() MlflowModelProviderConfigPtrOutput {
-	return i.ToMlflowModelProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mlflowModelProviderConfigPtrType) ToMlflowModelProviderConfigPtrOutputWithContext(ctx context.Context) MlflowModelProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelProviderConfigPtrOutput)
-}
-
-type MlflowModelProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (MlflowModelProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowModelProviderConfig)(nil)).Elem()
-}
-
-func (o MlflowModelProviderConfigOutput) ToMlflowModelProviderConfigOutput() MlflowModelProviderConfigOutput {
-	return o
-}
-
-func (o MlflowModelProviderConfigOutput) ToMlflowModelProviderConfigOutputWithContext(ctx context.Context) MlflowModelProviderConfigOutput {
-	return o
-}
-
-func (o MlflowModelProviderConfigOutput) ToMlflowModelProviderConfigPtrOutput() MlflowModelProviderConfigPtrOutput {
-	return o.ToMlflowModelProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MlflowModelProviderConfigOutput) ToMlflowModelProviderConfigPtrOutputWithContext(ctx context.Context) MlflowModelProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MlflowModelProviderConfig) *MlflowModelProviderConfig {
-		return &v
-	}).(MlflowModelProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o MlflowModelProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowModelProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type MlflowModelProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MlflowModelProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowModelProviderConfig)(nil)).Elem()
-}
-
-func (o MlflowModelProviderConfigPtrOutput) ToMlflowModelProviderConfigPtrOutput() MlflowModelProviderConfigPtrOutput {
-	return o
-}
-
-func (o MlflowModelProviderConfigPtrOutput) ToMlflowModelProviderConfigPtrOutputWithContext(ctx context.Context) MlflowModelProviderConfigPtrOutput {
-	return o
-}
-
-func (o MlflowModelProviderConfigPtrOutput) Elem() MlflowModelProviderConfigOutput {
-	return o.ApplyT(func(v *MlflowModelProviderConfig) MlflowModelProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MlflowModelProviderConfig
-		return ret
-	}).(MlflowModelProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o MlflowModelProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowModelProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MlflowModelTag struct {
-	Key   *string `pulumi:"key"`
-	Value *string `pulumi:"value"`
-}
-
-// MlflowModelTagInput is an input type that accepts MlflowModelTagArgs and MlflowModelTagOutput values.
-// You can construct a concrete instance of `MlflowModelTagInput` via:
-//
-//	MlflowModelTagArgs{...}
-type MlflowModelTagInput interface {
-	pulumi.Input
-
-	ToMlflowModelTagOutput() MlflowModelTagOutput
-	ToMlflowModelTagOutputWithContext(context.Context) MlflowModelTagOutput
-}
-
-type MlflowModelTagArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (MlflowModelTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowModelTag)(nil)).Elem()
-}
-
-func (i MlflowModelTagArgs) ToMlflowModelTagOutput() MlflowModelTagOutput {
-	return i.ToMlflowModelTagOutputWithContext(context.Background())
-}
-
-func (i MlflowModelTagArgs) ToMlflowModelTagOutputWithContext(ctx context.Context) MlflowModelTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelTagOutput)
-}
-
-// MlflowModelTagArrayInput is an input type that accepts MlflowModelTagArray and MlflowModelTagArrayOutput values.
-// You can construct a concrete instance of `MlflowModelTagArrayInput` via:
-//
-//	MlflowModelTagArray{ MlflowModelTagArgs{...} }
-type MlflowModelTagArrayInput interface {
-	pulumi.Input
-
-	ToMlflowModelTagArrayOutput() MlflowModelTagArrayOutput
-	ToMlflowModelTagArrayOutputWithContext(context.Context) MlflowModelTagArrayOutput
-}
-
-type MlflowModelTagArray []MlflowModelTagInput
-
-func (MlflowModelTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MlflowModelTag)(nil)).Elem()
-}
-
-func (i MlflowModelTagArray) ToMlflowModelTagArrayOutput() MlflowModelTagArrayOutput {
-	return i.ToMlflowModelTagArrayOutputWithContext(context.Background())
-}
-
-func (i MlflowModelTagArray) ToMlflowModelTagArrayOutputWithContext(ctx context.Context) MlflowModelTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelTagArrayOutput)
-}
-
-type MlflowModelTagOutput struct{ *pulumi.OutputState }
-
-func (MlflowModelTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowModelTag)(nil)).Elem()
-}
-
-func (o MlflowModelTagOutput) ToMlflowModelTagOutput() MlflowModelTagOutput {
-	return o
-}
-
-func (o MlflowModelTagOutput) ToMlflowModelTagOutputWithContext(ctx context.Context) MlflowModelTagOutput {
-	return o
-}
-
-func (o MlflowModelTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowModelTag) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-func (o MlflowModelTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowModelTag) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type MlflowModelTagArrayOutput struct{ *pulumi.OutputState }
-
-func (MlflowModelTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MlflowModelTag)(nil)).Elem()
-}
-
-func (o MlflowModelTagArrayOutput) ToMlflowModelTagArrayOutput() MlflowModelTagArrayOutput {
-	return o
-}
-
-func (o MlflowModelTagArrayOutput) ToMlflowModelTagArrayOutputWithContext(ctx context.Context) MlflowModelTagArrayOutput {
-	return o
-}
-
-func (o MlflowModelTagArrayOutput) Index(i pulumi.IntInput) MlflowModelTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MlflowModelTag {
-		return vs[0].([]MlflowModelTag)[vs[1].(int)]
-	}).(MlflowModelTagOutput)
-}
-
-type MlflowWebhookHttpUrlSpec struct {
-	// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
-	Authorization *string `pulumi:"authorization"`
-	// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-	EnableSslVerification *bool `pulumi:"enableSslVerification"`
-	// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
-	Secret *string `pulumi:"secret"`
-	// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
-	Url string `pulumi:"url"`
-}
-
-// MlflowWebhookHttpUrlSpecInput is an input type that accepts MlflowWebhookHttpUrlSpecArgs and MlflowWebhookHttpUrlSpecOutput values.
-// You can construct a concrete instance of `MlflowWebhookHttpUrlSpecInput` via:
-//
-//	MlflowWebhookHttpUrlSpecArgs{...}
-type MlflowWebhookHttpUrlSpecInput interface {
-	pulumi.Input
-
-	ToMlflowWebhookHttpUrlSpecOutput() MlflowWebhookHttpUrlSpecOutput
-	ToMlflowWebhookHttpUrlSpecOutputWithContext(context.Context) MlflowWebhookHttpUrlSpecOutput
-}
-
-type MlflowWebhookHttpUrlSpecArgs struct {
-	// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
-	Authorization pulumi.StringPtrInput `pulumi:"authorization"`
-	// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-	EnableSslVerification pulumi.BoolPtrInput `pulumi:"enableSslVerification"`
-	// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
-	Secret pulumi.StringPtrInput `pulumi:"secret"`
-	// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (MlflowWebhookHttpUrlSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowWebhookHttpUrlSpec)(nil)).Elem()
-}
-
-func (i MlflowWebhookHttpUrlSpecArgs) ToMlflowWebhookHttpUrlSpecOutput() MlflowWebhookHttpUrlSpecOutput {
-	return i.ToMlflowWebhookHttpUrlSpecOutputWithContext(context.Background())
-}
-
-func (i MlflowWebhookHttpUrlSpecArgs) ToMlflowWebhookHttpUrlSpecOutputWithContext(ctx context.Context) MlflowWebhookHttpUrlSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookHttpUrlSpecOutput)
-}
-
-func (i MlflowWebhookHttpUrlSpecArgs) ToMlflowWebhookHttpUrlSpecPtrOutput() MlflowWebhookHttpUrlSpecPtrOutput {
-	return i.ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(context.Background())
-}
-
-func (i MlflowWebhookHttpUrlSpecArgs) ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookHttpUrlSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookHttpUrlSpecOutput).ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(ctx)
-}
-
-// MlflowWebhookHttpUrlSpecPtrInput is an input type that accepts MlflowWebhookHttpUrlSpecArgs, MlflowWebhookHttpUrlSpecPtr and MlflowWebhookHttpUrlSpecPtrOutput values.
-// You can construct a concrete instance of `MlflowWebhookHttpUrlSpecPtrInput` via:
-//
-//	        MlflowWebhookHttpUrlSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type MlflowWebhookHttpUrlSpecPtrInput interface {
-	pulumi.Input
-
-	ToMlflowWebhookHttpUrlSpecPtrOutput() MlflowWebhookHttpUrlSpecPtrOutput
-	ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(context.Context) MlflowWebhookHttpUrlSpecPtrOutput
-}
-
-type mlflowWebhookHttpUrlSpecPtrType MlflowWebhookHttpUrlSpecArgs
-
-func MlflowWebhookHttpUrlSpecPtr(v *MlflowWebhookHttpUrlSpecArgs) MlflowWebhookHttpUrlSpecPtrInput {
-	return (*mlflowWebhookHttpUrlSpecPtrType)(v)
-}
-
-func (*mlflowWebhookHttpUrlSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowWebhookHttpUrlSpec)(nil)).Elem()
-}
-
-func (i *mlflowWebhookHttpUrlSpecPtrType) ToMlflowWebhookHttpUrlSpecPtrOutput() MlflowWebhookHttpUrlSpecPtrOutput {
-	return i.ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *mlflowWebhookHttpUrlSpecPtrType) ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookHttpUrlSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookHttpUrlSpecPtrOutput)
-}
-
-type MlflowWebhookHttpUrlSpecOutput struct{ *pulumi.OutputState }
-
-func (MlflowWebhookHttpUrlSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowWebhookHttpUrlSpec)(nil)).Elem()
-}
-
-func (o MlflowWebhookHttpUrlSpecOutput) ToMlflowWebhookHttpUrlSpecOutput() MlflowWebhookHttpUrlSpecOutput {
-	return o
-}
-
-func (o MlflowWebhookHttpUrlSpecOutput) ToMlflowWebhookHttpUrlSpecOutputWithContext(ctx context.Context) MlflowWebhookHttpUrlSpecOutput {
-	return o
-}
-
-func (o MlflowWebhookHttpUrlSpecOutput) ToMlflowWebhookHttpUrlSpecPtrOutput() MlflowWebhookHttpUrlSpecPtrOutput {
-	return o.ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(context.Background())
-}
-
-func (o MlflowWebhookHttpUrlSpecOutput) ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookHttpUrlSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MlflowWebhookHttpUrlSpec) *MlflowWebhookHttpUrlSpec {
-		return &v
-	}).(MlflowWebhookHttpUrlSpecPtrOutput)
-}
-
-// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
-func (o MlflowWebhookHttpUrlSpecOutput) Authorization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) *string { return v.Authorization }).(pulumi.StringPtrOutput)
-}
-
-// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-func (o MlflowWebhookHttpUrlSpecOutput) EnableSslVerification() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) *bool { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
-}
-
-// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
-func (o MlflowWebhookHttpUrlSpecOutput) Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) *string { return v.Secret }).(pulumi.StringPtrOutput)
-}
-
-// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
-func (o MlflowWebhookHttpUrlSpecOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type MlflowWebhookHttpUrlSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (MlflowWebhookHttpUrlSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowWebhookHttpUrlSpec)(nil)).Elem()
-}
-
-func (o MlflowWebhookHttpUrlSpecPtrOutput) ToMlflowWebhookHttpUrlSpecPtrOutput() MlflowWebhookHttpUrlSpecPtrOutput {
-	return o
-}
-
-func (o MlflowWebhookHttpUrlSpecPtrOutput) ToMlflowWebhookHttpUrlSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookHttpUrlSpecPtrOutput {
-	return o
-}
-
-func (o MlflowWebhookHttpUrlSpecPtrOutput) Elem() MlflowWebhookHttpUrlSpecOutput {
-	return o.ApplyT(func(v *MlflowWebhookHttpUrlSpec) MlflowWebhookHttpUrlSpec {
-		if v != nil {
-			return *v
-		}
-		var ret MlflowWebhookHttpUrlSpec
-		return ret
-	}).(MlflowWebhookHttpUrlSpecOutput)
-}
-
-// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
-func (o MlflowWebhookHttpUrlSpecPtrOutput) Authorization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookHttpUrlSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Authorization
-	}).(pulumi.StringPtrOutput)
-}
-
-// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-func (o MlflowWebhookHttpUrlSpecPtrOutput) EnableSslVerification() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookHttpUrlSpec) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableSslVerification
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
-func (o MlflowWebhookHttpUrlSpecPtrOutput) Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookHttpUrlSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Secret
-	}).(pulumi.StringPtrOutput)
-}
-
-// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
-func (o MlflowWebhookHttpUrlSpecPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookHttpUrlSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-type MlflowWebhookJobSpec struct {
-	// The personal access token used to authorize webhook's job runs.
-	AccessToken string `pulumi:"accessToken"`
-	// ID of the Databricks job that the webhook runs.
-	JobId string `pulumi:"jobId"`
-	// URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-	WorkspaceUrl *string `pulumi:"workspaceUrl"`
-}
-
-// MlflowWebhookJobSpecInput is an input type that accepts MlflowWebhookJobSpecArgs and MlflowWebhookJobSpecOutput values.
-// You can construct a concrete instance of `MlflowWebhookJobSpecInput` via:
-//
-//	MlflowWebhookJobSpecArgs{...}
-type MlflowWebhookJobSpecInput interface {
-	pulumi.Input
-
-	ToMlflowWebhookJobSpecOutput() MlflowWebhookJobSpecOutput
-	ToMlflowWebhookJobSpecOutputWithContext(context.Context) MlflowWebhookJobSpecOutput
-}
-
-type MlflowWebhookJobSpecArgs struct {
-	// The personal access token used to authorize webhook's job runs.
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
-	// ID of the Databricks job that the webhook runs.
-	JobId pulumi.StringInput `pulumi:"jobId"`
-	// URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-	WorkspaceUrl pulumi.StringPtrInput `pulumi:"workspaceUrl"`
-}
-
-func (MlflowWebhookJobSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowWebhookJobSpec)(nil)).Elem()
-}
-
-func (i MlflowWebhookJobSpecArgs) ToMlflowWebhookJobSpecOutput() MlflowWebhookJobSpecOutput {
-	return i.ToMlflowWebhookJobSpecOutputWithContext(context.Background())
-}
-
-func (i MlflowWebhookJobSpecArgs) ToMlflowWebhookJobSpecOutputWithContext(ctx context.Context) MlflowWebhookJobSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookJobSpecOutput)
-}
-
-func (i MlflowWebhookJobSpecArgs) ToMlflowWebhookJobSpecPtrOutput() MlflowWebhookJobSpecPtrOutput {
-	return i.ToMlflowWebhookJobSpecPtrOutputWithContext(context.Background())
-}
-
-func (i MlflowWebhookJobSpecArgs) ToMlflowWebhookJobSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookJobSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookJobSpecOutput).ToMlflowWebhookJobSpecPtrOutputWithContext(ctx)
-}
-
-// MlflowWebhookJobSpecPtrInput is an input type that accepts MlflowWebhookJobSpecArgs, MlflowWebhookJobSpecPtr and MlflowWebhookJobSpecPtrOutput values.
-// You can construct a concrete instance of `MlflowWebhookJobSpecPtrInput` via:
-//
-//	        MlflowWebhookJobSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type MlflowWebhookJobSpecPtrInput interface {
-	pulumi.Input
-
-	ToMlflowWebhookJobSpecPtrOutput() MlflowWebhookJobSpecPtrOutput
-	ToMlflowWebhookJobSpecPtrOutputWithContext(context.Context) MlflowWebhookJobSpecPtrOutput
-}
-
-type mlflowWebhookJobSpecPtrType MlflowWebhookJobSpecArgs
-
-func MlflowWebhookJobSpecPtr(v *MlflowWebhookJobSpecArgs) MlflowWebhookJobSpecPtrInput {
-	return (*mlflowWebhookJobSpecPtrType)(v)
-}
-
-func (*mlflowWebhookJobSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowWebhookJobSpec)(nil)).Elem()
-}
-
-func (i *mlflowWebhookJobSpecPtrType) ToMlflowWebhookJobSpecPtrOutput() MlflowWebhookJobSpecPtrOutput {
-	return i.ToMlflowWebhookJobSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *mlflowWebhookJobSpecPtrType) ToMlflowWebhookJobSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookJobSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookJobSpecPtrOutput)
-}
-
-type MlflowWebhookJobSpecOutput struct{ *pulumi.OutputState }
-
-func (MlflowWebhookJobSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowWebhookJobSpec)(nil)).Elem()
-}
-
-func (o MlflowWebhookJobSpecOutput) ToMlflowWebhookJobSpecOutput() MlflowWebhookJobSpecOutput {
-	return o
-}
-
-func (o MlflowWebhookJobSpecOutput) ToMlflowWebhookJobSpecOutputWithContext(ctx context.Context) MlflowWebhookJobSpecOutput {
-	return o
-}
-
-func (o MlflowWebhookJobSpecOutput) ToMlflowWebhookJobSpecPtrOutput() MlflowWebhookJobSpecPtrOutput {
-	return o.ToMlflowWebhookJobSpecPtrOutputWithContext(context.Background())
-}
-
-func (o MlflowWebhookJobSpecOutput) ToMlflowWebhookJobSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookJobSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MlflowWebhookJobSpec) *MlflowWebhookJobSpec {
-		return &v
-	}).(MlflowWebhookJobSpecPtrOutput)
-}
-
-// The personal access token used to authorize webhook's job runs.
-func (o MlflowWebhookJobSpecOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v MlflowWebhookJobSpec) string { return v.AccessToken }).(pulumi.StringOutput)
-}
-
-// ID of the Databricks job that the webhook runs.
-func (o MlflowWebhookJobSpecOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v MlflowWebhookJobSpec) string { return v.JobId }).(pulumi.StringOutput)
-}
-
-// URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-func (o MlflowWebhookJobSpecOutput) WorkspaceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowWebhookJobSpec) *string { return v.WorkspaceUrl }).(pulumi.StringPtrOutput)
-}
-
-type MlflowWebhookJobSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (MlflowWebhookJobSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowWebhookJobSpec)(nil)).Elem()
-}
-
-func (o MlflowWebhookJobSpecPtrOutput) ToMlflowWebhookJobSpecPtrOutput() MlflowWebhookJobSpecPtrOutput {
-	return o
-}
-
-func (o MlflowWebhookJobSpecPtrOutput) ToMlflowWebhookJobSpecPtrOutputWithContext(ctx context.Context) MlflowWebhookJobSpecPtrOutput {
-	return o
-}
-
-func (o MlflowWebhookJobSpecPtrOutput) Elem() MlflowWebhookJobSpecOutput {
-	return o.ApplyT(func(v *MlflowWebhookJobSpec) MlflowWebhookJobSpec {
-		if v != nil {
-			return *v
-		}
-		var ret MlflowWebhookJobSpec
-		return ret
-	}).(MlflowWebhookJobSpecOutput)
-}
-
-// The personal access token used to authorize webhook's job runs.
-func (o MlflowWebhookJobSpecPtrOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookJobSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// ID of the Databricks job that the webhook runs.
-func (o MlflowWebhookJobSpecPtrOutput) JobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookJobSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobId
-	}).(pulumi.StringPtrOutput)
-}
-
-// URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-func (o MlflowWebhookJobSpecPtrOutput) WorkspaceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookJobSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type MlflowWebhookProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// MlflowWebhookProviderConfigInput is an input type that accepts MlflowWebhookProviderConfigArgs and MlflowWebhookProviderConfigOutput values.
-// You can construct a concrete instance of `MlflowWebhookProviderConfigInput` via:
-//
-//	MlflowWebhookProviderConfigArgs{...}
-type MlflowWebhookProviderConfigInput interface {
-	pulumi.Input
-
-	ToMlflowWebhookProviderConfigOutput() MlflowWebhookProviderConfigOutput
-	ToMlflowWebhookProviderConfigOutputWithContext(context.Context) MlflowWebhookProviderConfigOutput
-}
-
-type MlflowWebhookProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (MlflowWebhookProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowWebhookProviderConfig)(nil)).Elem()
-}
-
-func (i MlflowWebhookProviderConfigArgs) ToMlflowWebhookProviderConfigOutput() MlflowWebhookProviderConfigOutput {
-	return i.ToMlflowWebhookProviderConfigOutputWithContext(context.Background())
-}
-
-func (i MlflowWebhookProviderConfigArgs) ToMlflowWebhookProviderConfigOutputWithContext(ctx context.Context) MlflowWebhookProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookProviderConfigOutput)
-}
-
-func (i MlflowWebhookProviderConfigArgs) ToMlflowWebhookProviderConfigPtrOutput() MlflowWebhookProviderConfigPtrOutput {
-	return i.ToMlflowWebhookProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MlflowWebhookProviderConfigArgs) ToMlflowWebhookProviderConfigPtrOutputWithContext(ctx context.Context) MlflowWebhookProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookProviderConfigOutput).ToMlflowWebhookProviderConfigPtrOutputWithContext(ctx)
-}
-
-// MlflowWebhookProviderConfigPtrInput is an input type that accepts MlflowWebhookProviderConfigArgs, MlflowWebhookProviderConfigPtr and MlflowWebhookProviderConfigPtrOutput values.
-// You can construct a concrete instance of `MlflowWebhookProviderConfigPtrInput` via:
-//
-//	        MlflowWebhookProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MlflowWebhookProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToMlflowWebhookProviderConfigPtrOutput() MlflowWebhookProviderConfigPtrOutput
-	ToMlflowWebhookProviderConfigPtrOutputWithContext(context.Context) MlflowWebhookProviderConfigPtrOutput
-}
-
-type mlflowWebhookProviderConfigPtrType MlflowWebhookProviderConfigArgs
-
-func MlflowWebhookProviderConfigPtr(v *MlflowWebhookProviderConfigArgs) MlflowWebhookProviderConfigPtrInput {
-	return (*mlflowWebhookProviderConfigPtrType)(v)
-}
-
-func (*mlflowWebhookProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowWebhookProviderConfig)(nil)).Elem()
-}
-
-func (i *mlflowWebhookProviderConfigPtrType) ToMlflowWebhookProviderConfigPtrOutput() MlflowWebhookProviderConfigPtrOutput {
-	return i.ToMlflowWebhookProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mlflowWebhookProviderConfigPtrType) ToMlflowWebhookProviderConfigPtrOutputWithContext(ctx context.Context) MlflowWebhookProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookProviderConfigPtrOutput)
-}
-
-type MlflowWebhookProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (MlflowWebhookProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlflowWebhookProviderConfig)(nil)).Elem()
-}
-
-func (o MlflowWebhookProviderConfigOutput) ToMlflowWebhookProviderConfigOutput() MlflowWebhookProviderConfigOutput {
-	return o
-}
-
-func (o MlflowWebhookProviderConfigOutput) ToMlflowWebhookProviderConfigOutputWithContext(ctx context.Context) MlflowWebhookProviderConfigOutput {
-	return o
-}
-
-func (o MlflowWebhookProviderConfigOutput) ToMlflowWebhookProviderConfigPtrOutput() MlflowWebhookProviderConfigPtrOutput {
-	return o.ToMlflowWebhookProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MlflowWebhookProviderConfigOutput) ToMlflowWebhookProviderConfigPtrOutputWithContext(ctx context.Context) MlflowWebhookProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MlflowWebhookProviderConfig) *MlflowWebhookProviderConfig {
-		return &v
-	}).(MlflowWebhookProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o MlflowWebhookProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowWebhookProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type MlflowWebhookProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MlflowWebhookProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlflowWebhookProviderConfig)(nil)).Elem()
-}
-
-func (o MlflowWebhookProviderConfigPtrOutput) ToMlflowWebhookProviderConfigPtrOutput() MlflowWebhookProviderConfigPtrOutput {
-	return o
-}
-
-func (o MlflowWebhookProviderConfigPtrOutput) ToMlflowWebhookProviderConfigPtrOutputWithContext(ctx context.Context) MlflowWebhookProviderConfigPtrOutput {
-	return o
-}
-
-func (o MlflowWebhookProviderConfigPtrOutput) Elem() MlflowWebhookProviderConfigOutput {
-	return o.ApplyT(func(v *MlflowWebhookProviderConfig) MlflowWebhookProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MlflowWebhookProviderConfig
-		return ret
-	}).(MlflowWebhookProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o MlflowWebhookProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlflowWebhookProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGateway struct {
-	// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
-	FallbackConfig *ModelServingAiGatewayFallbackConfig `pulumi:"fallbackConfig"`
-	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-	Guardrails *ModelServingAiGatewayGuardrails `pulumi:"guardrails"`
-	// Block describing the configuration of usage tracking. Consists of the following attributes:
-	InferenceTableConfig *ModelServingAiGatewayInferenceTableConfig `pulumi:"inferenceTableConfig"`
-	// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-	RateLimits []ModelServingAiGatewayRateLimit `pulumi:"rateLimits"`
-	// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-	UsageTrackingConfig *ModelServingAiGatewayUsageTrackingConfig `pulumi:"usageTrackingConfig"`
-}
-
-// ModelServingAiGatewayInput is an input type that accepts ModelServingAiGatewayArgs and ModelServingAiGatewayOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayInput` via:
-//
-//	ModelServingAiGatewayArgs{...}
-type ModelServingAiGatewayInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayOutput() ModelServingAiGatewayOutput
-	ToModelServingAiGatewayOutputWithContext(context.Context) ModelServingAiGatewayOutput
-}
-
-type ModelServingAiGatewayArgs struct {
-	// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
-	FallbackConfig ModelServingAiGatewayFallbackConfigPtrInput `pulumi:"fallbackConfig"`
-	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-	Guardrails ModelServingAiGatewayGuardrailsPtrInput `pulumi:"guardrails"`
-	// Block describing the configuration of usage tracking. Consists of the following attributes:
-	InferenceTableConfig ModelServingAiGatewayInferenceTableConfigPtrInput `pulumi:"inferenceTableConfig"`
-	// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-	RateLimits ModelServingAiGatewayRateLimitArrayInput `pulumi:"rateLimits"`
-	// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-	UsageTrackingConfig ModelServingAiGatewayUsageTrackingConfigPtrInput `pulumi:"usageTrackingConfig"`
-}
-
-func (ModelServingAiGatewayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGateway)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayArgs) ToModelServingAiGatewayOutput() ModelServingAiGatewayOutput {
-	return i.ToModelServingAiGatewayOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayArgs) ToModelServingAiGatewayOutputWithContext(ctx context.Context) ModelServingAiGatewayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayOutput)
-}
-
-func (i ModelServingAiGatewayArgs) ToModelServingAiGatewayPtrOutput() ModelServingAiGatewayPtrOutput {
-	return i.ToModelServingAiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayArgs) ToModelServingAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayOutput).ToModelServingAiGatewayPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayPtrInput is an input type that accepts ModelServingAiGatewayArgs, ModelServingAiGatewayPtr and ModelServingAiGatewayPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayPtrInput` via:
-//
-//	        ModelServingAiGatewayArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayPtrOutput() ModelServingAiGatewayPtrOutput
-	ToModelServingAiGatewayPtrOutputWithContext(context.Context) ModelServingAiGatewayPtrOutput
-}
-
-type modelServingAiGatewayPtrType ModelServingAiGatewayArgs
-
-func ModelServingAiGatewayPtr(v *ModelServingAiGatewayArgs) ModelServingAiGatewayPtrInput {
-	return (*modelServingAiGatewayPtrType)(v)
-}
-
-func (*modelServingAiGatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGateway)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayPtrType) ToModelServingAiGatewayPtrOutput() ModelServingAiGatewayPtrOutput {
-	return i.ToModelServingAiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayPtrType) ToModelServingAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayPtrOutput)
-}
-
-type ModelServingAiGatewayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGateway)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayOutput() ModelServingAiGatewayOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayOutputWithContext(ctx context.Context) ModelServingAiGatewayOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayPtrOutput() ModelServingAiGatewayPtrOutput {
-	return o.ToModelServingAiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGateway) *ModelServingAiGateway {
-		return &v
-	}).(ModelServingAiGatewayPtrOutput)
-}
-
-// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
-func (o ModelServingAiGatewayOutput) FallbackConfig() ModelServingAiGatewayFallbackConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayFallbackConfig { return v.FallbackConfig }).(ModelServingAiGatewayFallbackConfigPtrOutput)
-}
-
-// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-func (o ModelServingAiGatewayOutput) Guardrails() ModelServingAiGatewayGuardrailsPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayGuardrails { return v.Guardrails }).(ModelServingAiGatewayGuardrailsPtrOutput)
-}
-
-// Block describing the configuration of usage tracking. Consists of the following attributes:
-func (o ModelServingAiGatewayOutput) InferenceTableConfig() ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayInferenceTableConfig {
-		return v.InferenceTableConfig
-	}).(ModelServingAiGatewayInferenceTableConfigPtrOutput)
-}
-
-// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-func (o ModelServingAiGatewayOutput) RateLimits() ModelServingAiGatewayRateLimitArrayOutput {
-	return o.ApplyT(func(v ModelServingAiGateway) []ModelServingAiGatewayRateLimit { return v.RateLimits }).(ModelServingAiGatewayRateLimitArrayOutput)
-}
-
-// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-func (o ModelServingAiGatewayOutput) UsageTrackingConfig() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayUsageTrackingConfig { return v.UsageTrackingConfig }).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-type ModelServingAiGatewayPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGateway)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayPtrOutput) ToModelServingAiGatewayPtrOutput() ModelServingAiGatewayPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayPtrOutput) ToModelServingAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayPtrOutput) Elem() ModelServingAiGatewayOutput {
-	return o.ApplyT(func(v *ModelServingAiGateway) ModelServingAiGateway {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGateway
-		return ret
-	}).(ModelServingAiGatewayOutput)
-}
-
-// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
-func (o ModelServingAiGatewayPtrOutput) FallbackConfig() ModelServingAiGatewayFallbackConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayFallbackConfig {
-		if v == nil {
-			return nil
-		}
-		return v.FallbackConfig
-	}).(ModelServingAiGatewayFallbackConfigPtrOutput)
-}
-
-// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-func (o ModelServingAiGatewayPtrOutput) Guardrails() ModelServingAiGatewayGuardrailsPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayGuardrails {
-		if v == nil {
-			return nil
-		}
-		return v.Guardrails
-	}).(ModelServingAiGatewayGuardrailsPtrOutput)
-}
-
-// Block describing the configuration of usage tracking. Consists of the following attributes:
-func (o ModelServingAiGatewayPtrOutput) InferenceTableConfig() ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayInferenceTableConfig {
-		if v == nil {
-			return nil
-		}
-		return v.InferenceTableConfig
-	}).(ModelServingAiGatewayInferenceTableConfigPtrOutput)
-}
-
-// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-func (o ModelServingAiGatewayPtrOutput) RateLimits() ModelServingAiGatewayRateLimitArrayOutput {
-	return o.ApplyT(func(v *ModelServingAiGateway) []ModelServingAiGatewayRateLimit {
-		if v == nil {
-			return nil
-		}
-		return v.RateLimits
-	}).(ModelServingAiGatewayRateLimitArrayOutput)
-}
-
-// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-func (o ModelServingAiGatewayPtrOutput) UsageTrackingConfig() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayUsageTrackingConfig {
-		if v == nil {
-			return nil
-		}
-		return v.UsageTrackingConfig
-	}).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-type ModelServingAiGatewayFallbackConfig struct {
-	// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// ModelServingAiGatewayFallbackConfigInput is an input type that accepts ModelServingAiGatewayFallbackConfigArgs and ModelServingAiGatewayFallbackConfigOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayFallbackConfigInput` via:
-//
-//	ModelServingAiGatewayFallbackConfigArgs{...}
-type ModelServingAiGatewayFallbackConfigInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayFallbackConfigOutput() ModelServingAiGatewayFallbackConfigOutput
-	ToModelServingAiGatewayFallbackConfigOutputWithContext(context.Context) ModelServingAiGatewayFallbackConfigOutput
-}
-
-type ModelServingAiGatewayFallbackConfigArgs struct {
-	// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (ModelServingAiGatewayFallbackConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigOutput() ModelServingAiGatewayFallbackConfigOutput {
-	return i.ToModelServingAiGatewayFallbackConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayFallbackConfigOutput)
-}
-
-func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
-	return i.ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayFallbackConfigOutput).ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayFallbackConfigPtrInput is an input type that accepts ModelServingAiGatewayFallbackConfigArgs, ModelServingAiGatewayFallbackConfigPtr and ModelServingAiGatewayFallbackConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayFallbackConfigPtrInput` via:
-//
-//	        ModelServingAiGatewayFallbackConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayFallbackConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput
-	ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Context) ModelServingAiGatewayFallbackConfigPtrOutput
-}
-
-type modelServingAiGatewayFallbackConfigPtrType ModelServingAiGatewayFallbackConfigArgs
-
-func ModelServingAiGatewayFallbackConfigPtr(v *ModelServingAiGatewayFallbackConfigArgs) ModelServingAiGatewayFallbackConfigPtrInput {
-	return (*modelServingAiGatewayFallbackConfigPtrType)(v)
-}
-
-func (*modelServingAiGatewayFallbackConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayFallbackConfigPtrType) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
-	return i.ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayFallbackConfigPtrType) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayFallbackConfigPtrOutput)
-}
-
-type ModelServingAiGatewayFallbackConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayFallbackConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigOutput() ModelServingAiGatewayFallbackConfigOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
-	return o.ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayFallbackConfig) *ModelServingAiGatewayFallbackConfig {
-		return &v
-	}).(ModelServingAiGatewayFallbackConfigPtrOutput)
-}
-
-// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
-func (o ModelServingAiGatewayFallbackConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayFallbackConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type ModelServingAiGatewayFallbackConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayFallbackConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayFallbackConfigPtrOutput) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayFallbackConfigPtrOutput) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayFallbackConfigPtrOutput) Elem() ModelServingAiGatewayFallbackConfigOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayFallbackConfig) ModelServingAiGatewayFallbackConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayFallbackConfig
-		return ret
-	}).(ModelServingAiGatewayFallbackConfigOutput)
-}
-
-// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
-func (o ModelServingAiGatewayFallbackConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayFallbackConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrails struct {
-	// A block with configuration for input guardrail filters:
-	Input *ModelServingAiGatewayGuardrailsInputType `pulumi:"input"`
-	// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-	Output *ModelServingAiGatewayGuardrailsOutputType `pulumi:"output"`
-}
-
-// ModelServingAiGatewayGuardrailsInput is an input type that accepts ModelServingAiGatewayGuardrailsArgs and ModelServingAiGatewayGuardrailsOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsInput` via:
-//
-//	ModelServingAiGatewayGuardrailsArgs{...}
-type ModelServingAiGatewayGuardrailsInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsOutput() ModelServingAiGatewayGuardrailsOutput
-	ToModelServingAiGatewayGuardrailsOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsOutput
-}
-
-type ModelServingAiGatewayGuardrailsArgs struct {
-	// A block with configuration for input guardrail filters:
-	Input ModelServingAiGatewayGuardrailsInputTypePtrInput `pulumi:"input"`
-	// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-	Output ModelServingAiGatewayGuardrailsOutputTypePtrInput `pulumi:"output"`
-}
-
-func (ModelServingAiGatewayGuardrailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayGuardrailsArgs) ToModelServingAiGatewayGuardrailsOutput() ModelServingAiGatewayGuardrailsOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsArgs) ToModelServingAiGatewayGuardrailsOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutput)
-}
-
-func (i ModelServingAiGatewayGuardrailsArgs) ToModelServingAiGatewayGuardrailsPtrOutput() ModelServingAiGatewayGuardrailsPtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsArgs) ToModelServingAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutput).ToModelServingAiGatewayGuardrailsPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayGuardrailsPtrInput is an input type that accepts ModelServingAiGatewayGuardrailsArgs, ModelServingAiGatewayGuardrailsPtr and ModelServingAiGatewayGuardrailsPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsPtrInput` via:
-//
-//	        ModelServingAiGatewayGuardrailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayGuardrailsPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsPtrOutput() ModelServingAiGatewayGuardrailsPtrOutput
-	ToModelServingAiGatewayGuardrailsPtrOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsPtrOutput
-}
-
-type modelServingAiGatewayGuardrailsPtrType ModelServingAiGatewayGuardrailsArgs
-
-func ModelServingAiGatewayGuardrailsPtr(v *ModelServingAiGatewayGuardrailsArgs) ModelServingAiGatewayGuardrailsPtrInput {
-	return (*modelServingAiGatewayGuardrailsPtrType)(v)
-}
-
-func (*modelServingAiGatewayGuardrailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayGuardrailsPtrType) ToModelServingAiGatewayGuardrailsPtrOutput() ModelServingAiGatewayGuardrailsPtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayGuardrailsPtrType) ToModelServingAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsOutput) ToModelServingAiGatewayGuardrailsOutput() ModelServingAiGatewayGuardrailsOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutput) ToModelServingAiGatewayGuardrailsOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutput) ToModelServingAiGatewayGuardrailsPtrOutput() ModelServingAiGatewayGuardrailsPtrOutput {
-	return o.ToModelServingAiGatewayGuardrailsPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayGuardrailsOutput) ToModelServingAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrails {
-		return &v
-	}).(ModelServingAiGatewayGuardrailsPtrOutput)
-}
-
-// A block with configuration for input guardrail filters:
-func (o ModelServingAiGatewayGuardrailsOutput) Input() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsInputType { return v.Input }).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-func (o ModelServingAiGatewayGuardrailsOutput) Output() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsOutputType { return v.Output }).(ModelServingAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsPtrOutput) ToModelServingAiGatewayGuardrailsPtrOutput() ModelServingAiGatewayGuardrailsPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsPtrOutput) ToModelServingAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsPtrOutput) Elem() ModelServingAiGatewayGuardrailsOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrails) ModelServingAiGatewayGuardrails {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayGuardrails
-		return ret
-	}).(ModelServingAiGatewayGuardrailsOutput)
-}
-
-// A block with configuration for input guardrail filters:
-func (o ModelServingAiGatewayGuardrailsPtrOutput) Input() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsInputType {
-		if v == nil {
-			return nil
-		}
-		return v.Input
-	}).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-func (o ModelServingAiGatewayGuardrailsPtrOutput) Output() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsOutputType {
-		if v == nil {
-			return nil
-		}
-		return v.Output
-	}).(ModelServingAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsInputType struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	InvalidKeywords []string `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii *ModelServingAiGatewayGuardrailsInputPii `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety *bool `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	ValidTopics []string `pulumi:"validTopics"`
-}
-
-// ModelServingAiGatewayGuardrailsInputTypeInput is an input type that accepts ModelServingAiGatewayGuardrailsInputTypeArgs and ModelServingAiGatewayGuardrailsInputTypeOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsInputTypeInput` via:
-//
-//	ModelServingAiGatewayGuardrailsInputTypeArgs{...}
-type ModelServingAiGatewayGuardrailsInputTypeInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsInputTypeOutput() ModelServingAiGatewayGuardrailsInputTypeOutput
-	ToModelServingAiGatewayGuardrailsInputTypeOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsInputTypeOutput
-}
-
-type ModelServingAiGatewayGuardrailsInputTypeArgs struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	InvalidKeywords pulumi.StringArrayInput `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii ModelServingAiGatewayGuardrailsInputPiiPtrInput `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety pulumi.BoolPtrInput `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	ValidTopics pulumi.StringArrayInput `pulumi:"validTopics"`
-}
-
-func (ModelServingAiGatewayGuardrailsInputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayGuardrailsInputTypeArgs) ToModelServingAiGatewayGuardrailsInputTypeOutput() ModelServingAiGatewayGuardrailsInputTypeOutput {
-	return i.ToModelServingAiGatewayGuardrailsInputTypeOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsInputTypeArgs) ToModelServingAiGatewayGuardrailsInputTypeOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsInputTypeOutput)
-}
-
-func (i ModelServingAiGatewayGuardrailsInputTypeArgs) ToModelServingAiGatewayGuardrailsInputTypePtrOutput() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsInputTypeArgs) ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsInputTypeOutput).ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayGuardrailsInputTypePtrInput is an input type that accepts ModelServingAiGatewayGuardrailsInputTypeArgs, ModelServingAiGatewayGuardrailsInputTypePtr and ModelServingAiGatewayGuardrailsInputTypePtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsInputTypePtrInput` via:
-//
-//	        ModelServingAiGatewayGuardrailsInputTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayGuardrailsInputTypePtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsInputTypePtrOutput() ModelServingAiGatewayGuardrailsInputTypePtrOutput
-	ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsInputTypePtrOutput
-}
-
-type modelServingAiGatewayGuardrailsInputTypePtrType ModelServingAiGatewayGuardrailsInputTypeArgs
-
-func ModelServingAiGatewayGuardrailsInputTypePtr(v *ModelServingAiGatewayGuardrailsInputTypeArgs) ModelServingAiGatewayGuardrailsInputTypePtrInput {
-	return (*modelServingAiGatewayGuardrailsInputTypePtrType)(v)
-}
-
-func (*modelServingAiGatewayGuardrailsInputTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayGuardrailsInputTypePtrType) ToModelServingAiGatewayGuardrailsInputTypePtrOutput() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayGuardrailsInputTypePtrType) ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsInputTypeOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsInputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ToModelServingAiGatewayGuardrailsInputTypeOutput() ModelServingAiGatewayGuardrailsInputTypeOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ToModelServingAiGatewayGuardrailsInputTypeOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputTypeOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ToModelServingAiGatewayGuardrailsInputTypePtrOutput() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayGuardrailsInputType) *ModelServingAiGatewayGuardrailsInputType {
-		return &v
-	}).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) []string { return v.InvalidKeywords }).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) Pii() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) *ModelServingAiGatewayGuardrailsInputPii {
-		return v.Pii
-	}).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
-}
-
-type ModelServingAiGatewayGuardrailsInputTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsInputTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) ToModelServingAiGatewayGuardrailsInputTypePtrOutput() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) ToModelServingAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Elem() ModelServingAiGatewayGuardrailsInputTypeOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) ModelServingAiGatewayGuardrailsInputType {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayGuardrailsInputType
-		return ret
-	}).(ModelServingAiGatewayGuardrailsInputTypeOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InvalidKeywords
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Pii() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) *ModelServingAiGatewayGuardrailsInputPii {
-		if v == nil {
-			return nil
-		}
-		return v.Pii
-	}).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Safety
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ValidTopics
-	}).(pulumi.StringArrayOutput)
-}
-
-type ModelServingAiGatewayGuardrailsInputPii struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior *string `pulumi:"behavior"`
-}
-
-// ModelServingAiGatewayGuardrailsInputPiiInput is an input type that accepts ModelServingAiGatewayGuardrailsInputPiiArgs and ModelServingAiGatewayGuardrailsInputPiiOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsInputPiiInput` via:
-//
-//	ModelServingAiGatewayGuardrailsInputPiiArgs{...}
-type ModelServingAiGatewayGuardrailsInputPiiInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsInputPiiOutput() ModelServingAiGatewayGuardrailsInputPiiOutput
-	ToModelServingAiGatewayGuardrailsInputPiiOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsInputPiiOutput
-}
-
-type ModelServingAiGatewayGuardrailsInputPiiArgs struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
-}
-
-func (ModelServingAiGatewayGuardrailsInputPiiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayGuardrailsInputPiiArgs) ToModelServingAiGatewayGuardrailsInputPiiOutput() ModelServingAiGatewayGuardrailsInputPiiOutput {
-	return i.ToModelServingAiGatewayGuardrailsInputPiiOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsInputPiiArgs) ToModelServingAiGatewayGuardrailsInputPiiOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputPiiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsInputPiiOutput)
-}
-
-func (i ModelServingAiGatewayGuardrailsInputPiiArgs) ToModelServingAiGatewayGuardrailsInputPiiPtrOutput() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsInputPiiArgs) ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsInputPiiOutput).ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayGuardrailsInputPiiPtrInput is an input type that accepts ModelServingAiGatewayGuardrailsInputPiiArgs, ModelServingAiGatewayGuardrailsInputPiiPtr and ModelServingAiGatewayGuardrailsInputPiiPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsInputPiiPtrInput` via:
-//
-//	        ModelServingAiGatewayGuardrailsInputPiiArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayGuardrailsInputPiiPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsInputPiiPtrOutput() ModelServingAiGatewayGuardrailsInputPiiPtrOutput
-	ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsInputPiiPtrOutput
-}
-
-type modelServingAiGatewayGuardrailsInputPiiPtrType ModelServingAiGatewayGuardrailsInputPiiArgs
-
-func ModelServingAiGatewayGuardrailsInputPiiPtr(v *ModelServingAiGatewayGuardrailsInputPiiArgs) ModelServingAiGatewayGuardrailsInputPiiPtrInput {
-	return (*modelServingAiGatewayGuardrailsInputPiiPtrType)(v)
-}
-
-func (*modelServingAiGatewayGuardrailsInputPiiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayGuardrailsInputPiiPtrType) ToModelServingAiGatewayGuardrailsInputPiiPtrOutput() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayGuardrailsInputPiiPtrType) ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsInputPiiOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsInputPiiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiOutput) ToModelServingAiGatewayGuardrailsInputPiiOutput() ModelServingAiGatewayGuardrailsInputPiiOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiOutput) ToModelServingAiGatewayGuardrailsInputPiiOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputPiiOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiOutput) ToModelServingAiGatewayGuardrailsInputPiiPtrOutput() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiOutput) ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayGuardrailsInputPii) *ModelServingAiGatewayGuardrailsInputPii {
-		return &v
-	}).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingAiGatewayGuardrailsInputPiiOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsInputPiiPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsInputPiiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) ToModelServingAiGatewayGuardrailsInputPiiPtrOutput() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) ToModelServingAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) Elem() ModelServingAiGatewayGuardrailsInputPiiOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputPii) ModelServingAiGatewayGuardrailsInputPii {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayGuardrailsInputPii
-		return ret
-	}).(ModelServingAiGatewayGuardrailsInputPiiOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputPii) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Behavior
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutputType struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	InvalidKeywords []string `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii *ModelServingAiGatewayGuardrailsOutputPii `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety *bool `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	ValidTopics []string `pulumi:"validTopics"`
-}
-
-// ModelServingAiGatewayGuardrailsOutputTypeInput is an input type that accepts ModelServingAiGatewayGuardrailsOutputTypeArgs and ModelServingAiGatewayGuardrailsOutputTypeOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsOutputTypeInput` via:
-//
-//	ModelServingAiGatewayGuardrailsOutputTypeArgs{...}
-type ModelServingAiGatewayGuardrailsOutputTypeInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsOutputTypeOutput() ModelServingAiGatewayGuardrailsOutputTypeOutput
-	ToModelServingAiGatewayGuardrailsOutputTypeOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsOutputTypeOutput
-}
-
-type ModelServingAiGatewayGuardrailsOutputTypeArgs struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	InvalidKeywords pulumi.StringArrayInput `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii ModelServingAiGatewayGuardrailsOutputPiiPtrInput `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety pulumi.BoolPtrInput `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	//
-	// Deprecated: Please use 'pii' and 'safety' instead.
-	ValidTopics pulumi.StringArrayInput `pulumi:"validTopics"`
-}
-
-func (ModelServingAiGatewayGuardrailsOutputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputTypeArgs) ToModelServingAiGatewayGuardrailsOutputTypeOutput() ModelServingAiGatewayGuardrailsOutputTypeOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputTypeOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputTypeArgs) ToModelServingAiGatewayGuardrailsOutputTypeOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutputTypeOutput)
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputTypeArgs) ToModelServingAiGatewayGuardrailsOutputTypePtrOutput() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputTypeArgs) ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutputTypeOutput).ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayGuardrailsOutputTypePtrInput is an input type that accepts ModelServingAiGatewayGuardrailsOutputTypeArgs, ModelServingAiGatewayGuardrailsOutputTypePtr and ModelServingAiGatewayGuardrailsOutputTypePtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsOutputTypePtrInput` via:
-//
-//	        ModelServingAiGatewayGuardrailsOutputTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayGuardrailsOutputTypePtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsOutputTypePtrOutput() ModelServingAiGatewayGuardrailsOutputTypePtrOutput
-	ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsOutputTypePtrOutput
-}
-
-type modelServingAiGatewayGuardrailsOutputTypePtrType ModelServingAiGatewayGuardrailsOutputTypeArgs
-
-func ModelServingAiGatewayGuardrailsOutputTypePtr(v *ModelServingAiGatewayGuardrailsOutputTypeArgs) ModelServingAiGatewayGuardrailsOutputTypePtrInput {
-	return (*modelServingAiGatewayGuardrailsOutputTypePtrType)(v)
-}
-
-func (*modelServingAiGatewayGuardrailsOutputTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayGuardrailsOutputTypePtrType) ToModelServingAiGatewayGuardrailsOutputTypePtrOutput() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayGuardrailsOutputTypePtrType) ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutputTypeOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsOutputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ToModelServingAiGatewayGuardrailsOutputTypeOutput() ModelServingAiGatewayGuardrailsOutputTypeOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ToModelServingAiGatewayGuardrailsOutputTypeOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputTypeOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ToModelServingAiGatewayGuardrailsOutputTypePtrOutput() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayGuardrailsOutputType) *ModelServingAiGatewayGuardrailsOutputType {
-		return &v
-	}).(ModelServingAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) []string { return v.InvalidKeywords }).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) Pii() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) *ModelServingAiGatewayGuardrailsOutputPii {
-		return v.Pii
-	}).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutputTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ToModelServingAiGatewayGuardrailsOutputTypePtrOutput() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ToModelServingAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Elem() ModelServingAiGatewayGuardrailsOutputTypeOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) ModelServingAiGatewayGuardrailsOutputType {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayGuardrailsOutputType
-		return ret
-	}).(ModelServingAiGatewayGuardrailsOutputTypeOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InvalidKeywords
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Pii() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) *ModelServingAiGatewayGuardrailsOutputPii {
-		if v == nil {
-			return nil
-		}
-		return v.Pii
-	}).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Safety
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-//
-// Deprecated: Please use 'pii' and 'safety' instead.
-func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ValidTopics
-	}).(pulumi.StringArrayOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutputPii struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior *string `pulumi:"behavior"`
-}
-
-// ModelServingAiGatewayGuardrailsOutputPiiInput is an input type that accepts ModelServingAiGatewayGuardrailsOutputPiiArgs and ModelServingAiGatewayGuardrailsOutputPiiOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsOutputPiiInput` via:
-//
-//	ModelServingAiGatewayGuardrailsOutputPiiArgs{...}
-type ModelServingAiGatewayGuardrailsOutputPiiInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsOutputPiiOutput() ModelServingAiGatewayGuardrailsOutputPiiOutput
-	ToModelServingAiGatewayGuardrailsOutputPiiOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsOutputPiiOutput
-}
-
-type ModelServingAiGatewayGuardrailsOutputPiiArgs struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
-}
-
-func (ModelServingAiGatewayGuardrailsOutputPiiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputPiiArgs) ToModelServingAiGatewayGuardrailsOutputPiiOutput() ModelServingAiGatewayGuardrailsOutputPiiOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputPiiOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputPiiArgs) ToModelServingAiGatewayGuardrailsOutputPiiOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputPiiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutputPiiOutput)
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputPiiArgs) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayGuardrailsOutputPiiArgs) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutputPiiOutput).ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayGuardrailsOutputPiiPtrInput is an input type that accepts ModelServingAiGatewayGuardrailsOutputPiiArgs, ModelServingAiGatewayGuardrailsOutputPiiPtr and ModelServingAiGatewayGuardrailsOutputPiiPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayGuardrailsOutputPiiPtrInput` via:
-//
-//	        ModelServingAiGatewayGuardrailsOutputPiiArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayGuardrailsOutputPiiPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput
-	ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Context) ModelServingAiGatewayGuardrailsOutputPiiPtrOutput
-}
-
-type modelServingAiGatewayGuardrailsOutputPiiPtrType ModelServingAiGatewayGuardrailsOutputPiiArgs
-
-func ModelServingAiGatewayGuardrailsOutputPiiPtr(v *ModelServingAiGatewayGuardrailsOutputPiiArgs) ModelServingAiGatewayGuardrailsOutputPiiPtrInput {
-	return (*modelServingAiGatewayGuardrailsOutputPiiPtrType)(v)
-}
-
-func (*modelServingAiGatewayGuardrailsOutputPiiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayGuardrailsOutputPiiPtrType) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return i.ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayGuardrailsOutputPiiPtrType) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutputPiiOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsOutputPiiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) ToModelServingAiGatewayGuardrailsOutputPiiOutput() ModelServingAiGatewayGuardrailsOutputPiiOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) ToModelServingAiGatewayGuardrailsOutputPiiOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputPiiOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayGuardrailsOutputPii) *ModelServingAiGatewayGuardrailsOutputPii {
-		return &v
-	}).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGatewayGuardrailsOutputPiiPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) ToModelServingAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) Elem() ModelServingAiGatewayGuardrailsOutputPiiOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputPii) ModelServingAiGatewayGuardrailsOutputPii {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayGuardrailsOutputPii
-		return ret
-	}).(ModelServingAiGatewayGuardrailsOutputPiiOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputPii) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Behavior
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGatewayInferenceTableConfig struct {
-	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-	CatalogName *string `pulumi:"catalogName"`
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-	SchemaName *string `pulumi:"schemaName"`
-	// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-	TableNamePrefix *string `pulumi:"tableNamePrefix"`
-}
-
-// ModelServingAiGatewayInferenceTableConfigInput is an input type that accepts ModelServingAiGatewayInferenceTableConfigArgs and ModelServingAiGatewayInferenceTableConfigOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayInferenceTableConfigInput` via:
-//
-//	ModelServingAiGatewayInferenceTableConfigArgs{...}
-type ModelServingAiGatewayInferenceTableConfigInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayInferenceTableConfigOutput() ModelServingAiGatewayInferenceTableConfigOutput
-	ToModelServingAiGatewayInferenceTableConfigOutputWithContext(context.Context) ModelServingAiGatewayInferenceTableConfigOutput
-}
-
-type ModelServingAiGatewayInferenceTableConfigArgs struct {
-	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
-	// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-	TableNamePrefix pulumi.StringPtrInput `pulumi:"tableNamePrefix"`
-}
-
-func (ModelServingAiGatewayInferenceTableConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayInferenceTableConfigArgs) ToModelServingAiGatewayInferenceTableConfigOutput() ModelServingAiGatewayInferenceTableConfigOutput {
-	return i.ToModelServingAiGatewayInferenceTableConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayInferenceTableConfigArgs) ToModelServingAiGatewayInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayInferenceTableConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayInferenceTableConfigOutput)
-}
-
-func (i ModelServingAiGatewayInferenceTableConfigArgs) ToModelServingAiGatewayInferenceTableConfigPtrOutput() ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return i.ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayInferenceTableConfigArgs) ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayInferenceTableConfigOutput).ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayInferenceTableConfigPtrInput is an input type that accepts ModelServingAiGatewayInferenceTableConfigArgs, ModelServingAiGatewayInferenceTableConfigPtr and ModelServingAiGatewayInferenceTableConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayInferenceTableConfigPtrInput` via:
-//
-//	        ModelServingAiGatewayInferenceTableConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayInferenceTableConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayInferenceTableConfigPtrOutput() ModelServingAiGatewayInferenceTableConfigPtrOutput
-	ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(context.Context) ModelServingAiGatewayInferenceTableConfigPtrOutput
-}
-
-type modelServingAiGatewayInferenceTableConfigPtrType ModelServingAiGatewayInferenceTableConfigArgs
-
-func ModelServingAiGatewayInferenceTableConfigPtr(v *ModelServingAiGatewayInferenceTableConfigArgs) ModelServingAiGatewayInferenceTableConfigPtrInput {
-	return (*modelServingAiGatewayInferenceTableConfigPtrType)(v)
-}
-
-func (*modelServingAiGatewayInferenceTableConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayInferenceTableConfigPtrType) ToModelServingAiGatewayInferenceTableConfigPtrOutput() ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return i.ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayInferenceTableConfigPtrType) ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayInferenceTableConfigPtrOutput)
-}
-
-type ModelServingAiGatewayInferenceTableConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayInferenceTableConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigOutput) ToModelServingAiGatewayInferenceTableConfigOutput() ModelServingAiGatewayInferenceTableConfigOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigOutput) ToModelServingAiGatewayInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayInferenceTableConfigOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigOutput) ToModelServingAiGatewayInferenceTableConfigPtrOutput() ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return o.ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigOutput) ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayInferenceTableConfig) *ModelServingAiGatewayInferenceTableConfig {
-		return &v
-	}).(ModelServingAiGatewayInferenceTableConfigPtrOutput)
-}
-
-// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-func (o ModelServingAiGatewayInferenceTableConfigOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayInferenceTableConfig) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingAiGatewayInferenceTableConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayInferenceTableConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-func (o ModelServingAiGatewayInferenceTableConfigOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayInferenceTableConfig) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
-}
-
-// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-func (o ModelServingAiGatewayInferenceTableConfigOutput) TableNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayInferenceTableConfig) *string { return v.TableNamePrefix }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGatewayInferenceTableConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayInferenceTableConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) ToModelServingAiGatewayInferenceTableConfigPtrOutput() ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) ToModelServingAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayInferenceTableConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) Elem() ModelServingAiGatewayInferenceTableConfigOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayInferenceTableConfig) ModelServingAiGatewayInferenceTableConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayInferenceTableConfig
-		return ret
-	}).(ModelServingAiGatewayInferenceTableConfigOutput)
-}
-
-// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CatalogName
-	}).(pulumi.StringPtrOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayInferenceTableConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) TableNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TableNamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingAiGatewayRateLimit struct {
-	// Used to specify how many calls are allowed for a key within the renewal_period.
-	Calls *int `pulumi:"calls"`
-	// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
-	Key *string `pulumi:"key"`
-	// Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
-	Principal *string `pulumi:"principal"`
-	// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-	RenewalPeriod string `pulumi:"renewalPeriod"`
-	// Specifies how many tokens are allowed for a key within the renewal_period.
-	Tokens *int `pulumi:"tokens"`
-}
-
-// ModelServingAiGatewayRateLimitInput is an input type that accepts ModelServingAiGatewayRateLimitArgs and ModelServingAiGatewayRateLimitOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayRateLimitInput` via:
-//
-//	ModelServingAiGatewayRateLimitArgs{...}
-type ModelServingAiGatewayRateLimitInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayRateLimitOutput() ModelServingAiGatewayRateLimitOutput
-	ToModelServingAiGatewayRateLimitOutputWithContext(context.Context) ModelServingAiGatewayRateLimitOutput
-}
-
-type ModelServingAiGatewayRateLimitArgs struct {
-	// Used to specify how many calls are allowed for a key within the renewal_period.
-	Calls pulumi.IntPtrInput `pulumi:"calls"`
-	// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
-	Principal pulumi.StringPtrInput `pulumi:"principal"`
-	// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-	RenewalPeriod pulumi.StringInput `pulumi:"renewalPeriod"`
-	// Specifies how many tokens are allowed for a key within the renewal_period.
-	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
-}
-
-func (ModelServingAiGatewayRateLimitArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayRateLimitArgs) ToModelServingAiGatewayRateLimitOutput() ModelServingAiGatewayRateLimitOutput {
-	return i.ToModelServingAiGatewayRateLimitOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayRateLimitArgs) ToModelServingAiGatewayRateLimitOutputWithContext(ctx context.Context) ModelServingAiGatewayRateLimitOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayRateLimitOutput)
-}
-
-// ModelServingAiGatewayRateLimitArrayInput is an input type that accepts ModelServingAiGatewayRateLimitArray and ModelServingAiGatewayRateLimitArrayOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayRateLimitArrayInput` via:
-//
-//	ModelServingAiGatewayRateLimitArray{ ModelServingAiGatewayRateLimitArgs{...} }
-type ModelServingAiGatewayRateLimitArrayInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayRateLimitArrayOutput() ModelServingAiGatewayRateLimitArrayOutput
-	ToModelServingAiGatewayRateLimitArrayOutputWithContext(context.Context) ModelServingAiGatewayRateLimitArrayOutput
-}
-
-type ModelServingAiGatewayRateLimitArray []ModelServingAiGatewayRateLimitInput
-
-func (ModelServingAiGatewayRateLimitArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayRateLimitArray) ToModelServingAiGatewayRateLimitArrayOutput() ModelServingAiGatewayRateLimitArrayOutput {
-	return i.ToModelServingAiGatewayRateLimitArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayRateLimitArray) ToModelServingAiGatewayRateLimitArrayOutputWithContext(ctx context.Context) ModelServingAiGatewayRateLimitArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayRateLimitArrayOutput)
-}
-
-type ModelServingAiGatewayRateLimitOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayRateLimitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayRateLimitOutput) ToModelServingAiGatewayRateLimitOutput() ModelServingAiGatewayRateLimitOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayRateLimitOutput) ToModelServingAiGatewayRateLimitOutputWithContext(ctx context.Context) ModelServingAiGatewayRateLimitOutput {
-	return o
-}
-
-// Used to specify how many calls are allowed for a key within the renewal_period.
-func (o ModelServingAiGatewayRateLimitOutput) Calls() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayRateLimit) *int { return v.Calls }).(pulumi.IntPtrOutput)
-}
-
-// Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
-func (o ModelServingAiGatewayRateLimitOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayRateLimit) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
-func (o ModelServingAiGatewayRateLimitOutput) Principal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayRateLimit) *string { return v.Principal }).(pulumi.StringPtrOutput)
-}
-
-// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-func (o ModelServingAiGatewayRateLimitOutput) RenewalPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
-}
-
-// Specifies how many tokens are allowed for a key within the renewal_period.
-func (o ModelServingAiGatewayRateLimitOutput) Tokens() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayRateLimit) *int { return v.Tokens }).(pulumi.IntPtrOutput)
-}
-
-type ModelServingAiGatewayRateLimitArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayRateLimitArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayRateLimitArrayOutput) ToModelServingAiGatewayRateLimitArrayOutput() ModelServingAiGatewayRateLimitArrayOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayRateLimitArrayOutput) ToModelServingAiGatewayRateLimitArrayOutputWithContext(ctx context.Context) ModelServingAiGatewayRateLimitArrayOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayRateLimitArrayOutput) Index(i pulumi.IntInput) ModelServingAiGatewayRateLimitOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingAiGatewayRateLimit {
-		return vs[0].([]ModelServingAiGatewayRateLimit)[vs[1].(int)]
-	}).(ModelServingAiGatewayRateLimitOutput)
-}
-
-type ModelServingAiGatewayUsageTrackingConfig struct {
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// ModelServingAiGatewayUsageTrackingConfigInput is an input type that accepts ModelServingAiGatewayUsageTrackingConfigArgs and ModelServingAiGatewayUsageTrackingConfigOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayUsageTrackingConfigInput` via:
-//
-//	ModelServingAiGatewayUsageTrackingConfigArgs{...}
-type ModelServingAiGatewayUsageTrackingConfigInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayUsageTrackingConfigOutput() ModelServingAiGatewayUsageTrackingConfigOutput
-	ToModelServingAiGatewayUsageTrackingConfigOutputWithContext(context.Context) ModelServingAiGatewayUsageTrackingConfigOutput
-}
-
-type ModelServingAiGatewayUsageTrackingConfigArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (ModelServingAiGatewayUsageTrackingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (i ModelServingAiGatewayUsageTrackingConfigArgs) ToModelServingAiGatewayUsageTrackingConfigOutput() ModelServingAiGatewayUsageTrackingConfigOutput {
-	return i.ToModelServingAiGatewayUsageTrackingConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayUsageTrackingConfigArgs) ToModelServingAiGatewayUsageTrackingConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayUsageTrackingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayUsageTrackingConfigOutput)
-}
-
-func (i ModelServingAiGatewayUsageTrackingConfigArgs) ToModelServingAiGatewayUsageTrackingConfigPtrOutput() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return i.ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingAiGatewayUsageTrackingConfigArgs) ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayUsageTrackingConfigOutput).ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingAiGatewayUsageTrackingConfigPtrInput is an input type that accepts ModelServingAiGatewayUsageTrackingConfigArgs, ModelServingAiGatewayUsageTrackingConfigPtr and ModelServingAiGatewayUsageTrackingConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingAiGatewayUsageTrackingConfigPtrInput` via:
-//
-//	        ModelServingAiGatewayUsageTrackingConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingAiGatewayUsageTrackingConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingAiGatewayUsageTrackingConfigPtrOutput() ModelServingAiGatewayUsageTrackingConfigPtrOutput
-	ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Context) ModelServingAiGatewayUsageTrackingConfigPtrOutput
-}
-
-type modelServingAiGatewayUsageTrackingConfigPtrType ModelServingAiGatewayUsageTrackingConfigArgs
-
-func ModelServingAiGatewayUsageTrackingConfigPtr(v *ModelServingAiGatewayUsageTrackingConfigArgs) ModelServingAiGatewayUsageTrackingConfigPtrInput {
-	return (*modelServingAiGatewayUsageTrackingConfigPtrType)(v)
-}
-
-func (*modelServingAiGatewayUsageTrackingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (i *modelServingAiGatewayUsageTrackingConfigPtrType) ToModelServingAiGatewayUsageTrackingConfigPtrOutput() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return i.ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingAiGatewayUsageTrackingConfigPtrType) ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-type ModelServingAiGatewayUsageTrackingConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayUsageTrackingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigOutput) ToModelServingAiGatewayUsageTrackingConfigOutput() ModelServingAiGatewayUsageTrackingConfigOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigOutput) ToModelServingAiGatewayUsageTrackingConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayUsageTrackingConfigOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigOutput) ToModelServingAiGatewayUsageTrackingConfigPtrOutput() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigOutput) ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayUsageTrackingConfig) *ModelServingAiGatewayUsageTrackingConfig {
-		return &v
-	}).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayUsageTrackingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type ModelServingAiGatewayUsageTrackingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingAiGatewayUsageTrackingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigPtrOutput) ToModelServingAiGatewayUsageTrackingConfigPtrOutput() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigPtrOutput) ToModelServingAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayUsageTrackingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigPtrOutput) Elem() ModelServingAiGatewayUsageTrackingConfigOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayUsageTrackingConfig) ModelServingAiGatewayUsageTrackingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingAiGatewayUsageTrackingConfig
-		return ret
-	}).(ModelServingAiGatewayUsageTrackingConfigOutput)
-}
-
-func (o ModelServingAiGatewayUsageTrackingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingAiGatewayUsageTrackingConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ModelServingConfig struct {
-	// Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-	AutoCaptureConfig *ModelServingConfigAutoCaptureConfig `pulumi:"autoCaptureConfig"`
-	// A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-	ServedEntities []ModelServingConfigServedEntity `pulumi:"servedEntities"`
-	// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-	//
-	// Deprecated: Please use 'config.served_entities' instead of 'config.served_models'.
-	ServedModels []ModelServingConfigServedModel `pulumi:"servedModels"`
-	// A single block represents the traffic split configuration amongst the served models.
-	TrafficConfig *ModelServingConfigTrafficConfig `pulumi:"trafficConfig"`
-}
-
-// ModelServingConfigInput is an input type that accepts ModelServingConfigArgs and ModelServingConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigInput` via:
-//
-//	ModelServingConfigArgs{...}
-type ModelServingConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigOutput() ModelServingConfigOutput
-	ToModelServingConfigOutputWithContext(context.Context) ModelServingConfigOutput
-}
-
-type ModelServingConfigArgs struct {
-	// Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-	AutoCaptureConfig ModelServingConfigAutoCaptureConfigPtrInput `pulumi:"autoCaptureConfig"`
-	// A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-	ServedEntities ModelServingConfigServedEntityArrayInput `pulumi:"servedEntities"`
-	// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-	//
-	// Deprecated: Please use 'config.served_entities' instead of 'config.served_models'.
-	ServedModels ModelServingConfigServedModelArrayInput `pulumi:"servedModels"`
-	// A single block represents the traffic split configuration amongst the served models.
-	TrafficConfig ModelServingConfigTrafficConfigPtrInput `pulumi:"trafficConfig"`
-}
-
-func (ModelServingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigArgs) ToModelServingConfigOutput() ModelServingConfigOutput {
-	return i.ToModelServingConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigArgs) ToModelServingConfigOutputWithContext(ctx context.Context) ModelServingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigOutput)
-}
-
-func (i ModelServingConfigArgs) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
-	return i.ToModelServingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigArgs) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigOutput).ToModelServingConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigPtrInput is an input type that accepts ModelServingConfigArgs, ModelServingConfigPtr and ModelServingConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigPtrInput` via:
-//
-//	        ModelServingConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput
-	ToModelServingConfigPtrOutputWithContext(context.Context) ModelServingConfigPtrOutput
-}
-
-type modelServingConfigPtrType ModelServingConfigArgs
-
-func ModelServingConfigPtr(v *ModelServingConfigArgs) ModelServingConfigPtrInput {
-	return (*modelServingConfigPtrType)(v)
-}
-
-func (*modelServingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigPtrType) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
-	return i.ToModelServingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigPtrType) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigPtrOutput)
-}
-
-type ModelServingConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigOutput) ToModelServingConfigOutput() ModelServingConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigOutput) ToModelServingConfigOutputWithContext(ctx context.Context) ModelServingConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigOutput) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
-	return o.ToModelServingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigOutput) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfig) *ModelServingConfig {
-		return &v
-	}).(ModelServingConfigPtrOutput)
-}
-
-// Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-func (o ModelServingConfigOutput) AutoCaptureConfig() ModelServingConfigAutoCaptureConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfig) *ModelServingConfigAutoCaptureConfig { return v.AutoCaptureConfig }).(ModelServingConfigAutoCaptureConfigPtrOutput)
-}
-
-// A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-func (o ModelServingConfigOutput) ServedEntities() ModelServingConfigServedEntityArrayOutput {
-	return o.ApplyT(func(v ModelServingConfig) []ModelServingConfigServedEntity { return v.ServedEntities }).(ModelServingConfigServedEntityArrayOutput)
-}
-
-// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-//
-// Deprecated: Please use 'config.served_entities' instead of 'config.served_models'.
-func (o ModelServingConfigOutput) ServedModels() ModelServingConfigServedModelArrayOutput {
-	return o.ApplyT(func(v ModelServingConfig) []ModelServingConfigServedModel { return v.ServedModels }).(ModelServingConfigServedModelArrayOutput)
-}
-
-// A single block represents the traffic split configuration amongst the served models.
-func (o ModelServingConfigOutput) TrafficConfig() ModelServingConfigTrafficConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfig) *ModelServingConfigTrafficConfig { return v.TrafficConfig }).(ModelServingConfigTrafficConfigPtrOutput)
-}
-
-type ModelServingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigPtrOutput) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigPtrOutput) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigPtrOutput) Elem() ModelServingConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfig) ModelServingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfig
-		return ret
-	}).(ModelServingConfigOutput)
-}
-
-// Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-func (o ModelServingConfigPtrOutput) AutoCaptureConfig() ModelServingConfigAutoCaptureConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfig) *ModelServingConfigAutoCaptureConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AutoCaptureConfig
-	}).(ModelServingConfigAutoCaptureConfigPtrOutput)
-}
-
-// A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-func (o ModelServingConfigPtrOutput) ServedEntities() ModelServingConfigServedEntityArrayOutput {
-	return o.ApplyT(func(v *ModelServingConfig) []ModelServingConfigServedEntity {
-		if v == nil {
-			return nil
-		}
-		return v.ServedEntities
-	}).(ModelServingConfigServedEntityArrayOutput)
-}
-
-// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-//
-// Deprecated: Please use 'config.served_entities' instead of 'config.served_models'.
-func (o ModelServingConfigPtrOutput) ServedModels() ModelServingConfigServedModelArrayOutput {
-	return o.ApplyT(func(v *ModelServingConfig) []ModelServingConfigServedModel {
-		if v == nil {
-			return nil
-		}
-		return v.ServedModels
-	}).(ModelServingConfigServedModelArrayOutput)
-}
-
-// A single block represents the traffic split configuration amongst the served models.
-func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfig) *ModelServingConfigTrafficConfig {
-		if v == nil {
-			return nil
-		}
-		return v.TrafficConfig
-	}).(ModelServingConfigTrafficConfigPtrOutput)
-}
-
-type ModelServingConfigAutoCaptureConfig struct {
-	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-	CatalogName *string `pulumi:"catalogName"`
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
-	Enabled *bool `pulumi:"enabled"`
-	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-	SchemaName *string `pulumi:"schemaName"`
-	// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-	TableNamePrefix *string `pulumi:"tableNamePrefix"`
-}
-
-// ModelServingConfigAutoCaptureConfigInput is an input type that accepts ModelServingConfigAutoCaptureConfigArgs and ModelServingConfigAutoCaptureConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigAutoCaptureConfigInput` via:
-//
-//	ModelServingConfigAutoCaptureConfigArgs{...}
-type ModelServingConfigAutoCaptureConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigAutoCaptureConfigOutput() ModelServingConfigAutoCaptureConfigOutput
-	ToModelServingConfigAutoCaptureConfigOutputWithContext(context.Context) ModelServingConfigAutoCaptureConfigOutput
-}
-
-type ModelServingConfigAutoCaptureConfigArgs struct {
-	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
-	// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-	TableNamePrefix pulumi.StringPtrInput `pulumi:"tableNamePrefix"`
-}
-
-func (ModelServingConfigAutoCaptureConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigAutoCaptureConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigOutput() ModelServingConfigAutoCaptureConfigOutput {
-	return i.ToModelServingConfigAutoCaptureConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigAutoCaptureConfigOutput)
-}
-
-func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
-	return i.ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigAutoCaptureConfigOutput).ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigAutoCaptureConfigPtrInput is an input type that accepts ModelServingConfigAutoCaptureConfigArgs, ModelServingConfigAutoCaptureConfigPtr and ModelServingConfigAutoCaptureConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigAutoCaptureConfigPtrInput` via:
-//
-//	        ModelServingConfigAutoCaptureConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigAutoCaptureConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput
-	ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Context) ModelServingConfigAutoCaptureConfigPtrOutput
-}
-
-type modelServingConfigAutoCaptureConfigPtrType ModelServingConfigAutoCaptureConfigArgs
-
-func ModelServingConfigAutoCaptureConfigPtr(v *ModelServingConfigAutoCaptureConfigArgs) ModelServingConfigAutoCaptureConfigPtrInput {
-	return (*modelServingConfigAutoCaptureConfigPtrType)(v)
-}
-
-func (*modelServingConfigAutoCaptureConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigAutoCaptureConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigAutoCaptureConfigPtrType) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
-	return i.ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigAutoCaptureConfigPtrType) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigAutoCaptureConfigPtrOutput)
-}
-
-type ModelServingConfigAutoCaptureConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigAutoCaptureConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigAutoCaptureConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigOutput() ModelServingConfigAutoCaptureConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
-	return o.ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigAutoCaptureConfig) *ModelServingConfigAutoCaptureConfig {
-		return &v
-	}).(ModelServingConfigAutoCaptureConfigPtrOutput)
-}
-
-// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-func (o ModelServingConfigAutoCaptureConfigOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
-}
-
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
-func (o ModelServingConfigAutoCaptureConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-func (o ModelServingConfigAutoCaptureConfigOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
-}
-
-// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-func (o ModelServingConfigAutoCaptureConfigOutput) TableNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.TableNamePrefix }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigAutoCaptureConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigAutoCaptureConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigAutoCaptureConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) Elem() ModelServingConfigAutoCaptureConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) ModelServingConfigAutoCaptureConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigAutoCaptureConfig
-		return ret
-	}).(ModelServingConfigAutoCaptureConfigOutput)
-}
-
-// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CatalogName
-	}).(pulumi.StringPtrOutput)
-}
-
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-func (o ModelServingConfigAutoCaptureConfigPtrOutput) TableNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TableNamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntity struct {
-	BurstScalingEnabled *bool `pulumi:"burstScalingEnabled"`
-	// The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
-	EntityName *string `pulumi:"entityName"`
-	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-	EntityVersion *string `pulumi:"entityVersion"`
-	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-	EnvironmentVars map[string]string `pulumi:"environmentVars"`
-	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
-	ExternalModel *ModelServingConfigServedEntityExternalModel `pulumi:"externalModel"`
-	// ARN of the instance profile that the served entity uses to access AWS resources.
-	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
-	// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
-	MaxProvisionedConcurrency *int `pulumi:"maxProvisionedConcurrency"`
-	// The maximum tokens per second that the endpoint can scale up to.
-	MaxProvisionedThroughput *int `pulumi:"maxProvisionedThroughput"`
-	// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
-	MinProvisionedConcurrency *int `pulumi:"minProvisionedConcurrency"`
-	// The minimum tokens per second that the endpoint can scale down to.
-	MinProvisionedThroughput *int `pulumi:"minProvisionedThroughput"`
-	// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
-	Name                  *string `pulumi:"name"`
-	ProvisionedModelUnits *int    `pulumi:"provisionedModelUnits"`
-	// Whether the compute resources for the served entity should scale down to zero.
-	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
-	// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
-	WorkloadSize *string `pulumi:"workloadSize"`
-	// The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
-	WorkloadType *string `pulumi:"workloadType"`
-}
-
-// ModelServingConfigServedEntityInput is an input type that accepts ModelServingConfigServedEntityArgs and ModelServingConfigServedEntityOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityInput` via:
-//
-//	ModelServingConfigServedEntityArgs{...}
-type ModelServingConfigServedEntityInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityOutput() ModelServingConfigServedEntityOutput
-	ToModelServingConfigServedEntityOutputWithContext(context.Context) ModelServingConfigServedEntityOutput
-}
-
-type ModelServingConfigServedEntityArgs struct {
-	BurstScalingEnabled pulumi.BoolPtrInput `pulumi:"burstScalingEnabled"`
-	// The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
-	EntityName pulumi.StringPtrInput `pulumi:"entityName"`
-	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-	EntityVersion pulumi.StringPtrInput `pulumi:"entityVersion"`
-	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
-	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
-	ExternalModel ModelServingConfigServedEntityExternalModelPtrInput `pulumi:"externalModel"`
-	// ARN of the instance profile that the served entity uses to access AWS resources.
-	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
-	// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
-	MaxProvisionedConcurrency pulumi.IntPtrInput `pulumi:"maxProvisionedConcurrency"`
-	// The maximum tokens per second that the endpoint can scale up to.
-	MaxProvisionedThroughput pulumi.IntPtrInput `pulumi:"maxProvisionedThroughput"`
-	// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
-	MinProvisionedConcurrency pulumi.IntPtrInput `pulumi:"minProvisionedConcurrency"`
-	// The minimum tokens per second that the endpoint can scale down to.
-	MinProvisionedThroughput pulumi.IntPtrInput `pulumi:"minProvisionedThroughput"`
-	// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
-	Name                  pulumi.StringPtrInput `pulumi:"name"`
-	ProvisionedModelUnits pulumi.IntPtrInput    `pulumi:"provisionedModelUnits"`
-	// Whether the compute resources for the served entity should scale down to zero.
-	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
-	// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
-	WorkloadSize pulumi.StringPtrInput `pulumi:"workloadSize"`
-	// The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
-	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
-}
-
-func (ModelServingConfigServedEntityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntity)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityArgs) ToModelServingConfigServedEntityOutput() ModelServingConfigServedEntityOutput {
-	return i.ToModelServingConfigServedEntityOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityArgs) ToModelServingConfigServedEntityOutputWithContext(ctx context.Context) ModelServingConfigServedEntityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityOutput)
-}
-
-// ModelServingConfigServedEntityArrayInput is an input type that accepts ModelServingConfigServedEntityArray and ModelServingConfigServedEntityArrayOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityArrayInput` via:
-//
-//	ModelServingConfigServedEntityArray{ ModelServingConfigServedEntityArgs{...} }
-type ModelServingConfigServedEntityArrayInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityArrayOutput() ModelServingConfigServedEntityArrayOutput
-	ToModelServingConfigServedEntityArrayOutputWithContext(context.Context) ModelServingConfigServedEntityArrayOutput
-}
-
-type ModelServingConfigServedEntityArray []ModelServingConfigServedEntityInput
-
-func (ModelServingConfigServedEntityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingConfigServedEntity)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityArray) ToModelServingConfigServedEntityArrayOutput() ModelServingConfigServedEntityArrayOutput {
-	return i.ToModelServingConfigServedEntityArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityArray) ToModelServingConfigServedEntityArrayOutputWithContext(ctx context.Context) ModelServingConfigServedEntityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityArrayOutput)
-}
-
-type ModelServingConfigServedEntityOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntity)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityOutput) ToModelServingConfigServedEntityOutput() ModelServingConfigServedEntityOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityOutput) ToModelServingConfigServedEntityOutputWithContext(ctx context.Context) ModelServingConfigServedEntityOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityOutput) BurstScalingEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *bool { return v.BurstScalingEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
-func (o ModelServingConfigServedEntityOutput) EntityName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.EntityName }).(pulumi.StringPtrOutput)
-}
-
-// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-func (o ModelServingConfigServedEntityOutput) EntityVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.EntityVersion }).(pulumi.StringPtrOutput)
-}
-
-// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-func (o ModelServingConfigServedEntityOutput) EnvironmentVars() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
-}
-
-// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
-func (o ModelServingConfigServedEntityOutput) ExternalModel() ModelServingConfigServedEntityExternalModelPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *ModelServingConfigServedEntityExternalModel {
-		return v.ExternalModel
-	}).(ModelServingConfigServedEntityExternalModelPtrOutput)
-}
-
-// ARN of the instance profile that the served entity uses to access AWS resources.
-func (o ModelServingConfigServedEntityOutput) InstanceProfileArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
-}
-
-// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
-func (o ModelServingConfigServedEntityOutput) MaxProvisionedConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *int { return v.MaxProvisionedConcurrency }).(pulumi.IntPtrOutput)
-}
-
-// The maximum tokens per second that the endpoint can scale up to.
-func (o ModelServingConfigServedEntityOutput) MaxProvisionedThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *int { return v.MaxProvisionedThroughput }).(pulumi.IntPtrOutput)
-}
-
-// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
-func (o ModelServingConfigServedEntityOutput) MinProvisionedConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *int { return v.MinProvisionedConcurrency }).(pulumi.IntPtrOutput)
-}
-
-// The minimum tokens per second that the endpoint can scale down to.
-func (o ModelServingConfigServedEntityOutput) MinProvisionedThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *int { return v.MinProvisionedThroughput }).(pulumi.IntPtrOutput)
-}
-
-// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
-func (o ModelServingConfigServedEntityOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityOutput) ProvisionedModelUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *int { return v.ProvisionedModelUnits }).(pulumi.IntPtrOutput)
-}
-
-// Whether the compute resources for the served entity should scale down to zero.
-func (o ModelServingConfigServedEntityOutput) ScaleToZeroEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *bool { return v.ScaleToZeroEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
-func (o ModelServingConfigServedEntityOutput) WorkloadSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.WorkloadSize }).(pulumi.StringPtrOutput)
-}
-
-// The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
-func (o ModelServingConfigServedEntityOutput) WorkloadType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingConfigServedEntity)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityArrayOutput) ToModelServingConfigServedEntityArrayOutput() ModelServingConfigServedEntityArrayOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityArrayOutput) ToModelServingConfigServedEntityArrayOutputWithContext(ctx context.Context) ModelServingConfigServedEntityArrayOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityArrayOutput) Index(i pulumi.IntInput) ModelServingConfigServedEntityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigServedEntity {
-		return vs[0].([]ModelServingConfigServedEntity)[vs[1].(int)]
-	}).(ModelServingConfigServedEntityOutput)
-}
-
-type ModelServingConfigServedEntityExternalModel struct {
-	// AI21Labs Config
-	Ai21labsConfig *ModelServingConfigServedEntityExternalModelAi21labsConfig `pulumi:"ai21labsConfig"`
-	// Amazon Bedrock Config
-	AmazonBedrockConfig *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig `pulumi:"amazonBedrockConfig"`
-	// Anthropic Config
-	AnthropicConfig *ModelServingConfigServedEntityExternalModelAnthropicConfig `pulumi:"anthropicConfig"`
-	// Cohere Config
-	CohereConfig *ModelServingConfigServedEntityExternalModelCohereConfig `pulumi:"cohereConfig"`
-	// Custom Provider Config. Only required if the provider is 'custom'.
-	CustomProviderConfig *ModelServingConfigServedEntityExternalModelCustomProviderConfig `pulumi:"customProviderConfig"`
-	// Databricks Model Serving Config
-	DatabricksModelServingConfig *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfig"`
-	// Google Cloud Vertex AI Config.
-	GoogleCloudVertexAiConfig *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig `pulumi:"googleCloudVertexAiConfig"`
-	// The name of the external model.
-	Name string `pulumi:"name"`
-	// OpenAI Config
-	OpenaiConfig *ModelServingConfigServedEntityExternalModelOpenaiConfig `pulumi:"openaiConfig"`
-	// PaLM Config
-	PalmConfig *ModelServingConfigServedEntityExternalModelPalmConfig `pulumi:"palmConfig"`
-	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-	Provider string `pulumi:"provider"`
-	// The task type of the external model.
-	Task string `pulumi:"task"`
-}
-
-// ModelServingConfigServedEntityExternalModelInput is an input type that accepts ModelServingConfigServedEntityExternalModelArgs and ModelServingConfigServedEntityExternalModelOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelArgs{...}
-type ModelServingConfigServedEntityExternalModelInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelOutput() ModelServingConfigServedEntityExternalModelOutput
-	ToModelServingConfigServedEntityExternalModelOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelOutput
-}
-
-type ModelServingConfigServedEntityExternalModelArgs struct {
-	// AI21Labs Config
-	Ai21labsConfig ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput `pulumi:"ai21labsConfig"`
-	// Amazon Bedrock Config
-	AmazonBedrockConfig ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput `pulumi:"amazonBedrockConfig"`
-	// Anthropic Config
-	AnthropicConfig ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput `pulumi:"anthropicConfig"`
-	// Cohere Config
-	CohereConfig ModelServingConfigServedEntityExternalModelCohereConfigPtrInput `pulumi:"cohereConfig"`
-	// Custom Provider Config. Only required if the provider is 'custom'.
-	CustomProviderConfig ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput `pulumi:"customProviderConfig"`
-	// Databricks Model Serving Config
-	DatabricksModelServingConfig ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput `pulumi:"databricksModelServingConfig"`
-	// Google Cloud Vertex AI Config.
-	GoogleCloudVertexAiConfig ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput `pulumi:"googleCloudVertexAiConfig"`
-	// The name of the external model.
-	Name pulumi.StringInput `pulumi:"name"`
-	// OpenAI Config
-	OpenaiConfig ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput `pulumi:"openaiConfig"`
-	// PaLM Config
-	PalmConfig ModelServingConfigServedEntityExternalModelPalmConfigPtrInput `pulumi:"palmConfig"`
-	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-	Provider pulumi.StringInput `pulumi:"provider"`
-	// The task type of the external model.
-	Task pulumi.StringInput `pulumi:"task"`
-}
-
-func (ModelServingConfigServedEntityExternalModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModel)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelArgs) ToModelServingConfigServedEntityExternalModelOutput() ModelServingConfigServedEntityExternalModelOutput {
-	return i.ToModelServingConfigServedEntityExternalModelOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelArgs) ToModelServingConfigServedEntityExternalModelOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelArgs) ToModelServingConfigServedEntityExternalModelPtrOutput() ModelServingConfigServedEntityExternalModelPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelArgs) ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelOutput).ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelArgs, ModelServingConfigServedEntityExternalModelPtr and ModelServingConfigServedEntityExternalModelPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelPtrOutput() ModelServingConfigServedEntityExternalModelPtrOutput
-	ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelPtrType ModelServingConfigServedEntityExternalModelArgs
-
-func ModelServingConfigServedEntityExternalModelPtr(v *ModelServingConfigServedEntityExternalModelArgs) ModelServingConfigServedEntityExternalModelPtrInput {
-	return (*modelServingConfigServedEntityExternalModelPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModel)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelPtrType) ToModelServingConfigServedEntityExternalModelPtrOutput() ModelServingConfigServedEntityExternalModelPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelPtrType) ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModel)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelOutput) ToModelServingConfigServedEntityExternalModelOutput() ModelServingConfigServedEntityExternalModelOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelOutput) ToModelServingConfigServedEntityExternalModelOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelOutput) ToModelServingConfigServedEntityExternalModelPtrOutput() ModelServingConfigServedEntityExternalModelPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelOutput) ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModel {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelPtrOutput)
-}
-
-// AI21Labs Config
-func (o ModelServingConfigServedEntityExternalModelOutput) Ai21labsConfig() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAi21labsConfig {
-		return v.Ai21labsConfig
-	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
-}
-
-// Amazon Bedrock Config
-func (o ModelServingConfigServedEntityExternalModelOutput) AmazonBedrockConfig() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-		return v.AmazonBedrockConfig
-	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
-}
-
-// Anthropic Config
-func (o ModelServingConfigServedEntityExternalModelOutput) AnthropicConfig() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAnthropicConfig {
-		return v.AnthropicConfig
-	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
-}
-
-// Cohere Config
-func (o ModelServingConfigServedEntityExternalModelOutput) CohereConfig() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCohereConfig {
-		return v.CohereConfig
-	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
-}
-
-// Custom Provider Config. Only required if the provider is 'custom'.
-func (o ModelServingConfigServedEntityExternalModelOutput) CustomProviderConfig() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
-		return v.CustomProviderConfig
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
-}
-
-// Databricks Model Serving Config
-func (o ModelServingConfigServedEntityExternalModelOutput) DatabricksModelServingConfig() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-		return v.DatabricksModelServingConfig
-	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
-}
-
-// Google Cloud Vertex AI Config.
-func (o ModelServingConfigServedEntityExternalModelOutput) GoogleCloudVertexAiConfig() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
-		return v.GoogleCloudVertexAiConfig
-	}).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput)
-}
-
-// The name of the external model.
-func (o ModelServingConfigServedEntityExternalModelOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// OpenAI Config
-func (o ModelServingConfigServedEntityExternalModelOutput) OpenaiConfig() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelOpenaiConfig {
-		return v.OpenaiConfig
-	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
-}
-
-// PaLM Config
-func (o ModelServingConfigServedEntityExternalModelOutput) PalmConfig() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelPalmConfig {
-		return v.PalmConfig
-	}).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
-}
-
-// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-func (o ModelServingConfigServedEntityExternalModelOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) string { return v.Provider }).(pulumi.StringOutput)
-}
-
-// The task type of the external model.
-func (o ModelServingConfigServedEntityExternalModelOutput) Task() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) string { return v.Task }).(pulumi.StringOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModel)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) ToModelServingConfigServedEntityExternalModelPtrOutput() ModelServingConfigServedEntityExternalModelPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) ToModelServingConfigServedEntityExternalModelPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) Elem() ModelServingConfigServedEntityExternalModelOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) ModelServingConfigServedEntityExternalModel {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModel
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelOutput)
-}
-
-// AI21Labs Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) Ai21labsConfig() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAi21labsConfig {
-		if v == nil {
-			return nil
-		}
-		return v.Ai21labsConfig
-	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
-}
-
-// Amazon Bedrock Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) AmazonBedrockConfig() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AmazonBedrockConfig
-	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
-}
-
-// Anthropic Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) AnthropicConfig() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAnthropicConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AnthropicConfig
-	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
-}
-
-// Cohere Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) CohereConfig() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCohereConfig {
-		if v == nil {
-			return nil
-		}
-		return v.CohereConfig
-	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
-}
-
-// Custom Provider Config. Only required if the provider is 'custom'.
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) CustomProviderConfig() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
-		if v == nil {
-			return nil
-		}
-		return v.CustomProviderConfig
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
-}
-
-// Databricks Model Serving Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) DatabricksModelServingConfig() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-		if v == nil {
-			return nil
-		}
-		return v.DatabricksModelServingConfig
-	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
-}
-
-// Google Cloud Vertex AI Config.
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) GoogleCloudVertexAiConfig() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
-		if v == nil {
-			return nil
-		}
-		return v.GoogleCloudVertexAiConfig
-	}).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput)
-}
-
-// The name of the external model.
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// OpenAI Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) OpenaiConfig() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelOpenaiConfig {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiConfig
-	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
-}
-
-// PaLM Config
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) PalmConfig() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelPalmConfig {
-		if v == nil {
-			return nil
-		}
-		return v.PalmConfig
-	}).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
-}
-
-// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Provider
-	}).(pulumi.StringPtrOutput)
-}
-
-// The task type of the external model.
-func (o ModelServingConfigServedEntityExternalModelPtrOutput) Task() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Task
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAi21labsConfig struct {
-	// The Databricks secret key reference for an AI21Labs API key.
-	Ai21labsApiKey *string `pulumi:"ai21labsApiKey"`
-	// An AI21 Labs API key provided as a plaintext string.
-	Ai21labsApiKeyPlaintext *string `pulumi:"ai21labsApiKeyPlaintext"`
-}
-
-// ModelServingConfigServedEntityExternalModelAi21labsConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelAi21labsConfigArgs and ModelServingConfigServedEntityExternalModelAi21labsConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelAi21labsConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelAi21labsConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelAi21labsConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelAi21labsConfigOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigOutput
-	ToModelServingConfigServedEntityExternalModelAi21labsConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelAi21labsConfigArgs struct {
-	// The Databricks secret key reference for an AI21Labs API key.
-	Ai21labsApiKey pulumi.StringPtrInput `pulumi:"ai21labsApiKey"`
-	// An AI21 Labs API key provided as a plaintext string.
-	Ai21labsApiKeyPlaintext pulumi.StringPtrInput `pulumi:"ai21labsApiKeyPlaintext"`
-}
-
-func (ModelServingConfigServedEntityExternalModelAi21labsConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAi21labsConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelAi21labsConfigArgs) ToModelServingConfigServedEntityExternalModelAi21labsConfigOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAi21labsConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelAi21labsConfigArgs) ToModelServingConfigServedEntityExternalModelAi21labsConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAi21labsConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelAi21labsConfigArgs) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelAi21labsConfigArgs) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAi21labsConfigOutput).ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelAi21labsConfigArgs, ModelServingConfigServedEntityExternalModelAi21labsConfigPtr and ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelAi21labsConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelAi21labsConfigPtrType ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
-
-func ModelServingConfigServedEntityExternalModelAi21labsConfigPtr(v *ModelServingConfigServedEntityExternalModelAi21labsConfigArgs) ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelAi21labsConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelAi21labsConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelAi21labsConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelAi21labsConfigPtrType) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelAi21labsConfigPtrType) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAi21labsConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAi21labsConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) ToModelServingConfigServedEntityExternalModelAi21labsConfigOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) ToModelServingConfigServedEntityExternalModelAi21labsConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelAi21labsConfig) *ModelServingConfigServedEntityExternalModelAi21labsConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
-}
-
-// The Databricks secret key reference for an AI21Labs API key.
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) Ai21labsApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAi21labsConfig) *string { return v.Ai21labsApiKey }).(pulumi.StringPtrOutput)
-}
-
-// An AI21 Labs API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) Ai21labsApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAi21labsConfig) *string {
-		return v.Ai21labsApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelAi21labsConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) ToModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelAi21labsConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAi21labsConfig) ModelServingConfigServedEntityExternalModelAi21labsConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelAi21labsConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigOutput)
-}
-
-// The Databricks secret key reference for an AI21Labs API key.
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21labsApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAi21labsConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ai21labsApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// An AI21 Labs API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21labsApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAi21labsConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ai21labsApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAmazonBedrockConfig struct {
-	// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-	AwsAccessKeyId *string `pulumi:"awsAccessKeyId"`
-	// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-	AwsAccessKeyIdPlaintext *string `pulumi:"awsAccessKeyIdPlaintext"`
-	// The AWS region to use. Bedrock has to be enabled there.
-	AwsRegion string `pulumi:"awsRegion"`
-	// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-	AwsSecretAccessKey *string `pulumi:"awsSecretAccessKey"`
-	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-	AwsSecretAccessKeyPlaintext *string `pulumi:"awsSecretAccessKeyPlaintext"`
-	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider         string  `pulumi:"bedrockProvider"`
-	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
-	UcServiceCredentialName *string `pulumi:"ucServiceCredentialName"`
-}
-
-// ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs and ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput
-	ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs struct {
-	// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-	AwsAccessKeyId pulumi.StringPtrInput `pulumi:"awsAccessKeyId"`
-	// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-	AwsAccessKeyIdPlaintext pulumi.StringPtrInput `pulumi:"awsAccessKeyIdPlaintext"`
-	// The AWS region to use. Bedrock has to be enabled there.
-	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
-	// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-	AwsSecretAccessKey pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
-	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-	AwsSecretAccessKeyPlaintext pulumi.StringPtrInput `pulumi:"awsSecretAccessKeyPlaintext"`
-	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider         pulumi.StringInput    `pulumi:"bedrockProvider"`
-	InstanceProfileArn      pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
-	UcServiceCredentialName pulumi.StringPtrInput `pulumi:"ucServiceCredentialName"`
-}
-
-func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAmazonBedrockConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput).ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs, ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtr and ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrType ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs
-
-func ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtr(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelAmazonBedrockConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrType) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrType) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAmazonBedrockConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
-}
-
-// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		return v.AwsAccessKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsAccessKeyIdPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		return v.AwsAccessKeyIdPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// The AWS region to use. Bedrock has to be enabled there.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) string { return v.AwsRegion }).(pulumi.StringOutput)
-}
-
-// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		return v.AwsSecretAccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsSecretAccessKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		return v.AwsSecretAccessKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) BedrockProvider() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) string {
-		return v.BedrockProvider
-	}).(pulumi.StringOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) InstanceProfileArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		return v.InstanceProfileArn
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) UcServiceCredentialName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		return v.UcServiceCredentialName
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelAmazonBedrockConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) ToModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelAmazonBedrockConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput)
-}
-
-// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAccessKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsAccessKeyIdPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAccessKeyIdPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// The AWS region to use. Bedrock has to be enabled there.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AwsRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsSecretAccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsSecretAccessKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsSecretAccessKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) BedrockProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BedrockProvider
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) InstanceProfileArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceProfileArn
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) UcServiceCredentialName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UcServiceCredentialName
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAnthropicConfig struct {
-	// The Databricks secret key reference for an Anthropic API key.
-	AnthropicApiKey *string `pulumi:"anthropicApiKey"`
-	// The Anthropic API key provided as a plaintext string.
-	AnthropicApiKeyPlaintext *string `pulumi:"anthropicApiKeyPlaintext"`
-}
-
-// ModelServingConfigServedEntityExternalModelAnthropicConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelAnthropicConfigArgs and ModelServingConfigServedEntityExternalModelAnthropicConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelAnthropicConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelAnthropicConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelAnthropicConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelAnthropicConfigOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigOutput
-	ToModelServingConfigServedEntityExternalModelAnthropicConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelAnthropicConfigArgs struct {
-	// The Databricks secret key reference for an Anthropic API key.
-	AnthropicApiKey pulumi.StringPtrInput `pulumi:"anthropicApiKey"`
-	// The Anthropic API key provided as a plaintext string.
-	AnthropicApiKeyPlaintext pulumi.StringPtrInput `pulumi:"anthropicApiKeyPlaintext"`
-}
-
-func (ModelServingConfigServedEntityExternalModelAnthropicConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAnthropicConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelAnthropicConfigArgs) ToModelServingConfigServedEntityExternalModelAnthropicConfigOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAnthropicConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelAnthropicConfigArgs) ToModelServingConfigServedEntityExternalModelAnthropicConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAnthropicConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelAnthropicConfigArgs) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelAnthropicConfigArgs) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAnthropicConfigOutput).ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelAnthropicConfigArgs, ModelServingConfigServedEntityExternalModelAnthropicConfigPtr and ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelAnthropicConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelAnthropicConfigPtrType ModelServingConfigServedEntityExternalModelAnthropicConfigArgs
-
-func ModelServingConfigServedEntityExternalModelAnthropicConfigPtr(v *ModelServingConfigServedEntityExternalModelAnthropicConfigArgs) ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelAnthropicConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelAnthropicConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelAnthropicConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelAnthropicConfigPtrType) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelAnthropicConfigPtrType) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAnthropicConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAnthropicConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ToModelServingConfigServedEntityExternalModelAnthropicConfigOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ToModelServingConfigServedEntityExternalModelAnthropicConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelAnthropicConfig) *ModelServingConfigServedEntityExternalModelAnthropicConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
-}
-
-// The Databricks secret key reference for an Anthropic API key.
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) AnthropicApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAnthropicConfig) *string { return v.AnthropicApiKey }).(pulumi.StringPtrOutput)
-}
-
-// The Anthropic API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) AnthropicApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
-		return v.AnthropicApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelAnthropicConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) ToModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelAnthropicConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAnthropicConfig) ModelServingConfigServedEntityExternalModelAnthropicConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelAnthropicConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigOutput)
-}
-
-// The Databricks secret key reference for an Anthropic API key.
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) AnthropicApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AnthropicApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Anthropic API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) AnthropicApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AnthropicApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCohereConfig struct {
-	CohereApiBase *string `pulumi:"cohereApiBase"`
-	// The Databricks secret key reference for a Cohere API key.
-	CohereApiKey *string `pulumi:"cohereApiKey"`
-	// The Cohere API key provided as a plaintext string.
-	CohereApiKeyPlaintext *string `pulumi:"cohereApiKeyPlaintext"`
-}
-
-// ModelServingConfigServedEntityExternalModelCohereConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelCohereConfigArgs and ModelServingConfigServedEntityExternalModelCohereConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCohereConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelCohereConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelCohereConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCohereConfigOutput() ModelServingConfigServedEntityExternalModelCohereConfigOutput
-	ToModelServingConfigServedEntityExternalModelCohereConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCohereConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelCohereConfigArgs struct {
-	CohereApiBase pulumi.StringPtrInput `pulumi:"cohereApiBase"`
-	// The Databricks secret key reference for a Cohere API key.
-	CohereApiKey pulumi.StringPtrInput `pulumi:"cohereApiKey"`
-	// The Cohere API key provided as a plaintext string.
-	CohereApiKeyPlaintext pulumi.StringPtrInput `pulumi:"cohereApiKeyPlaintext"`
-}
-
-func (ModelServingConfigServedEntityExternalModelCohereConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCohereConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelCohereConfigArgs) ToModelServingConfigServedEntityExternalModelCohereConfigOutput() ModelServingConfigServedEntityExternalModelCohereConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCohereConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCohereConfigArgs) ToModelServingConfigServedEntityExternalModelCohereConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCohereConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCohereConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelCohereConfigArgs) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutput() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCohereConfigArgs) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCohereConfigOutput).ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelCohereConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCohereConfigArgs, ModelServingConfigServedEntityExternalModelCohereConfigPtr and ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCohereConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelCohereConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelCohereConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutput() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelCohereConfigPtrType ModelServingConfigServedEntityExternalModelCohereConfigArgs
-
-func ModelServingConfigServedEntityExternalModelCohereConfigPtr(v *ModelServingConfigServedEntityExternalModelCohereConfigArgs) ModelServingConfigServedEntityExternalModelCohereConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelCohereConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelCohereConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCohereConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelCohereConfigPtrType) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutput() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelCohereConfigPtrType) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCohereConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCohereConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCohereConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) ToModelServingConfigServedEntityExternalModelCohereConfigOutput() ModelServingConfigServedEntityExternalModelCohereConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) ToModelServingConfigServedEntityExternalModelCohereConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCohereConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutput() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCohereConfig) *ModelServingConfigServedEntityExternalModelCohereConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) CohereApiBase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCohereConfig) *string { return v.CohereApiBase }).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for a Cohere API key.
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) CohereApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCohereConfig) *string { return v.CohereApiKey }).(pulumi.StringPtrOutput)
-}
-
-// The Cohere API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) CohereApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCohereConfig) *string {
-		return v.CohereApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCohereConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutput() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) ToModelServingConfigServedEntityExternalModelCohereConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCohereConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCohereConfig) ModelServingConfigServedEntityExternalModelCohereConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelCohereConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelCohereConfigOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) CohereApiBase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCohereConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CohereApiBase
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for a Cohere API key.
-func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) CohereApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCohereConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CohereApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cohere API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) CohereApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCohereConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CohereApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfig struct {
-	// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
-	ApiKeyAuth *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth `pulumi:"apiKeyAuth"`
-	// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
-	BearerTokenAuth *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth `pulumi:"bearerTokenAuth"`
-	// URL of the custom provider API.
-	CustomProviderUrl string `pulumi:"customProviderUrl"`
-}
-
-// ModelServingConfigServedEntityExternalModelCustomProviderConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs struct {
-	// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
-	ApiKeyAuth ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput `pulumi:"apiKeyAuth"`
-	// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
-	BearerTokenAuth ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput `pulumi:"bearerTokenAuth"`
-	// URL of the custom provider API.
-	CustomProviderUrl pulumi.StringInput `pulumi:"customProviderUrl"`
-}
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput).ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs, ModelServingConfigServedEntityExternalModelCustomProviderConfigPtr and ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs
-
-func ModelServingConfigServedEntityExternalModelCustomProviderConfigPtr(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
-}
-
-// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ApiKeyAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
-		return v.ApiKeyAuth
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
-}
-
-// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) BearerTokenAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
-		return v.BearerTokenAuth
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
-}
-
-// URL of the custom provider API.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) CustomProviderUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) string {
-		return v.CustomProviderUrl
-	}).(pulumi.StringOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) ModelServingConfigServedEntityExternalModelCustomProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelCustomProviderConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput)
-}
-
-// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ApiKeyAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
-		if v == nil {
-			return nil
-		}
-		return v.ApiKeyAuth
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
-}
-
-// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) BearerTokenAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
-		if v == nil {
-			return nil
-		}
-		return v.BearerTokenAuth
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
-}
-
-// URL of the custom provider API.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) CustomProviderUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CustomProviderUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth struct {
-	Key   string  `pulumi:"key"`
-	Value *string `pulumi:"value"`
-	// The API Key provided as a plaintext string.
-	ValuePlaintext *string `pulumi:"valuePlaintext"`
-}
-
-// ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{...}
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs struct {
-	Key   pulumi.StringInput    `pulumi:"key"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// The API Key provided as a plaintext string.
-	ValuePlaintext pulumi.StringPtrInput `pulumi:"valuePlaintext"`
-}
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput).ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs, ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtr and ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs
-
-func ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtr(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput {
-	return (*modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) string { return v.Key }).(pulumi.StringOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-// The API Key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ValuePlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
-		return v.ValuePlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-// The API Key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ValuePlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ValuePlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth struct {
-	// The Databricks secret key reference for a token.
-	Token *string `pulumi:"token"`
-	// The token provided as a plaintext string.
-	TokenPlaintext *string `pulumi:"tokenPlaintext"`
-}
-
-// ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{...}
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs struct {
-	// The Databricks secret key reference for a token.
-	Token pulumi.StringPtrInput `pulumi:"token"`
-	// The token provided as a plaintext string.
-	TokenPlaintext pulumi.StringPtrInput `pulumi:"tokenPlaintext"`
-}
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput).ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs, ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtr and ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput
-	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs
-
-func ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtr(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput {
-	return (*modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
-}
-
-// The Databricks secret key reference for a token.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
-		return v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
-// The token provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) TokenPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
-		return v.TokenPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput)
-}
-
-// The Databricks secret key reference for a token.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
-// The token provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) TokenPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TokenPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig struct {
-	// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-	DatabricksApiToken *string `pulumi:"databricksApiToken"`
-	// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
-	DatabricksApiTokenPlaintext *string `pulumi:"databricksApiTokenPlaintext"`
-	// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-	DatabricksWorkspaceUrl string `pulumi:"databricksWorkspaceUrl"`
-}
-
-// ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs and ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput
-	ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs struct {
-	// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-	DatabricksApiToken pulumi.StringPtrInput `pulumi:"databricksApiToken"`
-	// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
-	DatabricksApiTokenPlaintext pulumi.StringPtrInput `pulumi:"databricksApiTokenPlaintext"`
-	// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-	DatabricksWorkspaceUrl pulumi.StringInput `pulumi:"databricksWorkspaceUrl"`
-}
-
-func (ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput).ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs, ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtr and ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrType ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs
-
-func ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtr(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrType) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrType) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
-}
-
-// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) DatabricksApiToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
-		return v.DatabricksApiToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) DatabricksApiTokenPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
-		return v.DatabricksApiTokenPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) DatabricksWorkspaceUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) string {
-		return v.DatabricksWorkspaceUrl
-	}).(pulumi.StringOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) ToModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput)
-}
-
-// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) DatabricksApiToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DatabricksApiToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) DatabricksApiTokenPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DatabricksApiTokenPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) DatabricksWorkspaceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatabricksWorkspaceUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig struct {
-	// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-	PrivateKey *string `pulumi:"privateKey"`
-	// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-	PrivateKeyPlaintext *string `pulumi:"privateKeyPlaintext"`
-	// This is the Google Cloud project id that the service account is associated with.
-	ProjectId string `pulumi:"projectId"`
-	// This is the region for the Google Cloud Vertex AI Service.
-	Region string `pulumi:"region"`
-}
-
-// ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs and ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput
-	ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs struct {
-	// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
-	// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-	PrivateKeyPlaintext pulumi.StringPtrInput `pulumi:"privateKeyPlaintext"`
-	// This is the Google Cloud project id that the service account is associated with.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// This is the region for the Google Cloud Vertex AI Service.
-	Region pulumi.StringInput `pulumi:"region"`
-}
-
-func (ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput).ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs, ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtr and ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrType ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs
-
-func ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtr(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrType) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrType) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput)
-}
-
-// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
-		return v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) PrivateKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
-		return v.PrivateKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is the Google Cloud project id that the service account is associated with.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) string {
-		return v.ProjectId
-	}).(pulumi.StringOutput)
-}
-
-// This is the region for the Google Cloud Vertex AI Service.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) string { return v.Region }).(pulumi.StringOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) ToModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput)
-}
-
-// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) PrivateKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is the Google Cloud project id that the service account is associated with.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is the region for the Google Cloud Vertex AI Service.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelOpenaiConfig struct {
-	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
-	MicrosoftEntraClientId *string `pulumi:"microsoftEntraClientId"`
-	// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
-	MicrosoftEntraClientSecret *string `pulumi:"microsoftEntraClientSecret"`
-	// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
-	MicrosoftEntraClientSecretPlaintext *string `pulumi:"microsoftEntraClientSecretPlaintext"`
-	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
-	MicrosoftEntraTenantId *string `pulumi:"microsoftEntraTenantId"`
-	// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
-	OpenaiApiBase *string `pulumi:"openaiApiBase"`
-	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-	OpenaiApiKey *string `pulumi:"openaiApiKey"`
-	// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
-	OpenaiApiKeyPlaintext *string `pulumi:"openaiApiKeyPlaintext"`
-	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
-	OpenaiApiType *string `pulumi:"openaiApiType"`
-	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
-	OpenaiApiVersion *string `pulumi:"openaiApiVersion"`
-	// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-	OpenaiDeploymentName *string `pulumi:"openaiDeploymentName"`
-	// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-	OpenaiOrganization *string `pulumi:"openaiOrganization"`
-}
-
-// ModelServingConfigServedEntityExternalModelOpenaiConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelOpenaiConfigArgs and ModelServingConfigServedEntityExternalModelOpenaiConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelOpenaiConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelOpenaiConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelOpenaiConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelOpenaiConfigOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigOutput
-	ToModelServingConfigServedEntityExternalModelOpenaiConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelOpenaiConfigArgs struct {
-	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
-	MicrosoftEntraClientId pulumi.StringPtrInput `pulumi:"microsoftEntraClientId"`
-	// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
-	MicrosoftEntraClientSecret pulumi.StringPtrInput `pulumi:"microsoftEntraClientSecret"`
-	// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
-	MicrosoftEntraClientSecretPlaintext pulumi.StringPtrInput `pulumi:"microsoftEntraClientSecretPlaintext"`
-	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
-	MicrosoftEntraTenantId pulumi.StringPtrInput `pulumi:"microsoftEntraTenantId"`
-	// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
-	OpenaiApiBase pulumi.StringPtrInput `pulumi:"openaiApiBase"`
-	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-	OpenaiApiKey pulumi.StringPtrInput `pulumi:"openaiApiKey"`
-	// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
-	OpenaiApiKeyPlaintext pulumi.StringPtrInput `pulumi:"openaiApiKeyPlaintext"`
-	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
-	OpenaiApiType pulumi.StringPtrInput `pulumi:"openaiApiType"`
-	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
-	OpenaiApiVersion pulumi.StringPtrInput `pulumi:"openaiApiVersion"`
-	// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-	OpenaiDeploymentName pulumi.StringPtrInput `pulumi:"openaiDeploymentName"`
-	// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-	OpenaiOrganization pulumi.StringPtrInput `pulumi:"openaiOrganization"`
-}
-
-func (ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelOpenaiConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ToModelServingConfigServedEntityExternalModelOpenaiConfigOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelOpenaiConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ToModelServingConfigServedEntityExternalModelOpenaiConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelOpenaiConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelOpenaiConfigOutput).ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelOpenaiConfigArgs, ModelServingConfigServedEntityExternalModelOpenaiConfigPtr and ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelOpenaiConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelOpenaiConfigPtrType ModelServingConfigServedEntityExternalModelOpenaiConfigArgs
-
-func ModelServingConfigServedEntityExternalModelOpenaiConfigPtr(v *ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelOpenaiConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelOpenaiConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelOpenaiConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelOpenaiConfigPtrType) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelOpenaiConfigPtrType) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelOpenaiConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelOpenaiConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ToModelServingConfigServedEntityExternalModelOpenaiConfigOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ToModelServingConfigServedEntityExternalModelOpenaiConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelOpenaiConfig) *ModelServingConfigServedEntityExternalModelOpenaiConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
-}
-
-// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		return v.MicrosoftEntraClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		return v.MicrosoftEntraClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraClientSecretPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		return v.MicrosoftEntraClientSecretPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		return v.MicrosoftEntraTenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiBase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiBase }).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiKey }).(pulumi.StringPtrOutput)
-}
-
-// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		return v.OpenaiApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiType }).(pulumi.StringPtrOutput)
-}
-
-// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiVersion }).(pulumi.StringPtrOutput)
-}
-
-// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiDeploymentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiDeploymentName }).(pulumi.StringPtrOutput)
-}
-
-// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiOrganization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiOrganization }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelOpenaiConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) ToModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelOpenaiConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) ModelServingConfigServedEntityExternalModelOpenaiConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelOpenaiConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigOutput)
-}
-
-// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MicrosoftEntraClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MicrosoftEntraClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraClientSecretPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MicrosoftEntraClientSecretPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MicrosoftEntraTenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiBase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiApiBase
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiApiType
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiApiVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiDeploymentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiDeploymentName
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiOrganization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenaiOrganization
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelPalmConfig struct {
-	// The Databricks secret key reference for a PaLM API key.
-	PalmApiKey *string `pulumi:"palmApiKey"`
-	// The PaLM API key provided as a plaintext string.
-	PalmApiKeyPlaintext *string `pulumi:"palmApiKeyPlaintext"`
-}
-
-// ModelServingConfigServedEntityExternalModelPalmConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelPalmConfigArgs and ModelServingConfigServedEntityExternalModelPalmConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelPalmConfigInput` via:
-//
-//	ModelServingConfigServedEntityExternalModelPalmConfigArgs{...}
-type ModelServingConfigServedEntityExternalModelPalmConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelPalmConfigOutput() ModelServingConfigServedEntityExternalModelPalmConfigOutput
-	ToModelServingConfigServedEntityExternalModelPalmConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelPalmConfigOutput
-}
-
-type ModelServingConfigServedEntityExternalModelPalmConfigArgs struct {
-	// The Databricks secret key reference for a PaLM API key.
-	PalmApiKey pulumi.StringPtrInput `pulumi:"palmApiKey"`
-	// The PaLM API key provided as a plaintext string.
-	PalmApiKeyPlaintext pulumi.StringPtrInput `pulumi:"palmApiKeyPlaintext"`
-}
-
-func (ModelServingConfigServedEntityExternalModelPalmConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelPalmConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedEntityExternalModelPalmConfigArgs) ToModelServingConfigServedEntityExternalModelPalmConfigOutput() ModelServingConfigServedEntityExternalModelPalmConfigOutput {
-	return i.ToModelServingConfigServedEntityExternalModelPalmConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelPalmConfigArgs) ToModelServingConfigServedEntityExternalModelPalmConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPalmConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelPalmConfigOutput)
-}
-
-func (i ModelServingConfigServedEntityExternalModelPalmConfigArgs) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutput() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedEntityExternalModelPalmConfigArgs) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelPalmConfigOutput).ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigServedEntityExternalModelPalmConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelPalmConfigArgs, ModelServingConfigServedEntityExternalModelPalmConfigPtr and ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelPalmConfigPtrInput` via:
-//
-//	        ModelServingConfigServedEntityExternalModelPalmConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigServedEntityExternalModelPalmConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutput() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput
-	ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput
-}
-
-type modelServingConfigServedEntityExternalModelPalmConfigPtrType ModelServingConfigServedEntityExternalModelPalmConfigArgs
-
-func ModelServingConfigServedEntityExternalModelPalmConfigPtr(v *ModelServingConfigServedEntityExternalModelPalmConfigArgs) ModelServingConfigServedEntityExternalModelPalmConfigPtrInput {
-	return (*modelServingConfigServedEntityExternalModelPalmConfigPtrType)(v)
-}
-
-func (*modelServingConfigServedEntityExternalModelPalmConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelPalmConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigServedEntityExternalModelPalmConfigPtrType) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutput() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return i.ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigServedEntityExternalModelPalmConfigPtrType) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelPalmConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelPalmConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelPalmConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) ToModelServingConfigServedEntityExternalModelPalmConfigOutput() ModelServingConfigServedEntityExternalModelPalmConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) ToModelServingConfigServedEntityExternalModelPalmConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPalmConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutput() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return o.ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelPalmConfig) *ModelServingConfigServedEntityExternalModelPalmConfig {
-		return &v
-	}).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
-}
-
-// The Databricks secret key reference for a PaLM API key.
-func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) PalmApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelPalmConfig) *string { return v.PalmApiKey }).(pulumi.StringPtrOutput)
-}
-
-// The PaLM API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) PalmApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelPalmConfig) *string { return v.PalmApiKeyPlaintext }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelPalmConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutput() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) ToModelServingConfigServedEntityExternalModelPalmConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelPalmConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelPalmConfig) ModelServingConfigServedEntityExternalModelPalmConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigServedEntityExternalModelPalmConfig
-		return ret
-	}).(ModelServingConfigServedEntityExternalModelPalmConfigOutput)
-}
-
-// The Databricks secret key reference for a PaLM API key.
-func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelPalmConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PalmApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The PaLM API key provided as a plaintext string.
-func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiKeyPlaintext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelPalmConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PalmApiKeyPlaintext
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedModel struct {
-	BurstScalingEnabled *bool `pulumi:"burstScalingEnabled"`
-	// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-	EnvironmentVars map[string]string `pulumi:"environmentVars"`
-	// ARN of the instance profile that the served model will use to access AWS resources.
-	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
-	// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
-	MaxProvisionedConcurrency *int `pulumi:"maxProvisionedConcurrency"`
-	// The maximum tokens per second that the endpoint can scale up to.
-	MaxProvisionedThroughput *int `pulumi:"maxProvisionedThroughput"`
-	// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
-	MinProvisionedConcurrency *int `pulumi:"minProvisionedConcurrency"`
-	// The minimum tokens per second that the endpoint can scale down to.
-	MinProvisionedThroughput *int `pulumi:"minProvisionedThroughput"`
-	// The name of the model in Databricks Model Registry to be served.
-	ModelName string `pulumi:"modelName"`
-	// The version of the model in Databricks Model Registry to be served.
-	ModelVersion string `pulumi:"modelVersion"`
-	// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-	Name                  *string `pulumi:"name"`
-	ProvisionedModelUnits *int    `pulumi:"provisionedModelUnits"`
-	// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
-	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-	WorkloadSize *string `pulumi:"workloadSize"`
-	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-	WorkloadType *string `pulumi:"workloadType"`
-}
-
-// ModelServingConfigServedModelInput is an input type that accepts ModelServingConfigServedModelArgs and ModelServingConfigServedModelOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedModelInput` via:
-//
-//	ModelServingConfigServedModelArgs{...}
-type ModelServingConfigServedModelInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedModelOutput() ModelServingConfigServedModelOutput
-	ToModelServingConfigServedModelOutputWithContext(context.Context) ModelServingConfigServedModelOutput
-}
-
-type ModelServingConfigServedModelArgs struct {
-	BurstScalingEnabled pulumi.BoolPtrInput `pulumi:"burstScalingEnabled"`
-	// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
-	// ARN of the instance profile that the served model will use to access AWS resources.
-	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
-	// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
-	MaxProvisionedConcurrency pulumi.IntPtrInput `pulumi:"maxProvisionedConcurrency"`
-	// The maximum tokens per second that the endpoint can scale up to.
-	MaxProvisionedThroughput pulumi.IntPtrInput `pulumi:"maxProvisionedThroughput"`
-	// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
-	MinProvisionedConcurrency pulumi.IntPtrInput `pulumi:"minProvisionedConcurrency"`
-	// The minimum tokens per second that the endpoint can scale down to.
-	MinProvisionedThroughput pulumi.IntPtrInput `pulumi:"minProvisionedThroughput"`
-	// The name of the model in Databricks Model Registry to be served.
-	ModelName pulumi.StringInput `pulumi:"modelName"`
-	// The version of the model in Databricks Model Registry to be served.
-	ModelVersion pulumi.StringInput `pulumi:"modelVersion"`
-	// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-	Name                  pulumi.StringPtrInput `pulumi:"name"`
-	ProvisionedModelUnits pulumi.IntPtrInput    `pulumi:"provisionedModelUnits"`
-	// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
-	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-	WorkloadSize pulumi.StringPtrInput `pulumi:"workloadSize"`
-	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
-}
-
-func (ModelServingConfigServedModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedModel)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedModelArgs) ToModelServingConfigServedModelOutput() ModelServingConfigServedModelOutput {
-	return i.ToModelServingConfigServedModelOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedModelArgs) ToModelServingConfigServedModelOutputWithContext(ctx context.Context) ModelServingConfigServedModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedModelOutput)
-}
-
-// ModelServingConfigServedModelArrayInput is an input type that accepts ModelServingConfigServedModelArray and ModelServingConfigServedModelArrayOutput values.
-// You can construct a concrete instance of `ModelServingConfigServedModelArrayInput` via:
-//
-//	ModelServingConfigServedModelArray{ ModelServingConfigServedModelArgs{...} }
-type ModelServingConfigServedModelArrayInput interface {
-	pulumi.Input
-
-	ToModelServingConfigServedModelArrayOutput() ModelServingConfigServedModelArrayOutput
-	ToModelServingConfigServedModelArrayOutputWithContext(context.Context) ModelServingConfigServedModelArrayOutput
-}
-
-type ModelServingConfigServedModelArray []ModelServingConfigServedModelInput
-
-func (ModelServingConfigServedModelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingConfigServedModel)(nil)).Elem()
-}
-
-func (i ModelServingConfigServedModelArray) ToModelServingConfigServedModelArrayOutput() ModelServingConfigServedModelArrayOutput {
-	return i.ToModelServingConfigServedModelArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigServedModelArray) ToModelServingConfigServedModelArrayOutputWithContext(ctx context.Context) ModelServingConfigServedModelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedModelArrayOutput)
-}
-
-type ModelServingConfigServedModelOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigServedModel)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutput() ModelServingConfigServedModelOutput {
-	return o
-}
-
-func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutputWithContext(ctx context.Context) ModelServingConfigServedModelOutput {
-	return o
-}
-
-func (o ModelServingConfigServedModelOutput) BurstScalingEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *bool { return v.BurstScalingEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
-}
-
-// ARN of the instance profile that the served model will use to access AWS resources.
-func (o ModelServingConfigServedModelOutput) InstanceProfileArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
-}
-
-// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
-func (o ModelServingConfigServedModelOutput) MaxProvisionedConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.MaxProvisionedConcurrency }).(pulumi.IntPtrOutput)
-}
-
-// The maximum tokens per second that the endpoint can scale up to.
-func (o ModelServingConfigServedModelOutput) MaxProvisionedThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.MaxProvisionedThroughput }).(pulumi.IntPtrOutput)
-}
-
-// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
-func (o ModelServingConfigServedModelOutput) MinProvisionedConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.MinProvisionedConcurrency }).(pulumi.IntPtrOutput)
-}
-
-// The minimum tokens per second that the endpoint can scale down to.
-func (o ModelServingConfigServedModelOutput) MinProvisionedThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.MinProvisionedThroughput }).(pulumi.IntPtrOutput)
-}
-
-// The name of the model in Databricks Model Registry to be served.
-func (o ModelServingConfigServedModelOutput) ModelName() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.ModelName }).(pulumi.StringOutput)
-}
-
-// The version of the model in Databricks Model Registry to be served.
-func (o ModelServingConfigServedModelOutput) ModelVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.ModelVersion }).(pulumi.StringOutput)
-}
-
-// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-func (o ModelServingConfigServedModelOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigServedModelOutput) ProvisionedModelUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.ProvisionedModelUnits }).(pulumi.IntPtrOutput)
-}
-
-// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-func (o ModelServingConfigServedModelOutput) ScaleToZeroEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *bool { return v.ScaleToZeroEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-func (o ModelServingConfigServedModelOutput) WorkloadSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.WorkloadSize }).(pulumi.StringPtrOutput)
-}
-
-// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-func (o ModelServingConfigServedModelOutput) WorkloadType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingConfigServedModelArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigServedModelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingConfigServedModel)(nil)).Elem()
-}
-
-func (o ModelServingConfigServedModelArrayOutput) ToModelServingConfigServedModelArrayOutput() ModelServingConfigServedModelArrayOutput {
-	return o
-}
-
-func (o ModelServingConfigServedModelArrayOutput) ToModelServingConfigServedModelArrayOutputWithContext(ctx context.Context) ModelServingConfigServedModelArrayOutput {
-	return o
-}
-
-func (o ModelServingConfigServedModelArrayOutput) Index(i pulumi.IntInput) ModelServingConfigServedModelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigServedModel {
-		return vs[0].([]ModelServingConfigServedModel)[vs[1].(int)]
-	}).(ModelServingConfigServedModelOutput)
-}
-
-type ModelServingConfigTrafficConfig struct {
-	// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-	Routes []ModelServingConfigTrafficConfigRoute `pulumi:"routes"`
-}
-
-// ModelServingConfigTrafficConfigInput is an input type that accepts ModelServingConfigTrafficConfigArgs and ModelServingConfigTrafficConfigOutput values.
-// You can construct a concrete instance of `ModelServingConfigTrafficConfigInput` via:
-//
-//	ModelServingConfigTrafficConfigArgs{...}
-type ModelServingConfigTrafficConfigInput interface {
-	pulumi.Input
-
-	ToModelServingConfigTrafficConfigOutput() ModelServingConfigTrafficConfigOutput
-	ToModelServingConfigTrafficConfigOutputWithContext(context.Context) ModelServingConfigTrafficConfigOutput
-}
-
-type ModelServingConfigTrafficConfigArgs struct {
-	// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-	Routes ModelServingConfigTrafficConfigRouteArrayInput `pulumi:"routes"`
-}
-
-func (ModelServingConfigTrafficConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigTrafficConfig)(nil)).Elem()
-}
-
-func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigOutput() ModelServingConfigTrafficConfigOutput {
-	return i.ToModelServingConfigTrafficConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigOutput)
-}
-
-func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
-	return i.ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigOutput).ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingConfigTrafficConfigPtrInput is an input type that accepts ModelServingConfigTrafficConfigArgs, ModelServingConfigTrafficConfigPtr and ModelServingConfigTrafficConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingConfigTrafficConfigPtrInput` via:
-//
-//	        ModelServingConfigTrafficConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingConfigTrafficConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput
-	ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Context) ModelServingConfigTrafficConfigPtrOutput
-}
-
-type modelServingConfigTrafficConfigPtrType ModelServingConfigTrafficConfigArgs
-
-func ModelServingConfigTrafficConfigPtr(v *ModelServingConfigTrafficConfigArgs) ModelServingConfigTrafficConfigPtrInput {
-	return (*modelServingConfigTrafficConfigPtrType)(v)
-}
-
-func (*modelServingConfigTrafficConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigTrafficConfig)(nil)).Elem()
-}
-
-func (i *modelServingConfigTrafficConfigPtrType) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
-	return i.ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingConfigTrafficConfigPtrType) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigPtrOutput)
-}
-
-type ModelServingConfigTrafficConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigTrafficConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigTrafficConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigOutput() ModelServingConfigTrafficConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
-	return o.ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigTrafficConfig) *ModelServingConfigTrafficConfig {
-		return &v
-	}).(ModelServingConfigTrafficConfigPtrOutput)
-}
-
-// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-func (o ModelServingConfigTrafficConfigOutput) Routes() ModelServingConfigTrafficConfigRouteArrayOutput {
-	return o.ApplyT(func(v ModelServingConfigTrafficConfig) []ModelServingConfigTrafficConfigRoute { return v.Routes }).(ModelServingConfigTrafficConfigRouteArrayOutput)
-}
-
-type ModelServingConfigTrafficConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigTrafficConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingConfigTrafficConfig)(nil)).Elem()
-}
-
-func (o ModelServingConfigTrafficConfigPtrOutput) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigPtrOutput) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigPtrOutput) Elem() ModelServingConfigTrafficConfigOutput {
-	return o.ApplyT(func(v *ModelServingConfigTrafficConfig) ModelServingConfigTrafficConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingConfigTrafficConfig
-		return ret
-	}).(ModelServingConfigTrafficConfigOutput)
-}
-
-// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-func (o ModelServingConfigTrafficConfigPtrOutput) Routes() ModelServingConfigTrafficConfigRouteArrayOutput {
-	return o.ApplyT(func(v *ModelServingConfigTrafficConfig) []ModelServingConfigTrafficConfigRoute {
-		if v == nil {
-			return nil
-		}
-		return v.Routes
-	}).(ModelServingConfigTrafficConfigRouteArrayOutput)
-}
-
-type ModelServingConfigTrafficConfigRoute struct {
-	// The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
-	ServedEntityName *string `pulumi:"servedEntityName"`
-	ServedModelName  *string `pulumi:"servedModelName"`
-	// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-	TrafficPercentage int `pulumi:"trafficPercentage"`
-}
-
-// ModelServingConfigTrafficConfigRouteInput is an input type that accepts ModelServingConfigTrafficConfigRouteArgs and ModelServingConfigTrafficConfigRouteOutput values.
-// You can construct a concrete instance of `ModelServingConfigTrafficConfigRouteInput` via:
-//
-//	ModelServingConfigTrafficConfigRouteArgs{...}
-type ModelServingConfigTrafficConfigRouteInput interface {
-	pulumi.Input
-
-	ToModelServingConfigTrafficConfigRouteOutput() ModelServingConfigTrafficConfigRouteOutput
-	ToModelServingConfigTrafficConfigRouteOutputWithContext(context.Context) ModelServingConfigTrafficConfigRouteOutput
-}
-
-type ModelServingConfigTrafficConfigRouteArgs struct {
-	// The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
-	ServedEntityName pulumi.StringPtrInput `pulumi:"servedEntityName"`
-	ServedModelName  pulumi.StringPtrInput `pulumi:"servedModelName"`
-	// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-	TrafficPercentage pulumi.IntInput `pulumi:"trafficPercentage"`
-}
-
-func (ModelServingConfigTrafficConfigRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (i ModelServingConfigTrafficConfigRouteArgs) ToModelServingConfigTrafficConfigRouteOutput() ModelServingConfigTrafficConfigRouteOutput {
-	return i.ToModelServingConfigTrafficConfigRouteOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigTrafficConfigRouteArgs) ToModelServingConfigTrafficConfigRouteOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigRouteOutput)
-}
-
-// ModelServingConfigTrafficConfigRouteArrayInput is an input type that accepts ModelServingConfigTrafficConfigRouteArray and ModelServingConfigTrafficConfigRouteArrayOutput values.
-// You can construct a concrete instance of `ModelServingConfigTrafficConfigRouteArrayInput` via:
-//
-//	ModelServingConfigTrafficConfigRouteArray{ ModelServingConfigTrafficConfigRouteArgs{...} }
-type ModelServingConfigTrafficConfigRouteArrayInput interface {
-	pulumi.Input
-
-	ToModelServingConfigTrafficConfigRouteArrayOutput() ModelServingConfigTrafficConfigRouteArrayOutput
-	ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(context.Context) ModelServingConfigTrafficConfigRouteArrayOutput
-}
-
-type ModelServingConfigTrafficConfigRouteArray []ModelServingConfigTrafficConfigRouteInput
-
-func (ModelServingConfigTrafficConfigRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (i ModelServingConfigTrafficConfigRouteArray) ToModelServingConfigTrafficConfigRouteArrayOutput() ModelServingConfigTrafficConfigRouteArrayOutput {
-	return i.ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingConfigTrafficConfigRouteArray) ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigRouteArrayOutput)
-}
-
-type ModelServingConfigTrafficConfigRouteOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigTrafficConfigRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (o ModelServingConfigTrafficConfigRouteOutput) ToModelServingConfigTrafficConfigRouteOutput() ModelServingConfigTrafficConfigRouteOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigRouteOutput) ToModelServingConfigTrafficConfigRouteOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteOutput {
-	return o
-}
-
-// The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
-func (o ModelServingConfigTrafficConfigRouteOutput) ServedEntityName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigTrafficConfigRoute) *string { return v.ServedEntityName }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingConfigTrafficConfigRouteOutput) ServedModelName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigTrafficConfigRoute) *string { return v.ServedModelName }).(pulumi.StringPtrOutput)
-}
-
-// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-func (o ModelServingConfigTrafficConfigRouteOutput) TrafficPercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v ModelServingConfigTrafficConfigRoute) int { return v.TrafficPercentage }).(pulumi.IntOutput)
-}
-
-type ModelServingConfigTrafficConfigRouteArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingConfigTrafficConfigRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (o ModelServingConfigTrafficConfigRouteArrayOutput) ToModelServingConfigTrafficConfigRouteArrayOutput() ModelServingConfigTrafficConfigRouteArrayOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigRouteArrayOutput) ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteArrayOutput {
-	return o
-}
-
-func (o ModelServingConfigTrafficConfigRouteArrayOutput) Index(i pulumi.IntInput) ModelServingConfigTrafficConfigRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigTrafficConfigRoute {
-		return vs[0].([]ModelServingConfigTrafficConfigRoute)[vs[1].(int)]
-	}).(ModelServingConfigTrafficConfigRouteOutput)
-}
-
-type ModelServingEmailNotifications struct {
-	// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-	OnUpdateFailures []string `pulumi:"onUpdateFailures"`
-	// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-	OnUpdateSuccesses []string `pulumi:"onUpdateSuccesses"`
-}
-
-// ModelServingEmailNotificationsInput is an input type that accepts ModelServingEmailNotificationsArgs and ModelServingEmailNotificationsOutput values.
-// You can construct a concrete instance of `ModelServingEmailNotificationsInput` via:
-//
-//	ModelServingEmailNotificationsArgs{...}
-type ModelServingEmailNotificationsInput interface {
-	pulumi.Input
-
-	ToModelServingEmailNotificationsOutput() ModelServingEmailNotificationsOutput
-	ToModelServingEmailNotificationsOutputWithContext(context.Context) ModelServingEmailNotificationsOutput
-}
-
-type ModelServingEmailNotificationsArgs struct {
-	// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-	OnUpdateFailures pulumi.StringArrayInput `pulumi:"onUpdateFailures"`
-	// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-	OnUpdateSuccesses pulumi.StringArrayInput `pulumi:"onUpdateSuccesses"`
-}
-
-func (ModelServingEmailNotificationsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingEmailNotifications)(nil)).Elem()
-}
-
-func (i ModelServingEmailNotificationsArgs) ToModelServingEmailNotificationsOutput() ModelServingEmailNotificationsOutput {
-	return i.ToModelServingEmailNotificationsOutputWithContext(context.Background())
-}
-
-func (i ModelServingEmailNotificationsArgs) ToModelServingEmailNotificationsOutputWithContext(ctx context.Context) ModelServingEmailNotificationsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingEmailNotificationsOutput)
-}
-
-func (i ModelServingEmailNotificationsArgs) ToModelServingEmailNotificationsPtrOutput() ModelServingEmailNotificationsPtrOutput {
-	return i.ToModelServingEmailNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingEmailNotificationsArgs) ToModelServingEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingEmailNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingEmailNotificationsOutput).ToModelServingEmailNotificationsPtrOutputWithContext(ctx)
-}
-
-// ModelServingEmailNotificationsPtrInput is an input type that accepts ModelServingEmailNotificationsArgs, ModelServingEmailNotificationsPtr and ModelServingEmailNotificationsPtrOutput values.
-// You can construct a concrete instance of `ModelServingEmailNotificationsPtrInput` via:
-//
-//	        ModelServingEmailNotificationsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingEmailNotificationsPtrInput interface {
-	pulumi.Input
-
-	ToModelServingEmailNotificationsPtrOutput() ModelServingEmailNotificationsPtrOutput
-	ToModelServingEmailNotificationsPtrOutputWithContext(context.Context) ModelServingEmailNotificationsPtrOutput
-}
-
-type modelServingEmailNotificationsPtrType ModelServingEmailNotificationsArgs
-
-func ModelServingEmailNotificationsPtr(v *ModelServingEmailNotificationsArgs) ModelServingEmailNotificationsPtrInput {
-	return (*modelServingEmailNotificationsPtrType)(v)
-}
-
-func (*modelServingEmailNotificationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingEmailNotifications)(nil)).Elem()
-}
-
-func (i *modelServingEmailNotificationsPtrType) ToModelServingEmailNotificationsPtrOutput() ModelServingEmailNotificationsPtrOutput {
-	return i.ToModelServingEmailNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingEmailNotificationsPtrType) ToModelServingEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingEmailNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingEmailNotificationsPtrOutput)
-}
-
-type ModelServingEmailNotificationsOutput struct{ *pulumi.OutputState }
-
-func (ModelServingEmailNotificationsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingEmailNotifications)(nil)).Elem()
-}
-
-func (o ModelServingEmailNotificationsOutput) ToModelServingEmailNotificationsOutput() ModelServingEmailNotificationsOutput {
-	return o
-}
-
-func (o ModelServingEmailNotificationsOutput) ToModelServingEmailNotificationsOutputWithContext(ctx context.Context) ModelServingEmailNotificationsOutput {
-	return o
-}
-
-func (o ModelServingEmailNotificationsOutput) ToModelServingEmailNotificationsPtrOutput() ModelServingEmailNotificationsPtrOutput {
-	return o.ToModelServingEmailNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingEmailNotificationsOutput) ToModelServingEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingEmailNotificationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingEmailNotifications) *ModelServingEmailNotifications {
-		return &v
-	}).(ModelServingEmailNotificationsPtrOutput)
-}
-
-// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-func (o ModelServingEmailNotificationsOutput) OnUpdateFailures() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingEmailNotifications) []string { return v.OnUpdateFailures }).(pulumi.StringArrayOutput)
-}
-
-// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-func (o ModelServingEmailNotificationsOutput) OnUpdateSuccesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingEmailNotifications) []string { return v.OnUpdateSuccesses }).(pulumi.StringArrayOutput)
-}
-
-type ModelServingEmailNotificationsPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingEmailNotificationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingEmailNotifications)(nil)).Elem()
-}
-
-func (o ModelServingEmailNotificationsPtrOutput) ToModelServingEmailNotificationsPtrOutput() ModelServingEmailNotificationsPtrOutput {
-	return o
-}
-
-func (o ModelServingEmailNotificationsPtrOutput) ToModelServingEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingEmailNotificationsPtrOutput {
-	return o
-}
-
-func (o ModelServingEmailNotificationsPtrOutput) Elem() ModelServingEmailNotificationsOutput {
-	return o.ApplyT(func(v *ModelServingEmailNotifications) ModelServingEmailNotifications {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingEmailNotifications
-		return ret
-	}).(ModelServingEmailNotificationsOutput)
-}
-
-// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-func (o ModelServingEmailNotificationsPtrOutput) OnUpdateFailures() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingEmailNotifications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.OnUpdateFailures
-	}).(pulumi.StringArrayOutput)
-}
-
-// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-func (o ModelServingEmailNotificationsPtrOutput) OnUpdateSuccesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingEmailNotifications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.OnUpdateSuccesses
-	}).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// ModelServingProviderConfigInput is an input type that accepts ModelServingProviderConfigArgs and ModelServingProviderConfigOutput values.
-// You can construct a concrete instance of `ModelServingProviderConfigInput` via:
-//
-//	ModelServingProviderConfigArgs{...}
-type ModelServingProviderConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProviderConfigOutput() ModelServingProviderConfigOutput
-	ToModelServingProviderConfigOutputWithContext(context.Context) ModelServingProviderConfigOutput
-}
-
-type ModelServingProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (ModelServingProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProviderConfig)(nil)).Elem()
-}
-
-func (i ModelServingProviderConfigArgs) ToModelServingProviderConfigOutput() ModelServingProviderConfigOutput {
-	return i.ToModelServingProviderConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProviderConfigArgs) ToModelServingProviderConfigOutputWithContext(ctx context.Context) ModelServingProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProviderConfigOutput)
-}
-
-func (i ModelServingProviderConfigArgs) ToModelServingProviderConfigPtrOutput() ModelServingProviderConfigPtrOutput {
-	return i.ToModelServingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProviderConfigArgs) ToModelServingProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProviderConfigOutput).ToModelServingProviderConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProviderConfigPtrInput is an input type that accepts ModelServingProviderConfigArgs, ModelServingProviderConfigPtr and ModelServingProviderConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProviderConfigPtrInput` via:
-//
-//	        ModelServingProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProviderConfigPtrOutput() ModelServingProviderConfigPtrOutput
-	ToModelServingProviderConfigPtrOutputWithContext(context.Context) ModelServingProviderConfigPtrOutput
-}
-
-type modelServingProviderConfigPtrType ModelServingProviderConfigArgs
-
-func ModelServingProviderConfigPtr(v *ModelServingProviderConfigArgs) ModelServingProviderConfigPtrInput {
-	return (*modelServingProviderConfigPtrType)(v)
-}
-
-func (*modelServingProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProviderConfig)(nil)).Elem()
-}
-
-func (i *modelServingProviderConfigPtrType) ToModelServingProviderConfigPtrOutput() ModelServingProviderConfigPtrOutput {
-	return i.ToModelServingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProviderConfigPtrType) ToModelServingProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProviderConfigPtrOutput)
-}
-
-type ModelServingProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProviderConfig)(nil)).Elem()
-}
-
-func (o ModelServingProviderConfigOutput) ToModelServingProviderConfigOutput() ModelServingProviderConfigOutput {
-	return o
-}
-
-func (o ModelServingProviderConfigOutput) ToModelServingProviderConfigOutputWithContext(ctx context.Context) ModelServingProviderConfigOutput {
-	return o
-}
-
-func (o ModelServingProviderConfigOutput) ToModelServingProviderConfigPtrOutput() ModelServingProviderConfigPtrOutput {
-	return o.ToModelServingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProviderConfigOutput) ToModelServingProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProviderConfig) *ModelServingProviderConfig {
-		return &v
-	}).(ModelServingProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o ModelServingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProviderConfig)(nil)).Elem()
-}
-
-func (o ModelServingProviderConfigPtrOutput) ToModelServingProviderConfigPtrOutput() ModelServingProviderConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProviderConfigPtrOutput) ToModelServingProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProviderConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProviderConfigPtrOutput) Elem() ModelServingProviderConfigOutput {
-	return o.ApplyT(func(v *ModelServingProviderConfig) ModelServingProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProviderConfig
-		return ret
-	}).(ModelServingProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o ModelServingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGateway struct {
-	FallbackConfig *ModelServingProvisionedThroughputAiGatewayFallbackConfig `pulumi:"fallbackConfig"`
-	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-	Guardrails *ModelServingProvisionedThroughputAiGatewayGuardrails `pulumi:"guardrails"`
-	// Block describing the configuration of usage tracking. Consists of the following attributes:
-	InferenceTableConfig *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig `pulumi:"inferenceTableConfig"`
-	// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-	RateLimits []ModelServingProvisionedThroughputAiGatewayRateLimit `pulumi:"rateLimits"`
-	// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-	UsageTrackingConfig *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig `pulumi:"usageTrackingConfig"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayArgs and ModelServingProvisionedThroughputAiGatewayOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayArgs{...}
-type ModelServingProvisionedThroughputAiGatewayInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayOutput() ModelServingProvisionedThroughputAiGatewayOutput
-	ToModelServingProvisionedThroughputAiGatewayOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayArgs struct {
-	FallbackConfig ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrInput `pulumi:"fallbackConfig"`
-	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-	Guardrails ModelServingProvisionedThroughputAiGatewayGuardrailsPtrInput `pulumi:"guardrails"`
-	// Block describing the configuration of usage tracking. Consists of the following attributes:
-	InferenceTableConfig ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrInput `pulumi:"inferenceTableConfig"`
-	// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-	RateLimits ModelServingProvisionedThroughputAiGatewayRateLimitArrayInput `pulumi:"rateLimits"`
-	// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-	UsageTrackingConfig ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrInput `pulumi:"usageTrackingConfig"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGateway)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayArgs) ToModelServingProvisionedThroughputAiGatewayOutput() ModelServingProvisionedThroughputAiGatewayOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayArgs) ToModelServingProvisionedThroughputAiGatewayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayArgs) ToModelServingProvisionedThroughputAiGatewayPtrOutput() ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayArgs) ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayOutput).ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayArgs, ModelServingProvisionedThroughputAiGatewayPtr and ModelServingProvisionedThroughputAiGatewayPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayPtrOutput() ModelServingProvisionedThroughputAiGatewayPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayPtrType ModelServingProvisionedThroughputAiGatewayArgs
-
-func ModelServingProvisionedThroughputAiGatewayPtr(v *ModelServingProvisionedThroughputAiGatewayArgs) ModelServingProvisionedThroughputAiGatewayPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGateway)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayPtrType) ToModelServingProvisionedThroughputAiGatewayPtrOutput() ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayPtrType) ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGateway)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayOutput) ToModelServingProvisionedThroughputAiGatewayOutput() ModelServingProvisionedThroughputAiGatewayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayOutput) ToModelServingProvisionedThroughputAiGatewayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayOutput) ToModelServingProvisionedThroughputAiGatewayPtrOutput() ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayOutput) ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGateway {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayOutput) FallbackConfig() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayFallbackConfig {
-		return v.FallbackConfig
-	}).(ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput)
-}
-
-// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-func (o ModelServingProvisionedThroughputAiGatewayOutput) Guardrails() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayGuardrails {
-		return v.Guardrails
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput)
-}
-
-// Block describing the configuration of usage tracking. Consists of the following attributes:
-func (o ModelServingProvisionedThroughputAiGatewayOutput) InferenceTableConfig() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
-		return v.InferenceTableConfig
-	}).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput)
-}
-
-// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-func (o ModelServingProvisionedThroughputAiGatewayOutput) RateLimits() ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGateway) []ModelServingProvisionedThroughputAiGatewayRateLimit {
-		return v.RateLimits
-	}).(ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput)
-}
-
-// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-func (o ModelServingProvisionedThroughputAiGatewayOutput) UsageTrackingConfig() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
-		return v.UsageTrackingConfig
-	}).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGateway)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) ToModelServingProvisionedThroughputAiGatewayPtrOutput() ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) ToModelServingProvisionedThroughputAiGatewayPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGateway) ModelServingProvisionedThroughputAiGateway {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGateway
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) FallbackConfig() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayFallbackConfig {
-		if v == nil {
-			return nil
-		}
-		return v.FallbackConfig
-	}).(ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput)
-}
-
-// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) Guardrails() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayGuardrails {
-		if v == nil {
-			return nil
-		}
-		return v.Guardrails
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput)
-}
-
-// Block describing the configuration of usage tracking. Consists of the following attributes:
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) InferenceTableConfig() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
-		if v == nil {
-			return nil
-		}
-		return v.InferenceTableConfig
-	}).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput)
-}
-
-// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) RateLimits() ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGateway) []ModelServingProvisionedThroughputAiGatewayRateLimit {
-		if v == nil {
-			return nil
-		}
-		return v.RateLimits
-	}).(ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput)
-}
-
-// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-func (o ModelServingProvisionedThroughputAiGatewayPtrOutput) UsageTrackingConfig() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGateway) *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
-		if v == nil {
-			return nil
-		}
-		return v.UsageTrackingConfig
-	}).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayFallbackConfig struct {
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayFallbackConfigInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs and ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayFallbackConfigInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs{...}
-type ModelServingProvisionedThroughputAiGatewayFallbackConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput
-	ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs struct {
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs) ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs) ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput).ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs, ModelServingProvisionedThroughputAiGatewayFallbackConfigPtr and ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayFallbackConfigPtrType ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs
-
-func ModelServingProvisionedThroughputAiGatewayFallbackConfigPtr(v *ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs) ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayFallbackConfigPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayFallbackConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayFallbackConfigPtrType) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayFallbackConfigPtrType) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput) ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput) ToModelServingProvisionedThroughputAiGatewayFallbackConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayFallbackConfig) *ModelServingProvisionedThroughputAiGatewayFallbackConfig {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayFallbackConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayFallbackConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput) ToModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayFallbackConfig) ModelServingProvisionedThroughputAiGatewayFallbackConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayFallbackConfig
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayFallbackConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrails struct {
-	// A block with configuration for input guardrail filters:
-	Input *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType `pulumi:"input"`
-	// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-	Output *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType `pulumi:"output"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsArgs and ModelServingProvisionedThroughputAiGatewayGuardrailsOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayGuardrailsArgs{...}
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsArgs struct {
-	// A block with configuration for input guardrail filters:
-	Input ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrInput `pulumi:"input"`
-	// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-	Output ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrInput `pulumi:"output"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutput).ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsArgs, ModelServingProvisionedThroughputAiGatewayGuardrailsPtr and ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayGuardrailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayGuardrailsPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayGuardrailsPtrType ModelServingProvisionedThroughputAiGatewayGuardrailsArgs
-
-func ModelServingProvisionedThroughputAiGatewayGuardrailsPtr(v *ModelServingProvisionedThroughputAiGatewayGuardrailsArgs) ModelServingProvisionedThroughputAiGatewayGuardrailsPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayGuardrailsPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayGuardrailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsPtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsPtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayGuardrails) *ModelServingProvisionedThroughputAiGatewayGuardrails {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput)
-}
-
-// A block with configuration for input guardrail filters:
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) Input() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrails) *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType {
-		return v.Input
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutput) Output() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrails) *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType {
-		return v.Output
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrails)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrails) ModelServingProvisionedThroughputAiGatewayGuardrails {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayGuardrails
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutput)
-}
-
-// A block with configuration for input guardrail filters:
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput) Input() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrails) *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType {
-		if v == nil {
-			return nil
-		}
-		return v.Input
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput) Output() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrails) *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType {
-		if v == nil {
-			return nil
-		}
-		return v.Output
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputType struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	InvalidKeywords []string `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety *bool `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	ValidTopics []string `pulumi:"validTopics"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs and ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs{...}
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	InvalidKeywords pulumi.StringArrayInput `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrInput `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety pulumi.BoolPtrInput `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	ValidTopics pulumi.StringArrayInput `pulumi:"validTopics"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput).ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs, ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtr and ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrType ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs
-
-func ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtr(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) []string {
-		return v.InvalidKeywords
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) Pii() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
-		return v.Pii
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsInputType)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) ModelServingProvisionedThroughputAiGatewayGuardrailsInputType {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayGuardrailsInputType
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InvalidKeywords
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) Pii() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
-		if v == nil {
-			return nil
-		}
-		return v.Pii
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Safety
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ValidTopics
-	}).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior *string `pulumi:"behavior"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs and ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs{...}
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput).ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs, ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtr and ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrType ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs
-
-func ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtr(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii) *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii) ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Behavior
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	InvalidKeywords []string `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety *bool `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	ValidTopics []string `pulumi:"validTopics"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs and ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs{...}
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs struct {
-	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-	InvalidKeywords pulumi.StringArrayInput `pulumi:"invalidKeywords"`
-	// Block with configuration for guardrail PII filter:
-	Pii ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrInput `pulumi:"pii"`
-	// the boolean flag that indicates whether the safety filter is enabled.
-	Safety pulumi.BoolPtrInput `pulumi:"safety"`
-	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-	ValidTopics pulumi.StringArrayInput `pulumi:"validTopics"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput).ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs, ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtr and ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrType ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs
-
-func ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtr(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) []string {
-		return v.InvalidKeywords
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) Pii() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
-		return v.Pii
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput)
-}
-
-// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) InvalidKeywords() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InvalidKeywords
-	}).(pulumi.StringArrayOutput)
-}
-
-// Block with configuration for guardrail PII filter:
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) Pii() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
-		if v == nil {
-			return nil
-		}
-		return v.Pii
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-// the boolean flag that indicates whether the safety filter is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) Safety() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Safety
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput) ValidTopics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ValidTopics
-	}).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior *string `pulumi:"behavior"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs and ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs{...}
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs struct {
-	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput).ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs, ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtr and ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrType ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs
-
-func ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtr(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrType) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii) *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput) ToModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii) ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput)
-}
-
-// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Behavior
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayInferenceTableConfig struct {
-	CatalogName *string `pulumi:"catalogName"`
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled         *bool   `pulumi:"enabled"`
-	SchemaName      *string `pulumi:"schemaName"`
-	TableNamePrefix *string `pulumi:"tableNamePrefix"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayInferenceTableConfigInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs and ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayInferenceTableConfigInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs{...}
-type ModelServingProvisionedThroughputAiGatewayInferenceTableConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput
-	ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs struct {
-	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled         pulumi.BoolPtrInput   `pulumi:"enabled"`
-	SchemaName      pulumi.StringPtrInput `pulumi:"schemaName"`
-	TableNamePrefix pulumi.StringPtrInput `pulumi:"tableNamePrefix"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput).ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs, ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtr and ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrType ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs
-
-func ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtr(v *ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrType) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrType) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput) TableNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *string {
-		return v.TableNamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayInferenceTableConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) ToModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayInferenceTableConfig
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CatalogName
-	}).(pulumi.StringPtrOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput) TableNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayInferenceTableConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TableNamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayRateLimit struct {
-	Calls *int `pulumi:"calls"`
-	// The key field for a tag.
-	Key           *string `pulumi:"key"`
-	Principal     *string `pulumi:"principal"`
-	RenewalPeriod string  `pulumi:"renewalPeriod"`
-	Tokens        *int    `pulumi:"tokens"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayRateLimitInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayRateLimitArgs and ModelServingProvisionedThroughputAiGatewayRateLimitOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayRateLimitInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayRateLimitArgs{...}
-type ModelServingProvisionedThroughputAiGatewayRateLimitInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayRateLimitOutput() ModelServingProvisionedThroughputAiGatewayRateLimitOutput
-	ToModelServingProvisionedThroughputAiGatewayRateLimitOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayRateLimitOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayRateLimitArgs struct {
-	Calls pulumi.IntPtrInput `pulumi:"calls"`
-	// The key field for a tag.
-	Key           pulumi.StringPtrInput `pulumi:"key"`
-	Principal     pulumi.StringPtrInput `pulumi:"principal"`
-	RenewalPeriod pulumi.StringInput    `pulumi:"renewalPeriod"`
-	Tokens        pulumi.IntPtrInput    `pulumi:"tokens"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayRateLimitArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayRateLimitArgs) ToModelServingProvisionedThroughputAiGatewayRateLimitOutput() ModelServingProvisionedThroughputAiGatewayRateLimitOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayRateLimitOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayRateLimitArgs) ToModelServingProvisionedThroughputAiGatewayRateLimitOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayRateLimitOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayRateLimitOutput)
-}
-
-// ModelServingProvisionedThroughputAiGatewayRateLimitArrayInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayRateLimitArray and ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayRateLimitArrayInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayRateLimitArray{ ModelServingProvisionedThroughputAiGatewayRateLimitArgs{...} }
-type ModelServingProvisionedThroughputAiGatewayRateLimitArrayInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput() ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput
-	ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayRateLimitArray []ModelServingProvisionedThroughputAiGatewayRateLimitInput
-
-func (ModelServingProvisionedThroughputAiGatewayRateLimitArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayRateLimitArray) ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput() ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayRateLimitArray) ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayRateLimitOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayRateLimitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) ToModelServingProvisionedThroughputAiGatewayRateLimitOutput() ModelServingProvisionedThroughputAiGatewayRateLimitOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) ToModelServingProvisionedThroughputAiGatewayRateLimitOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayRateLimitOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) Calls() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayRateLimit) *int { return v.Calls }).(pulumi.IntPtrOutput)
-}
-
-// The key field for a tag.
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayRateLimit) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) Principal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayRateLimit) *string { return v.Principal }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) RenewalPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitOutput) Tokens() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayRateLimit) *int { return v.Tokens }).(pulumi.IntPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputAiGatewayRateLimit)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput) ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput() ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput) ToModelServingProvisionedThroughputAiGatewayRateLimitArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput) Index(i pulumi.IntInput) ModelServingProvisionedThroughputAiGatewayRateLimitOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingProvisionedThroughputAiGatewayRateLimit {
-		return vs[0].([]ModelServingProvisionedThroughputAiGatewayRateLimit)[vs[1].(int)]
-	}).(ModelServingProvisionedThroughputAiGatewayRateLimitOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig struct {
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs and ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigInput` via:
-//
-//	ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs{...}
-type ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput
-	ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput
-}
-
-type ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs struct {
-	// boolean flag specifying if usage tracking is enabled.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput)
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput).ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrInput is an input type that accepts ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs, ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtr and ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput
-	ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput
-}
-
-type modelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrType ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs
-
-func ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtr(v *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrInput {
-	return (*modelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrType) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrType) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig) *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
-		return &v
-	}).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput) ToModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput) Elem() ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig) ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig
-		return ret
-	}).(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput)
-}
-
-// boolean flag specifying if usage tracking is enabled.
-func (o ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ModelServingProvisionedThroughputConfig struct {
-	// A list of served entities for the endpoint to serve.
-	ServedEntities []ModelServingProvisionedThroughputConfigServedEntity `pulumi:"servedEntities"`
-	// A single block represents the traffic split configuration amongst the served models.
-	TrafficConfig *ModelServingProvisionedThroughputConfigTrafficConfig `pulumi:"trafficConfig"`
-}
-
-// ModelServingProvisionedThroughputConfigInput is an input type that accepts ModelServingProvisionedThroughputConfigArgs and ModelServingProvisionedThroughputConfigOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigInput` via:
-//
-//	ModelServingProvisionedThroughputConfigArgs{...}
-type ModelServingProvisionedThroughputConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigOutput() ModelServingProvisionedThroughputConfigOutput
-	ToModelServingProvisionedThroughputConfigOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigOutput
-}
-
-type ModelServingProvisionedThroughputConfigArgs struct {
-	// A list of served entities for the endpoint to serve.
-	ServedEntities ModelServingProvisionedThroughputConfigServedEntityArrayInput `pulumi:"servedEntities"`
-	// A single block represents the traffic split configuration amongst the served models.
-	TrafficConfig ModelServingProvisionedThroughputConfigTrafficConfigPtrInput `pulumi:"trafficConfig"`
-}
-
-func (ModelServingProvisionedThroughputConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfig)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputConfigArgs) ToModelServingProvisionedThroughputConfigOutput() ModelServingProvisionedThroughputConfigOutput {
-	return i.ToModelServingProvisionedThroughputConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigArgs) ToModelServingProvisionedThroughputConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigOutput)
-}
-
-func (i ModelServingProvisionedThroughputConfigArgs) ToModelServingProvisionedThroughputConfigPtrOutput() ModelServingProvisionedThroughputConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigArgs) ToModelServingProvisionedThroughputConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigOutput).ToModelServingProvisionedThroughputConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputConfigPtrInput is an input type that accepts ModelServingProvisionedThroughputConfigArgs, ModelServingProvisionedThroughputConfigPtr and ModelServingProvisionedThroughputConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigPtrOutput() ModelServingProvisionedThroughputConfigPtrOutput
-	ToModelServingProvisionedThroughputConfigPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigPtrOutput
-}
-
-type modelServingProvisionedThroughputConfigPtrType ModelServingProvisionedThroughputConfigArgs
-
-func ModelServingProvisionedThroughputConfigPtr(v *ModelServingProvisionedThroughputConfigArgs) ModelServingProvisionedThroughputConfigPtrInput {
-	return (*modelServingProvisionedThroughputConfigPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputConfig)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputConfigPtrType) ToModelServingProvisionedThroughputConfigPtrOutput() ModelServingProvisionedThroughputConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputConfigPtrType) ToModelServingProvisionedThroughputConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigOutput) ToModelServingProvisionedThroughputConfigOutput() ModelServingProvisionedThroughputConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigOutput) ToModelServingProvisionedThroughputConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigOutput) ToModelServingProvisionedThroughputConfigPtrOutput() ModelServingProvisionedThroughputConfigPtrOutput {
-	return o.ToModelServingProvisionedThroughputConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputConfigOutput) ToModelServingProvisionedThroughputConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputConfig) *ModelServingProvisionedThroughputConfig {
-		return &v
-	}).(ModelServingProvisionedThroughputConfigPtrOutput)
-}
-
-// A list of served entities for the endpoint to serve.
-func (o ModelServingProvisionedThroughputConfigOutput) ServedEntities() ModelServingProvisionedThroughputConfigServedEntityArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfig) []ModelServingProvisionedThroughputConfigServedEntity {
-		return v.ServedEntities
-	}).(ModelServingProvisionedThroughputConfigServedEntityArrayOutput)
-}
-
-// A single block represents the traffic split configuration amongst the served models.
-func (o ModelServingProvisionedThroughputConfigOutput) TrafficConfig() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfig) *ModelServingProvisionedThroughputConfigTrafficConfig {
-		return v.TrafficConfig
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigPtrOutput) ToModelServingProvisionedThroughputConfigPtrOutput() ModelServingProvisionedThroughputConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigPtrOutput) ToModelServingProvisionedThroughputConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigPtrOutput) Elem() ModelServingProvisionedThroughputConfigOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputConfig) ModelServingProvisionedThroughputConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputConfig
-		return ret
-	}).(ModelServingProvisionedThroughputConfigOutput)
-}
-
-// A list of served entities for the endpoint to serve.
-func (o ModelServingProvisionedThroughputConfigPtrOutput) ServedEntities() ModelServingProvisionedThroughputConfigServedEntityArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputConfig) []ModelServingProvisionedThroughputConfigServedEntity {
-		if v == nil {
-			return nil
-		}
-		return v.ServedEntities
-	}).(ModelServingProvisionedThroughputConfigServedEntityArrayOutput)
-}
-
-// A single block represents the traffic split configuration amongst the served models.
-func (o ModelServingProvisionedThroughputConfigPtrOutput) TrafficConfig() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputConfig) *ModelServingProvisionedThroughputConfigTrafficConfig {
-		if v == nil {
-			return nil
-		}
-		return v.TrafficConfig
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputConfigServedEntity struct {
-	BurstScalingEnabled *bool `pulumi:"burstScalingEnabled"`
-	// The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
-	EntityName string `pulumi:"entityName"`
-	// The version of the model in UC to be served.
-	EntityVersion string `pulumi:"entityVersion"`
-	// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
-	Name *string `pulumi:"name"`
-	// The number of model units to be provisioned.
-	ProvisionedModelUnits int `pulumi:"provisionedModelUnits"`
-}
-
-// ModelServingProvisionedThroughputConfigServedEntityInput is an input type that accepts ModelServingProvisionedThroughputConfigServedEntityArgs and ModelServingProvisionedThroughputConfigServedEntityOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigServedEntityInput` via:
-//
-//	ModelServingProvisionedThroughputConfigServedEntityArgs{...}
-type ModelServingProvisionedThroughputConfigServedEntityInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigServedEntityOutput() ModelServingProvisionedThroughputConfigServedEntityOutput
-	ToModelServingProvisionedThroughputConfigServedEntityOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigServedEntityOutput
-}
-
-type ModelServingProvisionedThroughputConfigServedEntityArgs struct {
-	BurstScalingEnabled pulumi.BoolPtrInput `pulumi:"burstScalingEnabled"`
-	// The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
-	EntityName pulumi.StringInput `pulumi:"entityName"`
-	// The version of the model in UC to be served.
-	EntityVersion pulumi.StringInput `pulumi:"entityVersion"`
-	// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The number of model units to be provisioned.
-	ProvisionedModelUnits pulumi.IntInput `pulumi:"provisionedModelUnits"`
-}
-
-func (ModelServingProvisionedThroughputConfigServedEntityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfigServedEntity)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputConfigServedEntityArgs) ToModelServingProvisionedThroughputConfigServedEntityOutput() ModelServingProvisionedThroughputConfigServedEntityOutput {
-	return i.ToModelServingProvisionedThroughputConfigServedEntityOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigServedEntityArgs) ToModelServingProvisionedThroughputConfigServedEntityOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigServedEntityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigServedEntityOutput)
-}
-
-// ModelServingProvisionedThroughputConfigServedEntityArrayInput is an input type that accepts ModelServingProvisionedThroughputConfigServedEntityArray and ModelServingProvisionedThroughputConfigServedEntityArrayOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigServedEntityArrayInput` via:
-//
-//	ModelServingProvisionedThroughputConfigServedEntityArray{ ModelServingProvisionedThroughputConfigServedEntityArgs{...} }
-type ModelServingProvisionedThroughputConfigServedEntityArrayInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigServedEntityArrayOutput() ModelServingProvisionedThroughputConfigServedEntityArrayOutput
-	ToModelServingProvisionedThroughputConfigServedEntityArrayOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigServedEntityArrayOutput
-}
-
-type ModelServingProvisionedThroughputConfigServedEntityArray []ModelServingProvisionedThroughputConfigServedEntityInput
-
-func (ModelServingProvisionedThroughputConfigServedEntityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputConfigServedEntity)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputConfigServedEntityArray) ToModelServingProvisionedThroughputConfigServedEntityArrayOutput() ModelServingProvisionedThroughputConfigServedEntityArrayOutput {
-	return i.ToModelServingProvisionedThroughputConfigServedEntityArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigServedEntityArray) ToModelServingProvisionedThroughputConfigServedEntityArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigServedEntityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigServedEntityArrayOutput)
-}
-
-type ModelServingProvisionedThroughputConfigServedEntityOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigServedEntityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfigServedEntity)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) ToModelServingProvisionedThroughputConfigServedEntityOutput() ModelServingProvisionedThroughputConfigServedEntityOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) ToModelServingProvisionedThroughputConfigServedEntityOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigServedEntityOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) BurstScalingEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigServedEntity) *bool { return v.BurstScalingEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) EntityName() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigServedEntity) string { return v.EntityName }).(pulumi.StringOutput)
-}
-
-// The version of the model in UC to be served.
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) EntityVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigServedEntity) string { return v.EntityVersion }).(pulumi.StringOutput)
-}
-
-// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigServedEntity) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The number of model units to be provisioned.
-func (o ModelServingProvisionedThroughputConfigServedEntityOutput) ProvisionedModelUnits() pulumi.IntOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigServedEntity) int { return v.ProvisionedModelUnits }).(pulumi.IntOutput)
-}
-
-type ModelServingProvisionedThroughputConfigServedEntityArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigServedEntityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputConfigServedEntity)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigServedEntityArrayOutput) ToModelServingProvisionedThroughputConfigServedEntityArrayOutput() ModelServingProvisionedThroughputConfigServedEntityArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigServedEntityArrayOutput) ToModelServingProvisionedThroughputConfigServedEntityArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigServedEntityArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigServedEntityArrayOutput) Index(i pulumi.IntInput) ModelServingProvisionedThroughputConfigServedEntityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingProvisionedThroughputConfigServedEntity {
-		return vs[0].([]ModelServingProvisionedThroughputConfigServedEntity)[vs[1].(int)]
-	}).(ModelServingProvisionedThroughputConfigServedEntityOutput)
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfig struct {
-	// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-	Routes []ModelServingProvisionedThroughputConfigTrafficConfigRoute `pulumi:"routes"`
-}
-
-// ModelServingProvisionedThroughputConfigTrafficConfigInput is an input type that accepts ModelServingProvisionedThroughputConfigTrafficConfigArgs and ModelServingProvisionedThroughputConfigTrafficConfigOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigTrafficConfigInput` via:
-//
-//	ModelServingProvisionedThroughputConfigTrafficConfigArgs{...}
-type ModelServingProvisionedThroughputConfigTrafficConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigTrafficConfigOutput() ModelServingProvisionedThroughputConfigTrafficConfigOutput
-	ToModelServingProvisionedThroughputConfigTrafficConfigOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigTrafficConfigOutput
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigArgs struct {
-	// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-	Routes ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayInput `pulumi:"routes"`
-}
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfig)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigArgs) ToModelServingProvisionedThroughputConfigTrafficConfigOutput() ModelServingProvisionedThroughputConfigTrafficConfigOutput {
-	return i.ToModelServingProvisionedThroughputConfigTrafficConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigArgs) ToModelServingProvisionedThroughputConfigTrafficConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigTrafficConfigOutput)
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigArgs) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutput() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigArgs) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigTrafficConfigOutput).ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputConfigTrafficConfigPtrInput is an input type that accepts ModelServingProvisionedThroughputConfigTrafficConfigArgs, ModelServingProvisionedThroughputConfigTrafficConfigPtr and ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigTrafficConfigPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputConfigTrafficConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputConfigTrafficConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutput() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput
-	ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput
-}
-
-type modelServingProvisionedThroughputConfigTrafficConfigPtrType ModelServingProvisionedThroughputConfigTrafficConfigArgs
-
-func ModelServingProvisionedThroughputConfigTrafficConfigPtr(v *ModelServingProvisionedThroughputConfigTrafficConfigArgs) ModelServingProvisionedThroughputConfigTrafficConfigPtrInput {
-	return (*modelServingProvisionedThroughputConfigTrafficConfigPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputConfigTrafficConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputConfigTrafficConfig)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputConfigTrafficConfigPtrType) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutput() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputConfigTrafficConfigPtrType) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigOutput) ToModelServingProvisionedThroughputConfigTrafficConfigOutput() ModelServingProvisionedThroughputConfigTrafficConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigOutput) ToModelServingProvisionedThroughputConfigTrafficConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigOutput) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutput() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return o.ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigOutput) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputConfigTrafficConfig) *ModelServingProvisionedThroughputConfigTrafficConfig {
-		return &v
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput)
-}
-
-// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-func (o ModelServingProvisionedThroughputConfigTrafficConfigOutput) Routes() ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigTrafficConfig) []ModelServingProvisionedThroughputConfigTrafficConfigRoute {
-		return v.Routes
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput)
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputConfigTrafficConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutput() ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput) ToModelServingProvisionedThroughputConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput) Elem() ModelServingProvisionedThroughputConfigTrafficConfigOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputConfigTrafficConfig) ModelServingProvisionedThroughputConfigTrafficConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputConfigTrafficConfig
-		return ret
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigOutput)
-}
-
-// Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-func (o ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput) Routes() ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputConfigTrafficConfig) []ModelServingProvisionedThroughputConfigTrafficConfigRoute {
-		if v == nil {
-			return nil
-		}
-		return v.Routes
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput)
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigRoute struct {
-	// The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
-	ServedEntityName *string `pulumi:"servedEntityName"`
-	ServedModelName  *string `pulumi:"servedModelName"`
-	// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-	TrafficPercentage int `pulumi:"trafficPercentage"`
-}
-
-// ModelServingProvisionedThroughputConfigTrafficConfigRouteInput is an input type that accepts ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs and ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigTrafficConfigRouteInput` via:
-//
-//	ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs{...}
-type ModelServingProvisionedThroughputConfigTrafficConfigRouteInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutput() ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput
-	ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs struct {
-	// The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
-	ServedEntityName pulumi.StringPtrInput `pulumi:"servedEntityName"`
-	ServedModelName  pulumi.StringPtrInput `pulumi:"servedModelName"`
-	// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-	TrafficPercentage pulumi.IntInput `pulumi:"trafficPercentage"`
-}
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs) ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutput() ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput {
-	return i.ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs) ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput)
-}
-
-// ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayInput is an input type that accepts ModelServingProvisionedThroughputConfigTrafficConfigRouteArray and ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayInput` via:
-//
-//	ModelServingProvisionedThroughputConfigTrafficConfigRouteArray{ ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs{...} }
-type ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput() ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput
-	ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutputWithContext(context.Context) ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigRouteArray []ModelServingProvisionedThroughputConfigTrafficConfigRouteInput
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigRouteArray) ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput() ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput {
-	return i.ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputConfigTrafficConfigRouteArray) ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput)
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput) ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutput() ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput) ToModelServingProvisionedThroughputConfigTrafficConfigRouteOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput {
-	return o
-}
-
-// The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput) ServedEntityName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigTrafficConfigRoute) *string { return v.ServedEntityName }).(pulumi.StringPtrOutput)
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput) ServedModelName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigTrafficConfigRoute) *string { return v.ServedModelName }).(pulumi.StringPtrOutput)
-}
-
-// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput) TrafficPercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputConfigTrafficConfigRoute) int { return v.TrafficPercentage }).(pulumi.IntOutput)
-}
-
-type ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ModelServingProvisionedThroughputConfigTrafficConfigRoute)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput) ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput() ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput) ToModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput) Index(i pulumi.IntInput) ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingProvisionedThroughputConfigTrafficConfigRoute {
-		return vs[0].([]ModelServingProvisionedThroughputConfigTrafficConfigRoute)[vs[1].(int)]
-	}).(ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput)
-}
-
-type ModelServingProvisionedThroughputEmailNotifications struct {
-	// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-	OnUpdateFailures []string `pulumi:"onUpdateFailures"`
-	// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-	OnUpdateSuccesses []string `pulumi:"onUpdateSuccesses"`
-}
-
-// ModelServingProvisionedThroughputEmailNotificationsInput is an input type that accepts ModelServingProvisionedThroughputEmailNotificationsArgs and ModelServingProvisionedThroughputEmailNotificationsOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputEmailNotificationsInput` via:
-//
-//	ModelServingProvisionedThroughputEmailNotificationsArgs{...}
-type ModelServingProvisionedThroughputEmailNotificationsInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputEmailNotificationsOutput() ModelServingProvisionedThroughputEmailNotificationsOutput
-	ToModelServingProvisionedThroughputEmailNotificationsOutputWithContext(context.Context) ModelServingProvisionedThroughputEmailNotificationsOutput
-}
-
-type ModelServingProvisionedThroughputEmailNotificationsArgs struct {
-	// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-	OnUpdateFailures pulumi.StringArrayInput `pulumi:"onUpdateFailures"`
-	// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-	OnUpdateSuccesses pulumi.StringArrayInput `pulumi:"onUpdateSuccesses"`
-}
-
-func (ModelServingProvisionedThroughputEmailNotificationsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputEmailNotifications)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputEmailNotificationsArgs) ToModelServingProvisionedThroughputEmailNotificationsOutput() ModelServingProvisionedThroughputEmailNotificationsOutput {
-	return i.ToModelServingProvisionedThroughputEmailNotificationsOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputEmailNotificationsArgs) ToModelServingProvisionedThroughputEmailNotificationsOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputEmailNotificationsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputEmailNotificationsOutput)
-}
-
-func (i ModelServingProvisionedThroughputEmailNotificationsArgs) ToModelServingProvisionedThroughputEmailNotificationsPtrOutput() ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return i.ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputEmailNotificationsArgs) ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputEmailNotificationsOutput).ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputEmailNotificationsPtrInput is an input type that accepts ModelServingProvisionedThroughputEmailNotificationsArgs, ModelServingProvisionedThroughputEmailNotificationsPtr and ModelServingProvisionedThroughputEmailNotificationsPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputEmailNotificationsPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputEmailNotificationsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputEmailNotificationsPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputEmailNotificationsPtrOutput() ModelServingProvisionedThroughputEmailNotificationsPtrOutput
-	ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputEmailNotificationsPtrOutput
-}
-
-type modelServingProvisionedThroughputEmailNotificationsPtrType ModelServingProvisionedThroughputEmailNotificationsArgs
-
-func ModelServingProvisionedThroughputEmailNotificationsPtr(v *ModelServingProvisionedThroughputEmailNotificationsArgs) ModelServingProvisionedThroughputEmailNotificationsPtrInput {
-	return (*modelServingProvisionedThroughputEmailNotificationsPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputEmailNotificationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputEmailNotifications)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputEmailNotificationsPtrType) ToModelServingProvisionedThroughputEmailNotificationsPtrOutput() ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return i.ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputEmailNotificationsPtrType) ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputEmailNotificationsPtrOutput)
-}
-
-type ModelServingProvisionedThroughputEmailNotificationsOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputEmailNotificationsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputEmailNotifications)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsOutput) ToModelServingProvisionedThroughputEmailNotificationsOutput() ModelServingProvisionedThroughputEmailNotificationsOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsOutput) ToModelServingProvisionedThroughputEmailNotificationsOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputEmailNotificationsOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsOutput) ToModelServingProvisionedThroughputEmailNotificationsPtrOutput() ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return o.ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsOutput) ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputEmailNotifications) *ModelServingProvisionedThroughputEmailNotifications {
-		return &v
-	}).(ModelServingProvisionedThroughputEmailNotificationsPtrOutput)
-}
-
-// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-func (o ModelServingProvisionedThroughputEmailNotificationsOutput) OnUpdateFailures() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputEmailNotifications) []string { return v.OnUpdateFailures }).(pulumi.StringArrayOutput)
-}
-
-// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-func (o ModelServingProvisionedThroughputEmailNotificationsOutput) OnUpdateSuccesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputEmailNotifications) []string { return v.OnUpdateSuccesses }).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProvisionedThroughputEmailNotificationsPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputEmailNotificationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputEmailNotifications)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsPtrOutput) ToModelServingProvisionedThroughputEmailNotificationsPtrOutput() ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsPtrOutput) ToModelServingProvisionedThroughputEmailNotificationsPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputEmailNotificationsPtrOutput) Elem() ModelServingProvisionedThroughputEmailNotificationsOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputEmailNotifications) ModelServingProvisionedThroughputEmailNotifications {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputEmailNotifications
-		return ret
-	}).(ModelServingProvisionedThroughputEmailNotificationsOutput)
-}
-
-// a list of email addresses to be notified when an endpoint fails to update its configuration or state.
-func (o ModelServingProvisionedThroughputEmailNotificationsPtrOutput) OnUpdateFailures() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputEmailNotifications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.OnUpdateFailures
-	}).(pulumi.StringArrayOutput)
-}
-
-// a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
-func (o ModelServingProvisionedThroughputEmailNotificationsPtrOutput) OnUpdateSuccesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputEmailNotifications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.OnUpdateSuccesses
-	}).(pulumi.StringArrayOutput)
-}
-
-type ModelServingProvisionedThroughputProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// ModelServingProvisionedThroughputProviderConfigInput is an input type that accepts ModelServingProvisionedThroughputProviderConfigArgs and ModelServingProvisionedThroughputProviderConfigOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputProviderConfigInput` via:
-//
-//	ModelServingProvisionedThroughputProviderConfigArgs{...}
-type ModelServingProvisionedThroughputProviderConfigInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputProviderConfigOutput() ModelServingProvisionedThroughputProviderConfigOutput
-	ToModelServingProvisionedThroughputProviderConfigOutputWithContext(context.Context) ModelServingProvisionedThroughputProviderConfigOutput
-}
-
-type ModelServingProvisionedThroughputProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (ModelServingProvisionedThroughputProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputProviderConfig)(nil)).Elem()
-}
-
-func (i ModelServingProvisionedThroughputProviderConfigArgs) ToModelServingProvisionedThroughputProviderConfigOutput() ModelServingProvisionedThroughputProviderConfigOutput {
-	return i.ToModelServingProvisionedThroughputProviderConfigOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputProviderConfigArgs) ToModelServingProvisionedThroughputProviderConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputProviderConfigOutput)
-}
-
-func (i ModelServingProvisionedThroughputProviderConfigArgs) ToModelServingProvisionedThroughputProviderConfigPtrOutput() ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ModelServingProvisionedThroughputProviderConfigArgs) ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputProviderConfigOutput).ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(ctx)
-}
-
-// ModelServingProvisionedThroughputProviderConfigPtrInput is an input type that accepts ModelServingProvisionedThroughputProviderConfigArgs, ModelServingProvisionedThroughputProviderConfigPtr and ModelServingProvisionedThroughputProviderConfigPtrOutput values.
-// You can construct a concrete instance of `ModelServingProvisionedThroughputProviderConfigPtrInput` via:
-//
-//	        ModelServingProvisionedThroughputProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ModelServingProvisionedThroughputProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToModelServingProvisionedThroughputProviderConfigPtrOutput() ModelServingProvisionedThroughputProviderConfigPtrOutput
-	ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(context.Context) ModelServingProvisionedThroughputProviderConfigPtrOutput
-}
-
-type modelServingProvisionedThroughputProviderConfigPtrType ModelServingProvisionedThroughputProviderConfigArgs
-
-func ModelServingProvisionedThroughputProviderConfigPtr(v *ModelServingProvisionedThroughputProviderConfigArgs) ModelServingProvisionedThroughputProviderConfigPtrInput {
-	return (*modelServingProvisionedThroughputProviderConfigPtrType)(v)
-}
-
-func (*modelServingProvisionedThroughputProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputProviderConfig)(nil)).Elem()
-}
-
-func (i *modelServingProvisionedThroughputProviderConfigPtrType) ToModelServingProvisionedThroughputProviderConfigPtrOutput() ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return i.ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *modelServingProvisionedThroughputProviderConfigPtrType) ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelServingProvisionedThroughputProviderConfigPtrOutput)
-}
-
-type ModelServingProvisionedThroughputProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelServingProvisionedThroughputProviderConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigOutput) ToModelServingProvisionedThroughputProviderConfigOutput() ModelServingProvisionedThroughputProviderConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigOutput) ToModelServingProvisionedThroughputProviderConfigOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputProviderConfigOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigOutput) ToModelServingProvisionedThroughputProviderConfigPtrOutput() ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return o.ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigOutput) ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingProvisionedThroughputProviderConfig) *ModelServingProvisionedThroughputProviderConfig {
-		return &v
-	}).(ModelServingProvisionedThroughputProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o ModelServingProvisionedThroughputProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingProvisionedThroughputProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type ModelServingProvisionedThroughputProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ModelServingProvisionedThroughputProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelServingProvisionedThroughputProviderConfig)(nil)).Elem()
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigPtrOutput) ToModelServingProvisionedThroughputProviderConfigPtrOutput() ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigPtrOutput) ToModelServingProvisionedThroughputProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingProvisionedThroughputProviderConfigPtrOutput {
-	return o
-}
-
-func (o ModelServingProvisionedThroughputProviderConfigPtrOutput) Elem() ModelServingProvisionedThroughputProviderConfigOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputProviderConfig) ModelServingProvisionedThroughputProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ModelServingProvisionedThroughputProviderConfig
-		return ret
-	}).(ModelServingProvisionedThroughputProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o ModelServingProvisionedThroughputProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelServingProvisionedThroughputProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessPtrInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingProviderConfigInput)(nil)).Elem(), DisableLegacyAccessSettingProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyAccessSettingProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfigInput)(nil)).Elem(), DisableLegacyDbfsSettingProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingProviderConfigInput)(nil)).Elem(), DisableLegacyFeaturesSettingProviderConfigArgs{})
@@ -82959,6 +81756,56 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeseriesColumnPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeseriesColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileProviderConfigInput)(nil)).Elem(), FileProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileProviderConfigPtrInput)(nil)).Elem(), FileProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInput)(nil)).Elem(), GenieAgentDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionPtrInput)(nil)).Elem(), GenieAgentDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionBenchmarksInput)(nil)).Elem(), GenieAgentDefinitionBenchmarksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionBenchmarksPtrInput)(nil)).Elem(), GenieAgentDefinitionBenchmarksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestionInput)(nil)).Elem(), GenieAgentDefinitionBenchmarksQuestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestionArrayInput)(nil)).Elem(), GenieAgentDefinitionBenchmarksQuestionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestionAnswerInput)(nil)).Elem(), GenieAgentDefinitionBenchmarksQuestionAnswerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionBenchmarksQuestionAnswerArrayInput)(nil)).Elem(), GenieAgentDefinitionBenchmarksQuestionAnswerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionConfigInput)(nil)).Elem(), GenieAgentDefinitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionConfigPtrInput)(nil)).Elem(), GenieAgentDefinitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionConfigSampleQuestionInput)(nil)).Elem(), GenieAgentDefinitionConfigSampleQuestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionConfigSampleQuestionArrayInput)(nil)).Elem(), GenieAgentDefinitionConfigSampleQuestionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesPtrInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesMcpConnectionInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesMcpConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesMcpConnectionArrayInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesMcpConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesTableInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesTableArrayInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesTableColumnConfigInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesTableColumnConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesTableColumnConfigArrayInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesTableColumnConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesVolumeInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionDataSourcesVolumeArrayInput)(nil)).Elem(), GenieAgentDefinitionDataSourcesVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsInput)(nil)).Elem(), GenieAgentDefinitionInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsPtrInput)(nil)).Elem(), GenieAgentDefinitionInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrInput)(nil)).Elem(), GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecInput)(nil)).Elem(), GenieAgentDefinitionInstructionsJoinSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsJoinSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecLeftInput)(nil)).Elem(), GenieAgentDefinitionInstructionsJoinSpecLeftArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsJoinSpecRightInput)(nil)).Elem(), GenieAgentDefinitionInstructionsJoinSpecRightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlFunctionInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlFunctionArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsPtrInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsExpressionInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsFilterInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsMeasureInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsMeasureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsSqlSnippetsMeasureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsTextInstructionInput)(nil)).Elem(), GenieAgentDefinitionInstructionsTextInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentDefinitionInstructionsTextInstructionArrayInput)(nil)).Elem(), GenieAgentDefinitionInstructionsTextInstructionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentProviderConfigInput)(nil)).Elem(), GenieAgentProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenieAgentProviderConfigPtrInput)(nil)).Elem(), GenieAgentProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitCredentialProviderConfigInput)(nil)).Elem(), GitCredentialProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitCredentialProviderConfigPtrInput)(nil)).Elem(), GitCredentialProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalInitScriptProviderConfigInput)(nil)).Elem(), GlobalInitScriptProviderConfigArgs{})
@@ -83102,6 +81949,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterServerlessComputeInput)(nil)).Elem(), JobJobClusterServerlessComputeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterServerlessComputePtrInput)(nil)).Elem(), JobJobClusterServerlessComputeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLibraryInput)(nil)).Elem(), JobLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLibraryArrayInput)(nil)).Elem(), JobLibraryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLibraryCranInput)(nil)).Elem(), JobLibraryCranArgs{})
@@ -83205,6 +82054,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparkSubmitTaskPtrInput)(nil)).Elem(), JobSparkSubmitTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskInput)(nil)).Elem(), JobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskArrayInput)(nil)).Elem(), JobTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskInput)(nil)).Elem(), JobTaskAiFunctionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskPtrInput)(nil)).Elem(), JobTaskAiFunctionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInput)(nil)).Elem(), JobTaskAiFunctionTaskAiClassifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyPtrInput)(nil)).Elem(), JobTaskAiFunctionTaskAiClassifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabelsInput)(nil)).Elem(), JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput)(nil)).Elem(), JobTaskAiFunctionTaskAiClassifyInlineLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput)(nil)).Elem(), JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput)(nil)).Elem(), JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiExtractInput)(nil)).Elem(), JobTaskAiFunctionTaskAiExtractArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiExtractPtrInput)(nil)).Elem(), JobTaskAiFunctionTaskAiExtractArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiParseDocumentInput)(nil)).Elem(), JobTaskAiFunctionTaskAiParseDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskAiParseDocumentPtrInput)(nil)).Elem(), JobTaskAiFunctionTaskAiParseDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskDeltaTableInput)(nil)).Elem(), JobTaskAiFunctionTaskDeltaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskDeltaTablePtrInput)(nil)).Elem(), JobTaskAiFunctionTaskDeltaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskOutputTypeInput)(nil)).Elem(), JobTaskAiFunctionTaskOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskOutputTypePtrInput)(nil)).Elem(), JobTaskAiFunctionTaskOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskVolumeInput)(nil)).Elem(), JobTaskAiFunctionTaskVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiFunctionTaskVolumePtrInput)(nil)).Elem(), JobTaskAiFunctionTaskVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiRuntimeTaskInput)(nil)).Elem(), JobTaskAiRuntimeTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiRuntimeTaskPtrInput)(nil)).Elem(), JobTaskAiRuntimeTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskAiRuntimeTaskDeploymentInput)(nil)).Elem(), JobTaskAiRuntimeTaskDeploymentArgs{})
@@ -83248,6 +82115,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiClassifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiExtractInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiExtractArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskDeltaTableInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskDeltaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskOutputTypeInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskVolumeInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiFunctionTaskVolumePtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiFunctionTaskVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiRuntimeTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskAiRuntimeTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiRuntimeTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskAiRuntimeTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskAiRuntimeTaskDeploymentInput)(nil)).Elem(), JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs{})
@@ -83574,6 +82459,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerContinuousMaintenanceWindowPtrInput)(nil)).Elem(), JobTriggerContinuousMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalPtrInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerJobCompletionInput)(nil)).Elem(), JobTriggerJobCompletionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerJobCompletionPtrInput)(nil)).Elem(), JobTriggerJobCompletionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerJobCompletionJobInput)(nil)).Elem(), JobTriggerJobCompletionJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerJobCompletionJobArrayInput)(nil)).Elem(), JobTriggerJobCompletionJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerModelInput)(nil)).Elem(), JobTriggerModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerModelPtrInput)(nil)).Elem(), JobTriggerModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerPeriodicInput)(nil)).Elem(), JobTriggerPeriodicArgs{})
@@ -83668,108 +82557,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowExperimentTraceLocationPtrInput)(nil)).Elem(), MlflowExperimentTraceLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowExperimentTraceLocationUcTraceLocationInput)(nil)).Elem(), MlflowExperimentTraceLocationUcTraceLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowExperimentTraceLocationUcTraceLocationPtrInput)(nil)).Elem(), MlflowExperimentTraceLocationUcTraceLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelProviderConfigInput)(nil)).Elem(), MlflowModelProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelProviderConfigPtrInput)(nil)).Elem(), MlflowModelProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelTagInput)(nil)).Elem(), MlflowModelTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelTagArrayInput)(nil)).Elem(), MlflowModelTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookHttpUrlSpecInput)(nil)).Elem(), MlflowWebhookHttpUrlSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookHttpUrlSpecPtrInput)(nil)).Elem(), MlflowWebhookHttpUrlSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookJobSpecInput)(nil)).Elem(), MlflowWebhookJobSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookJobSpecPtrInput)(nil)).Elem(), MlflowWebhookJobSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookProviderConfigInput)(nil)).Elem(), MlflowWebhookProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookProviderConfigPtrInput)(nil)).Elem(), MlflowWebhookProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayInput)(nil)).Elem(), ModelServingAiGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayPtrInput)(nil)).Elem(), ModelServingAiGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayFallbackConfigInput)(nil)).Elem(), ModelServingAiGatewayFallbackConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayFallbackConfigPtrInput)(nil)).Elem(), ModelServingAiGatewayFallbackConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsPtrInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputTypeInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsInputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputTypePtrInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsInputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputPiiInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsInputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputPiiPtrInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsInputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputTypeInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsOutputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputTypePtrInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsOutputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputPiiInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsOutputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsOutputPiiPtrInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsOutputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayInferenceTableConfigInput)(nil)).Elem(), ModelServingAiGatewayInferenceTableConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayInferenceTableConfigPtrInput)(nil)).Elem(), ModelServingAiGatewayInferenceTableConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayRateLimitInput)(nil)).Elem(), ModelServingAiGatewayRateLimitArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayRateLimitArrayInput)(nil)).Elem(), ModelServingAiGatewayRateLimitArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayUsageTrackingConfigInput)(nil)).Elem(), ModelServingAiGatewayUsageTrackingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayUsageTrackingConfigPtrInput)(nil)).Elem(), ModelServingAiGatewayUsageTrackingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigInput)(nil)).Elem(), ModelServingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigPtrInput)(nil)).Elem(), ModelServingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigAutoCaptureConfigInput)(nil)).Elem(), ModelServingConfigAutoCaptureConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigAutoCaptureConfigPtrInput)(nil)).Elem(), ModelServingConfigAutoCaptureConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityInput)(nil)).Elem(), ModelServingConfigServedEntityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityArrayInput)(nil)).Elem(), ModelServingConfigServedEntityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAi21labsConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAi21labsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAi21labsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAnthropicConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAnthropicConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAnthropicConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCohereConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCohereConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCohereConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCohereConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelOpenaiConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelOpenaiConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelOpenaiConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelPalmConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelPalmConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelPalmConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelPalmConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedModelInput)(nil)).Elem(), ModelServingConfigServedModelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedModelArrayInput)(nil)).Elem(), ModelServingConfigServedModelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigPtrInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteArrayInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingEmailNotificationsInput)(nil)).Elem(), ModelServingEmailNotificationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingEmailNotificationsPtrInput)(nil)).Elem(), ModelServingEmailNotificationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProviderConfigInput)(nil)).Elem(), ModelServingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProviderConfigPtrInput)(nil)).Elem(), ModelServingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayFallbackConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayInferenceTableConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayRateLimitInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayRateLimitArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayRateLimitArrayInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayRateLimitArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigServedEntityInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigServedEntityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigServedEntityArrayInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigServedEntityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigTrafficConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigTrafficConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfigRouteInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayInput)(nil)).Elem(), ModelServingProvisionedThroughputConfigTrafficConfigRouteArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputEmailNotificationsInput)(nil)).Elem(), ModelServingProvisionedThroughputEmailNotificationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputEmailNotificationsPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputEmailNotificationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputProviderConfigInput)(nil)).Elem(), ModelServingProvisionedThroughputProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingProvisionedThroughputProviderConfigPtrInput)(nil)).Elem(), ModelServingProvisionedThroughputProviderConfigArgs{})
+	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessOutput{})
+	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyAccessSettingProviderConfigOutput{})
+	pulumi.RegisterOutputType(DisableLegacyAccessSettingProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsOutput{})
+	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyDbfsSettingProviderConfigOutput{})
+	pulumi.RegisterOutputType(DisableLegacyDbfsSettingProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput{})
 	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingProviderConfigOutput{})
@@ -83954,6 +82749,56 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeseriesColumnPtrOutput{})
 	pulumi.RegisterOutputType(FileProviderConfigOutput{})
 	pulumi.RegisterOutputType(FileProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionBenchmarksOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionBenchmarksPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionBenchmarksQuestionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionBenchmarksQuestionArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionBenchmarksQuestionAnswerOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionBenchmarksQuestionAnswerArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionConfigOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionConfigSampleQuestionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionConfigSampleQuestionArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesMcpConnectionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesMcpConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesTableOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesTableArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesTableColumnConfigOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesTableColumnConfigArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesVolumeOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionDataSourcesVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValuePtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangeOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRangePtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsJoinSpecOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsJoinSpecArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsJoinSpecLeftOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsJoinSpecRightOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlFunctionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsPtrOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsExpressionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsExpressionArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsFilterOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsMeasureOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsSqlSnippetsMeasureArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsTextInstructionOutput{})
+	pulumi.RegisterOutputType(GenieAgentDefinitionInstructionsTextInstructionArrayOutput{})
+	pulumi.RegisterOutputType(GenieAgentProviderConfigOutput{})
+	pulumi.RegisterOutputType(GenieAgentProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GitCredentialProviderConfigOutput{})
 	pulumi.RegisterOutputType(GitCredentialProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GlobalInitScriptProviderConfigOutput{})
@@ -84097,6 +82942,8 @@ func init() {
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypeClientsOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypeClientsPtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterServerlessComputeOutput{})
+	pulumi.RegisterOutputType(JobJobClusterServerlessComputePtrOutput{})
 	pulumi.RegisterOutputType(JobLibraryOutput{})
 	pulumi.RegisterOutputType(JobLibraryArrayOutput{})
 	pulumi.RegisterOutputType(JobLibraryCranOutput{})
@@ -84200,6 +83047,24 @@ func init() {
 	pulumi.RegisterOutputType(JobSparkSubmitTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiClassifyOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiClassifyPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiClassifyInlineLabelsOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiExtractOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiExtractPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiParseDocumentOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskAiParseDocumentPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskDeltaTableOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskDeltaTablePtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskOutputTypeOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskOutputTypePtrOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskVolumeOutput{})
+	pulumi.RegisterOutputType(JobTaskAiFunctionTaskVolumePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskAiRuntimeTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskAiRuntimeTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskAiRuntimeTaskDeploymentOutput{})
@@ -84243,6 +83108,24 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabelArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiExtractOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiExtractPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskAiParseDocumentPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskDeltaTableOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskDeltaTablePtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskOutputTypeOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskOutputTypePtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskVolumeOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiFunctionTaskVolumePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiRuntimeTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskAiRuntimeTaskDeploymentOutput{})
@@ -84569,6 +83452,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTriggerContinuousMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerFileArrivalOutput{})
 	pulumi.RegisterOutputType(JobTriggerFileArrivalPtrOutput{})
+	pulumi.RegisterOutputType(JobTriggerJobCompletionOutput{})
+	pulumi.RegisterOutputType(JobTriggerJobCompletionPtrOutput{})
+	pulumi.RegisterOutputType(JobTriggerJobCompletionJobOutput{})
+	pulumi.RegisterOutputType(JobTriggerJobCompletionJobArrayOutput{})
 	pulumi.RegisterOutputType(JobTriggerModelOutput{})
 	pulumi.RegisterOutputType(JobTriggerModelPtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerPeriodicOutput{})
@@ -84663,106 +83550,4 @@ func init() {
 	pulumi.RegisterOutputType(MlflowExperimentTraceLocationPtrOutput{})
 	pulumi.RegisterOutputType(MlflowExperimentTraceLocationUcTraceLocationOutput{})
 	pulumi.RegisterOutputType(MlflowExperimentTraceLocationUcTraceLocationPtrOutput{})
-	pulumi.RegisterOutputType(MlflowModelProviderConfigOutput{})
-	pulumi.RegisterOutputType(MlflowModelProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(MlflowModelTagOutput{})
-	pulumi.RegisterOutputType(MlflowModelTagArrayOutput{})
-	pulumi.RegisterOutputType(MlflowWebhookHttpUrlSpecOutput{})
-	pulumi.RegisterOutputType(MlflowWebhookHttpUrlSpecPtrOutput{})
-	pulumi.RegisterOutputType(MlflowWebhookJobSpecOutput{})
-	pulumi.RegisterOutputType(MlflowWebhookJobSpecPtrOutput{})
-	pulumi.RegisterOutputType(MlflowWebhookProviderConfigOutput{})
-	pulumi.RegisterOutputType(MlflowWebhookProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayFallbackConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayFallbackConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsInputTypeOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsInputTypePtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsInputPiiOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsInputPiiPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsOutputTypeOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsOutputTypePtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsOutputPiiOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayInferenceTableConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayInferenceTableConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayRateLimitOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayRateLimitArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayUsageTrackingConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingAiGatewayUsageTrackingConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigAutoCaptureConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigAutoCaptureConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAi21labsConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAnthropicConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCohereConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelOpenaiConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelPalmConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedModelOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigServedModelArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteOutput{})
-	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingEmailNotificationsOutput{})
-	pulumi.RegisterOutputType(ModelServingEmailNotificationsPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProviderConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayFallbackConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayFallbackConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypeOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsInputTypePtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypeOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputTypePtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayInferenceTableConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayRateLimitOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayRateLimitArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigServedEntityOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigServedEntityArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigTrafficConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigTrafficConfigPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigTrafficConfigRouteOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputConfigTrafficConfigRouteArrayOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputEmailNotificationsOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputEmailNotificationsPtrOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputProviderConfigOutput{})
-	pulumi.RegisterOutputType(ModelServingProvisionedThroughputProviderConfigPtrOutput{})
 }

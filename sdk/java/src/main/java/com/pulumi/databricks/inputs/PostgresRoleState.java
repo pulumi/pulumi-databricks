@@ -85,13 +85,18 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If true, update the role if it already exists instead of returning an
-     * error.
+     * error. This requires `roleId` to be set. Without `roleId`, the request
+     * follows the normal create path and fails if the role name already exists.
      * 
-     * When the role already exists, the provided `role` spec fully replaces the
-     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * When the role already exists, only mutable fields are updated.
+     * Attributes omitted from the request retain their current values.
+     * Set an attribute explicitly to false to disable it.
+     * `identityType`, `authMethod`, and `postgresRole` retain their
+     * existing values; supplied values for these fields are ignored.
+     * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
-     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-     * memberships when using this field
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+     * of memberships when using this field
      * 
      */
     @Import(name="replaceExisting")
@@ -99,13 +104,18 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If true, update the role if it already exists instead of returning an
-     * error.
+     * error. This requires `roleId` to be set. Without `roleId`, the request
+     * follows the normal create path and fails if the role name already exists.
      * 
-     * When the role already exists, the provided `role` spec fully replaces the
-     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * When the role already exists, only mutable fields are updated.
+     * Attributes omitted from the request retain their current values.
+     * Set an attribute explicitly to false to disable it.
+     * `identityType`, `authMethod`, and `postgresRole` retain their
+     * existing values; supplied values for these fields are ignored.
+     * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
-     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-     * memberships when using this field
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+     * of memberships when using this field
      * 
      */
     public Optional<Output<Boolean>> replaceExisting() {
@@ -294,13 +304,18 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param replaceExisting If true, update the role if it already exists instead of returning an
-         * error.
+         * error. This requires `roleId` to be set. Without `roleId`, the request
+         * follows the normal create path and fails if the role name already exists.
          * 
-         * When the role already exists, the provided `role` spec fully replaces the
-         * existing one: `membershipRoles` is overwritten, not merged. Leaving
+         * When the role already exists, only mutable fields are updated.
+         * Attributes omitted from the request retain their current values.
+         * Set an attribute explicitly to false to disable it.
+         * `identityType`, `authMethod`, and `postgresRole` retain their
+         * existing values; supplied values for these fields are ignored.
+         * `membershipRoles` is overwritten, not merged. Leaving
          * `membershipRoles` empty clears all of the role&#39;s existing memberships,
-         * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-         * memberships when using this field
+         * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+         * of memberships when using this field
          * 
          * @return builder
          * 
@@ -312,13 +327,18 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param replaceExisting If true, update the role if it already exists instead of returning an
-         * error.
+         * error. This requires `roleId` to be set. Without `roleId`, the request
+         * follows the normal create path and fails if the role name already exists.
          * 
-         * When the role already exists, the provided `role` spec fully replaces the
-         * existing one: `membershipRoles` is overwritten, not merged. Leaving
+         * When the role already exists, only mutable fields are updated.
+         * Attributes omitted from the request retain their current values.
+         * Set an attribute explicitly to false to disable it.
+         * `identityType`, `authMethod`, and `postgresRole` retain their
+         * existing values; supplied values for these fields are ignored.
+         * `membershipRoles` is overwritten, not merged. Leaving
          * `membershipRoles` empty clears all of the role&#39;s existing memberships,
-         * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
-         * memberships when using this field
+         * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
+         * of memberships when using this field
          * 
          * @return builder
          * 

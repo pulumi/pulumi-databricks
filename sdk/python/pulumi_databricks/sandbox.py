@@ -23,6 +23,7 @@ class SandboxArgs:
     def __init__(__self__, *,
                  sandbox_id: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional['SandboxMetadataArgs']] = None,
                  provider_config: pulumi.Input[Optional['SandboxProviderConfigArgs']] = None,
                  spec: pulumi.Input[Optional['SandboxSpecArgs']] = None):
         """
@@ -30,12 +31,15 @@ class SandboxArgs:
 
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
+        :param pulumi.Input['SandboxMetadataArgs'] metadata: Metadata associated with the sandbox
         :param pulumi.Input['SandboxProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['SandboxSpecArgs'] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         """
         pulumi.set(__self__, "sandbox_id", sandbox_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
@@ -64,6 +68,18 @@ class SandboxArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Input[Optional['SandboxMetadataArgs']]:
+        """
+        Metadata associated with the sandbox
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input[Optional['SandboxMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -95,6 +111,7 @@ class _SandboxState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional['SandboxMetadataArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['SandboxProviderConfigArgs']] = None,
                  sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -106,6 +123,7 @@ class _SandboxState:
 
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
+        :param pulumi.Input['SandboxMetadataArgs'] metadata: Metadata associated with the sandbox
         :param pulumi.Input[_builtins.str] name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
                `sandbox_id`; any value supplied in a create or update request body is ignored
         :param pulumi.Input['SandboxProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -118,6 +136,8 @@ class _SandboxState:
             pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if provider_config is not None:
@@ -154,6 +174,18 @@ class _SandboxState:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Input[Optional['SandboxMetadataArgs']]:
+        """
+        Metadata associated with the sandbox
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input[Optional['SandboxMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
@@ -236,6 +268,7 @@ class Sandbox(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']]] = None,
                  provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
                  sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']]] = None,
@@ -271,6 +304,7 @@ class Sandbox(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
+        :param pulumi.Input[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']] metadata: Metadata associated with the sandbox
         :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
         :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
@@ -325,6 +359,7 @@ class Sandbox(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']]] = None,
                  provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
                  sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']]] = None,
@@ -338,6 +373,7 @@ class Sandbox(pulumi.CustomResource):
             __props__ = SandboxArgs.__new__(SandboxArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["metadata"] = metadata
             __props__.__dict__["provider_config"] = provider_config
             if sandbox_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sandbox_id'")
@@ -359,6 +395,7 @@ class Sandbox(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
             sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -374,6 +411,7 @@ class Sandbox(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
+        :param pulumi.Input[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']] metadata: Metadata associated with the sandbox
         :param pulumi.Input[_builtins.str] name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
                `sandbox_id`; any value supplied in a create or update request body is ignored
         :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
@@ -388,6 +426,7 @@ class Sandbox(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["sandbox_id"] = sandbox_id
@@ -411,6 +450,14 @@ class Sandbox(pulumi.CustomResource):
         Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Optional['outputs.SandboxMetadata']]:
+        """
+        Metadata associated with the sandbox
+        """
+        return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter

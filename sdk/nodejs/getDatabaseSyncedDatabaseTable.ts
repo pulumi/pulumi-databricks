@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * This data source can be used to get a single Synced Database Table.
  *
+ * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
+ *
  * ## Example Usage
  *
  * Referring to a Database Instance by name:
@@ -102,6 +104,8 @@ export interface GetDatabaseSyncedDatabaseTableResult {
  * [API Documentation](https://docs.databricks.com/api/workspace/database)
  *
  * This data source can be used to get a single Synced Database Table.
+ *
+ * For new workloads, Databricks recommends the `databricks.PostgresSyncedTable` data source.
  *
  * ## Example Usage
  *

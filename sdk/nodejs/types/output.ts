@@ -175,6 +175,10 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 }
 
 export interface AccountNetworkPolicyIngress {
+    /**
+     * The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     */
     crossWorkspaceAccess?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccess;
     /**
      * The network policy restrictions for private access.
@@ -393,6 +397,10 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSe
 }
 
 export interface AccountNetworkPolicyIngressDryRun {
+    /**
+     * The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     */
     crossWorkspaceAccess?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess;
     /**
      * The network policy restrictions for private access.
@@ -1892,9 +1900,10 @@ export interface AiGatewayMcpServiceProviderConfig {
 
 export interface AiGatewayModelProviderServiceConfig {
     /**
-     * When true, accepts any model exposed by the upstream provider; `targets`
-     * is not required and does not restrict routability. When false, only
-     * models listed in `targets` are routable. Defaults to false
+     * When true, allows models from the provider's built-in model catalog in
+     * addition to explicit `targets`. When false, only models listed in `targets`
+     * are routable. Defaults to false. CUSTOM providers have no built-in model
+     * catalog and must leave this false and list their models in `targets`
      */
     allowAllTargets?: boolean;
     amazonBedrock?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrock;
@@ -1955,8 +1964,9 @@ export interface AiGatewayModelProviderServiceConfig {
      * entry must include at least one `nativeApiTypes` value. When
      * `allowAllTargets` is false, at least one entry is required and model
      * service destinations can reference only listed models. When
-     * `allowAllTargets` is true, any upstream model is routable; entries in
-     * this list provide API-type metadata without restricting other models
+     * `allowAllTargets` is true, models from the provider's built-in model
+     * catalog are also routable. CUSTOM providers must explicitly list their
+     * models here and cannot enable `allowAllTargets`
      */
     targets?: outputs.AiGatewayModelProviderServiceConfigTarget[];
 }
@@ -2955,7 +2965,7 @@ export interface AiSearchEndpointEndpointStatus {
      */
     message: string;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
 }
@@ -2974,7 +2984,7 @@ export interface AiSearchEndpointScalingInfo {
      */
     requestedTargetQps?: number;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
 }
@@ -5010,6 +5020,58 @@ export interface DataQualityMonitorAnomalyDetectionConfig {
      * List of fully qualified table names to exclude from anomaly detection
      */
     excludedTableFullNames?: string[];
+    notificationSettings?: outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+    /**
+     * Destinations to send notifications on failure/timeout
+     */
+    onFailure?: outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure;
+    /**
+     * Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
@@ -5038,9 +5100,6 @@ export interface DataQualityMonitorDataProfilingConfig {
     latestMonitorFailureMessage: string;
     monitorVersion: number;
     monitoredTableName: string;
-    /**
-     * Field for specifying notification settings
-     */
     notificationSettings?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettings;
     /**
      * ID of the schema where output tables are created
@@ -5054,7 +5113,7 @@ export interface DataQualityMonitorDataProfilingConfig {
     /**
      * Whether to skip creating a default dashboard summarizing data quality metrics
      */
-    skipBuiltinDashboard?: boolean;
+    skipBuiltinDashboard: boolean;
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
@@ -5077,7 +5136,7 @@ export interface DataQualityMonitorDataProfilingConfig {
      * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
      * warehouse will be used
      */
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface DataQualityMonitorDataProfilingConfigCustomMetric {
@@ -5130,9 +5189,46 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
      * Destinations to send notifications on failure/timeout
      */
     onFailure?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
+    /**
+     * Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable;
 }
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
     /**
      * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      */
@@ -6112,15 +6208,21 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunction {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
     input: string;
+    relativeError?: number;
     /**
-     * The maximum relative standard deviation allowed (default defined by Spark)
+     * The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don't have relative_error, and a request may only send that value
      */
     relativeSd?: number;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
     /**
-     * The accuracy parameter (higher is more accurate but slower)
+     * The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don't have relative_error, and a request may only send
+     * that value
      */
     accuracy?: number;
     input: string;
@@ -6128,6 +6230,7 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPerce
      * The percentile value to compute (between 0 and 1)
      */
     percentile: number;
+    relativeError?: number;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionAvg {
@@ -6202,7 +6305,8 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow 
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: string;
     tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
@@ -6440,8 +6544,8 @@ export interface FeatureEngineeringFeatureSourceSdpSource {
     /**
      * The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-     * these tables, and the run fails if it doesn't. At most 100 tables
+     * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+     * tables. At most 100 tables
      */
     inputTables?: string[];
     /**
@@ -6491,7 +6595,8 @@ export interface FeatureEngineeringFeatureTimeWindow {
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: string;
     tumbling?: outputs.FeatureEngineeringFeatureTimeWindowTumbling;
@@ -6536,6 +6641,349 @@ export interface FeatureEngineeringFeatureTimeseriesColumn {
 }
 
 export interface FileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GenieAgentDefinition {
+    /**
+     * Benchmarks for evaluating the quality of the Genie Agent's answers
+     */
+    benchmarks?: outputs.GenieAgentDefinitionBenchmarks;
+    /**
+     * General settings of the Genie Agent
+     */
+    config?: outputs.GenieAgentDefinitionConfig;
+    /**
+     * The data the Genie Agent can access
+     */
+    dataSources?: outputs.GenieAgentDefinitionDataSources;
+    /**
+     * Instructions and SQL that guide how the Genie Agent answers questions
+     */
+    instructions?: outputs.GenieAgentDefinitionInstructions;
+}
+
+export interface GenieAgentDefinitionBenchmarks {
+    /**
+     * The benchmark questions, sorted by `id` in descending order
+     */
+    questions?: outputs.GenieAgentDefinitionBenchmarksQuestion[];
+}
+
+export interface GenieAgentDefinitionBenchmarksQuestion {
+    /**
+     * The expected answer. At most one answer is supported; omit it when the question has no
+     * expected answer
+     */
+    answers?: outputs.GenieAgentDefinitionBenchmarksQuestionAnswer[];
+    /**
+     * Notes on how to evaluate answers to the question
+     */
+    evaluationNote?: string;
+    id: string;
+    question: string;
+}
+
+export interface GenieAgentDefinitionBenchmarksQuestionAnswer {
+    content: string;
+    /**
+     * The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+     */
+    format: string;
+}
+
+export interface GenieAgentDefinitionConfig {
+    /**
+     * Sample questions shown to users of the Genie Agent, sorted by `id`
+     */
+    sampleQuestions?: outputs.GenieAgentDefinitionConfigSampleQuestion[];
+}
+
+export interface GenieAgentDefinitionConfigSampleQuestion {
+    id: string;
+    question: string;
+}
+
+export interface GenieAgentDefinitionDataSources {
+    /**
+     * Unity Catalog MCP connections, sorted by `mcpConnection`
+     */
+    mcpConnections?: outputs.GenieAgentDefinitionDataSourcesMcpConnection[];
+    /**
+     * Unity Catalog tables, views, and metric views, in the order they were added
+     */
+    tables?: outputs.GenieAgentDefinitionDataSourcesTable[];
+    /**
+     * Unity Catalog volumes, in the order they were added
+     */
+    volumes?: outputs.GenieAgentDefinitionDataSourcesVolume[];
+}
+
+export interface GenieAgentDefinitionDataSourcesMcpConnection {
+    /**
+     * The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+     */
+    mcpConnection: string;
+}
+
+export interface GenieAgentDefinitionDataSourcesTable {
+    /**
+     * Column settings for the table, sorted by `column`
+     */
+    columnConfigs?: outputs.GenieAgentDefinitionDataSourcesTableColumnConfig[];
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: string;
+    identifier: string;
+}
+
+export interface GenieAgentDefinitionDataSourcesTableColumnConfig {
+    /**
+     * The name of the column. Must exist in the table or metric view
+     */
+    column: string;
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: string;
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: string;
+    /**
+     * Whether the Genie Agent indexes the column's values to match them in questions
+     */
+    enableEntityMatching?: boolean;
+    /**
+     * Whether the Genie Agent samples example values from the column to learn its format
+     */
+    enableFormatAssistance?: boolean;
+    /**
+     * Whether the column is hidden from the Genie Agent
+     */
+    exclude?: boolean;
+    synonyms?: string[];
+}
+
+export interface GenieAgentDefinitionDataSourcesVolume {
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: string;
+    /**
+     * The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+     * within the volume
+     */
+    path: string;
+}
+
+export interface GenieAgentDefinitionInstructions {
+    /**
+     * Example questions paired with the SQL that answers them
+     */
+    exampleQuestionSqls?: outputs.GenieAgentDefinitionInstructionsExampleQuestionSql[];
+    /**
+     * Predefined joins between tables or metric views
+     */
+    joinSpecs?: outputs.GenieAgentDefinitionInstructionsJoinSpec[];
+    /**
+     * Unity Catalog SQL functions the generated SQL may call
+     */
+    sqlFunctions?: outputs.GenieAgentDefinitionInstructionsSqlFunction[];
+    /**
+     * Reusable SQL filters, expressions, and measures
+     */
+    sqlSnippets?: outputs.GenieAgentDefinitionInstructionsSqlSnippets;
+    /**
+     * General text instructions. At most one text instruction is supported
+     */
+    textInstructions?: outputs.GenieAgentDefinitionInstructionsTextInstruction[];
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSql {
+    id: string;
+    /**
+     * Parameters used in the SQL, in the order given
+     */
+    parameters?: outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameter[];
+    question: string;
+    sql: string;
+    /**
+     * Guidance on when to use this example
+     */
+    usageGuidance?: string;
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSqlParameter {
+    /**
+     * The parameter's default value
+     */
+    defaultValue?: outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue;
+    /**
+     * Description of the Genie Agent.
+     *
+     * The maximum length is 4,096 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    description?: string;
+    /**
+     * (string) - The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+     */
+    name: string;
+    /**
+     * The parameter's data type, for example `STRING` or `INTEGER`
+     */
+    typeHint?: string;
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+    /**
+     * The default range
+     */
+    valueRange?: outputs.GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange;
+    /**
+     * The default values. A single default is a one-element list
+     */
+    values?: string[];
+}
+
+export interface GenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+    /**
+     * The upper end of the range
+     */
+    max?: string;
+    /**
+     * The lower end of the range
+     */
+    min?: string;
+}
+
+export interface GenieAgentDefinitionInstructionsJoinSpec {
+    /**
+     * Description of the join's purpose
+     */
+    comment?: string;
+    id: string;
+    instruction?: string;
+    /**
+     * The left side of the join
+     */
+    left: outputs.GenieAgentDefinitionInstructionsJoinSpecLeft;
+    /**
+     * How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+     */
+    relationshipType?: string;
+    /**
+     * The right side of the join
+     */
+    right: outputs.GenieAgentDefinitionInstructionsJoinSpecRight;
+    sql: string;
+}
+
+export interface GenieAgentDefinitionInstructionsJoinSpecLeft {
+    alias?: string;
+    identifier: string;
+}
+
+export interface GenieAgentDefinitionInstructionsJoinSpecRight {
+    alias?: string;
+    identifier: string;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlFunction {
+    id: string;
+    identifier: string;
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippets {
+    /**
+     * Non-aggregated expressions (dimensions), such as `price * units`
+     */
+    expressions?: outputs.GenieAgentDefinitionInstructionsSqlSnippetsExpression[];
+    /**
+     * Filters, such as `state = 'CA'`
+     */
+    filters?: outputs.GenieAgentDefinitionInstructionsSqlSnippetsFilter[];
+    /**
+     * Aggregated measures, such as `SUM(price * units)`
+     */
+    measures?: outputs.GenieAgentDefinitionInstructionsSqlSnippetsMeasure[];
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippetsExpression {
+    alias?: string;
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: string;
+    id: string;
+    instruction?: string;
+    sql: string;
+    synonyms?: string[];
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippetsFilter {
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: string;
+    id: string;
+    instruction?: string;
+    sql: string;
+    synonyms?: string[];
+}
+
+export interface GenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+    alias?: string;
+    /**
+     * Display name of the Genie Agent. Must be unique within its folder (effective_parent_path): a
+     * create, rename, or move that would collide with an existing Genie Agent's name in the target
+     * folder is rejected with ALREADY_EXISTS.
+     *
+     * The maximum length is 63 characters. Requests with a longer value are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    displayName?: string;
+    id: string;
+    instruction?: string;
+    sql: string;
+    synonyms?: string[];
+}
+
+export interface GenieAgentDefinitionInstructionsTextInstruction {
+    content: string;
+    id: string;
+}
+
+export interface GenieAgentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -6675,17 +7123,28 @@ export interface GetAccountIamDirectGroupMembersV2DirectGroupMember {
      */
     displayName: string;
     /**
-     * (string) - The external ID of the principal in Databricks
+     * (string) - The external ID of the principal in the customer's IdP
      */
     externalId: string;
     /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
+     * (integer) - The internal ID of the group this member belongs to
      */
     groupId: number;
     /**
      * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     membershipSource: string;
+    /**
+     * (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     */
+    name: string;
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: accounts/{account_id}/groups/{group_id}
+     */
+    parent: string;
     /**
      * (integer) - Internal ID of the principal in Databricks
      */
@@ -6724,6 +7183,17 @@ export interface GetAccountIamGroupsV2Group {
      * (string) - Display name of the group
      */
     groupName: string;
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    name: string;
+    /**
+     * The parent resource name of the account whose groups to list.
+     * Format: accounts/{account_id}
+     */
+    parent: string;
 }
 
 export interface GetAccountIamServicePrincipalsV2ServicePrincipal {
@@ -6748,6 +7218,17 @@ export interface GetAccountIamServicePrincipalsV2ServicePrincipal {
      * (string) - ExternalId of the service principal in the customer's IdP
      */
     externalId: string;
+    /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    name: string;
+    /**
+     * The parent resource name of the account whose service principals to list.
+     * Format: accounts/{account_id}
+     */
+    parent: string;
     /**
      * (string) - Internal service principal ID of the service principal in Databricks
      */
@@ -6782,6 +7263,17 @@ export interface GetAccountIamUsersV2User {
      * (UserFullName)
      */
     fullName: outputs.GetAccountIamUsersV2UserFullName;
+    /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    name: string;
+    /**
+     * The parent resource name of the account whose users to list.
+     * Format: accounts/{account_id}
+     */
+    parent: string;
     /**
      * (string) - Internal userId of the user in Databricks
      */
@@ -6821,7 +7313,20 @@ export interface GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment {
      */
     entitlements: string[];
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     */
+    name: string;
+    /**
+     * The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
+     */
+    parent: string;
+    /**
+     * (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      */
     principalId: number;
     /**
@@ -6829,7 +7334,7 @@ export interface GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment {
      */
     principalType: string;
     /**
-     * Required. The workspace ID for which the workspace assignments are being fetched
+     * (integer) - The workspace ID where the principal is assigned
      */
     workspaceId: number;
 }
@@ -6964,7 +7469,8 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforceme
 
 export interface GetAccountNetworkPoliciesItemIngress {
     /**
-     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccess;
     /**
@@ -7314,7 +7820,8 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRul
 
 export interface GetAccountNetworkPoliciesItemIngressDryRun {
     /**
-     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess;
     /**
@@ -9199,7 +9706,8 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 
 export interface GetAccountNetworkPolicyIngress {
     /**
-     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccess;
     /**
@@ -9549,7 +10057,8 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOrigi
 
 export interface GetAccountNetworkPolicyIngressDryRun {
     /**
-     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccess;
     /**
@@ -11690,7 +12199,8 @@ export interface GetAgentKitManagedMemoryEntriesManagedMemoryEntry {
     description: string;
     /**
      * (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      */
     name: string;
     /**
@@ -12167,9 +12677,10 @@ export interface GetAiGatewayMcpServicesProviderConfig {
 
 export interface GetAiGatewayModelProviderServiceConfig {
     /**
-     * (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
-     * is not required and does not restrict routability. When false, only
-     * models listed in `targets` are routable. Defaults to false
+     * (boolean) - When true, allows models from the provider's built-in model catalog in
+     * addition to explicit `targets`. When false, only models listed in `targets`
+     * are routable. Defaults to false. CUSTOM providers have no built-in model
+     * catalog and must leave this false and list their models in `targets`
      */
     allowAllTargets?: boolean;
     /**
@@ -12254,8 +12765,9 @@ export interface GetAiGatewayModelProviderServiceConfig {
      * entry must include at least one `nativeApiTypes` value. When
      * `allowAllTargets` is false, at least one entry is required and model
      * service destinations can reference only listed models. When
-     * `allowAllTargets` is true, any upstream model is routable; entries in
-     * this list provide API-type metadata without restricting other models
+     * `allowAllTargets` is true, models from the provider's built-in model
+     * catalog are also routable. CUSTOM providers must explicitly list their
+     * models here and cannot enable `allowAllTargets`
      */
     targets?: outputs.GetAiGatewayModelProviderServiceConfigTarget[];
 }
@@ -13102,9 +13614,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderService {
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
     /**
-     * (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
-     * is not required and does not restrict routability. When false, only
-     * models listed in `targets` are routable. Defaults to false
+     * (boolean) - When true, allows models from the provider's built-in model catalog in
+     * addition to explicit `targets`. When false, only models listed in `targets`
+     * are routable. Defaults to false. CUSTOM providers have no built-in model
+     * catalog and must leave this false and list their models in `targets`
      */
     allowAllTargets?: boolean;
     /**
@@ -13189,8 +13702,9 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      * entry must include at least one `nativeApiTypes` value. When
      * `allowAllTargets` is false, at least one entry is required and model
      * service destinations can reference only listed models. When
-     * `allowAllTargets` is true, any upstream model is routable; entries in
-     * this list provide API-type metadata without restricting other models
+     * `allowAllTargets` is true, models from the provider's built-in model
+     * catalog are also routable. CUSTOM providers must explicitly list their
+     * models here and cannot enable `allowAllTargets`
      */
     targets?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigTarget[];
 }
@@ -14710,7 +15224,7 @@ export interface GetAiSearchEndpointEndpointStatus {
      */
     message: string;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
 }
@@ -14729,7 +15243,7 @@ export interface GetAiSearchEndpointScalingInfo {
      */
     requestedTargetQps?: number;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
 }
@@ -14870,7 +15384,7 @@ export interface GetAiSearchEndpointsEndpointEndpointStatus {
      */
     message: string;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
 }
@@ -14889,7 +15403,7 @@ export interface GetAiSearchEndpointsEndpointScalingInfo {
      */
     requestedTargetQps?: number;
     /**
-     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
 }
@@ -15457,11 +15971,11 @@ export interface GetAlertsV2Alert {
      */
     createTime: string;
     /**
-     * (string) - Custom description for the alert. support mustache template
+     * (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
      */
     customDescription: string;
     /**
-     * (string) - Custom summary for the alert. support mustache template
+     * (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
      */
     customSummary: string;
     /**
@@ -18761,6 +19275,61 @@ export interface GetDataQualityMonitorAnomalyDetectionConfig {
      * (list of string) - List of fully qualified table names to exclude from anomaly detection
      */
     excludedTableFullNames?: string[];
+    /**
+     * (NotificationSettings) - Field for specifying notification settings
+     */
+    notificationSettings?: outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings;
+}
+
+export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+    /**
+     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     */
+    onFailure?: outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure;
+    /**
+     * (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable;
+}
+
+export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorDataProfilingConfig {
@@ -18829,7 +19398,7 @@ export interface GetDataQualityMonitorDataProfilingConfig {
     /**
      * (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
      */
-    skipBuiltinDashboard?: boolean;
+    skipBuiltinDashboard: boolean;
     /**
      * (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
@@ -18855,7 +19424,7 @@ export interface GetDataQualityMonitorDataProfilingConfig {
      * (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
      * warehouse will be used
      */
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface GetDataQualityMonitorDataProfilingConfigCustomMetric {
@@ -18914,9 +19483,46 @@ export interface GetDataQualityMonitorDataProfilingConfigNotificationSettings {
      * (NotificationDestination) - Destinations to send notifications on failure/timeout
      */
     onFailure?: outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
+    /**
+     * (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable;
 }
 
 export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
     /**
      * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      */
@@ -18990,6 +19596,61 @@ export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfig {
      * (list of string) - List of fully qualified table names to exclude from anomaly detection
      */
     excludedTableFullNames?: string[];
+    /**
+     * (NotificationSettings) - Field for specifying notification settings
+     */
+    notificationSettings?: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettings;
+}
+
+export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettings {
+    /**
+     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     */
+    onFailure?: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailure;
+    /**
+     * (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable;
+}
+
+export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
@@ -19058,7 +19719,7 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
     /**
      * (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
      */
-    skipBuiltinDashboard?: boolean;
+    skipBuiltinDashboard: boolean;
     /**
      * (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
@@ -19084,7 +19745,7 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
      * (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
      * warehouse will be used
      */
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetric {
@@ -19143,9 +19804,46 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSet
      * (NotificationDestination) - Destinations to send notifications on failure/timeout
      */
     onFailure?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure;
+    /**
+     * (NotificationDestination) - Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+     * recipient gets one notification per important unhealthy table. Only supported on schema
+     * monitors, via `anomalyDetectionConfig`
+     */
+    onUnhealthyTable?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable;
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+    /**
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationIds?: string[];
+    /**
+     * (list of integer) - The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     */
+    destinationUserIds?: number[];
     /**
      * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      */
@@ -21398,14 +22096,27 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxCo
      */
     input: string;
     /**
-     * (number) - The maximum relative standard deviation allowed (default defined by Spark)
+     * (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     */
+    relativeError?: number;
+    /**
+     * (number) - The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don't have relative_error, and a request may only send that value
      */
     relativeSd?: number;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
     /**
-     * (integer) - The accuracy parameter (higher is more accurate but slower)
+     * (integer) - The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don't have relative_error, and a request may only send
+     * that value
      */
     accuracy?: number;
     /**
@@ -21416,6 +22127,14 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxPe
      * (number) - The percentile value to compute (between 0 and 1)
      */
     percentile: number;
+    /**
+     * (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     */
+    relativeError?: number;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionAvg {
@@ -21550,7 +22269,8 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: string;
     /**
@@ -21898,8 +22618,8 @@ export interface GetFeatureEngineeringFeatureSourceSdpSource {
     /**
      * (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-     * these tables, and the run fails if it doesn't. At most 100 tables
+     * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+     * tables. At most 100 tables
      */
     inputTables?: string[];
     /**
@@ -21974,7 +22694,8 @@ export interface GetFeatureEngineeringFeatureTimeWindow {
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: string;
     /**
@@ -22269,14 +22990,27 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      */
     input: string;
     /**
-     * (number) - The maximum relative standard deviation allowed (default defined by Spark)
+     * (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     */
+    relativeError?: number;
+    /**
+     * (number) - The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don't have relative_error, and a request may only send that value
      */
     relativeSd?: number;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile {
     /**
-     * (integer) - The accuracy parameter (higher is more accurate but slower)
+     * (integer) - The accuracy parameter (higher is more accurate but slower).
+     * Deprecated: use relative_error. When relativeError is set, reads return ceil(1 /
+     * relative_error) here for clients that don't have relative_error, and a request may only send
+     * that value
      */
     accuracy?: number;
     /**
@@ -22287,6 +23021,14 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      * (number) - The percentile value to compute (between 0 and 1)
      */
     percentile: number;
+    /**
+     * (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     */
+    relativeError?: number;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionAvg {
@@ -22421,7 +23163,8 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: string;
     /**
@@ -22769,8 +23512,8 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceSdpSource {
     /**
      * (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-     * when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-     * these tables, and the run fails if it doesn't. At most 100 tables
+     * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+     * tables. At most 100 tables
      */
     inputTables?: string[];
     /**
@@ -22845,7 +23588,8 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
      * eligible source data exists.
-     * Not currently supported for sawtooth windows or for Features with a stream source
+     * For sawtooth windows, startTime must not be later than the time the Feature is created.
+     * Not supported for rolling windows on Features with a stream source
      */
     startTime?: string;
     /**
@@ -23221,6 +23965,917 @@ export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
 }
 
 export interface GetFunctionsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetGenieAgentDefinition {
+    /**
+     * (GenieAgentBenchmarks) - Benchmarks for evaluating the quality of the Genie Agent's answers
+     */
+    benchmarks?: outputs.GetGenieAgentDefinitionBenchmarks;
+    /**
+     * (GenieAgentConfig) - General settings of the Genie Agent
+     */
+    config?: outputs.GetGenieAgentDefinitionConfig;
+    /**
+     * (GenieAgentDataSources) - The data the Genie Agent can access
+     */
+    dataSources?: outputs.GetGenieAgentDefinitionDataSources;
+    /**
+     * (GenieAgentInstructions) - Instructions and SQL that guide how the Genie Agent answers questions
+     */
+    instructions?: outputs.GetGenieAgentDefinitionInstructions;
+}
+
+export interface GetGenieAgentDefinitionBenchmarks {
+    /**
+     * (list of GenieAgentBenchmarkQuestion) - The benchmark questions, sorted by `id` in descending order
+     */
+    questions?: outputs.GetGenieAgentDefinitionBenchmarksQuestion[];
+}
+
+export interface GetGenieAgentDefinitionBenchmarksQuestion {
+    /**
+     * (list of GenieAgentBenchmarkAnswer) - The expected answer. At most one answer is supported; omit it when the question has no
+     * expected answer
+     */
+    answers?: outputs.GetGenieAgentDefinitionBenchmarksQuestionAnswer[];
+    /**
+     * (string) - Notes on how to evaluate answers to the question
+     */
+    evaluationNote?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - The text of the question
+     */
+    question: string;
+}
+
+export interface GetGenieAgentDefinitionBenchmarksQuestionAnswer {
+    /**
+     * (string) - The text of the instruction
+     */
+    content: string;
+    /**
+     * (string) - The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+     */
+    format: string;
+}
+
+export interface GetGenieAgentDefinitionConfig {
+    /**
+     * (list of GenieAgentSampleQuestion) - Sample questions shown to users of the Genie Agent, sorted by `id`
+     */
+    sampleQuestions?: outputs.GetGenieAgentDefinitionConfigSampleQuestion[];
+}
+
+export interface GetGenieAgentDefinitionConfigSampleQuestion {
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - The text of the question
+     */
+    question: string;
+}
+
+export interface GetGenieAgentDefinitionDataSources {
+    /**
+     * (list of GenieAgentMcpConnection) - Unity Catalog MCP connections, sorted by `mcpConnection`
+     */
+    mcpConnections?: outputs.GetGenieAgentDefinitionDataSourcesMcpConnection[];
+    /**
+     * (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+     */
+    tables?: outputs.GetGenieAgentDefinitionDataSourcesTable[];
+    /**
+     * (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+     */
+    volumes?: outputs.GetGenieAgentDefinitionDataSourcesVolume[];
+}
+
+export interface GetGenieAgentDefinitionDataSourcesMcpConnection {
+    /**
+     * (string) - The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+     */
+    mcpConnection: string;
+}
+
+export interface GetGenieAgentDefinitionDataSourcesTable {
+    /**
+     * (list of GenieAgentColumnConfig) - Column settings for the table, sorted by `column`
+     */
+    columnConfigs?: outputs.GetGenieAgentDefinitionDataSourcesTableColumnConfig[];
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentDefinitionDataSourcesTableColumnConfig {
+    /**
+     * (string) - The name of the column. Must exist in the table or metric view
+     */
+    column: string;
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (boolean) - Whether the Genie Agent indexes the column's values to match them in questions
+     */
+    enableEntityMatching?: boolean;
+    /**
+     * (boolean) - Whether the Genie Agent samples example values from the column to learn its format
+     */
+    enableFormatAssistance?: boolean;
+    /**
+     * (boolean) - Whether the column is hidden from the Genie Agent
+     */
+    exclude?: boolean;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentDefinitionDataSourcesVolume {
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+     * within the volume
+     */
+    path: string;
+}
+
+export interface GetGenieAgentDefinitionInstructions {
+    /**
+     * (list of GenieAgentExampleQuestionSql) - Example questions paired with the SQL that answers them
+     */
+    exampleQuestionSqls?: outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSql[];
+    /**
+     * (list of GenieAgentJoinSpec) - Predefined joins between tables or metric views
+     */
+    joinSpecs?: outputs.GetGenieAgentDefinitionInstructionsJoinSpec[];
+    /**
+     * (list of GenieAgentSqlFunction) - Unity Catalog SQL functions the generated SQL may call
+     */
+    sqlFunctions?: outputs.GetGenieAgentDefinitionInstructionsSqlFunction[];
+    /**
+     * (GenieAgentSqlSnippets) - Reusable SQL filters, expressions, and measures
+     */
+    sqlSnippets?: outputs.GetGenieAgentDefinitionInstructionsSqlSnippets;
+    /**
+     * (list of GenieAgentTextInstruction) - General text instructions. At most one text instruction is supported
+     */
+    textInstructions?: outputs.GetGenieAgentDefinitionInstructionsTextInstruction[];
+}
+
+export interface GetGenieAgentDefinitionInstructionsExampleQuestionSql {
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (list of GenieAgentSqlParameter) - Parameters used in the SQL, in the order given
+     */
+    parameters?: outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameter[];
+    /**
+     * (string) - The text of the question
+     */
+    question: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (string) - Guidance on when to use this example
+     */
+    usageGuidance?: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameter {
+    /**
+     * (GenieAgentSqlParameterDefaultValue) - The parameter's default value
+     */
+    defaultValue?: outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue;
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * The resource name of the Genie Agent, in the form `agents/{genie_agent_id}`. Ignored on create
+     */
+    name: string;
+    /**
+     * (string) - The parameter's data type, for example `STRING` or `INTEGER`
+     */
+    typeHint?: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+    /**
+     * (GenieAgentSqlParameterDefaultRange) - The default range
+     */
+    valueRange?: outputs.GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange;
+    /**
+     * (list of string) - The default values. A single default is a one-element list
+     */
+    values?: string[];
+}
+
+export interface GetGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+    /**
+     * (string) - The upper end of the range
+     */
+    max?: string;
+    /**
+     * (string) - The lower end of the range
+     */
+    min?: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsJoinSpec {
+    /**
+     * (string) - Description of the join's purpose
+     */
+    comment?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (GenieAgentJoinSource) - The left side of the join
+     */
+    left: outputs.GetGenieAgentDefinitionInstructionsJoinSpecLeft;
+    /**
+     * (string) - How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+     */
+    relationshipType?: string;
+    /**
+     * (GenieAgentJoinSource) - The right side of the join
+     */
+    right: outputs.GetGenieAgentDefinitionInstructionsJoinSpecRight;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsJoinSpecLeft {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsJoinSpecRight {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsSqlFunction {
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentDefinitionInstructionsSqlSnippets {
+    /**
+     * (list of GenieAgentSqlExpression) - Non-aggregated expressions (dimensions), such as `price * units`
+     */
+    expressions?: outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsExpression[];
+    /**
+     * (list of GenieAgentSqlFilter) - Filters, such as `state = 'CA'`
+     */
+    filters?: outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsFilter[];
+    /**
+     * (list of GenieAgentSqlMeasure) - Aggregated measures, such as `SUM(price * units)`
+     */
+    measures?: outputs.GetGenieAgentDefinitionInstructionsSqlSnippetsMeasure[];
+}
+
+export interface GetGenieAgentDefinitionInstructionsSqlSnippetsExpression {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentDefinitionInstructionsSqlSnippetsFilter {
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentDefinitionInstructionsTextInstruction {
+    /**
+     * (string) - The text of the instruction
+     */
+    content: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+}
+
+export interface GetGenieAgentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetGenieAgentsGenieAgent {
+    /**
+     * (string) - Time when the Genie Agent was created
+     */
+    createTime: string;
+    /**
+     * (GenieAgentDefinition) - The definition of the Genie Agent: its sample questions, data sources, instructions, and
+     * benchmarks. Must set at least one field. Returned on get and on list with
+     * `GENIE_AGENT_VIEW_FULL`. Create and update return a submitted definition unchanged; one the
+     * service would store differently, or with a column config the workspace can't keep (unknown
+     * column, or a display name while those are disabled), is rejected with INVALID_PARAMETER_VALUE
+     */
+    definition: outputs.GetGenieAgentsGenieAgentDefinition;
+    /**
+     * (string) - Description of the volume
+     */
+    description: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName: string;
+    /**
+     * (string) - The workspace folder that contains the Genie Agent
+     */
+    effectiveParentPath: string;
+    /**
+     * (string) - Weak etag of `definition` only; metadata changes do not affect it. Send it on update or
+     * delete to detect concurrent definition changes
+     */
+    etag: string;
+    /**
+     * (string) - The name of the parameter in the SQL
+     */
+    name: string;
+    /**
+     * (string) - The workspace folder to create the Genie Agent in. If omitted, the caller's home folder is
+     * used. Returned exactly as submitted; see `effectiveParentPath` for the current folder. On
+     * update, setting it moves the Genie Agent and clearing it does not. At most 4,096 characters
+     */
+    parentPath: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetGenieAgentsGenieAgentProviderConfig;
+    /**
+     * (string) - Time when the Genie Agent was last modified
+     */
+    updateTime: string;
+    /**
+     * (string) - Warehouse associated with the Genie Agent
+     */
+    warehouseId: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinition {
+    /**
+     * (GenieAgentBenchmarks) - Benchmarks for evaluating the quality of the Genie Agent's answers
+     */
+    benchmarks?: outputs.GetGenieAgentsGenieAgentDefinitionBenchmarks;
+    /**
+     * (GenieAgentConfig) - General settings of the Genie Agent
+     */
+    config?: outputs.GetGenieAgentsGenieAgentDefinitionConfig;
+    /**
+     * (GenieAgentDataSources) - The data the Genie Agent can access
+     */
+    dataSources?: outputs.GetGenieAgentsGenieAgentDefinitionDataSources;
+    /**
+     * (GenieAgentInstructions) - Instructions and SQL that guide how the Genie Agent answers questions
+     */
+    instructions?: outputs.GetGenieAgentsGenieAgentDefinitionInstructions;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionBenchmarks {
+    /**
+     * (list of GenieAgentBenchmarkQuestion) - The benchmark questions, sorted by `id` in descending order
+     */
+    questions?: outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksQuestion[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionBenchmarksQuestion {
+    /**
+     * (list of GenieAgentBenchmarkAnswer) - The expected answer. At most one answer is supported; omit it when the question has no
+     * expected answer
+     */
+    answers?: outputs.GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswer[];
+    /**
+     * (string) - Notes on how to evaluate answers to the question
+     */
+    evaluationNote?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - The text of the question
+     */
+    question: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionBenchmarksQuestionAnswer {
+    /**
+     * (string) - The text of the instruction
+     */
+    content: string;
+    /**
+     * (string) - The format of the answer. Possible values are: `GENIE_AGENT_BENCHMARK_ANSWER_FORMAT_SQL`
+     */
+    format: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionConfig {
+    /**
+     * (list of GenieAgentSampleQuestion) - Sample questions shown to users of the Genie Agent, sorted by `id`
+     */
+    sampleQuestions?: outputs.GetGenieAgentsGenieAgentDefinitionConfigSampleQuestion[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionConfigSampleQuestion {
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - The text of the question
+     */
+    question: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionDataSources {
+    /**
+     * (list of GenieAgentMcpConnection) - Unity Catalog MCP connections, sorted by `mcpConnection`
+     */
+    mcpConnections?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnection[];
+    /**
+     * (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+     */
+    tables?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTable[];
+    /**
+     * (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+     */
+    volumes?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesVolume[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnection {
+    /**
+     * (string) - The name of the Unity Catalog connection, for example `system.ai.google_calendar`
+     */
+    mcpConnection: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionDataSourcesTable {
+    /**
+     * (list of GenieAgentColumnConfig) - Column settings for the table, sorted by `column`
+     */
+    columnConfigs?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfig[];
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionDataSourcesTableColumnConfig {
+    /**
+     * (string) - The name of the column. Must exist in the table or metric view
+     */
+    column: string;
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (boolean) - Whether the Genie Agent indexes the column's values to match them in questions
+     */
+    enableEntityMatching?: boolean;
+    /**
+     * (boolean) - Whether the Genie Agent samples example values from the column to learn its format
+     */
+    enableFormatAssistance?: boolean;
+    /**
+     * (boolean) - Whether the column is hidden from the Genie Agent
+     */
+    exclude?: boolean;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionDataSourcesVolume {
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - The volume path, for example `/Volumes/catalog/schema/volume`. May name a directory or file
+     * within the volume
+     */
+    path: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructions {
+    /**
+     * (list of GenieAgentExampleQuestionSql) - Example questions paired with the SQL that answers them
+     */
+    exampleQuestionSqls?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSql[];
+    /**
+     * (list of GenieAgentJoinSpec) - Predefined joins between tables or metric views
+     */
+    joinSpecs?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpec[];
+    /**
+     * (list of GenieAgentSqlFunction) - Unity Catalog SQL functions the generated SQL may call
+     */
+    sqlFunctions?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunction[];
+    /**
+     * (GenieAgentSqlSnippets) - Reusable SQL filters, expressions, and measures
+     */
+    sqlSnippets?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippets;
+    /**
+     * (list of GenieAgentTextInstruction) - General text instructions. At most one text instruction is supported
+     */
+    textInstructions?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsTextInstruction[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSql {
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (list of GenieAgentSqlParameter) - Parameters used in the SQL, in the order given
+     */
+    parameters?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameter[];
+    /**
+     * (string) - The text of the question
+     */
+    question: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (string) - Guidance on when to use this example
+     */
+    usageGuidance?: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameter {
+    /**
+     * (GenieAgentSqlParameterDefaultValue) - The parameter's default value
+     */
+    defaultValue?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue;
+    /**
+     * (string) - Description of the volume
+     */
+    description?: string;
+    /**
+     * (string) - The name of the parameter in the SQL
+     */
+    name: string;
+    /**
+     * (string) - The parameter's data type, for example `STRING` or `INTEGER`
+     */
+    typeHint?: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValue {
+    /**
+     * (GenieAgentSqlParameterDefaultRange) - The default range
+     */
+    valueRange?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange;
+    /**
+     * (list of string) - The default values. A single default is a one-element list
+     */
+    values?: string[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsExampleQuestionSqlParameterDefaultValueValueRange {
+    /**
+     * (string) - The upper end of the range
+     */
+    max?: string;
+    /**
+     * (string) - The lower end of the range
+     */
+    min?: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpec {
+    /**
+     * (string) - Description of the join's purpose
+     */
+    comment?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (GenieAgentJoinSource) - The left side of the join
+     */
+    left: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeft;
+    /**
+     * (string) - How the rows of the two sides relate. Possible values are: `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_MANY_TO_ONE`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_MANY`, `GENIE_AGENT_JOIN_RELATIONSHIP_TYPE_ONE_TO_ONE`
+     */
+    relationshipType?: string;
+    /**
+     * (GenieAgentJoinSource) - The right side of the join
+     */
+    right: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRight;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecLeft {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsJoinSpecRight {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsSqlFunction {
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - The full three-level name, for example `catalog.schema.table`
+     */
+    identifier: string;
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippets {
+    /**
+     * (list of GenieAgentSqlExpression) - Non-aggregated expressions (dimensions), such as `price * units`
+     */
+    expressions?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpression[];
+    /**
+     * (list of GenieAgentSqlFilter) - Filters, such as `state = 'CA'`
+     */
+    filters?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilter[];
+    /**
+     * (list of GenieAgentSqlMeasure) - Aggregated measures, such as `SUM(price * units)`
+     */
+    measures?: outputs.GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasure[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsExpression {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsFilter {
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsSqlSnippetsMeasure {
+    /**
+     * (string) - The alias the Genie Agent uses for the measure in generated SQL
+     */
+    alias?: string;
+    /**
+     * (string) - Display name of the measure
+     */
+    displayName?: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+    /**
+     * (string) - Guidance on when to use the measure
+     */
+    instruction?: string;
+    /**
+     * (string) - The SQL of the measure
+     */
+    sql: string;
+    /**
+     * (list of string) - Synonyms for the measure
+     */
+    synonyms?: string[];
+}
+
+export interface GetGenieAgentsGenieAgentDefinitionInstructionsTextInstruction {
+    /**
+     * (string) - The text of the instruction
+     */
+    content: string;
+    /**
+     * (string) - Identifier of the instruction: 32 lowercase hexadecimal characters, unique within the Genie
+     * Agent
+     */
+    id: string;
+}
+
+export interface GetGenieAgentsGenieAgentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetGenieAgentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
@@ -25882,7 +27537,7 @@ export interface GetPolicyInfosPolicy {
     exceptPrincipals: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create and optional on update. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
     /**
@@ -28831,7 +30486,7 @@ export interface GetRfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: string;
     /**
      * (string) - Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -28855,9 +30510,17 @@ export interface GetRfaAccessRequestDestinationsSecurable {
     providerShare?: string;
     /**
      * (string) - Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
+}
+
+export interface GetSandboxMetadata {
+    /**
+     * (object) - Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+     * 1 and 512 characters, and values must not exceed 256 characters
+     */
+    customTags?: {[key: string]: string};
 }
 
 export interface GetSandboxProviderConfig {
@@ -28887,9 +30550,9 @@ export interface GetSandboxSpecCompute {
 
 export interface GetSandboxSpecEnvironment {
     /**
-     * (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * (string) - The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      */
     imageUri?: string;
 }
@@ -28918,6 +30581,10 @@ export interface GetSandboxesSandbox {
      */
     displayName: string;
     /**
+     * (SandboxMetadata) - Metadata associated with the sandbox
+     */
+    metadata: outputs.GetSandboxesSandboxMetadata;
+    /**
      * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
      * `sandboxId`; any value supplied in a create or update request body is ignored
      */
@@ -28938,6 +30605,14 @@ export interface GetSandboxesSandbox {
      * (string) - Output only. The last update time of the sandbox metadata and spec
      */
     updateTime: string;
+}
+
+export interface GetSandboxesSandboxMetadata {
+    /**
+     * (object) - Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+     * 1 and 512 characters, and values must not exceed 256 characters
+     */
+    customTags?: {[key: string]: string};
 }
 
 export interface GetSandboxesSandboxProviderConfig {
@@ -28967,9 +30642,9 @@ export interface GetSandboxesSandboxSpecCompute {
 
 export interface GetSandboxesSandboxSpecEnvironment {
     /**
-     * (string) - A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * (string) - The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      */
     imageUri?: string;
 }
@@ -30689,17 +32364,28 @@ export interface GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
      */
     displayName: string;
     /**
-     * (string) - The external ID of the principal in Databricks
+     * (string) - The external ID of the principal in the customer's IdP
      */
     externalId: string;
     /**
-     * Required. Internal ID of the group in Databricks whose direct members are being listed
+     * (integer) - The internal ID of the group this member belongs to
      */
     groupId: number;
     /**
      * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     membershipSource: string;
+    /**
+     * (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     */
+    name: string;
+    /**
+     * The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     */
+    parent: string;
     /**
      * (integer) - Internal ID of the principal in Databricks
      */
@@ -30785,6 +32471,17 @@ export interface GetWorkspaceIamGroupsV2Group {
      */
     groupName: string;
     /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    name: string;
+    /**
+     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: outputs.GetWorkspaceIamGroupsV2GroupProviderConfig;
@@ -30840,6 +32537,17 @@ export interface GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
      * (string) - ExternalId of the service principal in the customer's IdP
      */
     externalId: string;
+    /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    name: string;
+    /**
+     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -30899,6 +32607,17 @@ export interface GetWorkspaceIamUsersV2User {
      * (UserFullName)
      */
     fullName: outputs.GetWorkspaceIamUsersV2UserFullName;
+    /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    name: string;
+    /**
+     * The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+     * defaults to the account of the calling workspace, and any other account is rejected
+     */
+    parent: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -30963,7 +32682,21 @@ export interface GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
      */
     entitlements: string[];
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
+     * - Workspace-scoped: workspace-assignments/{principal_id}
+     */
+    name: string;
+    /**
+     * The resource name of the workspace to list assignments of,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
+     * and any other workspace is rejected
+     */
+    parent: string;
+    /**
+     * (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      */
     principalId: number;
     /**
@@ -31718,6 +33451,7 @@ export interface JobJobCluster {
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
     newCluster?: outputs.JobJobClusterNewCluster;
+    serverlessCompute?: outputs.JobJobClusterServerlessCompute;
     serverlessComputeId?: string;
 }
 
@@ -31976,6 +33710,10 @@ export interface JobJobClusterNewClusterWorkloadType {
 export interface JobJobClusterNewClusterWorkloadTypeClients {
     jobs?: boolean;
     notebooks?: boolean;
+}
+
+export interface JobJobClusterServerlessCompute {
+    policyId?: string;
 }
 
 export interface JobLibrary {
@@ -32459,6 +34197,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    aiFunctionTask?: outputs.JobTaskAiFunctionTask;
     aiRuntimeTask?: outputs.JobTaskAiRuntimeTask;
     alertTask?: outputs.JobTaskAlertTask;
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
@@ -32563,6 +34302,71 @@ export interface JobTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
+}
+
+export interface JobTaskAiFunctionTask {
+    aiClassify?: outputs.JobTaskAiFunctionTaskAiClassify;
+    aiExtract?: outputs.JobTaskAiFunctionTaskAiExtract;
+    aiParseDocument?: outputs.JobTaskAiFunctionTaskAiParseDocument;
+    deltaTable?: outputs.JobTaskAiFunctionTaskDeltaTable;
+    output: outputs.JobTaskAiFunctionTaskOutput;
+    volume?: outputs.JobTaskAiFunctionTaskVolume;
+}
+
+export interface JobTaskAiFunctionTaskAiClassify {
+    enableConfidenceScores?: boolean;
+    enableRationales?: boolean;
+    inlineLabels?: outputs.JobTaskAiFunctionTaskAiClassifyInlineLabels;
+    instructions?: string;
+    multilabel?: boolean;
+    version: string;
+}
+
+export interface JobTaskAiFunctionTaskAiClassifyInlineLabels {
+    labels: outputs.JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel[];
+}
+
+export interface JobTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: string;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name: string;
+}
+
+export interface JobTaskAiFunctionTaskAiExtract {
+    enableCitations?: boolean;
+    enableConfidenceScores?: boolean;
+    instructions?: string;
+    mode?: string;
+    schema?: string;
+    version: string;
+}
+
+export interface JobTaskAiFunctionTaskAiParseDocument {
+    descriptionElementTypes?: string[];
+    imageOutputPath?: string;
+    pageRange?: string;
+    version: string;
+}
+
+export interface JobTaskAiFunctionTaskDeltaTable {
+    inputColumn: string;
+    mergeKeyColumns?: string[];
+    tableName: string;
+}
+
+export interface JobTaskAiFunctionTaskOutput {
+    catalog?: string;
+    schema?: string;
+    table?: string;
+}
+
+export interface JobTaskAiFunctionTaskVolume {
+    volumePath: string;
 }
 
 export interface JobTaskAiRuntimeTask {
@@ -32839,6 +34643,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    aiFunctionTask?: outputs.JobTaskForEachTaskTaskAiFunctionTask;
     aiRuntimeTask?: outputs.JobTaskForEachTaskTaskAiRuntimeTask;
     alertTask?: outputs.JobTaskForEachTaskTaskAlertTask;
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
@@ -32942,6 +34747,71 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTask {
+    aiClassify?: outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassify;
+    aiExtract?: outputs.JobTaskForEachTaskTaskAiFunctionTaskAiExtract;
+    aiParseDocument?: outputs.JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument;
+    deltaTable?: outputs.JobTaskForEachTaskTaskAiFunctionTaskDeltaTable;
+    output: outputs.JobTaskForEachTaskTaskAiFunctionTaskOutput;
+    volume?: outputs.JobTaskForEachTaskTaskAiFunctionTaskVolume;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiClassify {
+    enableConfidenceScores?: boolean;
+    enableRationales?: boolean;
+    inlineLabels?: outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels;
+    instructions?: string;
+    multilabel?: boolean;
+    version: string;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabels {
+    labels: outputs.JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel[];
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiClassifyInlineLabelsLabel {
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: string;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name: string;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiExtract {
+    enableCitations?: boolean;
+    enableConfidenceScores?: boolean;
+    instructions?: string;
+    mode?: string;
+    schema?: string;
+    version: string;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskAiParseDocument {
+    descriptionElementTypes?: string[];
+    imageOutputPath?: string;
+    pageRange?: string;
+    version: string;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskDeltaTable {
+    inputColumn: string;
+    mergeKeyColumns?: string[];
+    tableName: string;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskOutput {
+    catalog?: string;
+    schema?: string;
+    table?: string;
+}
+
+export interface JobTaskForEachTaskTaskAiFunctionTaskVolume {
+    volumePath: string;
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
@@ -34771,6 +36641,7 @@ export interface JobTrigger {
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
     fileArrival?: outputs.JobTriggerFileArrival;
+    jobCompletion?: outputs.JobTriggerJobCompletion;
     model?: outputs.JobTriggerModel;
     pauseStatus?: string;
     /**
@@ -34814,6 +36685,22 @@ export interface JobTriggerFileArrival {
      */
     url: string;
     waitAfterLastChangeSeconds?: number;
+}
+
+export interface JobTriggerJobCompletion {
+    ifStatus?: string;
+    jobs: outputs.JobTriggerJobCompletionJob[];
+}
+
+export interface JobTriggerJobCompletionJob {
+    /**
+     * (String) ID of the job
+     */
+    jobId: string;
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobTriggerModel {
@@ -36324,11 +38211,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -36395,11 +38282,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.140.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -37056,6 +38943,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     linkedinAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions;
     marketoOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
+    onedriveOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
     rabbitmqOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions;
     redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions;
@@ -37284,6 +39172,35 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsO
     timeIncrement?: string;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptions {
+    entityType?: string;
+    fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: string;
+    fileFilters?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter[];
+    format?: string;
+    formatOptions?: {[key: string]: string};
+    ignoreCorruptFiles?: boolean;
+    inferColumnTypes?: boolean;
+    readerCaseSensitive?: boolean;
+    rescuedDataColumn?: string;
+    schemaEvolutionMode?: string;
+    schemaHints?: string;
+    singleVariantColumn?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: string;
+    modifiedBefore?: string;
+    pathFilter?: string;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions {
     attachmentMode?: string;
     bodyFormat?: string;
@@ -37491,6 +39408,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     linkedinAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions;
     marketoOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
+    onedriveOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
     rabbitmqOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions;
     redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions;
@@ -37717,6 +39635,35 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOp
     breakdowns?: string[];
     level?: string;
     timeIncrement?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptions {
+    entityType?: string;
+    fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: string;
+    fileFilters?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter[];
+    format?: string;
+    formatOptions?: {[key: string]: string};
+    ignoreCorruptFiles?: boolean;
+    inferColumnTypes?: boolean;
+    readerCaseSensitive?: boolean;
+    rescuedDataColumn?: string;
+    schemaEvolutionMode?: string;
+    schemaHints?: string;
+    singleVariantColumn?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOnedriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: string;
+    modifiedBefore?: string;
+    pathFilter?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions {
@@ -39605,7 +41552,7 @@ export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: string;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -39630,9 +41577,17 @@ export interface RfaAccessRequestDestinationsSecurable {
     providerShare?: string;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `AGENT_SERVICE`, `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FEATURE`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `SKILL`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
+}
+
+export interface SandboxMetadata {
+    /**
+     * Key-value tags associated with the sandbox. Supports up to 54 tags. Keys must be between
+     * 1 and 512 characters, and values must not exceed 256 characters
+     */
+    customTags?: {[key: string]: string};
 }
 
 export interface SandboxProviderConfig {
@@ -39662,9 +41617,9 @@ export interface SandboxSpecCompute {
 
 export interface SandboxSpecEnvironment {
     /**
-     * A Unity Catalog container artifact (e.g. `catalog.schema.folder.image:tag`) to run as the
-     * sandbox environment. When set, this image is used as the environment instead of resolving a
-     * managed image from `environmentVersion`
+     * The Unity Catalog container image to use for the sandbox environment
+     * (for example, `catalog.schema.folder.image:tag`). See
+     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
      */
     imageUri?: string;
 }

@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? RequestedTargetQps { get; set; }
 
         /// <summary>
-        /// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+        /// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

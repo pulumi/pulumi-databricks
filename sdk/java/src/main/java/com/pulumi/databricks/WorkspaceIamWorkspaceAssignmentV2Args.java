@@ -40,14 +40,18 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
     }
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks
+     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks
+     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+     * created and cannot be changed afterwards; to assign a different principal, create a new
+     * assignment
      * 
      */
     public Output<String> principalId() {
@@ -152,7 +156,9 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+         * created and cannot be changed afterwards; to assign a different principal, create a new
+         * assignment
          * 
          * @return builder
          * 
@@ -163,7 +169,9 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks
+         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
+         * created and cannot be changed afterwards; to assign a different principal, create a new
+         * assignment
          * 
          * @return builder
          * 

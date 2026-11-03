@@ -282,8 +282,9 @@ type Budget struct {
 	BudgetConfigurationId pulumi.StringOutput `pulumi:"budgetConfigurationId"`
 	CreateTime            pulumi.IntOutput    `pulumi:"createTime"`
 	// Name of the budget in Databricks Account.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	Filter      BudgetFilterPtrOutput  `pulumi:"filter"`
+	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	Filter               BudgetFilterPtrOutput  `pulumi:"filter"`
+	IncludeExternalSpend pulumi.BoolPtrOutput   `pulumi:"includeExternalSpend"`
 	// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	UpdateTime   pulumi.IntOutput    `pulumi:"updateTime"`
@@ -326,8 +327,9 @@ type budgetState struct {
 	BudgetConfigurationId *string `pulumi:"budgetConfigurationId"`
 	CreateTime            *int    `pulumi:"createTime"`
 	// Name of the budget in Databricks Account.
-	DisplayName *string       `pulumi:"displayName"`
-	Filter      *BudgetFilter `pulumi:"filter"`
+	DisplayName          *string       `pulumi:"displayName"`
+	Filter               *BudgetFilter `pulumi:"filter"`
+	IncludeExternalSpend *bool         `pulumi:"includeExternalSpend"`
 	// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
 	ResourceType *string `pulumi:"resourceType"`
 	UpdateTime   *int    `pulumi:"updateTime"`
@@ -341,8 +343,9 @@ type BudgetState struct {
 	BudgetConfigurationId pulumi.StringPtrInput
 	CreateTime            pulumi.IntPtrInput
 	// Name of the budget in Databricks Account.
-	DisplayName pulumi.StringPtrInput
-	Filter      BudgetFilterPtrInput
+	DisplayName          pulumi.StringPtrInput
+	Filter               BudgetFilterPtrInput
+	IncludeExternalSpend pulumi.BoolPtrInput
 	// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
 	ResourceType pulumi.StringPtrInput
 	UpdateTime   pulumi.IntPtrInput
@@ -360,8 +363,9 @@ type budgetArgs struct {
 	BudgetConfigurationId *string `pulumi:"budgetConfigurationId"`
 	CreateTime            *int    `pulumi:"createTime"`
 	// Name of the budget in Databricks Account.
-	DisplayName *string       `pulumi:"displayName"`
-	Filter      *BudgetFilter `pulumi:"filter"`
+	DisplayName          *string       `pulumi:"displayName"`
+	Filter               *BudgetFilter `pulumi:"filter"`
+	IncludeExternalSpend *bool         `pulumi:"includeExternalSpend"`
 	// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
 	ResourceType *string `pulumi:"resourceType"`
 	UpdateTime   *int    `pulumi:"updateTime"`
@@ -376,8 +380,9 @@ type BudgetArgs struct {
 	BudgetConfigurationId pulumi.StringPtrInput
 	CreateTime            pulumi.IntPtrInput
 	// Name of the budget in Databricks Account.
-	DisplayName pulumi.StringPtrInput
-	Filter      BudgetFilterPtrInput
+	DisplayName          pulumi.StringPtrInput
+	Filter               BudgetFilterPtrInput
+	IncludeExternalSpend pulumi.BoolPtrInput
 	// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
 	ResourceType pulumi.StringPtrInput
 	UpdateTime   pulumi.IntPtrInput
@@ -495,6 +500,10 @@ func (o BudgetOutput) DisplayName() pulumi.StringPtrOutput {
 
 func (o BudgetOutput) Filter() BudgetFilterPtrOutput {
 	return o.ApplyT(func(v *Budget) BudgetFilterPtrOutput { return v.Filter }).(BudgetFilterPtrOutput)
+}
+
+func (o BudgetOutput) IncludeExternalSpend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Budget) pulumi.BoolPtrOutput { return v.IncludeExternalSpend }).(pulumi.BoolPtrOutput)
 }
 
 // The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)

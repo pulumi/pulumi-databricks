@@ -183,8 +183,7 @@ namespace Pulumi.Databricks
         public readonly string Name;
         public readonly Outputs.GetPostgresSyncedTableProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        /// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        /// (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc
         /// </summary>
         public readonly Outputs.GetPostgresSyncedTableSpecResult Spec;
         /// <summary>

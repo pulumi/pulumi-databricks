@@ -73,9 +73,9 @@ type LookupAlertV2Args struct {
 type LookupAlertV2Result struct {
 	// (string) - The timestamp indicating when the alert was created
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Custom description for the alert. support mustache template
+	// (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription string `pulumi:"customDescription"`
-	// (string) - Custom summary for the alert. support mustache template
+	// (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
 	CustomSummary string `pulumi:"customSummary"`
 	// (string) - The format used to interpret the `customSummary` and `customDescription` templates.
 	CustomTemplateFormat string `pulumi:"customTemplateFormat"`
@@ -155,12 +155,12 @@ func (o LookupAlertV2ResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Custom description for the alert. support mustache template
+// (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
 func (o LookupAlertV2ResultOutput) CustomDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CustomDescription }).(pulumi.StringOutput)
 }
 
-// (string) - Custom summary for the alert. support mustache template
+// (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
 func (o LookupAlertV2ResultOutput) CustomSummary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CustomSummary }).(pulumi.StringOutput)
 }

@@ -1760,6 +1760,8 @@ func (o AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementPtrOutput) Enfor
 }
 
 type AccountNetworkPolicyIngress struct {
+	// The network policy restrictions for cross-workspace access: which other workspaces may
+	// access this workspace
 	CrossWorkspaceAccess *AccountNetworkPolicyIngressCrossWorkspaceAccess `pulumi:"crossWorkspaceAccess"`
 	// The network policy restrictions for private access.
 	// Configures how requests arriving over private connectivity are governed
@@ -1781,6 +1783,8 @@ type AccountNetworkPolicyIngressInput interface {
 }
 
 type AccountNetworkPolicyIngressArgs struct {
+	// The network policy restrictions for cross-workspace access: which other workspaces may
+	// access this workspace
 	CrossWorkspaceAccess AccountNetworkPolicyIngressCrossWorkspaceAccessPtrInput `pulumi:"crossWorkspaceAccess"`
 	// The network policy restrictions for private access.
 	// Configures how requests arriving over private connectivity are governed
@@ -1867,6 +1871,8 @@ func (o AccountNetworkPolicyIngressOutput) ToAccountNetworkPolicyIngressPtrOutpu
 	}).(AccountNetworkPolicyIngressPtrOutput)
 }
 
+// The network policy restrictions for cross-workspace access: which other workspaces may
+// access this workspace
 func (o AccountNetworkPolicyIngressOutput) CrossWorkspaceAccess() AccountNetworkPolicyIngressCrossWorkspaceAccessPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngress) *AccountNetworkPolicyIngressCrossWorkspaceAccess {
 		return v.CrossWorkspaceAccess
@@ -1909,6 +1915,8 @@ func (o AccountNetworkPolicyIngressPtrOutput) Elem() AccountNetworkPolicyIngress
 	}).(AccountNetworkPolicyIngressOutput)
 }
 
+// The network policy restrictions for cross-workspace access: which other workspaces may
+// access this workspace
 func (o AccountNetworkPolicyIngressPtrOutput) CrossWorkspaceAccess() AccountNetworkPolicyIngressCrossWorkspaceAccessPtrOutput {
 	return o.ApplyT(func(v *AccountNetworkPolicyIngress) *AccountNetworkPolicyIngressCrossWorkspaceAccess {
 		if v == nil {
@@ -6032,6 +6040,8 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSelectedWor
 }
 
 type AccountNetworkPolicyIngressDryRun struct {
+	// The network policy restrictions for cross-workspace access: which other workspaces may
+	// access this workspace
 	CrossWorkspaceAccess *AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess `pulumi:"crossWorkspaceAccess"`
 	// The network policy restrictions for private access.
 	// Configures how requests arriving over private connectivity are governed
@@ -6053,6 +6063,8 @@ type AccountNetworkPolicyIngressDryRunInput interface {
 }
 
 type AccountNetworkPolicyIngressDryRunArgs struct {
+	// The network policy restrictions for cross-workspace access: which other workspaces may
+	// access this workspace
 	CrossWorkspaceAccess AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessPtrInput `pulumi:"crossWorkspaceAccess"`
 	// The network policy restrictions for private access.
 	// Configures how requests arriving over private connectivity are governed
@@ -6139,6 +6151,8 @@ func (o AccountNetworkPolicyIngressDryRunOutput) ToAccountNetworkPolicyIngressDr
 	}).(AccountNetworkPolicyIngressDryRunPtrOutput)
 }
 
+// The network policy restrictions for cross-workspace access: which other workspaces may
+// access this workspace
 func (o AccountNetworkPolicyIngressDryRunOutput) CrossWorkspaceAccess() AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRun) *AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess {
 		return v.CrossWorkspaceAccess
@@ -6185,6 +6199,8 @@ func (o AccountNetworkPolicyIngressDryRunPtrOutput) Elem() AccountNetworkPolicyI
 	}).(AccountNetworkPolicyIngressDryRunOutput)
 }
 
+// The network policy restrictions for cross-workspace access: which other workspaces may
+// access this workspace
 func (o AccountNetworkPolicyIngressDryRunPtrOutput) CrossWorkspaceAccess() AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessPtrOutput {
 	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRun) *AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess {
 		if v == nil {
@@ -34213,9 +34229,10 @@ func (o AiGatewayMcpServiceProviderConfigPtrOutput) WorkspaceId() pulumi.StringP
 }
 
 type AiGatewayModelProviderServiceConfig struct {
-	// When true, accepts any model exposed by the upstream provider; `targets`
-	// is not required and does not restrict routability. When false, only
-	// models listed in `targets` are routable. Defaults to false
+	// When true, allows models from the provider's built-in model catalog in
+	// addition to explicit `targets`. When false, only models listed in `targets`
+	// are routable. Defaults to false. CUSTOM providers have no built-in model
+	// catalog and must leave this false and list their models in `targets`
 	AllowAllTargets *bool                                             `pulumi:"allowAllTargets"`
 	AmazonBedrock   *AiGatewayModelProviderServiceConfigAmazonBedrock `pulumi:"amazonBedrock"`
 	Anthropic       *AiGatewayModelProviderServiceConfigAnthropic     `pulumi:"anthropic"`
@@ -34260,8 +34277,9 @@ type AiGatewayModelProviderServiceConfig struct {
 	// entry must include at least one `nativeApiTypes` value. When
 	// `allowAllTargets` is false, at least one entry is required and model
 	// service destinations can reference only listed models. When
-	// `allowAllTargets` is true, any upstream model is routable; entries in
-	// this list provide API-type metadata without restricting other models
+	// `allowAllTargets` is true, models from the provider's built-in model
+	// catalog are also routable. CUSTOM providers must explicitly list their
+	// models here and cannot enable `allowAllTargets`
 	Targets []AiGatewayModelProviderServiceConfigTarget `pulumi:"targets"`
 }
 
@@ -34277,9 +34295,10 @@ type AiGatewayModelProviderServiceConfigInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigArgs struct {
-	// When true, accepts any model exposed by the upstream provider; `targets`
-	// is not required and does not restrict routability. When false, only
-	// models listed in `targets` are routable. Defaults to false
+	// When true, allows models from the provider's built-in model catalog in
+	// addition to explicit `targets`. When false, only models listed in `targets`
+	// are routable. Defaults to false. CUSTOM providers have no built-in model
+	// catalog and must leave this false and list their models in `targets`
 	AllowAllTargets pulumi.BoolPtrInput                                      `pulumi:"allowAllTargets"`
 	AmazonBedrock   AiGatewayModelProviderServiceConfigAmazonBedrockPtrInput `pulumi:"amazonBedrock"`
 	Anthropic       AiGatewayModelProviderServiceConfigAnthropicPtrInput     `pulumi:"anthropic"`
@@ -34324,8 +34343,9 @@ type AiGatewayModelProviderServiceConfigArgs struct {
 	// entry must include at least one `nativeApiTypes` value. When
 	// `allowAllTargets` is false, at least one entry is required and model
 	// service destinations can reference only listed models. When
-	// `allowAllTargets` is true, any upstream model is routable; entries in
-	// this list provide API-type metadata without restricting other models
+	// `allowAllTargets` is true, models from the provider's built-in model
+	// catalog are also routable. CUSTOM providers must explicitly list their
+	// models here and cannot enable `allowAllTargets`
 	Targets AiGatewayModelProviderServiceConfigTargetArrayInput `pulumi:"targets"`
 }
 
@@ -34406,9 +34426,10 @@ func (o AiGatewayModelProviderServiceConfigOutput) ToAiGatewayModelProviderServi
 	}).(AiGatewayModelProviderServiceConfigPtrOutput)
 }
 
-// When true, accepts any model exposed by the upstream provider; `targets`
-// is not required and does not restrict routability. When false, only
-// models listed in `targets` are routable. Defaults to false
+// When true, allows models from the provider's built-in model catalog in
+// addition to explicit `targets`. When false, only models listed in `targets`
+// are routable. Defaults to false. CUSTOM providers have no built-in model
+// catalog and must leave this false and list their models in `targets`
 func (o AiGatewayModelProviderServiceConfigOutput) AllowAllTargets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *bool { return v.AllowAllTargets }).(pulumi.BoolPtrOutput)
 }
@@ -34523,8 +34544,9 @@ func (o AiGatewayModelProviderServiceConfigOutput) RateLimits() AiGatewayModelPr
 // entry must include at least one `nativeApiTypes` value. When
 // `allowAllTargets` is false, at least one entry is required and model
 // service destinations can reference only listed models. When
-// `allowAllTargets` is true, any upstream model is routable; entries in
-// this list provide API-type metadata without restricting other models
+// `allowAllTargets` is true, models from the provider's built-in model
+// catalog are also routable. CUSTOM providers must explicitly list their
+// models here and cannot enable `allowAllTargets`
 func (o AiGatewayModelProviderServiceConfigOutput) Targets() AiGatewayModelProviderServiceConfigTargetArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) []AiGatewayModelProviderServiceConfigTarget {
 		return v.Targets
@@ -34555,9 +34577,10 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) Elem() AiGatewayModelProvi
 	}).(AiGatewayModelProviderServiceConfigOutput)
 }
 
-// When true, accepts any model exposed by the upstream provider; `targets`
-// is not required and does not restrict routability. When false, only
-// models listed in `targets` are routable. Defaults to false
+// When true, allows models from the provider's built-in model catalog in
+// addition to explicit `targets`. When false, only models listed in `targets`
+// are routable. Defaults to false. CUSTOM providers have no built-in model
+// catalog and must leave this false and list their models in `targets`
 func (o AiGatewayModelProviderServiceConfigPtrOutput) AllowAllTargets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *bool {
 		if v == nil {
@@ -34730,8 +34753,9 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) RateLimits() AiGatewayMode
 // entry must include at least one `nativeApiTypes` value. When
 // `allowAllTargets` is false, at least one entry is required and model
 // service destinations can reference only listed models. When
-// `allowAllTargets` is true, any upstream model is routable; entries in
-// this list provide API-type metadata without restricting other models
+// `allowAllTargets` is true, models from the provider's built-in model
+// catalog are also routable. CUSTOM providers must explicitly list their
+// models here and cannot enable `allowAllTargets`
 func (o AiGatewayModelProviderServiceConfigPtrOutput) Targets() AiGatewayModelProviderServiceConfigTargetArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) []AiGatewayModelProviderServiceConfigTarget {
 		if v == nil {
@@ -46557,7 +46581,7 @@ func (o AiSearchEndpointCustomTagArrayOutput) Index(i pulumi.IntInput) AiSearchE
 type AiSearchEndpointEndpointStatus struct {
 	// (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
 	Message *string `pulumi:"message"`
-	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 	State *string `pulumi:"state"`
 }
 
@@ -46575,7 +46599,7 @@ type AiSearchEndpointEndpointStatusInput interface {
 type AiSearchEndpointEndpointStatusArgs struct {
 	// (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
 	Message pulumi.StringPtrInput `pulumi:"message"`
-	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -46661,7 +46685,7 @@ func (o AiSearchEndpointEndpointStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiSearchEndpointEndpointStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 func (o AiSearchEndpointEndpointStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiSearchEndpointEndpointStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -46700,7 +46724,7 @@ func (o AiSearchEndpointEndpointStatusPtrOutput) Message() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 func (o AiSearchEndpointEndpointStatusPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchEndpointEndpointStatus) *string {
 		if v == nil {
@@ -46851,7 +46875,7 @@ type AiSearchEndpointScalingInfo struct {
 	// The requested QPS target for the endpoint. Best-effort; the system does not
 	// guarantee this QPS will be achieved
 	RequestedTargetQps *int `pulumi:"requestedTargetQps"`
-	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 	State *string `pulumi:"state"`
 }
 
@@ -46870,7 +46894,7 @@ type AiSearchEndpointScalingInfoArgs struct {
 	// The requested QPS target for the endpoint. Best-effort; the system does not
 	// guarantee this QPS will be achieved
 	RequestedTargetQps pulumi.IntPtrInput `pulumi:"requestedTargetQps"`
-	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+	// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -46957,7 +46981,7 @@ func (o AiSearchEndpointScalingInfoOutput) RequestedTargetQps() pulumi.IntPtrOut
 	return o.ApplyT(func(v AiSearchEndpointScalingInfo) *int { return v.RequestedTargetQps }).(pulumi.IntPtrOutput)
 }
 
-// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 func (o AiSearchEndpointScalingInfoOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiSearchEndpointScalingInfo) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -46997,7 +47021,7 @@ func (o AiSearchEndpointScalingInfoPtrOutput) RequestedTargetQps() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+// (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
 func (o AiSearchEndpointScalingInfoPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchEndpointScalingInfo) *string {
 		if v == nil {
@@ -73605,7 +73629,8 @@ func (o DataClassificationCatalogConfigProviderConfigPtrOutput) WorkspaceId() pu
 
 type DataQualityMonitorAnomalyDetectionConfig struct {
 	// List of fully qualified table names to exclude from anomaly detection
-	ExcludedTableFullNames []string `pulumi:"excludedTableFullNames"`
+	ExcludedTableFullNames []string                                                      `pulumi:"excludedTableFullNames"`
+	NotificationSettings   *DataQualityMonitorAnomalyDetectionConfigNotificationSettings `pulumi:"notificationSettings"`
 }
 
 // DataQualityMonitorAnomalyDetectionConfigInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigArgs and DataQualityMonitorAnomalyDetectionConfigOutput values.
@@ -73621,7 +73646,8 @@ type DataQualityMonitorAnomalyDetectionConfigInput interface {
 
 type DataQualityMonitorAnomalyDetectionConfigArgs struct {
 	// List of fully qualified table names to exclude from anomaly detection
-	ExcludedTableFullNames pulumi.StringArrayInput `pulumi:"excludedTableFullNames"`
+	ExcludedTableFullNames pulumi.StringArrayInput                                              `pulumi:"excludedTableFullNames"`
+	NotificationSettings   DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 }
 
 func (DataQualityMonitorAnomalyDetectionConfigArgs) ElementType() reflect.Type {
@@ -73706,6 +73732,12 @@ func (o DataQualityMonitorAnomalyDetectionConfigOutput) ExcludedTableFullNames()
 	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfig) []string { return v.ExcludedTableFullNames }).(pulumi.StringArrayOutput)
 }
 
+func (o DataQualityMonitorAnomalyDetectionConfigOutput) NotificationSettings() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfig) *DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+		return v.NotificationSettings
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput)
+}
+
 type DataQualityMonitorAnomalyDetectionConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DataQualityMonitorAnomalyDetectionConfigPtrOutput) ElementType() reflect.Type {
@@ -73740,6 +73772,577 @@ func (o DataQualityMonitorAnomalyDetectionConfigPtrOutput) ExcludedTableFullName
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o DataQualityMonitorAnomalyDetectionConfigPtrOutput) NotificationSettings() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfig) *DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationSettings
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettings struct {
+	// Destinations to send notifications on failure/timeout
+	OnFailure *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure `pulumi:"onFailure"`
+	// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+	// recipient gets one notification per important unhealthy table. Only supported on schema
+	// monitors, via `anomalyDetectionConfig`
+	OnUnhealthyTable *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable `pulumi:"onUnhealthyTable"`
+}
+
+// DataQualityMonitorAnomalyDetectionConfigNotificationSettingsInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs and DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput values.
+// You can construct a concrete instance of `DataQualityMonitorAnomalyDetectionConfigNotificationSettingsInput` via:
+//
+//	DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs{...}
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutputWithContext(context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs struct {
+	// Destinations to send notifications on failure/timeout
+	OnFailure DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrInput `pulumi:"onFailure"`
+	// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+	// recipient gets one notification per important unhealthy table. Only supported on schema
+	// monitors, via `anomalyDetectionConfig`
+	OnUnhealthyTable DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrInput `pulumi:"onUnhealthyTable"`
+}
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettings)(nil)).Elem()
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput)
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput).ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs, DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtr and DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrInput` via:
+//
+//	        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput
+}
+
+type dataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrType DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs
+
+func DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtr(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrInput {
+	return (*dataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrType)(v)
+}
+
+func (*dataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorAnomalyDetectionConfigNotificationSettings)(nil)).Elem()
+}
+
+func (i *dataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrType) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrType) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettings)(nil)).Elem()
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return o.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataQualityMonitorAnomalyDetectionConfigNotificationSettings) *DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+		return &v
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput)
+}
+
+// Destinations to send notifications on failure/timeout
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) OnFailure() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettings) *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+		return v.OnFailure
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput)
+}
+
+// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+// recipient gets one notification per important unhealthy table. Only supported on schema
+// monitors, via `anomalyDetectionConfig`
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput) OnUnhealthyTable() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettings) *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+		return v.OnUnhealthyTable
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorAnomalyDetectionConfigNotificationSettings)(nil)).Elem()
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput) Elem() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettings) DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DataQualityMonitorAnomalyDetectionConfigNotificationSettings
+		return ret
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput)
+}
+
+// Destinations to send notifications on failure/timeout
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput) OnFailure() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettings) *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailure
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput)
+}
+
+// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+// recipient gets one notification per important unhealthy table. Only supported on schema
+// monitors, via `anomalyDetectionConfig`
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput) OnUnhealthyTable() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettings) *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+		if v == nil {
+			return nil
+		}
+		return v.OnUnhealthyTable
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds []string `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds []int `pulumi:"destinationUserIds"`
+	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+	EmailAddresses []string `pulumi:"emailAddresses"`
+}
+
+// DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs and DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput values.
+// You can construct a concrete instance of `DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureInput` via:
+//
+//	DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs{...}
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutputWithContext(context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds pulumi.StringArrayInput `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds pulumi.IntArrayInput `pulumi:"destinationUserIds"`
+	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+}
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure)(nil)).Elem()
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput)
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput).ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(ctx)
+}
+
+// DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs, DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtr and DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput values.
+// You can construct a concrete instance of `DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrInput` via:
+//
+//	        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput
+}
+
+type dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrType DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs
+
+func DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtr(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrInput {
+	return (*dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrType)(v)
+}
+
+func (*dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure)(nil)).Elem()
+}
+
+func (i *dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrType) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrType) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure)(nil)).Elem()
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return o.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+		return &v
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput)
+}
+
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) []string {
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) []int {
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) []string {
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure)(nil)).Elem()
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) Elem() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
+		if v != nil {
+			return *v
+		}
+		var ret DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure
+		return ret
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput)
+}
+
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds []string `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds []int `pulumi:"destinationUserIds"`
+	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+	EmailAddresses []string `pulumi:"emailAddresses"`
+}
+
+// DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs and DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput values.
+// You can construct a concrete instance of `DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableInput` via:
+//
+//	DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs{...}
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutputWithContext(context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds pulumi.StringArrayInput `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds pulumi.IntArrayInput `pulumi:"destinationUserIds"`
+	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+}
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput)
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput).ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx)
+}
+
+// DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrInput is an input type that accepts DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs, DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtr and DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput values.
+// You can construct a concrete instance of `DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrInput` via:
+//
+//	        DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput
+	ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput
+}
+
+type dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrType DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs
+
+func DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtr(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrInput {
+	return (*dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrType)(v)
+}
+
+func (*dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (i *dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrType) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return i.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Background())
+}
+
+func (i *dataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrType) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Background())
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+		return &v
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) []string {
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) []int {
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) []string {
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) ToDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) Elem() DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
+		if v != nil {
+			return *v
+		}
+		var ret DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable
+		return ret
+	}).(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput)
+}
+
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+func (o DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
 type DataQualityMonitorDataProfilingConfig struct {
 	// Field for specifying the absolute path to a custom directory to store data-monitoring
 	// assets. Normally prepopulated to a default user location via UI and Python APIs
@@ -73754,12 +74357,11 @@ type DataQualityMonitorDataProfilingConfig struct {
 	DriftMetricsTableName *string                                             `pulumi:"driftMetricsTableName"`
 	EffectiveWarehouseId  *string                                             `pulumi:"effectiveWarehouseId"`
 	// `Analysis Configuration` for monitoring inference log tables
-	InferenceLog                *DataQualityMonitorDataProfilingConfigInferenceLog `pulumi:"inferenceLog"`
-	LatestMonitorFailureMessage *string                                            `pulumi:"latestMonitorFailureMessage"`
-	MonitorVersion              *int                                               `pulumi:"monitorVersion"`
-	MonitoredTableName          *string                                            `pulumi:"monitoredTableName"`
-	// Field for specifying notification settings
-	NotificationSettings *DataQualityMonitorDataProfilingConfigNotificationSettings `pulumi:"notificationSettings"`
+	InferenceLog                *DataQualityMonitorDataProfilingConfigInferenceLog         `pulumi:"inferenceLog"`
+	LatestMonitorFailureMessage *string                                                    `pulumi:"latestMonitorFailureMessage"`
+	MonitorVersion              *int                                                       `pulumi:"monitorVersion"`
+	MonitoredTableName          *string                                                    `pulumi:"monitoredTableName"`
+	NotificationSettings        *DataQualityMonitorDataProfilingConfigNotificationSettings `pulumi:"notificationSettings"`
 	// ID of the schema where output tables are created
 	OutputSchemaId          string  `pulumi:"outputSchemaId"`
 	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
@@ -73809,12 +74411,11 @@ type DataQualityMonitorDataProfilingConfigArgs struct {
 	DriftMetricsTableName pulumi.StringPtrInput                                       `pulumi:"driftMetricsTableName"`
 	EffectiveWarehouseId  pulumi.StringPtrInput                                       `pulumi:"effectiveWarehouseId"`
 	// `Analysis Configuration` for monitoring inference log tables
-	InferenceLog                DataQualityMonitorDataProfilingConfigInferenceLogPtrInput `pulumi:"inferenceLog"`
-	LatestMonitorFailureMessage pulumi.StringPtrInput                                     `pulumi:"latestMonitorFailureMessage"`
-	MonitorVersion              pulumi.IntPtrInput                                        `pulumi:"monitorVersion"`
-	MonitoredTableName          pulumi.StringPtrInput                                     `pulumi:"monitoredTableName"`
-	// Field for specifying notification settings
-	NotificationSettings DataQualityMonitorDataProfilingConfigNotificationSettingsPtrInput `pulumi:"notificationSettings"`
+	InferenceLog                DataQualityMonitorDataProfilingConfigInferenceLogPtrInput         `pulumi:"inferenceLog"`
+	LatestMonitorFailureMessage pulumi.StringPtrInput                                             `pulumi:"latestMonitorFailureMessage"`
+	MonitorVersion              pulumi.IntPtrInput                                                `pulumi:"monitorVersion"`
+	MonitoredTableName          pulumi.StringPtrInput                                             `pulumi:"monitoredTableName"`
+	NotificationSettings        DataQualityMonitorDataProfilingConfigNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	// ID of the schema where output tables are created
 	OutputSchemaId          pulumi.StringInput    `pulumi:"outputSchemaId"`
 	ProfileMetricsTableName pulumi.StringPtrInput `pulumi:"profileMetricsTableName"`
@@ -73967,7 +74568,6 @@ func (o DataQualityMonitorDataProfilingConfigOutput) MonitoredTableName() pulumi
 	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfig) *string { return v.MonitoredTableName }).(pulumi.StringPtrOutput)
 }
 
-// Field for specifying notification settings
 func (o DataQualityMonitorDataProfilingConfigOutput) NotificationSettings() DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfig) *DataQualityMonitorDataProfilingConfigNotificationSettings {
 		return v.NotificationSettings
@@ -74150,7 +74750,6 @@ func (o DataQualityMonitorDataProfilingConfigPtrOutput) MonitoredTableName() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Field for specifying notification settings
 func (o DataQualityMonitorDataProfilingConfigPtrOutput) NotificationSettings() DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfig) *DataQualityMonitorDataProfilingConfigNotificationSettings {
 		if v == nil {
@@ -74617,6 +75216,10 @@ func (o DataQualityMonitorDataProfilingConfigInferenceLogPtrOutput) TimestampCol
 type DataQualityMonitorDataProfilingConfigNotificationSettings struct {
 	// Destinations to send notifications on failure/timeout
 	OnFailure *DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure `pulumi:"onFailure"`
+	// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+	// recipient gets one notification per important unhealthy table. Only supported on schema
+	// monitors, via `anomalyDetectionConfig`
+	OnUnhealthyTable *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable `pulumi:"onUnhealthyTable"`
 }
 
 // DataQualityMonitorDataProfilingConfigNotificationSettingsInput is an input type that accepts DataQualityMonitorDataProfilingConfigNotificationSettingsArgs and DataQualityMonitorDataProfilingConfigNotificationSettingsOutput values.
@@ -74633,6 +75236,10 @@ type DataQualityMonitorDataProfilingConfigNotificationSettingsInput interface {
 type DataQualityMonitorDataProfilingConfigNotificationSettingsArgs struct {
 	// Destinations to send notifications on failure/timeout
 	OnFailure DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrInput `pulumi:"onFailure"`
+	// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+	// recipient gets one notification per important unhealthy table. Only supported on schema
+	// monitors, via `anomalyDetectionConfig`
+	OnUnhealthyTable DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrInput `pulumi:"onUnhealthyTable"`
 }
 
 func (DataQualityMonitorDataProfilingConfigNotificationSettingsArgs) ElementType() reflect.Type {
@@ -74719,6 +75326,15 @@ func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOutput) OnFailu
 	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput)
 }
 
+// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+// recipient gets one notification per important unhealthy table. Only supported on schema
+// monitors, via `anomalyDetectionConfig`
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOutput) OnUnhealthyTable() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettings) *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+		return v.OnUnhealthyTable
+	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
 type DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput) ElementType() reflect.Type {
@@ -74753,7 +75369,27 @@ func (o DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput) OnFa
 	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput)
 }
 
+// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+// recipient gets one notification per important unhealthy table. Only supported on schema
+// monitors, via `anomalyDetectionConfig`
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput) OnUnhealthyTable() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettings) *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+		if v == nil {
+			return nil
+		}
+		return v.OnUnhealthyTable
+	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
 type DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds []string `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds []int `pulumi:"destinationUserIds"`
 	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
 	EmailAddresses []string `pulumi:"emailAddresses"`
 }
@@ -74770,6 +75406,14 @@ type DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureInput int
 }
 
 type DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds pulumi.StringArrayInput `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds pulumi.IntArrayInput `pulumi:"destinationUserIds"`
 	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
 	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
 }
@@ -74851,6 +75495,24 @@ func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureOutput
 	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput)
 }
 
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure) []string {
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure) []int {
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
 // The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
 func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureOutput) EmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure) []string {
@@ -74882,9 +75544,230 @@ func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOut
 	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureOutput)
 }
 
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
 // The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
 func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds []string `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds []int `pulumi:"destinationUserIds"`
+	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+	EmailAddresses []string `pulumi:"emailAddresses"`
+}
+
+// DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableInput is an input type that accepts DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs and DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput values.
+// You can construct a concrete instance of `DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableInput` via:
+//
+//	DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs{...}
+type DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput
+	ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutputWithContext(context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput
+}
+
+type DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs struct {
+	// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+	// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+	// 25 destination IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationIds pulumi.StringArrayInput `pulumi:"destinationIds"`
+	// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+	// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+	DestinationUserIds pulumi.IntArrayInput `pulumi:"destinationUserIds"`
+	// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+}
+
+func (DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (i DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput {
+	return i.ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutputWithContext(ctx context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput)
+}
+
+func (i DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return i.ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Background())
+}
+
+func (i DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput).ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx)
+}
+
+// DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrInput is an input type that accepts DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs, DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtr and DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput values.
+// You can construct a concrete instance of `DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrInput` via:
+//
+//	        DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrInput interface {
+	pulumi.Input
+
+	ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput
+	ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput
+}
+
+type dataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrType DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs
+
+func DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtr(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrInput {
+	return (*dataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrType)(v)
+}
+
+func (*dataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (i *dataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrType) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return i.ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Background())
+}
+
+func (i *dataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrType) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
+type DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput {
+	return o
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutputWithContext(ctx context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput {
+	return o
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(context.Background())
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+		return &v
+	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput)
+}
+
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) []string {
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) []int {
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) []string {
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput struct{ *pulumi.OutputState }
+
+func (DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable)(nil)).Elem()
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) ToDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutputWithContext(ctx context.Context) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput {
+	return o
+}
+
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) Elem() DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
+		if v != nil {
+			return *v
+		}
+		var ret DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable
+		return ret
+	}).(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput)
+}
+
+// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+// 25 destination IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+// Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) DestinationUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationUserIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+func (o DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable) []string {
 		if v == nil {
 			return nil
 		}
@@ -79940,554 +80823,6 @@ func (o DirectoryProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type DisableLegacyAccessSettingDisableLegacyAccess struct {
-	// The boolean value for the setting.
-	Value bool `pulumi:"value"`
-}
-
-// DisableLegacyAccessSettingDisableLegacyAccessInput is an input type that accepts DisableLegacyAccessSettingDisableLegacyAccessArgs and DisableLegacyAccessSettingDisableLegacyAccessOutput values.
-// You can construct a concrete instance of `DisableLegacyAccessSettingDisableLegacyAccessInput` via:
-//
-//	DisableLegacyAccessSettingDisableLegacyAccessArgs{...}
-type DisableLegacyAccessSettingDisableLegacyAccessInput interface {
-	pulumi.Input
-
-	ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput
-	ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput
-}
-
-type DisableLegacyAccessSettingDisableLegacyAccessArgs struct {
-	// The boolean value for the setting.
-	Value pulumi.BoolInput `pulumi:"value"`
-}
-
-func (DisableLegacyAccessSettingDisableLegacyAccessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
-}
-
-func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput {
-	return i.ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessOutput)
-}
-
-func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return i.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessOutput).ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx)
-}
-
-// DisableLegacyAccessSettingDisableLegacyAccessPtrInput is an input type that accepts DisableLegacyAccessSettingDisableLegacyAccessArgs, DisableLegacyAccessSettingDisableLegacyAccessPtr and DisableLegacyAccessSettingDisableLegacyAccessPtrOutput values.
-// You can construct a concrete instance of `DisableLegacyAccessSettingDisableLegacyAccessPtrInput` via:
-//
-//	        DisableLegacyAccessSettingDisableLegacyAccessArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisableLegacyAccessSettingDisableLegacyAccessPtrInput interface {
-	pulumi.Input
-
-	ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput
-	ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput
-}
-
-type disableLegacyAccessSettingDisableLegacyAccessPtrType DisableLegacyAccessSettingDisableLegacyAccessArgs
-
-func DisableLegacyAccessSettingDisableLegacyAccessPtr(v *DisableLegacyAccessSettingDisableLegacyAccessArgs) DisableLegacyAccessSettingDisableLegacyAccessPtrInput {
-	return (*disableLegacyAccessSettingDisableLegacyAccessPtrType)(v)
-}
-
-func (*disableLegacyAccessSettingDisableLegacyAccessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
-}
-
-func (i *disableLegacyAccessSettingDisableLegacyAccessPtrType) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return i.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
-}
-
-func (i *disableLegacyAccessSettingDisableLegacyAccessPtrType) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput)
-}
-
-type DisableLegacyAccessSettingDisableLegacyAccessOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyAccessSettingDisableLegacyAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return o.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyAccessSettingDisableLegacyAccess) *DisableLegacyAccessSettingDisableLegacyAccess {
-		return &v
-	}).(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput)
-}
-
-// The boolean value for the setting.
-func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) Value() pulumi.BoolOutput {
-	return o.ApplyT(func(v DisableLegacyAccessSettingDisableLegacyAccess) bool { return v.Value }).(pulumi.BoolOutput)
-}
-
-type DisableLegacyAccessSettingDisableLegacyAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Elem() DisableLegacyAccessSettingDisableLegacyAccessOutput {
-	return o.ApplyT(func(v *DisableLegacyAccessSettingDisableLegacyAccess) DisableLegacyAccessSettingDisableLegacyAccess {
-		if v != nil {
-			return *v
-		}
-		var ret DisableLegacyAccessSettingDisableLegacyAccess
-		return ret
-	}).(DisableLegacyAccessSettingDisableLegacyAccessOutput)
-}
-
-// The boolean value for the setting.
-func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Value() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyAccessSettingDisableLegacyAccess) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.BoolPtrOutput)
-}
-
-type DisableLegacyAccessSettingProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// DisableLegacyAccessSettingProviderConfigInput is an input type that accepts DisableLegacyAccessSettingProviderConfigArgs and DisableLegacyAccessSettingProviderConfigOutput values.
-// You can construct a concrete instance of `DisableLegacyAccessSettingProviderConfigInput` via:
-//
-//	DisableLegacyAccessSettingProviderConfigArgs{...}
-type DisableLegacyAccessSettingProviderConfigInput interface {
-	pulumi.Input
-
-	ToDisableLegacyAccessSettingProviderConfigOutput() DisableLegacyAccessSettingProviderConfigOutput
-	ToDisableLegacyAccessSettingProviderConfigOutputWithContext(context.Context) DisableLegacyAccessSettingProviderConfigOutput
-}
-
-type DisableLegacyAccessSettingProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (DisableLegacyAccessSettingProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
-}
-
-func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigOutput() DisableLegacyAccessSettingProviderConfigOutput {
-	return i.ToDisableLegacyAccessSettingProviderConfigOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingProviderConfigOutput)
-}
-
-func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return i.ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyAccessSettingProviderConfigArgs) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingProviderConfigOutput).ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx)
-}
-
-// DisableLegacyAccessSettingProviderConfigPtrInput is an input type that accepts DisableLegacyAccessSettingProviderConfigArgs, DisableLegacyAccessSettingProviderConfigPtr and DisableLegacyAccessSettingProviderConfigPtrOutput values.
-// You can construct a concrete instance of `DisableLegacyAccessSettingProviderConfigPtrInput` via:
-//
-//	        DisableLegacyAccessSettingProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisableLegacyAccessSettingProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput
-	ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput
-}
-
-type disableLegacyAccessSettingProviderConfigPtrType DisableLegacyAccessSettingProviderConfigArgs
-
-func DisableLegacyAccessSettingProviderConfigPtr(v *DisableLegacyAccessSettingProviderConfigArgs) DisableLegacyAccessSettingProviderConfigPtrInput {
-	return (*disableLegacyAccessSettingProviderConfigPtrType)(v)
-}
-
-func (*disableLegacyAccessSettingProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
-}
-
-func (i *disableLegacyAccessSettingProviderConfigPtrType) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return i.ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *disableLegacyAccessSettingProviderConfigPtrType) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingProviderConfigPtrOutput)
-}
-
-type DisableLegacyAccessSettingProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyAccessSettingProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
-}
-
-func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigOutput() DisableLegacyAccessSettingProviderConfigOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return o.ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DisableLegacyAccessSettingProviderConfigOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyAccessSettingProviderConfig) *DisableLegacyAccessSettingProviderConfig {
-		return &v
-	}).(DisableLegacyAccessSettingProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o DisableLegacyAccessSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DisableLegacyAccessSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type DisableLegacyAccessSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyAccessSettingProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyAccessSettingProviderConfig)(nil)).Elem()
-}
-
-func (o DisableLegacyAccessSettingProviderConfigPtrOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutput() DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingProviderConfigPtrOutput) ToDisableLegacyAccessSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o DisableLegacyAccessSettingProviderConfigPtrOutput) Elem() DisableLegacyAccessSettingProviderConfigOutput {
-	return o.ApplyT(func(v *DisableLegacyAccessSettingProviderConfig) DisableLegacyAccessSettingProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DisableLegacyAccessSettingProviderConfig
-		return ret
-	}).(DisableLegacyAccessSettingProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o DisableLegacyAccessSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyAccessSettingProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type DisableLegacyDbfsSettingDisableLegacyDbfs struct {
-	// The boolean value for the setting.
-	Value bool `pulumi:"value"`
-}
-
-// DisableLegacyDbfsSettingDisableLegacyDbfsInput is an input type that accepts DisableLegacyDbfsSettingDisableLegacyDbfsArgs and DisableLegacyDbfsSettingDisableLegacyDbfsOutput values.
-// You can construct a concrete instance of `DisableLegacyDbfsSettingDisableLegacyDbfsInput` via:
-//
-//	DisableLegacyDbfsSettingDisableLegacyDbfsArgs{...}
-type DisableLegacyDbfsSettingDisableLegacyDbfsInput interface {
-	pulumi.Input
-
-	ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput
-	ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput
-}
-
-type DisableLegacyDbfsSettingDisableLegacyDbfsArgs struct {
-	// The boolean value for the setting.
-	Value pulumi.BoolInput `pulumi:"value"`
-}
-
-func (DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
-}
-
-func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
-	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput)
-}
-
-func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput).ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx)
-}
-
-// DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput is an input type that accepts DisableLegacyDbfsSettingDisableLegacyDbfsArgs, DisableLegacyDbfsSettingDisableLegacyDbfsPtr and DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput values.
-// You can construct a concrete instance of `DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput` via:
-//
-//	        DisableLegacyDbfsSettingDisableLegacyDbfsArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput interface {
-	pulumi.Input
-
-	ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput
-	ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput
-}
-
-type disableLegacyDbfsSettingDisableLegacyDbfsPtrType DisableLegacyDbfsSettingDisableLegacyDbfsArgs
-
-func DisableLegacyDbfsSettingDisableLegacyDbfsPtr(v *DisableLegacyDbfsSettingDisableLegacyDbfsArgs) DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput {
-	return (*disableLegacyDbfsSettingDisableLegacyDbfsPtrType)(v)
-}
-
-func (*disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
-}
-
-func (i *disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
-}
-
-func (i *disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput)
-}
-
-type DisableLegacyDbfsSettingDisableLegacyDbfsOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return o.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyDbfsSettingDisableLegacyDbfs) *DisableLegacyDbfsSettingDisableLegacyDbfs {
-		return &v
-	}).(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput)
-}
-
-// The boolean value for the setting.
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) Value() pulumi.BoolOutput {
-	return o.ApplyT(func(v DisableLegacyDbfsSettingDisableLegacyDbfs) bool { return v.Value }).(pulumi.BoolOutput)
-}
-
-type DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Elem() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
-	return o.ApplyT(func(v *DisableLegacyDbfsSettingDisableLegacyDbfs) DisableLegacyDbfsSettingDisableLegacyDbfs {
-		if v != nil {
-			return *v
-		}
-		var ret DisableLegacyDbfsSettingDisableLegacyDbfs
-		return ret
-	}).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput)
-}
-
-// The boolean value for the setting.
-func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Value() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyDbfsSettingDisableLegacyDbfs) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.BoolPtrOutput)
-}
-
-type DisableLegacyDbfsSettingProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// DisableLegacyDbfsSettingProviderConfigInput is an input type that accepts DisableLegacyDbfsSettingProviderConfigArgs and DisableLegacyDbfsSettingProviderConfigOutput values.
-// You can construct a concrete instance of `DisableLegacyDbfsSettingProviderConfigInput` via:
-//
-//	DisableLegacyDbfsSettingProviderConfigArgs{...}
-type DisableLegacyDbfsSettingProviderConfigInput interface {
-	pulumi.Input
-
-	ToDisableLegacyDbfsSettingProviderConfigOutput() DisableLegacyDbfsSettingProviderConfigOutput
-	ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(context.Context) DisableLegacyDbfsSettingProviderConfigOutput
-}
-
-type DisableLegacyDbfsSettingProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (DisableLegacyDbfsSettingProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
-}
-
-func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigOutput() DisableLegacyDbfsSettingProviderConfigOutput {
-	return i.ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingProviderConfigOutput)
-}
-
-func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return i.ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DisableLegacyDbfsSettingProviderConfigArgs) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingProviderConfigOutput).ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx)
-}
-
-// DisableLegacyDbfsSettingProviderConfigPtrInput is an input type that accepts DisableLegacyDbfsSettingProviderConfigArgs, DisableLegacyDbfsSettingProviderConfigPtr and DisableLegacyDbfsSettingProviderConfigPtrOutput values.
-// You can construct a concrete instance of `DisableLegacyDbfsSettingProviderConfigPtrInput` via:
-//
-//	        DisableLegacyDbfsSettingProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type DisableLegacyDbfsSettingProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput
-	ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput
-}
-
-type disableLegacyDbfsSettingProviderConfigPtrType DisableLegacyDbfsSettingProviderConfigArgs
-
-func DisableLegacyDbfsSettingProviderConfigPtr(v *DisableLegacyDbfsSettingProviderConfigArgs) DisableLegacyDbfsSettingProviderConfigPtrInput {
-	return (*disableLegacyDbfsSettingProviderConfigPtrType)(v)
-}
-
-func (*disableLegacyDbfsSettingProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
-}
-
-func (i *disableLegacyDbfsSettingProviderConfigPtrType) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return i.ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *disableLegacyDbfsSettingProviderConfigPtrType) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingProviderConfigPtrOutput)
-}
-
-type DisableLegacyDbfsSettingProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyDbfsSettingProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigOutput() DisableLegacyDbfsSettingProviderConfigOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return o.ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyDbfsSettingProviderConfig) *DisableLegacyDbfsSettingProviderConfig {
-		return &v
-	}).(DisableLegacyDbfsSettingProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o DisableLegacyDbfsSettingProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DisableLegacyDbfsSettingProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type DisableLegacyDbfsSettingProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DisableLegacyDbfsSettingProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DisableLegacyDbfsSettingProviderConfig)(nil)).Elem()
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutput() DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) ToDisableLegacyDbfsSettingProviderConfigPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return o
-}
-
-func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) Elem() DisableLegacyDbfsSettingProviderConfigOutput {
-	return o.ApplyT(func(v *DisableLegacyDbfsSettingProviderConfig) DisableLegacyDbfsSettingProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DisableLegacyDbfsSettingProviderConfig
-		return ret
-	}).(DisableLegacyDbfsSettingProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o DisableLegacyDbfsSettingProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyDbfsSettingProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -81412,6 +81747,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataClassificationCatalogConfigProviderConfigPtrInput)(nil)).Elem(), DataClassificationCatalogConfigProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigPtrInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrInput)(nil)).Elem(), DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigPtrInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigCustomMetricInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigCustomMetricArgs{})
@@ -81422,6 +81763,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsPtrInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigScheduleInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigSchedulePtrInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataQualityMonitorDataProfilingConfigSnapshotInput)(nil)).Elem(), DataQualityMonitorDataProfilingConfigSnapshotArgs{})
@@ -81480,14 +81823,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultNamespaceSettingProviderConfigPtrInput)(nil)).Elem(), DefaultNamespaceSettingProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryProviderConfigInput)(nil)).Elem(), DirectoryProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryProviderConfigPtrInput)(nil)).Elem(), DirectoryProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessPtrInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingProviderConfigInput)(nil)).Elem(), DisableLegacyAccessSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyAccessSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfigInput)(nil)).Elem(), DisableLegacyDbfsSettingProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingProviderConfigPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingProviderConfigArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetProviderConfigOutput{})
@@ -82411,6 +82746,12 @@ func init() {
 	pulumi.RegisterOutputType(DataClassificationCatalogConfigProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailureOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTablePtrOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigCustomMetricOutput{})
@@ -82421,6 +82762,8 @@ func init() {
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTableOutput{})
+	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTablePtrOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigScheduleOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigSchedulePtrOutput{})
 	pulumi.RegisterOutputType(DataQualityMonitorDataProfilingConfigSnapshotOutput{})
@@ -82479,12 +82822,4 @@ func init() {
 	pulumi.RegisterOutputType(DefaultNamespaceSettingProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(DirectoryProviderConfigOutput{})
 	pulumi.RegisterOutputType(DirectoryProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessOutput{})
-	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput{})
-	pulumi.RegisterOutputType(DisableLegacyAccessSettingProviderConfigOutput{})
-	pulumi.RegisterOutputType(DisableLegacyAccessSettingProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsOutput{})
-	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput{})
-	pulumi.RegisterOutputType(DisableLegacyDbfsSettingProviderConfigOutput{})
-	pulumi.RegisterOutputType(DisableLegacyDbfsSettingProviderConfigPtrOutput{})
 }

@@ -7,9 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ *
+ * This data source can be used to fetch the list of app spaces within the workspace.
+ * The list can then be accessed via the data object's `spaces` field.
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all app spaces:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAppSpaces({});
+ * export const allAppSpaces = all.then(all => all.spaces);
+ * ```
  */
 export function getAppSpaces(args?: GetAppSpacesArgs, opts?: pulumi.InvokeOptions): Promise<GetAppSpacesResult> {
     args = args || {};
@@ -43,9 +58,24 @@ export interface GetAppSpacesResult {
     readonly spaces: outputs.GetAppSpacesSpace[];
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ *
+ * This data source can be used to fetch the list of app spaces within the workspace.
+ * The list can then be accessed via the data object's `spaces` field.
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all app spaces:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAppSpaces({});
+ * export const allAppSpaces = all.then(all => all.spaces);
+ * ```
  */
 export function getAppSpacesOutput(args?: GetAppSpacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppSpacesResult> {
     args = args || {};

@@ -58,6 +58,9 @@ namespace Pulumi.Databricks
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        [Output("billingWorkspaceId")]
+        public Output<int?> BillingWorkspaceId { get; private set; } = null!;
+
         /// <summary>
         /// time in epoch milliseconds when this object was created.
         /// </summary>
@@ -143,6 +146,9 @@ namespace Pulumi.Databricks
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("billingWorkspaceId")]
+        public Input<int>? BillingWorkspaceId { get; set; }
+
         /// <summary>
         /// time in epoch milliseconds when this object was created.
         /// </summary>
@@ -189,6 +195,9 @@ namespace Pulumi.Databricks
     {
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("billingWorkspaceId")]
+        public Input<int>? BillingWorkspaceId { get; set; }
 
         /// <summary>
         /// time in epoch milliseconds when this object was created.

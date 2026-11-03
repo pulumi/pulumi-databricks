@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetAccountIamDirectGroupMembersV2(ctx, &databricks.GetAccountIamDirectGroupMembersV2Args{
-//				GroupId: 123456789,
+//				Parent: "accounts/00000000-0000-0000-0000-000000000000/groups/123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,19 +58,23 @@ func GetAccountIamDirectGroupMembersV2(ctx *pulumi.Context, args *GetAccountIamD
 
 // A collection of arguments for invoking getAccountIamDirectGroupMembersV2.
 type GetAccountIamDirectGroupMembersV2Args struct {
-	// Required. Internal ID of the group in Databricks whose direct members are being listed
-	GroupId int `pulumi:"groupId"`
 	// The maximum number of members to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// The parent resource name of the group whose direct members to list.
+	// Format: accounts/{account_id}/groups/{group_id}
+	Parent string `pulumi:"parent"`
 }
 
 // A collection of values returned by getAccountIamDirectGroupMembersV2.
 type GetAccountIamDirectGroupMembersV2Result struct {
 	DirectGroupMembers []GetAccountIamDirectGroupMembersV2DirectGroupMember `pulumi:"directGroupMembers"`
-	// (integer) - The internal ID of the group this member belongs to
-	GroupId  int  `pulumi:"groupId"`
-	PageSize *int `pulumi:"pageSize"`
+	PageSize           *int                                                 `pulumi:"pageSize"`
+	// (string) - The resource name of the group that contains the membership. The format depends on the API
+	// that returned it:
+	// - Account-scoped: accounts/{account_id}/groups/{group_id}
+	// - Workspace-scoped: groups/{group_id}
+	Parent string `pulumi:"parent"`
 }
 
 func GetAccountIamDirectGroupMembersV2Output(ctx *pulumi.Context, args GetAccountIamDirectGroupMembersV2OutputArgs, opts ...pulumi.InvokeOption) GetAccountIamDirectGroupMembersV2ResultOutput {
@@ -80,11 +84,12 @@ func GetAccountIamDirectGroupMembersV2Output(ctx *pulumi.Context, args GetAccoun
 
 // A collection of arguments for invoking getAccountIamDirectGroupMembersV2.
 type GetAccountIamDirectGroupMembersV2OutputArgs struct {
-	// Required. Internal ID of the group in Databricks whose direct members are being listed
-	GroupId pulumi.IntInput `pulumi:"groupId"`
 	// The maximum number of members to return. The service may return fewer than this value.
 	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The parent resource name of the group whose direct members to list.
+	// Format: accounts/{account_id}/groups/{group_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
 func (GetAccountIamDirectGroupMembersV2OutputArgs) ElementType() reflect.Type {
@@ -112,13 +117,16 @@ func (o GetAccountIamDirectGroupMembersV2ResultOutput) DirectGroupMembers() GetA
 	}).(GetAccountIamDirectGroupMembersV2DirectGroupMemberArrayOutput)
 }
 
-// (integer) - The internal ID of the group this member belongs to
-func (o GetAccountIamDirectGroupMembersV2ResultOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAccountIamDirectGroupMembersV2Result) int { return v.GroupId }).(pulumi.IntOutput)
-}
-
 func (o GetAccountIamDirectGroupMembersV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccountIamDirectGroupMembersV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// (string) - The resource name of the group that contains the membership. The format depends on the API
+// that returned it:
+// - Account-scoped: accounts/{account_id}/groups/{group_id}
+// - Workspace-scoped: groups/{group_id}
+func (o GetAccountIamDirectGroupMembersV2ResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIamDirectGroupMembersV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
 func init() {

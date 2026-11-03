@@ -173,11 +173,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Custom description for the alert. support mustache template
+        /// (string) - Custom description for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         public readonly string CustomDescription;
         /// <summary>
-        /// (string) - Custom summary for the alert. support mustache template
+        /// (string) - Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         public readonly string CustomSummary;
         /// <summary>

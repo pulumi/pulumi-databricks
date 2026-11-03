@@ -81,6 +81,17 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
      */
     declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    declare public /*out*/ readonly parent: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceIamServicePrincipalV2ProviderConfig>;
@@ -107,6 +118,8 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
         } else {
@@ -123,6 +136,8 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -155,6 +170,17 @@ export interface WorkspaceIamServicePrincipalV2State {
      * ExternalId of the service principal in the customer's IdP
      */
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

@@ -68,7 +68,8 @@ import (
 type MwsNetworkConnectivityConfig struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId          pulumi.StringOutput `pulumi:"accountId"`
+	BillingWorkspaceId pulumi.IntPtrOutput `pulumi:"billingWorkspaceId"`
 	// time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
 	// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
@@ -116,7 +117,8 @@ func GetMwsNetworkConnectivityConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsNetworkConnectivityConfig resources.
 type mwsNetworkConnectivityConfigState struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId          *string `pulumi:"accountId"`
+	BillingWorkspaceId *int    `pulumi:"billingWorkspaceId"`
 	// time in epoch milliseconds when this object was created.
 	CreationTime *int `pulumi:"creationTime"`
 	// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
@@ -132,7 +134,8 @@ type mwsNetworkConnectivityConfigState struct {
 }
 
 type MwsNetworkConnectivityConfigState struct {
-	AccountId pulumi.StringPtrInput
+	AccountId          pulumi.StringPtrInput
+	BillingWorkspaceId pulumi.IntPtrInput
 	// time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntPtrInput
 	// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
@@ -152,7 +155,8 @@ func (MwsNetworkConnectivityConfigState) ElementType() reflect.Type {
 }
 
 type mwsNetworkConnectivityConfigArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId          *string `pulumi:"accountId"`
+	BillingWorkspaceId *int    `pulumi:"billingWorkspaceId"`
 	// time in epoch milliseconds when this object was created.
 	CreationTime *int `pulumi:"creationTime"`
 	// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
@@ -169,7 +173,8 @@ type mwsNetworkConnectivityConfigArgs struct {
 
 // The set of arguments for constructing a MwsNetworkConnectivityConfig resource.
 type MwsNetworkConnectivityConfigArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId          pulumi.StringPtrInput
+	BillingWorkspaceId pulumi.IntPtrInput
 	// time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntPtrInput
 	// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
@@ -273,6 +278,10 @@ func (o MwsNetworkConnectivityConfigOutput) ToMwsNetworkConnectivityConfigOutput
 
 func (o MwsNetworkConnectivityConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworkConnectivityConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o MwsNetworkConnectivityConfigOutput) BillingWorkspaceId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MwsNetworkConnectivityConfig) pulumi.IntPtrOutput { return v.BillingWorkspaceId }).(pulumi.IntPtrOutput)
 }
 
 // time in epoch milliseconds when this object was created.

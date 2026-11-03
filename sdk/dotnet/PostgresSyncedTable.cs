@@ -175,8 +175,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresSyncedTableProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        /// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        /// Configuration details of the synced table, such as the source table, scheduling policy, etc
         /// </summary>
         [Output("spec")]
         public Output<Outputs.PostgresSyncedTableSpec> Spec { get; private set; } = null!;
@@ -252,8 +251,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresSyncedTableProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        /// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        /// Configuration details of the synced table, such as the source table, scheduling policy, etc
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresSyncedTableSpecArgs>? Spec { get; set; }
@@ -292,8 +290,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresSyncedTableProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        /// This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        /// Configuration details of the synced table, such as the source table, scheduling policy, etc
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresSyncedTableSpecGetArgs>? Spec { get; set; }

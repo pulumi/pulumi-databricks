@@ -18,6 +18,25 @@ public final class GetWorkspaceIamServicePrincipalV2Args extends com.pulumi.reso
     public static final GetWorkspaceIamServicePrincipalV2Args Empty = new GetWorkspaceIamServicePrincipalV2Args();
 
     /**
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    @Import(name="name", required=true)
+    private Output<String> name;
+
+    /**
+     * @return The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -32,26 +51,11 @@ public final class GetWorkspaceIamServicePrincipalV2Args extends com.pulumi.reso
         return Optional.ofNullable(this.providerConfig);
     }
 
-    /**
-     * Internal service principal ID of the service principal in Databricks
-     * 
-     */
-    @Import(name="servicePrincipalId", required=true)
-    private Output<String> servicePrincipalId;
-
-    /**
-     * @return Internal service principal ID of the service principal in Databricks
-     * 
-     */
-    public Output<String> servicePrincipalId() {
-        return this.servicePrincipalId;
-    }
-
     private GetWorkspaceIamServicePrincipalV2Args() {}
 
     private GetWorkspaceIamServicePrincipalV2Args(GetWorkspaceIamServicePrincipalV2Args $) {
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
-        this.servicePrincipalId = $.servicePrincipalId;
     }
 
     public static Builder builder() {
@@ -70,6 +74,31 @@ public final class GetWorkspaceIamServicePrincipalV2Args extends com.pulumi.reso
 
         public Builder(GetWorkspaceIamServicePrincipalV2Args defaults) {
             $ = new GetWorkspaceIamServicePrincipalV2Args(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param name The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The resource name of the service principal. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+         * - Workspace-scoped: service-principals/{service_principal_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -93,30 +122,9 @@ public final class GetWorkspaceIamServicePrincipalV2Args extends com.pulumi.reso
             return providerConfig(Output.of(providerConfig));
         }
 
-        /**
-         * @param servicePrincipalId Internal service principal ID of the service principal in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder servicePrincipalId(Output<String> servicePrincipalId) {
-            $.servicePrincipalId = servicePrincipalId;
-            return this;
-        }
-
-        /**
-         * @param servicePrincipalId Internal service principal ID of the service principal in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder servicePrincipalId(String servicePrincipalId) {
-            return servicePrincipalId(Output.of(servicePrincipalId));
-        }
-
         public GetWorkspaceIamServicePrincipalV2Args build() {
-            if ($.servicePrincipalId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalV2Args", "servicePrincipalId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamServicePrincipalV2Args", "name");
             }
             return $;
         }

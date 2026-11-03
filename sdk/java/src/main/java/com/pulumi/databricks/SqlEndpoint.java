@@ -16,7 +16,6 @@ import com.pulumi.databricks.outputs.SqlEndpointOdbcParams;
 import com.pulumi.databricks.outputs.SqlEndpointProviderConfig;
 import com.pulumi.databricks.outputs.SqlEndpointTags;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -97,18 +96,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/sqlEndpoint:SqlEndpoint")
 public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+     * Idle minutes before the warehouse stops. Defaults to `120` for PRO/CLASSIC and `10` for REALTIME. Use `0` to disable autostop. REALTIME requires `0` or at least `5`.
      * 
      */
     @Export(name="autoStopMins", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> autoStopMins;
+    private Output<Integer> autoStopMins;
 
     /**
-     * @return Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+     * @return Idle minutes before the warehouse stops. Defaults to `120` for PRO/CLASSIC and `10` for REALTIME. Use `0` to disable autostop. REALTIME requires `0` or at least `5`.
      * 
      */
-    public Output<Optional<Integer>> autoStopMins() {
-        return Codegen.optional(this.autoStopMins);
+    public Output<Integer> autoStopMins() {
+        return this.autoStopMins;
     }
     /**
      * block, consisting of following fields:
@@ -152,53 +151,63 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> creatorName() {
         return this.creatorName;
     }
+    /**
+     * (Read-only, REALTIME only) Compute version label; empty if the API omits it.
+     * 
+     */
     @Export(name="customerVersionLabel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> customerVersionLabel;
+    private Output<String> customerVersionLabel;
 
-    public Output<Optional<String>> customerVersionLabel() {
-        return Codegen.optional(this.customerVersionLabel);
+    /**
+     * @return (Read-only, REALTIME only) Compute version label; empty if the API omits it.
+     * 
+     */
+    public Output<String> customerVersionLabel() {
+        return this.customerVersionLabel;
     }
     /**
-     * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+     * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind a Databricks SQL query to an endpoint. Empty for REALTIME resources.
      * 
      */
     @Export(name="dataSourceId", refs={String.class}, tree="[0]")
     private Output<String> dataSourceId;
 
     /**
-     * @return (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+     * @return (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind a Databricks SQL query to an endpoint. Empty for REALTIME resources.
      * 
      */
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
     /**
-     * Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
+     * Whether to enable [Photon](https://databricks.com/product/delta-engine). Enabled by default. Must be `true` for REALTIME.
      * 
      */
     @Export(name="enablePhoton", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePhoton;
 
     /**
-     * @return Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
+     * @return Whether to enable [Photon](https://databricks.com/product/delta-engine). Enabled by default. Must be `true` for REALTIME.
      * 
      */
     public Output<Optional<Boolean>> enablePhoton() {
         return Codegen.optional(this.enablePhoton);
     }
     /**
-     * Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
+     * Whether to use serverless compute. Set explicitly to avoid workspace-dependent defaults.
      * 
-     * * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
+     * * For REALTIME, defaults to `true` and cannot be set to `false`.
+     * * For PRO/CLASSIC, defaults to `false`. Workspaces that created a warehouse through the API between September 1, 2022 and April 30, 2023 (November 1, 2022 to May 19, 2023 on Azure) retain a default of `true` if enabled for serverless and meeting its [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements). Workspace admins may need to accept updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms) in the SQL UI.
      * 
      */
     @Export(name="enableServerlessCompute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableServerlessCompute;
 
     /**
-     * @return Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
+     * @return Whether to use serverless compute. Set explicitly to avoid workspace-dependent defaults.
      * 
-     * * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
+     * * For REALTIME, defaults to `true` and cannot be set to `false`.
+     * * For PRO/CLASSIC, defaults to `false`. Workspaces that created a warehouse through the API between September 1, 2022 and April 30, 2023 (November 1, 2022 to May 19, 2023 on Azure) retain a default of `true` if enabled for serverless and meeting its [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements). Workspace admins may need to accept updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms) in the SQL UI.
      * 
      */
     public Output<Boolean> enableServerlessCompute() {
@@ -238,35 +247,43 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> jdbcUrl() {
         return this.jdbcUrl;
     }
+    /**
+     * Maximum compute capacity in DBU/hour. Must be a positive integer; the server enforces capacity limits. Omit to preserve the server value; `0` cannot clear it.
+     * 
+     */
     @Export(name="maxDbu", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxDbu;
+    private Output<Integer> maxDbu;
 
-    public Output<Optional<Integer>> maxDbu() {
-        return Codegen.optional(this.maxDbu);
+    /**
+     * @return Maximum compute capacity in DBU/hour. Must be a positive integer; the server enforces capacity limits. Omit to preserve the server value; `0` cannot clear it.
+     * 
+     */
+    public Output<Integer> maxDbu() {
+        return this.maxDbu;
     }
     /**
-     * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+     * Maximum number of clusters available when a SQL warehouse is running. Defaults to `1`. Must be `1` for REALTIME warehouses.
      * 
      */
     @Export(name="maxNumClusters", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxNumClusters;
 
     /**
-     * @return Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+     * @return Maximum number of clusters available when a SQL warehouse is running. Defaults to `1`. Must be `1` for REALTIME warehouses.
      * 
      */
     public Output<Optional<Integer>> maxNumClusters() {
         return Codegen.optional(this.maxNumClusters);
     }
     /**
-     * Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
+     * Minimum number of clusters available when a SQL warehouse is running. The default is `1`. Must be `1` for REALTIME warehouses.
      * 
      */
     @Export(name="minNumClusters", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minNumClusters;
 
     /**
-     * @return Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
+     * @return Minimum number of clusters available when a SQL warehouse is running. The default is `1`. Must be `1` for REALTIME warehouses.
      * 
      */
     public Output<Optional<Integer>> minNumClusters() {
@@ -287,14 +304,14 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+     * Skip waiting for `RUNNING` after creation. Defaults to `false`. Has no effect for REALTIME warehouses, which are created stopped.
      * 
      */
     @Export(name="noWait", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> noWait;
 
     /**
-     * @return Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+     * @return Skip waiting for `RUNNING` after creation. Defaults to `false`. Has no effect for REALTIME warehouses, which are created stopped.
      * 
      */
     public Output<Optional<Boolean>> noWait() {
@@ -356,21 +373,15 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<SqlEndpointProviderConfig> providerConfig() {
         return this.providerConfig;
     }
-    @Export(name="reydenClusterSizeMultiplier", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> reydenClusterSizeMultiplier;
-
-    public Output<Optional<Double>> reydenClusterSizeMultiplier() {
-        return Codegen.optional(this.reydenClusterSizeMultiplier);
-    }
     /**
-     * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
+     * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. Defaults to `COST_OPTIMIZED`, the only accepted value for REALTIME.
      * 
      */
     @Export(name="spotInstancePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotInstancePolicy;
 
     /**
-     * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
+     * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. Defaults to `COST_OPTIMIZED`, the only accepted value for REALTIME.
      * 
      */
     public Output<Optional<String>> spotInstancePolicy() {
@@ -404,11 +415,19 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * Statement timeout in seconds: a nonnegative integer. Omit to preserve the server setting; Pulumi supplies no default. Use `0` to clear the warehouse override and use the runtime fallback.
+     * 
+     */
     @Export(name="statementTimeout", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> statementTimeout;
+    private Output<Integer> statementTimeout;
 
-    public Output<Optional<Integer>> statementTimeout() {
-        return Codegen.optional(this.statementTimeout);
+    /**
+     * @return Statement timeout in seconds: a nonnegative integer. Omit to preserve the server setting; Pulumi supplies no default. Use `0` to clear the warehouse override and use the runtime fallback.
+     * 
+     */
+    public Output<Integer> statementTimeout() {
+        return this.statementTimeout;
     }
     /**
      * Databricks tags all endpoint resources with these tags.
@@ -425,14 +444,14 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO`, `CLASSIC`, or `REALTIME`. REALTIME must be selected explicitly; changing an existing warehouse to or from REALTIME is not supported. When omitted, defaults to `PRO` if `enableServerlessCompute` is `true`, otherwise `CLASSIC`. Serverless PRO/CLASSIC warehouses must use `PRO`.
      * 
      */
     @Export(name="warehouseType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseType;
 
     /**
-     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO`, `CLASSIC`, or `REALTIME`. REALTIME must be selected explicitly; changing an existing warehouse to or from REALTIME is not supported. When omitted, defaults to `PRO` if `enableServerlessCompute` is `true`, otherwise `CLASSIC`. Serverless PRO/CLASSIC warehouses must use `PRO`.
      * 
      */
     public Output<Optional<String>> warehouseType() {

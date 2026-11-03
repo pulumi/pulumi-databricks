@@ -14,8 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct
     {
         public readonly string Input;
+        public readonly double? RelativeError;
         /// <summary>
-        /// The maximum relative standard deviation allowed (default defined by Spark)
+        /// The maximum relative standard deviation allowed (default defined by Spark).
+        /// Deprecated: use relative_error. When RelativeError is set, reads return the same value here
+        /// for clients that don't have relative_error, and a request may only send that value
         /// </summary>
         public readonly double? RelativeSd;
 
@@ -23,9 +26,12 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct(
             string input,
 
+            double? relativeError,
+
             double? relativeSd)
         {
             Input = input;
+            RelativeError = relativeError;
             RelativeSd = relativeSd;
         }
     }

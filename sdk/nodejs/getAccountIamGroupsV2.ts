@@ -23,15 +23,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getAccountIamGroupsV2({});
+ * const _this = databricks.getAccountIamGroupsV2({
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ * });
  * ```
  */
-export function getAccountIamGroupsV2(args?: GetAccountIamGroupsV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamGroupsV2Result> {
-    args = args || {};
+export function getAccountIamGroupsV2(args: GetAccountIamGroupsV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountIamGroupsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -48,6 +50,11 @@ export interface GetAccountIamGroupsV2Args {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
+    /**
+     * The parent resource name of the account whose groups to list.
+     * Format: accounts/{account_id}
+     */
+    parent: string;
 }
 
 /**
@@ -57,6 +64,11 @@ export interface GetAccountIamGroupsV2Result {
     readonly filter?: string;
     readonly groups: outputs.GetAccountIamGroupsV2Group[];
     readonly pageSize?: number;
+    /**
+     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -75,15 +87,17 @@ export interface GetAccountIamGroupsV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getAccountIamGroupsV2({});
+ * const _this = databricks.getAccountIamGroupsV2({
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ * });
  * ```
  */
-export function getAccountIamGroupsV2Output(args?: GetAccountIamGroupsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamGroupsV2Result> {
-    args = args || {};
+export function getAccountIamGroupsV2Output(args: GetAccountIamGroupsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamGroupsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", {
         "filter": args.filter,
         "pageSize": args.pageSize,
+        "parent": args.parent,
     }, opts);
 }
 
@@ -100,4 +114,9 @@ export interface GetAccountIamGroupsV2OutputArgs {
      * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The parent resource name of the account whose groups to list.
+     * Format: accounts/{account_id}
+     */
+    parent: pulumi.Input<string>;
 }

@@ -19,7 +19,18 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
      */
     private String input;
     /**
-     * @return (number) - The maximum relative standard deviation allowed (default defined by Spark)
+     * @return (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     * 
+     */
+    private @Nullable Double relativeError;
+    /**
+     * @return (number) - The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don&#39;t have relative_error, and a request may only send that value
      * 
      */
     private @Nullable Double relativeSd;
@@ -33,7 +44,20 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
         return this.input;
     }
     /**
-     * @return (number) - The maximum relative standard deviation allowed (default defined by Spark)
+     * @return (number) - The error the user accepts, as a fraction of rank, between 0.01 (by default) and 0.3. The
+     * result is within this rank error with 99% confidence: at 0.01, the value returned for p95 is
+     * between the true p94 and p96 at least 99% of the time. Feature Store picks the sketch size that
+     * gives this error.
+     * If neither relativeError nor accuracy is set, 0.01 is default chosen at feature creation
+     * 
+     */
+    public Optional<Double> relativeError() {
+        return Optional.ofNullable(this.relativeError);
+    }
+    /**
+     * @return (number) - The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don&#39;t have relative_error, and a request may only send that value
      * 
      */
     public Optional<Double> relativeSd() {
@@ -50,11 +74,13 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
     @CustomType.Builder
     public static final class Builder {
         private String input;
+        private @Nullable Double relativeError;
         private @Nullable Double relativeSd;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCountDistinct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.input = defaults.input;
+    	      this.relativeError = defaults.relativeError;
     	      this.relativeSd = defaults.relativeSd;
         }
 
@@ -67,6 +93,12 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
             return this;
         }
         @CustomType.Setter
+        public Builder relativeError(@Nullable Double relativeError) {
+
+            this.relativeError = relativeError;
+            return this;
+        }
+        @CustomType.Setter
         public Builder relativeSd(@Nullable Double relativeSd) {
 
             this.relativeSd = relativeSd;
@@ -75,6 +107,7 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
         public GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCountDistinct build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCountDistinct();
             _resultValue.input = input;
+            _resultValue.relativeError = relativeError;
             _resultValue.relativeSd = relativeSd;
             return _resultValue;
         }

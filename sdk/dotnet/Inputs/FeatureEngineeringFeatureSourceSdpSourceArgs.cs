@@ -24,8 +24,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The full three-part names of the tables the pipeline reads from. Required to materialize this
         /// feature with a TableTrigger, which starts a run when these tables update. Each table must exist
-        /// when the feature is created. After the pipeline runs, Feature Store checks that it reads from
-        /// these tables, and the run fails if it doesn't. At most 100 tables
+        /// when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
+        /// tables. At most 100 tables
         /// </summary>
         public InputList<string> InputTables
         {

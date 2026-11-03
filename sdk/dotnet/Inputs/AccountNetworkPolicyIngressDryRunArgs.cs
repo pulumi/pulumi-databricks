@@ -12,6 +12,10 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressDryRunArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network policy restrictions for cross-workspace access: which other workspaces may
+        /// access this workspace
+        /// </summary>
         [Input("crossWorkspaceAccess")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs>? CrossWorkspaceAccess { get; set; }
 

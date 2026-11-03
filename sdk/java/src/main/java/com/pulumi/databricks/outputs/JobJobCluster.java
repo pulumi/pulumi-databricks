@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobJobClusterNewCluster;
+import com.pulumi.databricks.outputs.JobJobClusterServerlessCompute;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -23,6 +24,7 @@ public final class JobJobCluster {
      * 
      */
     private @Nullable JobJobClusterNewCluster newCluster;
+    private @Nullable JobJobClusterServerlessCompute serverlessCompute;
     private @Nullable String serverlessComputeId;
 
     private JobJobCluster() {}
@@ -40,6 +42,9 @@ public final class JobJobCluster {
     public Optional<JobJobClusterNewCluster> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }
+    public Optional<JobJobClusterServerlessCompute> serverlessCompute() {
+        return Optional.ofNullable(this.serverlessCompute);
+    }
     public Optional<String> serverlessComputeId() {
         return Optional.ofNullable(this.serverlessComputeId);
     }
@@ -55,12 +60,14 @@ public final class JobJobCluster {
     public static final class Builder {
         private String jobClusterKey;
         private @Nullable JobJobClusterNewCluster newCluster;
+        private @Nullable JobJobClusterServerlessCompute serverlessCompute;
         private @Nullable String serverlessComputeId;
         public Builder() {}
         public Builder(JobJobCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.newCluster = defaults.newCluster;
+    	      this.serverlessCompute = defaults.serverlessCompute;
     	      this.serverlessComputeId = defaults.serverlessComputeId;
         }
 
@@ -79,6 +86,12 @@ public final class JobJobCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder serverlessCompute(@Nullable JobJobClusterServerlessCompute serverlessCompute) {
+
+            this.serverlessCompute = serverlessCompute;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serverlessComputeId(@Nullable String serverlessComputeId) {
 
             this.serverlessComputeId = serverlessComputeId;
@@ -88,6 +101,7 @@ public final class JobJobCluster {
             final var _resultValue = new JobJobCluster();
             _resultValue.jobClusterKey = jobClusterKey;
             _resultValue.newCluster = newCluster;
+            _resultValue.serverlessCompute = serverlessCompute;
             _resultValue.serverlessComputeId = serverlessComputeId;
             return _resultValue;
         }

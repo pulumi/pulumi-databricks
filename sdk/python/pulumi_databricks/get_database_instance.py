@@ -396,6 +396,8 @@ def get_database_instance(name: Optional[_builtins.str] = None,
 
     This data source can be used to get a single Database Instance.
 
+    For new workloads, Databricks recommends the `PostgresProject` data source.
+
     ## Example Usage
 
     Referring to a Database Instance by name:
@@ -454,6 +456,8 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
     [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to get a single Database Instance.
+
+    For new workloads, Databricks recommends the `PostgresProject` data source.
 
     ## Example Usage
 

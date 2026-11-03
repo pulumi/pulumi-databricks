@@ -20,12 +20,12 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
      */
     private String displayName;
     /**
-     * @return (string) - The external ID of the principal in Databricks
+     * @return (string) - The external ID of the principal in the customer&#39;s IdP
      * 
      */
     private String externalId;
     /**
-     * @return Required. Internal ID of the group in Databricks whose direct members are being listed
+     * @return (integer) - The internal ID of the group this member belongs to
      * 
      */
     private Integer groupId;
@@ -34,6 +34,19 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
      * 
      */
     private String membershipSource;
+    /**
+     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     * 
+     */
+    private String parent;
     /**
      * @return (integer) - Internal ID of the principal in Databricks
      * 
@@ -59,14 +72,14 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
         return this.displayName;
     }
     /**
-     * @return (string) - The external ID of the principal in Databricks
+     * @return (string) - The external ID of the principal in the customer&#39;s IdP
      * 
      */
     public String externalId() {
         return this.externalId;
     }
     /**
-     * @return Required. Internal ID of the group in Databricks whose direct members are being listed
+     * @return (integer) - The internal ID of the group this member belongs to
      * 
      */
     public Integer groupId() {
@@ -78,6 +91,23 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
      */
     public String membershipSource() {
         return this.membershipSource;
+    }
+    /**
+     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
+     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The parent resource name of the group whose direct members to list.
+     * Format: groups/{group_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
     }
     /**
      * @return (integer) - Internal ID of the principal in Databricks
@@ -114,6 +144,8 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
         private String externalId;
         private Integer groupId;
         private String membershipSource;
+        private String name;
+        private String parent;
         private Integer principalId;
         private String principalType;
         private @Nullable GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfig providerConfig;
@@ -124,6 +156,8 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
     	      this.externalId = defaults.externalId;
     	      this.groupId = defaults.groupId;
     	      this.membershipSource = defaults.membershipSource;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.principalId = defaults.principalId;
     	      this.principalType = defaults.principalType;
     	      this.providerConfig = defaults.providerConfig;
@@ -162,6 +196,22 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2DirectGroupMember", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2DirectGroupMember", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder principalId(Integer principalId) {
             if (principalId == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceIamDirectGroupMembersV2DirectGroupMember", "principalId");
@@ -189,6 +239,8 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
             _resultValue.externalId = externalId;
             _resultValue.groupId = groupId;
             _resultValue.membershipSource = membershipSource;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.principalId = principalId;
             _resultValue.principalType = principalType;
             _resultValue.providerConfig = providerConfig;

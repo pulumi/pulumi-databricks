@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+ * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
  *
  * ## Example Usage
  *
@@ -24,15 +24,15 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamServicePrincipalV2({
- *     servicePrincipalId: "123456789",
+ *     name: "service-principals/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamServicePrincipalV2(args: GetWorkspaceIamServicePrincipalV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceIamServicePrincipalV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", {
+        "name": args.name,
         "providerConfig": args.providerConfig,
-        "servicePrincipalId": args.servicePrincipalId,
     }, opts);
 }
 
@@ -41,13 +41,15 @@ export function getWorkspaceIamServicePrincipalV2(args: GetWorkspaceIamServicePr
  */
 export interface GetWorkspaceIamServicePrincipalV2Args {
     /**
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    name: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetWorkspaceIamServicePrincipalV2ProviderConfig;
-    /**
-     * Internal service principal ID of the service principal in Databricks
-     */
-    servicePrincipalId: string;
 }
 
 /**
@@ -75,6 +77,17 @@ export interface GetWorkspaceIamServicePrincipalV2Result {
      * (string) - ExternalId of the service principal in the customer's IdP
      */
     readonly externalId: string;
+    /**
+     * (string) - The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    readonly name: string;
+    /**
+     * (string) - The resource name of the account that contains the service principal,
+     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     */
+    readonly parent: string;
     readonly providerConfig?: outputs.GetWorkspaceIamServicePrincipalV2ProviderConfig;
     /**
      * (string) - Internal service principal ID of the service principal in Databricks
@@ -86,7 +99,7 @@ export interface GetWorkspaceIamServicePrincipalV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
- * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+ * Reads a single service principal by its resource name, `service-principals/{service_principal_id}`, using a workspace-scoped provider.
  *
  * ## Example Usage
  *
@@ -99,15 +112,15 @@ export interface GetWorkspaceIamServicePrincipalV2Result {
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceIamServicePrincipalV2({
- *     servicePrincipalId: "123456789",
+ *     name: "service-principals/123456789",
  * });
  * ```
  */
 export function getWorkspaceIamServicePrincipalV2Output(args: GetWorkspaceIamServicePrincipalV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceIamServicePrincipalV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", {
+        "name": args.name,
         "providerConfig": args.providerConfig,
-        "servicePrincipalId": args.servicePrincipalId,
     }, opts);
 }
 
@@ -116,11 +129,13 @@ export function getWorkspaceIamServicePrincipalV2Output(args: GetWorkspaceIamSer
  */
 export interface GetWorkspaceIamServicePrincipalV2OutputArgs {
     /**
+     * The resource name of the service principal. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
+     * - Workspace-scoped: service-principals/{service_principal_id}
+     */
+    name: pulumi.Input<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.GetWorkspaceIamServicePrincipalV2ProviderConfigArgs | undefined>;
-    /**
-     * Internal service principal ID of the service principal in Databricks
-     */
-    servicePrincipalId: pulumi.Input<string>;
 }

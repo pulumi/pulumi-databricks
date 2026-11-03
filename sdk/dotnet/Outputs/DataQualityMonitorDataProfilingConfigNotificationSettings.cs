@@ -17,11 +17,21 @@ namespace Pulumi.Databricks.Outputs
         /// Destinations to send notifications on failure/timeout
         /// </summary>
         public readonly Outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure? OnFailure;
+        /// <summary>
+        /// Recipients to notify when anomaly detection finds unhealthy tables in the schema. Each
+        /// recipient gets one notification per important unhealthy table. Only supported on schema
+        /// monitors, via `AnomalyDetectionConfig`
+        /// </summary>
+        public readonly Outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable? OnUnhealthyTable;
 
         [OutputConstructor]
-        private DataQualityMonitorDataProfilingConfigNotificationSettings(Outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure? onFailure)
+        private DataQualityMonitorDataProfilingConfigNotificationSettings(
+            Outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure? onFailure,
+
+            Outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable? onUnhealthyTable)
         {
             OnFailure = onFailure;
+            OnUnhealthyTable = onUnhealthyTable;
         }
     }
 }

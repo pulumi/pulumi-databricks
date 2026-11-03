@@ -20,9 +20,105 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ * 
+ * App Spaces group related Databricks Apps and share configuration across them. Resources, user API scopes, and the usage policy configured on a space are available to every app in the space.
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Example
+ * 
+ * This example creates an app space in the workspace with the specified name.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AppSpace;
+ * import com.pulumi.databricks.AppSpaceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new AppSpace("this", AppSpaceArgs.builder()
+ *             .name("my-space")
+ *             .description("My app space for team applications.")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Example with Resources
+ * 
+ * This example creates an app space that gives all of its apps access to a SQL warehouse and a secret.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AppSpace;
+ * import com.pulumi.databricks.AppSpaceArgs;
+ * import com.pulumi.databricks.inputs.AppSpaceResourceArgs;
+ * import com.pulumi.databricks.inputs.AppSpaceResourceSqlWarehouseArgs;
+ * import com.pulumi.databricks.inputs.AppSpaceResourceSecretArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var withResources = new AppSpace("withResources", AppSpaceArgs.builder()
+ *             .name("analytics-space")
+ *             .description("Shared resources for analytics apps")
+ *             .resources(            
+ *                 AppSpaceResourceArgs.builder()
+ *                     .name("warehouse")
+ *                     .sqlWarehouse(AppSpaceResourceSqlWarehouseArgs.builder()
+ *                         .id("e9ca293f79a74b5c")
+ *                         .permission("CAN_USE")
+ *                         .build())
+ *                     .build(),
+ *                 AppSpaceResourceArgs.builder()
+ *                     .name("api-key")
+ *                     .secret(AppSpaceResourceSecretArgs.builder()
+ *                         .scope("my-scope")
+ *                         .key("my-key")
+ *                         .permission("READ")
+ *                         .build())
+ *                     .build())
+ *             .userApiScopes("sql")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/appSpace:AppSpace")

@@ -18,7 +18,8 @@ public final class GetAiGatewayModelServicesPlainArgs extends com.pulumi.resourc
 
     /**
      * Maximum number of model services to return. Defaults to 200 when unset or 0;
-     * the maximum is 200. Use `pageToken` to retrieve additional pages
+     * the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+     * `pageToken` to retrieve additional pages
      * 
      */
     @Import(name="pageSize")
@@ -26,7 +27,8 @@ public final class GetAiGatewayModelServicesPlainArgs extends com.pulumi.resourc
 
     /**
      * @return Maximum number of model services to return. Defaults to 200 when unset or 0;
-     * the maximum is 200. Use `pageToken` to retrieve additional pages
+     * the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+     * `pageToken` to retrieve additional pages
      * 
      */
     public Optional<Integer> pageSize() {
@@ -117,7 +119,8 @@ public final class GetAiGatewayModelServicesPlainArgs extends com.pulumi.resourc
 
         /**
          * @param pageSize Maximum number of model services to return. Defaults to 200 when unset or 0;
-         * the maximum is 200. Use `pageToken` to retrieve additional pages
+         * the maximum is 1000 for `view = BASIC` and 200 for `view = FULL`. Use
+         * `pageToken` to retrieve additional pages
          * 
          * @return builder
          * 

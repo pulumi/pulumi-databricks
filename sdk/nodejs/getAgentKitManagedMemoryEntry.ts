@@ -25,7 +25,8 @@ export function getAgentKitManagedMemoryEntry(args: GetAgentKitManagedMemoryEntr
 export interface GetAgentKitManagedMemoryEntryArgs {
     /**
      * Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      */
     name: string;
     /**
@@ -56,7 +57,8 @@ export interface GetAgentKitManagedMemoryEntryResult {
     readonly description: string;
     /**
      * (string) - Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      */
     readonly name: string;
     /**
@@ -98,7 +100,8 @@ export function getAgentKitManagedMemoryEntryOutput(args: GetAgentKitManagedMemo
 export interface GetAgentKitManagedMemoryEntryOutputArgs {
     /**
      * Resource name in the form
-     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`
+     * `memory-stores/{managed_memory_store_id}/entries/{managed_memory_entry_id}`.
+     * Required for updates; assigned by the service on creation
      */
     name: pulumi.Input<string>;
     /**

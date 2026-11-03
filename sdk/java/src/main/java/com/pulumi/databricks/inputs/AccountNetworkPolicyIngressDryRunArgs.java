@@ -17,9 +17,19 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
 
     public static final AccountNetworkPolicyIngressDryRunArgs Empty = new AccountNetworkPolicyIngressDryRunArgs();
 
+    /**
+     * The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     * 
+     */
     @Import(name="crossWorkspaceAccess")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs> crossWorkspaceAccess;
 
+    /**
+     * @return The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs>> crossWorkspaceAccess() {
         return Optional.ofNullable(this.crossWorkspaceAccess);
     }
@@ -84,11 +94,25 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
             $ = new AccountNetworkPolicyIngressDryRunArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param crossWorkspaceAccess The network policy restrictions for cross-workspace access: which other workspaces may
+         * access this workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder crossWorkspaceAccess(@Nullable Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs> crossWorkspaceAccess) {
             $.crossWorkspaceAccess = crossWorkspaceAccess;
             return this;
         }
 
+        /**
+         * @param crossWorkspaceAccess The network policy restrictions for cross-workspace access: which other workspaces may
+         * access this workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder crossWorkspaceAccess(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs crossWorkspaceAccess) {
             return crossWorkspaceAccess(Output.of(crossWorkspaceAccess));
         }

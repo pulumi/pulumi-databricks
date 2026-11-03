@@ -33,6 +33,19 @@ public final class GetWorkspaceIamGroupV2Result {
      * 
      */
     private String groupName;
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    private String parent;
     private @Nullable GetWorkspaceIamGroupV2ProviderConfig providerConfig;
 
     private GetWorkspaceIamGroupV2Result() {}
@@ -64,6 +77,23 @@ public final class GetWorkspaceIamGroupV2Result {
     public String groupName() {
         return this.groupName;
     }
+    /**
+     * @return (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
     public Optional<GetWorkspaceIamGroupV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -81,6 +111,8 @@ public final class GetWorkspaceIamGroupV2Result {
         private String externalId;
         private String groupId;
         private String groupName;
+        private String name;
+        private String parent;
         private @Nullable GetWorkspaceIamGroupV2ProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetWorkspaceIamGroupV2Result defaults) {
@@ -89,6 +121,8 @@ public final class GetWorkspaceIamGroupV2Result {
     	      this.externalId = defaults.externalId;
     	      this.groupId = defaults.groupId;
     	      this.groupName = defaults.groupName;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
         }
 
@@ -125,6 +159,22 @@ public final class GetWorkspaceIamGroupV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamGroupV2Result", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceIamGroupV2Result", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetWorkspaceIamGroupV2ProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -136,6 +186,8 @@ public final class GetWorkspaceIamGroupV2Result {
             _resultValue.externalId = externalId;
             _resultValue.groupId = groupId;
             _resultValue.groupName = groupName;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }

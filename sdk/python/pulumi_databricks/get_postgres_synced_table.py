@@ -77,8 +77,7 @@ class GetPostgresSyncedTableResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresSyncedTableSpecResult':
         """
-        (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc.
-        This attribute is specified at creation time and most fields are returned as is on subsequent queries
+        (SyncedTableSyncedTableSpec) - Configuration details of the synced table, such as the source table, scheduling policy, etc
         """
         return pulumi.get(self, "spec")
 

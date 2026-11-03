@@ -34,6 +34,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.AccountIamUserV2("this", new()
     ///     {
+    ///         Parent = "accounts/00000000-0000-0000-0000-000000000000",
     ///         Username = "jane.doe@example.com",
     ///         AccountUserStatus = "ACTIVE",
     ///         FullName = new Databricks.Inputs.AccountIamUserV2FullNameArgs
@@ -69,6 +70,21 @@ namespace Pulumi.Databricks
 
         [Output("fullName")]
         public Output<Outputs.AccountIamUserV2FullName> FullName { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// (string) - Internal userId of the user in Databricks
@@ -144,6 +160,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.AccountIamUserV2FullNameArgs> FullName { get; set; } = null!;
 
         /// <summary>
+        /// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
         /// Username/email of the user
         /// </summary>
         [Input("username", required: true)]
@@ -177,6 +200,21 @@ namespace Pulumi.Databricks
 
         [Input("fullName")]
         public Input<Inputs.AccountIamUserV2FullNameGetArgs>? FullName { get; set; }
+
+        /// <summary>
+        /// (string) - The resource name of the user. The format depends on the API that returned it:
+        /// - Account-scoped: accounts/{account_id}/users/{user_id}
+        /// - Workspace-scoped: users/{user_id}
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        /// account-scoped and workspace-scoped APIs return it
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// (string) - Internal userId of the user in Databricks

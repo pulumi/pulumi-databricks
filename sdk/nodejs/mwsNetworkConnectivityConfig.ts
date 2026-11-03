@@ -69,6 +69,7 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
     }
 
     declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly billingWorkspaceId: pulumi.Output<number | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */
@@ -108,6 +109,7 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MwsNetworkConnectivityConfigState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["billingWorkspaceId"] = state?.billingWorkspaceId;
             resourceInputs["creationTime"] = state?.creationTime;
             resourceInputs["egressConfig"] = state?.egressConfig;
             resourceInputs["name"] = state?.name;
@@ -120,6 +122,7 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["billingWorkspaceId"] = args?.billingWorkspaceId;
             resourceInputs["creationTime"] = args?.creationTime;
             resourceInputs["egressConfig"] = args?.egressConfig;
             resourceInputs["name"] = args?.name;
@@ -137,6 +140,7 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
  */
 export interface MwsNetworkConnectivityConfigState {
     accountId?: pulumi.Input<string | undefined>;
+    billingWorkspaceId?: pulumi.Input<number | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */
@@ -168,6 +172,7 @@ export interface MwsNetworkConnectivityConfigState {
  */
 export interface MwsNetworkConnectivityConfigArgs {
     accountId?: pulumi.Input<string | undefined>;
+    billingWorkspaceId?: pulumi.Input<number | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */

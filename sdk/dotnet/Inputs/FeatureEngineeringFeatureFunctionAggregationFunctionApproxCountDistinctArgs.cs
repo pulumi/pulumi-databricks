@@ -15,8 +15,13 @@ namespace Pulumi.Databricks.Inputs
         [Input("input", required: true)]
         public Input<string> Input { get; set; } = null!;
 
+        [Input("relativeError")]
+        public Input<double>? RelativeError { get; set; }
+
         /// <summary>
-        /// The maximum relative standard deviation allowed (default defined by Spark)
+        /// The maximum relative standard deviation allowed (default defined by Spark).
+        /// Deprecated: use relative_error. When RelativeError is set, reads return the same value here
+        /// for clients that don't have relative_error, and a request may only send that value
         /// </summary>
         [Input("relativeSd")]
         public Input<double>? RelativeSd { get; set; }

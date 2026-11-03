@@ -14,8 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
     private String input;
+    private @Nullable Double relativeError;
     /**
-     * @return The maximum relative standard deviation allowed (default defined by Spark)
+     * @return The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don&#39;t have relative_error, and a request may only send that value
      * 
      */
     private @Nullable Double relativeSd;
@@ -24,8 +27,13 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
     public String input() {
         return this.input;
     }
+    public Optional<Double> relativeError() {
+        return Optional.ofNullable(this.relativeError);
+    }
     /**
-     * @return The maximum relative standard deviation allowed (default defined by Spark)
+     * @return The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don&#39;t have relative_error, and a request may only send that value
      * 
      */
     public Optional<Double> relativeSd() {
@@ -42,11 +50,13 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
     @CustomType.Builder
     public static final class Builder {
         private String input;
+        private @Nullable Double relativeError;
         private @Nullable Double relativeSd;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.input = defaults.input;
+    	      this.relativeError = defaults.relativeError;
     	      this.relativeSd = defaults.relativeSd;
         }
 
@@ -59,6 +69,12 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
             return this;
         }
         @CustomType.Setter
+        public Builder relativeError(@Nullable Double relativeError) {
+
+            this.relativeError = relativeError;
+            return this;
+        }
+        @CustomType.Setter
         public Builder relativeSd(@Nullable Double relativeSd) {
 
             this.relativeSd = relativeSd;
@@ -67,6 +83,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
         public FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct();
             _resultValue.input = input;
+            _resultValue.relativeError = relativeError;
             _resultValue.relativeSd = relativeSd;
             return _resultValue;
         }

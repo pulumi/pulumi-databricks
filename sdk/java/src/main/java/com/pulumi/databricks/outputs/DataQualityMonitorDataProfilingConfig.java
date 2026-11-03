@@ -50,10 +50,6 @@ public final class DataQualityMonitorDataProfilingConfig {
     private @Nullable String latestMonitorFailureMessage;
     private @Nullable Integer monitorVersion;
     private @Nullable String monitoredTableName;
-    /**
-     * @return Field for specifying notification settings
-     * 
-     */
     private @Nullable DataQualityMonitorDataProfilingConfigNotificationSettings notificationSettings;
     /**
      * @return ID of the schema where output tables are created
@@ -149,10 +145,6 @@ public final class DataQualityMonitorDataProfilingConfig {
     public Optional<String> monitoredTableName() {
         return Optional.ofNullable(this.monitoredTableName);
     }
-    /**
-     * @return Field for specifying notification settings
-     * 
-     */
     public Optional<DataQualityMonitorDataProfilingConfigNotificationSettings> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }

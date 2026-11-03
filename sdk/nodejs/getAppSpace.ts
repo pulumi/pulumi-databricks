@@ -7,9 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ *
+ * This data source can be used to get a single app space.
+ *
+ * ## Example Usage
+ *
+ * Referring to an app space by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAppSpace({
+ *     name: "my-space",
+ * });
+ * ```
  */
 export function getAppSpace(args: GetAppSpaceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppSpaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -111,9 +126,24 @@ export interface GetAppSpaceResult {
     readonly userApiScopes: string[];
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ *
+ * This data source can be used to get a single app space.
+ *
+ * ## Example Usage
+ *
+ * Referring to an app space by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAppSpace({
+ *     name: "my-space",
+ * });
+ * ```
  */
 export function getAppSpaceOutput(args: GetAppSpaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppSpaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

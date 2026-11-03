@@ -77,6 +77,17 @@ export class WorkspaceIamUserV2 extends pulumi.CustomResource {
     declare public readonly externalId: pulumi.Output<string | undefined>;
     declare public readonly fullName: pulumi.Output<outputs.WorkspaceIamUserV2FullName>;
     /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    declare public /*out*/ readonly parent: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceIamUserV2ProviderConfig>;
@@ -106,6 +117,8 @@ export class WorkspaceIamUserV2 extends pulumi.CustomResource {
             resourceInputs["accountUserStatus"] = state?.accountUserStatus;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["username"] = state?.username;
@@ -126,6 +139,8 @@ export class WorkspaceIamUserV2 extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["username"] = args?.username;
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -150,6 +165,17 @@ export interface WorkspaceIamUserV2State {
      */
     externalId?: pulumi.Input<string | undefined>;
     fullName?: pulumi.Input<inputs.WorkspaceIamUserV2FullName | undefined>;
+    /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

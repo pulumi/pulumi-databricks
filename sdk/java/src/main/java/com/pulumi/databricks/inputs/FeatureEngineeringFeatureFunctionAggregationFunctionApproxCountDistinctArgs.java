@@ -24,15 +24,26 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
         return this.input;
     }
 
+    @Import(name="relativeError")
+    private @Nullable Output<Double> relativeError;
+
+    public Optional<Output<Double>> relativeError() {
+        return Optional.ofNullable(this.relativeError);
+    }
+
     /**
-     * The maximum relative standard deviation allowed (default defined by Spark)
+     * The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don&#39;t have relative_error, and a request may only send that value
      * 
      */
     @Import(name="relativeSd")
     private @Nullable Output<Double> relativeSd;
 
     /**
-     * @return The maximum relative standard deviation allowed (default defined by Spark)
+     * @return The maximum relative standard deviation allowed (default defined by Spark).
+     * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+     * for clients that don&#39;t have relative_error, and a request may only send that value
      * 
      */
     public Optional<Output<Double>> relativeSd() {
@@ -43,6 +54,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctArgs(FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctArgs $) {
         this.input = $.input;
+        this.relativeError = $.relativeError;
         this.relativeSd = $.relativeSd;
     }
 
@@ -73,8 +85,19 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
             return input(Output.of(input));
         }
 
+        public Builder relativeError(@Nullable Output<Double> relativeError) {
+            $.relativeError = relativeError;
+            return this;
+        }
+
+        public Builder relativeError(Double relativeError) {
+            return relativeError(Output.of(relativeError));
+        }
+
         /**
-         * @param relativeSd The maximum relative standard deviation allowed (default defined by Spark)
+         * @param relativeSd The maximum relative standard deviation allowed (default defined by Spark).
+         * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+         * for clients that don&#39;t have relative_error, and a request may only send that value
          * 
          * @return builder
          * 
@@ -85,7 +108,9 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionApproxCou
         }
 
         /**
-         * @param relativeSd The maximum relative standard deviation allowed (default defined by Spark)
+         * @param relativeSd The maximum relative standard deviation allowed (default defined by Spark).
+         * Deprecated: use relative_error. When relativeError is set, reads return the same value here
+         * for clients that don&#39;t have relative_error, and a request may only send that value
          * 
          * @return builder
          * 

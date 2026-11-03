@@ -25,12 +25,12 @@ public final class GetAlertV2Result {
      */
     private String createTime;
     /**
-     * @return (string) - Custom description for the alert. support mustache template
+     * @return (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     private String customDescription;
     /**
-     * @return (string) - Custom summary for the alert. support mustache template
+     * @return (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     private String customSummary;
@@ -128,14 +128,14 @@ public final class GetAlertV2Result {
         return this.createTime;
     }
     /**
-     * @return (string) - Custom description for the alert. support mustache template
+     * @return (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     public String customDescription() {
         return this.customDescription;
     }
     /**
-     * @return (string) - Custom summary for the alert. support mustache template
+     * @return (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
      * 
      */
     public String customSummary() {

@@ -32,6 +32,19 @@ public final class GetAccountIamUsersV2User {
      */
     private GetAccountIamUsersV2UserFullName fullName;
     /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    private String name;
+    /**
+     * @return The parent resource name of the account whose users to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    private String parent;
+    /**
      * @return (string) - Internal userId of the user in Databricks
      * 
      */
@@ -72,6 +85,23 @@ public final class GetAccountIamUsersV2User {
         return this.fullName;
     }
     /**
+     * @return (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The parent resource name of the account whose users to list.
+     * Format: accounts/{account_id}
+     * 
+     */
+    public String parent() {
+        return this.parent;
+    }
+    /**
      * @return (string) - Internal userId of the user in Databricks
      * 
      */
@@ -99,6 +129,8 @@ public final class GetAccountIamUsersV2User {
         private String accountUserStatus;
         private String externalId;
         private GetAccountIamUsersV2UserFullName fullName;
+        private String name;
+        private String parent;
         private String userId;
         private String username;
         public Builder() {}
@@ -108,6 +140,8 @@ public final class GetAccountIamUsersV2User {
     	      this.accountUserStatus = defaults.accountUserStatus;
     	      this.externalId = defaults.externalId;
     	      this.fullName = defaults.fullName;
+    	      this.name = defaults.name;
+    	      this.parent = defaults.parent;
     	      this.userId = defaults.userId;
     	      this.username = defaults.username;
         }
@@ -145,6 +179,22 @@ public final class GetAccountIamUsersV2User {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamUsersV2User", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(String parent) {
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamUsersV2User", "parent");
+            }
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userId(String userId) {
             if (userId == null) {
               throw new MissingRequiredPropertyException("GetAccountIamUsersV2User", "userId");
@@ -166,6 +216,8 @@ public final class GetAccountIamUsersV2User {
             _resultValue.accountUserStatus = accountUserStatus;
             _resultValue.externalId = externalId;
             _resultValue.fullName = fullName;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
             _resultValue.userId = userId;
             _resultValue.username = username;
             return _resultValue;

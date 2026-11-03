@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPoliciesItemIngress {
     /**
-     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccess crossWorkspaceAccess;
@@ -33,7 +34,8 @@ public final class GetAccountNetworkPoliciesItemIngress {
 
     private GetAccountNetworkPoliciesItemIngress() {}
     /**
-     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+     * access this workspace
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccess> crossWorkspaceAccess() {

@@ -34,25 +34,27 @@ public final class GetAccountIamWorkspaceAssignmentsV2PlainArgs extends com.pulu
     }
 
     /**
-     * Required. The workspace ID for which the workspace assignments are being fetched
+     * The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
      * 
      */
-    @Import(name="workspaceId", required=true)
-    private String workspaceId;
+    @Import(name="parent", required=true)
+    private String parent;
 
     /**
-     * @return Required. The workspace ID for which the workspace assignments are being fetched
+     * @return The parent resource name of the workspace whose assignments to list.
+     * Format: accounts/{account_id}/workspaces/{workspace_id}
      * 
      */
-    public String workspaceId() {
-        return this.workspaceId;
+    public String parent() {
+        return this.parent;
     }
 
     private GetAccountIamWorkspaceAssignmentsV2PlainArgs() {}
 
     private GetAccountIamWorkspaceAssignmentsV2PlainArgs(GetAccountIamWorkspaceAssignmentsV2PlainArgs $) {
         this.pageSize = $.pageSize;
-        this.workspaceId = $.workspaceId;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -86,19 +88,20 @@ public final class GetAccountIamWorkspaceAssignmentsV2PlainArgs extends com.pulu
         }
 
         /**
-         * @param workspaceId Required. The workspace ID for which the workspace assignments are being fetched
+         * @param parent The parent resource name of the workspace whose assignments to list.
+         * Format: accounts/{account_id}/workspaces/{workspace_id}
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder parent(String parent) {
+            $.parent = parent;
             return this;
         }
 
         public GetAccountIamWorkspaceAssignmentsV2PlainArgs build() {
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentsV2PlainArgs", "workspaceId");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamWorkspaceAssignmentsV2PlainArgs", "parent");
             }
             return $;
         }

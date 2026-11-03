@@ -18,6 +18,25 @@ public final class GetWorkspaceIamUserV2Args extends com.pulumi.resources.Invoke
     public static final GetWorkspaceIamUserV2Args Empty = new GetWorkspaceIamUserV2Args();
 
     /**
+     * The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    @Import(name="name", required=true)
+    private Output<String> name;
+
+    /**
+     * @return The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -32,26 +51,11 @@ public final class GetWorkspaceIamUserV2Args extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.providerConfig);
     }
 
-    /**
-     * Internal userId of the user in Databricks
-     * 
-     */
-    @Import(name="userId", required=true)
-    private Output<String> userId;
-
-    /**
-     * @return Internal userId of the user in Databricks
-     * 
-     */
-    public Output<String> userId() {
-        return this.userId;
-    }
-
     private GetWorkspaceIamUserV2Args() {}
 
     private GetWorkspaceIamUserV2Args(GetWorkspaceIamUserV2Args $) {
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
-        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -70,6 +74,31 @@ public final class GetWorkspaceIamUserV2Args extends com.pulumi.resources.Invoke
 
         public Builder(GetWorkspaceIamUserV2Args defaults) {
             $ = new GetWorkspaceIamUserV2Args(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param name The resource name of the user. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/users/{user_id}
+         * - Workspace-scoped: users/{user_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The resource name of the user. The format depends on the API that returned it:
+         * - Account-scoped: accounts/{account_id}/users/{user_id}
+         * - Workspace-scoped: users/{user_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -93,30 +122,9 @@ public final class GetWorkspaceIamUserV2Args extends com.pulumi.resources.Invoke
             return providerConfig(Output.of(providerConfig));
         }
 
-        /**
-         * @param userId Internal userId of the user in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userId(Output<String> userId) {
-            $.userId = userId;
-            return this;
-        }
-
-        /**
-         * @param userId Internal userId of the user in Databricks
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userId(String userId) {
-            return userId(Output.of(userId));
-        }
-
         public GetWorkspaceIamUserV2Args build() {
-            if ($.userId == null) {
-                throw new MissingRequiredPropertyException("GetWorkspaceIamUserV2Args", "userId");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceIamUserV2Args", "name");
             }
             return $;
         }

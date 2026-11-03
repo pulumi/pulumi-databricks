@@ -12,6 +12,34 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs : global::Pulumi.ResourceArgs
     {
+        [Input("destinationIds")]
+        private InputList<string>? _destinationIds;
+
+        /// <summary>
+        /// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+        /// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+        /// 25 destination IDs is supported.
+        /// Only supported on schema monitors, via `AnomalyDetectionConfig`; rejected on table monitors
+        /// </summary>
+        public InputList<string> DestinationIds
+        {
+            get => _destinationIds ?? (_destinationIds = new InputList<string>());
+            set => _destinationIds = value;
+        }
+
+        [Input("destinationUserIds")]
+        private InputList<int>? _destinationUserIds;
+
+        /// <summary>
+        /// The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+        /// Only supported on schema monitors, via `AnomalyDetectionConfig`; rejected on table monitors
+        /// </summary>
+        public InputList<int> DestinationUserIds
+        {
+            get => _destinationUserIds ?? (_destinationUserIds = new InputList<int>());
+            set => _destinationUserIds = value;
+        }
+
         [Input("emailAddresses")]
         private InputList<string>? _emailAddresses;
 

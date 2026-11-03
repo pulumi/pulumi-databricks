@@ -28,13 +28,16 @@ class GetWorkspaceIamUsersV2Result:
     """
     A collection of values returned by getWorkspaceIamUsersV2.
     """
-    def __init__(__self__, filter=None, page_size=None, provider_config=None, users=None):
+    def __init__(__self__, filter=None, page_size=None, parent=None, provider_config=None, users=None):
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -51,6 +54,15 @@ class GetWorkspaceIamUsersV2Result:
     @pulumi.getter(name="pageSize")
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> Optional[_builtins.str]:
+        """
+        (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -71,12 +83,14 @@ class AwaitableGetWorkspaceIamUsersV2Result(GetWorkspaceIamUsersV2Result):
         return GetWorkspaceIamUsersV2Result(
             filter=self.filter,
             page_size=self.page_size,
+            parent=self.parent,
             provider_config=self.provider_config,
             users=self.users)
 
 
 def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
                                page_size: Optional[_builtins.int] = None,
+                               parent: Optional[_builtins.str] = None,
                                provider_config: Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamUsersV2Result:
     """
@@ -103,11 +117,14 @@ def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
     :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+           defaults to the account of the calling workspace, and any other account is rejected
     :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2', __args__, opts=opts, typ=GetWorkspaceIamUsersV2Result).value
@@ -115,10 +132,12 @@ def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
     return AwaitableGetWorkspaceIamUsersV2Result(
         filter=pulumi.get(__ret__, 'filter'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         users=pulumi.get(__ret__, 'users'))
 def get_workspace_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                      parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamUsersV2Result]:
     """
@@ -145,16 +164,20 @@ def get_workspace_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_bu
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
     :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The resource name of the account to list users in, `accounts/{account_id}`. Optional:
+           defaults to the account of the calling workspace, and any other account is rejected
     :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2', __args__, opts=opts, typ=GetWorkspaceIamUsersV2Result)
     return __ret__.apply(lambda __response__: GetWorkspaceIamUsersV2Result(
         filter=pulumi.get(__response__, 'filter'),
         page_size=pulumi.get(__response__, 'page_size'),
+        parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         users=pulumi.get(__response__, 'users')))

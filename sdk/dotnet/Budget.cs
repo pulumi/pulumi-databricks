@@ -307,6 +307,9 @@ namespace Pulumi.Databricks
         [Output("filter")]
         public Output<Outputs.BudgetFilter?> Filter { get; private set; } = null!;
 
+        [Output("includeExternalSpend")]
+        public Output<bool?> IncludeExternalSpend { get; private set; } = null!;
+
         /// <summary>
         /// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
         /// </summary>
@@ -394,6 +397,9 @@ namespace Pulumi.Databricks
         [Input("filter")]
         public Input<Inputs.BudgetFilterArgs>? Filter { get; set; }
 
+        [Input("includeExternalSpend")]
+        public Input<bool>? IncludeExternalSpend { get; set; }
+
         /// <summary>
         /// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
         /// </summary>
@@ -442,6 +448,9 @@ namespace Pulumi.Databricks
 
         [Input("filter")]
         public Input<Inputs.BudgetFilterGetArgs>? Filter { get; set; }
+
+        [Input("includeExternalSpend")]
+        public Input<bool>? IncludeExternalSpend { get; set; }
 
         /// <summary>
         /// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)

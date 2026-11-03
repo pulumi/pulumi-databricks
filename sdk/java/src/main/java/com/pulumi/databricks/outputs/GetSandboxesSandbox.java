@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetSandboxesSandboxMetadata;
 import com.pulumi.databricks.outputs.GetSandboxesSandboxProviderConfig;
 import com.pulumi.databricks.outputs.GetSandboxesSandboxSpec;
 import com.pulumi.databricks.outputs.GetSandboxesSandboxStatus;
@@ -25,6 +26,11 @@ public final class GetSandboxesSandbox {
      * 
      */
     private String displayName;
+    /**
+     * @return (SandboxMetadata) - Metadata associated with the sandbox
+     * 
+     */
+    private GetSandboxesSandboxMetadata metadata;
     /**
      * @return (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
      * `sandboxId`; any value supplied in a create or update request body is ignored
@@ -66,6 +72,13 @@ public final class GetSandboxesSandbox {
      */
     public String displayName() {
         return this.displayName;
+    }
+    /**
+     * @return (SandboxMetadata) - Metadata associated with the sandbox
+     * 
+     */
+    public GetSandboxesSandboxMetadata metadata() {
+        return this.metadata;
     }
     /**
      * @return (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
@@ -115,6 +128,7 @@ public final class GetSandboxesSandbox {
     public static final class Builder {
         private String createTime;
         private String displayName;
+        private GetSandboxesSandboxMetadata metadata;
         private String name;
         private @Nullable GetSandboxesSandboxProviderConfig providerConfig;
         private GetSandboxesSandboxSpec spec;
@@ -125,6 +139,7 @@ public final class GetSandboxesSandbox {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.displayName = defaults.displayName;
+    	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
@@ -146,6 +161,14 @@ public final class GetSandboxesSandbox {
               throw new MissingRequiredPropertyException("GetSandboxesSandbox", "displayName");
             }
             this.displayName = displayName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metadata(GetSandboxesSandboxMetadata metadata) {
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetSandboxesSandbox", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
@@ -190,6 +213,7 @@ public final class GetSandboxesSandbox {
             final var _resultValue = new GetSandboxesSandbox();
             _resultValue.createTime = createTime;
             _resultValue.displayName = displayName;
+            _resultValue.metadata = metadata;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;

@@ -15,7 +15,35 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
-// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `name` uses the format `principals/{principal_id}/workspace-identity-detail`.
+//
+// ## Example Usage
+//
+// Example usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetWorkspaceIamWorkspaceIdentityDetailV2(ctx, &databricks.LookupWorkspaceIamWorkspaceIdentityDetailV2Args{
+//				Name: "principals/987654321/workspace-identity-detail",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupWorkspaceIamWorkspaceIdentityDetailV2(ctx *pulumi.Context, args *LookupWorkspaceIamWorkspaceIdentityDetailV2Args, opts ...pulumi.InvokeOption) (*LookupWorkspaceIamWorkspaceIdentityDetailV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceIamWorkspaceIdentityDetailV2Result
@@ -28,8 +56,9 @@ func LookupWorkspaceIamWorkspaceIdentityDetailV2(ctx *pulumi.Context, args *Look
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceIdentityDetailV2.
 type LookupWorkspaceIamWorkspaceIdentityDetailV2Args struct {
-	// The internal ID of the principal (user/sp/group) in Databricks
-	PrincipalId string `pulumi:"principalId"`
+	// The resource name of the workspace identity detail.
+	// Format: principals/{principal_id}/workspace-identity-detail
+	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -38,6 +67,9 @@ type LookupWorkspaceIamWorkspaceIdentityDetailV2Args struct {
 type LookupWorkspaceIamWorkspaceIdentityDetailV2Result struct {
 	// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
 	AssignmentType string `pulumi:"assignmentType"`
+	// (string) - The resource name of the workspace identity detail.
+	// Format: principals/{principal_id}/workspace-identity-detail
+	Name string `pulumi:"name"`
 	// (integer) - The internal ID of the principal (user/sp/group) in Databricks
 	PrincipalId string `pulumi:"principalId"`
 	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
@@ -54,8 +86,9 @@ func LookupWorkspaceIamWorkspaceIdentityDetailV2Output(ctx *pulumi.Context, args
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceIdentityDetailV2.
 type LookupWorkspaceIamWorkspaceIdentityDetailV2OutputArgs struct {
-	// The internal ID of the principal (user/sp/group) in Databricks
-	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// The resource name of the workspace identity detail.
+	// Format: principals/{principal_id}/workspace-identity-detail
+	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
@@ -82,6 +115,12 @@ func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) ToLookupWorkspa
 // (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
 func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) AssignmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.AssignmentType }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the workspace identity detail.
+// Format: principals/{principal_id}/workspace-identity-detail
+func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // (integer) - The internal ID of the principal (user/sp/group) in Databricks

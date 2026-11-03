@@ -26,6 +26,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.AccountIamUserV2("this", {
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
  *     username: "jane.doe@example.com",
  *     accountUserStatus: "ACTIVE",
  *     fullName: {
@@ -77,6 +78,17 @@ export class AccountIamUserV2 extends pulumi.CustomResource {
     declare public readonly externalId: pulumi.Output<string | undefined>;
     declare public readonly fullName: pulumi.Output<outputs.AccountIamUserV2FullName>;
     /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    declare public readonly parent: pulumi.Output<string>;
+    /**
      * (string) - Internal userId of the user in Databricks
      */
     declare public /*out*/ readonly userId: pulumi.Output<string>;
@@ -102,6 +114,8 @@ export class AccountIamUserV2 extends pulumi.CustomResource {
             resourceInputs["accountUserStatus"] = state?.accountUserStatus;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["username"] = state?.username;
         } else {
@@ -112,14 +126,19 @@ export class AccountIamUserV2 extends pulumi.CustomResource {
             if (args?.fullName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fullName'");
             }
+            if (args?.parent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["accountUserStatus"] = args?.accountUserStatus;
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["fullName"] = args?.fullName;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["username"] = args?.username;
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +164,17 @@ export interface AccountIamUserV2State {
     externalId?: pulumi.Input<string | undefined>;
     fullName?: pulumi.Input<inputs.AccountIamUserV2FullName | undefined>;
     /**
+     * (string) - The resource name of the user. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/users/{user_id}
+     * - Workspace-scoped: users/{user_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
+    /**
      * (string) - Internal userId of the user in Databricks
      */
     userId?: pulumi.Input<string | undefined>;
@@ -167,6 +197,11 @@ export interface AccountIamUserV2Args {
      */
     externalId?: pulumi.Input<string | undefined>;
     fullName: pulumi.Input<inputs.AccountIamUserV2FullName>;
+    /**
+     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    parent: pulumi.Input<string>;
     /**
      * Username/email of the user
      */

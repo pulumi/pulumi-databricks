@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPoliciesItemIngressResult
     {
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+        /// (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess) - The network policy restrictions for cross-workspace access: which other workspaces may
+        /// access this workspace
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessResult? CrossWorkspaceAccess;
         /// <summary>

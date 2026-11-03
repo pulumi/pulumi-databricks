@@ -28,7 +28,7 @@ class GetWorkspaceIamGroupsV2Result:
     """
     A collection of values returned by getWorkspaceIamGroupsV2.
     """
-    def __init__(__self__, filter=None, groups=None, page_size=None, provider_config=None):
+    def __init__(__self__, filter=None, groups=None, page_size=None, parent=None, provider_config=None):
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
@@ -38,6 +38,9 @@ class GetWorkspaceIamGroupsV2Result:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -58,6 +61,15 @@ class GetWorkspaceIamGroupsV2Result:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter
+    def parent(self) -> Optional[_builtins.str]:
+        """
+        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+        account-scoped and workspace-scoped APIs return it
+        """
+        return pulumi.get(self, "parent")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetWorkspaceIamGroupsV2ProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -72,11 +84,13 @@ class AwaitableGetWorkspaceIamGroupsV2Result(GetWorkspaceIamGroupsV2Result):
             filter=self.filter,
             groups=self.groups,
             page_size=self.page_size,
+            parent=self.parent,
             provider_config=self.provider_config)
 
 
 def get_workspace_iam_groups_v2(filter: Optional[_builtins.str] = None,
                                 page_size: Optional[_builtins.int] = None,
+                                parent: Optional[_builtins.str] = None,
                                 provider_config: Optional[Union['GetWorkspaceIamGroupsV2ProviderConfigArgs', 'GetWorkspaceIamGroupsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupsV2ProviderConfigResult']] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamGroupsV2Result:
     """
@@ -103,11 +117,14 @@ def get_workspace_iam_groups_v2(filter: Optional[_builtins.str] = None,
     :param _builtins.str filter: Optional. Allows filtering groups by group name or external id
     :param _builtins.int page_size: The maximum number of groups to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+           defaults to the account of the calling workspace, and any other account is rejected
     :param Union['GetWorkspaceIamGroupsV2ProviderConfigArgs', 'GetWorkspaceIamGroupsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2', __args__, opts=opts, typ=GetWorkspaceIamGroupsV2Result).value
@@ -116,9 +133,11 @@ def get_workspace_iam_groups_v2(filter: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         groups=pulumi.get(__ret__, 'groups'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_workspace_iam_groups_v2_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                       parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamGroupsV2ProviderConfigArgs', 'GetWorkspaceIamGroupsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupsV2ProviderConfigResult']]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamGroupsV2Result]:
     """
@@ -145,11 +164,14 @@ def get_workspace_iam_groups_v2_output(filter: pulumi.Input[Optional[Optional[_b
     :param _builtins.str filter: Optional. Allows filtering groups by group name or external id
     :param _builtins.int page_size: The maximum number of groups to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+    :param _builtins.str parent: The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
+           defaults to the account of the calling workspace, and any other account is rejected
     :param Union['GetWorkspaceIamGroupsV2ProviderConfigArgs', 'GetWorkspaceIamGroupsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['pageSize'] = page_size
+    __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2', __args__, opts=opts, typ=GetWorkspaceIamGroupsV2Result)
@@ -157,4 +179,5 @@ def get_workspace_iam_groups_v2_output(filter: pulumi.Input[Optional[Optional[_b
         filter=pulumi.get(__response__, 'filter'),
         groups=pulumi.get(__response__, 'groups'),
         page_size=pulumi.get(__response__, 'page_size'),
+        parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config')))

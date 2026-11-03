@@ -11,9 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/apps)
+//
+// This data source can be used to fetch the list of app spaces within the workspace.
+// The list can then be accessed via the data object's `spaces` field.
+//
+// ## Example Usage
+//
+// Getting a list of all app spaces:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetAppSpaces(ctx, &databricks.GetAppSpacesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allAppSpaces", all.Spaces)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAppSpaces(ctx *pulumi.Context, args *GetAppSpacesArgs, opts ...pulumi.InvokeOption) (*GetAppSpacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppSpacesResult

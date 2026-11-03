@@ -243,7 +243,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
@@ -256,6 +256,8 @@ class DataQualityMonitor(pulumi.CustomResource):
            - **USE_CATALOG** on the table's parent catalog
            - **USE_SCHEMA** on the table's parent schema
            - be an owner of the table.
+
+        For a `schema` monitor, `anomaly_detection_config.notification_settings` manages the schema's alert, the same alert shown under **Manage alerts** in the Data Quality Monitoring UI. Because the provider updates the whole `anomaly_detection_config`, a monitor without `notification_settings` deletes an alert that was set up in the UI. To stop alerts, remove the `notification_settings` block. Don't set it to an empty value: the API accepts it and deletes the alert, but the apply then fails because the API returns no `notification_settings`.
 
         > **Note** This resource can only be used with a workspace-level provider!
 
@@ -272,6 +274,25 @@ class DataQualityMonitor(pulumi.CustomResource):
             object_type="schema",
             object_id=this.schema_id,
             anomaly_detection_config={})
+        ```
+
+        To alert workspace users or notification destinations when anomaly detection finds unhealthy tables in the schema, set `notification_settings`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        with_alerts = databricks.DataQualityMonitor("with_alerts",
+            object_type="schema",
+            object_id=this["schemaId"],
+            anomaly_detection_config={
+                "notification_settings": {
+                    "on_unhealthy_table": {
+                        "destination_user_ids": [int("<user-id>")],
+                        "destination_ids": ["<notification-destination-id>"],
+                    },
+                },
+            })
         ```
 
 
@@ -299,7 +320,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                  args: DataQualityMonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
@@ -312,6 +333,8 @@ class DataQualityMonitor(pulumi.CustomResource):
            - **USE_CATALOG** on the table's parent catalog
            - **USE_SCHEMA** on the table's parent schema
            - be an owner of the table.
+
+        For a `schema` monitor, `anomaly_detection_config.notification_settings` manages the schema's alert, the same alert shown under **Manage alerts** in the Data Quality Monitoring UI. Because the provider updates the whole `anomaly_detection_config`, a monitor without `notification_settings` deletes an alert that was set up in the UI. To stop alerts, remove the `notification_settings` block. Don't set it to an empty value: the API accepts it and deletes the alert, but the apply then fails because the API returns no `notification_settings`.
 
         > **Note** This resource can only be used with a workspace-level provider!
 
@@ -328,6 +351,25 @@ class DataQualityMonitor(pulumi.CustomResource):
             object_type="schema",
             object_id=this.schema_id,
             anomaly_detection_config={})
+        ```
+
+        To alert workspace users or notification destinations when anomaly detection finds unhealthy tables in the schema, set `notification_settings`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        with_alerts = databricks.DataQualityMonitor("with_alerts",
+            object_type="schema",
+            object_id=this["schemaId"],
+            anomaly_detection_config={
+                "notification_settings": {
+                    "on_unhealthy_table": {
+                        "destination_user_ids": [int("<user-id>")],
+                        "destination_ids": ["<notification-destination-id>"],
+                    },
+                },
+            })
         ```
 
 

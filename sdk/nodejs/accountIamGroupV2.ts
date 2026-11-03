@@ -23,7 +23,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.AccountIamGroupV2("this", {groupName: "data-engineers"});
+ * const _this = new databricks.AccountIamGroupV2("this", {
+ *     parent: "accounts/00000000-0000-0000-0000-000000000000",
+ *     groupName: "data-engineers",
+ * });
  * ```
  */
 export class AccountIamGroupV2 extends pulumi.CustomResource {
@@ -70,6 +73,17 @@ export class AccountIamGroupV2 extends pulumi.CustomResource {
      * Display name of the group
      */
     declare public readonly groupName: pulumi.Output<string | undefined>;
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    declare public readonly parent: pulumi.Output<string>;
 
     /**
      * Create a AccountIamGroupV2 resource with the given unique name, arguments, and options.
@@ -78,7 +92,7 @@ export class AccountIamGroupV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AccountIamGroupV2Args, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: AccountIamGroupV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountIamGroupV2Args | AccountIamGroupV2State, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -88,12 +102,19 @@ export class AccountIamGroupV2 extends pulumi.CustomResource {
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as AccountIamGroupV2Args | undefined;
+            if (args?.parent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountIamGroupV2.__pulumiType, name, resourceInputs, opts);
@@ -120,6 +141,17 @@ export interface AccountIamGroupV2State {
      * Display name of the group
      */
     groupName?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The resource name of the group. The format depends on the API that returned it:
+     * - Account-scoped: accounts/{account_id}/groups/{group_id}
+     * - Workspace-scoped: groups/{group_id}
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    parent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -134,4 +166,9 @@ export interface AccountIamGroupV2Args {
      * Display name of the group
      */
     groupName?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
+     * account-scoped and workspace-scoped APIs return it
+     */
+    parent: pulumi.Input<string>;
 }

@@ -77,6 +77,8 @@ def get_database_instances(page_size: Optional[_builtins.int] = None,
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
 
+    For new workloads, Databricks recommends the `get_postgres_projects` data source.
+
     ## Example Usage
 
     Getting a list of all Database Instances:
@@ -113,6 +115,8 @@ def get_database_instances_output(page_size: pulumi.Input[Optional[Optional[_bui
 
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
+
+    For new workloads, Databricks recommends the `get_postgres_projects` data source.
 
     ## Example Usage
 

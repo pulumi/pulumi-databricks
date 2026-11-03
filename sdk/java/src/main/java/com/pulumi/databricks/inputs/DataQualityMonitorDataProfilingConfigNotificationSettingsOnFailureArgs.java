@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,44 @@ import javax.annotation.Nullable;
 public final class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs Empty = new DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs();
+
+    /**
+     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    @Import(name="destinationIds")
+    private @Nullable Output<List<String>> destinationIds;
+
+    /**
+     * @return The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+     * 25 destination IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    public Optional<Output<List<String>>> destinationIds() {
+        return Optional.ofNullable(this.destinationIds);
+    }
+
+    /**
+     * The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    @Import(name="destinationUserIds")
+    private @Nullable Output<List<Integer>> destinationUserIds;
+
+    /**
+     * @return The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+     * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+     * 
+     */
+    public Optional<Output<List<Integer>>> destinationUserIds() {
+        return Optional.ofNullable(this.destinationUserIds);
+    }
 
     /**
      * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
@@ -34,6 +73,8 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFa
     private DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs() {}
 
     private DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs $) {
+        this.destinationIds = $.destinationIds;
+        this.destinationUserIds = $.destinationUserIds;
         this.emailAddresses = $.emailAddresses;
     }
 
@@ -53,6 +94,80 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFa
 
         public Builder(DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs defaults) {
             $ = new DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+         * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+         * 25 destination IDs is supported.
+         * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationIds(@Nullable Output<List<String>> destinationIds) {
+            $.destinationIds = destinationIds;
+            return this;
+        }
+
+        /**
+         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+         * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+         * 25 destination IDs is supported.
+         * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationIds(List<String> destinationIds) {
+            return destinationIds(Output.of(destinationIds));
+        }
+
+        /**
+         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
+         * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
+         * 25 destination IDs is supported.
+         * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationIds(String... destinationIds) {
+            return destinationIds(List.of(destinationIds));
+        }
+
+        /**
+         * @param destinationUserIds The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+         * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationUserIds(@Nullable Output<List<Integer>> destinationUserIds) {
+            $.destinationUserIds = destinationUserIds;
+            return this;
+        }
+
+        /**
+         * @param destinationUserIds The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+         * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationUserIds(List<Integer> destinationUserIds) {
+            return destinationUserIds(Output.of(destinationUserIds));
+        }
+
+        /**
+         * @param destinationUserIds The IDs of the workspace users to notify by email. A maximum of 25 user IDs is supported.
+         * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationUserIds(Integer... destinationUserIds) {
+            return destinationUserIds(List.of(destinationUserIds));
         }
 
         /**

@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetWorkspaceIamWorkspaceAssignmentsV2Provid
 import com.pulumi.databricks.outputs.GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,12 +17,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamWorkspaceAssignmentsV2Result {
     private @Nullable Integer pageSize;
+    /**
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    private @Nullable String parent;
     private @Nullable GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig providerConfig;
     private List<GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments;
 
     private GetWorkspaceIamWorkspaceAssignmentsV2Result() {}
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    /**
+     * @return (string) - The resource name of the workspace that contains the assignment,
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
+     * APIs return it
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
     }
     public Optional<GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -40,12 +57,14 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Result {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer pageSize;
+        private @Nullable String parent;
         private @Nullable GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig providerConfig;
         private List<GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment> workspaceAssignments;
         public Builder() {}
         public Builder(GetWorkspaceIamWorkspaceAssignmentsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pageSize = defaults.pageSize;
+    	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.workspaceAssignments = defaults.workspaceAssignments;
         }
@@ -54,6 +73,12 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Result {
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(@Nullable String parent) {
+
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +101,7 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Result {
         public GetWorkspaceIamWorkspaceAssignmentsV2Result build() {
             final var _resultValue = new GetWorkspaceIamWorkspaceAssignmentsV2Result();
             _resultValue.pageSize = pageSize;
+            _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
             _resultValue.workspaceAssignments = workspaceAssignments;
             return _resultValue;
