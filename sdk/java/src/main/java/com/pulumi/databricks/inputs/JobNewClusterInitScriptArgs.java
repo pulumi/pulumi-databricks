@@ -29,20 +29,18 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     @Import(name="dbfs")
     private @Nullable Output<JobNewClusterInitScriptDbfsArgs> dbfs;
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     public Optional<Output<JobNewClusterInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -132,11 +130,10 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(@Nullable Output<JobNewClusterInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
@@ -145,11 +142,10 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(JobNewClusterInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
         }

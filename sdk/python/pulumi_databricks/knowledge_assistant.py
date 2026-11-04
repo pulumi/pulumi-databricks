@@ -467,6 +467,34 @@ class KnowledgeAssistant(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return KnowledgeAssistant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_info: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instructions: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict', 'outputs.KnowledgeAssistantProviderConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["endpointName"] = endpoint_name
+        __props__["errorInfo"] = error_info
+        __props__["experimentId"] = experiment_id
+        __props__["instructions"] = instructions
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'databricks:index/knowledgeAssistant:KnowledgeAssistant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

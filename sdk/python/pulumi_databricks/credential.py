@@ -1023,6 +1023,58 @@ class Credential(pulumi.CustomResource):
         __props__.__dict__["used_for_managed_storage"] = used_for_managed_storage
         return Credential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_iam_role: pulumi.Input[Optional[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict', 'outputs.CredentialAwsIamRole']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict', 'outputs.CredentialAzureManagedIdentity']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict', 'outputs.CredentialAzureServicePrincipal']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict', 'outputs.CredentialDatabricksGcpServiceAccount']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict', 'outputs.CredentialProviderConfig']]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsIamRole"] = aws_iam_role
+        __props__["azureManagedIdentity"] = azure_managed_identity
+        __props__["azureServicePrincipal"] = azure_service_principal
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["credentialId"] = credential_id
+        __props__["databricksCredentialId"] = databricks_credential_id
+        __props__["databricksGcpServiceAccount"] = databricks_gcp_service_account
+        __props__["forceDestroy"] = force_destroy
+        __props__["forceUpdate"] = force_update
+        __props__["fullName"] = full_name
+        __props__["isolationMode"] = isolation_mode
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["providerConfig"] = provider_config
+        __props__["purpose"] = purpose
+        __props__["readOnly"] = read_only
+        __props__["skipValidation"] = skip_validation
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["usedForManagedStorage"] = used_for_managed_storage
+        return pulumi.runtime.exists_resource(None, 'databricks:index/credential:Credential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
     def aws_iam_role(self) -> pulumi.Output[Optional['outputs.CredentialAwsIamRole']]:

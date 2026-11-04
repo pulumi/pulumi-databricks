@@ -227,6 +227,12 @@ func (MwsPrivateAccessSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsPrivateAccessSettingsState)(nil)).Elem()
 }
 
+// MwsPrivateAccessSettingsExists checks whether an existing MwsPrivateAccessSettings resource with the given ID exists.
+func MwsPrivateAccessSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsPrivateAccessSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings", id, state, "", opts...)
+}
+
 type mwsPrivateAccessSettingsArgs struct {
 	// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 	AccountId *string `pulumi:"accountId"`

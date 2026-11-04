@@ -168,6 +168,12 @@ func (TokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenState)(nil)).Elem()
 }
 
+// TokenExists checks whether an existing Token resource with the given ID exists.
+func TokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/token:Token", id, state, "", opts...)
+}
+
 type tokenArgs struct {
 	// (String) Comment that will appear on the user's settings page for this token.
 	Comment      *string `pulumi:"comment"`

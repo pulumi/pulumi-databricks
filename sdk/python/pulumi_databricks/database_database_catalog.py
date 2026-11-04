@@ -411,6 +411,24 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return DatabaseDatabaseCatalog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_database_if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createDatabaseIfNotExists"] = create_database_if_not_exists
+        __props__["databaseInstanceName"] = database_instance_name
+        __props__["databaseName"] = database_name
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createDatabaseIfNotExists")
     def create_database_if_not_exists(self) -> pulumi.Output[_builtins.bool]:

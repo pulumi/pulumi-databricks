@@ -118,6 +118,12 @@ func (WorkspaceNetworkOptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceNetworkOptionState)(nil)).Elem()
 }
 
+// WorkspaceNetworkOptionExists checks whether an existing WorkspaceNetworkOption resource with the given ID exists.
+func WorkspaceNetworkOptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceNetworkOptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceNetworkOption:WorkspaceNetworkOption", id, state, "", opts...)
+}
+
 type workspaceNetworkOptionArgs struct {
 	// The network policy ID to apply to the workspace. This controls the network access rules
 	// for all serverless compute resources in the workspace. Each workspace can only be

@@ -123,6 +123,12 @@ func (SecretScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretScopeState)(nil)).Elem()
 }
 
+// SecretScopeExists checks whether an existing SecretScope resource with the given ID exists.
+func SecretScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/secretScope:SecretScope", id, state, "", opts...)
+}
+
 type secretScopeArgs struct {
 	// Either `DATABRICKS` or `AZURE_KEYVAULT`
 	BackendType *string `pulumi:"backendType"`

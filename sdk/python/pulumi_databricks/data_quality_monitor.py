@@ -459,6 +459,22 @@ class DataQualityMonitor(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return DataQualityMonitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']]] = None,
+            data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["anomalyDetectionConfig"] = anomaly_detection_config
+        __props__["dataProfilingConfig"] = data_profiling_config
+        __props__["objectId"] = object_id
+        __props__["objectType"] = object_type
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/dataQualityMonitor:DataQualityMonitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> pulumi.Output[Optional['outputs.DataQualityMonitorAnomalyDetectionConfig']]:

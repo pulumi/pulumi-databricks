@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
         /// Reads a single account group by its resource name, `accounts/{account_id}/groups/{group_id}`.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -445,6 +445,12 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseInstanceState)(nil)).Elem()
 }
 
+// DatabaseInstanceExists checks whether an existing DatabaseInstance resource with the given ID exists.
+func DatabaseInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/databaseInstance:DatabaseInstance", id, state, "", opts...)
+}
+
 type databaseInstanceArgs struct {
 	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity *string `pulumi:"capacity"`

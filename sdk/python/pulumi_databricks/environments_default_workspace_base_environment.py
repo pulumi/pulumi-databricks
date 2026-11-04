@@ -348,6 +348,20 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return EnvironmentsDefaultWorkspaceBaseEnvironment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cpuWorkspaceBaseEnvironment"] = cpu_workspace_base_environment
+        __props__["gpuWorkspaceBaseEnvironment"] = gpu_workspace_base_environment
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/environmentsDefaultWorkspaceBaseEnvironment:EnvironmentsDefaultWorkspaceBaseEnvironment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cpuWorkspaceBaseEnvironment")
     def cpu_workspace_base_environment(self) -> pulumi.Output[Optional[_builtins.str]]:

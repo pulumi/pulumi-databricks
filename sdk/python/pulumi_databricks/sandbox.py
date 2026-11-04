@@ -435,6 +435,30 @@ class Sandbox(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Sandbox(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
+            sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']]] = None,
+            status: pulumi.Input[Optional[Union['SandboxStatusArgs', 'SandboxStatusArgsDict', 'outputs.SandboxStatus']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["displayName"] = display_name
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["sandboxId"] = sandbox_id
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sandbox:Sandbox', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

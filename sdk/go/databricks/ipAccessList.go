@@ -155,6 +155,12 @@ func (IpAccessListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipAccessListState)(nil)).Elem()
 }
 
+// IpAccessListExists checks whether an existing IpAccessList resource with the given ID exists.
+func IpAccessListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpAccessListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/ipAccessList:IpAccessList", id, state, "", opts...)
+}
+
 type ipAccessListArgs struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled *bool `pulumi:"enabled"`

@@ -28,11 +28,10 @@ public final class ModelServingConfig {
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
-     * @deprecated
-     * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+     * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
      */
-    @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+    @Deprecated
     private @Nullable List<ModelServingConfigServedModel> servedModels;
     /**
      * @return A single block represents the traffic split configuration amongst the served models.
@@ -58,11 +57,10 @@ public final class ModelServingConfig {
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
-     * @deprecated
-     * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+     * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
      */
-    @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+    @Deprecated
     public List<ModelServingConfigServedModel> servedModels() {
         return this.servedModels == null ? List.of() : this.servedModels;
     }

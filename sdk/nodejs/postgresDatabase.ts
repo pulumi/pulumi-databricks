@@ -187,6 +187,17 @@ export class PostgresDatabase extends pulumi.CustomResource {
         return new PostgresDatabase(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing PostgresDatabase resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: PostgresDatabaseState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("databricks:index/postgresDatabase:PostgresDatabase", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'databricks:index/postgresDatabase:PostgresDatabase';
 

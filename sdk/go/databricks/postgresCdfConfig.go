@@ -200,6 +200,12 @@ func (PostgresCdfConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresCdfConfigState)(nil)).Elem()
 }
 
+// PostgresCdfConfigExists checks whether an existing PostgresCdfConfig resource with the given ID exists.
+func PostgresCdfConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresCdfConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresCdfConfig:PostgresCdfConfig", id, state, "", opts...)
+}
+
 type postgresCdfConfigArgs struct {
 	// The Unity Catalog catalog that replicated tables are written into.
 	// Set at creation; the CdfConfig is immutable

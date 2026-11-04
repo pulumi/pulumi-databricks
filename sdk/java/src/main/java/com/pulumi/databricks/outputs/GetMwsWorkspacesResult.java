@@ -23,11 +23,10 @@ public final class GetMwsWorkspacesResult {
      */
     private Map<String,String> ids;
     /**
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     private GetMwsWorkspacesProviderConfig providerConfig;
 
     private GetMwsWorkspacesResult() {}
@@ -46,11 +45,10 @@ public final class GetMwsWorkspacesResult {
         return this.ids;
     }
     /**
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     public GetMwsWorkspacesProviderConfig providerConfig() {
         return this.providerConfig;
     }

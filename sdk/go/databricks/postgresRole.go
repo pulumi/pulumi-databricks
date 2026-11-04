@@ -452,6 +452,12 @@ func (PostgresRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresRoleState)(nil)).Elem()
 }
 
+// PostgresRoleExists checks whether an existing PostgresRole resource with the given ID exists.
+func PostgresRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresRole:PostgresRole", id, state, "", opts...)
+}
+
 type postgresRoleArgs struct {
 	// The Branch where this Role exists.
 	// Format: projects/{project_id}/branches/{branch_id}

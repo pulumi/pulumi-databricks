@@ -1222,6 +1222,52 @@ class SqlTable(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return SqlTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict', 'outputs.SqlTableColumn']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict', 'outputs.SqlTableProviderConfig']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            table_type: pulumi.Input[Optional[_builtins.str]] = None,
+            view_definition: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalogName"] = catalog_name
+        __props__["clusterId"] = cluster_id
+        __props__["clusterKeys"] = cluster_keys
+        __props__["columns"] = columns
+        __props__["comment"] = comment
+        __props__["dataSourceFormat"] = data_source_format
+        __props__["effectiveProperties"] = effective_properties
+        __props__["name"] = name
+        __props__["options"] = options
+        __props__["owner"] = owner
+        __props__["partitions"] = partitions
+        __props__["properties"] = properties
+        __props__["providerConfig"] = provider_config
+        __props__["schemaName"] = schema_name
+        __props__["storageCredentialName"] = storage_credential_name
+        __props__["storageLocation"] = storage_location
+        __props__["tableId"] = table_id
+        __props__["tableType"] = table_type
+        __props__["viewDefinition"] = view_definition
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sqlTable:SqlTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[_builtins.str]:

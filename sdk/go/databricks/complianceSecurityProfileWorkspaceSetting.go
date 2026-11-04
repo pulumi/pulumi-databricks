@@ -71,6 +71,12 @@ func (ComplianceSecurityProfileWorkspaceSettingState) ElementType() reflect.Type
 	return reflect.TypeOf((*complianceSecurityProfileWorkspaceSettingState)(nil)).Elem()
 }
 
+// ComplianceSecurityProfileWorkspaceSettingExists checks whether an existing ComplianceSecurityProfileWorkspaceSetting resource with the given ID exists.
+func ComplianceSecurityProfileWorkspaceSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComplianceSecurityProfileWorkspaceSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting", id, state, "", opts...)
+}
+
 type complianceSecurityProfileWorkspaceSettingArgs struct {
 	ComplianceSecurityProfileWorkspace ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace `pulumi:"complianceSecurityProfileWorkspace"`
 	Etag                               *string                                                                     `pulumi:"etag"`

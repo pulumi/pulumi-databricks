@@ -391,6 +391,28 @@ class AccountIamDirectGroupMemberV2(pulumi.CustomResource):
         __props__.__dict__["principal_type"] = principal_type
         return AccountIamDirectGroupMemberV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            membership_source: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["displayName"] = display_name
+        __props__["externalId"] = external_id
+        __props__["groupId"] = group_id
+        __props__["membershipSource"] = membership_source
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["principalId"] = principal_id
+        __props__["principalType"] = principal_type
+        return pulumi.runtime.exists_resource(None, 'databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[_builtins.str]:

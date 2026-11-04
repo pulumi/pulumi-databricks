@@ -766,6 +766,48 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["skip_validation"] = skip_validation
         return MetastoreDataAccess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict', 'outputs.MetastoreDataAccessAwsIamRole']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict', 'outputs.MetastoreDataAccessAzureManagedIdentity']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict', 'outputs.MetastoreDataAccessAzureServicePrincipal']]] = None,
+            cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict', 'outputs.MetastoreDataAccessCloudflareApiToken']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict', 'outputs.MetastoreDataAccessDatabricksGcpServiceAccount']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict', 'outputs.MetastoreDataAccessGcpServiceAccountKey']]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict', 'outputs.MetastoreDataAccessProviderConfig']]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["awsIamRole"] = aws_iam_role
+        __props__["azureManagedIdentity"] = azure_managed_identity
+        __props__["azureServicePrincipal"] = azure_service_principal
+        __props__["cloudflareApiToken"] = cloudflare_api_token
+        __props__["comment"] = comment
+        __props__["databricksGcpServiceAccount"] = databricks_gcp_service_account
+        __props__["forceDestroy"] = force_destroy
+        __props__["forceUpdate"] = force_update
+        __props__["gcpServiceAccountKey"] = gcp_service_account_key
+        __props__["isDefault"] = is_default
+        __props__["isolationMode"] = isolation_mode
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["providerConfig"] = provider_config
+        __props__["readOnly"] = read_only
+        __props__["skipValidation"] = skip_validation
+        return pulumi.runtime.exists_resource(None, 'databricks:index/metastoreDataAccess:MetastoreDataAccess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

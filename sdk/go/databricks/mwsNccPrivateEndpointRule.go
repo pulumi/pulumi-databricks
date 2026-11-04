@@ -315,6 +315,12 @@ func (MwsNccPrivateEndpointRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsNccPrivateEndpointRuleState)(nil)).Elem()
 }
 
+// MwsNccPrivateEndpointRuleExists checks whether an existing MwsNccPrivateEndpointRule resource with the given ID exists.
+func MwsNccPrivateEndpointRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsNccPrivateEndpointRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule", id, state, "", opts...)
+}
+
 type mwsNccPrivateEndpointRuleArgs struct {
 	// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `groupId`.
 	// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resourceNames`.

@@ -197,6 +197,12 @@ func (ExternalMetadataState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalMetadataState)(nil)).Elem()
 }
 
+// ExternalMetadataExists checks whether an existing ExternalMetadata resource with the given ID exists.
+func ExternalMetadataExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalMetadataState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/externalMetadata:ExternalMetadata", id, state, "", opts...)
+}
+
 type externalMetadataArgs struct {
 	// List of columns associated with the external metadata object
 	Columns []string `pulumi:"columns"`

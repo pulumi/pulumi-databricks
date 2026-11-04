@@ -320,12 +320,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var this_ = new Table("this", TableArgs.builder()
  *             .catalogName("catalog")
  *             .schemaName("schema")
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  *             .columns(TableColumnArgs.builder()
  *                 .name("col1")
  *                 .typeName("STRING")
- *                 .typeJson("{\"type\":\"STRING\"}")
+ *                 .typeJson("}{&#92;{@code "type}&#92;{@code ":}&#92;{@code "STRING}&#92;{@code "}}{@code ")
  *                 .comment("comment")
  *                 .nullable(true)
  *                 .build())
@@ -343,8 +343,8 @@ import javax.annotation.Nullable;
  *             .properties(Map.of("key", "value"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

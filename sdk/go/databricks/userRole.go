@@ -177,6 +177,12 @@ func (UserRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userRoleState)(nil)).Elem()
 }
 
+// UserRoleExists checks whether an existing UserRole resource with the given ID exists.
+func UserRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/userRole:UserRole", id, state, "", opts...)
+}
+
 type userRoleArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api            *string                 `pulumi:"api"`

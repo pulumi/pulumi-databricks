@@ -57,6 +57,17 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
         return new DisasterRecoveryFailoverGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing DisasterRecoveryFailoverGroup resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DisasterRecoveryFailoverGroupState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup';
 

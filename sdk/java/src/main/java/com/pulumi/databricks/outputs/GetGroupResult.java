@@ -56,18 +56,16 @@ public final class GetGroupResult {
     /**
      * @return (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
      * 
-     * @deprecated
-     * Please use `roles` instead
+     * @deprecated Please use `roles` instead
      * 
      */
-    @Deprecated /* Please use `roles` instead */
+    @Deprecated
     private List<String> instanceProfiles;
     /**
-     * @deprecated
-     * Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+    @Deprecated
     private List<String> members;
     private GetGroupProviderConfig providerConfig;
     private @Nullable Boolean recursive;
@@ -151,20 +149,18 @@ public final class GetGroupResult {
     /**
      * @return (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
      * 
-     * @deprecated
-     * Please use `roles` instead
+     * @deprecated Please use `roles` instead
      * 
      */
-    @Deprecated /* Please use `roles` instead */
+    @Deprecated
     public List<String> instanceProfiles() {
         return this.instanceProfiles;
     }
     /**
-     * @deprecated
-     * Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+    @Deprecated
     public List<String> members() {
         return this.members;
     }

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a Unity Catalog model service by its full resource name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example retrieves the model service named `CustomerSupport` from the `main.default` schema:
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a Unity Catalog model service by its full resource name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example retrieves the model service named `CustomerSupport` from the `main.default` schema:
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
         /// 
         /// Retrieves a Unity Catalog model service by its full resource name.
-        /// 
         /// 
         /// ## Example Usage
         /// 

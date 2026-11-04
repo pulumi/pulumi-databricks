@@ -157,6 +157,12 @@ func (MetastoreProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreProviderState)(nil)).Elem()
 }
 
+// MetastoreProviderExists checks whether an existing MetastoreProvider resource with the given ID exists.
+func MetastoreProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/metastoreProvider:MetastoreProvider", id, state, "", opts...)
+}
+
 type metastoreProviderArgs struct {
 	// The delta sharing authentication type. Valid values are `TOKEN`.
 	AuthenticationType string `pulumi:"authenticationType"`

@@ -134,6 +134,12 @@ func (BudgetPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*budgetPolicyState)(nil)).Elem()
 }
 
+// BudgetPolicyExists checks whether an existing BudgetPolicy resource with the given ID exists.
+func BudgetPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BudgetPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/budgetPolicy:BudgetPolicy", id, state, "", opts...)
+}
+
 type budgetPolicyArgs struct {
 	// List of workspaces that this budget policy will be exclusively bound to.
 	// An empty binding implies that this budget policy is open to any workspace in the account

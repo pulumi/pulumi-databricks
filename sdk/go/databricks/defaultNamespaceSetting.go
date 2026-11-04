@@ -116,6 +116,12 @@ func (DefaultNamespaceSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultNamespaceSettingState)(nil)).Elem()
 }
 
+// DefaultNamespaceSettingExists checks whether an existing DefaultNamespaceSetting resource with the given ID exists.
+func DefaultNamespaceSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultNamespaceSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting", id, state, "", opts...)
+}
+
 type defaultNamespaceSettingArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The configuration details.

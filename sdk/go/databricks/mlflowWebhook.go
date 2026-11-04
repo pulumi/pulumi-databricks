@@ -253,6 +253,12 @@ func (MlflowWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mlflowWebhookState)(nil)).Elem()
 }
 
+// MlflowWebhookExists checks whether an existing MlflowWebhook resource with the given ID exists.
+func MlflowWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MlflowWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mlflowWebhook:MlflowWebhook", id, state, "", opts...)
+}
+
 type mlflowWebhookArgs struct {
 	// Optional description of the MLflow webhook.
 	Description *string `pulumi:"description"`

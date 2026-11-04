@@ -319,6 +319,12 @@ func (PostgresBranchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresBranchState)(nil)).Elem()
 }
 
+// PostgresBranchExists checks whether an existing PostgresBranch resource with the given ID exists.
+func PostgresBranchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresBranchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresBranch:PostgresBranch", id, state, "", opts...)
+}
+
 type postgresBranchArgs struct {
 	// The part of the name, chosen by the user when the resource was created
 	BranchId string `pulumi:"branchId"`

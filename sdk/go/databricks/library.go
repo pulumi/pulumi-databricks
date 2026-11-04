@@ -328,6 +328,12 @@ func (LibraryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*libraryState)(nil)).Elem()
 }
 
+// LibraryExists checks whether an existing Library resource with the given ID exists.
+func LibraryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LibraryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/library:Library", id, state, "", opts...)
+}
+
 type libraryArgs struct {
 	// ID of the Cluster to install the library on.
 	//

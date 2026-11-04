@@ -717,6 +717,36 @@ class GenieAgent(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return GenieAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            definition: pulumi.Input[Optional[Union['GenieAgentDefinitionArgs', 'GenieAgentDefinitionArgsDict', 'outputs.GenieAgentDefinition']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            genie_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GenieAgentProviderConfigArgs', 'GenieAgentProviderConfigArgsDict', 'outputs.GenieAgentProviderConfig']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["definition"] = definition
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["effectiveParentPath"] = effective_parent_path
+        __props__["etag"] = etag
+        __props__["genieAgentId"] = genie_agent_id
+        __props__["name"] = name
+        __props__["parentPath"] = parent_path
+        __props__["providerConfig"] = provider_config
+        __props__["updateTime"] = update_time
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/genieAgent:GenieAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

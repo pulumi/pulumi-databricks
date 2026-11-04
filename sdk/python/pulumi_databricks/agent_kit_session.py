@@ -493,6 +493,34 @@ class AgentKitSession(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AgentKitSession(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_activity_time: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_session_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AgentKitSessionProviderConfigArgs', 'AgentKitSessionProviderConfigArgsDict', 'outputs.AgentKitSessionProviderConfig']]] = None,
+            root_session_id: pulumi.Input[Optional[_builtins.str]] = None,
+            session_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actorId"] = actor_id
+        __props__["createTime"] = create_time
+        __props__["lastActivityTime"] = last_activity_time
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["parentSessionId"] = parent_session_id
+        __props__["providerConfig"] = provider_config
+        __props__["rootSessionId"] = root_session_id
+        __props__["sessionId"] = session_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/agentKitSession:AgentKitSession', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actorId")
     def actor_id(self) -> pulumi.Output[_builtins.str]:

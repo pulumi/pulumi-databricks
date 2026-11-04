@@ -342,6 +342,12 @@ func (PostgresProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresProjectState)(nil)).Elem()
 }
 
+// PostgresProjectExists checks whether an existing PostgresProject resource with the given ID exists.
+func PostgresProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresProject:PostgresProject", id, state, "", opts...)
+}
+
 type postgresProjectArgs struct {
 	// Configuration for the initial default branch created as part of project creation.
 	// Allows overriding branch protection. These settings only apply at creation time

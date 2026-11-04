@@ -128,6 +128,12 @@ func (AibiDashboardEmbeddingApprovedDomainsSettingState) ElementType() reflect.T
 	return reflect.TypeOf((*aibiDashboardEmbeddingApprovedDomainsSettingState)(nil)).Elem()
 }
 
+// AibiDashboardEmbeddingApprovedDomainsSettingExists checks whether an existing AibiDashboardEmbeddingApprovedDomainsSetting resource with the given ID exists.
+func AibiDashboardEmbeddingApprovedDomainsSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AibiDashboardEmbeddingApprovedDomainsSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting", id, state, "", opts...)
+}
+
 type aibiDashboardEmbeddingApprovedDomainsSettingArgs struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingApprovedDomains AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`

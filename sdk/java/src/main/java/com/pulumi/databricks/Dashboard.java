@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var starter = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
  *             .name("Starter Warehouse")
  *             .build());
@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
  *             .displayName("New Dashboard")
  *             .warehouseId(starter.id())
- *             .serializedDashboard("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}")
+ *             .serializedDashboard("}{&#92;{@code "pages}&#92;{@code ":[}{&#92;{@code "name}&#92;{@code ":}&#92;{@code "new_name}&#92;{@code ",}&#92;{@code "displayName}&#92;{@code ":}&#92;{@code "New Page}&#92;{@code "}}{@code ]}}{@code ")
  *             .embedCredentials(false)
  *             .parentPath("/Shared/provider-test")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

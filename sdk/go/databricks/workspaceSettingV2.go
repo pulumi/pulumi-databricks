@@ -250,6 +250,12 @@ func (WorkspaceSettingV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceSettingV2State)(nil)).Elem()
 }
 
+// WorkspaceSettingV2Exists checks whether an existing WorkspaceSettingV2 resource with the given ID exists.
+func WorkspaceSettingV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceSettingV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceSettingV2:WorkspaceSettingV2", id, state, "", opts...)
+}
+
 type workspaceSettingV2Args struct {
 	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
 	AibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`

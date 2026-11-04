@@ -796,6 +796,36 @@ class MwsNetworks(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return MwsNetworks(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict', 'outputs.MwsNetworksErrorMessage']]]]] = None,
+            gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict', 'outputs.MwsNetworksGcpNetworkInfo']]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_name: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict', 'outputs.MwsNetworksVpcEndpoints']]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["creationTime"] = creation_time
+        __props__["errorMessages"] = error_messages
+        __props__["gcpNetworkInfo"] = gcp_network_info
+        __props__["networkId"] = network_id
+        __props__["networkName"] = network_name
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["subnetIds"] = subnet_ids
+        __props__["vpcEndpoints"] = vpc_endpoints
+        __props__["vpcId"] = vpc_id
+        __props__["vpcStatus"] = vpc_status
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsNetworks:MwsNetworks', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -124,6 +124,12 @@ func (RestrictWorkspaceAdminsSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*restrictWorkspaceAdminsSettingState)(nil)).Elem()
 }
 
+// RestrictWorkspaceAdminsSettingExists checks whether an existing RestrictWorkspaceAdminsSetting resource with the given ID exists.
+func RestrictWorkspaceAdminsSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RestrictWorkspaceAdminsSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting", id, state, "", opts...)
+}
+
 type restrictWorkspaceAdminsSettingArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Configure the provider for management through account provider. This block consists of the following fields:

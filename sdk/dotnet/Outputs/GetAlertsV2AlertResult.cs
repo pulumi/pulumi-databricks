@@ -76,7 +76,7 @@ namespace Pulumi.Databricks.Outputs
         /// This field allows you to configure alerts to run as a specific user or service principal.
         /// - For user identity: Set `UserName` to the email of an active workspace user. Users can only set this to their own email.
         /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-        /// If not specified, the alert will run as the request user
+        ///   If not specified, the alert will run as the request user
         /// </summary>
         public readonly Outputs.GetAlertsV2AlertRunAsResult RunAs;
         /// <summary>

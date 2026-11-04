@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example lists model provider services in the `main.default` schema:
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example lists model provider services in the `main.default` schema:
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
         /// 
         /// Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
-        /// 
         /// 
         /// ## Example Usage
         /// 

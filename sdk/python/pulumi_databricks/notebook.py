@@ -486,6 +486,34 @@ class Notebook(pulumi.CustomResource):
         __props__.__dict__["workspace_path"] = workspace_path
         return Notebook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            md5: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.int]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict', 'outputs.NotebookProviderConfig']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contentBase64"] = content_base64
+        __props__["format"] = format
+        __props__["language"] = language
+        __props__["md5"] = md5
+        __props__["objectId"] = object_id
+        __props__["objectType"] = object_type
+        __props__["path"] = path
+        __props__["providerConfig"] = provider_config
+        __props__["source"] = source
+        __props__["url"] = url
+        __props__["workspacePath"] = workspace_path
+        return pulumi.runtime.exists_resource(None, 'databricks:index/notebook:Notebook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[_builtins.str]]:

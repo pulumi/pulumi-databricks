@@ -528,6 +528,32 @@ class Repo(pulumi.CustomResource):
         __props__.__dict__["workspace_path"] = workspace_path
         return Repo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
+            git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict', 'outputs.RepoProviderConfig']]] = None,
+            sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict', 'outputs.RepoSparseCheckout']]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branch"] = branch
+        __props__["commitHash"] = commit_hash
+        __props__["gitCredentialId"] = git_credential_id
+        __props__["gitProvider"] = git_provider
+        __props__["path"] = path
+        __props__["providerConfig"] = provider_config
+        __props__["sparseCheckout"] = sparse_checkout
+        __props__["tag"] = tag
+        __props__["url"] = url
+        __props__["workspacePath"] = workspace_path
+        return pulumi.runtime.exists_resource(None, 'databricks:index/repo:Repo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def branch(self) -> pulumi.Output[_builtins.str]:

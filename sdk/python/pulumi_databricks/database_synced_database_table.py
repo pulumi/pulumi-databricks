@@ -746,6 +746,30 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         __props__.__dict__["unity_catalog_provisioning_state"] = unity_catalog_provisioning_state
         return DatabaseSyncedDatabaseTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_synchronization_status: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict', 'outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']]] = None,
+            database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict', 'outputs.DatabaseSyncedDatabaseTableSpec']]] = None,
+            unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataSynchronizationStatus"] = data_synchronization_status
+        __props__["databaseInstanceName"] = database_instance_name
+        __props__["effectiveDatabaseInstanceName"] = effective_database_instance_name
+        __props__["effectiveLogicalDatabaseName"] = effective_logical_database_name
+        __props__["logicalDatabaseName"] = logical_database_name
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["spec"] = spec
+        __props__["unityCatalogProvisioningState"] = unity_catalog_provisioning_state
+        return pulumi.runtime.exists_resource(None, 'databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataSynchronizationStatus")
     def data_synchronization_status(self) -> pulumi.Output['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']:

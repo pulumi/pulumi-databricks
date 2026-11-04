@@ -591,11 +591,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customTags);
     }
     /**
-     * @deprecated
-     * Use managedServicesCustomerManagedKeyId instead
+     * @deprecated Use managedServicesCustomerManagedKeyId instead
      * 
      */
-    @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
+    @Deprecated
     @Export(name="customerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customerManagedKeyId;
 
@@ -675,11 +674,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.gcpWorkspaceSa;
     }
     /**
-     * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 

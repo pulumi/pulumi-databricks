@@ -20,7 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all failover groups in the account:
@@ -49,7 +48,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of failover groups in the account.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +78,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all failover groups in the account:
@@ -108,9 +105,9 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Maximum number of failover groups to return per page:
         /// - when set to a value greater than 0, the page length is the minimum of this value
-        /// and a server configured value;
+        ///   and a server configured value;
         /// - when set to 0 or unset, the page length is set to a server configured value
-        /// (recommended);
+        ///   (recommended);
         /// - when set to a value less than 0, an invalid parameter error is returned
         /// </summary>
         [Input("pageSize")]
@@ -133,9 +130,9 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Maximum number of failover groups to return per page:
         /// - when set to a value greater than 0, the page length is the minimum of this value
-        /// and a server configured value;
+        ///   and a server configured value;
         /// - when set to 0 or unset, the page length is set to a server configured value
-        /// (recommended);
+        ///   (recommended);
         /// - when set to a value less than 0, an invalid parameter error is returned
         /// </summary>
         [Input("pageSize")]

@@ -334,6 +334,22 @@ class QualityMonitorV2(pulumi.CustomResource):
         __props__.__dict__["validity_check_configurations"] = validity_check_configurations
         return QualityMonitorV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anomaly_detection_config: pulumi.Input[Optional[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict', 'outputs.QualityMonitorV2AnomalyDetectionConfig']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['QualityMonitorV2ProviderConfigArgs', 'QualityMonitorV2ProviderConfigArgsDict', 'outputs.QualityMonitorV2ProviderConfig']]] = None,
+            validity_check_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorV2ValidityCheckConfigurationArgs', 'QualityMonitorV2ValidityCheckConfigurationArgsDict', 'outputs.QualityMonitorV2ValidityCheckConfiguration']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["anomalyDetectionConfig"] = anomaly_detection_config
+        __props__["objectId"] = object_id
+        __props__["objectType"] = object_type
+        __props__["providerConfig"] = provider_config
+        __props__["validityCheckConfigurations"] = validity_check_configurations
+        return pulumi.runtime.exists_resource(None, 'databricks:index/qualityMonitorV2:QualityMonitorV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> pulumi.Output['outputs.QualityMonitorV2AnomalyDetectionConfig']:

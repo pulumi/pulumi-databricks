@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
@@ -58,7 +57,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Read an existing gateway by its full resource name. Use a provider release that includes this data source and configure account-level authentication outside this file. Supply the account ID and gateway name through input variables; the name has the form `accounts/{account_id}/network-connectivity-configs/{ncc_id}/private-network-gateways/{gateway_id}`.
@@ -97,7 +95,6 @@ namespace Pulumi.Databricks
         /// Retrieves a private network gateway's configuration and lifecycle state by its canonical resource name.
         /// 
         /// This data source is supported on Azure only. Use an Azure account-level provider with access to the private network gateway V1 API.
-        /// 
         /// 
         /// ## Example Usage
         /// 

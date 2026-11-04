@@ -217,6 +217,12 @@ func (FileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileState)(nil)).Elem()
 }
 
+// FileExists checks whether an existing File resource with the given ID exists.
+func FileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/file:File", id, state, "", opts...)
+}
+
 type fileArgs struct {
 	// Contents in base 64 format. Conflicts with `source`.
 	ContentBase64 *string `pulumi:"contentBase64"`

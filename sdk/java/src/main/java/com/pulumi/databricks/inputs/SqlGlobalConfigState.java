@@ -34,20 +34,18 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * @deprecated
-     * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+     * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      * 
      */
-    @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
+    @Deprecated
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
     /**
-     * @deprecated
-     * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+     * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      * 
      */
-    @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
+    @Deprecated
     public Optional<Output<Boolean>> enableServerlessCompute() {
         return Optional.ofNullable(this.enableServerlessCompute);
     }
@@ -181,11 +179,10 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+         * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
          * 
          */
-        @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
+        @Deprecated
         public Builder enableServerlessCompute(@Nullable Output<Boolean> enableServerlessCompute) {
             $.enableServerlessCompute = enableServerlessCompute;
             return this;
@@ -194,11 +191,10 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+         * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
          * 
          */
-        @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
+        @Deprecated
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
             return enableServerlessCompute(Output.of(enableServerlessCompute));
         }

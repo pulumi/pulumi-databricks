@@ -550,6 +550,36 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AgentKitManagedMemoryEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_memory_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AgentKitManagedMemoryEntryProviderConfigArgs', 'AgentKitManagedMemoryEntryProviderConfigArgsDict', 'outputs.AgentKitManagedMemoryEntryProviderConfig']]] = None,
+            session_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actorId"] = actor_id
+        __props__["content"] = content
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["managedMemoryEntryId"] = managed_memory_entry_id
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["path"] = path
+        __props__["providerConfig"] = provider_config
+        __props__["sessionId"] = session_id
+        __props__["sourceType"] = source_type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actorId")
     def actor_id(self) -> pulumi.Output[_builtins.str]:

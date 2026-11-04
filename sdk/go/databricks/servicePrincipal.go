@@ -335,6 +335,12 @@ func (ServicePrincipalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalState)(nil)).Elem()
 }
 
+// ServicePrincipalExists checks whether an existing ServicePrincipal resource with the given ID exists.
+func ServicePrincipalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/servicePrincipal:ServicePrincipal", id, state, "", opts...)
+}
+
 type servicePrincipalArgs struct {
 	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId *string `pulumi:"aclPrincipalId"`

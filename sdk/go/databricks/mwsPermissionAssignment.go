@@ -213,6 +213,12 @@ func (MwsPermissionAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsPermissionAssignmentState)(nil)).Elem()
 }
 
+// MwsPermissionAssignmentExists checks whether an existing MwsPermissionAssignment resource with the given ID exists.
+func MwsPermissionAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsPermissionAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment", id, state, "", opts...)
+}
+
 type mwsPermissionAssignmentArgs struct {
 	// The list of workspace permissions to assign to the principal:
 	// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.

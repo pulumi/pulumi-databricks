@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
         /// 
-        /// This data source can be used to get a single account setting. 
+        /// This data source can be used to get a single account setting.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
         /// 
-        /// This data source can be used to get a single account setting. 
+        /// This data source can be used to get a single account setting.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
         /// 
-        /// This data source can be used to get a single account setting. 
+        /// This data source can be used to get a single account setting.
         /// 
         /// ## Example Usage
         /// 

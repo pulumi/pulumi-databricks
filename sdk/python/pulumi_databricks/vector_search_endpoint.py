@@ -484,6 +484,38 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         __props__.__dict__["scaling_info"] = scaling_info
         return VectorSearchEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict', 'outputs.VectorSearchEndpointEndpointStatus']]]]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            last_updated_user: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            num_indexes: pulumi.Input[Optional[_builtins.int]] = None,
+            provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict', 'outputs.VectorSearchEndpointProviderConfig']]] = None,
+            scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict', 'outputs.VectorSearchEndpointScalingInfo']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["budgetPolicyId"] = budget_policy_id
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["creator"] = creator
+        __props__["effectiveBudgetPolicyId"] = effective_budget_policy_id
+        __props__["endpointId"] = endpoint_id
+        __props__["endpointStatuses"] = endpoint_statuses
+        __props__["endpointType"] = endpoint_type
+        __props__["lastUpdatedTimestamp"] = last_updated_timestamp
+        __props__["lastUpdatedUser"] = last_updated_user
+        __props__["name"] = name
+        __props__["numIndexes"] = num_indexes
+        __props__["providerConfig"] = provider_config
+        __props__["scalingInfo"] = scaling_info
+        return pulumi.runtime.exists_resource(None, 'databricks:index/vectorSearchEndpoint:VectorSearchEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> pulumi.Output[_builtins.str]:

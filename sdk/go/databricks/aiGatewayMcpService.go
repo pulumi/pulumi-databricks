@@ -215,6 +215,12 @@ func (AiGatewayMcpServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiGatewayMcpServiceState)(nil)).Elem()
 }
 
+// AiGatewayMcpServiceExists checks whether an existing AiGatewayMcpService resource with the given ID exists.
+func AiGatewayMcpServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiGatewayMcpServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/aiGatewayMcpService:AiGatewayMcpService", id, state, "", opts...)
+}
+
 type aiGatewayMcpServiceArgs struct {
 	// User-provided description
 	Comment *string `pulumi:"comment"`

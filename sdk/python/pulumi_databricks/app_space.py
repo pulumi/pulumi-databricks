@@ -699,6 +699,46 @@ class AppSpace(pulumi.CustomResource):
         __props__.__dict__["user_api_scopes"] = user_api_scopes
         return AppSpace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict', 'outputs.AppSpaceProviderConfig']]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict', 'outputs.AppSpaceResource']]]]] = None,
+            service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+            service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict', 'outputs.AppSpaceStatus']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updater: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assumeGroupId"] = assume_group_id
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["description"] = description
+        __props__["effectiveUsagePolicyId"] = effective_usage_policy_id
+        __props__["effectiveUserApiScopes"] = effective_user_api_scopes
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["resources"] = resources
+        __props__["servicePrincipalClientId"] = service_principal_client_id
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["servicePrincipalName"] = service_principal_name
+        __props__["status"] = status
+        __props__["updateTime"] = update_time
+        __props__["updater"] = updater
+        __props__["usagePolicyId"] = usage_policy_id
+        __props__["userApiScopes"] = user_api_scopes
+        return pulumi.runtime.exists_resource(None, 'databricks:index/appSpace:AppSpace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assumeGroupId")
     def assume_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:

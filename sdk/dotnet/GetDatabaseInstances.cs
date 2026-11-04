@@ -21,7 +21,6 @@ namespace Pulumi.Databricks
         /// 
         /// For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all Database Instances:
@@ -56,7 +55,6 @@ namespace Pulumi.Databricks
         /// 
         /// For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all Database Instances:
@@ -90,7 +88,6 @@ namespace Pulumi.Databricks
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
         /// 
         /// For new workloads, Databricks recommends the `databricks.getPostgresProjects` data source.
-        /// 
         /// 
         /// ## Example Usage
         /// 

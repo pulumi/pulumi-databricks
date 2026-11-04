@@ -896,6 +896,54 @@ class Recipient(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return Recipient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activated: pulumi.Input[Optional[_builtins.bool]] = None,
+            activation_url: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            data_recipient_global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_access_list: pulumi.Input[Optional[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict', 'outputs.RecipientIpAccessList']]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties_kvpairs: pulumi.Input[Optional[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict', 'outputs.RecipientPropertiesKvpairs']]] = None,
+            provider_config: pulumi.Input[Optional[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict', 'outputs.RecipientProviderConfig']]] = None,
+            recipient_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sharing_code: pulumi.Input[Optional[_builtins.str]] = None,
+            tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict', 'outputs.RecipientToken']]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activated"] = activated
+        __props__["activationUrl"] = activation_url
+        __props__["authenticationType"] = authentication_type
+        __props__["cloud"] = cloud
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["dataRecipientGlobalMetastoreId"] = data_recipient_global_metastore_id
+        __props__["expirationTime"] = expiration_time
+        __props__["ipAccessList"] = ip_access_list
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["propertiesKvpairs"] = properties_kvpairs
+        __props__["providerConfig"] = provider_config
+        __props__["recipientId"] = recipient_id
+        __props__["region"] = region
+        __props__["sharingCode"] = sharing_code
+        __props__["tokens"] = tokens
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/recipient:Recipient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def activated(self) -> pulumi.Output[_builtins.bool]:

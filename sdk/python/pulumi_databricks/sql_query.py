@@ -728,6 +728,36 @@ class SqlQuery(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return SqlQuery(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict', 'outputs.SqlQueryParameter']]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict', 'outputs.SqlQueryProviderConfig']]] = None,
+            query: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict', 'outputs.SqlQuerySchedule']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["dataSourceId"] = data_source_id
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["parameters"] = parameters
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["query"] = query
+        __props__["runAsRole"] = run_as_role
+        __props__["schedule"] = schedule
+        __props__["tags"] = tags
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sqlQuery:SqlQuery', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

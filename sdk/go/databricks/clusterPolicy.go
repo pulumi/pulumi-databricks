@@ -288,6 +288,12 @@ func (ClusterPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterPolicyState)(nil)).Elem()
 }
 
+// ClusterPolicyExists checks whether an existing ClusterPolicy resource with the given ID exists.
+func ClusterPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/clusterPolicy:ClusterPolicy", id, state, "", opts...)
+}
+
 type clusterPolicyArgs struct {
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
 	Definition *string `pulumi:"definition"`

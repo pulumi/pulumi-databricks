@@ -183,6 +183,12 @@ func (MwsCredentialsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsCredentialsState)(nil)).Elem()
 }
 
+// MwsCredentialsExists checks whether an existing MwsCredentials resource with the given ID exists.
+func MwsCredentialsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsCredentialsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsCredentials:MwsCredentials", id, state, "", opts...)
+}
+
 type mwsCredentialsArgs struct {
 	// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 	//

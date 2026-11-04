@@ -182,6 +182,12 @@ func (SqlGlobalConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlGlobalConfigState)(nil)).Elem()
 }
 
+// SqlGlobalConfigExists checks whether an existing SqlGlobalConfig resource with the given ID exists.
+func SqlGlobalConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlGlobalConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlGlobalConfig:SqlGlobalConfig", id, state, "", opts...)
+}
+
 type sqlGlobalConfigArgs struct {
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig map[string]string `pulumi:"dataAccessConfig"`

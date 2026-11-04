@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -47,7 +46,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -75,7 +73,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/domains)
         /// 
         /// Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
-        /// 
         /// 
         /// ## Example Usage
         /// 

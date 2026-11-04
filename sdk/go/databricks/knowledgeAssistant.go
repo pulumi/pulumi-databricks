@@ -161,6 +161,12 @@ func (KnowledgeAssistantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*knowledgeAssistantState)(nil)).Elem()
 }
 
+// KnowledgeAssistantExists checks whether an existing KnowledgeAssistant resource with the given ID exists.
+func KnowledgeAssistantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KnowledgeAssistantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/knowledgeAssistant:KnowledgeAssistant", id, state, "", opts...)
+}
+
 type knowledgeAssistantArgs struct {
 	// Description of what this agent can do (user-facing).
 	// Required when creating a Knowledge Assistant.

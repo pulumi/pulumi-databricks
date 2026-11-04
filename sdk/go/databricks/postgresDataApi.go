@@ -248,6 +248,12 @@ func (PostgresDataApiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresDataApiState)(nil)).Elem()
 }
 
+// PostgresDataApiExists checks whether an existing PostgresDataApi resource with the given ID exists.
+func PostgresDataApiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresDataApiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresDataApi:PostgresDataApi", id, state, "", opts...)
+}
+
 type postgresDataApiArgs struct {
 	// The database containing this Data API configuration.
 	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}

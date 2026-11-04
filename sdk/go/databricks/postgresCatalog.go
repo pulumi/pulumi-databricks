@@ -195,6 +195,12 @@ func (PostgresCatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresCatalogState)(nil)).Elem()
 }
 
+// PostgresCatalogExists checks whether an existing PostgresCatalog resource with the given ID exists.
+func PostgresCatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresCatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresCatalog:PostgresCatalog", id, state, "", opts...)
+}
+
 type postgresCatalogArgs struct {
 	// The part of the name, chosen by the user when the resource was created
 	CatalogId string `pulumi:"catalogId"`

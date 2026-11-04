@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
         /// Reads a single workspace assignment for an account principal by its resource name, `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -355,6 +355,12 @@ func (BudgetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*budgetState)(nil)).Elem()
 }
 
+// BudgetExists checks whether an existing Budget resource with the given ID exists.
+func BudgetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BudgetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/budget:Budget", id, state, "", opts...)
+}
+
 type budgetArgs struct {
 	// The ID of the Databricks Account.
 	AccountId           *string                    `pulumi:"accountId"`

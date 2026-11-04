@@ -965,6 +965,56 @@ class Metastore(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return Metastore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            default_data_access_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delta_sharing_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delta_sharing_recipient_token_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            delta_sharing_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            external_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict', 'outputs.MetastoreProviderConfig']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["cloud"] = cloud
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["defaultDataAccessConfigId"] = default_data_access_config_id
+        __props__["deltaSharingOrganizationName"] = delta_sharing_organization_name
+        __props__["deltaSharingRecipientTokenLifetimeInSeconds"] = delta_sharing_recipient_token_lifetime_in_seconds
+        __props__["deltaSharingScope"] = delta_sharing_scope
+        __props__["externalAccessEnabled"] = external_access_enabled
+        __props__["forceDestroy"] = force_destroy
+        __props__["globalMetastoreId"] = global_metastore_id
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["privilegeModelVersion"] = privilege_model_version
+        __props__["providerConfig"] = provider_config
+        __props__["region"] = region
+        __props__["storageRoot"] = storage_root
+        __props__["storageRootCredentialId"] = storage_root_credential_id
+        __props__["storageRootCredentialName"] = storage_root_credential_name
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/metastore:Metastore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

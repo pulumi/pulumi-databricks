@@ -155,6 +155,12 @@ func (SecretAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretAclState)(nil)).Elem()
 }
 
+// SecretAclExists checks whether an existing SecretAcl resource with the given ID exists.
+func SecretAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/secretAcl:SecretAcl", id, state, "", opts...)
+}
+
 type secretAclArgs struct {
 	// `READ`, `WRITE` or `MANAGE`.
 	Permission string `pulumi:"permission"`

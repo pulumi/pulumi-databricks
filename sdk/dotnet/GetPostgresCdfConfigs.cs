@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All CDF Configurations in a Database
@@ -56,7 +55,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All CDF Configurations in a Database
@@ -93,7 +91,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -162,6 +162,12 @@ func (AccountFederationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountFederationPolicyState)(nil)).Elem()
 }
 
+// AccountFederationPolicyExists checks whether an existing AccountFederationPolicy resource with the given ID exists.
+func AccountFederationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountFederationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accountFederationPolicy:AccountFederationPolicy", id, state, "", opts...)
+}
+
 type accountFederationPolicyArgs struct {
 	// Description of the federation policy
 	Description *string `pulumi:"description"`

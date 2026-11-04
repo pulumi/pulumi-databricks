@@ -19,7 +19,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of app spaces within the workspace.
         /// The list can then be accessed via the data object's `Spaces` field.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all app spaces:
@@ -52,7 +51,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of app spaces within the workspace.
         /// The list can then be accessed via the data object's `Spaces` field.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all app spaces:
@@ -84,7 +82,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to fetch the list of app spaces within the workspace.
         /// The list can then be accessed via the data object's `Spaces` field.
-        /// 
         /// 
         /// ## Example Usage
         /// 

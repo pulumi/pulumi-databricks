@@ -27,7 +27,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This resource can only be used with a workspace-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to a tag policy by its tag key:
@@ -67,7 +66,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This resource can only be used with a workspace-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to a tag policy by its tag key:
@@ -106,7 +104,6 @@ namespace Pulumi.Databricks
         /// * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
         /// 
         /// &gt; **Note** This resource can only be used with a workspace-level provider!
-        /// 
         /// 
         /// ## Example Usage
         /// 

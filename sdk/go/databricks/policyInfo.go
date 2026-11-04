@@ -342,6 +342,12 @@ func (PolicyInfoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyInfoState)(nil)).Elem()
 }
 
+// PolicyInfoExists checks whether an existing PolicyInfo resource with the given ID exists.
+func PolicyInfoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyInfoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/policyInfo:PolicyInfo", id, state, "", opts...)
+}
+
 type policyInfoArgs struct {
 	// Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
 	// Required on create and optional on update. When specified on update,

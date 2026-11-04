@@ -105,6 +105,12 @@ func (DbfsFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbfsFileState)(nil)).Elem()
 }
 
+// DbfsFileExists checks whether an existing DbfsFile resource with the given ID exists.
+func DbfsFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbfsFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/dbfsFile:DbfsFile", id, state, "", opts...)
+}
+
 type dbfsFileArgs struct {
 	// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 	ContentBase64 *string `pulumi:"contentBase64"`

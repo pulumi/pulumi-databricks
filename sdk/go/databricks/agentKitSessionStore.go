@@ -119,6 +119,12 @@ func (AgentKitSessionStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentKitSessionStoreState)(nil)).Elem()
 }
 
+// AgentKitSessionStoreExists checks whether an existing AgentKitSessionStore resource with the given ID exists.
+func AgentKitSessionStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentKitSessionStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/agentKitSessionStore:AgentKitSessionStore", id, state, "", opts...)
+}
+
 type agentKitSessionStoreArgs struct {
 	// Human-readable description of the session store
 	Description *string `pulumi:"description"`

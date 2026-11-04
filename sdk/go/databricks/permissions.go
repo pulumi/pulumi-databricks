@@ -1854,6 +1854,12 @@ func (PermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*permissionsState)(nil)).Elem()
 }
 
+// PermissionsExists checks whether an existing Permissions resource with the given ID exists.
+func PermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/permissions:Permissions", id, state, "", opts...)
+}
+
 type permissionsArgs struct {
 	AccessControls       []PermissionsAccessControl `pulumi:"accessControls"`
 	AlertV2Id            *string                    `pulumi:"alertV2Id"`

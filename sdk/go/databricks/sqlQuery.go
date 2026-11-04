@@ -258,6 +258,12 @@ func (SqlQueryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlQueryState)(nil)).Elem()
 }
 
+// SqlQueryExists checks whether an existing SqlQuery resource with the given ID exists.
+func SqlQueryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlQueryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlQuery:SqlQuery", id, state, "", opts...)
+}
+
 type sqlQueryArgs struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Data source ID of a SQL warehouse

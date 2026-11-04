@@ -373,6 +373,12 @@ func (ExternalLocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalLocationState)(nil)).Elem()
 }
 
+// ExternalLocationExists checks whether an existing ExternalLocation resource with the given ID exists.
+func ExternalLocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalLocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/externalLocation:ExternalLocation", id, state, "", opts...)
+}
+
 type externalLocationArgs struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`

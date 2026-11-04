@@ -767,6 +767,48 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         __props__.__dict__["vpc_endpoint_id"] = vpc_endpoint_id
         return MwsNccPrivateEndpointRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+            deactivated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_service: pulumi.Input[Optional[_builtins.str]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_endpoint: pulumi.Input[Optional[Union['MwsNccPrivateEndpointRuleGcpEndpointArgs', 'MwsNccPrivateEndpointRuleGcpEndpointArgsDict', 'outputs.MwsNccPrivateEndpointRuleGcpEndpoint']]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["connectionState"] = connection_state
+        __props__["creationTime"] = creation_time
+        __props__["deactivated"] = deactivated
+        __props__["deactivatedAt"] = deactivated_at
+        __props__["domainNames"] = domain_names
+        __props__["enabled"] = enabled
+        __props__["endpointName"] = endpoint_name
+        __props__["endpointService"] = endpoint_service
+        __props__["errorMessage"] = error_message
+        __props__["gcpEndpoint"] = gcp_endpoint
+        __props__["groupId"] = group_id
+        __props__["networkConnectivityConfigId"] = network_connectivity_config_id
+        __props__["resourceId"] = resource_id
+        __props__["resourceNames"] = resource_names
+        __props__["ruleId"] = rule_id
+        __props__["updatedTime"] = updated_time
+        __props__["vpcEndpointId"] = vpc_endpoint_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

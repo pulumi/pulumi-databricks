@@ -13,22 +13,20 @@ public final class GetMwsCredentialsProviderConfig {
     /**
      * @return Ignored. This data source always operates against the account configured on the provider.
      * 
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     private String workspaceId;
 
     private GetMwsCredentialsProviderConfig() {}
     /**
      * @return Ignored. This data source always operates against the account configured on the provider.
      * 
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     public String workspaceId() {
         return this.workspaceId;
     }

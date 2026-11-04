@@ -124,6 +124,12 @@ func (NotebookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notebookState)(nil)).Elem()
 }
 
+// NotebookExists checks whether an existing Notebook resource with the given ID exists.
+func NotebookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotebookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/notebook:Notebook", id, state, "", opts...)
+}
+
 type notebookArgs struct {
 	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`

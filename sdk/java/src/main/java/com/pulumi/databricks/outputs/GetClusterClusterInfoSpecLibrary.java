@@ -18,11 +18,10 @@ import javax.annotation.Nullable;
 public final class GetClusterClusterInfoSpecLibrary {
     private @Nullable GetClusterClusterInfoSpecLibraryCran cran;
     /**
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable GetClusterClusterInfoSpecLibraryMaven maven;
@@ -40,11 +39,10 @@ public final class GetClusterClusterInfoSpecLibrary {
         return Optional.ofNullable(this.cran);
     }
     /**
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     public Optional<String> egg() {
         return Optional.ofNullable(this.egg);
     }

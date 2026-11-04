@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the direct members of a group, scoped to a workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the direct members of a group, scoped to a workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
         /// Lists the direct members of a group, scoped to a workspace.
-        /// 
         /// 
         /// ## Example Usage
         /// 

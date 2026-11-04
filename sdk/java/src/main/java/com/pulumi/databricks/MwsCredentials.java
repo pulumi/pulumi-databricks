@@ -104,11 +104,10 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     /**
      * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
-     * @deprecated
-     * `accountId` should be set as part of the Databricks Config, not in the resource.
+     * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      * 
      */
-    @Deprecated /* `accountId` should be set as part of the Databricks Config, not in the resource. */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 

@@ -1735,6 +1735,74 @@ class MwsWorkspaces(pulumi.CustomResource):
         __props__.__dict__["workspace_url"] = workspace_url
         return MwsWorkspaces(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_resource_container: pulumi.Input[Optional[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict', 'outputs.MwsWorkspacesCloudResourceContainer']]] = None,
+            compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+            external_customer_info: pulumi.Input[Optional[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict', 'outputs.MwsWorkspacesExternalCustomerInfo']]] = None,
+            gcp_managed_network_config: pulumi.Input[Optional[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict', 'outputs.MwsWorkspacesGcpManagedNetworkConfig']]] = None,
+            gcp_workspace_sa: pulumi.Input[Optional[_builtins.str]] = None,
+            gke_config: pulumi.Input[Optional[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict', 'outputs.MwsWorkspacesGkeConfig']]] = None,
+            is_no_public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_services_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict', 'outputs.MwsWorkspacesToken']]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["awsRegion"] = aws_region
+        __props__["cloud"] = cloud
+        __props__["cloudResourceContainer"] = cloud_resource_container
+        __props__["computeMode"] = compute_mode
+        __props__["creationTime"] = creation_time
+        __props__["credentialsId"] = credentials_id
+        __props__["customTags"] = custom_tags
+        __props__["customerManagedKeyId"] = customer_managed_key_id
+        __props__["deploymentName"] = deployment_name
+        __props__["effectiveComputeMode"] = effective_compute_mode
+        __props__["expectedWorkspaceStatus"] = expected_workspace_status
+        __props__["externalCustomerInfo"] = external_customer_info
+        __props__["gcpManagedNetworkConfig"] = gcp_managed_network_config
+        __props__["gcpWorkspaceSa"] = gcp_workspace_sa
+        __props__["gkeConfig"] = gke_config
+        __props__["isNoPublicIpEnabled"] = is_no_public_ip_enabled
+        __props__["location"] = location
+        __props__["managedServicesCustomerManagedKeyId"] = managed_services_customer_managed_key_id
+        __props__["networkConnectivityConfigId"] = network_connectivity_config_id
+        __props__["networkId"] = network_id
+        __props__["pricingTier"] = pricing_tier
+        __props__["privateAccessSettingsId"] = private_access_settings_id
+        __props__["storageConfigurationId"] = storage_configuration_id
+        __props__["storageCustomerManagedKeyId"] = storage_customer_managed_key_id
+        __props__["token"] = token
+        __props__["workspaceId"] = workspace_id
+        __props__["workspaceName"] = workspace_name
+        __props__["workspaceStatus"] = workspace_status
+        __props__["workspaceStatusMessage"] = workspace_status_message
+        __props__["workspaceUrl"] = workspace_url
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsWorkspaces:MwsWorkspaces', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

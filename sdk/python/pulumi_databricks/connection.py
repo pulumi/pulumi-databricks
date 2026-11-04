@@ -1059,6 +1059,56 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
+            provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["connectionId"] = connection_id
+        __props__["connectionType"] = connection_type
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["credentialType"] = credential_type
+        __props__["environmentSettings"] = environment_settings
+        __props__["fullName"] = full_name
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["options"] = options
+        __props__["owner"] = owner
+        __props__["parent"] = parent
+        __props__["properties"] = properties
+        __props__["providerConfig"] = provider_config
+        __props__["provisioningInfos"] = provisioning_infos
+        __props__["readOnly"] = read_only
+        __props__["secrets"] = secrets
+        __props__["securableType"] = securable_type
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'databricks:index/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

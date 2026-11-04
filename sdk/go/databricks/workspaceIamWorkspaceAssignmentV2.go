@@ -186,6 +186,12 @@ func (WorkspaceIamWorkspaceAssignmentV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceIamWorkspaceAssignmentV2State)(nil)).Elem()
 }
 
+// WorkspaceIamWorkspaceAssignmentV2Exists checks whether an existing WorkspaceIamWorkspaceAssignmentV2 resource with the given ID exists.
+func WorkspaceIamWorkspaceAssignmentV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceIamWorkspaceAssignmentV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2", id, state, "", opts...)
+}
+
 type workspaceIamWorkspaceAssignmentV2Args struct {
 	// Entitlements granted directly to the principal on this workspace. This is the only
 	// client-settable field. Create and update manage exactly this set, including entitlements the

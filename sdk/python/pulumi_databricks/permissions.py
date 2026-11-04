@@ -2837,6 +2837,76 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["workspace_file_path"] = workspace_file_path
         return Permissions(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict', 'outputs.PermissionsAccessControl']]]]] = None,
+            alert_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_path: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict', 'outputs.PermissionsProviderConfig']]] = None,
+            registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_path: pulumi.Input[Optional[_builtins.str]] = None,
+            serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+            supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessControls"] = access_controls
+        __props__["alertV2Id"] = alert_v2_id
+        __props__["appName"] = app_name
+        __props__["authorization"] = authorization
+        __props__["clusterId"] = cluster_id
+        __props__["clusterPolicyId"] = cluster_policy_id
+        __props__["dashboardId"] = dashboard_id
+        __props__["databaseInstanceName"] = database_instance_name
+        __props__["databaseProjectName"] = database_project_name
+        __props__["directoryId"] = directory_id
+        __props__["directoryPath"] = directory_path
+        __props__["experimentId"] = experiment_id
+        __props__["instancePoolId"] = instance_pool_id
+        __props__["jobId"] = job_id
+        __props__["knowledgeAssistantId"] = knowledge_assistant_id
+        __props__["notebookId"] = notebook_id
+        __props__["notebookPath"] = notebook_path
+        __props__["objectType"] = object_type
+        __props__["pipelineId"] = pipeline_id
+        __props__["providerConfig"] = provider_config
+        __props__["registeredModelId"] = registered_model_id
+        __props__["repoId"] = repo_id
+        __props__["repoPath"] = repo_path
+        __props__["servingEndpointId"] = serving_endpoint_id
+        __props__["sqlAlertId"] = sql_alert_id
+        __props__["sqlDashboardId"] = sql_dashboard_id
+        __props__["sqlEndpointId"] = sql_endpoint_id
+        __props__["sqlQueryId"] = sql_query_id
+        __props__["supervisorAgentId"] = supervisor_agent_id
+        __props__["vectorSearchEndpointId"] = vector_search_endpoint_id
+        __props__["workspaceFileId"] = workspace_file_id
+        __props__["workspaceFilePath"] = workspace_file_path
+        return pulumi.runtime.exists_resource(None, 'databricks:index/permissions:Permissions', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessControls")
     def access_controls(self) -> pulumi.Output[Sequence['outputs.PermissionsAccessControl']]:

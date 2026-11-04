@@ -99,6 +99,12 @@ func (GlobalInitScriptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalInitScriptState)(nil)).Elem()
 }
 
+// GlobalInitScriptExists checks whether an existing GlobalInitScript resource with the given ID exists.
+func GlobalInitScriptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalInitScriptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/globalInitScript:GlobalInitScript", id, state, "", opts...)
+}
+
 type globalInitScriptArgs struct {
 	// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 	ContentBase64 *string `pulumi:"contentBase64"`

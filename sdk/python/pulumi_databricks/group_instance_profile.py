@@ -326,6 +326,20 @@ class GroupInstanceProfile(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return GroupInstanceProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict', 'outputs.GroupInstanceProfileProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["groupId"] = group_id
+        __props__["instanceProfileId"] = instance_profile_id
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/groupInstanceProfile:GroupInstanceProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

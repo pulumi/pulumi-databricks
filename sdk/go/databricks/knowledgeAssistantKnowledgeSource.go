@@ -158,6 +158,12 @@ func (KnowledgeAssistantKnowledgeSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*knowledgeAssistantKnowledgeSourceState)(nil)).Elem()
 }
 
+// KnowledgeAssistantKnowledgeSourceExists checks whether an existing KnowledgeAssistantKnowledgeSource resource with the given ID exists.
+func KnowledgeAssistantKnowledgeSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KnowledgeAssistantKnowledgeSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource", id, state, "", opts...)
+}
+
 type knowledgeAssistantKnowledgeSourceArgs struct {
 	// Description of the knowledge source.
 	// Required when creating a Knowledge Source.

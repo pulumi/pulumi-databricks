@@ -731,6 +731,32 @@ class Library(pulumi.CustomResource):
         __props__.__dict__["whl"] = whl
         return Library(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict', 'outputs.LibraryCran']]] = None,
+            egg: pulumi.Input[Optional[_builtins.str]] = None,
+            jar: pulumi.Input[Optional[_builtins.str]] = None,
+            library_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict', 'outputs.LibraryMaven']]] = None,
+            provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict', 'outputs.LibraryProviderConfig']]] = None,
+            pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict', 'outputs.LibraryPypi']]] = None,
+            requirements: pulumi.Input[Optional[_builtins.str]] = None,
+            whl: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["cran"] = cran
+        __props__["egg"] = egg
+        __props__["jar"] = jar
+        __props__["libraryId"] = library_id
+        __props__["maven"] = maven
+        __props__["providerConfig"] = provider_config
+        __props__["pypi"] = pypi
+        __props__["requirements"] = requirements
+        __props__["whl"] = whl
+        return pulumi.runtime.exists_resource(None, 'databricks:index/library:Library', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

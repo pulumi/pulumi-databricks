@@ -352,6 +352,26 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return WorkspaceIamGroupV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["externalId"] = external_id
+        __props__["groupId"] = group_id
+        __props__["groupName"] = group_name
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

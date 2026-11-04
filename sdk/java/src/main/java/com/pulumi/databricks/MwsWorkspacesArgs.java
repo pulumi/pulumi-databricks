@@ -137,20 +137,18 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Use managedServicesCustomerManagedKeyId instead
+     * @deprecated Use managedServicesCustomerManagedKeyId instead
      * 
      */
-    @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
+    @Deprecated
     @Import(name="customerManagedKeyId")
     private @Nullable Output<String> customerManagedKeyId;
 
     /**
-     * @deprecated
-     * Use managedServicesCustomerManagedKeyId instead
+     * @deprecated Use managedServicesCustomerManagedKeyId instead
      * 
      */
-    @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
+    @Deprecated
     public Optional<Output<String>> customerManagedKeyId() {
         return Optional.ofNullable(this.customerManagedKeyId);
     }
@@ -204,20 +202,18 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated
     @Import(name="gkeConfig")
     private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
 
     /**
-     * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated
     public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
         return Optional.ofNullable(this.gkeConfig);
     }
@@ -634,11 +630,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Use managedServicesCustomerManagedKeyId instead
+         * @deprecated Use managedServicesCustomerManagedKeyId instead
          * 
          */
-        @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
+        @Deprecated
         public Builder customerManagedKeyId(@Nullable Output<String> customerManagedKeyId) {
             $.customerManagedKeyId = customerManagedKeyId;
             return this;
@@ -647,11 +642,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Use managedServicesCustomerManagedKeyId instead
+         * @deprecated Use managedServicesCustomerManagedKeyId instead
          * 
          */
-        @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
+        @Deprecated
         public Builder customerManagedKeyId(String customerManagedKeyId) {
             return customerManagedKeyId(Output.of(customerManagedKeyId));
         }
@@ -723,11 +717,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated
         public Builder gkeConfig(@Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig) {
             $.gkeConfig = gkeConfig;
             return this;
@@ -736,11 +729,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated
         public Builder gkeConfig(MwsWorkspacesGkeConfigArgs gkeConfig) {
             return gkeConfig(Output.of(gkeConfig));
         }

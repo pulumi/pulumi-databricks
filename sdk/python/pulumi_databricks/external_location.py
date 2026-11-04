@@ -1055,6 +1055,60 @@ class ExternalLocation(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ExternalLocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_enable_file_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_file_event_queue: pulumi.Input[Optional[Union['ExternalLocationEffectiveFileEventQueueArgs', 'ExternalLocationEffectiveFileEventQueueArgsDict', 'outputs.ExternalLocationEffectiveFileEventQueue']]] = None,
+            enable_file_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_details: pulumi.Input[Optional[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict', 'outputs.ExternalLocationEncryptionDetails']]] = None,
+            fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_event_queue: pulumi.Input[Optional[Union['ExternalLocationFileEventQueueArgs', 'ExternalLocationFileEventQueueArgsDict', 'outputs.ExternalLocationFileEventQueue']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ExternalLocationProviderConfigArgs', 'ExternalLocationProviderConfigArgsDict', 'outputs.ExternalLocationProviderConfig']]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["browseOnly"] = browse_only
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["credentialId"] = credential_id
+        __props__["credentialName"] = credential_name
+        __props__["effectiveEnableFileEvents"] = effective_enable_file_events
+        __props__["effectiveFileEventQueue"] = effective_file_event_queue
+        __props__["enableFileEvents"] = enable_file_events
+        __props__["encryptionDetails"] = encryption_details
+        __props__["fallback"] = fallback
+        __props__["fileEventQueue"] = file_event_queue
+        __props__["forceDestroy"] = force_destroy
+        __props__["forceUpdate"] = force_update
+        __props__["isolationMode"] = isolation_mode
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["providerConfig"] = provider_config
+        __props__["readOnly"] = read_only
+        __props__["skipValidation"] = skip_validation
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'databricks:index/externalLocation:ExternalLocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="browseOnly")
     def browse_only(self) -> pulumi.Output[_builtins.bool]:

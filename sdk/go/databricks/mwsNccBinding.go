@@ -132,6 +132,12 @@ func (MwsNccBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsNccBindingState)(nil)).Elem()
 }
 
+// MwsNccBindingExists checks whether an existing MwsNccBinding resource with the given ID exists.
+func MwsNccBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsNccBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsNccBinding:MwsNccBinding", id, state, "", opts...)
+}
+
 type mwsNccBindingArgs struct {
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 	NetworkConnectivityConfigId string `pulumi:"networkConnectivityConfigId"`

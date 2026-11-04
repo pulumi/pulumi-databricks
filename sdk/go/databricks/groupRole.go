@@ -180,6 +180,12 @@ func (GroupRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupRoleState)(nil)).Elem()
 }
 
+// GroupRoleExists checks whether an existing GroupRole resource with the given ID exists.
+func GroupRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/groupRole:GroupRole", id, state, "", opts...)
+}
+
 type groupRoleArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

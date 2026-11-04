@@ -108,6 +108,12 @@ func (OnlineStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*onlineStoreState)(nil)).Elem()
 }
 
+// OnlineStoreExists checks whether an existing OnlineStore resource with the given ID exists.
+func OnlineStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OnlineStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/onlineStore:OnlineStore", id, state, "", opts...)
+}
+
 type onlineStoreArgs struct {
 	// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity string `pulumi:"capacity"`

@@ -149,6 +149,12 @@ func (WorkspaceIamWorkspaceIdentityDetailV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceIamWorkspaceIdentityDetailV2State)(nil)).Elem()
 }
 
+// WorkspaceIamWorkspaceIdentityDetailV2Exists checks whether an existing WorkspaceIamWorkspaceIdentityDetailV2 resource with the given ID exists.
+func WorkspaceIamWorkspaceIdentityDetailV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceIamWorkspaceIdentityDetailV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2", id, state, "", opts...)
+}
+
 type workspaceIamWorkspaceIdentityDetailV2Args struct {
 	// The resource name of the parent
 	Parent string `pulumi:"parent"`

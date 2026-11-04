@@ -46,20 +46,18 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     @Import(name="databricksAccountId")
     private @Nullable String databricksAccountId;
 
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -147,11 +145,10 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
         /**
          * @return builder
          * 
-         * @deprecated
-         * databricks_account_id will be will be removed in the next major release.
+         * @deprecated databricks_account_id will be will be removed in the next major release.
          * 
          */
-        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+        @Deprecated
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
             $.databricksAccountId = databricksAccountId;
             return this;

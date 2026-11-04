@@ -1005,6 +1005,54 @@ class LakehouseMonitor(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return LakehouseMonitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakehouseMonitorCustomMetricArgs', 'LakehouseMonitorCustomMetricArgsDict', 'outputs.LakehouseMonitorCustomMetric']]]]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_classification_config: pulumi.Input[Optional[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict', 'outputs.LakehouseMonitorDataClassificationConfig']]] = None,
+            drift_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_log: pulumi.Input[Optional[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict', 'outputs.LakehouseMonitorInferenceLog']]] = None,
+            latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_version: pulumi.Input[Optional[_builtins.int]] = None,
+            notifications: pulumi.Input[Optional[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict', 'outputs.LakehouseMonitorNotifications']]] = None,
+            output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['LakehouseMonitorProviderConfigArgs', 'LakehouseMonitorProviderConfigArgsDict', 'outputs.LakehouseMonitorProviderConfig']]] = None,
+            schedule: pulumi.Input[Optional[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict', 'outputs.LakehouseMonitorSchedule']]] = None,
+            skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+            slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            snapshot: pulumi.Input[Optional[Union['LakehouseMonitorSnapshotArgs', 'LakehouseMonitorSnapshotArgsDict', 'outputs.LakehouseMonitorSnapshot']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_series: pulumi.Input[Optional[Union['LakehouseMonitorTimeSeriesArgs', 'LakehouseMonitorTimeSeriesArgsDict', 'outputs.LakehouseMonitorTimeSeries']]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assetsDir"] = assets_dir
+        __props__["baselineTableName"] = baseline_table_name
+        __props__["customMetrics"] = custom_metrics
+        __props__["dashboardId"] = dashboard_id
+        __props__["dataClassificationConfig"] = data_classification_config
+        __props__["driftMetricsTableName"] = drift_metrics_table_name
+        __props__["inferenceLog"] = inference_log
+        __props__["latestMonitorFailureMsg"] = latest_monitor_failure_msg
+        __props__["monitorVersion"] = monitor_version
+        __props__["notifications"] = notifications
+        __props__["outputSchemaName"] = output_schema_name
+        __props__["profileMetricsTableName"] = profile_metrics_table_name
+        __props__["providerConfig"] = provider_config
+        __props__["schedule"] = schedule
+        __props__["skipBuiltinDashboard"] = skip_builtin_dashboard
+        __props__["slicingExprs"] = slicing_exprs
+        __props__["snapshot"] = snapshot
+        __props__["status"] = status
+        __props__["tableName"] = table_name
+        __props__["timeSeries"] = time_series
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/lakehouseMonitor:LakehouseMonitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assetsDir")
     def assets_dir(self) -> pulumi.Output[_builtins.str]:

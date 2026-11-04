@@ -20,13 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source requires workspace admin permissions.
         /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Overrides
@@ -57,13 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source requires workspace admin permissions.
         /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Overrides
@@ -93,13 +79,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to list all default warehouse overrides in the workspace.
         /// 
         /// &gt; **Note** This data source requires workspace admin permissions.
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -630,6 +630,38 @@ class PrivateNetworkGateway(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PrivateNetworkGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_cloud_connection: pulumi.Input[Optional[Union['PrivateNetworkGatewayAwsCloudConnectionArgs', 'PrivateNetworkGatewayAwsCloudConnectionArgsDict', 'outputs.PrivateNetworkGatewayAwsCloudConnection']]] = None,
+            azure_cloud_connection: pulumi.Input[Optional[Union['PrivateNetworkGatewayAzureCloudConnectionArgs', 'PrivateNetworkGatewayAzureCloudConnectionArgsDict', 'outputs.PrivateNetworkGatewayAzureCloudConnection']]] = None,
+            bandwidth_tier_gigabits_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateNetworkGatewayDestinationArgs', 'PrivateNetworkGatewayDestinationArgsDict', 'outputs.PrivateNetworkGatewayDestination']]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            private_dns_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateNetworkGatewayPrivateDnsResolverArgs', 'PrivateNetworkGatewayPrivateDnsResolverArgsDict', 'outputs.PrivateNetworkGatewayPrivateDnsResolver']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsCloudConnection"] = aws_cloud_connection
+        __props__["azureCloudConnection"] = azure_cloud_connection
+        __props__["bandwidthTierGigabitsPerSecond"] = bandwidth_tier_gigabits_per_second
+        __props__["createTime"] = create_time
+        __props__["destinations"] = destinations
+        __props__["displayName"] = display_name
+        __props__["errorMessage"] = error_message
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["privateDnsResolvers"] = private_dns_resolvers
+        __props__["state"] = state
+        __props__["trafficMode"] = traffic_mode
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/privateNetworkGateway:PrivateNetworkGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsCloudConnection")
     def aws_cloud_connection(self) -> pulumi.Output[Optional['outputs.PrivateNetworkGatewayAwsCloudConnection']]:

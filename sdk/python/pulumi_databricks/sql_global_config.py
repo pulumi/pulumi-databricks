@@ -483,6 +483,26 @@ class SqlGlobalConfig(pulumi.CustomResource):
         __props__.__dict__["sql_config_params"] = sql_config_params
         return SqlGlobalConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_access_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict', 'outputs.SqlGlobalConfigProviderConfig']]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataAccessConfig"] = data_access_config
+        __props__["enableServerlessCompute"] = enable_serverless_compute
+        __props__["googleServiceAccount"] = google_service_account
+        __props__["instanceProfileArn"] = instance_profile_arn
+        __props__["providerConfig"] = provider_config
+        __props__["securityPolicy"] = security_policy
+        __props__["sqlConfigParams"] = sql_config_params
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sqlGlobalConfig:SqlGlobalConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataAccessConfig")
     def data_access_config(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

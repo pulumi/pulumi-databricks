@@ -142,6 +142,12 @@ func (AccountIamGroupV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamGroupV2State)(nil)).Elem()
 }
 
+// AccountIamGroupV2Exists checks whether an existing AccountIamGroupV2 resource with the given ID exists.
+func AccountIamGroupV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountIamGroupV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accountIamGroupV2:AccountIamGroupV2", id, state, "", opts...)
+}
+
 type accountIamGroupV2Args struct {
 	// ExternalId of the group in the customer's IdP
 	ExternalId *string `pulumi:"externalId"`

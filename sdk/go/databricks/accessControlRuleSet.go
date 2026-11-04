@@ -608,6 +608,12 @@ func (AccessControlRuleSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessControlRuleSetState)(nil)).Elem()
 }
 
+// AccessControlRuleSetExists checks whether an existing AccessControlRuleSet resource with the given ID exists.
+func AccessControlRuleSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessControlRuleSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accessControlRuleSet:AccessControlRuleSet", id, state, "", opts...)
+}
+
 type accessControlRuleSetArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

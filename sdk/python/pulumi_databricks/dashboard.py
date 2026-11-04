@@ -740,6 +740,46 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_change_detected: pulumi.Input[Optional[_builtins.bool]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            embed_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            md5: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict', 'outputs.DashboardProviderConfig']]] = None,
+            serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dashboardChangeDetected"] = dashboard_change_detected
+        __props__["dashboardId"] = dashboard_id
+        __props__["datasetCatalog"] = dataset_catalog
+        __props__["datasetSchema"] = dataset_schema
+        __props__["displayName"] = display_name
+        __props__["embedCredentials"] = embed_credentials
+        __props__["etag"] = etag
+        __props__["filePath"] = file_path
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["md5"] = md5
+        __props__["parentPath"] = parent_path
+        __props__["path"] = path
+        __props__["providerConfig"] = provider_config
+        __props__["serializedDashboard"] = serialized_dashboard
+        __props__["updateTime"] = update_time
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/dashboard:Dashboard', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

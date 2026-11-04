@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
-        /// 
         /// 
         /// ## Example Usage
         /// 

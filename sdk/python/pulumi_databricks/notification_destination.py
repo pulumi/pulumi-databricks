@@ -462,6 +462,22 @@ class NotificationDestination(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return NotificationDestination(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['NotificationDestinationConfigArgs', 'NotificationDestinationConfigArgsDict', 'outputs.NotificationDestinationConfig']]] = None,
+            destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['NotificationDestinationProviderConfigArgs', 'NotificationDestinationProviderConfigArgsDict', 'outputs.NotificationDestinationProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["destinationType"] = destination_type
+        __props__["displayName"] = display_name
+        __props__["notificationDestinationId"] = notification_destination_id
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/notificationDestination:NotificationDestination', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.NotificationDestinationConfig']]:

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -52,7 +51,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -85,7 +83,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
         /// Reads a single direct group membership, scoped to a workspace, by its resource name, `groups/{group_id}/direct-members/{principal_id}`.
-        /// 
         /// 
         /// ## Example Usage
         /// 

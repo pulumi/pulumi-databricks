@@ -320,6 +320,12 @@ func (MetastoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreState)(nil)).Elem()
 }
 
+// MetastoreExists checks whether an existing Metastore resource with the given ID exists.
+func MetastoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/metastore:Metastore", id, state, "", opts...)
+}
+
 type metastoreArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

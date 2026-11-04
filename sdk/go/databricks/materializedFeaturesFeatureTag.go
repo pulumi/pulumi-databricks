@@ -72,6 +72,12 @@ func (MaterializedFeaturesFeatureTagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*materializedFeaturesFeatureTagState)(nil)).Elem()
 }
 
+// MaterializedFeaturesFeatureTagExists checks whether an existing MaterializedFeaturesFeatureTag resource with the given ID exists.
+func MaterializedFeaturesFeatureTagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MaterializedFeaturesFeatureTagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag", id, state, "", opts...)
+}
+
 type materializedFeaturesFeatureTagArgs struct {
 	Key string `pulumi:"key"`
 	// Configure the provider for management through account provider.

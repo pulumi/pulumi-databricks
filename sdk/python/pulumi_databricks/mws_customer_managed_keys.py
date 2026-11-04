@@ -496,6 +496,24 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         __props__.__dict__["use_cases"] = use_cases
         return MwsCustomerManagedKeys(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysAwsKeyInfo']]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysGcpKeyInfo']]] = None,
+            use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["awsKeyInfo"] = aws_key_info
+        __props__["creationTime"] = creation_time
+        __props__["customerManagedKeyId"] = customer_managed_key_id
+        __props__["gcpKeyInfo"] = gcp_key_info
+        __props__["useCases"] = use_cases
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

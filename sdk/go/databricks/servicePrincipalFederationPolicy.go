@@ -162,6 +162,12 @@ func (ServicePrincipalFederationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalFederationPolicyState)(nil)).Elem()
 }
 
+// ServicePrincipalFederationPolicyExists checks whether an existing ServicePrincipalFederationPolicy resource with the given ID exists.
+func ServicePrincipalFederationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalFederationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy", id, state, "", opts...)
+}
+
 type servicePrincipalFederationPolicyArgs struct {
 	// Description of the federation policy
 	Description *string `pulumi:"description"`

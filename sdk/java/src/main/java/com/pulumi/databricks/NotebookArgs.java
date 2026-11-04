@@ -78,20 +78,18 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Always is a notebook
+     * @deprecated Always is a notebook
      * 
      */
-    @Deprecated /* Always is a notebook */
+    @Deprecated
     @Import(name="objectType")
     private @Nullable Output<String> objectType;
 
     /**
-     * @deprecated
-     * Always is a notebook
+     * @deprecated Always is a notebook
      * 
      */
-    @Deprecated /* Always is a notebook */
+    @Deprecated
     public Optional<Output<String>> objectType() {
         return Optional.ofNullable(this.objectType);
     }
@@ -257,11 +255,10 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Always is a notebook
+         * @deprecated Always is a notebook
          * 
          */
-        @Deprecated /* Always is a notebook */
+        @Deprecated
         public Builder objectType(@Nullable Output<String> objectType) {
             $.objectType = objectType;
             return this;
@@ -270,11 +267,10 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Always is a notebook
+         * @deprecated Always is a notebook
          * 
          */
-        @Deprecated /* Always is a notebook */
+        @Deprecated
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
         }

@@ -196,6 +196,12 @@ func (DatabaseDatabaseCatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseDatabaseCatalogState)(nil)).Elem()
 }
 
+// DatabaseDatabaseCatalogExists checks whether an existing DatabaseDatabaseCatalog resource with the given ID exists.
+func DatabaseDatabaseCatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseDatabaseCatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog", id, state, "", opts...)
+}
+
 type databaseDatabaseCatalogArgs struct {
 	CreateDatabaseIfNotExists *bool `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database

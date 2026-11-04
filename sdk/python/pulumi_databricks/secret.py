@@ -458,6 +458,28 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["string_value_wo_version"] = string_value_wo_version
         return Secret(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_reference: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            string_value: pulumi.Input[Optional[_builtins.str]] = None,
+            string_value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            string_value_wo_version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configReference"] = config_reference
+        __props__["key"] = key
+        __props__["lastUpdatedTimestamp"] = last_updated_timestamp
+        __props__["providerConfig"] = provider_config
+        __props__["scope"] = scope
+        __props__["stringValue"] = string_value
+        __props__["stringValueWo"] = string_value_wo
+        __props__["stringValueWoVersion"] = string_value_wo_version
+        return pulumi.runtime.exists_resource(None, 'databricks:index/secret:Secret', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configReference")
     def config_reference(self) -> pulumi.Output[_builtins.str]:

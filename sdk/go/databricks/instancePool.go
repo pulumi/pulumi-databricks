@@ -203,6 +203,12 @@ func (InstancePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instancePoolState)(nil)).Elem()
 }
 
+// InstancePoolExists checks whether an existing InstancePool resource with the given ID exists.
+func InstancePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstancePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/instancePool:InstancePool", id, state, "", opts...)
+}
+
 type instancePoolArgs struct {
 	AwsAttributes   *InstancePoolAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes *InstancePoolAzureAttributes `pulumi:"azureAttributes"`

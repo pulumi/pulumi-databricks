@@ -1052,6 +1052,64 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__.__dict__["workspace_label"] = workspace_label
         return WorkspaceSettingV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict', 'outputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy']]] = None,
+            aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains']]] = None,
+            allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['WorkspaceSettingV2AllowedAppsUserApiScopesArgs', 'WorkspaceSettingV2AllowedAppsUserApiScopesArgsDict', 'outputs.WorkspaceSettingV2AllowedAppsUserApiScopes']]] = None,
+            automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict', 'outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace']]] = None,
+            boolean_val: pulumi.Input[Optional[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict', 'outputs.WorkspaceSettingV2BooleanVal']]] = None,
+            collaboration_platform_connectivity: pulumi.Input[Optional[Union['WorkspaceSettingV2CollaborationPlatformConnectivityArgs', 'WorkspaceSettingV2CollaborationPlatformConnectivityArgsDict', 'outputs.WorkspaceSettingV2CollaborationPlatformConnectivity']]] = None,
+            effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict', 'outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy']]] = None,
+            effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains']]] = None,
+            effective_allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs', 'WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgsDict', 'outputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes']]] = None,
+            effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict', 'outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace']]] = None,
+            effective_boolean_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveBooleanValArgs', 'WorkspaceSettingV2EffectiveBooleanValArgsDict', 'outputs.WorkspaceSettingV2EffectiveBooleanVal']]] = None,
+            effective_collaboration_platform_connectivity: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs', 'WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgsDict', 'outputs.WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity']]] = None,
+            effective_integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveIntegerValArgs', 'WorkspaceSettingV2EffectiveIntegerValArgsDict', 'outputs.WorkspaceSettingV2EffectiveIntegerVal']]] = None,
+            effective_operational_email_custom_recipient: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs', 'WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgsDict', 'outputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient']]] = None,
+            effective_personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict', 'outputs.WorkspaceSettingV2EffectivePersonalCompute']]] = None,
+            effective_restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins']]] = None,
+            effective_string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict', 'outputs.WorkspaceSettingV2EffectiveStringVal']]] = None,
+            effective_workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveWorkspaceLabelArgs', 'WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceLabel']]] = None,
+            integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict', 'outputs.WorkspaceSettingV2IntegerVal']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            operational_email_custom_recipient: pulumi.Input[Optional[Union['WorkspaceSettingV2OperationalEmailCustomRecipientArgs', 'WorkspaceSettingV2OperationalEmailCustomRecipientArgsDict', 'outputs.WorkspaceSettingV2OperationalEmailCustomRecipient']]] = None,
+            personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict', 'outputs.WorkspaceSettingV2PersonalCompute']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']]] = None,
+            restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']]] = None,
+            string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']]] = None,
+            workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aibiDashboardEmbeddingAccessPolicy"] = aibi_dashboard_embedding_access_policy
+        __props__["aibiDashboardEmbeddingApprovedDomains"] = aibi_dashboard_embedding_approved_domains
+        __props__["allowedAppsUserApiScopes"] = allowed_apps_user_api_scopes
+        __props__["automaticClusterUpdateWorkspace"] = automatic_cluster_update_workspace
+        __props__["booleanVal"] = boolean_val
+        __props__["collaborationPlatformConnectivity"] = collaboration_platform_connectivity
+        __props__["effectiveAibiDashboardEmbeddingAccessPolicy"] = effective_aibi_dashboard_embedding_access_policy
+        __props__["effectiveAibiDashboardEmbeddingApprovedDomains"] = effective_aibi_dashboard_embedding_approved_domains
+        __props__["effectiveAllowedAppsUserApiScopes"] = effective_allowed_apps_user_api_scopes
+        __props__["effectiveAutomaticClusterUpdateWorkspace"] = effective_automatic_cluster_update_workspace
+        __props__["effectiveBooleanVal"] = effective_boolean_val
+        __props__["effectiveCollaborationPlatformConnectivity"] = effective_collaboration_platform_connectivity
+        __props__["effectiveIntegerVal"] = effective_integer_val
+        __props__["effectiveOperationalEmailCustomRecipient"] = effective_operational_email_custom_recipient
+        __props__["effectivePersonalCompute"] = effective_personal_compute
+        __props__["effectiveRestrictWorkspaceAdmins"] = effective_restrict_workspace_admins
+        __props__["effectiveStringVal"] = effective_string_val
+        __props__["effectiveWorkspaceLabel"] = effective_workspace_label
+        __props__["integerVal"] = integer_val
+        __props__["name"] = name
+        __props__["operationalEmailCustomRecipient"] = operational_email_custom_recipient
+        __props__["personalCompute"] = personal_compute
+        __props__["providerConfig"] = provider_config
+        __props__["restrictWorkspaceAdmins"] = restrict_workspace_admins
+        __props__["stringVal"] = string_val
+        __props__["workspaceLabel"] = workspace_label
+        return pulumi.runtime.exists_resource(None, 'databricks:index/workspaceSettingV2:WorkspaceSettingV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
     def aibi_dashboard_embedding_access_policy(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy']]:

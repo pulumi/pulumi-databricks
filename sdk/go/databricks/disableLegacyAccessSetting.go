@@ -126,6 +126,12 @@ func (DisableLegacyAccessSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*disableLegacyAccessSettingState)(nil)).Elem()
 }
 
+// DisableLegacyAccessSettingExists checks whether an existing DisableLegacyAccessSetting resource with the given ID exists.
+func DisableLegacyAccessSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DisableLegacyAccessSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting", id, state, "", opts...)
+}
+
 type disableLegacyAccessSettingArgs struct {
 	// The configuration details.
 	DisableLegacyAccess DisableLegacyAccessSettingDisableLegacyAccess `pulumi:"disableLegacyAccess"`

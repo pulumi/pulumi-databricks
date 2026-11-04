@@ -237,6 +237,12 @@ func (SecretUcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretUcState)(nil)).Elem()
 }
 
+// SecretUcExists checks whether an existing SecretUc resource with the given ID exists.
+func SecretUcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretUcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/secretUc:SecretUc", id, state, "", opts...)
+}
+
 type secretUcArgs struct {
 	// The name of the catalog where the schema and the secret reside
 	CatalogName string `pulumi:"catalogName"`

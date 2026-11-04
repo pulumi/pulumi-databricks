@@ -29,20 +29,18 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
     }
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     @Import(name="dbfs")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs> dbfs;
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     public Optional<Output<JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -132,11 +130,10 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(@Nullable Output<JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
@@ -145,11 +142,10 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
         }

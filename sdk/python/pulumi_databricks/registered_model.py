@@ -671,6 +671,42 @@ class RegisteredModel(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return RegisteredModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict', 'outputs.RegisteredModelAlias']]]]] = None,
+            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict', 'outputs.RegisteredModelProviderConfig']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliases"] = aliases
+        __props__["browseOnly"] = browse_only
+        __props__["catalogName"] = catalog_name
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["fullName"] = full_name
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["providerConfig"] = provider_config
+        __props__["schemaName"] = schema_name
+        __props__["storageLocation"] = storage_location
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/registeredModel:RegisteredModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aliases(self) -> pulumi.Output[Optional[Sequence['outputs.RegisteredModelAlias']]]:

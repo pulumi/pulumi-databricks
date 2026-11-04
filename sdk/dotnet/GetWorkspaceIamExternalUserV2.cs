@@ -24,7 +24,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `WorkspaceId` is required — set it in the `ProviderConfig` block (or via the provider's `WorkspaceId` attribute). With a workspace-level provider, `WorkspaceId` is optional and defaults to the provider's workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `ProviderConfig`:
@@ -65,7 +64,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `WorkspaceId` is required — set it in the `ProviderConfig` block (or via the provider's `WorkspaceId` attribute). With a workspace-level provider, `WorkspaceId` is optional and defaults to the provider's workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `ProviderConfig`:
@@ -105,7 +103,6 @@ namespace Pulumi.Databricks
         /// &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist. Provisioning happens at the account level; it does not assign the user to the workspace.
         /// 
         /// &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `WorkspaceId` is required — set it in the `ProviderConfig` block (or via the provider's `WorkspaceId` attribute). With a workspace-level provider, `WorkspaceId` is optional and defaults to the provider's workspace.
-        /// 
         /// 
         /// ## Example Usage
         /// 

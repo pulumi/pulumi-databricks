@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve the Data API for a Database
@@ -54,7 +53,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve the Data API for a Database
@@ -89,7 +87,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
-        /// 
         /// 
         /// ## Example Usage
         /// 

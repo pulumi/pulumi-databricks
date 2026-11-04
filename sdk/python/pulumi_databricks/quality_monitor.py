@@ -1070,6 +1070,56 @@ class QualityMonitor(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return QualityMonitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict', 'outputs.QualityMonitorCustomMetric']]]]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict', 'outputs.QualityMonitorDataClassificationConfig']]] = None,
+            drift_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict', 'outputs.QualityMonitorInferenceLog']]] = None,
+            latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_version: pulumi.Input[Optional[_builtins.int]] = None,
+            notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict', 'outputs.QualityMonitorNotifications']]] = None,
+            output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict', 'outputs.QualityMonitorProviderConfig']]] = None,
+            schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict', 'outputs.QualityMonitorSchedule']]] = None,
+            skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+            slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict', 'outputs.QualityMonitorSnapshot']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict', 'outputs.QualityMonitorTimeSeries']]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assetsDir"] = assets_dir
+        __props__["baselineTableName"] = baseline_table_name
+        __props__["customMetrics"] = custom_metrics
+        __props__["dashboardId"] = dashboard_id
+        __props__["dataClassificationConfig"] = data_classification_config
+        __props__["driftMetricsTableName"] = drift_metrics_table_name
+        __props__["inferenceLog"] = inference_log
+        __props__["latestMonitorFailureMsg"] = latest_monitor_failure_msg
+        __props__["monitorId"] = monitor_id
+        __props__["monitorVersion"] = monitor_version
+        __props__["notifications"] = notifications
+        __props__["outputSchemaName"] = output_schema_name
+        __props__["profileMetricsTableName"] = profile_metrics_table_name
+        __props__["providerConfig"] = provider_config
+        __props__["schedule"] = schedule
+        __props__["skipBuiltinDashboard"] = skip_builtin_dashboard
+        __props__["slicingExprs"] = slicing_exprs
+        __props__["snapshot"] = snapshot
+        __props__["status"] = status
+        __props__["tableName"] = table_name
+        __props__["timeSeries"] = time_series
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/qualityMonitor:QualityMonitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assetsDir")
     def assets_dir(self) -> pulumi.Output[_builtins.str]:

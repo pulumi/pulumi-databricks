@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single Custom Template.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to a Custom Template by name:
@@ -45,7 +44,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single Custom Template.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to a Custom Template by name:
@@ -73,7 +71,6 @@ namespace Pulumi.Databricks
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single Custom Template.
-        /// 
         /// 
         /// ## Example Usage
         /// 

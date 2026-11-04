@@ -16,11 +16,10 @@ import javax.annotation.Nullable;
 public final class ClusterLibrary {
     private @Nullable ClusterLibraryCran cran;
     /**
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable ClusterLibraryMaven maven;
@@ -33,11 +32,10 @@ public final class ClusterLibrary {
         return Optional.ofNullable(this.cran);
     }
     /**
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     public Optional<String> egg() {
         return Optional.ofNullable(this.egg);
     }

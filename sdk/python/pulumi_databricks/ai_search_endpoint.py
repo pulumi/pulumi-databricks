@@ -740,6 +740,50 @@ class AiSearchEndpoint(pulumi.CustomResource):
         __props__.__dict__["usage_policy_id"] = usage_policy_id
         return AiSearchEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict', 'outputs.AiSearchEndpointCustomTag']]]]] = None,
+            effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_status: pulumi.Input[Optional[Union['AiSearchEndpointEndpointStatusArgs', 'AiSearchEndpointEndpointStatusArgsDict', 'outputs.AiSearchEndpointEndpointStatus']]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            index_count: pulumi.Input[Optional[_builtins.int]] = None,
+            last_updated_user: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict', 'outputs.AiSearchEndpointProviderConfig']]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_info: pulumi.Input[Optional[Union['AiSearchEndpointScalingInfoArgs', 'AiSearchEndpointScalingInfoArgsDict', 'outputs.AiSearchEndpointScalingInfo']]] = None,
+            target_qps: pulumi.Input[Optional[_builtins.int]] = None,
+            throughput_info: pulumi.Input[Optional[Union['AiSearchEndpointThroughputInfoArgs', 'AiSearchEndpointThroughputInfoArgsDict', 'outputs.AiSearchEndpointThroughputInfo']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["budgetPolicyId"] = budget_policy_id
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["customTags"] = custom_tags
+        __props__["effectiveBudgetPolicyId"] = effective_budget_policy_id
+        __props__["endpointId"] = endpoint_id
+        __props__["endpointStatus"] = endpoint_status
+        __props__["endpointType"] = endpoint_type
+        __props__["indexCount"] = index_count
+        __props__["lastUpdatedUser"] = last_updated_user
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["replicaCount"] = replica_count
+        __props__["scalingInfo"] = scaling_info
+        __props__["targetQps"] = target_qps
+        __props__["throughputInfo"] = throughput_info
+        __props__["updateTime"] = update_time
+        __props__["usagePolicyId"] = usage_policy_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/aiSearchEndpoint:AiSearchEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> pulumi.Output[Optional[_builtins.str]]:

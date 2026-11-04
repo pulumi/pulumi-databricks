@@ -589,6 +589,30 @@ class Entitlements(pulumi.CustomResource):
         __props__.__dict__["workspace_consume"] = workspace_consume
         return Entitlements(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict', 'outputs.EntitlementsProviderConfig']]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowClusterCreate"] = allow_cluster_create
+        __props__["allowInstancePoolCreate"] = allow_instance_pool_create
+        __props__["databricksSqlAccess"] = databricks_sql_access
+        __props__["groupId"] = group_id
+        __props__["providerConfig"] = provider_config
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["userId"] = user_id
+        __props__["workspaceAccess"] = workspace_access
+        __props__["workspaceConsume"] = workspace_consume
+        return pulumi.runtime.exists_resource(None, 'databricks:index/entitlements:Entitlements', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> pulumi.Output[Optional[_builtins.bool]]:

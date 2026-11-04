@@ -804,6 +804,34 @@ class MwsLogDelivery(pulumi.CustomResource):
         __props__.__dict__["workspace_ids_filters"] = workspace_ids_filters
         return MwsLogDelivery(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            log_type: pulumi.Input[Optional[_builtins.str]] = None,
+            output_format: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_ids_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["configId"] = config_id
+        __props__["configName"] = config_name
+        __props__["credentialsId"] = credentials_id
+        __props__["deliveryPathPrefix"] = delivery_path_prefix
+        __props__["deliveryStartTime"] = delivery_start_time
+        __props__["logType"] = log_type
+        __props__["outputFormat"] = output_format
+        __props__["status"] = status
+        __props__["storageConfigurationId"] = storage_configuration_id
+        __props__["workspaceIdsFilters"] = workspace_ids_filters
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsLogDelivery:MwsLogDelivery', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -203,6 +203,12 @@ func (AiSearchIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSearchIndexState)(nil)).Elem()
 }
 
+// AiSearchIndexExists checks whether an existing AiSearchIndex resource with the given ID exists.
+func AiSearchIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSearchIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/aiSearchIndex:AiSearchIndex", id, state, "", opts...)
+}
+
 type aiSearchIndexArgs struct {
 	// Specification for a Delta Sync index. Set when `indexType` is `DELTA_SYNC`
 	DeltaSyncIndexSpec *AiSearchIndexDeltaSyncIndexSpec `pulumi:"deltaSyncIndexSpec"`

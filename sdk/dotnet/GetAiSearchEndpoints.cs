@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to fetch the list of AI Search endpoints in a workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// # Example: AI Search Endpoint Datasource (Plural)
@@ -46,7 +45,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to fetch the list of AI Search endpoints in a workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// # Example: AI Search Endpoint Datasource (Plural)
@@ -73,7 +71,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
         /// This data source can be used to fetch the list of AI Search endpoints in a workspace.
-        /// 
         /// 
         /// ## Example Usage
         /// 

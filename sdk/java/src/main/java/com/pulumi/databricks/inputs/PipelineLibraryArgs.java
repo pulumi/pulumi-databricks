@@ -79,20 +79,18 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * @deprecated
-     * The &#39;whl&#39; field is deprecated
+     * @deprecated The &#39;whl&#39; field is deprecated
      * 
      */
-    @Deprecated /* The 'whl' field is deprecated */
+    @Deprecated
     @Import(name="whl")
     private @Nullable Output<String> whl;
 
     /**
-     * @deprecated
-     * The &#39;whl&#39; field is deprecated
+     * @deprecated The &#39;whl&#39; field is deprecated
      * 
      */
-    @Deprecated /* The 'whl' field is deprecated */
+    @Deprecated
     public Optional<Output<String>> whl() {
         return Optional.ofNullable(this.whl);
     }
@@ -210,11 +208,10 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @return builder
          * 
-         * @deprecated
-         * The &#39;whl&#39; field is deprecated
+         * @deprecated The &#39;whl&#39; field is deprecated
          * 
          */
-        @Deprecated /* The 'whl' field is deprecated */
+        @Deprecated
         public Builder whl(@Nullable Output<String> whl) {
             $.whl = whl;
             return this;
@@ -223,11 +220,10 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @return builder
          * 
-         * @deprecated
-         * The &#39;whl&#39; field is deprecated
+         * @deprecated The &#39;whl&#39; field is deprecated
          * 
          */
-        @Deprecated /* The 'whl' field is deprecated */
+        @Deprecated
         public Builder whl(String whl) {
             return whl(Output.of(whl));
         }

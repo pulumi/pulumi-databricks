@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres endpoints in a branch.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Endpoints in a Branch
@@ -60,7 +59,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres endpoints in a branch.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Endpoints in a Branch
@@ -101,7 +99,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source lists all Postgres endpoints in a branch.
-        /// 
         /// 
         /// ## Example Usage
         /// 

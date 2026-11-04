@@ -580,6 +580,36 @@ class CustomAppIntegration(pulumi.CustomResource):
         __props__.__dict__["user_authorized_scopes"] = user_authorized_scopes
         return CustomAppIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.int]] = None,
+            creator_username: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict', 'outputs.CustomAppIntegrationTokenAccessPolicy']]] = None,
+            user_authorized_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientId"] = client_id
+        __props__["clientSecret"] = client_secret
+        __props__["confidential"] = confidential
+        __props__["createTime"] = create_time
+        __props__["createdBy"] = created_by
+        __props__["creatorUsername"] = creator_username
+        __props__["integrationId"] = integration_id
+        __props__["name"] = name
+        __props__["redirectUrls"] = redirect_urls
+        __props__["scopes"] = scopes
+        __props__["tokenAccessPolicy"] = token_access_policy
+        __props__["userAuthorizedScopes"] = user_authorized_scopes
+        return pulumi.runtime.exists_resource(None, 'databricks:index/customAppIntegration:CustomAppIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[_builtins.str]:

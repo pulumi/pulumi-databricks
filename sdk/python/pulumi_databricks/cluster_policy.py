@@ -678,6 +678,30 @@ class ClusterPolicy(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return ClusterPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            definition: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict', 'outputs.ClusterPolicyLibrary']]]]] = None,
+            max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict', 'outputs.ClusterPolicyProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["definition"] = definition
+        __props__["description"] = description
+        __props__["libraries"] = libraries
+        __props__["maxClustersPerUser"] = max_clusters_per_user
+        __props__["name"] = name
+        __props__["policyFamilyDefinitionOverrides"] = policy_family_definition_overrides
+        __props__["policyFamilyId"] = policy_family_id
+        __props__["policyId"] = policy_id
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/clusterPolicy:ClusterPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def definition(self) -> pulumi.Output[_builtins.str]:

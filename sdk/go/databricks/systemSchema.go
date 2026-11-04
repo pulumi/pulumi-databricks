@@ -124,6 +124,12 @@ func (SystemSchemaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*systemSchemaState)(nil)).Elem()
 }
 
+// SystemSchemaExists checks whether an existing SystemSchema resource with the given ID exists.
+func SystemSchemaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SystemSchemaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/systemSchema:SystemSchema", id, state, "", opts...)
+}
+
 type systemSchemaArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *SystemSchemaProviderConfig `pulumi:"providerConfig"`

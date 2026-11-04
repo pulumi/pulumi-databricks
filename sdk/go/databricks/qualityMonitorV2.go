@@ -137,6 +137,12 @@ func (QualityMonitorV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*qualityMonitorV2State)(nil)).Elem()
 }
 
+// QualityMonitorV2Exists checks whether an existing QualityMonitorV2 resource with the given ID exists.
+func QualityMonitorV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QualityMonitorV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/qualityMonitorV2:QualityMonitorV2", id, state, "", opts...)
+}
+
 type qualityMonitorV2Args struct {
 	// The uuid of the request object. For example, schema id
 	ObjectId string `pulumi:"objectId"`

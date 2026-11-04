@@ -20,6 +20,17 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
         return new EnhancedSecurityMonitoringWorkspaceSetting(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing EnhancedSecurityMonitoringWorkspaceSetting resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: EnhancedSecurityMonitoringWorkspaceSettingState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting';
 

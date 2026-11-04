@@ -195,6 +195,12 @@ func (AccountNetworkPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountNetworkPolicyState)(nil)).Elem()
 }
 
+// AccountNetworkPolicyExists checks whether an existing AccountNetworkPolicy resource with the given ID exists.
+func AccountNetworkPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountNetworkPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accountNetworkPolicy:AccountNetworkPolicy", id, state, "", opts...)
+}
+
 type accountNetworkPolicyArgs struct {
 	// (string) - The associated account ID for this Network Policy object
 	AccountId *string `pulumi:"accountId"`

@@ -173,6 +173,12 @@ func (SqlDashboardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlDashboardState)(nil)).Elem()
 }
 
+// SqlDashboardExists checks whether an existing SqlDashboard resource with the given ID exists.
+func SqlDashboardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlDashboardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlDashboard:SqlDashboard", id, state, "", opts...)
+}
+
 type sqlDashboardArgs struct {
 	CreatedAt               *string `pulumi:"createdAt"`
 	DashboardFiltersEnabled *bool   `pulumi:"dashboardFiltersEnabled"`

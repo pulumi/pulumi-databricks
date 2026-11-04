@@ -502,6 +502,12 @@ func (SqlTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlTableState)(nil)).Elem()
 }
 
+// SqlTableExists checks whether an existing SqlTable resource with the given ID exists.
+func SqlTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlTable:SqlTable", id, state, "", opts...)
+}
+
 type sqlTableArgs struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName string `pulumi:"catalogName"`

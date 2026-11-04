@@ -138,6 +138,12 @@ func (DirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryState)(nil)).Elem()
 }
 
+// DirectoryExists checks whether an existing Directory resource with the given ID exists.
+func DirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/directory:Directory", id, state, "", opts...)
+}
+
 type directoryArgs struct {
 	// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
 	DeleteRecursive *bool `pulumi:"deleteRecursive"`

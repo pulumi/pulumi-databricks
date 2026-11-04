@@ -334,6 +334,12 @@ func (ModelServingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*modelServingState)(nil)).Elem()
 }
 
+// ModelServingExists checks whether an existing ModelServing resource with the given ID exists.
+func ModelServingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ModelServingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/modelServing:ModelServing", id, state, "", opts...)
+}
+
 type modelServingArgs struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`

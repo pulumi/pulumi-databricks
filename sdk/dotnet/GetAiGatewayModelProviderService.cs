@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example retrieves the model provider service named `CustomProvider` from the `main.default` schema:
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example retrieves the model provider service named `CustomProvider` from the `main.default` schema:
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
         /// 
         /// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
-        /// 
         /// 
         /// ## Example Usage
         /// 

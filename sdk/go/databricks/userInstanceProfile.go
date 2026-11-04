@@ -142,6 +142,12 @@ func (UserInstanceProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userInstanceProfileState)(nil)).Elem()
 }
 
+// UserInstanceProfileExists checks whether an existing UserInstanceProfile resource with the given ID exists.
+func UserInstanceProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserInstanceProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/userInstanceProfile:UserInstanceProfile", id, state, "", opts...)
+}
+
 type userInstanceProfileArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

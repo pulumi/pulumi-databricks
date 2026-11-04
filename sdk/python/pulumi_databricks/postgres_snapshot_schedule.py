@@ -343,6 +343,20 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         __props__.__dict__["schedules"] = schedules
         return PostgresSnapshotSchedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.PostgresSnapshotScheduleProviderConfig']]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["schedules"] = schedules
+        return pulumi.runtime.exists_resource(None, 'databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

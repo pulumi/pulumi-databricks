@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Replicated Table Statuses in a CDF Configuration
@@ -59,7 +58,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Replicated Table Statuses in a CDF Configuration
@@ -99,7 +97,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
-        /// 
         /// 
         /// ## Example Usage
         /// 

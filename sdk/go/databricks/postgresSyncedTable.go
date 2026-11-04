@@ -261,6 +261,12 @@ func (PostgresSyncedTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresSyncedTableState)(nil)).Elem()
 }
 
+// PostgresSyncedTableExists checks whether an existing PostgresSyncedTable resource with the given ID exists.
+func PostgresSyncedTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresSyncedTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresSyncedTable:PostgresSyncedTable", id, state, "", opts...)
+}
+
 type postgresSyncedTableArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresSyncedTableProviderConfig `pulumi:"providerConfig"`

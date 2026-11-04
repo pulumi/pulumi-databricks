@@ -132,22 +132,20 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
-     * @deprecated
-     * Please use AI Gateway to manage rate limits.
+     * @deprecated Please use AI Gateway to manage rate limits.
      * 
      */
-    @Deprecated /* Please use AI Gateway to manage rate limits. */
+    @Deprecated
     @Import(name="rateLimits")
     private @Nullable Output<List<ModelServingRateLimitArgs>> rateLimits;
 
     /**
      * @return A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
-     * @deprecated
-     * Please use AI Gateway to manage rate limits.
+     * @deprecated Please use AI Gateway to manage rate limits.
      * 
      */
-    @Deprecated /* Please use AI Gateway to manage rate limits. */
+    @Deprecated
     public Optional<Output<List<ModelServingRateLimitArgs>>> rateLimits() {
         return Optional.ofNullable(this.rateLimits);
     }
@@ -375,11 +373,10 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use AI Gateway to manage rate limits.
+         * @deprecated Please use AI Gateway to manage rate limits.
          * 
          */
-        @Deprecated /* Please use AI Gateway to manage rate limits. */
+        @Deprecated
         public Builder rateLimits(@Nullable Output<List<ModelServingRateLimitArgs>> rateLimits) {
             $.rateLimits = rateLimits;
             return this;
@@ -390,11 +387,10 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use AI Gateway to manage rate limits.
+         * @deprecated Please use AI Gateway to manage rate limits.
          * 
          */
-        @Deprecated /* Please use AI Gateway to manage rate limits. */
+        @Deprecated
         public Builder rateLimits(List<ModelServingRateLimitArgs> rateLimits) {
             return rateLimits(Output.of(rateLimits));
         }
@@ -404,11 +400,10 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use AI Gateway to manage rate limits.
+         * @deprecated Please use AI Gateway to manage rate limits.
          * 
          */
-        @Deprecated /* Please use AI Gateway to manage rate limits. */
+        @Deprecated
         public Builder rateLimits(ModelServingRateLimitArgs... rateLimits) {
             return rateLimits(List.of(rateLimits));
         }

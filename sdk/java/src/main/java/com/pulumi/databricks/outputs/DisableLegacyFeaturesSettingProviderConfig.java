@@ -12,20 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DisableLegacyFeaturesSettingProviderConfig {
     /**
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     private @Nullable String workspaceId;
 
     private DisableLegacyFeaturesSettingProviderConfig() {}
     /**
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     public Optional<String> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }

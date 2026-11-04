@@ -586,6 +586,36 @@ class AiSearchIndex(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AiSearchIndex(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']]] = None,
+            direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
+            index_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_key: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']]] = None,
+            status: pulumi.Input[Optional[Union['AiSearchIndexStatusArgs', 'AiSearchIndexStatusArgsDict', 'outputs.AiSearchIndexStatus']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creator"] = creator
+        __props__["deltaSyncIndexSpec"] = delta_sync_index_spec
+        __props__["directAccessIndexSpec"] = direct_access_index_spec
+        __props__["endpoint"] = endpoint
+        __props__["indexId"] = index_id
+        __props__["indexSubtype"] = index_subtype
+        __props__["indexType"] = index_type
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["primaryKey"] = primary_key
+        __props__["providerConfig"] = provider_config
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'databricks:index/aiSearchIndex:AiSearchIndex', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def creator(self) -> pulumi.Output[_builtins.str]:

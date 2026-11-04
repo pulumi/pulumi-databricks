@@ -983,6 +983,50 @@ class AlertV2(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return AlertV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_description: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_template_format: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_run_as: pulumi.Input[Optional[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict', 'outputs.AlertV2EffectiveRunAs']]] = None,
+            evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict', 'outputs.AlertV2ProviderConfig']]] = None,
+            purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            query_text: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict', 'outputs.AlertV2RunAs']]] = None,
+            run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict', 'outputs.AlertV2Schedule']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["customDescription"] = custom_description
+        __props__["customSummary"] = custom_summary
+        __props__["customTemplateFormat"] = custom_template_format
+        __props__["displayName"] = display_name
+        __props__["effectiveRunAs"] = effective_run_as
+        __props__["evaluation"] = evaluation
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["ownerUserName"] = owner_user_name
+        __props__["parameters"] = parameters
+        __props__["parentPath"] = parent_path
+        __props__["providerConfig"] = provider_config
+        __props__["purgeOnDelete"] = purge_on_delete
+        __props__["queryText"] = query_text
+        __props__["runAs"] = run_as
+        __props__["runAsUserName"] = run_as_user_name
+        __props__["schedule"] = schedule
+        __props__["updateTime"] = update_time
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/alertV2:AlertV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

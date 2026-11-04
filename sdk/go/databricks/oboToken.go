@@ -225,6 +225,12 @@ func (OboTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oboTokenState)(nil)).Elem()
 }
 
+// OboTokenExists checks whether an existing OboToken resource with the given ID exists.
+func OboTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OboTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/oboToken:OboToken", id, state, "", opts...)
+}
+
 type oboTokenArgs struct {
 	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId string `pulumi:"applicationId"`

@@ -783,6 +783,46 @@ class InstancePool(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return InstancePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict', 'outputs.InstancePoolAwsAttributes']]] = None,
+            azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict', 'outputs.InstancePoolAzureAttributes']]] = None,
+            custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict', 'outputs.InstancePoolDiskSpec']]] = None,
+            enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict', 'outputs.InstancePoolGcpAttributes']]] = None,
+            idle_instance_autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict', 'outputs.InstancePoolInstancePoolFleetAttributes']]] = None,
+            instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            min_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict', 'outputs.InstancePoolNodeTypeFlexibility']]] = None,
+            node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict', 'outputs.InstancePoolPreloadedDockerImage']]]]] = None,
+            preloaded_spark_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict', 'outputs.InstancePoolProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsAttributes"] = aws_attributes
+        __props__["azureAttributes"] = azure_attributes
+        __props__["customTags"] = custom_tags
+        __props__["diskSpec"] = disk_spec
+        __props__["enableElasticDisk"] = enable_elastic_disk
+        __props__["gcpAttributes"] = gcp_attributes
+        __props__["idleInstanceAutoterminationMinutes"] = idle_instance_autotermination_minutes
+        __props__["instancePoolFleetAttributes"] = instance_pool_fleet_attributes
+        __props__["instancePoolId"] = instance_pool_id
+        __props__["instancePoolName"] = instance_pool_name
+        __props__["maxCapacity"] = max_capacity
+        __props__["minIdleInstances"] = min_idle_instances
+        __props__["nodeTypeFlexibility"] = node_type_flexibility
+        __props__["nodeTypeId"] = node_type_id
+        __props__["preloadedDockerImages"] = preloaded_docker_images
+        __props__["preloadedSparkVersions"] = preloaded_spark_versions
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/instancePool:InstancePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsAttributes")
     def aws_attributes(self) -> pulumi.Output[Optional['outputs.InstancePoolAwsAttributes']]:

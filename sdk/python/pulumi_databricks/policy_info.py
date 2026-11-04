@@ -1016,6 +1016,52 @@ class PolicyInfo(pulumi.CustomResource):
         __props__.__dict__["when_condition"] = when_condition
         return PolicyInfo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict', 'outputs.PolicyInfoColumnMask']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']]] = None,
+            except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            governed_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoGovernedTagArgs', 'PolicyInfoGovernedTagArgsDict', 'outputs.PolicyInfoGovernedTag']]]]] = None,
+            grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']]] = None,
+            match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+            on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict', 'outputs.PolicyInfoProviderConfig']]] = None,
+            row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict', 'outputs.PolicyInfoRowFilter']]] = None,
+            to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            when_condition: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["columnMask"] = column_mask
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["deny"] = deny
+        __props__["exceptPrincipals"] = except_principals
+        __props__["forSecurableType"] = for_securable_type
+        __props__["governedTags"] = governed_tags
+        __props__["grant"] = grant
+        __props__["matchColumns"] = match_columns
+        __props__["name"] = name
+        __props__["onSecurableFullname"] = on_securable_fullname
+        __props__["onSecurableType"] = on_securable_type
+        __props__["policyType"] = policy_type
+        __props__["providerConfig"] = provider_config
+        __props__["rowFilter"] = row_filter
+        __props__["toPrincipals"] = to_principals
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["whenCondition"] = when_condition
+        return pulumi.runtime.exists_resource(None, 'databricks:index/policyInfo:PolicyInfo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="columnMask")
     def column_mask(self) -> pulumi.Output[Optional['outputs.PolicyInfoColumnMask']]:

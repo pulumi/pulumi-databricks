@@ -375,6 +375,12 @@ func (MwsLogDeliveryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsLogDeliveryState)(nil)).Elem()
 }
 
+// MwsLogDeliveryExists checks whether an existing MwsLogDelivery resource with the given ID exists.
+func MwsLogDeliveryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsLogDeliveryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsLogDelivery:MwsLogDelivery", id, state, "", opts...)
+}
+
 type mwsLogDeliveryArgs struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`

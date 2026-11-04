@@ -588,6 +588,42 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         __props__.__dict__["workspace_base_environment_id"] = workspace_base_environment_id
         return EnvironmentsWorkspaceBaseEnvironment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            filepath: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_updated_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baseEnvironmentType"] = base_environment_type
+        __props__["createTime"] = create_time
+        __props__["creatorUserId"] = creator_user_id
+        __props__["displayName"] = display_name
+        __props__["effectiveBaseEnvironmentType"] = effective_base_environment_type
+        __props__["filepath"] = filepath
+        __props__["isDefault"] = is_default
+        __props__["lastUpdatedUserId"] = last_updated_user_id
+        __props__["message"] = message
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["updateTime"] = update_time
+        __props__["workspaceBaseEnvironmentId"] = workspace_base_environment_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/environmentsWorkspaceBaseEnvironment:EnvironmentsWorkspaceBaseEnvironment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="baseEnvironmentType")
     def base_environment_type(self) -> pulumi.Output[Optional[_builtins.str]]:

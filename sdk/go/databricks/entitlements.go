@@ -238,6 +238,12 @@ func (EntitlementsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entitlementsState)(nil)).Elem()
 }
 
+// EntitlementsExists checks whether an existing Entitlements resource with the given ID exists.
+func EntitlementsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntitlementsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/entitlements:Entitlements", id, state, "", opts...)
+}
+
 type entitlementsArgs struct {
 	// Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`

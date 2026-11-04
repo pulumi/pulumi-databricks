@@ -138,6 +138,12 @@ func (ArtifactAllowlistState) ElementType() reflect.Type {
 	return reflect.TypeOf((*artifactAllowlistState)(nil)).Elem()
 }
 
+// ArtifactAllowlistExists checks whether an existing ArtifactAllowlist resource with the given ID exists.
+func ArtifactAllowlistExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ArtifactAllowlistState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/artifactAllowlist:ArtifactAllowlist", id, state, "", opts...)
+}
+
 type artifactAllowlistArgs struct {
 	ArtifactMatchers []ArtifactAllowlistArtifactMatcher `pulumi:"artifactMatchers"`
 	// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.

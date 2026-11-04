@@ -379,6 +379,24 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return CatalogWorkspaceBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['CatalogWorkspaceBindingProviderConfigArgs', 'CatalogWorkspaceBindingProviderConfigArgsDict', 'outputs.CatalogWorkspaceBindingProviderConfig']]] = None,
+            securable_name: pulumi.Input[Optional[_builtins.str]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bindingType"] = binding_type
+        __props__["catalogName"] = catalog_name
+        __props__["providerConfig"] = provider_config
+        __props__["securableName"] = securable_name
+        __props__["securableType"] = securable_type
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Output[Optional[_builtins.str]]:

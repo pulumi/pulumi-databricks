@@ -140,6 +140,12 @@ func (MetastoreAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreAssignmentState)(nil)).Elem()
 }
 
+// MetastoreAssignmentExists checks whether an existing MetastoreAssignment resource with the given ID exists.
+func MetastoreAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/metastoreAssignment:MetastoreAssignment", id, state, "", opts...)
+}
+
 type metastoreAssignmentArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

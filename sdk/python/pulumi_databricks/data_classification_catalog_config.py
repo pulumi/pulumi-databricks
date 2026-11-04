@@ -474,6 +474,24 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return DataClassificationCatalogConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict', 'outputs.DataClassificationCatalogConfigAutoTagConfig']]]]] = None,
+            excluded_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict', 'outputs.DataClassificationCatalogConfigExcludedSchemas']]] = None,
+            included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict', 'outputs.DataClassificationCatalogConfigIncludedSchemas']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.DataClassificationCatalogConfigProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoTagConfigs"] = auto_tag_configs
+        __props__["excludedSchemas"] = excluded_schemas
+        __props__["includedSchemas"] = included_schemas
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/dataClassificationCatalogConfig:DataClassificationCatalogConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoTagConfigs")
     def auto_tag_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DataClassificationCatalogConfigAutoTagConfig']]]:

@@ -503,6 +503,30 @@ class DataQualityRefresh(pulumi.CustomResource):
         __props__.__dict__["trigger"] = trigger
         return DataQualityRefresh(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            end_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']]] = None,
+            refresh_id: pulumi.Input[Optional[_builtins.int]] = None,
+            start_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endTimeMs"] = end_time_ms
+        __props__["message"] = message
+        __props__["objectId"] = object_id
+        __props__["objectType"] = object_type
+        __props__["providerConfig"] = provider_config
+        __props__["refreshId"] = refresh_id
+        __props__["startTimeMs"] = start_time_ms
+        __props__["state"] = state
+        __props__["trigger"] = trigger
+        return pulumi.runtime.exists_resource(None, 'databricks:index/dataQualityRefresh:DataQualityRefresh', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endTimeMs")
     def end_time_ms(self) -> pulumi.Output[_builtins.int]:

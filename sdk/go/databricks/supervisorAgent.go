@@ -125,6 +125,12 @@ func (SupervisorAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*supervisorAgentState)(nil)).Elem()
 }
 
+// SupervisorAgentExists checks whether an existing SupervisorAgent resource with the given ID exists.
+func SupervisorAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SupervisorAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/supervisorAgent:SupervisorAgent", id, state, "", opts...)
+}
+
 type supervisorAgentArgs struct {
 	// Description of what this agent can do (user-facing)
 	Description *string `pulumi:"description"`

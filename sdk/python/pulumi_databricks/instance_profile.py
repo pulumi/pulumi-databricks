@@ -384,6 +384,22 @@ class InstanceProfile(pulumi.CustomResource):
         __props__.__dict__["skip_validation"] = skip_validation
         return InstanceProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            is_meta_instance_profile: pulumi.Input[Optional[_builtins.bool]] = None,
+            provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict', 'outputs.InstanceProfileProviderConfig']]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["iamRoleArn"] = iam_role_arn
+        __props__["instanceProfileArn"] = instance_profile_arn
+        __props__["isMetaInstanceProfile"] = is_meta_instance_profile
+        __props__["providerConfig"] = provider_config
+        __props__["skipValidation"] = skip_validation
+        return pulumi.runtime.exists_resource(None, 'databricks:index/instanceProfile:InstanceProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="iamRoleArn")
     def iam_role_arn(self) -> pulumi.Output[Optional[_builtins.str]]:

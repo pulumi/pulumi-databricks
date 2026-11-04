@@ -116,6 +116,12 @@ func (AibiDashboardEmbeddingAccessPolicySettingState) ElementType() reflect.Type
 	return reflect.TypeOf((*aibiDashboardEmbeddingAccessPolicySettingState)(nil)).Elem()
 }
 
+// AibiDashboardEmbeddingAccessPolicySettingExists checks whether an existing AibiDashboardEmbeddingAccessPolicySetting resource with the given ID exists.
+func AibiDashboardEmbeddingAccessPolicySettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AibiDashboardEmbeddingAccessPolicySettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting", id, state, "", opts...)
+}
+
 type aibiDashboardEmbeddingAccessPolicySettingArgs struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingAccessPolicy AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`

@@ -295,6 +295,20 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
         __props__.__dict__["setting_name"] = setting_name
         return AibiDashboardEmbeddingApprovedDomainsSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aibiDashboardEmbeddingApprovedDomains"] = aibi_dashboard_embedding_approved_domains
+        __props__["etag"] = etag
+        __props__["providerConfig"] = provider_config
+        __props__["settingName"] = setting_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingApprovedDomains")
     def aibi_dashboard_embedding_approved_domains(self) -> pulumi.Output['outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']:

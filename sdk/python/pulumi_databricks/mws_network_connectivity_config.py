@@ -459,6 +459,28 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         __props__.__dict__["updated_time"] = updated_time
         return MwsNetworkConnectivityConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_workspace_id: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["billingWorkspaceId"] = billing_workspace_id
+        __props__["creationTime"] = creation_time
+        __props__["egressConfig"] = egress_config
+        __props__["name"] = name
+        __props__["networkConnectivityConfigId"] = network_connectivity_config_id
+        __props__["region"] = region
+        __props__["updatedTime"] = updated_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

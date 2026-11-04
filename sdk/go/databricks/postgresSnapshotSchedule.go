@@ -160,6 +160,12 @@ func (PostgresSnapshotScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresSnapshotScheduleState)(nil)).Elem()
 }
 
+// PostgresSnapshotScheduleExists checks whether an existing PostgresSnapshotSchedule resource with the given ID exists.
+func PostgresSnapshotScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresSnapshotScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule", id, state, "", opts...)
+}
+
 type postgresSnapshotScheduleArgs struct {
 	// The resource name of the parent
 	Parent string `pulumi:"parent"`

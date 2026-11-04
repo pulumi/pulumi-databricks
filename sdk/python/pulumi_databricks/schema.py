@@ -579,6 +579,34 @@ class Schema(pulumi.CustomResource):
         __props__.__dict__["storage_root"] = storage_root
         return Schema(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict', 'outputs.SchemaProviderConfig']]] = None,
+            schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalogName"] = catalog_name
+        __props__["comment"] = comment
+        __props__["enablePredictiveOptimization"] = enable_predictive_optimization
+        __props__["forceDestroy"] = force_destroy
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["properties"] = properties
+        __props__["providerConfig"] = provider_config
+        __props__["schemaId"] = schema_id
+        __props__["storageRoot"] = storage_root
+        return pulumi.runtime.exists_resource(None, 'databricks:index/schema:Schema', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[_builtins.str]:

@@ -164,6 +164,12 @@ func (AccountIamServicePrincipalV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamServicePrincipalV2State)(nil)).Elem()
 }
 
+// AccountIamServicePrincipalV2Exists checks whether an existing AccountIamServicePrincipalV2 resource with the given ID exists.
+func AccountIamServicePrincipalV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountIamServicePrincipalV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2", id, state, "", opts...)
+}
+
 type accountIamServicePrincipalV2Args struct {
 	// The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
 	AccountSpStatus string `pulumi:"accountSpStatus"`

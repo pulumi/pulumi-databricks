@@ -534,6 +534,34 @@ class VectorSearchIndex(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         return VectorSearchIndex(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delta_sync_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.VectorSearchIndexDeltaSyncIndexSpec']]] = None,
+            direct_access_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.VectorSearchIndexDirectAccessIndexSpec']]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
+            index_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_key: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['VectorSearchIndexProviderConfigArgs', 'VectorSearchIndexProviderConfigArgsDict', 'outputs.VectorSearchIndexProviderConfig']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorSearchIndexStatusArgs', 'VectorSearchIndexStatusArgsDict', 'outputs.VectorSearchIndexStatus']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creator"] = creator
+        __props__["deltaSyncIndexSpec"] = delta_sync_index_spec
+        __props__["directAccessIndexSpec"] = direct_access_index_spec
+        __props__["endpointId"] = endpoint_id
+        __props__["endpointName"] = endpoint_name
+        __props__["indexSubtype"] = index_subtype
+        __props__["indexType"] = index_type
+        __props__["name"] = name
+        __props__["primaryKey"] = primary_key
+        __props__["providerConfig"] = provider_config
+        __props__["statuses"] = statuses
+        return pulumi.runtime.exists_resource(None, 'databricks:index/vectorSearchIndex:VectorSearchIndex', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def creator(self) -> pulumi.Output[_builtins.str]:

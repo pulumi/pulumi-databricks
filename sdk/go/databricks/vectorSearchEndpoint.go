@@ -166,6 +166,12 @@ func (VectorSearchEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vectorSearchEndpointState)(nil)).Elem()
 }
 
+// VectorSearchEndpointExists checks whether an existing VectorSearchEndpoint resource with the given ID exists.
+func VectorSearchEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VectorSearchEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/vectorSearchEndpoint:VectorSearchEndpoint", id, state, "", opts...)
+}
+
 type vectorSearchEndpointArgs struct {
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`

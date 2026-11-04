@@ -368,6 +368,12 @@ func (QualityMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qualityMonitorState)(nil)).Elem()
 }
 
+// QualityMonitorExists checks whether an existing QualityMonitor resource with the given ID exists.
+func QualityMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QualityMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/qualityMonitor:QualityMonitor", id, state, "", opts...)
+}
+
 type qualityMonitorArgs struct {
 	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
 	AssetsDir string `pulumi:"assetsDir"`

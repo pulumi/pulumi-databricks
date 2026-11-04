@@ -413,6 +413,28 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ServicePrincipalFederationPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict', 'outputs.ServicePrincipalFederationPolicyOidcPolicy']]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["oidcPolicy"] = oidc_policy
+        __props__["policyId"] = policy_id
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

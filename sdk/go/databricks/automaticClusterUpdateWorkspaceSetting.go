@@ -71,6 +71,12 @@ func (AutomaticClusterUpdateWorkspaceSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*automaticClusterUpdateWorkspaceSettingState)(nil)).Elem()
 }
 
+// AutomaticClusterUpdateWorkspaceSettingExists checks whether an existing AutomaticClusterUpdateWorkspaceSetting resource with the given ID exists.
+func AutomaticClusterUpdateWorkspaceSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutomaticClusterUpdateWorkspaceSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting", id, state, "", opts...)
+}
+
 type automaticClusterUpdateWorkspaceSettingArgs struct {
 	AutomaticClusterUpdateWorkspace AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	Etag                            *string                                                               `pulumi:"etag"`

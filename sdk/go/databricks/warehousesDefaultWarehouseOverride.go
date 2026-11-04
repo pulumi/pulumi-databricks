@@ -169,6 +169,12 @@ func (WarehousesDefaultWarehouseOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*warehousesDefaultWarehouseOverrideState)(nil)).Elem()
 }
 
+// WarehousesDefaultWarehouseOverrideExists checks whether an existing WarehousesDefaultWarehouseOverride resource with the given ID exists.
+func WarehousesDefaultWarehouseOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WarehousesDefaultWarehouseOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride", id, state, "", opts...)
+}
+
 type warehousesDefaultWarehouseOverrideArgs struct {
 	// The ID component of the resource name (user ID)
 	DefaultWarehouseOverrideId string `pulumi:"defaultWarehouseOverrideId"`

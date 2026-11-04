@@ -18,11 +18,10 @@ public final class GetSparkVersionResult {
     private @Nullable Boolean genomics;
     private @Nullable Boolean gpu;
     /**
-     * @deprecated
-     * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
+     * @deprecated Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
      * 
      */
-    @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
+    @Deprecated
     private @Nullable Boolean graviton;
     /**
      * @return Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
@@ -33,11 +32,10 @@ public final class GetSparkVersionResult {
     private @Nullable Boolean longTermSupport;
     private @Nullable Boolean ml;
     /**
-     * @deprecated
-     * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
+     * @deprecated Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
      * 
      */
-    @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
+    @Deprecated
     private @Nullable Boolean photon;
     private GetSparkVersionProviderConfig providerConfig;
     private @Nullable String scala;
@@ -54,11 +52,10 @@ public final class GetSparkVersionResult {
         return Optional.ofNullable(this.gpu);
     }
     /**
-     * @deprecated
-     * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
+     * @deprecated Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
      * 
      */
-    @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
+    @Deprecated
     public Optional<Boolean> graviton() {
         return Optional.ofNullable(this.graviton);
     }
@@ -79,11 +76,10 @@ public final class GetSparkVersionResult {
         return Optional.ofNullable(this.ml);
     }
     /**
-     * @deprecated
-     * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
+     * @deprecated Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
      * 
      */
-    @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
+    @Deprecated
     public Optional<Boolean> photon() {
         return Optional.ofNullable(this.photon);
     }

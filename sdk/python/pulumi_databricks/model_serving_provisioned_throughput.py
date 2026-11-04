@@ -494,6 +494,28 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ModelServingProvisionedThroughput(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ai_gateway: pulumi.Input[Optional[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict', 'outputs.ModelServingProvisionedThroughputAiGateway']]] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict', 'outputs.ModelServingProvisionedThroughputConfig']]] = None,
+            email_notifications: pulumi.Input[Optional[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict', 'outputs.ModelServingProvisionedThroughputEmailNotifications']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ModelServingProvisionedThroughputProviderConfigArgs', 'ModelServingProvisionedThroughputProviderConfigArgsDict', 'outputs.ModelServingProvisionedThroughputProviderConfig']]] = None,
+            serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict', 'outputs.ModelServingProvisionedThroughputTag']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aiGateway"] = ai_gateway
+        __props__["budgetPolicyId"] = budget_policy_id
+        __props__["config"] = config
+        __props__["emailNotifications"] = email_notifications
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["servingEndpointId"] = serving_endpoint_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aiGateway")
     def ai_gateway(self) -> pulumi.Output[Optional['outputs.ModelServingProvisionedThroughputAiGateway']]:

@@ -17,7 +17,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of Custom Templates within the workspace.
         /// The list can then be accessed via the data object's `Templates` field.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all Custom Templates:
@@ -48,7 +47,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of Custom Templates within the workspace.
         /// The list can then be accessed via the data object's `Templates` field.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a list of all Custom Templates:
@@ -78,7 +76,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to fetch the list of Custom Templates within the workspace.
         /// The list can then be accessed via the data object's `Templates` field.
-        /// 
         /// 
         /// ## Example Usage
         /// 

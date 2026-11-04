@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single app space.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to an app space by name:
@@ -49,7 +48,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single app space.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to an app space by name:
@@ -79,7 +77,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
         /// 
         /// This data source can be used to get a single app space.
-        /// 
         /// 
         /// ## Example Usage
         /// 

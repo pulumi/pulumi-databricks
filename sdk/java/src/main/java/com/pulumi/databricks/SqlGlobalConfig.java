@@ -132,11 +132,10 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataAccessConfig);
     }
     /**
-     * @deprecated
-     * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+     * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      * 
      */
-    @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
+    @Deprecated
     @Export(name="enableServerlessCompute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableServerlessCompute;
 

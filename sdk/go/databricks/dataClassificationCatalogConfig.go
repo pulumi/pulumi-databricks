@@ -208,6 +208,12 @@ func (DataClassificationCatalogConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataClassificationCatalogConfigState)(nil)).Elem()
 }
 
+// DataClassificationCatalogConfigExists checks whether an existing DataClassificationCatalogConfig resource with the given ID exists.
+func DataClassificationCatalogConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataClassificationCatalogConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/dataClassificationCatalogConfig:DataClassificationCatalogConfig", id, state, "", opts...)
+}
+
 type dataClassificationCatalogConfigArgs struct {
 	// List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled

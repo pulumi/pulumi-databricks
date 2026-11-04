@@ -368,6 +368,12 @@ func (PipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineState)(nil)).Elem()
 }
 
+// PipelineExists checks whether an existing Pipeline resource with the given ID exists.
+func PipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/pipeline:Pipeline", id, state, "", opts...)
+}
+
 type pipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`

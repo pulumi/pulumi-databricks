@@ -572,6 +572,32 @@ class MlflowExperiment(pulumi.CustomResource):
         __props__.__dict__["trace_location"] = trace_location
         return MlflowExperiment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
+            lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict', 'outputs.MlflowExperimentProviderConfig']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict', 'outputs.MlflowExperimentTag']]]]] = None,
+            trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict', 'outputs.MlflowExperimentTraceLocation']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["artifactLocation"] = artifact_location
+        __props__["creationTime"] = creation_time
+        __props__["description"] = description
+        __props__["experimentId"] = experiment_id
+        __props__["lastUpdateTime"] = last_update_time
+        __props__["lifecycleStage"] = lifecycle_stage
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["tags"] = tags
+        __props__["traceLocation"] = trace_location
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mlflowExperiment:MlflowExperiment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> pulumi.Output[Optional[_builtins.str]]:

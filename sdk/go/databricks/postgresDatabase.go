@@ -382,6 +382,12 @@ func (PostgresDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresDatabaseState)(nil)).Elem()
 }
 
+// PostgresDatabaseExists checks whether an existing PostgresDatabase resource with the given ID exists.
+func PostgresDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresDatabase:PostgresDatabase", id, state, "", opts...)
+}
+
 type postgresDatabaseArgs struct {
 	// (string) - Part of the resource name
 	DatabaseId *string `pulumi:"databaseId"`

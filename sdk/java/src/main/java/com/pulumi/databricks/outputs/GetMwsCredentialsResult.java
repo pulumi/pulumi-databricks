@@ -23,11 +23,10 @@ public final class GetMwsCredentialsResult {
      */
     private Map<String,String> ids;
     /**
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     private GetMwsCredentialsProviderConfig providerConfig;
 
     private GetMwsCredentialsResult() {}
@@ -46,11 +45,10 @@ public final class GetMwsCredentialsResult {
         return this.ids;
     }
     /**
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     public GetMwsCredentialsProviderConfig providerConfig() {
         return this.providerConfig;
     }

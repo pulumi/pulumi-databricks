@@ -253,6 +253,12 @@ func (AppsSettingsCustomTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appsSettingsCustomTemplateState)(nil)).Elem()
 }
 
+// AppsSettingsCustomTemplateExists checks whether an existing AppsSettingsCustomTemplate resource with the given ID exists.
+func AppsSettingsCustomTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppsSettingsCustomTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate", id, state, "", opts...)
+}
+
 type appsSettingsCustomTemplateArgs struct {
 	// The description of the template
 	Description *string `pulumi:"description"`

@@ -145,6 +145,12 @@ func (GroupInstanceProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupInstanceProfileState)(nil)).Elem()
 }
 
+// GroupInstanceProfileExists checks whether an existing GroupInstanceProfile resource with the given ID exists.
+func GroupInstanceProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupInstanceProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/groupInstanceProfile:GroupInstanceProfile", id, state, "", opts...)
+}
+
 type groupInstanceProfileArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

@@ -426,6 +426,28 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
         __props__.__dict__["service_principal_id"] = service_principal_id
         return AccountIamServicePrincipalV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_sp_status: pulumi.Input[Optional[_builtins.str]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["accountSpStatus"] = account_sp_status
+        __props__["applicationId"] = application_id
+        __props__["displayName"] = display_name
+        __props__["externalId"] = external_id
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["servicePrincipalId"] = service_principal_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

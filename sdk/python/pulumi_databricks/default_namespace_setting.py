@@ -287,6 +287,20 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         __props__.__dict__["setting_name"] = setting_name
         return DefaultNamespaceSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict', 'outputs.DefaultNamespaceSettingNamespace']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict', 'outputs.DefaultNamespaceSettingProviderConfig']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["etag"] = etag
+        __props__["namespace"] = namespace
+        __props__["providerConfig"] = provider_config
+        __props__["settingName"] = setting_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
