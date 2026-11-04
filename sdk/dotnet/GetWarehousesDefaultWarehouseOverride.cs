@@ -25,7 +25,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `DefaultWarehouseOverrideId` represents a user ID.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Get a User's Override
@@ -65,7 +64,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `DefaultWarehouseOverrideId` represents a user ID.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Get a User's Override
@@ -104,7 +102,6 @@ namespace Pulumi.Databricks
         /// - Get the warehouse ID if a custom warehouse is configured
         /// 
         /// &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `DefaultWarehouseOverrideId` represents a user ID.
-        /// 
         /// 
         /// ## Example Usage
         /// 

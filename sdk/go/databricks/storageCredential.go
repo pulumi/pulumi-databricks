@@ -292,6 +292,12 @@ func (StorageCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageCredentialState)(nil)).Elem()
 }
 
+// StorageCredentialExists checks whether an existing StorageCredential resource with the given ID exists.
+func StorageCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/storageCredential:StorageCredential", id, state, "", opts...)
+}
+
 type storageCredentialArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	//

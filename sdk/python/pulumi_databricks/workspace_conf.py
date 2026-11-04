@@ -248,6 +248,16 @@ class WorkspaceConf(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return WorkspaceConf(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict', 'outputs.WorkspaceConfProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customConfig"] = custom_config
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/workspaceConf:WorkspaceConf', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

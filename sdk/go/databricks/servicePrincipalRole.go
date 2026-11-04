@@ -179,6 +179,12 @@ func (ServicePrincipalRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalRoleState)(nil)).Elem()
 }
 
+// ServicePrincipalRoleExists checks whether an existing ServicePrincipalRole resource with the given ID exists.
+func ServicePrincipalRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/servicePrincipalRole:ServicePrincipalRole", id, state, "", opts...)
+}
+
 type servicePrincipalRoleArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api            *string                             `pulumi:"api"`

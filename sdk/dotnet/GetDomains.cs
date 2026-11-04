@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Discover domains in the account, returning each domain's governed tag key and presentation metadata (subtitle, description, owners, icon).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Discover domains in the account, returning each domain's governed tag key and presentation metadata (subtitle, description, owners, icon).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/domains)
         /// 
         /// Lists the Discover domains in the account, returning each domain's governed tag key and presentation metadata (subtitle, description, owners, icon).
-        /// 
         /// 
         /// ## Example Usage
         /// 

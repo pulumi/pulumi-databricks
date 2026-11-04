@@ -339,6 +339,22 @@ class SecretScope(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return SecretScope(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_type: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_manage_principal: pulumi.Input[Optional[_builtins.str]] = None,
+            keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict', 'outputs.SecretScopeKeyvaultMetadata']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict', 'outputs.SecretScopeProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendType"] = backend_type
+        __props__["initialManagePrincipal"] = initial_manage_principal
+        __props__["keyvaultMetadata"] = keyvault_metadata
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/secretScope:SecretScope', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendType")
     def backend_type(self) -> pulumi.Output[_builtins.str]:

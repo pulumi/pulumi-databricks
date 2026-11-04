@@ -24,7 +24,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// To get the Data Classification configuration for a catalog:
@@ -70,7 +69,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// To get the Data Classification configuration for a catalog:
@@ -115,7 +113,6 @@ namespace Pulumi.Databricks
         /// &gt; **Note** This data source can only be used with a workspace-level provider.
         /// 
         /// &gt; **Note** The `AutoTagConfigs` attribute is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). All other attributes of this data source are generally available.
-        /// 
         /// 
         /// ## Example Usage
         /// 

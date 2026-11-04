@@ -19,7 +19,6 @@ namespace Pulumi.Databricks
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,7 +49,6 @@ namespace Pulumi.Databricks
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -80,7 +78,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
-        /// 
         /// 
         /// ## Example Usage
         /// 

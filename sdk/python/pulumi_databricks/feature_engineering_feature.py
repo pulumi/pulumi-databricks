@@ -812,6 +812,44 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         __props__.__dict__["timeseries_column"] = timeseries_column
         return FeatureEngineeringFeature(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]]] = None,
+            filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']]] = None,
+            time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict', 'outputs.FeatureEngineeringFeatureTimeWindow']]] = None,
+            timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalogName"] = catalog_name
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["entities"] = entities
+        __props__["filterCondition"] = filter_condition
+        __props__["fullName"] = full_name
+        __props__["function"] = function
+        __props__["inputs"] = inputs
+        __props__["lineageContext"] = lineage_context
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["schemaName"] = schema_name
+        __props__["source"] = source
+        __props__["timeWindow"] = time_window
+        __props__["timeseriesColumn"] = timeseries_column
+        return pulumi.runtime.exists_resource(None, 'databricks:index/featureEngineeringFeature:FeatureEngineeringFeature', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[_builtins.str]:

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres branches in a project.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Branches in a Project
@@ -56,7 +55,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres branches in a project.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Branches in a Project
@@ -93,7 +91,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source lists all Postgres branches in a project.
-        /// 
         /// 
         /// ## Example Usage
         /// 

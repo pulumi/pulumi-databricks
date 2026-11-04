@@ -323,6 +323,12 @@ func (AlertV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertV2State)(nil)).Elem()
 }
 
+// AlertV2Exists checks whether an existing AlertV2 resource with the given ID exists.
+func AlertV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/alertV2:AlertV2", id, state, "", opts...)
+}
+
 type alertV2Args struct {
 	// Custom description for the alert. Interpreted according to `customTemplateFormat`
 	CustomDescription *string `pulumi:"customDescription"`

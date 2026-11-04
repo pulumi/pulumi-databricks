@@ -95,22 +95,20 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
      * 
-     * @deprecated
-     * Use `arm` instead
+     * @deprecated Use `arm` instead
      * 
      */
-    @Deprecated /* Use `arm` instead */
+    @Deprecated
     @Import(name="graviton")
     private @Nullable Output<Boolean> graviton;
 
     /**
      * @return if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
      * 
-     * @deprecated
-     * Use `arm` instead
+     * @deprecated Use `arm` instead
      * 
      */
-    @Deprecated /* Use `arm` instead */
+    @Deprecated
     public Optional<Output<Boolean>> graviton() {
         return Optional.ofNullable(this.graviton);
     }
@@ -422,11 +420,10 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `arm` instead
+         * @deprecated Use `arm` instead
          * 
          */
-        @Deprecated /* Use `arm` instead */
+        @Deprecated
         public Builder graviton(@Nullable Output<Boolean> graviton) {
             $.graviton = graviton;
             return this;
@@ -437,11 +434,10 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `arm` instead
+         * @deprecated Use `arm` instead
          * 
          */
-        @Deprecated /* Use `arm` instead */
+        @Deprecated
         public Builder graviton(Boolean graviton) {
             return graviton(Output.of(graviton));
         }

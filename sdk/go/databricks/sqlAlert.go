@@ -177,6 +177,12 @@ func (SqlAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlAlertState)(nil)).Elem()
 }
 
+// SqlAlertExists checks whether an existing SqlAlert resource with the given ID exists.
+func SqlAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlAlert:SqlAlert", id, state, "", opts...)
+}
+
 type sqlAlertArgs struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Name of the alert.

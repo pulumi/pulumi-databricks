@@ -251,6 +251,12 @@ func (AppSpaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appSpaceState)(nil)).Elem()
 }
 
+// AppSpaceExists checks whether an existing AppSpace resource with the given ID exists.
+func AppSpaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppSpaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/appSpace:AppSpace", id, state, "", opts...)
+}
+
 type appSpaceArgs struct {
 	// The group whose permissions users assume via Role Authorization for apps in this space. When
 	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves a single Postgres synced table.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve Synced Table by Name
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves a single Postgres synced table.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve Synced Table by Name
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source retrieves a single Postgres synced table.
-        /// 
         /// 
         /// ## Example Usage
         /// 

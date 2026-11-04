@@ -116,6 +116,12 @@ func (WorkspaceConfState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceConfState)(nil)).Elem()
 }
 
+// WorkspaceConfExists checks whether an existing WorkspaceConf resource with the given ID exists.
+func WorkspaceConfExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceConfState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceConf:WorkspaceConf", id, state, "", opts...)
+}
+
 type workspaceConfArgs struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig map[string]string `pulumi:"customConfig"`

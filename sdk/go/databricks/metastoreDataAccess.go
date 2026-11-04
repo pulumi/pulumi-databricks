@@ -218,6 +218,12 @@ func (MetastoreDataAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreDataAccessState)(nil)).Elem()
 }
 
+// MetastoreDataAccessExists checks whether an existing MetastoreDataAccess resource with the given ID exists.
+func MetastoreDataAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreDataAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/metastoreDataAccess:MetastoreDataAccess", id, state, "", opts...)
+}
+
 type metastoreDataAccessArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api                         *string                                         `pulumi:"api"`

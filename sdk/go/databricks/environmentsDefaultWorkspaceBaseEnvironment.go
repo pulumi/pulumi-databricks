@@ -189,6 +189,12 @@ func (EnvironmentsDefaultWorkspaceBaseEnvironmentState) ElementType() reflect.Ty
 	return reflect.TypeOf((*environmentsDefaultWorkspaceBaseEnvironmentState)(nil)).Elem()
 }
 
+// EnvironmentsDefaultWorkspaceBaseEnvironmentExists checks whether an existing EnvironmentsDefaultWorkspaceBaseEnvironment resource with the given ID exists.
+func EnvironmentsDefaultWorkspaceBaseEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentsDefaultWorkspaceBaseEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/environmentsDefaultWorkspaceBaseEnvironment:EnvironmentsDefaultWorkspaceBaseEnvironment", id, state, "", opts...)
+}
+
 type environmentsDefaultWorkspaceBaseEnvironmentArgs struct {
 	// The default workspace base environment for CPU compute.
 	// Format: workspace-base-environments/{workspace_base_environment}

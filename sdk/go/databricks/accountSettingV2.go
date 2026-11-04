@@ -244,6 +244,12 @@ func (AccountSettingV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountSettingV2State)(nil)).Elem()
 }
 
+// AccountSettingV2Exists checks whether an existing AccountSettingV2 resource with the given ID exists.
+func AccountSettingV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountSettingV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accountSettingV2:AccountSettingV2", id, state, "", opts...)
+}
+
 type accountSettingV2Args struct {
 	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
 	AibiDashboardEmbeddingAccessPolicy *AccountSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`

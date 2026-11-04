@@ -1010,6 +1010,66 @@ class Catalog(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return Catalog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict', 'outputs.CatalogEffectivePredictiveOptimizationFlag']]] = None,
+            enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict', 'outputs.CatalogManagedEncryptionSettings']]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict', 'outputs.CatalogProviderConfig']]] = None,
+            provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict', 'outputs.CatalogProvisioningInfo']]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            share_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["browseOnly"] = browse_only
+        __props__["catalogType"] = catalog_type
+        __props__["comment"] = comment
+        __props__["connectionName"] = connection_name
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["customMaxRetentionHours"] = custom_max_retention_hours
+        __props__["effectivePredictiveOptimizationFlag"] = effective_predictive_optimization_flag
+        __props__["enablePredictiveOptimization"] = enable_predictive_optimization
+        __props__["forceDestroy"] = force_destroy
+        __props__["fullName"] = full_name
+        __props__["isolationMode"] = isolation_mode
+        __props__["managedEncryptionSettings"] = managed_encryption_settings
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["options"] = options
+        __props__["owner"] = owner
+        __props__["properties"] = properties
+        __props__["providerConfig"] = provider_config
+        __props__["providerName"] = provider_name
+        __props__["provisioningInfo"] = provisioning_info
+        __props__["securableType"] = securable_type
+        __props__["shareName"] = share_name
+        __props__["storageLocation"] = storage_location
+        __props__["storageRoot"] = storage_root
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/catalog:Catalog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="browseOnly")
     def browse_only(self) -> pulumi.Output[Optional[_builtins.bool]]:

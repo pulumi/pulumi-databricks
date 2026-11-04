@@ -1055,6 +1055,64 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["warehouse_type"] = warehouse_type
         return SqlEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
+            cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_name: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_version_label: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            healths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict', 'outputs.SqlEndpointHealth']]]]] = None,
+            instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_url: pulumi.Input[Optional[_builtins.str]] = None,
+            max_dbu: pulumi.Input[Optional[_builtins.int]] = None,
+            max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+            min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            num_active_sessions: pulumi.Input[Optional[_builtins.int]] = None,
+            num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+            odbc_params: pulumi.Input[Optional[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict', 'outputs.SqlEndpointOdbcParams']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
+            spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
+            warehouse_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoStopMins"] = auto_stop_mins
+        __props__["channel"] = channel
+        __props__["clusterSize"] = cluster_size
+        __props__["creatorName"] = creator_name
+        __props__["customerVersionLabel"] = customer_version_label
+        __props__["dataSourceId"] = data_source_id
+        __props__["enablePhoton"] = enable_photon
+        __props__["enableServerlessCompute"] = enable_serverless_compute
+        __props__["healths"] = healths
+        __props__["instanceProfileArn"] = instance_profile_arn
+        __props__["jdbcUrl"] = jdbc_url
+        __props__["maxDbu"] = max_dbu
+        __props__["maxNumClusters"] = max_num_clusters
+        __props__["minNumClusters"] = min_num_clusters
+        __props__["name"] = name
+        __props__["noWait"] = no_wait
+        __props__["numActiveSessions"] = num_active_sessions
+        __props__["numClusters"] = num_clusters
+        __props__["odbcParams"] = odbc_params
+        __props__["providerConfig"] = provider_config
+        __props__["spotInstancePolicy"] = spot_instance_policy
+        __props__["sqlEndpointId"] = sql_endpoint_id
+        __props__["state"] = state
+        __props__["statementTimeout"] = statement_timeout
+        __props__["tags"] = tags
+        __props__["warehouseType"] = warehouse_type
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sqlEndpoint:SqlEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoStopMins")
     def auto_stop_mins(self) -> pulumi.Output[_builtins.int]:

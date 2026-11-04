@@ -24,7 +24,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to an external user by its resource name:
@@ -61,7 +60,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to an external user by its resource name:
@@ -97,7 +95,6 @@ namespace Pulumi.Databricks
         /// &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider.
-        /// 
         /// 
         /// ## Example Usage
         /// 

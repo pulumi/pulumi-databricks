@@ -49,22 +49,20 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      * 
-     * @deprecated
-     * always_running will be replaced by controlRunState in the next major release.
+     * @deprecated always_running will be replaced by controlRunState in the next major release.
      * 
      */
-    @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
+    @Deprecated
     @Import(name="alwaysRunning")
     private @Nullable Output<Boolean> alwaysRunning;
 
     /**
      * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      * 
-     * @deprecated
-     * always_running will be replaced by controlRunState in the next major release.
+     * @deprecated always_running will be replaced by controlRunState in the next major release.
      * 
      */
-    @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
+    @Deprecated
     public Optional<Output<Boolean>> alwaysRunning() {
         return Optional.ofNullable(this.alwaysRunning);
     }
@@ -119,20 +117,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="dbtTask")
     private @Nullable Output<JobDbtTaskArgs> dbtTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobDbtTaskArgs>> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
@@ -300,20 +296,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="maxRetries")
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<Integer>> maxRetries() {
         return Optional.ofNullable(this.maxRetries);
     }
@@ -321,22 +315,20 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      * 
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="minRetryIntervalMillis")
     private @Nullable Output<Integer> minRetryIntervalMillis;
 
     /**
      * @return (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      * 
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<Integer>> minRetryIntervalMillis() {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
@@ -364,20 +356,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="notebookTask")
     private @Nullable Output<JobNotebookTaskArgs> notebookTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobNotebookTaskArgs>> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
     }
@@ -439,20 +429,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="pipelineTask")
     private @Nullable Output<JobPipelineTaskArgs> pipelineTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobPipelineTaskArgs>> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
     }
@@ -473,20 +461,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="pythonWheelTask")
     private @Nullable Output<JobPythonWheelTaskArgs> pythonWheelTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobPythonWheelTaskArgs>> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
@@ -507,20 +493,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="retryOnTimeout")
     private @Nullable Output<Boolean> retryOnTimeout;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<Boolean>> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
@@ -541,20 +525,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="runJobTask")
     private @Nullable Output<JobRunJobTaskArgs> runJobTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobRunJobTaskArgs>> runJobTask() {
         return Optional.ofNullable(this.runJobTask);
     }
@@ -575,58 +557,52 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="sparkJarTask")
     private @Nullable Output<JobSparkJarTaskArgs> sparkJarTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobSparkJarTaskArgs>> sparkJarTask() {
         return Optional.ofNullable(this.sparkJarTask);
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="sparkPythonTask")
     private @Nullable Output<JobSparkPythonTaskArgs> sparkPythonTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobSparkPythonTaskArgs>> sparkPythonTask() {
         return Optional.ofNullable(this.sparkPythonTask);
     }
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     @Import(name="sparkSubmitTask")
     private @Nullable Output<JobSparkSubmitTaskArgs> sparkSubmitTask;
 
     /**
-     * @deprecated
-     * should be used inside a task block and not inside a job block
+     * @deprecated should be used inside a task block and not inside a job block
      * 
      */
-    @Deprecated /* should be used inside a task block and not inside a job block */
+    @Deprecated
     public Optional<Output<JobSparkSubmitTaskArgs>> sparkSubmitTask() {
         return Optional.ofNullable(this.sparkSubmitTask);
     }
@@ -794,11 +770,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * always_running will be replaced by controlRunState in the next major release.
+         * @deprecated always_running will be replaced by controlRunState in the next major release.
          * 
          */
-        @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
+        @Deprecated
         public Builder alwaysRunning(@Nullable Output<Boolean> alwaysRunning) {
             $.alwaysRunning = alwaysRunning;
             return this;
@@ -809,11 +784,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * always_running will be replaced by controlRunState in the next major release.
+         * @deprecated always_running will be replaced by controlRunState in the next major release.
          * 
          */
-        @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
+        @Deprecated
         public Builder alwaysRunning(Boolean alwaysRunning) {
             return alwaysRunning(Output.of(alwaysRunning));
         }
@@ -888,11 +862,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder dbtTask(@Nullable Output<JobDbtTaskArgs> dbtTask) {
             $.dbtTask = dbtTask;
             return this;
@@ -901,11 +874,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder dbtTask(JobDbtTaskArgs dbtTask) {
             return dbtTask(Output.of(dbtTask));
         }
@@ -1163,11 +1135,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder maxRetries(@Nullable Output<Integer> maxRetries) {
             $.maxRetries = maxRetries;
             return this;
@@ -1176,11 +1147,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder maxRetries(Integer maxRetries) {
             return maxRetries(Output.of(maxRetries));
         }
@@ -1190,11 +1160,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder minRetryIntervalMillis(@Nullable Output<Integer> minRetryIntervalMillis) {
             $.minRetryIntervalMillis = minRetryIntervalMillis;
             return this;
@@ -1205,11 +1174,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder minRetryIntervalMillis(Integer minRetryIntervalMillis) {
             return minRetryIntervalMillis(Output.of(minRetryIntervalMillis));
         }
@@ -1247,11 +1215,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder notebookTask(@Nullable Output<JobNotebookTaskArgs> notebookTask) {
             $.notebookTask = notebookTask;
             return this;
@@ -1260,11 +1227,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder notebookTask(JobNotebookTaskArgs notebookTask) {
             return notebookTask(Output.of(notebookTask));
         }
@@ -1358,11 +1324,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder pipelineTask(@Nullable Output<JobPipelineTaskArgs> pipelineTask) {
             $.pipelineTask = pipelineTask;
             return this;
@@ -1371,11 +1336,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder pipelineTask(JobPipelineTaskArgs pipelineTask) {
             return pipelineTask(Output.of(pipelineTask));
         }
@@ -1404,11 +1368,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder pythonWheelTask(@Nullable Output<JobPythonWheelTaskArgs> pythonWheelTask) {
             $.pythonWheelTask = pythonWheelTask;
             return this;
@@ -1417,11 +1380,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder pythonWheelTask(JobPythonWheelTaskArgs pythonWheelTask) {
             return pythonWheelTask(Output.of(pythonWheelTask));
         }
@@ -1450,11 +1412,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder retryOnTimeout(@Nullable Output<Boolean> retryOnTimeout) {
             $.retryOnTimeout = retryOnTimeout;
             return this;
@@ -1463,11 +1424,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder retryOnTimeout(Boolean retryOnTimeout) {
             return retryOnTimeout(Output.of(retryOnTimeout));
         }
@@ -1496,11 +1456,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder runJobTask(@Nullable Output<JobRunJobTaskArgs> runJobTask) {
             $.runJobTask = runJobTask;
             return this;
@@ -1509,11 +1468,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder runJobTask(JobRunJobTaskArgs runJobTask) {
             return runJobTask(Output.of(runJobTask));
         }
@@ -1542,11 +1500,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder sparkJarTask(@Nullable Output<JobSparkJarTaskArgs> sparkJarTask) {
             $.sparkJarTask = sparkJarTask;
             return this;
@@ -1555,11 +1512,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder sparkJarTask(JobSparkJarTaskArgs sparkJarTask) {
             return sparkJarTask(Output.of(sparkJarTask));
         }
@@ -1567,11 +1523,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder sparkPythonTask(@Nullable Output<JobSparkPythonTaskArgs> sparkPythonTask) {
             $.sparkPythonTask = sparkPythonTask;
             return this;
@@ -1580,11 +1535,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder sparkPythonTask(JobSparkPythonTaskArgs sparkPythonTask) {
             return sparkPythonTask(Output.of(sparkPythonTask));
         }
@@ -1592,11 +1546,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder sparkSubmitTask(@Nullable Output<JobSparkSubmitTaskArgs> sparkSubmitTask) {
             $.sparkSubmitTask = sparkSubmitTask;
             return this;
@@ -1605,11 +1558,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * should be used inside a task block and not inside a job block
+         * @deprecated should be used inside a task block and not inside a job block
          * 
          */
-        @Deprecated /* should be used inside a task block and not inside a job block */
+        @Deprecated
         public Builder sparkSubmitTask(JobSparkSubmitTaskArgs sparkSubmitTask) {
             return sparkSubmitTask(Output.of(sparkSubmitTask));
         }

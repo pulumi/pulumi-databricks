@@ -16,20 +16,18 @@ public final class DisableLegacyFeaturesSettingProviderConfigArgs extends com.pu
     public static final DisableLegacyFeaturesSettingProviderConfigArgs Empty = new DisableLegacyFeaturesSettingProviderConfigArgs();
 
     /**
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
     /**
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
@@ -61,11 +59,10 @@ public final class DisableLegacyFeaturesSettingProviderConfigArgs extends com.pu
         /**
          * @return builder
          * 
-         * @deprecated
-         * workspace_id is ignored for account-only resources.
+         * @deprecated workspace_id is ignored for account-only resources.
          * 
          */
-        @Deprecated /* workspace_id is ignored for account-only resources. */
+        @Deprecated
         public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
@@ -74,11 +71,10 @@ public final class DisableLegacyFeaturesSettingProviderConfigArgs extends com.pu
         /**
          * @return builder
          * 
-         * @deprecated
-         * workspace_id is ignored for account-only resources.
+         * @deprecated workspace_id is ignored for account-only resources.
          * 
          */
-        @Deprecated /* workspace_id is ignored for account-only resources. */
+        @Deprecated
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

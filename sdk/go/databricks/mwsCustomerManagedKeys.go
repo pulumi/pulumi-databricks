@@ -217,6 +217,12 @@ func (MwsCustomerManagedKeysState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsCustomerManagedKeysState)(nil)).Elem()
 }
 
+// MwsCustomerManagedKeysExists checks whether an existing MwsCustomerManagedKeys resource with the given ID exists.
+func MwsCustomerManagedKeysExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsCustomerManagedKeysState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys", id, state, "", opts...)
+}
+
 type mwsCustomerManagedKeysArgs struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId string `pulumi:"accountId"`

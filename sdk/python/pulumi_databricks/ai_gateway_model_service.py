@@ -603,6 +603,40 @@ class AiGatewayModelService(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return AiGatewayModelService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict', 'outputs.AiGatewayModelServiceProviderConfig']]] = None,
+            supported_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["createdBy"] = created_by
+        __props__["effectiveOwner"] = effective_owner
+        __props__["etag"] = etag
+        __props__["metastoreId"] = metastore_id
+        __props__["modelServiceId"] = model_service_id
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["supportedApiTypes"] = supported_api_types
+        __props__["updateTime"] = update_time
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/aiGatewayModelService:AiGatewayModelService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

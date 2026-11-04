@@ -380,6 +380,22 @@ class IpAccessList(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return IpAccessList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            list_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict', 'outputs.IpAccessListProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["ipAddresses"] = ip_addresses
+        __props__["label"] = label
+        __props__["listType"] = list_type
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/ipAccessList:IpAccessList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

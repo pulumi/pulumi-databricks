@@ -156,11 +156,10 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
         return this.creationTime;
     }
     /**
-     * @deprecated
-     * Remove the description attribute as it no longer is used and will be removed in a future version.
+     * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      * 
      */
-    @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
+    @Deprecated
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 

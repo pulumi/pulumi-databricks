@@ -523,6 +523,36 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return KnowledgeAssistantKnowledgeSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFileTable']]] = None,
+            files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFiles']]] = None,
+            index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceIndex']]] = None,
+            knowledge_cutoff_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["fileTable"] = file_table
+        __props__["files"] = files
+        __props__["index"] = index
+        __props__["knowledgeCutoffTime"] = knowledge_cutoff_time
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["sourceType"] = source_type
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

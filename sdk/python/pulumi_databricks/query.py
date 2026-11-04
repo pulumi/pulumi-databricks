@@ -884,6 +884,46 @@ class Query(pulumi.CustomResource):
         __props__.__dict__["warehouse_id"] = warehouse_id
         return Query(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            apply_auto_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modifier_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict', 'outputs.QueryParameter']]]]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict', 'outputs.QueryProviderConfig']]] = None,
+            query_text: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applyAutoLimit"] = apply_auto_limit
+        __props__["catalog"] = catalog
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["lastModifierUserName"] = last_modifier_user_name
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["ownerUserName"] = owner_user_name
+        __props__["parameters"] = parameters
+        __props__["parentPath"] = parent_path
+        __props__["providerConfig"] = provider_config
+        __props__["queryText"] = query_text
+        __props__["runAsMode"] = run_as_mode
+        __props__["schema"] = schema
+        __props__["tags"] = tags
+        __props__["updateTime"] = update_time
+        __props__["warehouseId"] = warehouse_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/query:Query', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applyAutoLimit")
     def apply_auto_limit(self) -> pulumi.Output[Optional[_builtins.bool]]:

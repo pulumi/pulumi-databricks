@@ -225,6 +225,12 @@ func (DisasterRecoveryFailoverGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*disasterRecoveryFailoverGroupState)(nil)).Elem()
 }
 
+// DisasterRecoveryFailoverGroupExists checks whether an existing DisasterRecoveryFailoverGroup resource with the given ID exists.
+func DisasterRecoveryFailoverGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DisasterRecoveryFailoverGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup", id, state, "", opts...)
+}
+
 type disasterRecoveryFailoverGroupArgs struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}

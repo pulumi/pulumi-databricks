@@ -609,6 +609,30 @@ class SqlPermissions(pulumi.CustomResource):
         __props__.__dict__["view"] = view
         return SqlPermissions(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anonymous_function: pulumi.Input[Optional[_builtins.bool]] = None,
+            any_file: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict', 'outputs.SqlPermissionsPrivilegeAssignment']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict', 'outputs.SqlPermissionsProviderConfig']]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None,
+            view: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["anonymousFunction"] = anonymous_function
+        __props__["anyFile"] = any_file
+        __props__["catalog"] = catalog
+        __props__["clusterId"] = cluster_id
+        __props__["database"] = database
+        __props__["privilegeAssignments"] = privilege_assignments
+        __props__["providerConfig"] = provider_config
+        __props__["table"] = table
+        __props__["view"] = view
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sqlPermissions:SqlPermissions', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="anonymousFunction")
     def anonymous_function(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -566,6 +566,30 @@ class GitCredential(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return GitCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_email: pulumi.Input[Optional[_builtins.str]] = None,
+            git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            git_username: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["force"] = force
+        __props__["gitEmail"] = git_email
+        __props__["gitProvider"] = git_provider
+        __props__["gitUsername"] = git_username
+        __props__["isDefaultForProvider"] = is_default_for_provider
+        __props__["name"] = name
+        __props__["personalAccessToken"] = personal_access_token
+        __props__["principalId"] = principal_id
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/gitCredential:GitCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:

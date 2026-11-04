@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example lists all Genie Agents in the workspace.
@@ -42,7 +41,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example lists all Genie Agents in the workspace.
@@ -67,7 +65,6 @@ namespace Pulumi.Databricks
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// Lists the Genie Agents in the workspace. Use this data source to enumerate existing Genie Agents — for example, to discover their resource names or drive other resources from the collection.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -396,6 +396,26 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         __props__.__dict__["securable_type"] = securable_type
         return RfaAccessRequestDestinations(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            are_any_destinations_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            destination_source_securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsDestinationSourceSecurable']]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']]] = None,
+            securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["areAnyDestinationsHidden"] = are_any_destinations_hidden
+        __props__["destinationSourceSecurable"] = destination_source_securable
+        __props__["destinations"] = destinations
+        __props__["fullName"] = full_name
+        __props__["providerConfig"] = provider_config
+        __props__["securable"] = securable
+        __props__["securableType"] = securable_type
+        return pulumi.runtime.exists_resource(None, 'databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="areAnyDestinationsHidden")
     def are_any_destinations_hidden(self) -> pulumi.Output[_builtins.bool]:

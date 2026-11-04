@@ -823,6 +823,30 @@ class PostgresRole(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PostgresRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']]] = None,
+            replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict', 'outputs.PostgresRoleStatus']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["replaceExisting"] = replace_existing
+        __props__["roleId"] = role_id
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/postgresRole:PostgresRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

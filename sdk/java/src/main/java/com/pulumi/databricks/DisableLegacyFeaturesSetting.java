@@ -109,11 +109,10 @@ public class DisableLegacyFeaturesSetting extends com.pulumi.resources.CustomRes
         return this.etag;
     }
     /**
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     @Export(name="providerConfig", refs={DisableLegacyFeaturesSettingProviderConfig.class}, tree="[0]")
     private Output<DisableLegacyFeaturesSettingProviderConfig> providerConfig;
 

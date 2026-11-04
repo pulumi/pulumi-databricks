@@ -1019,6 +1019,12 @@ func (GrantsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantsState)(nil)).Elem()
 }
 
+// GrantsExists checks whether an existing Grants resource with the given ID exists.
+func GrantsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrantsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/grants:Grants", id, state, "", opts...)
+}
+
 type grantsArgs struct {
 	Catalog              *string               `pulumi:"catalog"`
 	Credential           *string               `pulumi:"credential"`

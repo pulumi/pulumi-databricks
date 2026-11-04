@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single AI Search index by name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// # Example: AI Search Index Datasource (Singular)
@@ -50,7 +49,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single AI Search index by name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// # Example: AI Search Index Datasource (Singular)
@@ -81,7 +79,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
         /// This data source can be used to get a single AI Search index by name.
-        /// 
         /// 
         /// ## Example Usage
         /// 

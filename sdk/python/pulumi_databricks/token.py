@@ -402,6 +402,26 @@ class Token(pulumi.CustomResource):
         __props__.__dict__["token_value"] = token_value
         return Token(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
+            lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict', 'outputs.TokenProviderConfig']]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["creationTime"] = creation_time
+        __props__["expiryTime"] = expiry_time
+        __props__["lifetimeSeconds"] = lifetime_seconds
+        __props__["providerConfig"] = provider_config
+        __props__["tokenId"] = token_id
+        __props__["tokenValue"] = token_value
+        return pulumi.runtime.exists_resource(None, 'databricks:index/token:Token', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -167,6 +167,12 @@ func (SqlVisualizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlVisualizationState)(nil)).Elem()
 }
 
+// SqlVisualizationExists checks whether an existing SqlVisualization resource with the given ID exists.
+func SqlVisualizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlVisualizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlVisualization:SqlVisualization", id, state, "", opts...)
+}
+
 type sqlVisualizationArgs struct {
 	Description *string `pulumi:"description"`
 	Name        *string `pulumi:"name"`

@@ -480,6 +480,28 @@ class SqlAlert(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return SqlAlert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict', 'outputs.SqlAlertOptions']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlAlertProviderConfigArgs', 'SqlAlertProviderConfigArgsDict', 'outputs.SqlAlertProviderConfig']]] = None,
+            query_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rearm: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["name"] = name
+        __props__["options"] = options
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["queryId"] = query_id
+        __props__["rearm"] = rearm
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'databricks:index/sqlAlert:SqlAlert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

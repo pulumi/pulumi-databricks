@@ -272,6 +272,12 @@ func (ShareState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareState)(nil)).Elem()
 }
 
+// ShareExists checks whether an existing Share resource with the given ID exists.
+func ShareExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShareState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/share:Share", id, state, "", opts...)
+}
+
 type shareArgs struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`

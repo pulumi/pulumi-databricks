@@ -336,6 +336,20 @@ class BudgetPolicy(pulumi.CustomResource):
         __props__.__dict__["policy_name"] = policy_name
         return BudgetPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            binding_workspace_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetPolicyCustomTagArgs', 'BudgetPolicyCustomTagArgsDict', 'outputs.BudgetPolicyCustomTag']]]]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bindingWorkspaceIds"] = binding_workspace_ids
+        __props__["customTags"] = custom_tags
+        __props__["policyId"] = policy_id
+        __props__["policyName"] = policy_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/budgetPolicy:BudgetPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bindingWorkspaceIds")
     def binding_workspace_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:

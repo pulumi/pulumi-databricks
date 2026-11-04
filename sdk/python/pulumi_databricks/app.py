@@ -1200,6 +1200,86 @@ class App(pulumi.CustomResource):
         __props__.__dict__["user_api_scopes"] = user_api_scopes
         return App(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_deployment: pulumi.Input[Optional[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict', 'outputs.AppActiveDeployment']]] = None,
+            app_status: pulumi.Input[Optional[Union['AppAppStatusArgs', 'AppAppStatusArgsDict', 'outputs.AppAppStatus']]] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            compute_size: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_status: pulumi.Input[Optional[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict', 'outputs.AppComputeStatus']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            default_git_source: pulumi.Input[Optional[Union['AppDefaultGitSourceArgs', 'AppDefaultGitSourceArgsDict', 'outputs.AppDefaultGitSource']]] = None,
+            default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']]] = None,
+            git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            oauth2_app_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_app_integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pending_deployment: pulumi.Input[Optional[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict', 'outputs.AppPendingDeployment']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict', 'outputs.AppProviderConfig']]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]]] = None,
+            service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+            service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
+            space: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
+            thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updater: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeDeployment"] = active_deployment
+        __props__["appStatus"] = app_status
+        __props__["budgetPolicyId"] = budget_policy_id
+        __props__["computeMaxInstances"] = compute_max_instances
+        __props__["computeMinInstances"] = compute_min_instances
+        __props__["computeSize"] = compute_size
+        __props__["computeStatus"] = compute_status
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["defaultGitSource"] = default_git_source
+        __props__["defaultSourceCodePath"] = default_source_code_path
+        __props__["description"] = description
+        __props__["effectiveBudgetPolicyId"] = effective_budget_policy_id
+        __props__["effectiveUsagePolicyId"] = effective_usage_policy_id
+        __props__["effectiveUserApiScopes"] = effective_user_api_scopes
+        __props__["forwardUserAccessToken"] = forward_user_access_token
+        __props__["gitRepository"] = git_repository
+        __props__["gitSource"] = git_source
+        __props__["name"] = name
+        __props__["noCompute"] = no_compute
+        __props__["oauth2AppClientId"] = oauth2_app_client_id
+        __props__["oauth2AppIntegrationId"] = oauth2_app_integration_id
+        __props__["pendingDeployment"] = pending_deployment
+        __props__["providerConfig"] = provider_config
+        __props__["resources"] = resources
+        __props__["servicePrincipalClientId"] = service_principal_client_id
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["servicePrincipalName"] = service_principal_name
+        __props__["sourceCodePath"] = source_code_path
+        __props__["space"] = space
+        __props__["telemetryExportDestinations"] = telemetry_export_destinations
+        __props__["thumbnailUrl"] = thumbnail_url
+        __props__["updateTime"] = update_time
+        __props__["updater"] = updater
+        __props__["url"] = url
+        __props__["usagePolicyId"] = usage_policy_id
+        __props__["userApiScopes"] = user_api_scopes
+        return pulumi.runtime.exists_resource(None, 'databricks:index/app:App', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeDeployment")
     def active_deployment(self) -> pulumi.Output['outputs.AppActiveDeployment']:

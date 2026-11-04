@@ -1150,6 +1150,68 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["usage_policy_id"] = usage_policy_id
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict', 'outputs.DatabaseInstanceChildInstanceRef']]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]]] = None,
+            effective_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict', 'outputs.DatabaseInstanceEffectiveCustomTag']]]]] = None,
+            effective_enable_pg_native_login: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_enable_readable_secondaries: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            effective_retention_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            effective_stopped: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_pg_native_login: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_readable_secondaries: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']]] = None,
+            pg_version: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']]] = None,
+            purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            read_only_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            read_write_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            stopped: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacity"] = capacity
+        __props__["childInstanceRefs"] = child_instance_refs
+        __props__["creationTime"] = creation_time
+        __props__["creator"] = creator
+        __props__["customTags"] = custom_tags
+        __props__["effectiveCapacity"] = effective_capacity
+        __props__["effectiveCustomTags"] = effective_custom_tags
+        __props__["effectiveEnablePgNativeLogin"] = effective_enable_pg_native_login
+        __props__["effectiveEnableReadableSecondaries"] = effective_enable_readable_secondaries
+        __props__["effectiveNodeCount"] = effective_node_count
+        __props__["effectiveRetentionWindowInDays"] = effective_retention_window_in_days
+        __props__["effectiveStopped"] = effective_stopped
+        __props__["effectiveUsagePolicyId"] = effective_usage_policy_id
+        __props__["enablePgNativeLogin"] = enable_pg_native_login
+        __props__["enableReadableSecondaries"] = enable_readable_secondaries
+        __props__["name"] = name
+        __props__["nodeCount"] = node_count
+        __props__["parentInstanceRef"] = parent_instance_ref
+        __props__["pgVersion"] = pg_version
+        __props__["providerConfig"] = provider_config
+        __props__["purgeOnDelete"] = purge_on_delete
+        __props__["readOnlyDns"] = read_only_dns
+        __props__["readWriteDns"] = read_write_dns
+        __props__["retentionWindowInDays"] = retention_window_in_days
+        __props__["state"] = state
+        __props__["stopped"] = stopped
+        __props__["uid"] = uid
+        __props__["usagePolicyId"] = usage_policy_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/databaseInstance:DatabaseInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[Optional[_builtins.str]]:

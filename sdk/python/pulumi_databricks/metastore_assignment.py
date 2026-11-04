@@ -355,6 +355,22 @@ class MetastoreAssignment(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return MetastoreAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            default_catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict', 'outputs.MetastoreAssignmentProviderConfig']]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["defaultCatalogName"] = default_catalog_name
+        __props__["metastoreId"] = metastore_id
+        __props__["providerConfig"] = provider_config
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/metastoreAssignment:MetastoreAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

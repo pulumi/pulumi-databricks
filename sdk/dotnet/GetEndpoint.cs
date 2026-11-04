@@ -20,7 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This resource can only be used with an account-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Example for Azure cloud
@@ -54,7 +53,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This resource can only be used with an account-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Example for Azure cloud
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
         /// 
         /// &gt; **Note** This resource can only be used with an account-level provider!
-        /// 
         /// 
         /// ## Example Usage
         /// 

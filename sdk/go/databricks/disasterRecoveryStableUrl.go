@@ -205,6 +205,12 @@ func (DisasterRecoveryStableUrlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*disasterRecoveryStableUrlState)(nil)).Elem()
 }
 
+// DisasterRecoveryStableUrlExists checks whether an existing DisasterRecoveryStableUrl resource with the given ID exists.
+func DisasterRecoveryStableUrlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DisasterRecoveryStableUrlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl", id, state, "", opts...)
+}
+
 type disasterRecoveryStableUrlArgs struct {
 	// The workspace this stable URL is initially bound to. Used only in Create
 	// requests to associate the stable URL with a workspace. Not returned in

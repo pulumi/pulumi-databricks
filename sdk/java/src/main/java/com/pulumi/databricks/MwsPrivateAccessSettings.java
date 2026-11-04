@@ -170,11 +170,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")
 public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResource {
     /**
-     * @deprecated
-     * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
      */
-    @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 

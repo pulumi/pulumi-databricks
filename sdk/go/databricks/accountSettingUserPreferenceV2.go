@@ -154,6 +154,12 @@ func (AccountSettingUserPreferenceV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountSettingUserPreferenceV2State)(nil)).Elem()
 }
 
+// AccountSettingUserPreferenceV2Exists checks whether an existing AccountSettingUserPreferenceV2 resource with the given ID exists.
+func AccountSettingUserPreferenceV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountSettingUserPreferenceV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2", id, state, "", opts...)
+}
+
 type accountSettingUserPreferenceV2Args struct {
 	BooleanVal *AccountSettingUserPreferenceV2BooleanVal `pulumi:"booleanVal"`
 	// Name of the setting

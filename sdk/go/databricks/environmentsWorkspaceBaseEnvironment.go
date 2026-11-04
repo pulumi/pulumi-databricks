@@ -225,6 +225,12 @@ func (EnvironmentsWorkspaceBaseEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentsWorkspaceBaseEnvironmentState)(nil)).Elem()
 }
 
+// EnvironmentsWorkspaceBaseEnvironmentExists checks whether an existing EnvironmentsWorkspaceBaseEnvironment resource with the given ID exists.
+func EnvironmentsWorkspaceBaseEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentsWorkspaceBaseEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/environmentsWorkspaceBaseEnvironment:EnvironmentsWorkspaceBaseEnvironment", id, state, "", opts...)
+}
+
 type environmentsWorkspaceBaseEnvironmentArgs struct {
 	// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType *string `pulumi:"baseEnvironmentType"`

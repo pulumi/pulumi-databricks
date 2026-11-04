@@ -315,6 +315,20 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
         __props__.__dict__["setting_name"] = setting_name
         return DisableLegacyFeaturesSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_legacy_features: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict', 'outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict', 'outputs.DisableLegacyFeaturesSettingProviderConfig']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableLegacyFeatures"] = disable_legacy_features
+        __props__["etag"] = etag
+        __props__["providerConfig"] = provider_config
+        __props__["settingName"] = setting_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableLegacyFeatures")
     def disable_legacy_features(self) -> pulumi.Output['outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures']:

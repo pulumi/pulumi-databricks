@@ -689,6 +689,12 @@ func (MwsWorkspacesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsWorkspacesState)(nil)).Elem()
 }
 
+// MwsWorkspacesExists checks whether an existing MwsWorkspaces resource with the given ID exists.
+func MwsWorkspacesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsWorkspacesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsWorkspaces:MwsWorkspaces", id, state, "", opts...)
+}
+
 type mwsWorkspacesArgs struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`

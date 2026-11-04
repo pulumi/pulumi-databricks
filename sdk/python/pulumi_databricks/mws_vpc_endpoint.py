@@ -835,6 +835,32 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         __props__.__dict__["vpc_endpoint_name"] = vpc_endpoint_name
         return MwsVpcEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_endpoint_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_vpc_endpoint_info: pulumi.Input[Optional[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict', 'outputs.MwsVpcEndpointGcpVpcEndpointInfo']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            use_case: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["awsAccountId"] = aws_account_id
+        __props__["awsEndpointServiceId"] = aws_endpoint_service_id
+        __props__["awsVpcEndpointId"] = aws_vpc_endpoint_id
+        __props__["gcpVpcEndpointInfo"] = gcp_vpc_endpoint_info
+        __props__["region"] = region
+        __props__["state"] = state
+        __props__["useCase"] = use_case
+        __props__["vpcEndpointId"] = vpc_endpoint_id
+        __props__["vpcEndpointName"] = vpc_endpoint_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsVpcEndpoint:MwsVpcEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

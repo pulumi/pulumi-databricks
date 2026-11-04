@@ -879,6 +879,48 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["storage_credential_id"] = storage_credential_id
         return StorageCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict', 'outputs.StorageCredentialAwsIamRole']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict', 'outputs.StorageCredentialAzureManagedIdentity']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict', 'outputs.StorageCredentialAzureServicePrincipal']]] = None,
+            cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict', 'outputs.StorageCredentialCloudflareApiToken']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict', 'outputs.StorageCredentialDatabricksGcpServiceAccount']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict', 'outputs.StorageCredentialGcpServiceAccountKey']]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict', 'outputs.StorageCredentialProviderConfig']]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            storage_credential_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["awsIamRole"] = aws_iam_role
+        __props__["azureManagedIdentity"] = azure_managed_identity
+        __props__["azureServicePrincipal"] = azure_service_principal
+        __props__["cloudflareApiToken"] = cloudflare_api_token
+        __props__["comment"] = comment
+        __props__["databricksGcpServiceAccount"] = databricks_gcp_service_account
+        __props__["forceDestroy"] = force_destroy
+        __props__["forceUpdate"] = force_update
+        __props__["gcpServiceAccountKey"] = gcp_service_account_key
+        __props__["isolationMode"] = isolation_mode
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["providerConfig"] = provider_config
+        __props__["readOnly"] = read_only
+        __props__["skipValidation"] = skip_validation
+        __props__["storageCredentialId"] = storage_credential_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/storageCredential:StorageCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

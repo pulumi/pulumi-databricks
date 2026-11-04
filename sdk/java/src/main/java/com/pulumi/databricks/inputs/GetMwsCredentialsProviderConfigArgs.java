@@ -17,22 +17,20 @@ public final class GetMwsCredentialsProviderConfigArgs extends com.pulumi.resour
     /**
      * Ignored. This data source always operates against the account configured on the provider.
      * 
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     @Import(name="workspaceId", required=true)
     private Output<String> workspaceId;
 
     /**
      * @return Ignored. This data source always operates against the account configured on the provider.
      * 
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     public Output<String> workspaceId() {
         return this.workspaceId;
     }
@@ -66,11 +64,10 @@ public final class GetMwsCredentialsProviderConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * workspace_id is ignored for account-only resources.
+         * @deprecated workspace_id is ignored for account-only resources.
          * 
          */
-        @Deprecated /* workspace_id is ignored for account-only resources. */
+        @Deprecated
         public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
@@ -81,11 +78,10 @@ public final class GetMwsCredentialsProviderConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * workspace_id is ignored for account-only resources.
+         * @deprecated workspace_id is ignored for account-only resources.
          * 
          */
-        @Deprecated /* workspace_id is ignored for account-only resources. */
+        @Deprecated
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

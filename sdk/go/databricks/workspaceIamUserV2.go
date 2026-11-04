@@ -167,6 +167,12 @@ func (WorkspaceIamUserV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceIamUserV2State)(nil)).Elem()
 }
 
+// WorkspaceIamUserV2Exists checks whether an existing WorkspaceIamUserV2 resource with the given ID exists.
+func WorkspaceIamUserV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceIamUserV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceIamUserV2:WorkspaceIamUserV2", id, state, "", opts...)
+}
+
 type workspaceIamUserV2Args struct {
 	// The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
 	AccountUserStatus string `pulumi:"accountUserStatus"`

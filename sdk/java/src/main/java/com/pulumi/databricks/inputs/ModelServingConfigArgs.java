@@ -52,22 +52,20 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
-     * @deprecated
-     * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+     * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
      */
-    @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+    @Deprecated
     @Import(name="servedModels")
     private @Nullable Output<List<ModelServingConfigServedModelArgs>> servedModels;
 
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
-     * @deprecated
-     * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+     * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
      */
-    @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+    @Deprecated
     public Optional<Output<List<ModelServingConfigServedModelArgs>>> servedModels() {
         return Optional.ofNullable(this.servedModels);
     }
@@ -171,11 +169,10 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+         * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
          * 
          */
-        @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+        @Deprecated
         public Builder servedModels(@Nullable Output<List<ModelServingConfigServedModelArgs>> servedModels) {
             $.servedModels = servedModels;
             return this;
@@ -186,11 +183,10 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+         * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
          * 
          */
-        @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+        @Deprecated
         public Builder servedModels(List<ModelServingConfigServedModelArgs> servedModels) {
             return servedModels(Output.of(servedModels));
         }
@@ -200,11 +196,10 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+         * @deprecated Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
          * 
          */
-        @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
+        @Deprecated
         public Builder servedModels(ModelServingConfigServedModelArgs... servedModels) {
             return servedModels(List.of(servedModels));
         }

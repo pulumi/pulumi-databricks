@@ -22,7 +22,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
@@ -65,7 +64,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
@@ -107,7 +105,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
-        /// 
         /// 
         /// ## Example Usage
         /// 

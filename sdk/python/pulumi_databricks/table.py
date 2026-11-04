@@ -486,6 +486,38 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["view_definition"] = view_definition
         return Table(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict', 'outputs.TableColumn']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict', 'outputs.TableProviderConfig']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            table_type: pulumi.Input[Optional[_builtins.str]] = None,
+            view_definition: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalogName"] = catalog_name
+        __props__["columns"] = columns
+        __props__["comment"] = comment
+        __props__["dataSourceFormat"] = data_source_format
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["properties"] = properties
+        __props__["providerConfig"] = provider_config
+        __props__["schemaName"] = schema_name
+        __props__["storageCredentialName"] = storage_credential_name
+        __props__["storageLocation"] = storage_location
+        __props__["tableType"] = table_type
+        __props__["viewDefinition"] = view_definition
+        return pulumi.runtime.exists_resource(None, 'databricks:index/table:Table', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[_builtins.str]:

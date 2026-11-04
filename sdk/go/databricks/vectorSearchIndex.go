@@ -172,6 +172,12 @@ func (VectorSearchIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vectorSearchIndexState)(nil)).Elem()
 }
 
+// VectorSearchIndexExists checks whether an existing VectorSearchIndex resource with the given ID exists.
+func VectorSearchIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VectorSearchIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/vectorSearchIndex:VectorSearchIndex", id, state, "", opts...)
+}
+
 type vectorSearchIndexArgs struct {
 	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 	DeltaSyncIndexSpec *VectorSearchIndexDeltaSyncIndexSpec `pulumi:"deltaSyncIndexSpec"`

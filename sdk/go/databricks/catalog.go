@@ -244,6 +244,12 @@ func (CatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogState)(nil)).Elem()
 }
 
+// CatalogExists checks whether an existing Catalog resource with the given ID exists.
+func CatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/catalog:Catalog", id, state, "", opts...)
+}
+
 type catalogArgs struct {
 	BrowseOnly *bool `pulumi:"browseOnly"`
 	// User-supplied free-form text.

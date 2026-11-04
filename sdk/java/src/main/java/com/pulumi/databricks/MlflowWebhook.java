@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var me = DatabricksFunctions.getCurrentUser(GetCurrentUserArgs.builder()
  *             .build());
  * 
@@ -84,9 +84,9 @@ import javax.annotation.Nullable;
  *                 .input("""
  * import json
  *  
- * event_message = dbutils.widgets.get(\"event_message\")
+ * event_message = dbutils.widgets.get(}&#92;{@code "event_message}&#92;{@code ")
  * event_message_dict = json.loads(event_message)
- * print(f\"event data={event_message_dict}\")
+ * print(f}&#92;{@code "event data=}{{@code event_message_dict}}&#92;{@code ")
  *                 """)
  *                 .build()).result())
  *             .build());
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

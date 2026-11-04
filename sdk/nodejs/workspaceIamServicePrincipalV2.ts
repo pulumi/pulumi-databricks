@@ -45,6 +45,17 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
         return new WorkspaceIamServicePrincipalV2(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing WorkspaceIamServicePrincipalV2 resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: WorkspaceIamServicePrincipalV2State, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2';
 

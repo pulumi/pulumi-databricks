@@ -875,6 +875,42 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Alert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict', 'outputs.AlertCondition']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_body: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+            owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict', 'outputs.AlertProviderConfig']]] = None,
+            query_id: pulumi.Input[Optional[_builtins.str]] = None,
+            seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["createTime"] = create_time
+        __props__["customBody"] = custom_body
+        __props__["customSubject"] = custom_subject
+        __props__["displayName"] = display_name
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["notifyOnOk"] = notify_on_ok
+        __props__["ownerUserName"] = owner_user_name
+        __props__["parentPath"] = parent_path
+        __props__["providerConfig"] = provider_config
+        __props__["queryId"] = query_id
+        __props__["secondsToRetrigger"] = seconds_to_retrigger
+        __props__["state"] = state
+        __props__["triggerTime"] = trigger_time
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/alert:Alert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output['outputs.AlertCondition']:

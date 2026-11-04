@@ -441,6 +441,22 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         __props__.__dict__["network_policy_id"] = network_policy_id
         return AccountNetworkPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict', 'outputs.AccountNetworkPolicyEgress']]] = None,
+            ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict', 'outputs.AccountNetworkPolicyIngress']]] = None,
+            ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict', 'outputs.AccountNetworkPolicyIngressDryRun']]] = None,
+            network_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["egress"] = egress
+        __props__["ingress"] = ingress
+        __props__["ingressDryRun"] = ingress_dry_run
+        __props__["networkPolicyId"] = network_policy_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/accountNetworkPolicy:AccountNetworkPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

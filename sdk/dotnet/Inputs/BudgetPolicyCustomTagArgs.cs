@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         /// The key of the tag.
         /// - Must be unique among all custom tags of the same policy
         /// - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        /// these tags are preserved
+        ///   these tags are preserved
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

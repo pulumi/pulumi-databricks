@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
  *             .path("/Shared/Queries")
  *             .build());
@@ -68,10 +68,10 @@ import javax.annotation.Nullable;
  *             .dataSourceId(example.get("dataSourceId"))
  *             .name("My Query Name")
  *             .query("""
- *                         SELECT {{ p1 }} AS p1
+ *                         SELECT }{{{@code  p1 }}}{@code  AS p1
  *                         WHERE 1=1
- *                         AND p2 in ({{ p2 }})
- *                         AND event_date > date '{{ p3 }}'
+ *                         AND p2 in (}{{{@code  p2 }}}{@code )
+ *                         AND event_date > date '}{{{@code  p3 }}}{@code '
  *             """)
  *             .parent(sharedDir.objectId().applyValue(_objectId -> String.format("folders/%s", _objectId)))
  *             .runAsRole("viewer")
@@ -93,8 +93,8 @@ import javax.annotation.Nullable;
  *                             "bar")
  *                         .value("default")
  *                         .multiple(SqlQueryParameterEnumMultipleArgs.builder()
- *                             .prefix("\"")
- *                             .suffix("\"")
+ *                             .prefix("}&#92;{@code "")
+ *                             .suffix("}&#92;{@code "")
  *                             .separator(",")
  *                             .build())
  *                         .build())
@@ -111,8 +111,8 @@ import javax.annotation.Nullable;
  *                 "t2")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -282,11 +282,10 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runAsRole);
     }
     /**
-     * @deprecated
-     * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
+     * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      * 
      */
-    @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`. */
+    @Deprecated
     @Export(name="schedule", refs={SqlQuerySchedule.class}, tree="[0]")
     private Output</* @Nullable */ SqlQuerySchedule> schedule;
 

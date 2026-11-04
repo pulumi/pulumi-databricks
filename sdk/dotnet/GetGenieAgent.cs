@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example looks up an existing Genie Agent by its resource name.
@@ -45,7 +44,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// The following example looks up an existing Genie Agent by its resource name.
@@ -73,7 +71,6 @@ namespace Pulumi.Databricks
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// Retrieves a single Genie Agent by its resource name. Use this data source to reference an existing Genie Agent — for example, to read its configuration or wire its identifier into other resources — without managing its lifecycle.
-        /// 
         /// 
         /// ## Example Usage
         /// 

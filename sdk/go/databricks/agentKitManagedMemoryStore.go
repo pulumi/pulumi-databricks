@@ -149,6 +149,12 @@ func (AgentKitManagedMemoryStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentKitManagedMemoryStoreState)(nil)).Elem()
 }
 
+// AgentKitManagedMemoryStoreExists checks whether an existing AgentKitManagedMemoryStore resource with the given ID exists.
+func AgentKitManagedMemoryStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentKitManagedMemoryStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/agentKitManagedMemoryStore:AgentKitManagedMemoryStore", id, state, "", opts...)
+}
+
 type agentKitManagedMemoryStoreArgs struct {
 	// Human-readable description of the memory store
 	Description *string `pulumi:"description"`

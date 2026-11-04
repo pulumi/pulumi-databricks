@@ -167,6 +167,12 @@ func (RegisteredModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*registeredModelState)(nil)).Elem()
 }
 
+// RegisteredModelExists checks whether an existing RegisteredModel resource with the given ID exists.
+func RegisteredModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegisteredModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/registeredModel:RegisteredModel", id, state, "", opts...)
+}
+
 type registeredModelArgs struct {
 	Aliases    []RegisteredModelAlias `pulumi:"aliases"`
 	BrowseOnly *bool                  `pulumi:"browseOnly"`

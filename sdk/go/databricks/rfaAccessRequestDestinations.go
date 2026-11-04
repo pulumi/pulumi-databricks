@@ -166,6 +166,12 @@ func (RfaAccessRequestDestinationsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rfaAccessRequestDestinationsState)(nil)).Elem()
 }
 
+// RfaAccessRequestDestinationsExists checks whether an existing RfaAccessRequestDestinations resource with the given ID exists.
+func RfaAccessRequestDestinationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RfaAccessRequestDestinationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations", id, state, "", opts...)
+}
+
 type rfaAccessRequestDestinationsArgs struct {
 	// The access request destinations for the securable
 	Destinations []RfaAccessRequestDestinationsDestination `pulumi:"destinations"`

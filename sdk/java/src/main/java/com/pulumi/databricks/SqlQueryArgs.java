@@ -132,20 +132,18 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
+     * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      * 
      */
-    @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`. */
+    @Deprecated
     @Import(name="schedule")
     private @Nullable Output<SqlQueryScheduleArgs> schedule;
 
     /**
-     * @deprecated
-     * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
+     * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      * 
      */
-    @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`. */
+    @Deprecated
     public Optional<Output<SqlQueryScheduleArgs>> schedule() {
         return Optional.ofNullable(this.schedule);
     }
@@ -359,11 +357,10 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
+         * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
          * 
          */
-        @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`. */
+        @Deprecated
         public Builder schedule(@Nullable Output<SqlQueryScheduleArgs> schedule) {
             $.schedule = schedule;
             return this;
@@ -372,11 +369,10 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
+         * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
          * 
          */
-        @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`. */
+        @Deprecated
         public Builder schedule(SqlQueryScheduleArgs schedule) {
             return schedule(Output.of(schedule));
         }

@@ -1105,6 +1105,38 @@ class Mount(pulumi.CustomResource):
         __props__.__dict__["wasb"] = wasb
         return Mount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            abfs: pulumi.Input[Optional[Union['MountAbfsArgs', 'MountAbfsArgsDict', 'outputs.MountAbfs']]] = None,
+            adl: pulumi.Input[Optional[Union['MountAdlArgs', 'MountAdlArgsDict', 'outputs.MountAdl']]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gs: pulumi.Input[Optional[Union['MountGsArgs', 'MountGsArgsDict', 'outputs.MountGs']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict', 'outputs.MountProviderConfig']]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            s3: pulumi.Input[Optional[Union['MountS3Args', 'MountS3ArgsDict', 'outputs.MountS3']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            wasb: pulumi.Input[Optional[Union['MountWasbArgs', 'MountWasbArgsDict', 'outputs.MountWasb']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["abfs"] = abfs
+        __props__["adl"] = adl
+        __props__["clusterId"] = cluster_id
+        __props__["encryptionType"] = encryption_type
+        __props__["extraConfigs"] = extra_configs
+        __props__["gs"] = gs
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["resourceId"] = resource_id
+        __props__["s3"] = s3
+        __props__["source"] = source
+        __props__["uri"] = uri
+        __props__["wasb"] = wasb
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mount:Mount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def abfs(self) -> pulumi.Output[Optional['outputs.MountAbfs']]:

@@ -165,6 +165,12 @@ func (RepoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repoState)(nil)).Elem()
 }
 
+// RepoExists checks whether an existing Repo resource with the given ID exists.
+func RepoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/repo:Repo", id, state, "", opts...)
+}
+
 type repoArgs struct {
 	// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
 	Branch *string `pulumi:"branch"`

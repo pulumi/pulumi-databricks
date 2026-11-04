@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetNotificationDestinations
     {
         /// <summary>
-        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks. 
+        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationDestinationsResult>("databricks:index/getNotificationDestinations:getNotificationDestinations", args ?? new GetNotificationDestinationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks. 
+        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -128,7 +128,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationDestinationsResult>("databricks:index/getNotificationDestinations:getNotificationDestinations", args ?? new GetNotificationDestinationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks. 
+        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -199,7 +199,7 @@ namespace Pulumi.Databricks
         public Inputs.GetNotificationDestinationsProviderConfigArgs? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The type of the Notification Destination to filter by. Valid values are: 
+        /// The type of the Notification Destination to filter by. Valid values are:
         /// * `EMAIL` - Filters Notification Destinations of type Email.
         /// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
         /// * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -227,7 +227,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetNotificationDestinationsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The type of the Notification Destination to filter by. Valid values are: 
+        /// The type of the Notification Destination to filter by. Valid values are:
         /// * `EMAIL` - Filters Notification Destinations of type Email.
         /// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
         /// * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.

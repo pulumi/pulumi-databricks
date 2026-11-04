@@ -220,6 +220,12 @@ func (PrivateNetworkGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateNetworkGatewayState)(nil)).Elem()
 }
 
+// PrivateNetworkGatewayExists checks whether an existing PrivateNetworkGateway resource with the given ID exists.
+func PrivateNetworkGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivateNetworkGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/privateNetworkGateway:PrivateNetworkGateway", id, state, "", opts...)
+}
+
 type privateNetworkGatewayArgs struct {
 	// The AWS connection used by the gateway
 	AwsCloudConnection *PrivateNetworkGatewayAwsCloudConnection `pulumi:"awsCloudConnection"`

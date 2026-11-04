@@ -197,6 +197,12 @@ func (MlflowExperimentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mlflowExperimentState)(nil)).Elem()
 }
 
+// MlflowExperimentExists checks whether an existing MlflowExperiment resource with the given ID exists.
+func MlflowExperimentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MlflowExperimentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mlflowExperiment:MlflowExperiment", id, state, "", opts...)
+}
+
 type mlflowExperimentArgs struct {
 	// Path to artifact location of the MLflow experiment.
 	ArtifactLocation *string `pulumi:"artifactLocation"`

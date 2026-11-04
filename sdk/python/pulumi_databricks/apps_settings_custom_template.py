@@ -577,6 +577,28 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return AppsSettingsCustomTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            manifest: pulumi.Input[Optional[Union['AppsSettingsCustomTemplateManifestArgs', 'AppsSettingsCustomTemplateManifestArgsDict', 'outputs.AppsSettingsCustomTemplateManifest']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppsSettingsCustomTemplateProviderConfigArgs', 'AppsSettingsCustomTemplateProviderConfigArgsDict', 'outputs.AppsSettingsCustomTemplateProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creator"] = creator
+        __props__["description"] = description
+        __props__["gitProvider"] = git_provider
+        __props__["gitRepo"] = git_repo
+        __props__["manifest"] = manifest
+        __props__["name"] = name
+        __props__["path"] = path
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def creator(self) -> pulumi.Output[_builtins.str]:

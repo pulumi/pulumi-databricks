@@ -29,20 +29,18 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
     }
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     @Import(name="dbfs")
     private @Nullable Output<JobJobClusterNewClusterInitScriptDbfsArgs> dbfs;
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     public Optional<Output<JobJobClusterNewClusterInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -132,11 +130,10 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(@Nullable Output<JobJobClusterNewClusterInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
@@ -145,11 +142,10 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(JobJobClusterNewClusterInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
         }

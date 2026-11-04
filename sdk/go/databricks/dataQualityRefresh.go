@@ -229,6 +229,12 @@ func (DataQualityRefreshState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataQualityRefreshState)(nil)).Elem()
 }
 
+// DataQualityRefreshExists checks whether an existing DataQualityRefresh resource with the given ID exists.
+func DataQualityRefreshExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataQualityRefreshState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/dataQualityRefresh:DataQualityRefresh", id, state, "", opts...)
+}
+
 type dataQualityRefreshArgs struct {
 	// The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	//

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Look up a feature by its full name.
@@ -49,7 +48,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Look up a feature by its full name.
@@ -79,7 +77,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
         /// 
         /// Reads one registered feature by its three-part Unity Catalog name. Use it to reference a feature another team owns, or one created outside Pulumi.
-        /// 
         /// 
         /// ## Example Usage
         /// 

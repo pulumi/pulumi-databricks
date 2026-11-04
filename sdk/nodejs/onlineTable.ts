@@ -43,6 +43,17 @@ export class OnlineTable extends pulumi.CustomResource {
         return new OnlineTable(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OnlineTable resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OnlineTableState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("databricks:index/onlineTable:OnlineTable", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'databricks:index/onlineTable:OnlineTable';
 

@@ -17,22 +17,20 @@ public final class GetMwsWorkspacesPlainArgs extends com.pulumi.resources.Invoke
     /**
      * This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
      * 
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     @Import(name="providerConfig")
     private @Nullable GetMwsWorkspacesProviderConfig providerConfig;
 
     /**
      * @return This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
      * 
-     * @deprecated
-     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
-    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    @Deprecated
     public Optional<GetMwsWorkspacesProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -66,11 +64,10 @@ public final class GetMwsWorkspacesPlainArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
-         * @deprecated
-         * provider_config has no effect on this account-only resource and will be removed in a future major release.
+         * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
          * 
          */
-        @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+        @Deprecated
         public Builder providerConfig(@Nullable GetMwsWorkspacesProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;

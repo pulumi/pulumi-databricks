@@ -154,6 +154,12 @@ func (MwsNetworkConnectivityConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsNetworkConnectivityConfigState)(nil)).Elem()
 }
 
+// MwsNetworkConnectivityConfigExists checks whether an existing MwsNetworkConnectivityConfig resource with the given ID exists.
+func MwsNetworkConnectivityConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsNetworkConnectivityConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig", id, state, "", opts...)
+}
+
 type mwsNetworkConnectivityConfigArgs struct {
 	AccountId          *string `pulumi:"accountId"`
 	BillingWorkspaceId *int    `pulumi:"billingWorkspaceId"`

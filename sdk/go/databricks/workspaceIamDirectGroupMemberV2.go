@@ -170,6 +170,12 @@ func (WorkspaceIamDirectGroupMemberV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceIamDirectGroupMemberV2State)(nil)).Elem()
 }
 
+// WorkspaceIamDirectGroupMemberV2Exists checks whether an existing WorkspaceIamDirectGroupMemberV2 resource with the given ID exists.
+func WorkspaceIamDirectGroupMemberV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceIamDirectGroupMemberV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceIamDirectGroupMemberV2:WorkspaceIamDirectGroupMemberV2", id, state, "", opts...)
+}
+
 type workspaceIamDirectGroupMemberV2Args struct {
 	// (integer) - The internal ID of the group this member belongs to
 	GroupId *int `pulumi:"groupId"`

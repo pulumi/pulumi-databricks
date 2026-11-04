@@ -251,6 +251,12 @@ func (NotificationDestinationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationDestinationState)(nil)).Elem()
 }
 
+// NotificationDestinationExists checks whether an existing NotificationDestination resource with the given ID exists.
+func NotificationDestinationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationDestinationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/notificationDestination:NotificationDestination", id, state, "", opts...)
+}
+
 type notificationDestinationArgs struct {
 	// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
 	Config *NotificationDestinationConfig `pulumi:"config"`

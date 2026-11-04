@@ -138,6 +138,12 @@ func (TagPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagPolicyState)(nil)).Elem()
 }
 
+// TagPolicyExists checks whether an existing TagPolicy resource with the given ID exists.
+func TagPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/tagPolicy:TagPolicy", id, state, "", opts...)
+}
+
 type tagPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// Configure the provider for management through account provider.

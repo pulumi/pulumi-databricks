@@ -158,6 +158,12 @@ func (GroupMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMemberState)(nil)).Elem()
 }
 
+// GroupMemberExists checks whether an existing GroupMember resource with the given ID exists.
+func GroupMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/groupMember:GroupMember", id, state, "", opts...)
+}
+
 type groupMemberArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

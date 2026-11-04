@@ -356,6 +356,24 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return AccountSettingUserPreferenceV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            boolean_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict', 'outputs.AccountSettingUserPreferenceV2BooleanVal']]] = None,
+            effective_boolean_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2EffectiveBooleanValArgs', 'AccountSettingUserPreferenceV2EffectiveBooleanValArgsDict', 'outputs.AccountSettingUserPreferenceV2EffectiveBooleanVal']]] = None,
+            effective_string_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2EffectiveStringValArgs', 'AccountSettingUserPreferenceV2EffectiveStringValArgsDict', 'outputs.AccountSettingUserPreferenceV2EffectiveStringVal']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            string_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict', 'outputs.AccountSettingUserPreferenceV2StringVal']]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["booleanVal"] = boolean_val
+        __props__["effectiveBooleanVal"] = effective_boolean_val
+        __props__["effectiveStringVal"] = effective_string_val
+        __props__["name"] = name
+        __props__["stringVal"] = string_val
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="booleanVal")
     def boolean_val(self) -> pulumi.Output[Optional['outputs.AccountSettingUserPreferenceV2BooleanVal']]:

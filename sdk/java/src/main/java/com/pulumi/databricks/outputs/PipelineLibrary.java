@@ -33,11 +33,10 @@ public final class PipelineLibrary {
      */
     private @Nullable PipelineLibraryNotebook notebook;
     /**
-     * @deprecated
-     * The &#39;whl&#39; field is deprecated
+     * @deprecated The &#39;whl&#39; field is deprecated
      * 
      */
-    @Deprecated /* The 'whl' field is deprecated */
+    @Deprecated
     private @Nullable String whl;
 
     private PipelineLibrary() {}
@@ -69,11 +68,10 @@ public final class PipelineLibrary {
         return Optional.ofNullable(this.notebook);
     }
     /**
-     * @deprecated
-     * The &#39;whl&#39; field is deprecated
+     * @deprecated The &#39;whl&#39; field is deprecated
      * 
      */
-    @Deprecated /* The 'whl' field is deprecated */
+    @Deprecated
     public Optional<String> whl() {
         return Optional.ofNullable(this.whl);
     }

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
         /// Reads a single group by its resource name, `groups/{group_id}`, using a workspace-scoped provider.
-        /// 
         /// 
         /// ## Example Usage
         /// 

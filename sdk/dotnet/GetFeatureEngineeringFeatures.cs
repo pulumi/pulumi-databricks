@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the features registered in one Unity Catalog schema. Both `CatalogName` and `SchemaName` are required, so a single query never spans schemas.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// List every feature in a schema, then project their names.
@@ -57,7 +56,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the features registered in one Unity Catalog schema. Both `CatalogName` and `SchemaName` are required, so a single query never spans schemas.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// List every feature in a schema, then project their names.
@@ -95,7 +93,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/featureengineering)
         /// 
         /// Lists the features registered in one Unity Catalog schema. Both `CatalogName` and `SchemaName` are required, so a single query never spans schemas.
-        /// 
         /// 
         /// ## Example Usage
         /// 

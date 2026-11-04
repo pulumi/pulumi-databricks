@@ -392,6 +392,12 @@ func (DatabaseSyncedDatabaseTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseSyncedDatabaseTableState)(nil)).Elem()
 }
 
+// DatabaseSyncedDatabaseTableExists checks whether an existing DatabaseSyncedDatabaseTable resource with the given ID exists.
+func DatabaseSyncedDatabaseTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseSyncedDatabaseTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable", id, state, "", opts...)
+}
+
 type databaseSyncedDatabaseTableArgs struct {
 	// Name of the target database instance. This is required when creating synced database tables in standard catalogs.
 	// This is optional when creating synced database tables in registered catalogs. If this field is specified

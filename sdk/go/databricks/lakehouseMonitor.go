@@ -351,6 +351,12 @@ func (LakehouseMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lakehouseMonitorState)(nil)).Elem()
 }
 
+// LakehouseMonitorExists checks whether an existing LakehouseMonitor resource with the given ID exists.
+func LakehouseMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LakehouseMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/lakehouseMonitor:LakehouseMonitor", id, state, "", opts...)
+}
+
 type lakehouseMonitorArgs struct {
 	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
 	AssetsDir string `pulumi:"assetsDir"`

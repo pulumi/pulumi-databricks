@@ -24,10 +24,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// set of available privilege names in upper case.
         /// 
-        /// 
         /// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         /// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        /// 
         /// 
         /// * `SELECT` - gives read access to an object.
         /// * `SELECT` - gives read access to an object.
@@ -44,9 +42,8 @@ namespace Pulumi.Databricks.Inputs
         /// * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
         /// * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
         /// 
-        /// 
         /// &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
-        /// &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+        /// Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
         /// </summary>
         public InputList<string> Privileges
         {

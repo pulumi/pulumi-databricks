@@ -143,6 +143,12 @@ func (WorkspaceIamGroupV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceIamGroupV2State)(nil)).Elem()
 }
 
+// WorkspaceIamGroupV2Exists checks whether an existing WorkspaceIamGroupV2 resource with the given ID exists.
+func WorkspaceIamGroupV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceIamGroupV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2", id, state, "", opts...)
+}
+
 type workspaceIamGroupV2Args struct {
 	// ExternalId of the group in the customer's IdP
 	ExternalId *string `pulumi:"externalId"`

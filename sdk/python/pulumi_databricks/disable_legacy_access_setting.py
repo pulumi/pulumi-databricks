@@ -307,6 +307,20 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         __props__.__dict__["setting_name"] = setting_name
         return DisableLegacyAccessSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_legacy_access: pulumi.Input[Optional[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict', 'outputs.DisableLegacyAccessSettingDisableLegacyAccess']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict', 'outputs.DisableLegacyAccessSettingProviderConfig']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableLegacyAccess"] = disable_legacy_access
+        __props__["etag"] = etag
+        __props__["providerConfig"] = provider_config
+        __props__["settingName"] = setting_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableLegacyAccess")
     def disable_legacy_access(self) -> pulumi.Output['outputs.DisableLegacyAccessSettingDisableLegacyAccess']:

@@ -684,6 +684,38 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ServicePrincipalSecret(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict', 'outputs.ServicePrincipalSecretProviderConfig']]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            time_rotating: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["createTime"] = create_time
+        __props__["expireTime"] = expire_time
+        __props__["lifetime"] = lifetime
+        __props__["providerConfig"] = provider_config
+        __props__["scopes"] = scopes
+        __props__["secret"] = secret
+        __props__["secretHash"] = secret_hash
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["servicePrincipalSecretId"] = service_principal_secret_id
+        __props__["status"] = status
+        __props__["timeRotating"] = time_rotating
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/servicePrincipalSecret:ServicePrincipalSecret', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

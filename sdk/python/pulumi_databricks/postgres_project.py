@@ -730,6 +730,38 @@ class PostgresProject(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PostgresProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict', 'outputs.PostgresProjectInitialBranchSpec']]] = None,
+            initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict', 'outputs.PostgresProjectInitialEndpointSpec']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']]] = None,
+            purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge_time: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict', 'outputs.PostgresProjectStatus']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["initialBranchSpec"] = initial_branch_spec
+        __props__["initialEndpointSpec"] = initial_endpoint_spec
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["providerConfig"] = provider_config
+        __props__["purgeOnDelete"] = purge_on_delete
+        __props__["purgeTime"] = purge_time
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/postgresProject:PostgresProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

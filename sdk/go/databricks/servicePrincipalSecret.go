@@ -222,6 +222,12 @@ func (ServicePrincipalSecretState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalSecretState)(nil)).Elem()
 }
 
+// ServicePrincipalSecretExists checks whether an existing ServicePrincipalSecret resource with the given ID exists.
+func ServicePrincipalSecretExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalSecretState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", id, state, "", opts...)
+}
+
 type servicePrincipalSecretArgs struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api *string `pulumi:"api"`

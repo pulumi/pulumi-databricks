@@ -157,6 +157,12 @@ func (SandboxState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sandboxState)(nil)).Elem()
 }
 
+// SandboxExists checks whether an existing Sandbox resource with the given ID exists.
+func SandboxExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SandboxState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sandbox:Sandbox", id, state, "", opts...)
+}
+
 type sandboxArgs struct {
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`

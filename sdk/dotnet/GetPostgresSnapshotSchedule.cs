@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the snapshot schedule for a branch.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve a Branch's Snapshot Schedule
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the snapshot schedule for a branch.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve a Branch's Snapshot Schedule
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source retrieves the snapshot schedule for a branch.
-        /// 
         /// 
         /// ## Example Usage
         /// 

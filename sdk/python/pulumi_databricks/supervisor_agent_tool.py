@@ -513,6 +513,36 @@ class SupervisorAgentTool(pulumi.CustomResource):
         __props__.__dict__["volume"] = volume
         return SupervisorAgentTool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict', 'outputs.SupervisorAgentToolApp']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict', 'outputs.SupervisorAgentToolGenieSpace']]] = None,
+            knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict', 'outputs.SupervisorAgentToolKnowledgeAssistant']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict', 'outputs.SupervisorAgentToolProviderConfig']]] = None,
+            tool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_type: pulumi.Input[Optional[_builtins.str]] = None,
+            uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict', 'outputs.SupervisorAgentToolUcConnection']]] = None,
+            uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict', 'outputs.SupervisorAgentToolUcFunction']]] = None,
+            volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict', 'outputs.SupervisorAgentToolVolume']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["app"] = app
+        __props__["description"] = description
+        __props__["genieSpace"] = genie_space
+        __props__["knowledgeAssistant"] = knowledge_assistant
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["providerConfig"] = provider_config
+        __props__["toolId"] = tool_id
+        __props__["toolType"] = tool_type
+        __props__["ucConnection"] = uc_connection
+        __props__["ucFunction"] = uc_function
+        __props__["volume"] = volume
+        return pulumi.runtime.exists_resource(None, 'databricks:index/supervisorAgentTool:SupervisorAgentTool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def app(self) -> pulumi.Output[Optional['outputs.SupervisorAgentToolApp']]:

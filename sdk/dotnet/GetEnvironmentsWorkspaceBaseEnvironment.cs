@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -47,7 +46,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -75,7 +73,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
-        /// 
         /// 
         /// ## Example Usage
         /// 

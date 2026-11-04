@@ -71,6 +71,12 @@ func (EnhancedSecurityMonitoringWorkspaceSettingState) ElementType() reflect.Typ
 	return reflect.TypeOf((*enhancedSecurityMonitoringWorkspaceSettingState)(nil)).Elem()
 }
 
+// EnhancedSecurityMonitoringWorkspaceSettingExists checks whether an existing EnhancedSecurityMonitoringWorkspaceSetting resource with the given ID exists.
+func EnhancedSecurityMonitoringWorkspaceSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnhancedSecurityMonitoringWorkspaceSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting", id, state, "", opts...)
+}
+
 type enhancedSecurityMonitoringWorkspaceSettingArgs struct {
 	EnhancedSecurityMonitoringWorkspace EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace `pulumi:"enhancedSecurityMonitoringWorkspace"`
 	Etag                                *string                                                                       `pulumi:"etag"`

@@ -156,6 +156,12 @@ func (SqlWidgetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlWidgetState)(nil)).Elem()
 }
 
+// SqlWidgetExists checks whether an existing SqlWidget resource with the given ID exists.
+func SqlWidgetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlWidgetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlWidget:SqlWidget", id, state, "", opts...)
+}
+
 type sqlWidgetArgs struct {
 	DashboardId string               `pulumi:"dashboardId"`
 	Description *string              `pulumi:"description"`

@@ -336,6 +336,12 @@ func (QueryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queryState)(nil)).Elem()
 }
 
+// QueryExists checks whether an existing Query resource with the given ID exists.
+func QueryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/query:Query", id, state, "", opts...)
+}
+
 type queryArgs struct {
 	// Whether to apply a 1000 row limit to the query result.
 	ApplyAutoLimit *bool `pulumi:"applyAutoLimit"`

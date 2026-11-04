@@ -28,20 +28,18 @@ public final class GetClusterClusterInfoSpecInitScript extends com.pulumi.resour
     }
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     @Import(name="dbfs")
     private @Nullable GetClusterClusterInfoSpecInitScriptDbfs dbfs;
 
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     public Optional<GetClusterClusterInfoSpecInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -119,11 +117,10 @@ public final class GetClusterClusterInfoSpecInitScript extends com.pulumi.resour
         /**
          * @return builder
          * 
-         * @deprecated
-         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
          * 
          */
-        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+        @Deprecated
         public Builder dbfs(@Nullable GetClusterClusterInfoSpecInitScriptDbfs dbfs) {
             $.dbfs = dbfs;
             return this;

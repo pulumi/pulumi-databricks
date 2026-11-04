@@ -323,6 +323,24 @@ class OnlineTable(pulumi.CustomResource):
         __props__.__dict__["unity_catalog_provisioning_state"] = unity_catalog_provisioning_state
         return OnlineTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict', 'outputs.OnlineTableProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict', 'outputs.OnlineTableSpec']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict', 'outputs.OnlineTableStatus']]]]] = None,
+            table_serving_url: pulumi.Input[Optional[_builtins.str]] = None,
+            unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["spec"] = spec
+        __props__["statuses"] = statuses
+        __props__["tableServingUrl"] = table_serving_url
+        __props__["unityCatalogProvisioningState"] = unity_catalog_provisioning_state
+        return pulumi.runtime.exists_resource(None, 'databricks:index/onlineTable:OnlineTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

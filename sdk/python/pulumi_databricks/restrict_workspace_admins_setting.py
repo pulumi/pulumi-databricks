@@ -303,6 +303,20 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         __props__.__dict__["setting_name"] = setting_name
         return RestrictWorkspaceAdminsSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict', 'outputs.RestrictWorkspaceAdminsSettingProviderConfig']]] = None,
+            restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict', 'outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["etag"] = etag
+        __props__["providerConfig"] = provider_config
+        __props__["restrictWorkspaceAdmins"] = restrict_workspace_admins
+        __props__["settingName"] = setting_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:

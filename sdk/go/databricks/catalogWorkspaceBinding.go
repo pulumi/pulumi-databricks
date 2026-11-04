@@ -137,6 +137,12 @@ func (CatalogWorkspaceBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogWorkspaceBindingState)(nil)).Elem()
 }
 
+// CatalogWorkspaceBindingExists checks whether an existing CatalogWorkspaceBinding resource with the given ID exists.
+func CatalogWorkspaceBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogWorkspaceBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding", id, state, "", opts...)
+}
+
 type catalogWorkspaceBindingArgs struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType *string `pulumi:"bindingType"`

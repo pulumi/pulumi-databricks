@@ -20,11 +20,10 @@ public final class GetNodeTypeResult {
     private @Nullable Boolean fleet;
     private @Nullable Integer gbPerCore;
     /**
-     * @deprecated
-     * Use `arm` instead
+     * @deprecated Use `arm` instead
      * 
      */
-    @Deprecated /* Use `arm` instead */
+    @Deprecated
     private @Nullable Boolean graviton;
     /**
      * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
@@ -56,11 +55,10 @@ public final class GetNodeTypeResult {
         return Optional.ofNullable(this.gbPerCore);
     }
     /**
-     * @deprecated
-     * Use `arm` instead
+     * @deprecated Use `arm` instead
      * 
      */
-    @Deprecated /* Use `arm` instead */
+    @Deprecated
     public Optional<Boolean> graviton() {
         return Optional.ofNullable(this.graviton);
     }

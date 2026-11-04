@@ -123,6 +123,12 @@ func (DisableLegacyDbfsSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*disableLegacyDbfsSettingState)(nil)).Elem()
 }
 
+// DisableLegacyDbfsSettingExists checks whether an existing DisableLegacyDbfsSetting resource with the given ID exists.
+func DisableLegacyDbfsSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DisableLegacyDbfsSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting", id, state, "", opts...)
+}
+
 type disableLegacyDbfsSettingArgs struct {
 	// block with following attributes:
 	DisableLegacyDbfs DisableLegacyDbfsSettingDisableLegacyDbfs `pulumi:"disableLegacyDbfs"`

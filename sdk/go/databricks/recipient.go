@@ -313,6 +313,12 @@ func (RecipientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recipientState)(nil)).Elem()
 }
 
+// RecipientExists checks whether an existing Recipient resource with the given ID exists.
+func RecipientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecipientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/recipient:Recipient", id, state, "", opts...)
+}
+
 type recipientArgs struct {
 	// The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
 	AuthenticationType string `pulumi:"authenticationType"`

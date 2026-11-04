@@ -15,11 +15,10 @@ public final class GetAwsBucketPolicyResult {
     private @Nullable String awsPartition;
     private String bucket;
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     private @Nullable String databricksAccountId;
     private @Nullable String databricksE2AccountId;
     private @Nullable String fullAccessRole;
@@ -42,11 +41,10 @@ public final class GetAwsBucketPolicyResult {
         return this.bucket;
     }
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }

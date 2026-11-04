@@ -28,20 +28,18 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
     }
 
     /**
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     @Import(name="egg")
     private @Nullable Output<String> egg;
 
     /**
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     public Optional<Output<String>> egg() {
         return Optional.ofNullable(this.egg);
     }
@@ -139,11 +137,10 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
         /**
          * @return builder
          * 
-         * @deprecated
-         * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+         * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
          * 
          */
-        @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+        @Deprecated
         public Builder egg(@Nullable Output<String> egg) {
             $.egg = egg;
             return this;
@@ -152,11 +149,10 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
         /**
          * @return builder
          * 
-         * @deprecated
-         * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+         * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
          * 
          */
-        @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+        @Deprecated
         public Builder egg(String egg) {
             return egg(Output.of(egg));
         }

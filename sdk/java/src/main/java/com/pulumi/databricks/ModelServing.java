@@ -373,11 +373,10 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
-     * @deprecated
-     * Please use AI Gateway to manage rate limits.
+     * @deprecated Please use AI Gateway to manage rate limits.
      * 
      */
-    @Deprecated /* Please use AI Gateway to manage rate limits. */
+    @Deprecated
     @Export(name="rateLimits", refs={List.class,ModelServingRateLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingRateLimit>> rateLimits;
 

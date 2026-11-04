@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres projects in the workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Projects
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source lists all Postgres projects in the workspace.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Projects
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source lists all Postgres projects in the workspace.
-        /// 
         /// 
         /// ## Example Usage
         /// 

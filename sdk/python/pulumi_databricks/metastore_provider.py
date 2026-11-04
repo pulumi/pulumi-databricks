@@ -377,6 +377,22 @@ class MetastoreProvider(pulumi.CustomResource):
         __props__.__dict__["recipient_profile_str"] = recipient_profile_str
         return MetastoreProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict', 'outputs.MetastoreProviderProviderConfig']]] = None,
+            recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authenticationType"] = authentication_type
+        __props__["comment"] = comment
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["recipientProfileStr"] = recipient_profile_str
+        return pulumi.runtime.exists_resource(None, 'databricks:index/metastoreProvider:MetastoreProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> pulumi.Output[_builtins.str]:

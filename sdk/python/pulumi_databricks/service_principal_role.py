@@ -352,6 +352,20 @@ class ServicePrincipalRole(pulumi.CustomResource):
         __props__.__dict__["service_principal_id"] = service_principal_id
         return ServicePrincipalRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict', 'outputs.ServicePrincipalRoleProviderConfig']]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["providerConfig"] = provider_config
+        __props__["role"] = role
+        __props__["servicePrincipalId"] = service_principal_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/servicePrincipalRole:ServicePrincipalRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

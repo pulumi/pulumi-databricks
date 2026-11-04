@@ -217,6 +217,12 @@ func (MwsStorageConfigurationsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsStorageConfigurationsState)(nil)).Elem()
 }
 
+// MwsStorageConfigurationsExists checks whether an existing MwsStorageConfigurations resource with the given ID exists.
+func MwsStorageConfigurationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsStorageConfigurationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", id, state, "", opts...)
+}
+
 type mwsStorageConfigurationsArgs struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId string `pulumi:"accountId"`

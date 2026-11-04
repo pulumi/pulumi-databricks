@@ -523,6 +523,26 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return MwsPrivateAccessSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_vpc_endpoint_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_access_settings_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowedVpcEndpointIds"] = allowed_vpc_endpoint_ids
+        __props__["privateAccessLevel"] = private_access_level
+        __props__["privateAccessSettingsId"] = private_access_settings_id
+        __props__["privateAccessSettingsName"] = private_access_settings_name
+        __props__["publicAccessEnabled"] = public_access_enabled
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")

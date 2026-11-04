@@ -19,20 +19,18 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
     public static final MwsPrivateAccessSettingsArgs Empty = new MwsPrivateAccessSettingsArgs();
 
     /**
-     * @deprecated
-     * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
      */
-    @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @deprecated
-     * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
      */
-    @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+    @Deprecated
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -160,11 +158,10 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+         * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
          * 
          */
-        @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+        @Deprecated
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -173,11 +170,10 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+         * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
          * 
          */
-        @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+        @Deprecated
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

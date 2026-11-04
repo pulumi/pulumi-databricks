@@ -143,6 +143,12 @@ func (MlflowModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mlflowModelState)(nil)).Elem()
 }
 
+// MlflowModelExists checks whether an existing MlflowModel resource with the given ID exists.
+func MlflowModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MlflowModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mlflowModel:MlflowModel", id, state, "", opts...)
+}
+
 type mlflowModelArgs struct {
 	// The description of the MLflow model.
 	Description *string `pulumi:"description"`

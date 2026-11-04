@@ -484,6 +484,12 @@ func (PostgresEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresEndpointState)(nil)).Elem()
 }
 
+// PostgresEndpointExists checks whether an existing PostgresEndpoint resource with the given ID exists.
+func PostgresEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/postgresEndpoint:PostgresEndpoint", id, state, "", opts...)
+}
+
 type postgresEndpointArgs struct {
 	// The part of the name, chosen by the user when the resource was created
 	EndpointId string `pulumi:"endpointId"`

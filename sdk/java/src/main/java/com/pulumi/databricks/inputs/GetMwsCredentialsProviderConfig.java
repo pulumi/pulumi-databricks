@@ -16,22 +16,20 @@ public final class GetMwsCredentialsProviderConfig extends com.pulumi.resources.
     /**
      * Ignored. This data source always operates against the account configured on the provider.
      * 
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     @Import(name="workspaceId", required=true)
     private String workspaceId;
 
     /**
      * @return Ignored. This data source always operates against the account configured on the provider.
      * 
-     * @deprecated
-     * workspace_id is ignored for account-only resources.
+     * @deprecated workspace_id is ignored for account-only resources.
      * 
      */
-    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Deprecated
     public String workspaceId() {
         return this.workspaceId;
     }
@@ -65,11 +63,10 @@ public final class GetMwsCredentialsProviderConfig extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * workspace_id is ignored for account-only resources.
+         * @deprecated workspace_id is ignored for account-only resources.
          * 
          */
-        @Deprecated /* workspace_id is ignored for account-only resources. */
+        @Deprecated
         public Builder workspaceId(String workspaceId) {
             $.workspaceId = workspaceId;
             return this;

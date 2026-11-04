@@ -210,6 +210,12 @@ func (DataQualityMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataQualityMonitorState)(nil)).Elem()
 }
 
+// DataQualityMonitorExists checks whether an existing DataQualityMonitor resource with the given ID exists.
+func DataQualityMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataQualityMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/dataQualityMonitor:DataQualityMonitor", id, state, "", opts...)
+}
+
 type dataQualityMonitorArgs struct {
 	// Anomaly Detection Configuration, applicable to `schema` object types
 	AnomalyDetectionConfig *DataQualityMonitorAnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`

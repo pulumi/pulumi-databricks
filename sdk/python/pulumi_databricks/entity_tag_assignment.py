@@ -444,6 +444,28 @@ class EntityTagAssignment(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return EntityTagAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict', 'outputs.EntityTagAssignmentProviderConfig']]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["entityName"] = entity_name
+        __props__["entityType"] = entity_type
+        __props__["providerConfig"] = provider_config
+        __props__["sourceType"] = source_type
+        __props__["tagKey"] = tag_key
+        __props__["tagValue"] = tag_value
+        __props__["updateTime"] = update_time
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/entityTagAssignment:EntityTagAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="entityName")
     def entity_name(self) -> pulumi.Output[_builtins.str]:

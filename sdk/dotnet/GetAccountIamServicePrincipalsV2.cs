@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the service principals in an account.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the service principals in an account.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -83,7 +81,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
         /// Lists the service principals in an account.
-        /// 
         /// 
         /// ## Example Usage
         /// 

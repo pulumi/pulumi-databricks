@@ -462,6 +462,12 @@ func (ConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionState)(nil)).Elem()
 }
 
+// ConnectionExists checks whether an existing Connection resource with the given ID exists.
+func ConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/connection:Connection", id, state, "", opts...)
+}
+
 type connectionArgs struct {
 	// User-provided free-form text description. Change forces creation of a new resource.
 	Comment *string `pulumi:"comment"`

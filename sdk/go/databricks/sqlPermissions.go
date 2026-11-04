@@ -266,6 +266,12 @@ func (SqlPermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlPermissionsState)(nil)).Elem()
 }
 
+// SqlPermissionsExists checks whether an existing SqlPermissions resource with the given ID exists.
+func SqlPermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlPermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlPermissions:SqlPermissions", id, state, "", opts...)
+}
+
 type sqlPermissionsArgs struct {
 	// If this access control for using an anonymous function. Defaults to `false`.
 	AnonymousFunction *bool `pulumi:"anonymousFunction"`

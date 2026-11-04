@@ -155,6 +155,12 @@ func (AgentKitManagedMemoryEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentKitManagedMemoryEntryState)(nil)).Elem()
 }
 
+// AgentKitManagedMemoryEntryExists checks whether an existing AgentKitManagedMemoryEntry resource with the given ID exists.
+func AgentKitManagedMemoryEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentKitManagedMemoryEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/agentKitManagedMemoryEntry:AgentKitManagedMemoryEntry", id, state, "", opts...)
+}
+
 type agentKitManagedMemoryEntryArgs struct {
 	// Customer-provided identifier for the actor whose memory this entry represents
 	ActorId string `pulumi:"actorId"`

@@ -312,6 +312,12 @@ func (CredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*credentialState)(nil)).Elem()
 }
 
+// CredentialExists checks whether an existing Credential resource with the given ID exists.
+func CredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/credential:Credential", id, state, "", opts...)
+}
+
 type credentialArgs struct {
 	AwsIamRole            *CredentialAwsIamRole            `pulumi:"awsIamRole"`
 	AzureManagedIdentity  *CredentialAzureManagedIdentity  `pulumi:"azureManagedIdentity"`

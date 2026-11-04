@@ -431,6 +431,28 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return DisasterRecoveryStableUrl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            effective_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            stable_url_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stable_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["effectiveWorkspaceId"] = effective_workspace_id
+        __props__["failoverGroupName"] = failover_group_name
+        __props__["initialWorkspaceId"] = initial_workspace_id
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["stableUrlId"] = stable_url_id
+        __props__["stableWorkspaceId"] = stable_workspace_id
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="effectiveWorkspaceId")
     def effective_workspace_id(self) -> pulumi.Output[_builtins.str]:

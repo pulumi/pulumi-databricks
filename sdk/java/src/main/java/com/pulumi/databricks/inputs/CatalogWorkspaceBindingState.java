@@ -32,20 +32,18 @@ public final class CatalogWorkspaceBindingState extends com.pulumi.resources.Res
     }
 
     /**
-     * @deprecated
-     * Please use &#39;securable_name&#39; and &#39;securable_type instead.
+     * @deprecated Please use &#39;securable_name&#39; and &#39;securable_type instead.
      * 
      */
-    @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
+    @Deprecated
     @Import(name="catalogName")
     private @Nullable Output<String> catalogName;
 
     /**
-     * @deprecated
-     * Please use &#39;securable_name&#39; and &#39;securable_type instead.
+     * @deprecated Please use &#39;securable_name&#39; and &#39;securable_type instead.
      * 
      */
-    @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
+    @Deprecated
     public Optional<Output<String>> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
@@ -155,11 +153,10 @@ public final class CatalogWorkspaceBindingState extends com.pulumi.resources.Res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;securable_name&#39; and &#39;securable_type instead.
+         * @deprecated Please use &#39;securable_name&#39; and &#39;securable_type instead.
          * 
          */
-        @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
+        @Deprecated
         public Builder catalogName(@Nullable Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
@@ -168,11 +165,10 @@ public final class CatalogWorkspaceBindingState extends com.pulumi.resources.Res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;securable_name&#39; and &#39;securable_type instead.
+         * @deprecated Please use &#39;securable_name&#39; and &#39;securable_type instead.
          * 
          */
-        @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
+        @Deprecated
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }

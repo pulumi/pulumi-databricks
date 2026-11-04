@@ -432,6 +432,24 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         __props__.__dict__["storage_configuration_name"] = storage_configuration_name
         return MwsStorageConfigurations(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["bucketName"] = bucket_name
+        __props__["creationTime"] = creation_time
+        __props__["roleArn"] = role_arn
+        __props__["storageConfigurationId"] = storage_configuration_id
+        __props__["storageConfigurationName"] = storage_configuration_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mwsStorageConfigurations:MwsStorageConfigurations', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

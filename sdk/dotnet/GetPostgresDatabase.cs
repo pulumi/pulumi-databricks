@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves a single Postgres database.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve Database by Name
@@ -54,7 +53,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves a single Postgres database.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve Database by Name
@@ -89,7 +87,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source retrieves a single Postgres database.
-        /// 
         /// 
         /// ## Example Usage
         /// 

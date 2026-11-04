@@ -19,11 +19,10 @@ import javax.annotation.Nullable;
 public final class ClusterInitScript {
     private @Nullable ClusterInitScriptAbfss abfss;
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     private @Nullable ClusterInitScriptDbfs dbfs;
     private @Nullable ClusterInitScriptFile file;
     private @Nullable ClusterInitScriptGcs gcs;
@@ -36,11 +35,10 @@ public final class ClusterInitScript {
         return Optional.ofNullable(this.abfss);
     }
     /**
-     * @deprecated
-     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * @deprecated For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
      * 
      */
-    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
+    @Deprecated
     public Optional<ClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }

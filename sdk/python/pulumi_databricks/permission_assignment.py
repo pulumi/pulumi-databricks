@@ -563,6 +563,26 @@ class PermissionAssignment(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return PermissionAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict', 'outputs.PermissionAssignmentProviderConfig']]] = None,
+            service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["displayName"] = display_name
+        __props__["groupName"] = group_name
+        __props__["permissions"] = permissions
+        __props__["principalId"] = principal_id
+        __props__["providerConfig"] = provider_config
+        __props__["servicePrincipalName"] = service_principal_name
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/permissionAssignment:PermissionAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[_builtins.str]:

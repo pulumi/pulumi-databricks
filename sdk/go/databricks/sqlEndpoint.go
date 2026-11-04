@@ -281,6 +281,12 @@ func (SqlEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlEndpointState)(nil)).Elem()
 }
 
+// SqlEndpointExists checks whether an existing SqlEndpoint resource with the given ID exists.
+func SqlEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/sqlEndpoint:SqlEndpoint", id, state, "", opts...)
+}
+
 type sqlEndpointArgs struct {
 	// Idle minutes before the warehouse stops. Defaults to `120` for PRO/CLASSIC and `10` for REALTIME. Use `0` to disable autostop. REALTIME requires `0` or at least `5`.
 	AutoStopMins *int `pulumi:"autoStopMins"`

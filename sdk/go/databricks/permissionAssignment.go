@@ -330,6 +330,12 @@ func (PermissionAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*permissionAssignmentState)(nil)).Elem()
 }
 
+// PermissionAssignmentExists checks whether an existing PermissionAssignment resource with the given ID exists.
+func PermissionAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PermissionAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/permissionAssignment:PermissionAssignment", id, state, "", opts...)
+}
+
 type permissionAssignmentArgs struct {
 	// the group name to assign to a workspace.
 	GroupName *string `pulumi:"groupName"`

@@ -155,6 +155,12 @@ func (AgentKitSessionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentKitSessionState)(nil)).Elem()
 }
 
+// AgentKitSessionExists checks whether an existing AgentKitSession resource with the given ID exists.
+func AgentKitSessionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentKitSessionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/agentKitSession:AgentKitSession", id, state, "", opts...)
+}
+
 type agentKitSessionArgs struct {
 	// Opaque caller-provided identifier for the application actor associated with the session.
 	//

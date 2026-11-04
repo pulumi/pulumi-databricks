@@ -290,6 +290,12 @@ func (FeatureEngineeringFeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureEngineeringFeatureState)(nil)).Elem()
 }
 
+// FeatureEngineeringFeatureExists checks whether an existing FeatureEngineeringFeature resource with the given ID exists.
+func FeatureEngineeringFeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureEngineeringFeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/featureEngineeringFeature:FeatureEngineeringFeature", id, state, "", opts...)
+}
+
 type featureEngineeringFeatureArgs struct {
 	// The description of the feature
 	Description *string `pulumi:"description"`

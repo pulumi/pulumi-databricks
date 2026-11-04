@@ -666,6 +666,36 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return Share(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict', 'outputs.ShareObject']]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict', 'outputs.ShareProviderConfig']]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["effectiveOwner"] = effective_owner
+        __props__["name"] = name
+        __props__["objects"] = objects
+        __props__["owner"] = owner
+        __props__["providerConfig"] = provider_config
+        __props__["storageLocation"] = storage_location
+        __props__["storageRoot"] = storage_root
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'databricks:index/share:Share', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[_builtins.str]:

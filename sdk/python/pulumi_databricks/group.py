@@ -684,6 +684,36 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["workspace_consume"] = workspace_consume
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            provider_config: pulumi.Input[Optional[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict', 'outputs.GroupProviderConfig']]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclPrincipalId"] = acl_principal_id
+        __props__["allowClusterCreate"] = allow_cluster_create
+        __props__["allowInstancePoolCreate"] = allow_instance_pool_create
+        __props__["api"] = api
+        __props__["databricksSqlAccess"] = databricks_sql_access
+        __props__["displayName"] = display_name
+        __props__["externalId"] = external_id
+        __props__["force"] = force
+        __props__["providerConfig"] = provider_config
+        __props__["url"] = url
+        __props__["workspaceAccess"] = workspace_access
+        __props__["workspaceConsume"] = workspace_consume
+        return pulumi.runtime.exists_resource(None, 'databricks:index/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> pulumi.Output[_builtins.str]:

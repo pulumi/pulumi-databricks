@@ -129,6 +129,12 @@ func (OnlineTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*onlineTableState)(nil)).Elem()
 }
 
+// OnlineTableExists checks whether an existing OnlineTable resource with the given ID exists.
+func OnlineTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OnlineTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/onlineTable:OnlineTable", id, state, "", opts...)
+}
+
 type onlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name *string `pulumi:"name"`

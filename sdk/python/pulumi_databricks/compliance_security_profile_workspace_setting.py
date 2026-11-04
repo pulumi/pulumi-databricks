@@ -221,6 +221,20 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
         __props__.__dict__["setting_name"] = setting_name
         return ComplianceSecurityProfileWorkspaceSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["complianceSecurityProfileWorkspace"] = compliance_security_profile_workspace
+        __props__["etag"] = etag
+        __props__["providerConfig"] = provider_config
+        __props__["settingName"] = setting_name
+        return pulumi.runtime.exists_resource(None, 'databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="complianceSecurityProfileWorkspace")
     def compliance_security_profile_workspace(self) -> pulumi.Output['outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace']:

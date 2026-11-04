@@ -755,6 +755,22 @@ class AccessControlRuleSet(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         return AccessControlRuleSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict', 'outputs.AccessControlRuleSetGrantRule']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict', 'outputs.AccessControlRuleSetProviderConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["etag"] = etag
+        __props__["grantRules"] = grant_rules
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        return pulumi.runtime.exists_resource(None, 'databricks:index/accessControlRuleSet:AccessControlRuleSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional[_builtins.str]]:

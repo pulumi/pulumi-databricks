@@ -112,24 +112,24 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var initScript = new File("initScript", FileArgs.builder()
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * #!/bin/bash
- * echo \"Hello World\"
+ * echo }&#92;{@code "Hello World}&#92;{@code "
  *                 """)
  *                 .build()).result())
  *             .path(String.format("%s/fileName", this_.get("volumePath")))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

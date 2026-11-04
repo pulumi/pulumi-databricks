@@ -109,6 +109,12 @@ func (WorkspaceFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceFileState)(nil)).Elem()
 }
 
+// WorkspaceFileExists checks whether an existing WorkspaceFile resource with the given ID exists.
+func WorkspaceFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceFile:WorkspaceFile", id, state, "", opts...)
+}
+
 type workspaceFileArgs struct {
 	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`

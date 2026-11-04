@@ -156,6 +156,12 @@ func (WorkspaceEntityTagAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceEntityTagAssignmentState)(nil)).Elem()
 }
 
+// WorkspaceEntityTagAssignmentExists checks whether an existing WorkspaceEntityTagAssignment resource with the given ID exists.
+func WorkspaceEntityTagAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceEntityTagAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment", id, state, "", opts...)
+}
+
 type workspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`

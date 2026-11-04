@@ -149,41 +149,37 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
      * 
-     * @deprecated
-     * Please use `roles` instead
+     * @deprecated Please use `roles` instead
      * 
      */
-    @Deprecated /* Please use `roles` instead */
+    @Deprecated
     @Import(name="instanceProfiles")
     private @Nullable Output<List<String>> instanceProfiles;
 
     /**
      * @return (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
      * 
-     * @deprecated
-     * Please use `roles` instead
+     * @deprecated Please use `roles` instead
      * 
      */
-    @Deprecated /* Please use `roles` instead */
+    @Deprecated
     public Optional<Output<List<String>>> instanceProfiles() {
         return Optional.ofNullable(this.instanceProfiles);
     }
 
     /**
-     * @deprecated
-     * Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+    @Deprecated
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
     /**
-     * @deprecated
-     * Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+    @Deprecated
     public Optional<Output<List<String>>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -520,11 +516,10 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use `roles` instead
+         * @deprecated Please use `roles` instead
          * 
          */
-        @Deprecated /* Please use `roles` instead */
+        @Deprecated
         public Builder instanceProfiles(@Nullable Output<List<String>> instanceProfiles) {
             $.instanceProfiles = instanceProfiles;
             return this;
@@ -535,11 +530,10 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use `roles` instead
+         * @deprecated Please use `roles` instead
          * 
          */
-        @Deprecated /* Please use `roles` instead */
+        @Deprecated
         public Builder instanceProfiles(List<String> instanceProfiles) {
             return instanceProfiles(Output.of(instanceProfiles));
         }
@@ -549,11 +543,10 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use `roles` instead
+         * @deprecated Please use `roles` instead
          * 
          */
-        @Deprecated /* Please use `roles` instead */
+        @Deprecated
         public Builder instanceProfiles(String... instanceProfiles) {
             return instanceProfiles(List.of(instanceProfiles));
         }
@@ -561,11 +554,10 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please use `users`, `servicePrincipals`, and `childGroups` instead
+         * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
          * 
          */
-        @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+        @Deprecated
         public Builder members(@Nullable Output<List<String>> members) {
             $.members = members;
             return this;
@@ -574,11 +566,10 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please use `users`, `servicePrincipals`, and `childGroups` instead
+         * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
          * 
          */
-        @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+        @Deprecated
         public Builder members(List<String> members) {
             return members(Output.of(members));
         }
@@ -586,11 +577,10 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please use `users`, `servicePrincipals`, and `childGroups` instead
+         * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
          * 
          */
-        @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
+        @Deprecated
         public Builder members(String... members) {
             return members(List.of(members));
         }

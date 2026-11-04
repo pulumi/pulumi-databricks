@@ -144,6 +144,12 @@ func (WorkspaceBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceBindingState)(nil)).Elem()
 }
 
+// WorkspaceBindingExists checks whether an existing WorkspaceBinding resource with the given ID exists.
+func WorkspaceBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/workspaceBinding:WorkspaceBinding", id, state, "", opts...)
+}
+
 type workspaceBindingArgs struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 	BindingType *string `pulumi:"bindingType"`

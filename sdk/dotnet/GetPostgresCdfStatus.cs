@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve CDF Status by Name
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Retrieve CDF Status by Name
@@ -87,7 +85,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
         /// This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
-        /// 
         /// 
         /// ## Example Usage
         /// 

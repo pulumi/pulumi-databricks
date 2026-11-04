@@ -436,6 +436,12 @@ func (MwsVpcEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mwsVpcEndpointState)(nil)).Elem()
 }
 
+// MwsVpcEndpointExists checks whether an existing MwsVpcEndpoint resource with the given ID exists.
+func MwsVpcEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MwsVpcEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint", id, state, "", opts...)
+}
+
 type mwsVpcEndpointArgs struct {
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	AccountId    *string `pulumi:"accountId"`

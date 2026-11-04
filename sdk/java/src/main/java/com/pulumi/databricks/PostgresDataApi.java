@@ -169,8 +169,8 @@ import javax.annotation.Nullable;
  * To re-trigger the refresh without changing any settings, call Update with no fields set in `spec` — the server treats this as a refresh-only request, re-reads the cache, and returns the unchanged state. Via the API directly:
  * 
  * ```sh
- * curl -X PATCH &#34;$WORKSPACE/api/2.0/postgres/projects/{p}/branches/{b}/databases/{d}/data-api?update_mask=spec&#34; \
- *   -H &#34;Authorization: Bearer $TOKEN&#34; \
+ * curl -X PATCH &#34;$WORKSPACE/api/2.0/postgres/projects/{p}/branches/{b}/databases/{d}/data-api?update_mask=spec&#34; &#92;
+ *   -H &#34;Authorization: Bearer $TOKEN&#34; &#92;
  *   -d &#39;{&#34;spec&#34;: {}}&#39;
  * ```
  * 

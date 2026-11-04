@@ -172,6 +172,12 @@ func (ModelServingProvisionedThroughputState) ElementType() reflect.Type {
 	return reflect.TypeOf((*modelServingProvisionedThroughputState)(nil)).Elem()
 }
 
+// ModelServingProvisionedThroughputExists checks whether an existing ModelServingProvisionedThroughput resource with the given ID exists.
+func ModelServingProvisionedThroughputExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ModelServingProvisionedThroughputState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput", id, state, "", opts...)
+}
+
 type modelServingProvisionedThroughputArgs struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway *ModelServingProvisionedThroughputAiGateway `pulumi:"aiGateway"`

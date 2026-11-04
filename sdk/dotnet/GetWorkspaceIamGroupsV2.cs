@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the groups visible to a workspace, using a workspace-scoped provider.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -48,7 +47,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the groups visible to a workspace, using a workspace-scoped provider.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -77,7 +75,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
         /// Lists the groups visible to a workspace, using a workspace-scoped provider.
-        /// 
         /// 
         /// ## Example Usage
         /// 

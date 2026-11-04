@@ -424,12 +424,12 @@ import javax.annotation.Nullable;
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * import dlt
- * json_path = \"/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json\"
+ * json_path = }&#92;{@code "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json}&#92;{@code "
  * }{@literal @}{@code dlt.table(
- *    comment=\"The raw wikipedia clickstream dataset, ingested from /databricks-datasets.\"
+ *    comment=}&#92;{@code "The raw wikipedia clickstream dataset, ingested from /databricks-datasets.}&#92;{@code "
  * )
  * def clickstream_raw():
- *     return (spark.read.format(\"json\").load(json_path))
+ *     return (spark.read.format(}&#92;{@code "json}&#92;{@code ").load(json_path))
  *                 """)
  *                 .build()).result())
  *             .language("PYTHON")

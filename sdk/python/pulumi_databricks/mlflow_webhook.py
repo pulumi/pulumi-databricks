@@ -536,6 +536,26 @@ class MlflowWebhook(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return MlflowWebhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict', 'outputs.MlflowWebhookHttpUrlSpec']]] = None,
+            job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict', 'outputs.MlflowWebhookJobSpec']]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict', 'outputs.MlflowWebhookProviderConfig']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["events"] = events
+        __props__["httpUrlSpec"] = http_url_spec
+        __props__["jobSpec"] = job_spec
+        __props__["modelName"] = model_name
+        __props__["providerConfig"] = provider_config
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mlflowWebhook:MlflowWebhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

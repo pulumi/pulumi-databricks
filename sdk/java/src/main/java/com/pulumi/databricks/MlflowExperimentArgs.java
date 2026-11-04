@@ -43,20 +43,18 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * @deprecated
-     * Remove the description attribute as it no longer is used and will be removed in a future version.
+     * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      * 
      */
-    @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
+    @Deprecated
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @deprecated
-     * Remove the description attribute as it no longer is used and will be removed in a future version.
+     * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      * 
      */
-    @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
+    @Deprecated
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -208,11 +206,10 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         /**
          * @return builder
          * 
-         * @deprecated
-         * Remove the description attribute as it no longer is used and will be removed in a future version.
+         * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
          * 
          */
-        @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
+        @Deprecated
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -221,11 +218,10 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         /**
          * @return builder
          * 
-         * @deprecated
-         * Remove the description attribute as it no longer is used and will be removed in a future version.
+         * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
          * 
          */
-        @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
+        @Deprecated
         public Builder description(String description) {
             return description(Output.of(description));
         }

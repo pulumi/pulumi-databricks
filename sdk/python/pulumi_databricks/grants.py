@@ -1665,6 +1665,52 @@ class Grants(pulumi.CustomResource):
         __props__.__dict__["volume"] = volume
         return Grants(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            credential: pulumi.Input[Optional[_builtins.str]] = None,
+            external_location: pulumi.Input[Optional[_builtins.str]] = None,
+            foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
+            function: pulumi.Input[Optional[_builtins.str]] = None,
+            grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict', 'outputs.GrantsGrant']]]]] = None,
+            mcp_service: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore: pulumi.Input[Optional[_builtins.str]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            model_provider_service: pulumi.Input[Optional[_builtins.str]] = None,
+            model_service: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict', 'outputs.GrantsProviderConfig']]] = None,
+            recipient: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            share: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None,
+            volume: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalog"] = catalog
+        __props__["credential"] = credential
+        __props__["externalLocation"] = external_location
+        __props__["foreignConnection"] = foreign_connection
+        __props__["function"] = function
+        __props__["grants"] = grants
+        __props__["mcpService"] = mcp_service
+        __props__["metastore"] = metastore
+        __props__["model"] = model
+        __props__["modelProviderService"] = model_provider_service
+        __props__["modelService"] = model_service
+        __props__["pipeline"] = pipeline
+        __props__["providerConfig"] = provider_config
+        __props__["recipient"] = recipient
+        __props__["schema"] = schema
+        __props__["secret"] = secret
+        __props__["share"] = share
+        __props__["storageCredential"] = storage_credential
+        __props__["table"] = table
+        __props__["volume"] = volume
+        return pulumi.runtime.exists_resource(None, 'databricks:index/grants:Grants', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def catalog(self) -> pulumi.Output[Optional[_builtins.str]]:

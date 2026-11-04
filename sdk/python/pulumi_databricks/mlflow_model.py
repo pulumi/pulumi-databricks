@@ -367,6 +367,22 @@ class MlflowModel(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return MlflowModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MlflowModelProviderConfigArgs', 'MlflowModelProviderConfigArgsDict', 'outputs.MlflowModelProviderConfig']]] = None,
+            registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict', 'outputs.MlflowModelTag']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["registeredModelId"] = registered_model_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'databricks:index/mlflowModel:MlflowModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

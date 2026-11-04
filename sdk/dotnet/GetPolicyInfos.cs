@@ -20,8 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
         /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Policies on a Securable
@@ -55,8 +53,6 @@ namespace Pulumi.Databricks
         /// 
         /// ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
         /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### List All Policies on a Securable
@@ -89,8 +85,6 @@ namespace Pulumi.Databricks
         /// Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
         /// 
         /// ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
-        /// 
-        /// 
         /// 
         /// ## Example Usage
         /// 

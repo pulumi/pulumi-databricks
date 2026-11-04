@@ -20,7 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to a failover group by its resource name:
@@ -53,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to a failover group by its resource name:
@@ -85,7 +83,6 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single failover group by its fully qualified resource name.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// 
         /// ## Example Usage
         /// 

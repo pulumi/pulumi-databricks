@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single AI Search endpoint by name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// # Example: AI Search Endpoint Datasource (Singular)
@@ -49,7 +48,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get a single AI Search endpoint by name.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// # Example: AI Search Endpoint Datasource (Singular)
@@ -79,7 +77,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
         /// This data source can be used to get a single AI Search endpoint by name.
-        /// 
         /// 
         /// ## Example Usage
         /// 

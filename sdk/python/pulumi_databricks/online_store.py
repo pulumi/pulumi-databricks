@@ -364,6 +364,28 @@ class OnlineStore(pulumi.CustomResource):
         __props__.__dict__["usage_policy_id"] = usage_policy_id
         return OnlineStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict', 'outputs.OnlineStoreProviderConfig']]] = None,
+            read_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacity"] = capacity
+        __props__["creationTime"] = creation_time
+        __props__["creator"] = creator
+        __props__["name"] = name
+        __props__["providerConfig"] = provider_config
+        __props__["readReplicaCount"] = read_replica_count
+        __props__["state"] = state
+        __props__["usagePolicyId"] = usage_policy_id
+        return pulumi.runtime.exists_resource(None, 'databricks:index/onlineStore:OnlineStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[_builtins.str]:

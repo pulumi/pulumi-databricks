@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `Name` uses the format `principals/{principal_id}/workspace-identity-detail`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -49,7 +48,6 @@ namespace Pulumi.Databricks
         /// 
         /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `Name` uses the format `principals/{principal_id}/workspace-identity-detail`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example usage:
@@ -79,7 +77,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
         /// Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status. The `Name` uses the format `principals/{principal_id}/workspace-identity-detail`.
-        /// 
         /// 
         /// ## Example Usage
         /// 

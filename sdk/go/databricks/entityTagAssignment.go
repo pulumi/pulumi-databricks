@@ -185,6 +185,12 @@ func (EntityTagAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entityTagAssignmentState)(nil)).Elem()
 }
 
+// EntityTagAssignmentExists checks whether an existing EntityTagAssignment resource with the given ID exists.
+func EntityTagAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntityTagAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/entityTagAssignment:EntityTagAssignment", id, state, "", opts...)
+}
+
 type entityTagAssignmentArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`

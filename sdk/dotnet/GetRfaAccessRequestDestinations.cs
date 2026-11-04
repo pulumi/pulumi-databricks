@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to RFA access request destinations by securable type and full name:
@@ -50,7 +49,6 @@ namespace Pulumi.Databricks
         /// 
         /// This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Referring to RFA access request destinations by securable type and full name:
@@ -81,7 +79,6 @@ namespace Pulumi.Databricks
         /// [API Documentation](https://docs.databricks.com/api/workspace/rfa)
         /// 
         /// This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -347,6 +347,22 @@ class Directory(pulumi.CustomResource):
         __props__.__dict__["workspace_path"] = workspace_path
         return Directory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_recursive: pulumi.Input[Optional[_builtins.bool]] = None,
+            object_id: pulumi.Input[Optional[_builtins.int]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict', 'outputs.DirectoryProviderConfig']]] = None,
+            workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteRecursive"] = delete_recursive
+        __props__["objectId"] = object_id
+        __props__["path"] = path
+        __props__["providerConfig"] = provider_config
+        __props__["workspacePath"] = workspace_path
+        return pulumi.runtime.exists_resource(None, 'databricks:index/directory:Directory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deleteRecursive")
     def delete_recursive(self) -> pulumi.Output[Optional[_builtins.bool]]:

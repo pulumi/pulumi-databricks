@@ -81,11 +81,10 @@ public class Notebook extends com.pulumi.resources.CustomResource {
         return this.objectId;
     }
     /**
-     * @deprecated
-     * Always is a notebook
+     * @deprecated Always is a notebook
      * 
      */
-    @Deprecated /* Always is a notebook */
+    @Deprecated
     @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 

@@ -19,7 +19,6 @@ namespace Pulumi.Databricks
         /// Lists the Sandboxes visible to the caller in the workspace, returning each sandbox's spec and
         /// current runtime status. Use this data source to enumerate existing sandboxes.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -46,7 +45,6 @@ namespace Pulumi.Databricks
         /// Lists the Sandboxes visible to the caller in the workspace, returning each sandbox's spec and
         /// current runtime status. Use this data source to enumerate existing sandboxes.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,7 +70,6 @@ namespace Pulumi.Databricks
         /// 
         /// Lists the Sandboxes visible to the caller in the workspace, returning each sandbox's spec and
         /// current runtime status. Use this data source to enumerate existing sandboxes.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -91,11 +91,10 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bindingType);
     }
     /**
-     * @deprecated
-     * Please use &#39;securable_name&#39; and &#39;securable_type instead.
+     * @deprecated Please use &#39;securable_name&#39; and &#39;securable_type instead.
      * 
      */
-    @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
+    @Deprecated
     @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> catalogName;
 

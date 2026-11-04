@@ -237,6 +237,12 @@ func (AiSearchEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSearchEndpointState)(nil)).Elem()
 }
 
+// AiSearchEndpointExists checks whether an existing AiSearchEndpoint resource with the given ID exists.
+func AiSearchEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSearchEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/aiSearchEndpoint:AiSearchEndpoint", id, state, "", opts...)
+}
+
 type aiSearchEndpointArgs struct {
 	// The user-selected budget policy id for the endpoint
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`

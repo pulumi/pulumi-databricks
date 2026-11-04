@@ -232,6 +232,12 @@ func (AiGatewayModelProviderServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiGatewayModelProviderServiceState)(nil)).Elem()
 }
 
+// AiGatewayModelProviderServiceExists checks whether an existing AiGatewayModelProviderService resource with the given ID exists.
+func AiGatewayModelProviderServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiGatewayModelProviderServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService", id, state, "", opts...)
+}
+
 type aiGatewayModelProviderServiceArgs struct {
 	// User-provided description
 	Comment *string `pulumi:"comment"`

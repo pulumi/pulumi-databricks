@@ -629,6 +629,40 @@ class ExternalMetadata(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ExternalMetadata(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']]] = None,
+            system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["columns"] = columns
+        __props__["createTime"] = create_time
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["entityType"] = entity_type
+        __props__["metastoreId"] = metastore_id
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["properties"] = properties
+        __props__["providerConfig"] = provider_config
+        __props__["systemType"] = system_type
+        __props__["updateTime"] = update_time
+        __props__["updatedBy"] = updated_by
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'databricks:index/externalMetadata:ExternalMetadata', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def columns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

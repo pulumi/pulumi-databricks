@@ -300,11 +300,10 @@ public class Library extends com.pulumi.resources.CustomResource {
     /**
      * Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
      * 
-     * @deprecated
-     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
      */
-    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
+    @Deprecated
     @Export(name="egg", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> egg;
 

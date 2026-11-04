@@ -47,20 +47,18 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     @Import(name="databricksAccountId")
     private @Nullable Output<String> databricksAccountId;
 
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<String>> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -168,11 +166,10 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
         /**
          * @return builder
          * 
-         * @deprecated
-         * databricks_account_id will be will be removed in the next major release.
+         * @deprecated databricks_account_id will be will be removed in the next major release.
          * 
          */
-        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+        @Deprecated
         public Builder databricksAccountId(@Nullable Output<String> databricksAccountId) {
             $.databricksAccountId = databricksAccountId;
             return this;
@@ -181,11 +178,10 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
         /**
          * @return builder
          * 
-         * @deprecated
-         * databricks_account_id will be will be removed in the next major release.
+         * @deprecated databricks_account_id will be will be removed in the next major release.
          * 
          */
-        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+        @Deprecated
         public Builder databricksAccountId(String databricksAccountId) {
             return databricksAccountId(Output.of(databricksAccountId));
         }

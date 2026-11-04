@@ -28,7 +28,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a data quality monitor by Unity Catalog object type (currently supports `Schema` and `Table`) and object id:
@@ -75,7 +74,6 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Getting a data quality monitor by Unity Catalog object type (currently supports `Schema` and `Table`) and object id:
@@ -121,7 +119,6 @@ namespace Pulumi.Databricks
         ///    - **SELECT** privilege on the table.
         /// 
         /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// 
         /// ## Example Usage
         /// 

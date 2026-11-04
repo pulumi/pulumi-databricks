@@ -650,6 +650,40 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            business_owner_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            draft: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_draft: pulumi.Input[Optional[_builtins.bool]] = None,
+            icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict', 'outputs.DomainIcon']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict', 'outputs.DomainProviderConfig']]] = None,
+            subtitle: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            technical_owner_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["businessOwnerIds"] = business_owner_ids
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["domainId"] = domain_id
+        __props__["draft"] = draft
+        __props__["effectiveDraft"] = effective_draft
+        __props__["icon"] = icon
+        __props__["name"] = name
+        __props__["parentDomainId"] = parent_domain_id
+        __props__["providerConfig"] = provider_config
+        __props__["subtitle"] = subtitle
+        __props__["tagKey"] = tag_key
+        __props__["technicalOwnerIds"] = technical_owner_ids
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'databricks:index/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="businessOwnerIds")
     def business_owner_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:

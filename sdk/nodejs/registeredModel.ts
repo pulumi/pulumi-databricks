@@ -53,6 +53,17 @@ export class RegisteredModel extends pulumi.CustomResource {
         return new RegisteredModel(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RegisteredModel resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RegisteredModelState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("databricks:index/registeredModel:RegisteredModel", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'databricks:index/registeredModel:RegisteredModel';
 

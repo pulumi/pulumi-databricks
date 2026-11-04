@@ -35,22 +35,20 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
-     * @deprecated
-     * Use databricks.DefaultNamespaceSetting resource instead
+     * @deprecated Use databricks.DefaultNamespaceSetting resource instead
      * 
      */
-    @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
+    @Deprecated
     @Import(name="defaultCatalogName")
     private @Nullable Output<String> defaultCatalogName;
 
     /**
      * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
-     * @deprecated
-     * Use databricks.DefaultNamespaceSetting resource instead
+     * @deprecated Use databricks.DefaultNamespaceSetting resource instead
      * 
      */
-    @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
+    @Deprecated
     public Optional<Output<String>> defaultCatalogName() {
         return Optional.ofNullable(this.defaultCatalogName);
     }
@@ -154,11 +152,10 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use databricks.DefaultNamespaceSetting resource instead
+         * @deprecated Use databricks.DefaultNamespaceSetting resource instead
          * 
          */
-        @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
+        @Deprecated
         public Builder defaultCatalogName(@Nullable Output<String> defaultCatalogName) {
             $.defaultCatalogName = defaultCatalogName;
             return this;
@@ -169,11 +166,10 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use databricks.DefaultNamespaceSetting resource instead
+         * @deprecated Use databricks.DefaultNamespaceSetting resource instead
          * 
          */
-        @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
+        @Deprecated
         public Builder defaultCatalogName(String defaultCatalogName) {
             return defaultCatalogName(Output.of(defaultCatalogName));
         }

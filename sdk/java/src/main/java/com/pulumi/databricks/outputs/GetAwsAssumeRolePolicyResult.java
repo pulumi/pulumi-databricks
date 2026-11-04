@@ -15,11 +15,10 @@ import javax.annotation.Nullable;
 public final class GetAwsAssumeRolePolicyResult {
     private @Nullable String awsPartition;
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     private @Nullable String databricksAccountId;
     private String externalId;
     private @Nullable Boolean forLogDelivery;
@@ -39,11 +38,10 @@ public final class GetAwsAssumeRolePolicyResult {
         return Optional.ofNullable(this.awsPartition);
     }
     /**
-     * @deprecated
-     * databricks_account_id will be will be removed in the next major release.
+     * @deprecated databricks_account_id will be will be removed in the next major release.
      * 
      */
-    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
+    @Deprecated
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }

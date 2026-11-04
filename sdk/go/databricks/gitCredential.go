@@ -222,6 +222,12 @@ func (GitCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitCredentialState)(nil)).Elem()
 }
 
+// GitCredentialExists checks whether an existing GitCredential resource with the given ID exists.
+func GitCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/gitCredential:GitCredential", id, state, "", opts...)
+}
+
 type gitCredentialArgs struct {
 	// specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
 	Force *bool `pulumi:"force"`

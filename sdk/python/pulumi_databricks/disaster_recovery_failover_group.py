@@ -611,6 +611,42 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         __props__.__dict__["workspace_sets"] = workspace_sets
         return DisasterRecoveryFailoverGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            has_replication_point_blocking_errors: pulumi.Input[Optional[_builtins.bool]] = None,
+            initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_replication_progress: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupInitialReplicationProgressArgs', 'DisasterRecoveryFailoverGroupInitialReplicationProgressArgsDict', 'outputs.DisasterRecoveryFailoverGroupInitialReplicationProgress']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            replication_point: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict', 'outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict', 'outputs.DisasterRecoveryFailoverGroupWorkspaceSet']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["effectivePrimaryRegion"] = effective_primary_region
+        __props__["etag"] = etag
+        __props__["failoverGroupId"] = failover_group_id
+        __props__["hasReplicationPointBlockingErrors"] = has_replication_point_blocking_errors
+        __props__["initialPrimaryRegion"] = initial_primary_region
+        __props__["initialReplicationProgress"] = initial_replication_progress
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["regions"] = regions
+        __props__["replicationPoint"] = replication_point
+        __props__["state"] = state
+        __props__["unityCatalogAssets"] = unity_catalog_assets
+        __props__["updateTime"] = update_time
+        __props__["workspaceSets"] = workspace_sets
+        return pulumi.runtime.exists_resource(None, 'databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

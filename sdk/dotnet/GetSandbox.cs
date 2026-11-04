@@ -19,7 +19,6 @@ namespace Pulumi.Databricks
         /// Retrieves the configuration and runtime status of a single Sandbox by its resource name.
         /// Use this data source to read an existing sandbox's spec and its current lifecycle state.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -49,7 +48,6 @@ namespace Pulumi.Databricks
         /// Retrieves the configuration and runtime status of a single Sandbox by its resource name.
         /// Use this data source to read an existing sandbox's spec and its current lifecycle state.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,7 +76,6 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves the configuration and runtime status of a single Sandbox by its resource name.
         /// Use this data source to read an existing sandbox's spec and its current lifecycle state.
-        /// 
         /// 
         /// ## Example Usage
         /// 

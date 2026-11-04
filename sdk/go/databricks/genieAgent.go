@@ -278,6 +278,12 @@ func (GenieAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*genieAgentState)(nil)).Elem()
 }
 
+// GenieAgentExists checks whether an existing GenieAgent resource with the given ID exists.
+func GenieAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GenieAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("databricks:index/genieAgent:GenieAgent", id, state, "", opts...)
+}
+
 type genieAgentArgs struct {
 	// The definition of the Genie Agent: its sample questions, data sources, instructions, and
 	// benchmarks. Must set at least one field. Returned on get and on list with

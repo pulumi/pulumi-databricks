@@ -86,11 +86,10 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
-     * @deprecated
-     * Use databricks.DefaultNamespaceSetting resource instead
+     * @deprecated Use databricks.DefaultNamespaceSetting resource instead
      * 
      */
-    @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
+    @Deprecated
     @Export(name="defaultCatalogName", refs={String.class}, tree="[0]")
     private Output<String> defaultCatalogName;
 
