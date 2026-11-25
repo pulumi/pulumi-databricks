@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -42,10 +42,9 @@ export function getAccountIamExternalGroupV2(args: GetAccountIamExternalGroupV2A
  */
 export interface GetAccountIamExternalGroupV2Args {
     /**
-     * The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      */
     name: string;
 }
@@ -55,31 +54,30 @@ export interface GetAccountIamExternalGroupV2Args {
  */
 export interface GetAccountIamExternalGroupV2Result {
     /**
-     * (string) - The parent account ID, from Databricks
+     * (string) - The ID of the account that contains the group
      */
     readonly accountId: string;
     /**
-     * (string) - Display name of the group from the customer's IdP
+     * (string) - The name of the group, from your IdP. It's the same as the group's `groupName`
      */
     readonly displayName: string;
     /**
-     * (string) - The external ID of the group in the customer's IdP
+     * (string) - The ID of the group in your IdP
      */
     readonly externalGroupId: string;
     /**
-     * (string) - Internal groupId of the group in Databricks
+     * (string) - The Databricks ID of the group. Use it as the `groupId` in the group APIs
      */
     readonly internalId: string;
     /**
-     * (string) - The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * (string) - The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      */
     readonly name: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -116,10 +114,9 @@ export function getAccountIamExternalGroupV2Output(args: GetAccountIamExternalGr
  */
 export interface GetAccountIamExternalGroupV2OutputArgs {
     /**
-     * The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      */
     name: pulumi.Input<string>;
 }

@@ -13,17 +13,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotificationDestinationConfigDatabricksAppSlack {
     /**
-     * @return Slack channel ID for notifications.
+     * @return Slack channel ID notifications are posted to.
      * 
      */
     private @Nullable String channelId;
     private @Nullable Boolean channelIdSet;
+    /**
+     * @return Slack workspace (team) ID the Databricks app is installed in.
+     * 
+     */
     private @Nullable String teamId;
     private @Nullable Boolean teamIdSet;
 
     private NotificationDestinationConfigDatabricksAppSlack() {}
     /**
-     * @return Slack channel ID for notifications.
+     * @return Slack channel ID notifications are posted to.
      * 
      */
     public Optional<String> channelId() {
@@ -32,6 +36,10 @@ public final class NotificationDestinationConfigDatabricksAppSlack {
     public Optional<Boolean> channelIdSet() {
         return Optional.ofNullable(this.channelIdSet);
     }
+    /**
+     * @return Slack workspace (team) ID the Databricks app is installed in.
+     * 
+     */
     public Optional<String> teamId() {
         return Optional.ofNullable(this.teamId);
     }

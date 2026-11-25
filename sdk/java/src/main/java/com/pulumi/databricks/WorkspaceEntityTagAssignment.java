@@ -139,14 +139,14 @@ public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomRes
         return this.tagKey;
     }
     /**
-     * The value of the tag
+     * The value of the tag. If the value is omitted, the tag is assigned with its key only
      * 
      */
     @Export(name="tagValue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagValue;
 
     /**
-     * @return The value of the tag
+     * @return The value of the tag. If the value is omitted, the tag is assigned with its key only
      * 
      */
     public Output<Optional<String>> tagValue() {

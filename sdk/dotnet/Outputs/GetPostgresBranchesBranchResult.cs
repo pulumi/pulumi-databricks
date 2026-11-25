@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresBranchesBranchProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (BranchSpec) - The spec contains the branch configuration
+        /// (BranchSpec) - The spec contains the branch configuration.
         /// </summary>
         public readonly Outputs.GetPostgresBranchesBranchSpecResult Spec;
         /// <summary>

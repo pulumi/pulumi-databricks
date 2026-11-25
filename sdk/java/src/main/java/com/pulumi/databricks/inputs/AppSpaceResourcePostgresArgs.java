@@ -15,9 +15,19 @@ public final class AppSpaceResourcePostgresArgs extends com.pulumi.resources.Res
 
     public static final AppSpaceResourcePostgresArgs Empty = new AppSpaceResourcePostgresArgs();
 
+    /**
+     * Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
+     * 
+     */
     @Import(name="branch")
     private @Nullable Output<String> branch;
 
+    /**
+     * @return Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
+     * 
+     */
     public Optional<Output<String>> branch() {
         return Optional.ofNullable(this.branch);
     }
@@ -62,11 +72,25 @@ public final class AppSpaceResourcePostgresArgs extends com.pulumi.resources.Res
             $ = new AppSpaceResourcePostgresArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param branch Resource name of the Lakebase Autoscaling branch, in the form
+         * `projects/{project}/branches/{branch}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder branch(@Nullable Output<String> branch) {
             $.branch = branch;
             return this;
         }
 
+        /**
+         * @param branch Resource name of the Lakebase Autoscaling branch, in the form
+         * `projects/{project}/branches/{branch}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder branch(String branch) {
             return branch(Output.of(branch));
         }

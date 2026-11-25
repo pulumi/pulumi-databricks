@@ -126,6 +126,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetDataQualityMonitorsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The maximum number of monitors to return in one page
+        /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
@@ -143,6 +146,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetDataQualityMonitorsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The maximum number of monitors to return in one page
+        /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 

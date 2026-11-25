@@ -33,8 +33,9 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - Resource name of the model service.
         /// Format: `model-services/{catalog}.{schema}.{model_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         public readonly string Name;
         /// <summary>

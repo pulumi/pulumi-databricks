@@ -14,62 +14,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountSettingV2AutomaticClusterUpdateWorkspace {
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
      * 
      */
     private @Nullable Boolean canToggle;
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return (ClusterAutoRestartMessageEnablementDetails)
+     * @return (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
      * 
      */
     private @Nullable GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails enablementDetails;
     /**
-     * @return (ClusterAutoRestartMessageMaintenanceWindow)
+     * @return (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
      * 
      */
     private @Nullable GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow maintenanceWindow;
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
      * 
      */
     private @Nullable Boolean restartEvenIfNoUpdatesAvailable;
 
     private GetAccountSettingV2AutomaticClusterUpdateWorkspace() {}
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
      * 
      */
     public Optional<Boolean> canToggle() {
         return Optional.ofNullable(this.canToggle);
     }
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return (ClusterAutoRestartMessageEnablementDetails)
+     * @return (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
      * 
      */
     public Optional<GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails> enablementDetails() {
         return Optional.ofNullable(this.enablementDetails);
     }
     /**
-     * @return (ClusterAutoRestartMessageMaintenanceWindow)
+     * @return (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
      * 
      */
     public Optional<GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
      * 
      */
     public Optional<Boolean> restartEvenIfNoUpdatesAvailable() {

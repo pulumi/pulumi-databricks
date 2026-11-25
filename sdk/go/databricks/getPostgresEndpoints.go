@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -32,7 +32,7 @@ func GetPostgresEndpoints(ctx *pulumi.Context, args *GetPostgresEndpointsArgs, o
 
 // A collection of arguments for invoking getPostgresEndpoints.
 type GetPostgresEndpointsArgs struct {
-	// Upper bound for items returned. Cannot be negative
+	// Upper bound for the number of endpoints returned. If set, the value must be at least 10
 	PageSize *int `pulumi:"pageSize"`
 	// The Branch that owns this collection of endpoints.
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -58,7 +58,7 @@ func GetPostgresEndpointsOutput(ctx *pulumi.Context, args GetPostgresEndpointsOu
 
 // A collection of arguments for invoking getPostgresEndpoints.
 type GetPostgresEndpointsOutputArgs struct {
-	// Upper bound for items returned. Cannot be negative
+	// Upper bound for the number of endpoints returned. If set, the value must be at least 10
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The Branch that owns this collection of endpoints.
 	// Format: projects/{project_id}/branches/{branch_id}

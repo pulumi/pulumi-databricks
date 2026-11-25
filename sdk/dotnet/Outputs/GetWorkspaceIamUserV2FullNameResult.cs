@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceIamUserV2FullNameResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - The user's family (last) name
         /// </summary>
         public readonly string? FamilyName;
         /// <summary>
-        /// (string)
+        /// (string) - The user's given (first) name
         /// </summary>
         public readonly string? GivenName;
 

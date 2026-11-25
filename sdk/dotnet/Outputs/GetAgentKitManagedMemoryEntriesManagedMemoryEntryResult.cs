@@ -36,7 +36,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        /// (string) - Absolute, case-sensitive path identifying the entry within its actor and, until the
+        /// deprecated `SessionId` is ignored, its optional session.
         /// Paths must begin with `/` and must not contain empty, `.` or `..` segments
         /// </summary>
         public readonly string Path;
@@ -45,12 +46,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAgentKitManagedMemoryEntriesManagedMemoryEntryProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// Optional session identifier. When set, only entries with this exact `SessionId` are
-        /// returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+        /// Deprecated: the service will ignore this filter. Until then, when set, only entries with
+        /// this exact `SessionId` are returned, and omitted-session (cross-session) entries
+        /// are not included. Ignored when path is set
         /// </summary>
         public readonly string SessionId;
         /// <summary>
-        /// (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        /// (string) - Which writer created this entry. Caller sets this on Create; immutable after creation.
+        /// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         /// </summary>
         public readonly string SourceType;
         /// <summary>

@@ -18,14 +18,18 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
     public static final GetDatabaseInstanceArgs Empty = new GetDatabaseInstanceArgs();
 
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the instance. This is the unique identifier for the instance
+     * @return The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     public Output<String> name() {
@@ -73,7 +77,9 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the instance. This is the unique identifier for the instance
+         * @param name The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+         * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+         * consecutive hyphens
          * 
          * @return builder
          * 
@@ -84,7 +90,9 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the instance. This is the unique identifier for the instance
+         * @param name The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+         * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+         * consecutive hyphens
          * 
          * @return builder
          * 

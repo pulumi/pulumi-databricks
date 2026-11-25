@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -58,32 +58,34 @@ func LookupAccountIamUserV2(ctx *pulumi.Context, args *LookupAccountIamUserV2Arg
 
 // A collection of arguments for invoking getAccountIamUserV2.
 type LookupAccountIamUserV2Args struct {
-	// The resource name of the user. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/users/{user_id}
-	// - Workspace-scoped: users/{user_id}
+	// The resource name of the user, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/users/{user_id}`
+	// - Workspace APIs: `users/{user_id}`
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamUserV2.
 type LookupAccountIamUserV2Result struct {
-	// (string) - The accountId parent of the user in Databricks
+	// (string) - The ID of the account that contains the user
 	AccountId string `pulumi:"accountId"`
-	// (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+	// (string) - Whether the user is active in the account. New users are active unless you set this to
+	// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
 	AccountUserStatus string `pulumi:"accountUserStatus"`
-	// (string) - ExternalId of the user in the customer's IdP
+	// (string) - The ID of the user in your identity provider (IdP)
 	ExternalId string `pulumi:"externalId"`
-	// (UserFullName)
+	// (UserFullName) - The user's name
 	FullName GetAccountIamUserV2FullName `pulumi:"fullName"`
-	// (string) - The resource name of the user. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/users/{user_id}
-	// - Workspace-scoped: users/{user_id}
+	// (string) - The resource name of the user, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/users/{user_id}`
+	// - Workspace APIs: `users/{user_id}`
 	Name string `pulumi:"name"`
-	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-	// account-scoped and workspace-scoped APIs return it
+	// (string) - The resource name of the account that contains the user, in the format
+	// `accounts/{account_id}`. Workspace APIs return the same format
 	Parent string `pulumi:"parent"`
-	// (string) - Internal userId of the user in Databricks
+	// (string) - The Databricks ID of the user
 	UserId string `pulumi:"userId"`
-	// (string) - Username/email of the user
+	// (string) - The user's username, which is their email address. It can't be changed after the user is
+	// created
 	Username string `pulumi:"username"`
 }
 
@@ -94,9 +96,9 @@ func LookupAccountIamUserV2Output(ctx *pulumi.Context, args LookupAccountIamUser
 
 // A collection of arguments for invoking getAccountIamUserV2.
 type LookupAccountIamUserV2OutputArgs struct {
-	// The resource name of the user. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/users/{user_id}
-	// - Workspace-scoped: users/{user_id}
+	// The resource name of the user, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/users/{user_id}`
+	// - Workspace APIs: `users/{user_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -119,45 +121,47 @@ func (o LookupAccountIamUserV2ResultOutput) ToLookupAccountIamUserV2ResultOutput
 	return o
 }
 
-// (string) - The accountId parent of the user in Databricks
+// (string) - The ID of the account that contains the user
 func (o LookupAccountIamUserV2ResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+// (string) - Whether the user is active in the account. New users are active unless you set this to
+// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
 func (o LookupAccountIamUserV2ResultOutput) AccountUserStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.AccountUserStatus }).(pulumi.StringOutput)
 }
 
-// (string) - ExternalId of the user in the customer's IdP
+// (string) - The ID of the user in your identity provider (IdP)
 func (o LookupAccountIamUserV2ResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// (UserFullName)
+// (UserFullName) - The user's name
 func (o LookupAccountIamUserV2ResultOutput) FullName() GetAccountIamUserV2FullNameOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) GetAccountIamUserV2FullName { return v.FullName }).(GetAccountIamUserV2FullNameOutput)
 }
 
-// (string) - The resource name of the user. The format depends on the API that returned it:
-// - Account-scoped: accounts/{account_id}/users/{user_id}
-// - Workspace-scoped: users/{user_id}
+// (string) - The resource name of the user, in one of these formats:
+// - Account APIs: `accounts/{account_id}/users/{user_id}`
+// - Workspace APIs: `users/{user_id}`
 func (o LookupAccountIamUserV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-// account-scoped and workspace-scoped APIs return it
+// (string) - The resource name of the account that contains the user, in the format
+// `accounts/{account_id}`. Workspace APIs return the same format
 func (o LookupAccountIamUserV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
-// (string) - Internal userId of the user in Databricks
+// (string) - The Databricks ID of the user
 func (o LookupAccountIamUserV2ResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// (string) - Username/email of the user
+// (string) - The user's username, which is their email address. It can't be changed after the user is
+// created
 func (o LookupAccountIamUserV2ResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamUserV2Result) string { return v.Username }).(pulumi.StringOutput)
 }

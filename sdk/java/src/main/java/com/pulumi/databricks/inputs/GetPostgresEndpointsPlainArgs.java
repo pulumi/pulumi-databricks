@@ -18,14 +18,14 @@ public final class GetPostgresEndpointsPlainArgs extends com.pulumi.resources.In
     public static final GetPostgresEndpointsPlainArgs Empty = new GetPostgresEndpointsPlainArgs();
 
     /**
-     * Upper bound for items returned. Cannot be negative
+     * Upper bound for the number of endpoints returned. If set, the value must be at least 10
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Upper bound for items returned. Cannot be negative
+     * @return Upper bound for the number of endpoints returned. If set, the value must be at least 10
      * 
      */
     public Optional<Integer> pageSize() {
@@ -91,7 +91,7 @@ public final class GetPostgresEndpointsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param pageSize Upper bound for items returned. Cannot be negative
+         * @param pageSize Upper bound for the number of endpoints returned. If set, the value must be at least 10
          * 
          * @return builder
          * 

@@ -19,19 +19,24 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-        /// Defaults to false
+        /// (boolean) - Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+        /// on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+        /// UpdateFailoverGroup
         /// </summary>
         public readonly bool? ReplicateWorkspaceAssets;
         /// <summary>
         /// (list of string) - Resource names of stable URLs associated with this workspace set.
         /// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-        /// The referenced stable URLs must already exist (via CreateStableUrl)
+        /// The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+        /// be set when ReplicateWorkspaceAssets is true. While workspace asset replication stays
+        /// enabled, an update can attach or detach one stable URL at a time
         /// </summary>
         public readonly ImmutableArray<string> StableUrlNames;
         /// <summary>
-        /// (list of string) - Workspace IDs in this set. The system derives and validates regions.
-        /// All workspaces must be in the Mission Critical tier
+        /// (list of string) - IDs of the two workspaces in this set, one in each of the failover group's regions. The
+        /// system derives and validates each workspace's region. Both workspaces must belong to the
+        /// account and have the Mission Critical add-on enabled, and they cannot be changed after
+        /// creation
         /// </summary>
         public readonly ImmutableArray<string> WorkspaceIds;
 

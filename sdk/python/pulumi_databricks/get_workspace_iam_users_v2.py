@@ -59,8 +59,8 @@ class GetWorkspaceIamUsersV2Result:
     @pulumi.getter
     def parent(self) -> Optional[_builtins.str]:
         """
-        (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the user, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -94,7 +94,7 @@ def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
                                provider_config: Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamUsersV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -114,11 +114,12 @@ def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str filter: Optional. Allows filtering users by username or external id
-    :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-           defaults to the account of the calling workspace, and any other account is rejected
+    :param _builtins.str filter: Filters users by `username` or `external_id`, for example
+           `username eq "someone@example.com"`. Put the value in quotes
+    :param _builtins.int page_size: The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+           fewer users
+    :param _builtins.str parent: The resource name of the account to list users in, in the format `accounts/{account_id}`.
+           Defaults to the account that contains this workspace. Any other account is rejected
     :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -141,7 +142,7 @@ def get_workspace_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_bu
                                       provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamUsersV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -161,11 +162,12 @@ def get_workspace_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_bu
     ```
 
 
-    :param _builtins.str filter: Optional. Allows filtering users by username or external id
-    :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-           defaults to the account of the calling workspace, and any other account is rejected
+    :param _builtins.str filter: Filters users by `username` or `external_id`, for example
+           `username eq "someone@example.com"`. Put the value in quotes
+    :param _builtins.int page_size: The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+           fewer users
+    :param _builtins.str parent: The resource name of the account to list users in, in the format `accounts/{account_id}`.
+           Defaults to the account that contains this workspace. Any other account is rejected
     :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

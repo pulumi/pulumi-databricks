@@ -16,14 +16,14 @@ public final class SandboxStatusArgs extends com.pulumi.resources.ResourceArgs {
     public static final SandboxStatusArgs Empty = new SandboxStatusArgs();
 
     /**
-     * (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * (string) - Lifecycle state of the sandbox.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * @return (string) - Lifecycle state of the sandbox.
      * 
      */
     public Optional<Output<String>> state() {
@@ -55,7 +55,7 @@ public final class SandboxStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+         * @param state (string) - Lifecycle state of the sandbox.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SandboxStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+         * @param state (string) - Lifecycle state of the sandbox.
          * 
          * @return builder
          * 

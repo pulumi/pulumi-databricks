@@ -17,14 +17,16 @@ public final class GetAccountIamUsersV2PlainArgs extends com.pulumi.resources.In
     public static final GetAccountIamUsersV2PlainArgs Empty = new GetAccountIamUsersV2PlainArgs();
 
     /**
-     * Optional. Allows filtering users by username or external id
+     * Filters users by `username` or `externalId`, for example
+     * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
      * 
      */
     @Import(name="filter")
     private @Nullable String filter;
 
     /**
-     * @return Optional. Allows filtering users by username or external id
+     * @return Filters users by `username` or `externalId`, for example
+     * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
      * 
      */
     public Optional<String> filter() {
@@ -32,16 +34,16 @@ public final class GetAccountIamUsersV2PlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      * 
      */
     public Optional<Integer> pageSize() {
@@ -49,16 +51,14 @@ public final class GetAccountIamUsersV2PlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`
      * 
      */
     @Import(name="parent", required=true)
     private String parent;
 
     /**
-     * @return The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * @return The resource name of the account to list users in, in the format `accounts/{account_id}`
      * 
      */
     public String parent() {
@@ -92,7 +92,8 @@ public final class GetAccountIamUsersV2PlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param filter Optional. Allows filtering users by username or external id
+         * @param filter Filters users by `username` or `externalId`, for example
+         * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
          * 
          * @return builder
          * 
@@ -103,8 +104,8 @@ public final class GetAccountIamUsersV2PlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param pageSize The maximum number of users to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+         * fewer users
          * 
          * @return builder
          * 
@@ -115,8 +116,7 @@ public final class GetAccountIamUsersV2PlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param parent The parent resource name of the account whose users to list.
-         * Format: accounts/{account_id}
+         * @param parent The resource name of the account to list users in, in the format `accounts/{account_id}`
          * 
          * @return builder
          * 

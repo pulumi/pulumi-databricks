@@ -18,9 +18,8 @@ import javax.annotation.Nullable;
 public final class GetWorkspaceIamWorkspaceAssignmentsV2Result {
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * @return (string) - The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      * 
      */
     private @Nullable String parent;
@@ -32,9 +31,8 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Result {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * @return (string) - The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      * 
      */
     public Optional<String> parent() {

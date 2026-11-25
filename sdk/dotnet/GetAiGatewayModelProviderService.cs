@@ -121,8 +121,9 @@ namespace Pulumi.Databricks
         /// Resource name of the provider service.
         /// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelProviderServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelProviderServiceId`; it is required and immutable on
+        /// Update, Get, and Delete
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -145,8 +146,9 @@ namespace Pulumi.Databricks
         /// Resource name of the provider service.
         /// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelProviderServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelProviderServiceId`; it is required and immutable on
+        /// Update, Get, and Delete
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -182,11 +184,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model provider service
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - Owner of the model provider service
+        /// (string) - Username or group name of the model provider service owner
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
@@ -197,7 +199,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// (string) - Metastore hosting the provider service
+        /// (string) - Unique identifier of the metastore that contains the model provider service
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
@@ -213,7 +215,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model provider service
         /// </summary>
         public readonly string UpdatedBy;
 

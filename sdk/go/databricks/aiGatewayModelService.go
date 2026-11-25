@@ -74,24 +74,27 @@ type AiGatewayModelService struct {
 	Config AiGatewayModelServiceConfigPtrOutput `pulumi:"config"`
 	// (string) - Time the model service was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model service
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// (string) - Owner of the model service
+	// (string) - Username or group name of the model service owner
 	EffectiveOwner pulumi.StringOutput `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// (string) - Metastore hosting the model service
+	// (string) - Unique identifier of the metastore that contains the model service
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// Name for the model service, e.g. "myModelService"
+	// Name of the model service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	ModelServiceId pulumi.StringOutput `pulumi:"modelServiceId"`
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -106,7 +109,7 @@ type AiGatewayModelService struct {
 	SupportedApiTypes pulumi.StringArrayOutput `pulumi:"supportedApiTypes"`
 	// (string) - Time the model service was last modified
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model service
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
@@ -154,24 +157,27 @@ type aiGatewayModelServiceState struct {
 	Config *AiGatewayModelServiceConfig `pulumi:"config"`
 	// (string) - Time the model service was created
 	CreateTime *string `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model service
 	CreatedBy *string `pulumi:"createdBy"`
-	// (string) - Owner of the model service
+	// (string) - Username or group name of the model service owner
 	EffectiveOwner *string `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag *string `pulumi:"etag"`
-	// (string) - Metastore hosting the model service
+	// (string) - Unique identifier of the metastore that contains the model service
 	MetastoreId *string `pulumi:"metastoreId"`
-	// Name for the model service, e.g. "myModelService"
+	// Name of the model service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	ModelServiceId *string `pulumi:"modelServiceId"`
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name *string `pulumi:"name"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -186,7 +192,7 @@ type aiGatewayModelServiceState struct {
 	SupportedApiTypes []string `pulumi:"supportedApiTypes"`
 	// (string) - Time the model service was last modified
 	UpdateTime *string `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model service
 	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
@@ -199,24 +205,27 @@ type AiGatewayModelServiceState struct {
 	Config AiGatewayModelServiceConfigPtrInput
 	// (string) - Time the model service was created
 	CreateTime pulumi.StringPtrInput
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model service
 	CreatedBy pulumi.StringPtrInput
-	// (string) - Owner of the model service
+	// (string) - Username or group name of the model service owner
 	EffectiveOwner pulumi.StringPtrInput
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag pulumi.StringPtrInput
-	// (string) - Metastore hosting the model service
+	// (string) - Unique identifier of the metastore that contains the model service
 	MetastoreId pulumi.StringPtrInput
-	// Name for the model service, e.g. "myModelService"
+	// Name of the model service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	ModelServiceId pulumi.StringPtrInput
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name pulumi.StringPtrInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -231,7 +240,7 @@ type AiGatewayModelServiceState struct {
 	SupportedApiTypes pulumi.StringArrayInput
 	// (string) - Time the model service was last modified
 	UpdateTime pulumi.StringPtrInput
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model service
 	UpdatedBy pulumi.StringPtrInput
 }
 
@@ -252,7 +261,9 @@ type aiGatewayModelServiceArgs struct {
 	// Required on Create. On Update, provide this field when `updateMask`
 	// contains `config` or one of its subpaths
 	Config *AiGatewayModelServiceConfig `pulumi:"config"`
-	// Name for the model service, e.g. "myModelService"
+	// Name of the model service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	ModelServiceId string `pulumi:"modelServiceId"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -270,7 +281,9 @@ type AiGatewayModelServiceArgs struct {
 	// Required on Create. On Update, provide this field when `updateMask`
 	// contains `config` or one of its subpaths
 	Config AiGatewayModelServiceConfigPtrInput
-	// Name for the model service, e.g. "myModelService"
+	// Name of the model service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	ModelServiceId pulumi.StringInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -384,12 +397,12 @@ func (o AiGatewayModelServiceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Creator identity
+// (string) - Username of the user who created the model service
 func (o AiGatewayModelServiceOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the model service
+// (string) - Username or group name of the model service owner
 func (o AiGatewayModelServiceOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
@@ -402,12 +415,14 @@ func (o AiGatewayModelServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// (string) - Metastore hosting the model service
+// (string) - Unique identifier of the metastore that contains the model service
 func (o AiGatewayModelServiceOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Name for the model service, e.g. "myModelService"
+// Name of the model service within the parent schema. The name must not
+// contain periods, spaces, forward slashes, percent signs, or control characters,
+// and it is stored in lowercase
 func (o AiGatewayModelServiceOutput) ModelServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.ModelServiceId }).(pulumi.StringOutput)
 }
@@ -415,8 +430,9 @@ func (o AiGatewayModelServiceOutput) ModelServiceId() pulumi.StringOutput {
 // (string) - Resource name of the model service.
 // Format: `model-services/{catalog}.{schema}.{model_service}`.
 // Each `{...}` component is capped at 255 characters individually.
-// Server-derived on Create from `parent` +
-// `modelServiceId`; required and immutable on Update/Get/Delete
+// The server derives the name on Create from
+// `parent` and `modelServiceId`; it is required and immutable on Update,
+// Get, and Delete
 func (o AiGatewayModelServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -446,7 +462,7 @@ func (o AiGatewayModelServiceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Identity of the last updater
+// (string) - Username of the user who last updated the model service
 func (o AiGatewayModelServiceOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelService) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

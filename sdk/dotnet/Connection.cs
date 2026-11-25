@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
+    /// &gt; **Note** Write-Only argument `OptionsWo` is available to supply sensitive options (such as `Password`, `ClientSecret`, private keys or certificates) without storing them in the Pulumi state. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+    /// 
     /// Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
     /// 
     /// - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
@@ -232,6 +234,39 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// Create a connection to a MySQL database without storing credentials in the Pulumi state
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mysql = new Databricks.Connection("mysql", new()
+    ///     {
+    ///         Name = "mysql_connection",
+    ///         ConnectionType = "MYSQL",
+    ///         Options = 
+    ///         {
+    ///             { "host", "test.mysql.database.azure.com" },
+    ///             { "port", "3306" },
+    ///         },
+    ///         OptionsWo = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["user"] = mysqlUser,
+    ///             ["password"] = mysqlPassword,
+    ///         }),
+    ///         OptionsWoVersion = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a Kafka connection using mTLS, with the client private key and other credentials read from an ephemeral resource, so they are never stored in the plan or state
     /// </summary>
     [DatabricksResourceType("databricks:index/connection:Connection")]
     public partial class Connection : global::Pulumi.CustomResource
@@ -303,6 +338,21 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `Options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `User`, `Password`, `personalAccessToken`, `AccessToken`, `ClientSecret`, `PemPrivateKey`, `PemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `BearerToken`, `SslKeystoreKey`, `SslKeyPassword`, `SchemaRegistryApiSecret`, plus any key ending in `Password`, `Passphrase`, `Secret`, `Token`, `ApiKey`, `PrivateKey`, `SslKey`, `KeystoreKey`, `Certificate`, `Certificates` or `CertificateChain` (case-insensitive), e.g. `ClientPrivateKey`, `userProvidedServerCertificate` or `SslKeystoreCertificateChain`. Other options, such as `Host`, `TokenEndpoint` or `trustServerCertificate`, must be set in `Options`. A key can't be set in both `Options` and `OptionsWo`, or in both `OptionsWo` and `Secrets`. Requires Pulumi 1.11.0 or later and must be used together with `OptionsWoVersion`.
+        /// 
+        /// &gt; Pulumi can't detect changes made outside of Pulumi to options set in `OptionsWo`, as their values aren't stored in the state. Changing `OptionsWo` alone doesn't show up in the plan either: increment `OptionsWoVersion` to apply it.
+        /// </summary>
+        [Output("optionsWo")]
+        public Output<string?> OptionsWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Use together with `OptionsWo` to trigger an update. Increment this value (starting at 1) when an update to `OptionsWo` is required.
+        /// </summary>
+        [Output("optionsWoVersion")]
+        public Output<int?> OptionsWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Username of current owner of the connection.
         /// </summary>
         [Output("owner")]
@@ -338,6 +388,9 @@ namespace Pulumi.Databricks
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `Options` and `Secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+        /// </summary>
         [Output("secrets")]
         public Output<ImmutableDictionary<string, string>?> Secrets { get; private set; } = null!;
 
@@ -391,6 +444,7 @@ namespace Pulumi.Databricks
                 AdditionalSecretOutputs =
                 {
                     "options",
+                    "optionsWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -455,6 +509,31 @@ namespace Pulumi.Databricks
             }
         }
 
+        [Input("optionsWo")]
+        private Input<string>? _optionsWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `Options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `User`, `Password`, `personalAccessToken`, `AccessToken`, `ClientSecret`, `PemPrivateKey`, `PemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `BearerToken`, `SslKeystoreKey`, `SslKeyPassword`, `SchemaRegistryApiSecret`, plus any key ending in `Password`, `Passphrase`, `Secret`, `Token`, `ApiKey`, `PrivateKey`, `SslKey`, `KeystoreKey`, `Certificate`, `Certificates` or `CertificateChain` (case-insensitive), e.g. `ClientPrivateKey`, `userProvidedServerCertificate` or `SslKeystoreCertificateChain`. Other options, such as `Host`, `TokenEndpoint` or `trustServerCertificate`, must be set in `Options`. A key can't be set in both `Options` and `OptionsWo`, or in both `OptionsWo` and `Secrets`. Requires Pulumi 1.11.0 or later and must be used together with `OptionsWoVersion`.
+        /// 
+        /// &gt; Pulumi can't detect changes made outside of Pulumi to options set in `OptionsWo`, as their values aren't stored in the state. Changing `OptionsWo` alone doesn't show up in the plan either: increment `OptionsWoVersion` to apply it.
+        /// </summary>
+        public Input<string>? OptionsWo
+        {
+            get => _optionsWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _optionsWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Use together with `OptionsWo` to trigger an update. Increment this value (starting at 1) when an update to `OptionsWo` is required.
+        /// </summary>
+        [Input("optionsWoVersion")]
+        public Input<int>? OptionsWoVersion { get; set; }
+
         /// <summary>
         /// Username of current owner of the connection.
         /// </summary>
@@ -493,6 +572,10 @@ namespace Pulumi.Databricks
 
         [Input("secrets")]
         private InputMap<string>? _secrets;
+
+        /// <summary>
+        /// A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `Options` and `Secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+        /// </summary>
         public InputMap<string> Secrets
         {
             get => _secrets ?? (_secrets = new InputMap<string>());
@@ -583,6 +666,31 @@ namespace Pulumi.Databricks
             }
         }
 
+        [Input("optionsWo")]
+        private Input<string>? _optionsWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `Options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `User`, `Password`, `personalAccessToken`, `AccessToken`, `ClientSecret`, `PemPrivateKey`, `PemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `BearerToken`, `SslKeystoreKey`, `SslKeyPassword`, `SchemaRegistryApiSecret`, plus any key ending in `Password`, `Passphrase`, `Secret`, `Token`, `ApiKey`, `PrivateKey`, `SslKey`, `KeystoreKey`, `Certificate`, `Certificates` or `CertificateChain` (case-insensitive), e.g. `ClientPrivateKey`, `userProvidedServerCertificate` or `SslKeystoreCertificateChain`. Other options, such as `Host`, `TokenEndpoint` or `trustServerCertificate`, must be set in `Options`. A key can't be set in both `Options` and `OptionsWo`, or in both `OptionsWo` and `Secrets`. Requires Pulumi 1.11.0 or later and must be used together with `OptionsWoVersion`.
+        /// 
+        /// &gt; Pulumi can't detect changes made outside of Pulumi to options set in `OptionsWo`, as their values aren't stored in the state. Changing `OptionsWo` alone doesn't show up in the plan either: increment `OptionsWoVersion` to apply it.
+        /// </summary>
+        public Input<string>? OptionsWo
+        {
+            get => _optionsWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _optionsWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Use together with `OptionsWo` to trigger an update. Increment this value (starting at 1) when an update to `OptionsWo` is required.
+        /// </summary>
+        [Input("optionsWoVersion")]
+        public Input<int>? OptionsWoVersion { get; set; }
+
         /// <summary>
         /// Username of current owner of the connection.
         /// </summary>
@@ -633,6 +741,10 @@ namespace Pulumi.Databricks
 
         [Input("secrets")]
         private InputMap<string>? _secrets;
+
+        /// <summary>
+        /// A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `Options` and `Secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+        /// </summary>
         public InputMap<string> Secrets
         {
             get => _secrets ?? (_secrets = new InputMap<string>());

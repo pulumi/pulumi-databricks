@@ -12,6 +12,10 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class DatabaseSyncedDatabaseTableDataSynchronizationStatusGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+        /// DetailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+        /// </summary>
         [Input("continuousUpdateStatus")]
         public Input<Inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusGetArgs>? ContinuousUpdateStatus { get; set; }
 
@@ -21,6 +25,10 @@ namespace Pulumi.Databricks.Inputs
         [Input("detailedState")]
         public Input<string>? DetailedState { get; set; }
 
+        /// <summary>
+        /// Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+        /// DetailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+        /// </summary>
         [Input("failedStatus")]
         public Input<Inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusGetArgs>? FailedStatus { get; set; }
 
@@ -43,9 +51,18 @@ namespace Pulumi.Databricks.Inputs
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
+        /// <summary>
+        /// Provides detailed status while the table is being provisioned. It is populated when DetailedState is
+        /// SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+        /// </summary>
         [Input("provisioningStatus")]
         public Input<Inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusGetArgs>? ProvisioningStatus { get; set; }
 
+        /// <summary>
+        /// Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+        /// populated when DetailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+        /// or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+        /// </summary>
         [Input("triggeredUpdateStatus")]
         public Input<Inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusGetArgs>? TriggeredUpdateStatus { get; set; }
 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -40,12 +40,12 @@ export function getPostgresSyncedTable(args: GetPostgresSyncedTableArgs, opts?: 
  */
 export interface GetPostgresSyncedTableArgs {
     /**
-     * Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      *
-     * Format "synced_tables/{catalog}.{schema}.{table}"
+     * Format: "synced_tables/{catalog}.{schema}.{table}".
      *
-     * For the corresponding source table in the Unity catalog look for the "sourceTableFullName" attribute
+     * For the corresponding source table in Unity Catalog, look for the "sourceTableFullName" attribute
      */
     name: string;
     /**
@@ -59,12 +59,12 @@ export interface GetPostgresSyncedTableArgs {
  */
 export interface GetPostgresSyncedTableResult {
     /**
-     * (string)
+     * (string) - The time when the synced table was created
      */
     readonly createTime: string;
     /**
-     * (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetPostgresSyncedTableProviderConfig;
@@ -77,7 +77,8 @@ export interface GetPostgresSyncedTableResult {
      */
     readonly status: outputs.GetPostgresSyncedTableStatus;
     /**
-     * (string) - The part of the name, chosen by the user when the resource was created
+     * (string) - The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      */
     readonly syncedTableId: string;
     /**
@@ -86,7 +87,7 @@ export interface GetPostgresSyncedTableResult {
     readonly uid: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -119,12 +120,12 @@ export function getPostgresSyncedTableOutput(args: GetPostgresSyncedTableOutputA
  */
 export interface GetPostgresSyncedTableOutputArgs {
     /**
-     * Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      *
-     * Format "synced_tables/{catalog}.{schema}.{table}"
+     * Format: "synced_tables/{catalog}.{schema}.{table}".
      *
-     * For the corresponding source table in the Unity catalog look for the "sourceTableFullName" attribute
+     * For the corresponding source table in Unity Catalog, look for the "sourceTableFullName" attribute
      */
     name: pulumi.Input<string>;
     /**

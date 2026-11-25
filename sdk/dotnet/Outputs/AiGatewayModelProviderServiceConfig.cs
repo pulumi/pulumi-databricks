@@ -20,10 +20,31 @@ namespace Pulumi.Databricks.Outputs
         /// catalog and must leave this false and list their models in `Targets`
         /// </summary>
         public readonly bool? AllowAllTargets;
+        /// <summary>
+        /// Configuration for Amazon Bedrock. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigAmazonBedrock? AmazonBedrock;
+        /// <summary>
+        /// Configuration for Anthropic. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigAnthropic? Anthropic;
+        /// <summary>
+        /// Configuration for Azure OpenAI. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigAzureOpenai? AzureOpenai;
+        /// <summary>
+        /// Configuration for Amazon Bedrock Mantle, with the same fields as
+        /// `AmazonBedrock`. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigBedrockMantle? BedrockMantle;
+        /// <summary>
+        /// Configuration for a custom OpenAI-compatible provider. Set this field when
+        /// `ProviderType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigCustom? Custom;
         /// <summary>
         /// Whether to forward incoming HTTP headers to the upstream provider. Defaults
@@ -48,6 +69,10 @@ namespace Pulumi.Databricks.Outputs
         /// rejected whenever Service Policies are attached to this securable
         /// </summary>
         public readonly bool? ForwardUnmanagedPaths;
+        /// <summary>
+        /// Configuration for Google Gemini Enterprise. Set this field when
+        /// `ProviderType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigGeminiEnterprise? GeminiEnterprise;
         /// <summary>
         /// Payload logging configuration for requests sent directly to this provider
@@ -55,7 +80,15 @@ namespace Pulumi.Databricks.Outputs
         /// service's inference table instead
         /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigInferenceTable? InferenceTable;
+        /// <summary>
+        /// Configuration for Microsoft Foundry. Set this field when
+        /// `ProviderType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry? MicrosoftFoundry;
+        /// <summary>
+        /// Configuration for OpenAI. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        /// </summary>
         public readonly Outputs.AiGatewayModelProviderServiceConfigOpenai? Openai;
         /// <summary>
         /// Pricing configuration for this provider service. An explicitly empty

@@ -83,13 +83,13 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model service
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Owner of the model service
+        /// (string) - Username or group name of the model service owner
         /// </summary>
         [Output("effectiveOwner")]
         public Output<string> EffectiveOwner { get; private set; } = null!;
@@ -104,13 +104,15 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Metastore hosting the model service
+        /// (string) - Unique identifier of the metastore that contains the model service
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Name for the model service, e.g. "MyModelService"
+        /// Name of the model service within the parent schema. The name must not
+        /// contain periods, spaces, forward slashes, percent signs, or control characters,
+        /// and it is stored in lowercase
         /// </summary>
         [Output("modelServiceId")]
         public Output<string> ModelServiceId { get; private set; } = null!;
@@ -119,8 +121,9 @@ namespace Pulumi.Databricks
         /// (string) - Resource name of the model service.
         /// Format: `model-services/{catalog}.{schema}.{model_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -155,7 +158,7 @@ namespace Pulumi.Databricks
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model service
         /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
@@ -221,7 +224,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayModelServiceConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Name for the model service, e.g. "MyModelService"
+        /// Name of the model service within the parent schema. The name must not
+        /// contain periods, spaces, forward slashes, percent signs, or control characters,
+        /// and it is stored in lowercase
         /// </summary>
         [Input("modelServiceId", required: true)]
         public Input<string> ModelServiceId { get; set; } = null!;
@@ -269,13 +274,13 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model service
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// (string) - Owner of the model service
+        /// (string) - Username or group name of the model service owner
         /// </summary>
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
@@ -290,13 +295,15 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// (string) - Metastore hosting the model service
+        /// (string) - Unique identifier of the metastore that contains the model service
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name for the model service, e.g. "MyModelService"
+        /// Name of the model service within the parent schema. The name must not
+        /// contain periods, spaces, forward slashes, percent signs, or control characters,
+        /// and it is stored in lowercase
         /// </summary>
         [Input("modelServiceId")]
         public Input<string>? ModelServiceId { get; set; }
@@ -305,8 +312,9 @@ namespace Pulumi.Databricks
         /// (string) - Resource name of the model service.
         /// Format: `model-services/{catalog}.{schema}.{model_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -347,7 +355,7 @@ namespace Pulumi.Databricks
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model service
         /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }

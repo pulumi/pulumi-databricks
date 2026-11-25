@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusResult
     {
         /// <summary>
-        /// (SyncedTableContinuousUpdateStatus)
+        /// (SyncedTableContinuousUpdateStatus) - Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+        /// DetailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusResult? ContinuousUpdateStatus;
         /// <summary>
@@ -22,7 +23,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string DetailedState;
         /// <summary>
-        /// (SyncedTableFailedStatus)
+        /// (SyncedTableFailedStatus) - Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+        /// DetailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusResult? FailedStatus;
         /// <summary>
@@ -39,11 +41,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PipelineId;
         /// <summary>
-        /// (SyncedTableProvisioningStatus)
+        /// (SyncedTableProvisioningStatus) - Provides detailed status while the table is being provisioned. It is populated when DetailedState is
+        /// SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusResult? ProvisioningStatus;
         /// <summary>
-        /// (SyncedTableTriggeredUpdateStatus)
+        /// (SyncedTableTriggeredUpdateStatus) - Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+        /// populated when DetailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+        /// or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusResult? TriggeredUpdateStatus;
 

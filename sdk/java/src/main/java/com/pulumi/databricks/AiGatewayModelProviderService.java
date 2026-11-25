@@ -134,28 +134,28 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.createTime;
     }
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model provider service
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model provider service
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * (string) - Owner of the model provider service
+     * (string) - Username or group name of the model provider service owner
      * 
      */
     @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
     private Output<String> effectiveOwner;
 
     /**
-     * @return (string) - Owner of the model provider service
+     * @return (string) - Username or group name of the model provider service owner
      * 
      */
     public Output<String> effectiveOwner() {
@@ -182,28 +182,34 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.etag;
     }
     /**
-     * (string) - Metastore hosting the provider service
+     * (string) - Unique identifier of the metastore that contains the model provider service
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return (string) - Metastore hosting the provider service
+     * @return (string) - Unique identifier of the metastore that contains the model provider service
      * 
      */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
     /**
-     * Name for the model provider service, e.g. &#34;openaiProd&#34;
+     * Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      * 
      */
     @Export(name="modelProviderServiceId", refs={String.class}, tree="[0]")
     private Output<String> modelProviderServiceId;
 
     /**
-     * @return Name for the model provider service, e.g. &#34;openaiProd&#34;
+     * @return Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      * 
      */
     public Output<String> modelProviderServiceId() {
@@ -213,8 +219,9 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -224,8 +231,9 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
      * @return (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     public Output<String> name() {
@@ -278,14 +286,14 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.updateTime;
     }
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model provider service
      * 
      */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model provider service
      * 
      */
     public Output<String> updatedBy() {

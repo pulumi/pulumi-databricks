@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (DeltaTableSyncInfo)
+        /// (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
         /// </summary>
         [Input("deltaTableSyncInfo")]
         public Input<Inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoGetArgs>? DeltaTableSyncInfo { get; set; }

@@ -14,23 +14,29 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+        /// when the compliance security profile forces the feature on or when the workspace lacks the
+        /// Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
         /// </summary>
         public readonly bool? CanToggle;
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+        /// true while the compliance security profile is enabled on the workspace
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// (ClusterAutoRestartMessageEnablementDetails)
+        /// (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+        /// they do not determine whether the feature is enabled
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsResult? EnablementDetails;
         /// <summary>
-        /// (ClusterAutoRestartMessageMaintenanceWindow)
+        /// (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+        /// 01:00 UTC
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowResult? MaintenanceWindow;
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether compute resources restart during every maintenance window even when no update is
+        /// available. When false, they restart only when an update is available
         /// </summary>
         public readonly bool? RestartEvenIfNoUpdatesAvailable;
 

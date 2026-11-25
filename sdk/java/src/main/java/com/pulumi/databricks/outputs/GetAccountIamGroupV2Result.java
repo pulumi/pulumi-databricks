@@ -11,80 +11,86 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountIamGroupV2Result {
     /**
-     * @return (string) - The parent account ID for group in Databricks
+     * @return (string) - The ID of the account that contains the group
      * 
      */
     private String accountId;
     /**
-     * @return (string) - ExternalId of the group in the customer&#39;s IdP
+     * @return (string) - The ID of the group in your identity provider (IdP)
      * 
      */
     private String externalId;
     /**
-     * @return (string) - Internal group ID of the group in Databricks
+     * @return (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      * 
      */
     private String groupId;
     /**
-     * @return (string) - Display name of the group
+     * @return (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     private String groupName;
     /**
-     * @return (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     private String name;
     /**
-     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     private String parent;
 
     private GetAccountIamGroupV2Result() {}
     /**
-     * @return (string) - The parent account ID for group in Databricks
+     * @return (string) - The ID of the account that contains the group
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (string) - ExternalId of the group in the customer&#39;s IdP
+     * @return (string) - The ID of the group in your identity provider (IdP)
      * 
      */
     public String externalId() {
         return this.externalId;
     }
     /**
-     * @return (string) - Internal group ID of the group in Databricks
+     * @return (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      * 
      */
     public String groupId() {
         return this.groupId;
     }
     /**
-     * @return (string) - Display name of the group
+     * @return (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     public String groupName() {
         return this.groupName;
     }
     /**
-     * @return (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public String parent() {

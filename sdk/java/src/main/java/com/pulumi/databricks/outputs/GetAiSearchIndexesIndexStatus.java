@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchIndexesIndexStatus {
     /**
+     * @return (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     * 
+     */
+    private String detailedState;
+    /**
      * @return (string) - Index API URL used to perform operations on the index
      * 
      */
@@ -28,12 +33,20 @@ public final class GetAiSearchIndexesIndexStatus {
      */
     private String message;
     /**
-     * @return (boolean) - Whether the index is ready for search
+     * @return (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      * 
      */
     private Boolean ready;
 
     private GetAiSearchIndexesIndexStatus() {}
+    /**
+     * @return (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     * 
+     */
+    public String detailedState() {
+        return this.detailedState;
+    }
     /**
      * @return (string) - Index API URL used to perform operations on the index
      * 
@@ -56,7 +69,8 @@ public final class GetAiSearchIndexesIndexStatus {
         return this.message;
     }
     /**
-     * @return (boolean) - Whether the index is ready for search
+     * @return (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      * 
      */
     public Boolean ready() {
@@ -72,6 +86,7 @@ public final class GetAiSearchIndexesIndexStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String detailedState;
         private String indexUrl;
         private Integer indexedRowCount;
         private String message;
@@ -79,12 +94,21 @@ public final class GetAiSearchIndexesIndexStatus {
         public Builder() {}
         public Builder(GetAiSearchIndexesIndexStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.detailedState = defaults.detailedState;
     	      this.indexUrl = defaults.indexUrl;
     	      this.indexedRowCount = defaults.indexedRowCount;
     	      this.message = defaults.message;
     	      this.ready = defaults.ready;
         }
 
+        @CustomType.Setter
+        public Builder detailedState(String detailedState) {
+            if (detailedState == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchIndexesIndexStatus", "detailedState");
+            }
+            this.detailedState = detailedState;
+            return this;
+        }
         @CustomType.Setter
         public Builder indexUrl(String indexUrl) {
             if (indexUrl == null) {
@@ -119,6 +143,7 @@ public final class GetAiSearchIndexesIndexStatus {
         }
         public GetAiSearchIndexesIndexStatus build() {
             final var _resultValue = new GetAiSearchIndexesIndexStatus();
+            _resultValue.detailedState = detailedState;
             _resultValue.indexUrl = indexUrl;
             _resultValue.indexedRowCount = indexedRowCount;
             _resultValue.message = message;

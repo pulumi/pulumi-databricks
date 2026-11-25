@@ -14,15 +14,15 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresRoleStatusAttributesResult
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
         /// </summary>
         public readonly bool? Bypassrls;
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether the role can create databases (the Postgres CREATEDB attribute)
         /// </summary>
         public readonly bool? Createdb;
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
         /// </summary>
         public readonly bool? Createrole;
 

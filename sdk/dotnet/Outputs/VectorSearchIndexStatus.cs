@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchIndexStatus
     {
+        public readonly string? DetailedState;
+        public readonly Outputs.VectorSearchIndexStatusFailedStatus? FailedStatus;
         /// <summary>
         /// Index API Url to be used to perform operations on the index
         /// </summary>
@@ -32,6 +34,10 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private VectorSearchIndexStatus(
+            string? detailedState,
+
+            Outputs.VectorSearchIndexStatusFailedStatus? failedStatus,
+
             string? indexUrl,
 
             int? indexedRowCount,
@@ -40,6 +46,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? ready)
         {
+            DetailedState = detailedState;
+            FailedStatus = failedStatus;
             IndexUrl = indexUrl;
             IndexedRowCount = indexedRowCount;
             Message = message;

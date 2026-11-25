@@ -39,9 +39,10 @@ class DataQualityMonitorArgs:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-        :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
-        :param pulumi.Input['DataQualityMonitorDataProfilingConfigArgs'] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-               must be present
+        :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+               the settings of the parent schema's monitor if the schema has one
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigArgs'] data_profiling_config: Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+               or `snapshot` must be set
         :param pulumi.Input['DataQualityMonitorProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "object_id", object_id)
@@ -89,7 +90,8 @@ class DataQualityMonitorArgs:
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']]:
         """
-        Anomaly Detection Configuration, applicable to `schema` object types
+        Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+        the settings of the parent schema's monitor if the schema has one
         """
         return pulumi.get(self, "anomaly_detection_config")
 
@@ -101,8 +103,8 @@ class DataQualityMonitorArgs:
     @pulumi.getter(name="dataProfilingConfig")
     def data_profiling_config(self) -> pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']]:
         """
-        Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-        must be present
+        Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+        or `snapshot` must be set
         """
         return pulumi.get(self, "data_profiling_config")
 
@@ -134,9 +136,10 @@ class _DataQualityMonitorState:
         """
         Input properties used for looking up and filtering DataQualityMonitor resources.
 
-        :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
-        :param pulumi.Input['DataQualityMonitorDataProfilingConfigArgs'] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-               must be present
+        :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+               the settings of the parent schema's monitor if the schema has one
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigArgs'] data_profiling_config: Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+               or `snapshot` must be set
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
                Find the `schema_id` from either:
@@ -164,7 +167,8 @@ class _DataQualityMonitorState:
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']]:
         """
-        Anomaly Detection Configuration, applicable to `schema` object types
+        Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+        the settings of the parent schema's monitor if the schema has one
         """
         return pulumi.get(self, "anomaly_detection_config")
 
@@ -176,8 +180,8 @@ class _DataQualityMonitorState:
     @pulumi.getter(name="dataProfilingConfig")
     def data_profiling_config(self) -> pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']]:
         """
-        Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-        must be present
+        Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+        or `snapshot` must be set
         """
         return pulumi.get(self, "data_profiling_config")
 
@@ -298,9 +302,10 @@ class DataQualityMonitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
-        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-               must be present
+        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']] anomaly_detection_config: Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+               the settings of the parent schema's monitor if the schema has one
+        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']] data_profiling_config: Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+               or `snapshot` must be set
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
                Find the `schema_id` from either:
@@ -433,9 +438,10 @@ class DataQualityMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
-        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-               must be present
+        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']] anomaly_detection_config: Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+               the settings of the parent schema's monitor if the schema has one
+        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']] data_profiling_config: Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+               or `snapshot` must be set
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
                Find the `schema_id` from either:
@@ -479,7 +485,8 @@ class DataQualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> pulumi.Output[Optional['outputs.DataQualityMonitorAnomalyDetectionConfig']]:
         """
-        Anomaly Detection Configuration, applicable to `schema` object types
+        Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+        the settings of the parent schema's monitor if the schema has one
         """
         return pulumi.get(self, "anomaly_detection_config")
 
@@ -487,8 +494,8 @@ class DataQualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="dataProfilingConfig")
     def data_profiling_config(self) -> pulumi.Output[Optional['outputs.DataQualityMonitorDataProfilingConfig']]:
         """
-        Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-        must be present
+        Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+        or `snapshot` must be set
         """
         return pulumi.get(self, "data_profiling_config")
 

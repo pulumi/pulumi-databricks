@@ -21,8 +21,9 @@ public final class GetAiGatewayModelProviderServiceArgs extends com.pulumi.resou
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     @Import(name="name", required=true)
@@ -32,8 +33,9 @@ public final class GetAiGatewayModelProviderServiceArgs extends com.pulumi.resou
      * @return Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     public Output<String> name() {
@@ -84,8 +86,9 @@ public final class GetAiGatewayModelProviderServiceArgs extends com.pulumi.resou
          * @param name Resource name of the provider service.
          * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelProviderServiceId`; it is required and immutable on
+         * Update, Get, and Delete
          * 
          * @return builder
          * 
@@ -99,8 +102,9 @@ public final class GetAiGatewayModelProviderServiceArgs extends com.pulumi.resou
          * @param name Resource name of the provider service.
          * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelProviderServiceId`; it is required and immutable on
+         * Update, Get, and Delete
          * 
          * @return builder
          * 

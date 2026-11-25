@@ -68,6 +68,9 @@ namespace Pulumi.Databricks
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// A description of the governed tag, such as its purpose or the meaning of its values
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -77,6 +80,9 @@ namespace Pulumi.Databricks
         [Output("providerConfig")]
         public Output<Outputs.TagPolicyProviderConfig> ProviderConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The tag key that this policy governs. Tag keys are case-sensitive
+        /// </summary>
         [Output("tagKey")]
         public Output<string> TagKey { get; private set; } = null!;
 
@@ -86,6 +92,10 @@ namespace Pulumi.Databricks
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        /// value must be unique. A policy without values defines a key-only governed tag
+        /// </summary>
         [Output("values")]
         public Output<ImmutableArray<Outputs.TagPolicyValue>> Values { get; private set; } = null!;
 
@@ -135,6 +145,9 @@ namespace Pulumi.Databricks
 
     public sealed class TagPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A description of the governed tag, such as its purpose or the meaning of its values
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -144,11 +157,19 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.TagPolicyProviderConfigArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// The tag key that this policy governs. Tag keys are case-sensitive
+        /// </summary>
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
 
         [Input("values")]
         private InputList<Inputs.TagPolicyValueArgs>? _values;
+
+        /// <summary>
+        /// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        /// value must be unique. A policy without values defines a key-only governed tag
+        /// </summary>
         public InputList<Inputs.TagPolicyValueArgs> Values
         {
             get => _values ?? (_values = new InputList<Inputs.TagPolicyValueArgs>());
@@ -169,6 +190,9 @@ namespace Pulumi.Databricks
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// A description of the governed tag, such as its purpose or the meaning of its values
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -178,6 +202,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.TagPolicyProviderConfigGetArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// The tag key that this policy governs. Tag keys are case-sensitive
+        /// </summary>
         [Input("tagKey")]
         public Input<string>? TagKey { get; set; }
 
@@ -189,6 +216,11 @@ namespace Pulumi.Databricks
 
         [Input("values")]
         private InputList<Inputs.TagPolicyValueGetArgs>? _values;
+
+        /// <summary>
+        /// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        /// value must be unique. A policy without values defines a key-only governed tag
+        /// </summary>
         public InputList<Inputs.TagPolicyValueGetArgs> Values
         {
             get => _values ?? (_values = new InputList<Inputs.TagPolicyValueGetArgs>());

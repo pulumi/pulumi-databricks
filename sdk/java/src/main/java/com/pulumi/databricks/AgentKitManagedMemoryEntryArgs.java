@@ -95,7 +95,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      * 
      */
@@ -103,7 +104,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
     private Output<String> path;
 
     /**
-     * @return Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * @return Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      * 
      */
@@ -127,7 +129,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional identifier for the session associated with this memory entry. When omitted, the
+     * Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
@@ -135,7 +138,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
     private @Nullable Output<String> sessionId;
 
     /**
-     * @return Optional identifier for the session associated with this memory entry. When omitted, the
+     * @return Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
@@ -144,14 +148,16 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      * 
      */
     @Import(name="sourceType")
     private @Nullable Output<String> sourceType;
 
     /**
-     * @return Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * @return Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      * 
      */
     public Optional<Output<String>> sourceType() {
@@ -298,7 +304,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param path Absolute, case-sensitive path identifying the entry within its actor and optional session.
+         * @param path Absolute, case-sensitive path identifying the entry within its actor and, until the
+         * deprecated `sessionId` is ignored, its optional session.
          * Paths must begin with `/` and must not contain empty, `.` or `..` segments
          * 
          * @return builder
@@ -310,7 +317,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param path Absolute, case-sensitive path identifying the entry within its actor and optional session.
+         * @param path Absolute, case-sensitive path identifying the entry within its actor and, until the
+         * deprecated `sessionId` is ignored, its optional session.
          * Paths must begin with `/` and must not contain empty, `.` or `..` segments
          * 
          * @return builder
@@ -342,7 +350,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sessionId Optional identifier for the session associated with this memory entry. When omitted, the
+         * @param sessionId Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+         * ignore this field on writes and omit it from responses. Until then, an omitted value means the
          * entry applies across the actor&#39;s sessions
          * 
          * @return builder
@@ -354,7 +363,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sessionId Optional identifier for the session associated with this memory entry. When omitted, the
+         * @param sessionId Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+         * ignore this field on writes and omit it from responses. Until then, an omitted value means the
          * entry applies across the actor&#39;s sessions
          * 
          * @return builder
@@ -365,7 +375,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sourceType Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+         * @param sourceType Which writer created this entry. Caller sets this on Create; immutable after creation.
+         * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
          * 
          * @return builder
          * 
@@ -376,7 +387,8 @@ public final class AgentKitManagedMemoryEntryArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sourceType Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+         * @param sourceType Which writer created this entry. Caller sets this on Create; immutable after creation.
+         * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
          * 
          * @return builder
          * 

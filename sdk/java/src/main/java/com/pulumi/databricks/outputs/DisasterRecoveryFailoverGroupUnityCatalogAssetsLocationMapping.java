@@ -19,7 +19,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
      */
     private String name;
     /**
-     * @return URI for each region. Each entry maps a region name to a storage URI
+     * @return The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      * 
      */
     private List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion> uriByRegions;
@@ -34,7 +35,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         return this.name;
     }
     /**
-     * @return URI for each region. Each entry maps a region name to a storage URI
+     * @return The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      * 
      */
     public List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion> uriByRegions() {

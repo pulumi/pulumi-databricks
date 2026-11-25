@@ -21,12 +21,14 @@ import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveOperationalEmai
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveStringVal;
+import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveWorkspaceDashboardTheme;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveWorkspaceLabel;
 import com.pulumi.databricks.outputs.GetAccountSettingV2IntegerVal;
 import com.pulumi.databricks.outputs.GetAccountSettingV2OperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.GetAccountSettingV2PersonalCompute;
 import com.pulumi.databricks.outputs.GetAccountSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetAccountSettingV2StringVal;
+import com.pulumi.databricks.outputs.GetAccountSettingV2WorkspaceDashboardTheme;
 import com.pulumi.databricks.outputs.GetAccountSettingV2WorkspaceLabel;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -120,6 +122,11 @@ public final class GetAccountSettingV2Result {
      */
     private GetAccountSettingV2EffectiveStringVal effectiveStringVal;
     /**
+     * @return (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    private GetAccountSettingV2EffectiveWorkspaceDashboardTheme effectiveWorkspaceDashboardTheme;
+    /**
      * @return (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      * 
      */
@@ -130,7 +137,7 @@ public final class GetAccountSettingV2Result {
      */
     private GetAccountSettingV2IntegerVal integerVal;
     /**
-     * @return (string) - Name of the setting
+     * @return (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     private String name;
@@ -154,6 +161,11 @@ public final class GetAccountSettingV2Result {
      * 
      */
     private GetAccountSettingV2StringVal stringVal;
+    /**
+     * @return (DashboardTheme) - Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    private GetAccountSettingV2WorkspaceDashboardTheme workspaceDashboardTheme;
     /**
      * @return (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
      * 
@@ -281,6 +293,13 @@ public final class GetAccountSettingV2Result {
         return this.effectiveStringVal;
     }
     /**
+     * @return (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    public GetAccountSettingV2EffectiveWorkspaceDashboardTheme effectiveWorkspaceDashboardTheme() {
+        return this.effectiveWorkspaceDashboardTheme;
+    }
+    /**
      * @return (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      * 
      */
@@ -295,7 +314,7 @@ public final class GetAccountSettingV2Result {
         return this.integerVal;
     }
     /**
-     * @return (string) - Name of the setting
+     * @return (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public String name() {
@@ -328,6 +347,13 @@ public final class GetAccountSettingV2Result {
      */
     public GetAccountSettingV2StringVal stringVal() {
         return this.stringVal;
+    }
+    /**
+     * @return (DashboardTheme) - Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    public GetAccountSettingV2WorkspaceDashboardTheme workspaceDashboardTheme() {
+        return this.workspaceDashboardTheme;
     }
     /**
      * @return (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
@@ -363,6 +389,7 @@ public final class GetAccountSettingV2Result {
         private GetAccountSettingV2EffectivePersonalCompute effectivePersonalCompute;
         private GetAccountSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
         private GetAccountSettingV2EffectiveStringVal effectiveStringVal;
+        private GetAccountSettingV2EffectiveWorkspaceDashboardTheme effectiveWorkspaceDashboardTheme;
         private GetAccountSettingV2EffectiveWorkspaceLabel effectiveWorkspaceLabel;
         private GetAccountSettingV2IntegerVal integerVal;
         private String name;
@@ -370,6 +397,7 @@ public final class GetAccountSettingV2Result {
         private GetAccountSettingV2PersonalCompute personalCompute;
         private GetAccountSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
         private GetAccountSettingV2StringVal stringVal;
+        private GetAccountSettingV2WorkspaceDashboardTheme workspaceDashboardTheme;
         private GetAccountSettingV2WorkspaceLabel workspaceLabel;
         public Builder() {}
         public Builder(GetAccountSettingV2Result defaults) {
@@ -391,6 +419,7 @@ public final class GetAccountSettingV2Result {
     	      this.effectivePersonalCompute = defaults.effectivePersonalCompute;
     	      this.effectiveRestrictWorkspaceAdmins = defaults.effectiveRestrictWorkspaceAdmins;
     	      this.effectiveStringVal = defaults.effectiveStringVal;
+    	      this.effectiveWorkspaceDashboardTheme = defaults.effectiveWorkspaceDashboardTheme;
     	      this.effectiveWorkspaceLabel = defaults.effectiveWorkspaceLabel;
     	      this.integerVal = defaults.integerVal;
     	      this.name = defaults.name;
@@ -398,6 +427,7 @@ public final class GetAccountSettingV2Result {
     	      this.personalCompute = defaults.personalCompute;
     	      this.restrictWorkspaceAdmins = defaults.restrictWorkspaceAdmins;
     	      this.stringVal = defaults.stringVal;
+    	      this.workspaceDashboardTheme = defaults.workspaceDashboardTheme;
     	      this.workspaceLabel = defaults.workspaceLabel;
         }
 
@@ -538,6 +568,14 @@ public final class GetAccountSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveWorkspaceDashboardTheme(GetAccountSettingV2EffectiveWorkspaceDashboardTheme effectiveWorkspaceDashboardTheme) {
+            if (effectiveWorkspaceDashboardTheme == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "effectiveWorkspaceDashboardTheme");
+            }
+            this.effectiveWorkspaceDashboardTheme = effectiveWorkspaceDashboardTheme;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveWorkspaceLabel(GetAccountSettingV2EffectiveWorkspaceLabel effectiveWorkspaceLabel) {
             if (effectiveWorkspaceLabel == null) {
               throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "effectiveWorkspaceLabel");
@@ -594,6 +632,14 @@ public final class GetAccountSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder workspaceDashboardTheme(GetAccountSettingV2WorkspaceDashboardTheme workspaceDashboardTheme) {
+            if (workspaceDashboardTheme == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "workspaceDashboardTheme");
+            }
+            this.workspaceDashboardTheme = workspaceDashboardTheme;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspaceLabel(GetAccountSettingV2WorkspaceLabel workspaceLabel) {
             if (workspaceLabel == null) {
               throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "workspaceLabel");
@@ -620,6 +666,7 @@ public final class GetAccountSettingV2Result {
             _resultValue.effectivePersonalCompute = effectivePersonalCompute;
             _resultValue.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             _resultValue.effectiveStringVal = effectiveStringVal;
+            _resultValue.effectiveWorkspaceDashboardTheme = effectiveWorkspaceDashboardTheme;
             _resultValue.effectiveWorkspaceLabel = effectiveWorkspaceLabel;
             _resultValue.integerVal = integerVal;
             _resultValue.name = name;
@@ -627,6 +674,7 @@ public final class GetAccountSettingV2Result {
             _resultValue.personalCompute = personalCompute;
             _resultValue.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             _resultValue.stringVal = stringVal;
+            _resultValue.workspaceDashboardTheme = workspaceDashboardTheme;
             _resultValue.workspaceLabel = workspaceLabel;
             return _resultValue;
         }

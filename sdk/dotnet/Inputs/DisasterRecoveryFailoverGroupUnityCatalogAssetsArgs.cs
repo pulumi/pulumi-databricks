@@ -16,7 +16,9 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs>? _catalogs;
 
         /// <summary>
-        /// UC catalogs to replicate
+        /// Unity Catalog catalogs to replicate, including their metadata and managed table data.
+        /// Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+        /// until the catalog has been replicated
         /// </summary>
         public InputList<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs> Catalogs
         {
@@ -25,8 +27,8 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// The workspace set whose workspaces will be used for data replication
-        /// of all UC catalogs' underlying storage
+        /// Name of the workspace set whose workspaces run the data replication for the catalogs'
+        /// underlying storage. Must match the name of a workspace set in this failover group
         /// </summary>
         [Input("dataReplicationWorkspaceSet", required: true)]
         public Input<string> DataReplicationWorkspaceSet { get; set; } = null!;
@@ -35,7 +37,9 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs>? _locationMappings;
 
         /// <summary>
-        /// Location mappings - storage URI per region for each location
+        /// Storage location mappings. Each mapping pairs a storage path used by the replicated
+        /// catalogs in one region with the corresponding path in the other region, so that
+        /// replicated data is written to the matching storage in the secondary region
         /// </summary>
         public InputList<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs> LocationMappings
         {

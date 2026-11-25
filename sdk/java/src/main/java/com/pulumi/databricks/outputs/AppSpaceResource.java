@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpaceResource {
+    /**
+     * @return Another app in the workspace that this app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceApp app;
     private @Nullable AppSpaceResourceDatabase database;
     /**
@@ -29,8 +33,20 @@ public final class AppSpaceResource {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return MLflow experiment the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceExperiment experiment;
+    /**
+     * @return Genie space the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceGenieSpace genieSpace;
+    /**
+     * @return Lakeflow job the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceJob job;
     /**
      * @return The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
@@ -38,13 +54,38 @@ public final class AppSpaceResource {
      * 
      */
     private String name;
+    /**
+     * @return Lakebase Autoscaling Postgres database the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourcePostgres postgres;
+    /**
+     * @return Secret the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceSecret secret;
+    /**
+     * @return Model serving endpoint the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceServingEndpoint servingEndpoint;
+    /**
+     * @return SQL warehouse the app is granted access to
+     * 
+     */
     private @Nullable AppSpaceResourceSqlWarehouse sqlWarehouse;
+    /**
+     * @return Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
+     * 
+     */
     private @Nullable AppSpaceResourceUcSecurable ucSecurable;
 
     private AppSpaceResource() {}
+    /**
+     * @return Another app in the workspace that this app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceApp> app() {
         return Optional.ofNullable(this.app);
     }
@@ -58,12 +99,24 @@ public final class AppSpaceResource {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return MLflow experiment the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceExperiment> experiment() {
         return Optional.ofNullable(this.experiment);
     }
+    /**
+     * @return Genie space the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceGenieSpace> genieSpace() {
         return Optional.ofNullable(this.genieSpace);
     }
+    /**
+     * @return Lakeflow job the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceJob> job() {
         return Optional.ofNullable(this.job);
     }
@@ -75,18 +128,39 @@ public final class AppSpaceResource {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Lakebase Autoscaling Postgres database the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourcePostgres> postgres() {
         return Optional.ofNullable(this.postgres);
     }
+    /**
+     * @return Secret the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceSecret> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return Model serving endpoint the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceServingEndpoint> servingEndpoint() {
         return Optional.ofNullable(this.servingEndpoint);
     }
+    /**
+     * @return SQL warehouse the app is granted access to
+     * 
+     */
     public Optional<AppSpaceResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
+    /**
+     * @return Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
+     * 
+     */
     public Optional<AppSpaceResourceUcSecurable> ucSecurable() {
         return Optional.ofNullable(this.ucSecurable);
     }

@@ -13,26 +13,30 @@ import java.util.Objects;
 @CustomType
 public final class GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMapping {
     /**
-     * @return (string) - Resource name for this workspace set
+     * @return (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      * 
      */
     private String name;
     /**
-     * @return (list of LocationMappingEntry) - URI for each region. Each entry maps a region name to a storage URI
+     * @return (list of LocationMappingEntry) - The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      * 
      */
     private List<GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion> uriByRegions;
 
     private GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMapping() {}
     /**
-     * @return (string) - Resource name for this workspace set
+     * @return (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (list of LocationMappingEntry) - URI for each region. Each entry maps a region name to a storage URI
+     * @return (list of LocationMappingEntry) - The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      * 
      */
     public List<GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion> uriByRegions() {

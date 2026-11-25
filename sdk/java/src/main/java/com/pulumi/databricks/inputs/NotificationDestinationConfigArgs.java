@@ -21,16 +21,32 @@ public final class NotificationDestinationConfigArgs extends com.pulumi.resource
 
     public static final NotificationDestinationConfigArgs Empty = new NotificationDestinationConfigArgs();
 
+    /**
+     * The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     @Import(name="databricksAppSlack")
     private @Nullable Output<NotificationDestinationConfigDatabricksAppSlackArgs> databricksAppSlack;
 
+    /**
+     * @return The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     public Optional<Output<NotificationDestinationConfigDatabricksAppSlackArgs>> databricksAppSlack() {
         return Optional.ofNullable(this.databricksAppSlack);
     }
 
+    /**
+     * The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     @Import(name="databricksAppTeams")
     private @Nullable Output<NotificationDestinationConfigDatabricksAppTeamsArgs> databricksAppTeams;
 
+    /**
+     * @return The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     public Optional<Output<NotificationDestinationConfigDatabricksAppTeamsArgs>> databricksAppTeams() {
         return Optional.ofNullable(this.databricksAppTeams);
     }
@@ -140,20 +156,44 @@ public final class NotificationDestinationConfigArgs extends com.pulumi.resource
             $ = new NotificationDestinationConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param databricksAppSlack The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksAppSlack(@Nullable Output<NotificationDestinationConfigDatabricksAppSlackArgs> databricksAppSlack) {
             $.databricksAppSlack = databricksAppSlack;
             return this;
         }
 
+        /**
+         * @param databricksAppSlack The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksAppSlack(NotificationDestinationConfigDatabricksAppSlackArgs databricksAppSlack) {
             return databricksAppSlack(Output.of(databricksAppSlack));
         }
 
+        /**
+         * @param databricksAppTeams The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksAppTeams(@Nullable Output<NotificationDestinationConfigDatabricksAppTeamsArgs> databricksAppTeams) {
             $.databricksAppTeams = databricksAppTeams;
             return this;
         }
 
+        /**
+         * @param databricksAppTeams The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksAppTeams(NotificationDestinationConfigDatabricksAppTeamsArgs databricksAppTeams) {
             return databricksAppTeams(Output.of(databricksAppTeams));
         }

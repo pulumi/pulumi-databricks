@@ -54,7 +54,8 @@ public final class AgentKitManagedMemoryStoreArgs extends com.pulumi.resources.R
     /**
      * Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+     * after creation
      * 
      */
     @Import(name="managedMemoryStoreId", required=true)
@@ -63,7 +64,8 @@ public final class AgentKitManagedMemoryStoreArgs extends com.pulumi.resources.R
     /**
      * @return Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+     * after creation
      * 
      */
     public Output<String> managedMemoryStoreId() {
@@ -161,7 +163,8 @@ public final class AgentKitManagedMemoryStoreArgs extends com.pulumi.resources.R
         /**
          * @param managedMemoryStoreId Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
          * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-         * letter or digit
+         * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+         * after creation
          * 
          * @return builder
          * 
@@ -174,7 +177,8 @@ public final class AgentKitManagedMemoryStoreArgs extends com.pulumi.resources.R
         /**
          * @param managedMemoryStoreId Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
          * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-         * letter or digit
+         * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+         * after creation
          * 
          * @return builder
          * 

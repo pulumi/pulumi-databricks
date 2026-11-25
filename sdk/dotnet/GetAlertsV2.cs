@@ -111,6 +111,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetAlertsV2Args : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Maximum number of alerts to return per page. Values above 100 are coerced to 100
+        /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
@@ -128,6 +131,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetAlertsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Maximum number of alerts to return per page. Values above 100 are coerced to 100
+        /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 

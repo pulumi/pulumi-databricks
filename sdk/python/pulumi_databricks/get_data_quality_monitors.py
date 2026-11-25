@@ -98,6 +98,7 @@ def get_data_quality_monitors(page_size: Optional[_builtins.int] = None,
     ```
 
 
+    :param _builtins.int page_size: The maximum number of monitors to return in one page
     :param Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict', 'outputs.GetDataQualityMonitorsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -142,6 +143,7 @@ def get_data_quality_monitors_output(page_size: pulumi.Input[Optional[Optional[_
     ```
 
 
+    :param _builtins.int page_size: The maximum number of monitors to return in one page
     :param Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict', 'outputs.GetDataQualityMonitorsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

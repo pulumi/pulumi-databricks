@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
  * 
- * Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don&#39;t want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
+ * For this implicitly created read-write Endpoint, Pulumi manages updates only. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don&#39;t want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
  * 
  * <pre>
  * {@code
@@ -206,6 +206,7 @@ import javax.annotation.Nullable;
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
  *                 .disabled(true)
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -239,12 +240,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var alwaysOn = new PostgresEndpoint("alwaysOn", PostgresEndpointArgs.builder()
- *             .endpointId("always-on")
+ *             .endpointId("primary")
  *             .parent(dev.get("name"))
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
  *                 .noSuspension(true)
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -464,14 +466,14 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     public Output<String> endpointId() {
@@ -524,56 +526,74 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * If true, update the endpoint if it already exists instead of returning an error
+     * If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+     * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      * 
      */
     @Export(name="replaceExisting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> replaceExisting;
 
     /**
-     * @return If true, update the endpoint if it already exists instead of returning an error
+     * @return If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+     * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      * 
      */
     public Output<Optional<Boolean>> replaceExisting() {
         return Codegen.optional(this.replaceExisting);
     }
     /**
-     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Export(name="spec", refs={PostgresEndpointSpec.class}, tree="[0]")
-    private Output<PostgresEndpointSpec> spec;
+    private Output</* @Nullable */ PostgresEndpointSpec> spec;
 
     /**
-     * @return The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * @return The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
-    public Output<PostgresEndpointSpec> spec() {
-        return this.spec;
+    public Output<Optional<PostgresEndpointSpec>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
-     * (EndpointStatus) - Current operational status of the compute endpoint
+     * (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      * 
      */
     @Export(name="status", refs={PostgresEndpointStatus.class}, tree="[0]")
     private Output<PostgresEndpointStatus> status;
 
     /**
-     * @return (EndpointStatus) - Current operational status of the compute endpoint
+     * @return (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      * 
      */
     public Output<PostgresEndpointStatus> status() {
         return this.status;
     }
     /**
-     * (string) - System-generated unique ID for the endpoint
+     * (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - System-generated unique ID for the endpoint
+     * @return (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
      * 
      */
     public Output<String> uid() {

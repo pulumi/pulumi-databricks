@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class DataQualityMonitorDataProfilingConfigNotificationSettings
     {
         /// <summary>
-        /// Destinations to send notifications on failure/timeout
+        /// Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+        /// monitors, via `DataProfilingConfig`, and only `EmailAddresses` is accepted there
         /// </summary>
         public readonly Outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure? OnFailure;
         /// <summary>

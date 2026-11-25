@@ -29,7 +29,10 @@ class AiGatewayModelProviderServiceArgs:
         """
         The set of arguments for constructing a AiGatewayModelProviderService resource.
 
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name of the model provider service within the parent schema. The name must
+               not contain periods, spaces, forward slashes, percent signs, or control
+               characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+               characters. It is stored in lowercase
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -52,7 +55,10 @@ class AiGatewayModelProviderServiceArgs:
     @pulumi.getter(name="modelProviderServiceId")
     def model_provider_service_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Name for the model provider service, e.g. "openai_prod"
+        Name of the model provider service within the parent schema. The name must
+        not contain periods, spaces, forward slashes, percent signs, or control
+        characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+        characters. It is stored in lowercase
         """
         return pulumi.get(self, "model_provider_service_id")
 
@@ -137,25 +143,29 @@ class _AiGatewayModelProviderServiceState:
                limits, and payload logging. Required on Create. On Update, it is required
                only when `config` or one of its subpaths appears in `update_mask`
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the provider service was created
-        :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model provider service
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the model provider service
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Username or group name of the model provider service owner
         :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
                Delete conditional, pass the last-read value in that request's `etag`
                field. In REST responses, this value is a base64 string; URL-encode it when
                setting the `etag` query parameter
-        :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the provider service
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
+        :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore that contains the model provider service
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name of the model provider service within the parent schema. The name must
+               not contain periods, spaces, forward slashes, percent signs, or control
+               characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+               characters. It is stored in lowercase
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
                Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
                Each `{...}` component is capped at 255 characters individually.
-               Server-derived on Create from `parent` +
-               `model_provider_service_id`; required and immutable on Update/Get/Delete
+               The server derives the name on Create from
+               `parent` and `model_provider_service_id`; it is required and immutable on
+               Update, Get, and Delete
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayModelProviderServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the provider service was last modified
-        :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
+        :param pulumi.Input[_builtins.str] updated_by: (string) - Username of the user who last updated the model provider service
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -226,7 +236,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Creator identity
+        (string) - Username of the user who created the model provider service
         """
         return pulumi.get(self, "created_by")
 
@@ -238,7 +248,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Owner of the model provider service
+        (string) - Username or group name of the model provider service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -265,7 +275,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Metastore hosting the provider service
+        (string) - Unique identifier of the metastore that contains the model provider service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -277,7 +287,10 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="modelProviderServiceId")
     def model_provider_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name for the model provider service, e.g. "openai_prod"
+        Name of the model provider service within the parent schema. The name must
+        not contain periods, spaces, forward slashes, percent signs, or control
+        characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+        characters. It is stored in lowercase
         """
         return pulumi.get(self, "model_provider_service_id")
 
@@ -292,8 +305,9 @@ class _AiGatewayModelProviderServiceState:
         (string) - Resource name of the provider service.
         Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         Each `{...}` component is capped at 255 characters individually.
-        Server-derived on Create from `parent` +
-        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        The server derives the name on Create from
+        `parent` and `model_provider_service_id`; it is required and immutable on
+        Update, Get, and Delete
         """
         return pulumi.get(self, "name")
 
@@ -343,7 +357,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Identity of the last updater
+        (string) - Username of the user who last updated the model provider service
         """
         return pulumi.get(self, "updated_by")
 
@@ -411,7 +425,10 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict', 'outputs.AiGatewayModelProviderServiceConfig']] config: Provider authentication, exposed models, request-forwarding controls, rate
                limits, and payload logging. Required on Create. On Update, it is required
                only when `config` or one of its subpaths appears in `update_mask`
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name of the model provider service within the parent schema. The name must
+               not contain periods, spaces, forward slashes, percent signs, or control
+               characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+               characters. It is stored in lowercase
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -545,25 +562,29 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                limits, and payload logging. Required on Create. On Update, it is required
                only when `config` or one of its subpaths appears in `update_mask`
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the provider service was created
-        :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model provider service
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the model provider service
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Username or group name of the model provider service owner
         :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
                Delete conditional, pass the last-read value in that request's `etag`
                field. In REST responses, this value is a base64 string; URL-encode it when
                setting the `etag` query parameter
-        :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the provider service
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
+        :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore that contains the model provider service
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name of the model provider service within the parent schema. The name must
+               not contain periods, spaces, forward slashes, percent signs, or control
+               characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+               characters. It is stored in lowercase
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
                Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
                Each `{...}` component is capped at 255 characters individually.
-               Server-derived on Create from `parent` +
-               `model_provider_service_id`; required and immutable on Update/Get/Delete
+               The server derives the name on Create from
+               `parent` and `model_provider_service_id`; it is required and immutable on
+               Update, Get, and Delete
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.AiGatewayModelProviderServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the provider service was last modified
-        :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
+        :param pulumi.Input[_builtins.str] updated_by: (string) - Username of the user who last updated the model provider service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -646,7 +667,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Creator identity
+        (string) - Username of the user who created the model provider service
         """
         return pulumi.get(self, "created_by")
 
@@ -654,7 +675,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Owner of the model provider service
+        (string) - Username or group name of the model provider service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -673,7 +694,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Metastore hosting the provider service
+        (string) - Unique identifier of the metastore that contains the model provider service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -681,7 +702,10 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="modelProviderServiceId")
     def model_provider_service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Name for the model provider service, e.g. "openai_prod"
+        Name of the model provider service within the parent schema. The name must
+        not contain periods, spaces, forward slashes, percent signs, or control
+        characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+        characters. It is stored in lowercase
         """
         return pulumi.get(self, "model_provider_service_id")
 
@@ -692,8 +716,9 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         (string) - Resource name of the provider service.
         Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         Each `{...}` component is capped at 255 characters individually.
-        Server-derived on Create from `parent` +
-        `model_provider_service_id`; required and immutable on Update/Get/Delete
+        The server derives the name on Create from
+        `parent` and `model_provider_service_id`; it is required and immutable on
+        Update, Get, and Delete
         """
         return pulumi.get(self, "name")
 
@@ -727,7 +752,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Identity of the last updater
+        (string) - Username of the user who last updated the model provider service
         """
         return pulumi.get(self, "updated_by")
 

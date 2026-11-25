@@ -149,6 +149,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceSettingV2EffectiveStringVal> EffectiveStringVal { get; private set; } = null!;
 
         /// <summary>
+        /// (DashboardTheme) - Effective setting value for the WorkspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+        /// </summary>
+        [Output("effectiveWorkspaceDashboardTheme")]
+        public Output<Outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardTheme> EffectiveWorkspaceDashboardTheme { get; private set; } = null!;
+
+        /// <summary>
         /// Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
         /// </summary>
         [Output("effectiveWorkspaceLabel")]
@@ -161,7 +167,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceSettingV2IntegerVal?> IntegerVal { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the setting
+        /// Name of the setting. The settings metadata endpoint lists the names available at each scope
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -195,6 +201,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("stringVal")]
         public Output<Outputs.WorkspaceSettingV2StringVal?> StringVal { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting value for the WorkspaceDashboardTheme setting. This is the setting value set by consumers. Check EffectiveWorkspaceDashboardTheme for the final setting value
+        /// </summary>
+        [Output("workspaceDashboardTheme")]
+        public Output<Outputs.WorkspaceSettingV2WorkspaceDashboardTheme?> WorkspaceDashboardTheme { get; private set; } = null!;
 
         /// <summary>
         /// Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
@@ -327,7 +339,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2IntegerValArgs>? IntegerVal { get; set; }
 
         /// <summary>
-        /// Name of the setting
+        /// Name of the setting. The settings metadata endpoint lists the names available at each scope
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -361,6 +373,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("stringVal")]
         public Input<Inputs.WorkspaceSettingV2StringValArgs>? StringVal { get; set; }
+
+        /// <summary>
+        /// Setting value for the WorkspaceDashboardTheme setting. This is the setting value set by consumers. Check EffectiveWorkspaceDashboardTheme for the final setting value
+        /// </summary>
+        [Input("workspaceDashboardTheme")]
+        public Input<Inputs.WorkspaceSettingV2WorkspaceDashboardThemeArgs>? WorkspaceDashboardTheme { get; set; }
 
         /// <summary>
         /// Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
@@ -479,6 +497,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2EffectiveStringValGetArgs>? EffectiveStringVal { get; set; }
 
         /// <summary>
+        /// (DashboardTheme) - Effective setting value for the WorkspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+        /// </summary>
+        [Input("effectiveWorkspaceDashboardTheme")]
+        public Input<Inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeGetArgs>? EffectiveWorkspaceDashboardTheme { get; set; }
+
+        /// <summary>
         /// Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
         /// </summary>
         [Input("effectiveWorkspaceLabel")]
@@ -491,7 +515,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2IntegerValGetArgs>? IntegerVal { get; set; }
 
         /// <summary>
-        /// Name of the setting
+        /// Name of the setting. The settings metadata endpoint lists the names available at each scope
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -525,6 +549,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("stringVal")]
         public Input<Inputs.WorkspaceSettingV2StringValGetArgs>? StringVal { get; set; }
+
+        /// <summary>
+        /// Setting value for the WorkspaceDashboardTheme setting. This is the setting value set by consumers. Check EffectiveWorkspaceDashboardTheme for the final setting value
+        /// </summary>
+        [Input("workspaceDashboardTheme")]
+        public Input<Inputs.WorkspaceSettingV2WorkspaceDashboardThemeGetArgs>? WorkspaceDashboardTheme { get; set; }
 
         /// <summary>
         /// Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value

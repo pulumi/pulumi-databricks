@@ -15,6 +15,10 @@ namespace Pulumi.Databricks.Inputs
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+        /// three-level catalog.schema.object name
+        /// </summary>
         [Input("securableFullName", required: true)]
         public Input<string> SecurableFullName { get; set; } = null!;
 
@@ -26,7 +30,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? SecurableKind { get; set; }
 
         /// <summary>
-        /// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+        /// Kind of Unity Catalog securable that `SecurableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("securableType", required: true)]
         public Input<string> SecurableType { get; set; } = null!;

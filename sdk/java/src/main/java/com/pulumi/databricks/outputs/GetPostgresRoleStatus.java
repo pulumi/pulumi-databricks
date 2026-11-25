@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresRoleStatus {
     /**
-     * @return (RoleAttributes) - The PG role attributes associated with the role
+     * @return (RoleAttributes) - The Postgres role attributes currently granted to the role
      * 
      */
     private @Nullable GetPostgresRoleStatusAttributes attributes;
     /**
-     * @return (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * @return (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      * 
      */
     private @Nullable String authMethod;
     /**
-     * @return (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     private @Nullable String identityType;
     /**
-     * @return (list of string) - An enum value for a standard role that this role is a member of
+     * @return (list of string) - The standard roles that the role is currently a member of
      * 
      */
     private @Nullable List<String> membershipRoles;
@@ -47,28 +47,28 @@ public final class GetPostgresRoleStatus {
 
     private GetPostgresRoleStatus() {}
     /**
-     * @return (RoleAttributes) - The PG role attributes associated with the role
+     * @return (RoleAttributes) - The Postgres role attributes currently granted to the role
      * 
      */
     public Optional<GetPostgresRoleStatusAttributes> attributes() {
         return Optional.ofNullable(this.attributes);
     }
     /**
-     * @return (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * @return (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      * 
      */
     public Optional<String> authMethod() {
         return Optional.ofNullable(this.authMethod);
     }
     /**
-     * @return (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public Optional<String> identityType() {
         return Optional.ofNullable(this.identityType);
     }
     /**
-     * @return (list of string) - An enum value for a standard role that this role is a member of
+     * @return (list of string) - The standard roles that the role is currently a member of
      * 
      */
     public List<String> membershipRoles() {

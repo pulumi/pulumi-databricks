@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamGroupsV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamGroupsV2Result>("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", args ?? new GetAccountIamGroupsV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamGroupsV2Result>("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", args ?? new GetAccountIamGroupsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -112,21 +112,21 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamGroupsV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Optional. Allows filtering groups by group name or external id
+        /// Filters groups by `GroupName` or `ExternalId`, for example `GroupName eq "Data engineers"`.
+        /// Put the value in quotes
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of groups to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+        /// fewer groups
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the account whose groups to list.
-        /// Format: accounts/{account_id}
+        /// The resource name of the account to list groups in, in the format `accounts/{account_id}`
         /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
@@ -140,21 +140,21 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamGroupsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Optional. Allows filtering groups by group name or external id
+        /// Filters groups by `GroupName` or `ExternalId`, for example `GroupName eq "Data engineers"`.
+        /// Put the value in quotes
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of groups to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+        /// fewer groups
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the account whose groups to list.
-        /// Format: accounts/{account_id}
+        /// The resource name of the account to list groups in, in the format `accounts/{account_id}`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -173,8 +173,8 @@ namespace Pulumi.Databricks
         public readonly ImmutableArray<Outputs.GetAccountIamGroupsV2GroupResult> Groups;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// (string) - The resource name of the account that contains the group, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string Parent;
 

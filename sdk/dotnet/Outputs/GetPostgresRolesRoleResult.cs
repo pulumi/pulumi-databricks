@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresRolesRoleResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string RoleId;
         /// <summary>
-        /// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+        /// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
         /// </summary>
         public readonly Outputs.GetPostgresRolesRoleSpecResult Spec;
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresRolesRoleStatusResult Status;
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was last updated
         /// </summary>
         public readonly string UpdateTime;
 

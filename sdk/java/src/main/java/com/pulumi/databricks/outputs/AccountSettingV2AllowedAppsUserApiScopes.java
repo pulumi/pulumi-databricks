@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountSettingV2AllowedAppsUserApiScopes {
+    /**
+     * @return OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     * 
+     */
     private @Nullable List<String> allowedScopes;
 
     private AccountSettingV2AllowedAppsUserApiScopes() {}
+    /**
+     * @return OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     * 
+     */
     public List<String> allowedScopes() {
         return this.allowedScopes == null ? List.of() : this.allowedScopes;
     }

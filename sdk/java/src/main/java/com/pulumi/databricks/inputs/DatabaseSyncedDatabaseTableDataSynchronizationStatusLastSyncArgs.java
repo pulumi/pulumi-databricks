@@ -17,14 +17,14 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncA
     public static final DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncArgs Empty = new DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncArgs();
 
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      * 
      */
     @Import(name="deltaTableSyncInfo")
     private @Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoArgs> deltaTableSyncInfo;
 
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      * 
      */
     public Optional<Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoArgs>> deltaTableSyncInfo() {
@@ -96,7 +96,7 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncA
         }
 
         /**
-         * @param deltaTableSyncInfo (DeltaTableSyncInfo)
+         * @param deltaTableSyncInfo (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncA
         }
 
         /**
-         * @param deltaTableSyncInfo (DeltaTableSyncInfo)
+         * @param deltaTableSyncInfo (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
          * 
          * @return builder
          * 

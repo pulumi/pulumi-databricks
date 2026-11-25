@@ -58,7 +58,7 @@ class GetPostgresRoleResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        (string)
+        (string) - A timestamp indicating when the role was created
         """
         return pulumi.get(self, "create_time")
 
@@ -97,7 +97,7 @@ class GetPostgresRoleResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresRoleSpecResult':
         """
-        (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+        (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
         """
         return pulumi.get(self, "spec")
 
@@ -113,7 +113,7 @@ class GetPostgresRoleResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
-        (string)
+        (string) - A timestamp indicating when the role was last updated
         """
         return pulumi.get(self, "update_time")
 
@@ -138,7 +138,7 @@ def get_postgres_role(name: Optional[_builtins.str] = None,
                       provider_config: Optional[Union['GetPostgresRoleProviderConfigArgs', 'GetPostgresRoleProviderConfigArgsDict', 'outputs.GetPostgresRoleProviderConfigResult']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresRoleResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -182,7 +182,7 @@ def get_postgres_role_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                              provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresRoleProviderConfigArgs', 'GetPostgresRoleProviderConfigArgsDict', 'outputs.GetPostgresRoleProviderConfigResult']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresRoleResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

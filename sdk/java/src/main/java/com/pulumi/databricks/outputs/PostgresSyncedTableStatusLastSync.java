@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PostgresSyncedTableStatusLastSync {
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      * 
      */
     private @Nullable PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo deltaTableSyncInfo;
@@ -34,7 +34,7 @@ public final class PostgresSyncedTableStatusLastSync {
 
     private PostgresSyncedTableStatusLastSync() {}
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      * 
      */
     public Optional<PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo> deltaTableSyncInfo() {

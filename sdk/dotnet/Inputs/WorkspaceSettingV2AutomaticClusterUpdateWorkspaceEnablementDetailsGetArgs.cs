@@ -19,7 +19,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? ForcedForComplianceMode { get; set; }
 
         /// <summary>
-        /// The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+        /// The feature is unavailable because the workspace does not have the Enhanced Security and
+        /// Compliance entitlement
         /// </summary>
         [Input("unavailableForDisabledEntitlement")]
         public Input<bool>? UnavailableForDisabledEntitlement { get; set; }

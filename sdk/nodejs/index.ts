@@ -140,6 +140,11 @@ export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
 export const ArtifactAllowlist: typeof import("./artifactAllowlist").ArtifactAllowlist = null as any;
 utilities.lazyLoad(exports, ["ArtifactAllowlist"], () => require("./artifactAllowlist"));
 
+export { AssumeGroupRestrictedSharingGroupArgs, AssumeGroupRestrictedSharingGroupState } from "./assumeGroupRestrictedSharingGroup";
+export type AssumeGroupRestrictedSharingGroup = import("./assumeGroupRestrictedSharingGroup").AssumeGroupRestrictedSharingGroup;
+export const AssumeGroupRestrictedSharingGroup: typeof import("./assumeGroupRestrictedSharingGroup").AssumeGroupRestrictedSharingGroup = null as any;
+utilities.lazyLoad(exports, ["AssumeGroupRestrictedSharingGroup"], () => require("./assumeGroupRestrictedSharingGroup"));
+
 export { AutomaticClusterUpdateWorkspaceSettingArgs, AutomaticClusterUpdateWorkspaceSettingState } from "./automaticClusterUpdateWorkspaceSetting";
 export type AutomaticClusterUpdateWorkspaceSetting = import("./automaticClusterUpdateWorkspaceSetting").AutomaticClusterUpdateWorkspaceSetting;
 export const AutomaticClusterUpdateWorkspaceSetting: typeof import("./automaticClusterUpdateWorkspaceSetting").AutomaticClusterUpdateWorkspaceSetting = null as any;
@@ -555,6 +560,16 @@ export const getAppsSettingsCustomTemplates: typeof import("./getAppsSettingsCus
 export const getAppsSettingsCustomTemplatesOutput: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAppsSettingsCustomTemplates","getAppsSettingsCustomTemplatesOutput"], () => require("./getAppsSettingsCustomTemplates"));
 
+export { GetAssumeGroupRestrictedSharingGroupArgs, GetAssumeGroupRestrictedSharingGroupResult, GetAssumeGroupRestrictedSharingGroupOutputArgs } from "./getAssumeGroupRestrictedSharingGroup";
+export const getAssumeGroupRestrictedSharingGroup: typeof import("./getAssumeGroupRestrictedSharingGroup").getAssumeGroupRestrictedSharingGroup = null as any;
+export const getAssumeGroupRestrictedSharingGroupOutput: typeof import("./getAssumeGroupRestrictedSharingGroup").getAssumeGroupRestrictedSharingGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getAssumeGroupRestrictedSharingGroup","getAssumeGroupRestrictedSharingGroupOutput"], () => require("./getAssumeGroupRestrictedSharingGroup"));
+
+export { GetAssumeGroupRestrictedSharingGroupsArgs, GetAssumeGroupRestrictedSharingGroupsResult, GetAssumeGroupRestrictedSharingGroupsOutputArgs } from "./getAssumeGroupRestrictedSharingGroups";
+export const getAssumeGroupRestrictedSharingGroups: typeof import("./getAssumeGroupRestrictedSharingGroups").getAssumeGroupRestrictedSharingGroups = null as any;
+export const getAssumeGroupRestrictedSharingGroupsOutput: typeof import("./getAssumeGroupRestrictedSharingGroups").getAssumeGroupRestrictedSharingGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAssumeGroupRestrictedSharingGroups","getAssumeGroupRestrictedSharingGroupsOutput"], () => require("./getAssumeGroupRestrictedSharingGroups"));
+
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
 export const getAwsAssumeRolePolicyOutput: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicyOutput = null as any;
@@ -859,6 +874,86 @@ export { GetKnowledgeAssistantsArgs, GetKnowledgeAssistantsResult, GetKnowledgeA
 export const getKnowledgeAssistants: typeof import("./getKnowledgeAssistants").getKnowledgeAssistants = null as any;
 export const getKnowledgeAssistantsOutput: typeof import("./getKnowledgeAssistants").getKnowledgeAssistantsOutput = null as any;
 utilities.lazyLoad(exports, ["getKnowledgeAssistants","getKnowledgeAssistantsOutput"], () => require("./getKnowledgeAssistants"));
+
+export { GetLakewatchAlertConfigArgs, GetLakewatchAlertConfigResult, GetLakewatchAlertConfigOutputArgs } from "./getLakewatchAlertConfig";
+export const getLakewatchAlertConfig: typeof import("./getLakewatchAlertConfig").getLakewatchAlertConfig = null as any;
+export const getLakewatchAlertConfigOutput: typeof import("./getLakewatchAlertConfig").getLakewatchAlertConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchAlertConfig","getLakewatchAlertConfigOutput"], () => require("./getLakewatchAlertConfig"));
+
+export { GetLakewatchBuiltinParserArgs, GetLakewatchBuiltinParserResult, GetLakewatchBuiltinParserOutputArgs } from "./getLakewatchBuiltinParser";
+export const getLakewatchBuiltinParser: typeof import("./getLakewatchBuiltinParser").getLakewatchBuiltinParser = null as any;
+export const getLakewatchBuiltinParserOutput: typeof import("./getLakewatchBuiltinParser").getLakewatchBuiltinParserOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchBuiltinParser","getLakewatchBuiltinParserOutput"], () => require("./getLakewatchBuiltinParser"));
+
+export { GetLakewatchBuiltinParserVersionArgs, GetLakewatchBuiltinParserVersionResult, GetLakewatchBuiltinParserVersionOutputArgs } from "./getLakewatchBuiltinParserVersion";
+export const getLakewatchBuiltinParserVersion: typeof import("./getLakewatchBuiltinParserVersion").getLakewatchBuiltinParserVersion = null as any;
+export const getLakewatchBuiltinParserVersionOutput: typeof import("./getLakewatchBuiltinParserVersion").getLakewatchBuiltinParserVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchBuiltinParserVersion","getLakewatchBuiltinParserVersionOutput"], () => require("./getLakewatchBuiltinParserVersion"));
+
+export { GetLakewatchBuiltinParserVersionsArgs, GetLakewatchBuiltinParserVersionsResult, GetLakewatchBuiltinParserVersionsOutputArgs } from "./getLakewatchBuiltinParserVersions";
+export const getLakewatchBuiltinParserVersions: typeof import("./getLakewatchBuiltinParserVersions").getLakewatchBuiltinParserVersions = null as any;
+export const getLakewatchBuiltinParserVersionsOutput: typeof import("./getLakewatchBuiltinParserVersions").getLakewatchBuiltinParserVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchBuiltinParserVersions","getLakewatchBuiltinParserVersionsOutput"], () => require("./getLakewatchBuiltinParserVersions"));
+
+export { GetLakewatchBuiltinParsersArgs, GetLakewatchBuiltinParsersResult, GetLakewatchBuiltinParsersOutputArgs } from "./getLakewatchBuiltinParsers";
+export const getLakewatchBuiltinParsers: typeof import("./getLakewatchBuiltinParsers").getLakewatchBuiltinParsers = null as any;
+export const getLakewatchBuiltinParsersOutput: typeof import("./getLakewatchBuiltinParsers").getLakewatchBuiltinParsersOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchBuiltinParsers","getLakewatchBuiltinParsersOutput"], () => require("./getLakewatchBuiltinParsers"));
+
+export { GetLakewatchCommonConfigArgs, GetLakewatchCommonConfigResult, GetLakewatchCommonConfigOutputArgs } from "./getLakewatchCommonConfig";
+export const getLakewatchCommonConfig: typeof import("./getLakewatchCommonConfig").getLakewatchCommonConfig = null as any;
+export const getLakewatchCommonConfigOutput: typeof import("./getLakewatchCommonConfig").getLakewatchCommonConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchCommonConfig","getLakewatchCommonConfigOutput"], () => require("./getLakewatchCommonConfig"));
+
+export { GetLakewatchDatasourceArgs, GetLakewatchDatasourceResult, GetLakewatchDatasourceOutputArgs } from "./getLakewatchDatasource";
+export const getLakewatchDatasource: typeof import("./getLakewatchDatasource").getLakewatchDatasource = null as any;
+export const getLakewatchDatasourceOutput: typeof import("./getLakewatchDatasource").getLakewatchDatasourceOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchDatasource","getLakewatchDatasourceOutput"], () => require("./getLakewatchDatasource"));
+
+export { GetLakewatchDatasourceConfigArgs, GetLakewatchDatasourceConfigResult, GetLakewatchDatasourceConfigOutputArgs } from "./getLakewatchDatasourceConfig";
+export const getLakewatchDatasourceConfig: typeof import("./getLakewatchDatasourceConfig").getLakewatchDatasourceConfig = null as any;
+export const getLakewatchDatasourceConfigOutput: typeof import("./getLakewatchDatasourceConfig").getLakewatchDatasourceConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchDatasourceConfig","getLakewatchDatasourceConfigOutput"], () => require("./getLakewatchDatasourceConfig"));
+
+export { GetLakewatchDatasourcesArgs, GetLakewatchDatasourcesResult, GetLakewatchDatasourcesOutputArgs } from "./getLakewatchDatasources";
+export const getLakewatchDatasources: typeof import("./getLakewatchDatasources").getLakewatchDatasources = null as any;
+export const getLakewatchDatasourcesOutput: typeof import("./getLakewatchDatasources").getLakewatchDatasourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchDatasources","getLakewatchDatasourcesOutput"], () => require("./getLakewatchDatasources"));
+
+export { GetLakewatchParserArgs, GetLakewatchParserResult, GetLakewatchParserOutputArgs } from "./getLakewatchParser";
+export const getLakewatchParser: typeof import("./getLakewatchParser").getLakewatchParser = null as any;
+export const getLakewatchParserOutput: typeof import("./getLakewatchParser").getLakewatchParserOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchParser","getLakewatchParserOutput"], () => require("./getLakewatchParser"));
+
+export { GetLakewatchParserVersionArgs, GetLakewatchParserVersionResult, GetLakewatchParserVersionOutputArgs } from "./getLakewatchParserVersion";
+export const getLakewatchParserVersion: typeof import("./getLakewatchParserVersion").getLakewatchParserVersion = null as any;
+export const getLakewatchParserVersionOutput: typeof import("./getLakewatchParserVersion").getLakewatchParserVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchParserVersion","getLakewatchParserVersionOutput"], () => require("./getLakewatchParserVersion"));
+
+export { GetLakewatchParserVersionsArgs, GetLakewatchParserVersionsResult, GetLakewatchParserVersionsOutputArgs } from "./getLakewatchParserVersions";
+export const getLakewatchParserVersions: typeof import("./getLakewatchParserVersions").getLakewatchParserVersions = null as any;
+export const getLakewatchParserVersionsOutput: typeof import("./getLakewatchParserVersions").getLakewatchParserVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchParserVersions","getLakewatchParserVersionsOutput"], () => require("./getLakewatchParserVersions"));
+
+export { GetLakewatchParsersArgs, GetLakewatchParsersResult, GetLakewatchParsersOutputArgs } from "./getLakewatchParsers";
+export const getLakewatchParsers: typeof import("./getLakewatchParsers").getLakewatchParsers = null as any;
+export const getLakewatchParsersOutput: typeof import("./getLakewatchParsers").getLakewatchParsersOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchParsers","getLakewatchParsersOutput"], () => require("./getLakewatchParsers"));
+
+export { GetLakewatchRuleArgs, GetLakewatchRuleResult, GetLakewatchRuleOutputArgs } from "./getLakewatchRule";
+export const getLakewatchRule: typeof import("./getLakewatchRule").getLakewatchRule = null as any;
+export const getLakewatchRuleOutput: typeof import("./getLakewatchRule").getLakewatchRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchRule","getLakewatchRuleOutput"], () => require("./getLakewatchRule"));
+
+export { GetLakewatchRuleConfigArgs, GetLakewatchRuleConfigResult, GetLakewatchRuleConfigOutputArgs } from "./getLakewatchRuleConfig";
+export const getLakewatchRuleConfig: typeof import("./getLakewatchRuleConfig").getLakewatchRuleConfig = null as any;
+export const getLakewatchRuleConfigOutput: typeof import("./getLakewatchRuleConfig").getLakewatchRuleConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchRuleConfig","getLakewatchRuleConfigOutput"], () => require("./getLakewatchRuleConfig"));
+
+export { GetLakewatchRulesArgs, GetLakewatchRulesResult, GetLakewatchRulesOutputArgs } from "./getLakewatchRules";
+export const getLakewatchRules: typeof import("./getLakewatchRules").getLakewatchRules = null as any;
+export const getLakewatchRulesOutput: typeof import("./getLakewatchRules").getLakewatchRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getLakewatchRules","getLakewatchRulesOutput"], () => require("./getLakewatchRules"));
 
 export { GetMaterializedFeaturesFeatureTagArgs, GetMaterializedFeaturesFeatureTagResult, GetMaterializedFeaturesFeatureTagOutputArgs } from "./getMaterializedFeaturesFeatureTag";
 export const getMaterializedFeaturesFeatureTag: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTag = null as any;
@@ -1425,6 +1520,46 @@ export type LakehouseMonitor = import("./lakehouseMonitor").LakehouseMonitor;
 export const LakehouseMonitor: typeof import("./lakehouseMonitor").LakehouseMonitor = null as any;
 utilities.lazyLoad(exports, ["LakehouseMonitor"], () => require("./lakehouseMonitor"));
 
+export { LakewatchAlertConfigArgs, LakewatchAlertConfigState } from "./lakewatchAlertConfig";
+export type LakewatchAlertConfig = import("./lakewatchAlertConfig").LakewatchAlertConfig;
+export const LakewatchAlertConfig: typeof import("./lakewatchAlertConfig").LakewatchAlertConfig = null as any;
+utilities.lazyLoad(exports, ["LakewatchAlertConfig"], () => require("./lakewatchAlertConfig"));
+
+export { LakewatchCommonConfigArgs, LakewatchCommonConfigState } from "./lakewatchCommonConfig";
+export type LakewatchCommonConfig = import("./lakewatchCommonConfig").LakewatchCommonConfig;
+export const LakewatchCommonConfig: typeof import("./lakewatchCommonConfig").LakewatchCommonConfig = null as any;
+utilities.lazyLoad(exports, ["LakewatchCommonConfig"], () => require("./lakewatchCommonConfig"));
+
+export { LakewatchDatasourceArgs, LakewatchDatasourceState } from "./lakewatchDatasource";
+export type LakewatchDatasource = import("./lakewatchDatasource").LakewatchDatasource;
+export const LakewatchDatasource: typeof import("./lakewatchDatasource").LakewatchDatasource = null as any;
+utilities.lazyLoad(exports, ["LakewatchDatasource"], () => require("./lakewatchDatasource"));
+
+export { LakewatchDatasourceConfigArgs, LakewatchDatasourceConfigState } from "./lakewatchDatasourceConfig";
+export type LakewatchDatasourceConfig = import("./lakewatchDatasourceConfig").LakewatchDatasourceConfig;
+export const LakewatchDatasourceConfig: typeof import("./lakewatchDatasourceConfig").LakewatchDatasourceConfig = null as any;
+utilities.lazyLoad(exports, ["LakewatchDatasourceConfig"], () => require("./lakewatchDatasourceConfig"));
+
+export { LakewatchParserArgs, LakewatchParserState } from "./lakewatchParser";
+export type LakewatchParser = import("./lakewatchParser").LakewatchParser;
+export const LakewatchParser: typeof import("./lakewatchParser").LakewatchParser = null as any;
+utilities.lazyLoad(exports, ["LakewatchParser"], () => require("./lakewatchParser"));
+
+export { LakewatchParserVersionArgs, LakewatchParserVersionState } from "./lakewatchParserVersion";
+export type LakewatchParserVersion = import("./lakewatchParserVersion").LakewatchParserVersion;
+export const LakewatchParserVersion: typeof import("./lakewatchParserVersion").LakewatchParserVersion = null as any;
+utilities.lazyLoad(exports, ["LakewatchParserVersion"], () => require("./lakewatchParserVersion"));
+
+export { LakewatchRuleArgs, LakewatchRuleState } from "./lakewatchRule";
+export type LakewatchRule = import("./lakewatchRule").LakewatchRule;
+export const LakewatchRule: typeof import("./lakewatchRule").LakewatchRule = null as any;
+utilities.lazyLoad(exports, ["LakewatchRule"], () => require("./lakewatchRule"));
+
+export { LakewatchRuleConfigArgs, LakewatchRuleConfigState } from "./lakewatchRuleConfig";
+export type LakewatchRuleConfig = import("./lakewatchRuleConfig").LakewatchRuleConfig;
+export const LakewatchRuleConfig: typeof import("./lakewatchRuleConfig").LakewatchRuleConfig = null as any;
+utilities.lazyLoad(exports, ["LakewatchRuleConfig"], () => require("./lakewatchRuleConfig"));
+
 export { LibraryArgs, LibraryState } from "./library";
 export type Library = import("./library").Library;
 export const Library: typeof import("./library").Library = null as any;
@@ -1986,6 +2121,8 @@ const _module = {
                 return new AppsSettingsCustomTemplate(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
+            case "databricks:index/assumeGroupRestrictedSharingGroup:AssumeGroupRestrictedSharingGroup":
+                return new AssumeGroupRestrictedSharingGroup(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
                 return new AutomaticClusterUpdateWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/budget:Budget":
@@ -2092,6 +2229,22 @@ const _module = {
                 return new KnowledgeAssistantKnowledgeSource(name, <any>undefined, { urn })
             case "databricks:index/lakehouseMonitor:LakehouseMonitor":
                 return new LakehouseMonitor(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchAlertConfig:LakewatchAlertConfig":
+                return new LakewatchAlertConfig(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchCommonConfig:LakewatchCommonConfig":
+                return new LakewatchCommonConfig(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchDatasource:LakewatchDatasource":
+                return new LakewatchDatasource(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchDatasourceConfig:LakewatchDatasourceConfig":
+                return new LakewatchDatasourceConfig(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchParser:LakewatchParser":
+                return new LakewatchParser(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchParserVersion:LakewatchParserVersion":
+                return new LakewatchParserVersion(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchRule:LakewatchRule":
+                return new LakewatchRule(name, <any>undefined, { urn })
+            case "databricks:index/lakewatchRuleConfig:LakewatchRuleConfig":
+                return new LakewatchRuleConfig(name, <any>undefined, { urn })
             case "databricks:index/library:Library":
                 return new Library(name, <any>undefined, { urn })
             case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
@@ -2320,6 +2473,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/appSpace", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/appsSettingsCustomTemplate", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/assumeGroupRestrictedSharingGroup", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budgetPolicy", _module)
@@ -2373,6 +2527,14 @@ pulumi.runtime.registerResourceModule("databricks", "index/job", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistant", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistantKnowledgeSource", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/lakehouseMonitor", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchAlertConfig", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchCommonConfig", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchDatasource", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchDatasourceConfig", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchParser", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchParserVersion", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchRule", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakewatchRuleConfig", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/materializedFeaturesFeatureTag", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastore", _module)

@@ -71,14 +71,14 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
     }
 
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      * 
      */
     @Import(name="fullName")
     private @Nullable Output<String> fullName;
 
     /**
-     * @return (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * @return (string) - The full name of the securable, repeated from **securable**
      * 
      */
     public Optional<Output<String>> fullName() {
@@ -116,14 +116,14 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
     }
 
     /**
-     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * (string) - The type of the securable, repeated from **securable** as a plain string
      * 
      */
     @Import(name="securableType")
     private @Nullable Output<String> securableType;
 
     /**
-     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * @return (string) - The type of the securable, repeated from **securable** as a plain string
      * 
      */
     public Optional<Output<String>> securableType() {
@@ -238,7 +238,7 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
-         * @param fullName (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * @param fullName (string) - The full name of the securable, repeated from **securable**
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
-         * @param fullName (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * @param fullName (string) - The full name of the securable, repeated from **securable**
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
-         * @param securableType (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+         * @param securableType (string) - The type of the securable, repeated from **securable** as a plain string
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
-         * @param securableType (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+         * @param securableType (string) - The type of the securable, repeated from **securable** as a plain string
          * 
          * @return builder
          * 

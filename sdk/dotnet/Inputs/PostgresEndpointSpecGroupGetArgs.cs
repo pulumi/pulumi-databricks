@@ -13,8 +13,8 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresEndpointSpecGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-        /// by specifying size.max &gt; 1
+        /// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+        /// one compute (`Max` greater than 1)
         /// </summary>
         [Input("enableReadableSecondaries")]
         public Input<bool>? EnableReadableSecondaries { get; set; }

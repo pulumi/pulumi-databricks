@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ModelEndpointNameForQuery;
         /// <summary>
-        /// (string) - Name of the column
+        /// (string) - Name of the column that holds the precomputed embedding vectors
         /// </summary>
         public readonly string? Name;
 

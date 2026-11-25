@@ -10,6 +10,8 @@ import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentGitSource;
 import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentHealthCheck;
 import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +49,9 @@ public final class GetAppsAppPendingDeployment {
      * 
      */
     private @Nullable String mode;
+    private Boolean scanOmittedCountIsLowerBound;
+    private Integer scanOmittedFindingsCount;
+    private String scanStatus;
     /**
      * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
      * 
@@ -111,6 +116,15 @@ public final class GetAppsAppPendingDeployment {
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    public Boolean scanOmittedCountIsLowerBound() {
+        return this.scanOmittedCountIsLowerBound;
+    }
+    public Integer scanOmittedFindingsCount() {
+        return this.scanOmittedFindingsCount;
+    }
+    public String scanStatus() {
+        return this.scanStatus;
+    }
     /**
      * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
      * 
@@ -151,6 +165,9 @@ public final class GetAppsAppPendingDeployment {
         private @Nullable GetAppsAppPendingDeploymentGitSource gitSource;
         private @Nullable GetAppsAppPendingDeploymentHealthCheck healthCheck;
         private @Nullable String mode;
+        private Boolean scanOmittedCountIsLowerBound;
+        private Integer scanOmittedFindingsCount;
+        private String scanStatus;
         private @Nullable String sourceCodePath;
         private GetAppsAppPendingDeploymentStatus status;
         private String updateTime;
@@ -166,6 +183,9 @@ public final class GetAppsAppPendingDeployment {
     	      this.gitSource = defaults.gitSource;
     	      this.healthCheck = defaults.healthCheck;
     	      this.mode = defaults.mode;
+    	      this.scanOmittedCountIsLowerBound = defaults.scanOmittedCountIsLowerBound;
+    	      this.scanOmittedFindingsCount = defaults.scanOmittedFindingsCount;
+    	      this.scanStatus = defaults.scanStatus;
     	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
@@ -238,6 +258,30 @@ public final class GetAppsAppPendingDeployment {
             return this;
         }
         @CustomType.Setter
+        public Builder scanOmittedCountIsLowerBound(Boolean scanOmittedCountIsLowerBound) {
+            if (scanOmittedCountIsLowerBound == null) {
+              throw new MissingRequiredPropertyException("GetAppsAppPendingDeployment", "scanOmittedCountIsLowerBound");
+            }
+            this.scanOmittedCountIsLowerBound = scanOmittedCountIsLowerBound;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scanOmittedFindingsCount(Integer scanOmittedFindingsCount) {
+            if (scanOmittedFindingsCount == null) {
+              throw new MissingRequiredPropertyException("GetAppsAppPendingDeployment", "scanOmittedFindingsCount");
+            }
+            this.scanOmittedFindingsCount = scanOmittedFindingsCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scanStatus(String scanStatus) {
+            if (scanStatus == null) {
+              throw new MissingRequiredPropertyException("GetAppsAppPendingDeployment", "scanStatus");
+            }
+            this.scanStatus = scanStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceCodePath(@Nullable String sourceCodePath) {
 
             this.sourceCodePath = sourceCodePath;
@@ -270,6 +314,9 @@ public final class GetAppsAppPendingDeployment {
             _resultValue.gitSource = gitSource;
             _resultValue.healthCheck = healthCheck;
             _resultValue.mode = mode;
+            _resultValue.scanOmittedCountIsLowerBound = scanOmittedCountIsLowerBound;
+            _resultValue.scanOmittedFindingsCount = scanOmittedFindingsCount;
+            _resultValue.scanStatus = scanStatus;
             _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.status = status;
             _resultValue.updateTime = updateTime;

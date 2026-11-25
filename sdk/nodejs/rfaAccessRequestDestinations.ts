@@ -106,7 +106,7 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
      */
     declare public readonly destinations: pulumi.Output<outputs.RfaAccessRequestDestinationsDestination[] | undefined>;
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      */
     declare public /*out*/ readonly fullName: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
      */
     declare public readonly securable: pulumi.Output<outputs.RfaAccessRequestDestinationsSecurable>;
     /**
-     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * (string) - The type of the securable, repeated from **securable** as a plain string
      */
     declare public /*out*/ readonly securableType: pulumi.Output<string>;
 
@@ -179,7 +179,7 @@ export interface RfaAccessRequestDestinationsState {
      */
     destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[] | undefined>;
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      */
     fullName?: pulumi.Input<string | undefined>;
     /**
@@ -191,7 +191,7 @@ export interface RfaAccessRequestDestinationsState {
      */
     securable?: pulumi.Input<inputs.RfaAccessRequestDestinationsSecurable | undefined>;
     /**
-     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * (string) - The type of the securable, repeated from **securable** as a plain string
      */
     securableType?: pulumi.Input<string | undefined>;
 }

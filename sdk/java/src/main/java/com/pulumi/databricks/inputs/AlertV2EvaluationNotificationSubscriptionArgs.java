@@ -15,16 +15,32 @@ public final class AlertV2EvaluationNotificationSubscriptionArgs extends com.pul
 
     public static final AlertV2EvaluationNotificationSubscriptionArgs Empty = new AlertV2EvaluationNotificationSubscriptionArgs();
 
+    /**
+     * ID of the notification destination to notify, as returned by the Notification Destinations API
+     * 
+     */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
+    /**
+     * @return ID of the notification destination to notify, as returned by the Notification Destinations API
+     * 
+     */
     public Optional<Output<String>> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
 
+    /**
+     * Email address of the workspace user to notify
+     * 
+     */
     @Import(name="userEmail")
     private @Nullable Output<String> userEmail;
 
+    /**
+     * @return Email address of the workspace user to notify
+     * 
+     */
     public Optional<Output<String>> userEmail() {
         return Optional.ofNullable(this.userEmail);
     }
@@ -54,20 +70,44 @@ public final class AlertV2EvaluationNotificationSubscriptionArgs extends com.pul
             $ = new AlertV2EvaluationNotificationSubscriptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationId ID of the notification destination to notify, as returned by the Notification Destinations API
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(@Nullable Output<String> destinationId) {
             $.destinationId = destinationId;
             return this;
         }
 
+        /**
+         * @param destinationId ID of the notification destination to notify, as returned by the Notification Destinations API
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(String destinationId) {
             return destinationId(Output.of(destinationId));
         }
 
+        /**
+         * @param userEmail Email address of the workspace user to notify
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(@Nullable Output<String> userEmail) {
             $.userEmail = userEmail;
             return this;
         }
 
+        /**
+         * @param userEmail Email address of the workspace user to notify
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(String userEmail) {
             return userEmail(Output.of(userEmail));
         }

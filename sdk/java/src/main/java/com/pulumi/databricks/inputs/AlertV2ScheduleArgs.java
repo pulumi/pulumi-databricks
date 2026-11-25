@@ -17,14 +17,14 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
     public static final AlertV2ScheduleArgs Empty = new AlertV2ScheduleArgs();
 
     /**
-     * Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
     /**
-     * @return Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * @return Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     public Optional<Output<String>> pauseStatus() {
@@ -32,7 +32,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
@@ -40,7 +40,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
     private Output<String> quartzCronSchedule;
 
     /**
-     * @return A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * @return A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
@@ -94,7 +94,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pauseStatus Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+         * @param pauseStatus Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pauseStatus Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+         * @param pauseStatus Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param quartzCronSchedule A cron expression using quartz syntax that specifies the schedule for this pipeline.
+         * @param quartzCronSchedule A cron expression using quartz syntax that specifies the schedule for this alert.
          * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
          * 
          * @return builder
@@ -127,7 +127,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param quartzCronSchedule A cron expression using quartz syntax that specifies the schedule for this pipeline.
+         * @param quartzCronSchedule A cron expression using quartz syntax that specifies the schedule for this alert.
          * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
          * 
          * @return builder

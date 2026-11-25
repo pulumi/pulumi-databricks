@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchIndexStatus {
     /**
+     * @return (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     * 
+     */
+    private @Nullable String detailedState;
+    /**
      * @return (string) - Index API URL used to perform operations on the index
      * 
      */
@@ -29,12 +34,20 @@ public final class AiSearchIndexStatus {
      */
     private @Nullable String message;
     /**
-     * @return (boolean) - Whether the index is ready for search
+     * @return (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      * 
      */
     private @Nullable Boolean ready;
 
     private AiSearchIndexStatus() {}
+    /**
+     * @return (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     * 
+     */
+    public Optional<String> detailedState() {
+        return Optional.ofNullable(this.detailedState);
+    }
     /**
      * @return (string) - Index API URL used to perform operations on the index
      * 
@@ -57,7 +70,8 @@ public final class AiSearchIndexStatus {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return (boolean) - Whether the index is ready for search
+     * @return (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      * 
      */
     public Optional<Boolean> ready() {
@@ -73,6 +87,7 @@ public final class AiSearchIndexStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String detailedState;
         private @Nullable String indexUrl;
         private @Nullable Integer indexedRowCount;
         private @Nullable String message;
@@ -80,12 +95,19 @@ public final class AiSearchIndexStatus {
         public Builder() {}
         public Builder(AiSearchIndexStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.detailedState = defaults.detailedState;
     	      this.indexUrl = defaults.indexUrl;
     	      this.indexedRowCount = defaults.indexedRowCount;
     	      this.message = defaults.message;
     	      this.ready = defaults.ready;
         }
 
+        @CustomType.Setter
+        public Builder detailedState(@Nullable String detailedState) {
+
+            this.detailedState = detailedState;
+            return this;
+        }
         @CustomType.Setter
         public Builder indexUrl(@Nullable String indexUrl) {
 
@@ -112,6 +134,7 @@ public final class AiSearchIndexStatus {
         }
         public AiSearchIndexStatus build() {
             final var _resultValue = new AiSearchIndexStatus();
+            _resultValue.detailedState = detailedState;
             _resultValue.indexUrl = indexUrl;
             _resultValue.indexedRowCount = indexedRowCount;
             _resultValue.message = message;

@@ -60,8 +60,9 @@ type LookupAiGatewayMcpServiceArgs struct {
 	// Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `mcpServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `mcpServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayMcpServiceProviderConfig `pulumi:"providerConfig"`
@@ -77,16 +78,16 @@ type LookupAiGatewayMcpServiceResult struct {
 	Config GetAiGatewayMcpServiceConfig `pulumi:"config"`
 	// (string) - Time the MCP service was created
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username or service principal application ID of the principal that created the MCP service
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - Owner of the MCP service
+	// (string) - Username, group name, or service principal application ID of the MCP service owner
 	EffectiveOwner string `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag string `pulumi:"etag"`
-	// (string) - Metastore hosting the MCP service
+	// (string) - Unique identifier of the metastore that contains the MCP service
 	MetastoreId string `pulumi:"metastoreId"`
 	// (string) - Resource name of the Unity Catalog connection used to access the MCP
 	// server, in the form `connections/{catalog}.{schema}.{connection}`
@@ -94,7 +95,8 @@ type LookupAiGatewayMcpServiceResult struct {
 	ProviderConfig *GetAiGatewayMcpServiceProviderConfig `pulumi:"providerConfig"`
 	// (string) - Time the MCP service was last modified
 	UpdateTime string `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username or service principal application ID of the principal that last updated the MCP
+	// service
 	UpdatedBy string `pulumi:"updatedBy"`
 }
 
@@ -108,8 +110,9 @@ type LookupAiGatewayMcpServiceOutputArgs struct {
 	// Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `mcpServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `mcpServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayMcpServiceProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -151,12 +154,12 @@ func (o LookupAiGatewayMcpServiceResultOutput) CreateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Creator identity
+// (string) - Username or service principal application ID of the principal that created the MCP service
 func (o LookupAiGatewayMcpServiceResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the MCP service
+// (string) - Username, group name, or service principal application ID of the MCP service owner
 func (o LookupAiGatewayMcpServiceResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
@@ -169,7 +172,7 @@ func (o LookupAiGatewayMcpServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// (string) - Metastore hosting the MCP service
+// (string) - Unique identifier of the metastore that contains the MCP service
 func (o LookupAiGatewayMcpServiceResultOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -189,7 +192,8 @@ func (o LookupAiGatewayMcpServiceResultOutput) UpdateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Identity of the last updater
+// (string) - Username or service principal application ID of the principal that last updated the MCP
+// service
 func (o LookupAiGatewayMcpServiceResultOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }

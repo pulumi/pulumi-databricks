@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * @return Schedule anchored to a day of the week, either every week or on given weeks of the month
+     * 
+     */
     private @Nullable WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule weekDayBasedSchedule;
 
     private WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow() {}
+    /**
+     * @return Schedule anchored to a day of the week, either every week or on given weeks of the month
+     * 
+     */
     public Optional<WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule> weekDayBasedSchedule() {
         return Optional.ofNullable(this.weekDayBasedSchedule);
     }

@@ -44,7 +44,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (integer) - The effective major Postgres version number
         /// </summary>
-        public readonly int? PgVersion;
+        public readonly int PgVersion;
 
         [OutputConstructor]
         private GetPostgresProjectsProjectSpecResult(
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? historyRetentionDuration,
 
-            int? pgVersion)
+            int pgVersion)
         {
             BudgetPolicyId = budgetPolicyId;
             CustomTags = customTags;

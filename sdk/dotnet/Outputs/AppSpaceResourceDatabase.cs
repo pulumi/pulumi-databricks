@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppSpaceResourceDatabase
     {
+        /// <summary>
+        /// Name of the database within the instance
+        /// </summary>
         public readonly string DatabaseName;
+        /// <summary>
+        /// Name of the Lakebase database instance
+        /// </summary>
         public readonly string InstanceName;
         public readonly string Permission;
 

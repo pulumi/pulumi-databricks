@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRfaAccessRequestDestinationsSecurable {
     /**
-     * @return The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * @return The full name of the securable, repeated from **securable**
      * 
      */
     private @Nullable String fullName;
@@ -31,7 +31,7 @@ public final class GetRfaAccessRequestDestinationsSecurable {
 
     private GetRfaAccessRequestDestinationsSecurable() {}
     /**
-     * @return The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * @return The full name of the securable, repeated from **securable**
      * 
      */
     public Optional<String> fullName() {

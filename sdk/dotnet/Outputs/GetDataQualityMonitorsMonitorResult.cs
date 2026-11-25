@@ -14,12 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDataQualityMonitorsMonitorResult
     {
         /// <summary>
-        /// (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `Schema` object types
+        /// (AnomalyDetectionConfig) - Anomaly detection settings. Required when `ObjectType` is `Schema`. When reading a `Table` monitor, this holds
+        /// the settings of the parent schema's monitor if the schema has one
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigResult AnomalyDetectionConfig;
         /// <summary>
-        /// (DataProfilingConfig) - Data Profiling Configuration, applicable to `Table` object types. Exactly one `Analysis Configuration`
-        /// must be present
+        /// (DataProfilingConfig) - Data profiling settings. Required when `ObjectType` is `Table`. Exactly one of `InferenceLog`, `TimeSeries`
+        /// or `Snapshot` must be set
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorsMonitorDataProfilingConfigResult DataProfilingConfig;
         /// <summary>

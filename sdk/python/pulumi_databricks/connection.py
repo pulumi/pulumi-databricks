@@ -26,6 +26,8 @@ class ConnectionArgs:
                  environment_settings: pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 options_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -40,11 +42,17 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionEnvironmentSettingsArgs'] environment_settings: Connection environment settings. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] options_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+               
+               > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        :param pulumi.Input[_builtins.int] options_wo_version: Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
         :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] secrets: A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -56,6 +64,10 @@ class ConnectionArgs:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if options_wo is not None:
+            pulumi.set(__self__, "options_wo", options_wo)
+        if options_wo_version is not None:
+            pulumi.set(__self__, "options_wo_version", options_wo_version)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if parent is not None:
@@ -130,6 +142,33 @@ class ConnectionArgs:
         pulumi.set(self, "options", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionsWo")
+    def options_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+
+        > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        """
+        return pulumi.get(self, "options_wo")
+
+    @options_wo.setter
+    def options_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "options_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="optionsWoVersion")
+    def options_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
+        """
+        return pulumi.get(self, "options_wo_version")
+
+    @options_wo_version.setter
+    def options_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "options_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -192,6 +231,9 @@ class ConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def secrets(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+        """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
@@ -213,6 +255,8 @@ class _ConnectionState:
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 options_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -238,12 +282,18 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of parent metastore.
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] options_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+               
+               > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        :param pulumi.Input[_builtins.int] options_wo_version: Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
         :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] secrets: A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
         :param pulumi.Input[_builtins.str] securable_type: Securable type.
         :param pulumi.Input[_builtins.int] updated_at: Time at which this connection was updated, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified connection.
@@ -271,6 +321,10 @@ class _ConnectionState:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if options_wo is not None:
+            pulumi.set(__self__, "options_wo", options_wo)
+        if options_wo_version is not None:
+            pulumi.set(__self__, "options_wo_version", options_wo_version)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if parent is not None:
@@ -427,6 +481,33 @@ class _ConnectionState:
         pulumi.set(self, "options", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionsWo")
+    def options_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+
+        > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        """
+        return pulumi.get(self, "options_wo")
+
+    @options_wo.setter
+    def options_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "options_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="optionsWoVersion")
+    def options_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
+        """
+        return pulumi.get(self, "options_wo_version")
+
+    @options_wo_version.setter
+    def options_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "options_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -501,6 +582,9 @@ class _ConnectionState:
     @_builtins.property
     @pulumi.getter
     def secrets(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+        """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
@@ -567,6 +651,8 @@ class Connection(pulumi.CustomResource):
                  environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 options_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -579,6 +665,8 @@ class Connection(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+        > **Note** Write-Only argument `options_wo` is available to supply sensitive options (such as `password`, `client_secret`, private keys or certificates) without storing them in the Pulumi state. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+
         Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
 
         - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
@@ -732,6 +820,29 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
+        Create a connection to a MySQL database without storing credentials in the Pulumi state
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_databricks as databricks
+
+        mysql = databricks.Connection("mysql",
+            name="mysql_connection",
+            connection_type="MYSQL",
+            options={
+                "host": "test.mysql.database.azure.com",
+                "port": "3306",
+            },
+            options_wo=json.dumps({
+                "user": mysql_user,
+                "password": mysql_password,
+            }),
+            options_wo_version=1)
+        ```
+
+        Create a Kafka connection using mTLS, with the client private key and other credentials read from an ephemeral resource, so they are never stored in the plan or state
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -740,11 +851,17 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']] environment_settings: Connection environment settings. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] options_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+               
+               > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        :param pulumi.Input[_builtins.int] options_wo_version: Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
         :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] secrets: A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
         """
         ...
     @overload
@@ -757,6 +874,8 @@ class Connection(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+        > **Note** Write-Only argument `options_wo` is available to supply sensitive options (such as `password`, `client_secret`, private keys or certificates) without storing them in the Pulumi state. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+
         Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
 
         - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
@@ -909,6 +1028,29 @@ class Connection(pulumi.CustomResource):
                 "bearer_token": "bearer_token",
             })
         ```
+
+        Create a connection to a MySQL database without storing credentials in the Pulumi state
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_databricks as databricks
+
+        mysql = databricks.Connection("mysql",
+            name="mysql_connection",
+            connection_type="MYSQL",
+            options={
+                "host": "test.mysql.database.azure.com",
+                "port": "3306",
+            },
+            options_wo=json.dumps({
+                "user": mysql_user,
+                "password": mysql_password,
+            }),
+            options_wo_version=1)
+        ```
+
+        Create a Kafka connection using mTLS, with the client private key and other credentials read from an ephemeral resource, so they are never stored in the plan or state
 
 
         :param str resource_name: The name of the resource.
@@ -931,6 +1073,8 @@ class Connection(pulumi.CustomResource):
                  environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 options_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -951,6 +1095,8 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["environment_settings"] = environment_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = None if options is None else pulumi.Output.secret(options)
+            __props__.__dict__["options_wo"] = None if options_wo is None else pulumi.Output.secret(options_wo)
+            __props__.__dict__["options_wo_version"] = options_wo_version
             __props__.__dict__["owner"] = owner
             __props__.__dict__["parent"] = parent
             __props__.__dict__["properties"] = properties
@@ -968,7 +1114,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
             __props__.__dict__["url"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["options"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["options", "optionsWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Connection, __self__).__init__(
             'databricks:index/connection:Connection',
@@ -991,6 +1137,8 @@ class Connection(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            options_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            options_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1020,12 +1168,18 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of parent metastore.
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] options_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+               
+               > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        :param pulumi.Input[_builtins.int] options_wo_version: Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
         :param pulumi.Input[_builtins.str] parent: Parent schema of a schema-level connection, in the format `schemas/{catalog}.{schema}`. When set, the connection is created inside that schema and its `full_name` becomes `{catalog}.{schema}.{name}`; when omitted, the connection is metastore-level. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] secrets: A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
         :param pulumi.Input[_builtins.str] securable_type: Securable type.
         :param pulumi.Input[_builtins.int] updated_at: Time at which this connection was updated, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified connection.
@@ -1046,6 +1200,8 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
+        __props__.__dict__["options_wo"] = options_wo
+        __props__.__dict__["options_wo_version"] = options_wo_version
         __props__.__dict__["owner"] = owner
         __props__.__dict__["parent"] = parent
         __props__.__dict__["properties"] = properties
@@ -1073,6 +1229,8 @@ class Connection(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            options_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            options_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1096,6 +1254,8 @@ class Connection(pulumi.CustomResource):
         __props__["metastoreId"] = metastore_id
         __props__["name"] = name
         __props__["options"] = options
+        __props__["optionsWo"] = options_wo
+        __props__["optionsWoVersion"] = options_wo_version
         __props__["owner"] = owner
         __props__["parent"] = parent
         __props__["properties"] = properties
@@ -1198,6 +1358,25 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "options")
 
     @_builtins.property
+    @pulumi.getter(name="optionsWo")
+    def options_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `access_token`, `client_secret`, `pem_private_key`, `pem_key_passphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearer_token`, `ssl_keystore_key`, `ssl_key_password`, `schema_registry_api_secret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `api_key`, `private_key`, `ssl_key`, `keystore_key`, `certificate`, `certificates` or `certificate_chain` (case-insensitive), e.g. `client_private_key`, `userProvidedServerCertificate` or `ssl_keystore_certificate_chain`. Other options, such as `host`, `token_endpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `options_wo`, or in both `options_wo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `options_wo_version`.
+
+        > Pulumi can't detect changes made outside of Pulumi to options set in `options_wo`, as their values aren't stored in the state. Changing `options_wo` alone doesn't show up in the plan either: increment `options_wo_version` to apply it.
+        """
+        return pulumi.get(self, "options_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="optionsWoVersion")
+    def options_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Use together with `options_wo` to trigger an update. Increment this value (starting at 1) when an update to `options_wo` is required.
+        """
+        return pulumi.get(self, "options_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1248,6 +1427,9 @@ class Connection(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+        """
         return pulumi.get(self, "secrets")
 
     @_builtins.property

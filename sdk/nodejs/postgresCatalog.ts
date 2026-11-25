@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -100,7 +100,8 @@ export class PostgresCatalog extends pulumi.CustomResource {
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      */
     declare public readonly catalogId: pulumi.Output<string>;
     /**
@@ -116,7 +117,8 @@ export class PostgresCatalog extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresCatalogProviderConfig>;
     /**
-     * The desired state of the Catalog
+     * The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresCatalogSpec>;
     /**
@@ -124,7 +126,7 @@ export class PostgresCatalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresCatalogStatus>;
     /**
-     * (string) - System-generated unique identifier for the catalog
+     * (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
@@ -177,7 +179,8 @@ export class PostgresCatalog extends pulumi.CustomResource {
  */
 export interface PostgresCatalogState {
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      */
     catalogId?: pulumi.Input<string | undefined>;
     /**
@@ -193,7 +196,8 @@ export interface PostgresCatalogState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresCatalogProviderConfig | undefined>;
     /**
-     * The desired state of the Catalog
+     * The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      */
     spec?: pulumi.Input<inputs.PostgresCatalogSpec | undefined>;
     /**
@@ -201,7 +205,7 @@ export interface PostgresCatalogState {
      */
     status?: pulumi.Input<inputs.PostgresCatalogStatus | undefined>;
     /**
-     * (string) - System-generated unique identifier for the catalog
+     * (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      */
     uid?: pulumi.Input<string | undefined>;
     /**
@@ -215,7 +219,8 @@ export interface PostgresCatalogState {
  */
 export interface PostgresCatalogArgs {
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      */
     catalogId: pulumi.Input<string>;
     /**
@@ -223,7 +228,8 @@ export interface PostgresCatalogArgs {
      */
     providerConfig?: pulumi.Input<inputs.PostgresCatalogProviderConfig | undefined>;
     /**
-     * The desired state of the Catalog
+     * The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      */
     spec?: pulumi.Input<inputs.PostgresCatalogSpec | undefined>;
 }

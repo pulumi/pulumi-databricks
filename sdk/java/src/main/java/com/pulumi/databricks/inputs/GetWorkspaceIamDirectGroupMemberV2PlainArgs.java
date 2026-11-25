@@ -17,18 +17,18 @@ public final class GetWorkspaceIamDirectGroupMemberV2PlainArgs extends com.pulum
     public static final GetWorkspaceIamDirectGroupMemberV2PlainArgs Empty = new GetWorkspaceIamDirectGroupMemberV2PlainArgs();
 
     /**
-     * The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * @return The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     public String name() {
@@ -76,9 +76,9 @@ public final class GetWorkspaceIamDirectGroupMemberV2PlainArgs extends com.pulum
         }
 
         /**
-         * @param name The resource name of the group membership. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+         * @param name The resource name of the membership, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+         * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
          * 
          * @return builder
          * 

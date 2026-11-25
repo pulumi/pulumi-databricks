@@ -14,9 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AlertV2EvaluationSource
     {
         /// <summary>
-        /// If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        /// Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+        /// If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         /// </summary>
         public readonly string? Aggregation;
+        /// <summary>
+        /// Label for the column in notifications. Defaults to `Name`
+        /// </summary>
         public readonly string? Display;
         public readonly string Name;
 

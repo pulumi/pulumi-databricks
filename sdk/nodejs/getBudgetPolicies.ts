@@ -51,7 +51,8 @@ export interface GetBudgetPoliciesArgs {
      */
     pageSize?: number;
     /**
-     * The sort specification
+     * How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+     * order
      */
     sortSpec?: inputs.GetBudgetPoliciesSortSpec;
 }
@@ -110,7 +111,8 @@ export interface GetBudgetPoliciesOutputArgs {
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The sort specification
+     * How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+     * order
      */
     sortSpec?: pulumi.Input<inputs.GetBudgetPoliciesSortSpecArgs | undefined>;
 }

@@ -17,14 +17,14 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
     public static final WorkspaceIamWorkspaceIdentityDetailV2State Empty = new WorkspaceIamWorkspaceIdentityDetailV2State();
 
     /**
-     * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      * 
      */
     @Import(name="assignmentType")
     private @Nullable Output<String> assignmentType;
 
     /**
-     * @return (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * @return (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      * 
      */
     public Optional<Output<String>> assignmentType() {
@@ -32,16 +32,16 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
     }
 
     /**
-     * (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * @return (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,14 +64,14 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
     }
 
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (integer) - The Databricks ID of the user, service principal, or group
      * 
      */
     @Import(name="principalId")
     private @Nullable Output<String> principalId;
 
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * @return (integer) - The Databricks ID of the user, service principal, or group
      * 
      */
     public Optional<Output<String>> principalId() {
@@ -79,14 +79,14 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
     }
 
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     @Import(name="principalType")
     private @Nullable Output<String> principalType;
 
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public Optional<Output<String>> principalType() {
@@ -109,14 +109,14 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
     }
 
     /**
-     * The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="workspaceIdentityStatus")
     private @Nullable Output<String> workspaceIdentityStatus;
 
     /**
-     * @return The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Optional<Output<String>> workspaceIdentityStatus() {
@@ -154,7 +154,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param assignmentType (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+         * @param assignmentType (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param assignmentType (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+         * @param assignmentType (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
          * 
          * @return builder
          * 
@@ -175,8 +175,8 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param name (string) - The resource name of the workspace identity detail.
-         * Format: principals/{principal_id}/workspace-identity-detail
+         * @param name (string) - The resource name of the workspace identity detail, in the format
+         * `principals/{principal_id}/workspace-identity-detail`
          * 
          * @return builder
          * 
@@ -187,8 +187,8 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param name (string) - The resource name of the workspace identity detail.
-         * Format: principals/{principal_id}/workspace-identity-detail
+         * @param name (string) - The resource name of the workspace identity detail, in the format
+         * `principals/{principal_id}/workspace-identity-detail`
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param principalId (integer) - The internal ID of the principal (user/sp/group) in Databricks
+         * @param principalId (integer) - The Databricks ID of the user, service principal, or group
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param principalId (integer) - The internal ID of the principal (user/sp/group) in Databricks
+         * @param principalId (integer) - The Databricks ID of the user, service principal, or group
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param principalType (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+         * @param principalType (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param principalType (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+         * @param principalType (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param workspaceIdentityStatus The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param workspaceIdentityStatus Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2State extends com.pulumi
         }
 
         /**
-         * @param workspaceIdentityStatus The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param workspaceIdentityStatus Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 

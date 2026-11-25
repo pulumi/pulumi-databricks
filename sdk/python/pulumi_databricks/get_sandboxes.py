@@ -87,6 +87,8 @@ def get_sandboxes(page_size: Optional[_builtins.int] = None,
     ```
 
 
+    :param _builtins.int page_size: Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+           up to 1000 sandboxes; values above 5000 are reduced to 5000
     :param Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict', 'outputs.GetSandboxesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -120,6 +122,8 @@ def get_sandboxes_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
     ```
 
 
+    :param _builtins.int page_size: Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+           up to 1000 sandboxes; values above 5000 are reduced to 5000
     :param Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict', 'outputs.GetSandboxesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

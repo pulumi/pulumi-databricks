@@ -18,20 +18,18 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
     public static final AccountIamWorkspaceAssignmentV2Args Empty = new AccountIamWorkspaceAssignmentV2Args();
 
     /**
-     * Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     @Import(name="entitlements")
     private @Nullable Output<List<String>> entitlements;
 
     /**
-     * @return Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * @return The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     public Optional<Output<List<String>>> entitlements() {
@@ -39,18 +37,16 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
     }
 
     /**
-     * The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * @return The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {
@@ -58,18 +54,16 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
     }
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * @return The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     public Output<String> principalId() {
@@ -77,14 +71,14 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
     }
 
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      * 
      */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public Optional<Output<String>> workspaceId() {
@@ -119,10 +113,9 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param entitlements Entitlements granted directly to the principal on this workspace. This is the only
-         * client-settable field. Create and update manage exactly this set, including entitlements the
-         * principal also holds through a group.
-         * List responses leave this field empty. Get a single principal to read its entitlements
+         * @param entitlements The entitlements granted directly by this assignment. Create and update set exactly this list,
+         * even if the principal also gets some of these entitlements through a group. List responses
+         * leave it empty
          * 
          * @return builder
          * 
@@ -133,10 +126,9 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param entitlements Entitlements granted directly to the principal on this workspace. This is the only
-         * client-settable field. Create and update manage exactly this set, including entitlements the
-         * principal also holds through a group.
-         * List responses leave this field empty. Get a single principal to read its entitlements
+         * @param entitlements The entitlements granted directly by this assignment. Create and update set exactly this list,
+         * even if the principal also gets some of these entitlements through a group. List responses
+         * leave it empty
          * 
          * @return builder
          * 
@@ -146,10 +138,9 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param entitlements Entitlements granted directly to the principal on this workspace. This is the only
-         * client-settable field. Create and update manage exactly this set, including entitlements the
-         * principal also holds through a group.
-         * List responses leave this field empty. Get a single principal to read its entitlements
+         * @param entitlements The entitlements granted directly by this assignment. Create and update set exactly this list,
+         * even if the principal also gets some of these entitlements through a group. List responses
+         * leave it empty
          * 
          * @return builder
          * 
@@ -159,9 +150,8 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param parent The resource name of the workspace that contains the assignment,
-         * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-         * APIs return it
+         * @param parent The resource name of the workspace, in the format
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -172,9 +162,8 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param parent The resource name of the workspace that contains the assignment,
-         * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-         * APIs return it
+         * @param parent The resource name of the workspace, in the format
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -184,9 +173,8 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-         * created and cannot be changed afterwards; to assign a different principal, create a new
-         * assignment
+         * @param principalId The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+         * the assignment is created
          * 
          * @return builder
          * 
@@ -197,9 +185,8 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-         * created and cannot be changed afterwards; to assign a different principal, create a new
-         * assignment
+         * @param principalId The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+         * the assignment is created
          * 
          * @return builder
          * 
@@ -209,7 +196,7 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param workspaceId (integer) - The workspace ID where the principal is assigned
+         * @param workspaceId (integer) - The ID of the workspace
          * 
          * @return builder
          * 
@@ -220,7 +207,7 @@ public final class AccountIamWorkspaceAssignmentV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param workspaceId (integer) - The workspace ID where the principal is assigned
+         * @param workspaceId (integer) - The ID of the workspace
          * 
          * @return builder
          * 

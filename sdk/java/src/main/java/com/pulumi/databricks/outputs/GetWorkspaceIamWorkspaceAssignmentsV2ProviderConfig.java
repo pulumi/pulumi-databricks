@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig {
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     private String workspaceId;
 
     private GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig() {}
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public String workspaceId() {

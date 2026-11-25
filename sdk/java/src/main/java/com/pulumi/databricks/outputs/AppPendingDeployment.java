@@ -9,6 +9,8 @@ import com.pulumi.databricks.outputs.AppPendingDeploymentEnvVar;
 import com.pulumi.databricks.outputs.AppPendingDeploymentGitSource;
 import com.pulumi.databricks.outputs.AppPendingDeploymentHealthCheck;
 import com.pulumi.databricks.outputs.AppPendingDeploymentStatus;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -50,6 +52,9 @@ public final class AppPendingDeployment {
      * 
      */
     private @Nullable String mode;
+    private @Nullable Boolean scanOmittedCountIsLowerBound;
+    private @Nullable Integer scanOmittedFindingsCount;
+    private @Nullable String scanStatus;
     /**
      * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
@@ -118,6 +123,15 @@ public final class AppPendingDeployment {
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    public Optional<Boolean> scanOmittedCountIsLowerBound() {
+        return Optional.ofNullable(this.scanOmittedCountIsLowerBound);
+    }
+    public Optional<Integer> scanOmittedFindingsCount() {
+        return Optional.ofNullable(this.scanOmittedFindingsCount);
+    }
+    public Optional<String> scanStatus() {
+        return Optional.ofNullable(this.scanStatus);
+    }
     /**
      * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
@@ -158,6 +172,9 @@ public final class AppPendingDeployment {
         private @Nullable AppPendingDeploymentGitSource gitSource;
         private @Nullable AppPendingDeploymentHealthCheck healthCheck;
         private @Nullable String mode;
+        private @Nullable Boolean scanOmittedCountIsLowerBound;
+        private @Nullable Integer scanOmittedFindingsCount;
+        private @Nullable String scanStatus;
         private @Nullable String sourceCodePath;
         private @Nullable AppPendingDeploymentStatus status;
         private @Nullable String updateTime;
@@ -173,6 +190,9 @@ public final class AppPendingDeployment {
     	      this.gitSource = defaults.gitSource;
     	      this.healthCheck = defaults.healthCheck;
     	      this.mode = defaults.mode;
+    	      this.scanOmittedCountIsLowerBound = defaults.scanOmittedCountIsLowerBound;
+    	      this.scanOmittedFindingsCount = defaults.scanOmittedFindingsCount;
+    	      this.scanStatus = defaults.scanStatus;
     	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
@@ -239,6 +259,24 @@ public final class AppPendingDeployment {
             return this;
         }
         @CustomType.Setter
+        public Builder scanOmittedCountIsLowerBound(@Nullable Boolean scanOmittedCountIsLowerBound) {
+
+            this.scanOmittedCountIsLowerBound = scanOmittedCountIsLowerBound;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scanOmittedFindingsCount(@Nullable Integer scanOmittedFindingsCount) {
+
+            this.scanOmittedFindingsCount = scanOmittedFindingsCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scanStatus(@Nullable String scanStatus) {
+
+            this.scanStatus = scanStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceCodePath(@Nullable String sourceCodePath) {
 
             this.sourceCodePath = sourceCodePath;
@@ -267,6 +305,9 @@ public final class AppPendingDeployment {
             _resultValue.gitSource = gitSource;
             _resultValue.healthCheck = healthCheck;
             _resultValue.mode = mode;
+            _resultValue.scanOmittedCountIsLowerBound = scanOmittedCountIsLowerBound;
+            _resultValue.scanOmittedFindingsCount = scanOmittedFindingsCount;
+            _resultValue.scanStatus = scanStatus;
             _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.status = status;
             _resultValue.updateTime = updateTime;

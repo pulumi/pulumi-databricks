@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertV2EvaluationNotificationSubscriptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of the notification destination to notify, as returned by the Notification Destinations API
+        /// </summary>
         [Input("destinationId")]
         public Input<string>? DestinationId { get; set; }
 
+        /// <summary>
+        /// Email address of the workspace user to notify
+        /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }
 

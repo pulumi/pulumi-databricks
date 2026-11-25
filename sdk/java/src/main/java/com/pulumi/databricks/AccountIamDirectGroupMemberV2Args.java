@@ -18,14 +18,14 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
     public static final AccountIamDirectGroupMemberV2Args Empty = new AccountIamDirectGroupMemberV2Args();
 
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (integer) - The Databricks ID of the group
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -33,20 +33,18 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
     }
 
     /**
-     * The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public Output<String> parent() {
@@ -54,14 +52,14 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
     }
 
     /**
-     * Internal ID of the principal in Databricks
+     * The Databricks ID of the member
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return Internal ID of the principal in Databricks
+     * @return The Databricks ID of the member
      * 
      */
     public Output<String> principalId() {
@@ -95,7 +93,7 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
         }
 
         /**
-         * @param groupId (integer) - The internal ID of the group this member belongs to
+         * @param groupId (integer) - The Databricks ID of the group
          * 
          * @return builder
          * 
@@ -106,7 +104,7 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
         }
 
         /**
-         * @param groupId (integer) - The internal ID of the group this member belongs to
+         * @param groupId (integer) - The Databricks ID of the group
          * 
          * @return builder
          * 
@@ -116,10 +114,9 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
         }
 
         /**
-         * @param parent The resource name of the group that contains the membership. The format depends on the API
-         * that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param parent The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -130,10 +127,9 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
         }
 
         /**
-         * @param parent The resource name of the group that contains the membership. The format depends on the API
-         * that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param parent The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -143,7 +139,7 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
         }
 
         /**
-         * @param principalId Internal ID of the principal in Databricks
+         * @param principalId The Databricks ID of the member
          * 
          * @return builder
          * 
@@ -154,7 +150,7 @@ public final class AccountIamDirectGroupMemberV2Args extends com.pulumi.resource
         }
 
         /**
-         * @param principalId Internal ID of the principal in Databricks
+         * @param principalId The Databricks ID of the member
          * 
          * @return builder
          * 

@@ -36,6 +36,10 @@ export function getSandboxes(args?: GetSandboxesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSandboxes.
  */
 export interface GetSandboxesArgs {
+    /**
+     * Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+     * up to 1000 sandboxes; values above 5000 are reduced to 5000
+     */
     pageSize?: number;
     /**
      * Configure the provider for management through account provider.
@@ -81,6 +85,10 @@ export function getSandboxesOutput(args?: GetSandboxesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getSandboxes.
  */
 export interface GetSandboxesOutputArgs {
+    /**
+     * Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+     * up to 1000 sandboxes; values above 5000 are reduced to 5000
+     */
     pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceIamGroupV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceIamGroupV2Result>("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", args ?? new GetWorkspaceIamGroupV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamGroupV2Result>("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", args ?? new GetWorkspaceIamGroupV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -112,9 +112,9 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamGroupV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the group. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -134,9 +134,9 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamGroupV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the group. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -158,30 +158,33 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamGroupV2Result
     {
         /// <summary>
-        /// (string) - The parent account ID for group in Databricks
+        /// (string) - The ID of the account that contains the group
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - ExternalId of the group in the customer's IdP
+        /// (string) - The ID of the group in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (string) - Internal group ID of the group in Databricks
+        /// (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+        /// is created, and it is the `{group_id}` segment of `Name`
         /// </summary>
         public readonly string GroupId;
         /// <summary>
-        /// (string) - Display name of the group
+        /// (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+        /// shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+        /// group that Databricks manages, such as `Admins` or `Users`
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// (string) - The resource name of the group. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// (string) - The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// (string) - The resource name of the account that contains the group, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string Parent;
         public readonly Outputs.GetWorkspaceIamGroupV2ProviderConfigResult? ProviderConfig;

@@ -103,6 +103,11 @@ type PostgresCdfConfig struct {
 	// The Unity Catalog schema that replicated tables are written into.
 	// Set at creation; the CdfConfig is immutable
 	Schema pulumi.StringOutput `pulumi:"schema"`
+	// The service principal (application id) whose identity authorizes this
+	// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+	// authorized as the creating identity. Changing it requires a new CdfConfig,
+	// which writes to new Delta tables
+	ServicePrincipal pulumi.StringPtrOutput `pulumi:"servicePrincipal"`
 }
 
 // NewPostgresCdfConfig registers a new resource with the given unique name, arguments, and options.
@@ -169,6 +174,11 @@ type postgresCdfConfigState struct {
 	// The Unity Catalog schema that replicated tables are written into.
 	// Set at creation; the CdfConfig is immutable
 	Schema *string `pulumi:"schema"`
+	// The service principal (application id) whose identity authorizes this
+	// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+	// authorized as the creating identity. Changing it requires a new CdfConfig,
+	// which writes to new Delta tables
+	ServicePrincipal *string `pulumi:"servicePrincipal"`
 }
 
 type PostgresCdfConfigState struct {
@@ -194,6 +204,11 @@ type PostgresCdfConfigState struct {
 	// The Unity Catalog schema that replicated tables are written into.
 	// Set at creation; the CdfConfig is immutable
 	Schema pulumi.StringPtrInput
+	// The service principal (application id) whose identity authorizes this
+	// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+	// authorized as the creating identity. Changing it requires a new CdfConfig,
+	// which writes to new Delta tables
+	ServicePrincipal pulumi.StringPtrInput
 }
 
 func (PostgresCdfConfigState) ElementType() reflect.Type {
@@ -224,6 +239,11 @@ type postgresCdfConfigArgs struct {
 	// The Unity Catalog schema that replicated tables are written into.
 	// Set at creation; the CdfConfig is immutable
 	Schema string `pulumi:"schema"`
+	// The service principal (application id) whose identity authorizes this
+	// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+	// authorized as the creating identity. Changing it requires a new CdfConfig,
+	// which writes to new Delta tables
+	ServicePrincipal *string `pulumi:"servicePrincipal"`
 }
 
 // The set of arguments for constructing a PostgresCdfConfig resource.
@@ -245,6 +265,11 @@ type PostgresCdfConfigArgs struct {
 	// The Unity Catalog schema that replicated tables are written into.
 	// Set at creation; the CdfConfig is immutable
 	Schema pulumi.StringInput
+	// The service principal (application id) whose identity authorizes this
+	// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+	// authorized as the creating identity. Changing it requires a new CdfConfig,
+	// which writes to new Delta tables
+	ServicePrincipal pulumi.StringPtrInput
 }
 
 func (PostgresCdfConfigArgs) ElementType() reflect.Type {
@@ -378,6 +403,14 @@ func (o PostgresCdfConfigOutput) ProviderConfig() PostgresCdfConfigProviderConfi
 // Set at creation; the CdfConfig is immutable
 func (o PostgresCdfConfigOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresCdfConfig) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The service principal (application id) whose identity authorizes this
+// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+// authorized as the creating identity. Changing it requires a new CdfConfig,
+// which writes to new Delta tables
+func (o PostgresCdfConfigOutput) ServicePrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresCdfConfig) pulumi.StringPtrOutput { return v.ServicePrincipal }).(pulumi.StringPtrOutput)
 }
 
 type PostgresCdfConfigArrayOutput struct{ *pulumi.OutputState }

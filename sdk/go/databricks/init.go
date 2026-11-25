@@ -75,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppsSettingsCustomTemplate{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
+	case "databricks:index/assumeGroupRestrictedSharingGroup:AssumeGroupRestrictedSharingGroup":
+		r = &AssumeGroupRestrictedSharingGroup{}
 	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
 		r = &AutomaticClusterUpdateWorkspaceSetting{}
 	case "databricks:index/budget:Budget":
@@ -181,6 +183,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KnowledgeAssistantKnowledgeSource{}
 	case "databricks:index/lakehouseMonitor:LakehouseMonitor":
 		r = &LakehouseMonitor{}
+	case "databricks:index/lakewatchAlertConfig:LakewatchAlertConfig":
+		r = &LakewatchAlertConfig{}
+	case "databricks:index/lakewatchCommonConfig:LakewatchCommonConfig":
+		r = &LakewatchCommonConfig{}
+	case "databricks:index/lakewatchDatasource:LakewatchDatasource":
+		r = &LakewatchDatasource{}
+	case "databricks:index/lakewatchDatasourceConfig:LakewatchDatasourceConfig":
+		r = &LakewatchDatasourceConfig{}
+	case "databricks:index/lakewatchParser:LakewatchParser":
+		r = &LakewatchParser{}
+	case "databricks:index/lakewatchParserVersion:LakewatchParserVersion":
+		r = &LakewatchParserVersion{}
+	case "databricks:index/lakewatchRule:LakewatchRule":
+		r = &LakewatchRule{}
+	case "databricks:index/lakewatchRuleConfig:LakewatchRuleConfig":
+		r = &LakewatchRuleConfig{}
 	case "databricks:index/library:Library":
 		r = &Library{}
 	case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
@@ -545,6 +563,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/assumeGroupRestrictedSharingGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/automaticClusterUpdateWorkspaceSetting",
 		&module{version},
 	)
@@ -806,6 +829,46 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/lakehouseMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchAlertConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchCommonConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchDatasource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchDatasourceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchParser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchParserVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/lakewatchRuleConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

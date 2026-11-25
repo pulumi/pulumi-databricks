@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -38,9 +38,9 @@ export function getAccountIamDirectGroupMemberV2(args: GetAccountIamDirectGroupM
  */
 export interface GetAccountIamDirectGroupMemberV2Args {
     /**
-     * The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     name: string;
 }
@@ -50,45 +50,44 @@ export interface GetAccountIamDirectGroupMemberV2Args {
  */
 export interface GetAccountIamDirectGroupMemberV2Result {
     /**
-     * (string) - Display name of the principal
+     * (string) - The member's display name
      */
     readonly displayName: string;
     /**
-     * (string) - The external ID of the principal in the customer's IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      */
     readonly externalId: string;
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      */
     readonly groupId: number;
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     readonly membershipSource: string;
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     readonly name: string;
     /**
-     * (string) - The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     readonly parent: string;
     /**
-     * (integer) - Internal ID of the principal in Databricks
+     * (integer) - The Databricks ID of the member
      */
     readonly principalId: string;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     readonly principalType: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -121,9 +120,9 @@ export function getAccountIamDirectGroupMemberV2Output(args: GetAccountIamDirect
  */
 export interface GetAccountIamDirectGroupMemberV2OutputArgs {
     /**
-     * The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     name: pulumi.Input<string>;
 }

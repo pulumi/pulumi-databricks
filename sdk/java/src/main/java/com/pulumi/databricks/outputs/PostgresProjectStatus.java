@@ -72,7 +72,7 @@ public final class PostgresProjectStatus {
      */
     private @Nullable Integer pgVersion;
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     private @Nullable String projectId;
@@ -161,7 +161,7 @@ public final class PostgresProjectStatus {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     public Optional<String> projectId() {

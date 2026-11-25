@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceFeatureViewSource;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceIcebergTableSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceKafkaSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceLateness;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceRequestSource;
@@ -27,6 +28,11 @@ public final class FeatureEngineeringFeatureSource {
      * 
      */
     private @Nullable FeatureEngineeringFeatureSourceFeatureViewSource featureViewSource;
+    /**
+     * @return A Unity Catalog managed or foreign Iceberg table source
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureSourceIcebergTableSource icebergTableSource;
     /**
      * @return A Kafka stream data source
      * 
@@ -68,6 +74,13 @@ public final class FeatureEngineeringFeatureSource {
      */
     public Optional<FeatureEngineeringFeatureSourceFeatureViewSource> featureViewSource() {
         return Optional.ofNullable(this.featureViewSource);
+    }
+    /**
+     * @return A Unity Catalog managed or foreign Iceberg table source
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureSourceIcebergTableSource> icebergTableSource() {
+        return Optional.ofNullable(this.icebergTableSource);
     }
     /**
      * @return A Kafka stream data source
@@ -117,6 +130,7 @@ public final class FeatureEngineeringFeatureSource {
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureSourceDeltaTableSource deltaTableSource;
         private @Nullable FeatureEngineeringFeatureSourceFeatureViewSource featureViewSource;
+        private @Nullable FeatureEngineeringFeatureSourceIcebergTableSource icebergTableSource;
         private @Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource;
         private @Nullable FeatureEngineeringFeatureSourceLateness lateness;
         private @Nullable FeatureEngineeringFeatureSourceRequestSource requestSource;
@@ -127,6 +141,7 @@ public final class FeatureEngineeringFeatureSource {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
     	      this.featureViewSource = defaults.featureViewSource;
+    	      this.icebergTableSource = defaults.icebergTableSource;
     	      this.kafkaSource = defaults.kafkaSource;
     	      this.lateness = defaults.lateness;
     	      this.requestSource = defaults.requestSource;
@@ -144,6 +159,12 @@ public final class FeatureEngineeringFeatureSource {
         public Builder featureViewSource(@Nullable FeatureEngineeringFeatureSourceFeatureViewSource featureViewSource) {
 
             this.featureViewSource = featureViewSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder icebergTableSource(@Nullable FeatureEngineeringFeatureSourceIcebergTableSource icebergTableSource) {
+
+            this.icebergTableSource = icebergTableSource;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +201,7 @@ public final class FeatureEngineeringFeatureSource {
             final var _resultValue = new FeatureEngineeringFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
             _resultValue.featureViewSource = featureViewSource;
+            _resultValue.icebergTableSource = icebergTableSource;
             _resultValue.kafkaSource = kafkaSource;
             _resultValue.lateness = lateness;
             _resultValue.requestSource = requestSource;

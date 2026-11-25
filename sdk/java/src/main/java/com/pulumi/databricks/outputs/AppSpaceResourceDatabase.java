@@ -10,14 +10,30 @@ import java.util.Objects;
 
 @CustomType
 public final class AppSpaceResourceDatabase {
+    /**
+     * @return Name of the database within the instance
+     * 
+     */
     private String databaseName;
+    /**
+     * @return Name of the Lakebase database instance
+     * 
+     */
     private String instanceName;
     private String permission;
 
     private AppSpaceResourceDatabase() {}
+    /**
+     * @return Name of the database within the instance
+     * 
+     */
     public String databaseName() {
         return this.databaseName;
     }
+    /**
+     * @return Name of the Lakebase database instance
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }

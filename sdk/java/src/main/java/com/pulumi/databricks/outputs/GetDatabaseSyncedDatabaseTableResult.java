@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseSyncedDatabaseTableResult {
     /**
-     * @return (SyncedTableStatus) - Synced Table data synchronization status
+     * @return (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      * 
      */
     private GetDatabaseSyncedDatabaseTableDataSynchronizationStatus dataSynchronizationStatus;
@@ -29,8 +30,8 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      */
     private String databaseInstanceName;
     /**
-     * @return (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * @return (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -55,7 +56,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     private String name;
     private @Nullable GetDatabaseSyncedDatabaseTableProviderConfig providerConfig;
     /**
-     * @return (SyncedTableSpec)
+     * @return (SyncedTableSpec) - Specifies the source table, the key columns and how the data synchronization pipeline runs
      * 
      */
     private GetDatabaseSyncedDatabaseTableSpec spec;
@@ -69,7 +70,8 @@ public final class GetDatabaseSyncedDatabaseTableResult {
 
     private GetDatabaseSyncedDatabaseTableResult() {}
     /**
-     * @return (SyncedTableStatus) - Synced Table data synchronization status
+     * @return (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      * 
      */
     public GetDatabaseSyncedDatabaseTableDataSynchronizationStatus dataSynchronizationStatus() {
@@ -86,8 +88,8 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         return this.databaseInstanceName;
     }
     /**
-     * @return (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * @return (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -122,7 +124,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (SyncedTableSpec)
+     * @return (SyncedTableSpec) - Specifies the source table, the key columns and how the data synchronization pipeline runs
      * 
      */
     public GetDatabaseSyncedDatabaseTableSpec spec() {

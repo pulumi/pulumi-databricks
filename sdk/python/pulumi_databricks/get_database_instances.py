@@ -92,7 +92,7 @@ def get_database_instances(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned. The maximum value is 100
+    :param _builtins.int page_size: Upper bound for items returned. Defaults to 100, which is also the maximum value
     :param Union['GetDatabaseInstancesProviderConfigArgs', 'GetDatabaseInstancesProviderConfigArgsDict', 'outputs.GetDatabaseInstancesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -131,7 +131,7 @@ def get_database_instances_output(page_size: pulumi.Input[Optional[Optional[_bui
     ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned. The maximum value is 100
+    :param _builtins.int page_size: Upper bound for items returned. Defaults to 100, which is also the maximum value
     :param Union['GetDatabaseInstancesProviderConfigArgs', 'GetDatabaseInstancesProviderConfigArgsDict', 'outputs.GetDatabaseInstancesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

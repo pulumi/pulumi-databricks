@@ -17,14 +17,14 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
     public static final AccountIamServicePrincipalV2Args Empty = new AccountIamServicePrincipalV2Args();
 
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="accountSpStatus", required=true)
     private Output<String> accountSpStatus;
 
     /**
-     * @return The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Output<String> accountSpStatus() {
@@ -32,16 +32,18 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
     }
 
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * @return (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -49,14 +51,14 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
     }
 
     /**
-     * Display name of the service principal
+     * The service principal&#39;s display name
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return Display name of the service principal
+     * @return The service principal&#39;s display name
      * 
      */
     public Output<String> displayName() {
@@ -64,14 +66,14 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
     }
 
     /**
-     * ExternalId of the service principal in the customer&#39;s IdP
+     * The ID of the service principal in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the service principal in the customer&#39;s IdP
+     * @return The ID of the service principal in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -79,16 +81,16 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
     }
 
     /**
-     * The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * @return The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {
@@ -124,7 +126,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param accountSpStatus The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountSpStatus Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -135,7 +137,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param accountSpStatus The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountSpStatus Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -145,8 +147,9 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param applicationId (string) - Application ID of the service principal. Set at creation time and cannot be changed
-         * afterwards; when omitted, the server generates one
+         * @param applicationId (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+         * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+         * changed
          * 
          * @return builder
          * 
@@ -157,8 +160,9 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param applicationId (string) - Application ID of the service principal. Set at creation time and cannot be changed
-         * afterwards; when omitted, the server generates one
+         * @param applicationId (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+         * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+         * changed
          * 
          * @return builder
          * 
@@ -168,7 +172,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param displayName Display name of the service principal
+         * @param displayName The service principal&#39;s display name
          * 
          * @return builder
          * 
@@ -179,7 +183,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param displayName Display name of the service principal
+         * @param displayName The service principal&#39;s display name
          * 
          * @return builder
          * 
@@ -189,7 +193,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param externalId ExternalId of the service principal in the customer&#39;s IdP
+         * @param externalId The ID of the service principal in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -200,7 +204,7 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param externalId ExternalId of the service principal in the customer&#39;s IdP
+         * @param externalId The ID of the service principal in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -210,8 +214,8 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param parent The resource name of the account that contains the service principal,
-         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * @param parent The resource name of the account that contains the service principal, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -222,8 +226,8 @@ public final class AccountIamServicePrincipalV2Args extends com.pulumi.resources
         }
 
         /**
-         * @param parent The resource name of the account that contains the service principal,
-         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * @param parent The resource name of the account that contains the service principal, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 

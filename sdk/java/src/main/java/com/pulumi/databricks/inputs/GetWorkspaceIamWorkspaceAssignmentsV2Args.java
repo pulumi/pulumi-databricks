@@ -18,16 +18,16 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
     public static final GetWorkspaceIamWorkspaceAssignmentsV2Args Empty = new GetWorkspaceIamWorkspaceAssignmentsV2Args();
 
     /**
-     * The maximum number of workspace assignments to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+     * contain fewer assignments
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return The maximum number of workspace assignments to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+     * contain fewer assignments
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -35,18 +35,18 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
     }
 
     /**
-     * The resource name of the workspace to list assignments of,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-     * and any other workspace is rejected
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+     * workspace is rejected
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The resource name of the workspace to list assignments of,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-     * and any other workspace is rejected
+     * @return The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+     * workspace is rejected
      * 
      */
     public Optional<Output<String>> parent() {
@@ -95,8 +95,8 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
         }
 
         /**
-         * @param pageSize The maximum number of workspace assignments to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+         * contain fewer assignments
          * 
          * @return builder
          * 
@@ -107,8 +107,8 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
         }
 
         /**
-         * @param pageSize The maximum number of workspace assignments to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+         * contain fewer assignments
          * 
          * @return builder
          * 
@@ -118,9 +118,9 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
         }
 
         /**
-         * @param parent The resource name of the workspace to list assignments of,
-         * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-         * and any other workspace is rejected
+         * @param parent The resource name of the workspace, in the format
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+         * workspace is rejected
          * 
          * @return builder
          * 
@@ -131,9 +131,9 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2Args extends com.pulumi.
         }
 
         /**
-         * @param parent The resource name of the workspace to list assignments of,
-         * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-         * and any other workspace is rejected
+         * @param parent The resource name of the workspace, in the format
+         * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+         * workspace is rejected
          * 
          * @return builder
          * 

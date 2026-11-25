@@ -87,6 +87,8 @@ type GetNotificationDestinationsArgs struct {
 	DisplayNameContains *string                                    `pulumi:"displayNameContains"`
 	ProviderConfig      *GetNotificationDestinationsProviderConfig `pulumi:"providerConfig"`
 	// The type of the Notification Destination to filter by. Valid values are:
+	// * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+	// * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
 	// * `EMAIL` - Filters Notification Destinations of type Email.
 	// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
 	// * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -115,6 +117,8 @@ type GetNotificationDestinationsOutputArgs struct {
 	DisplayNameContains pulumi.StringPtrInput                             `pulumi:"displayNameContains"`
 	ProviderConfig      GetNotificationDestinationsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// The type of the Notification Destination to filter by. Valid values are:
+	// * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+	// * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
 	// * `EMAIL` - Filters Notification Destinations of type Email.
 	// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
 	// * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.

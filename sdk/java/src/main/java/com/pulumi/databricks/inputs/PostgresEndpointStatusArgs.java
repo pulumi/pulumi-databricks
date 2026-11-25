@@ -53,14 +53,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     @Import(name="currentState")
     private @Nullable Output<String> currentState;
 
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * @return (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public Optional<Output<String>> currentState() {
@@ -89,14 +89,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     public Optional<Output<String>> endpointId() {
@@ -164,14 +164,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     @Import(name="pendingState")
     private @Nullable Output<String> pendingState;
 
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * @return (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public Optional<Output<String>> pendingState() {
@@ -179,14 +179,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     @Import(name="settings")
     private @Nullable Output<PostgresEndpointStatusSettingsArgs> settings;
 
     /**
-     * @return (EndpointSettings)
+     * @return (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     public Optional<Output<PostgresEndpointStatusSettingsArgs>> settings() {
@@ -194,14 +194,16 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     @Import(name="suspendTimeoutDuration")
     private @Nullable Output<String> suspendTimeoutDuration;
 
     /**
-     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     public Optional<Output<String>> suspendTimeoutDuration() {
@@ -288,7 +290,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param currentState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+         * @param currentState (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -299,7 +301,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param currentState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+         * @param currentState (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -336,7 +338,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param endpointId The part of the name, chosen by the user when the resource was created
+         * @param endpointId The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -347,7 +349,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param endpointId The part of the name, chosen by the user when the resource was created
+         * @param endpointId The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -441,7 +443,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param pendingState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+         * @param pendingState (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -452,7 +454,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param pendingState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+         * @param pendingState (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -462,7 +464,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param settings (EndpointSettings)
+         * @param settings (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
          * 
          * @return builder
          * 
@@ -473,7 +475,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param settings (EndpointSettings)
+         * @param settings (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
          * 
          * @return builder
          * 
@@ -483,7 +485,8 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+         * automatic suspension is disabled
          * 
          * @return builder
          * 
@@ -494,7 +497,8 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+         * automatic suspension is disabled
          * 
          * @return builder
          * 

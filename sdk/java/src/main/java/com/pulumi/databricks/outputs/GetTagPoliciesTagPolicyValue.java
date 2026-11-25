@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetTagPoliciesTagPolicyValue {
     /**
-     * @return (string)
+     * @return (string) - The value that can be assigned to the tag key. Values are case-sensitive
      * 
      */
     private String name;
 
     private GetTagPoliciesTagPolicyValue() {}
     /**
-     * @return (string)
+     * @return (string) - The value that can be assigned to the tag key. Values are case-sensitive
      * 
      */
     public String name() {

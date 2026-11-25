@@ -12,18 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SandboxSpecEnvironment {
     /**
-     * @return The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * @return The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact{@literal @}sha256:&lt;digest&gt;` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      * 
      */
     private @Nullable String imageUri;
 
     private SandboxSpecEnvironment() {}
     /**
-     * @return The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * @return The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact{@literal @}sha256:&lt;digest&gt;` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      * 
      */
     public Optional<String> imageUri() {

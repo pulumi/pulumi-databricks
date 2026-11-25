@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppSpaceResourceDatabaseArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the database within the instance
+        /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the Lakebase database instance
+        /// </summary>
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
 

@@ -57,11 +57,11 @@ func LookupRfaAccessRequestDestinations(ctx *pulumi.Context, args *LookupRfaAcce
 
 // A collection of arguments for invoking getRfaAccessRequestDestinations.
 type LookupRfaAccessRequestDestinationsArgs struct {
-	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	// The full name of the securable, repeated from **securable**
 	FullName string `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetRfaAccessRequestDestinationsProviderConfig `pulumi:"providerConfig"`
-	// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	// The type of the securable, repeated from **securable** as a plain string
 	SecurableType string `pulumi:"securableType"`
 }
 
@@ -81,7 +81,7 @@ type LookupRfaAccessRequestDestinationsResult struct {
 	ProviderConfig *GetRfaAccessRequestDestinationsProviderConfig `pulumi:"providerConfig"`
 	// (Securable) - The securable for which the access request destinations are being modified or read
 	Securable GetRfaAccessRequestDestinationsSecurable `pulumi:"securable"`
-	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	// (string) - The type of the securable, repeated from **securable** as a plain string
 	SecurableType string `pulumi:"securableType"`
 }
 
@@ -92,11 +92,11 @@ func LookupRfaAccessRequestDestinationsOutput(ctx *pulumi.Context, args LookupRf
 
 // A collection of arguments for invoking getRfaAccessRequestDestinations.
 type LookupRfaAccessRequestDestinationsOutputArgs struct {
-	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	// The full name of the securable, repeated from **securable**
 	FullName pulumi.StringInput `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetRfaAccessRequestDestinationsProviderConfigPtrInput `pulumi:"providerConfig"`
-	// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	// The type of the securable, repeated from **securable** as a plain string
 	SecurableType pulumi.StringInput `pulumi:"securableType"`
 }
 
@@ -159,7 +159,7 @@ func (o LookupRfaAccessRequestDestinationsResultOutput) Securable() GetRfaAccess
 	}).(GetRfaAccessRequestDestinationsSecurableOutput)
 }
 
-// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+// (string) - The type of the securable, repeated from **securable** as a plain string
 func (o LookupRfaAccessRequestDestinationsResultOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.SecurableType }).(pulumi.StringOutput)
 }

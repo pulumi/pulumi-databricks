@@ -28,8 +28,10 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
         The set of arguments for constructing a EnvironmentsDefaultWorkspaceBaseEnvironment resource.
 
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
+               If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
+               If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
@@ -45,6 +47,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
     def cpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for CPU compute.
+        If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "cpu_workspace_base_environment")
@@ -58,6 +61,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
     def gpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for GPU compute.
+        If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "gpu_workspace_base_environment")
@@ -90,8 +94,10 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
         Input properties used for looking up and filtering EnvironmentsDefaultWorkspaceBaseEnvironment resources.
 
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
+               If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
+               If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of this singleton resource.
                Format: default-workspace-base-environment
@@ -111,6 +117,7 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
     def cpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for CPU compute.
+        If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "cpu_workspace_base_environment")
@@ -124,6 +131,7 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
     def gpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for GPU compute.
+        If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "gpu_workspace_base_environment")
@@ -219,8 +227,10 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
+               If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
+               If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
@@ -331,8 +341,10 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
+               If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
+               If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of this singleton resource.
                Format: default-workspace-base-environment
@@ -367,6 +379,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
     def cpu_workspace_base_environment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The default workspace base environment for CPU compute.
+        If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "cpu_workspace_base_environment")
@@ -376,6 +389,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
     def gpu_workspace_base_environment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The default workspace base environment for GPU compute.
+        If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "gpu_workspace_base_environment")

@@ -91,10 +91,11 @@ type LookupDataQualityMonitorArgs struct {
 
 // A collection of values returned by getDataQualityMonitor.
 type LookupDataQualityMonitorResult struct {
-	// (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+	// (AnomalyDetectionConfig) - Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+	// the settings of the parent schema's monitor if the schema has one
 	AnomalyDetectionConfig GetDataQualityMonitorAnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
-	// (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-	// must be present
+	// (DataProfilingConfig) - Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+	// or `snapshot` must be set
 	DataProfilingConfig GetDataQualityMonitorDataProfilingConfig `pulumi:"dataProfilingConfig"`
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
@@ -145,15 +146,16 @@ func (o LookupDataQualityMonitorResultOutput) ToLookupDataQualityMonitorResultOu
 	return o
 }
 
-// (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+// (AnomalyDetectionConfig) - Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+// the settings of the parent schema's monitor if the schema has one
 func (o LookupDataQualityMonitorResultOutput) AnomalyDetectionConfig() GetDataQualityMonitorAnomalyDetectionConfigOutput {
 	return o.ApplyT(func(v LookupDataQualityMonitorResult) GetDataQualityMonitorAnomalyDetectionConfig {
 		return v.AnomalyDetectionConfig
 	}).(GetDataQualityMonitorAnomalyDetectionConfigOutput)
 }
 
-// (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-// must be present
+// (DataProfilingConfig) - Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+// or `snapshot` must be set
 func (o LookupDataQualityMonitorResultOutput) DataProfilingConfig() GetDataQualityMonitorDataProfilingConfigOutput {
 	return o.ApplyT(func(v LookupDataQualityMonitorResult) GetDataQualityMonitorDataProfilingConfig {
 		return v.DataProfilingConfig

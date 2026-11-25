@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  * 
@@ -65,122 +65,120 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2")
 public class AccountIamDirectGroupMemberV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (string) - Display name of the principal
+     * (string) - The member&#39;s display name
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
-     * @return (string) - Display name of the principal
+     * @return (string) - The member&#39;s display name
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * (string) - The external ID of the principal in the customer&#39;s IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output<String> externalId;
 
     /**
-     * @return (string) - The external ID of the principal in the customer&#39;s IdP
+     * @return (string) - The ID of the member in your identity provider (IdP)
      * 
      */
     public Output<String> externalId() {
         return this.externalId;
     }
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      * 
      */
     @Export(name="groupId", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupId;
 
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (integer) - The Databricks ID of the group
      * 
      */
     public Output<Integer> groupId() {
         return this.groupId;
     }
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      * 
      */
     @Export(name="membershipSource", refs={String.class}, tree="[0]")
     private Output<String> membershipSource;
 
     /**
-     * @return (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * @return (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      * 
      */
     public Output<String> membershipSource() {
         return this.membershipSource;
     }
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * @return (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public Output<String> parent() {
         return this.parent;
     }
     /**
-     * Internal ID of the principal in Databricks
+     * The Databricks ID of the member
      * 
      */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
     /**
-     * @return Internal ID of the principal in Databricks
+     * @return The Databricks ID of the member
      * 
      */
     public Output<String> principalId() {
         return this.principalId;
     }
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     @Export(name="principalType", refs={String.class}, tree="[0]")
     private Output<String> principalType;
 
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public Output<String> principalType() {

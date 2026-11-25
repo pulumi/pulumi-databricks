@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PostgresRoleStatusAttributesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+        /// </summary>
         [Input("bypassrls")]
         public Input<bool>? Bypassrls { get; set; }
 
+        /// <summary>
+        /// Whether the role can create databases (the Postgres CREATEDB attribute)
+        /// </summary>
         [Input("createdb")]
         public Input<bool>? Createdb { get; set; }
 
+        /// <summary>
+        /// Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+        /// </summary>
         [Input("createrole")]
         public Input<bool>? Createrole { get; set; }
 

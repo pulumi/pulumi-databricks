@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -65,10 +65,10 @@ func GetWorkspaceIamExternalServicePrincipalV2(ctx *pulumi.Context, args *GetWor
 
 // A collection of arguments for invoking getWorkspaceIamExternalServicePrincipalV2.
 type GetWorkspaceIamExternalServicePrincipalV2Args struct {
-	// The resource name of the external service principal. The format depends on
-	// the API that returned it:
-	// - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-	// - Workspace-scoped: external-service-principals/{external_service_principal_id}
+	// The resource name of the external service principal, in one of these formats:
+	// - Account APIs:
+	//   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+	// - Workspace APIs: `external-service-principals/{external_service_principal_id}`
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamExternalServicePrincipalV2ProviderConfig `pulumi:"providerConfig"`
@@ -76,22 +76,23 @@ type GetWorkspaceIamExternalServicePrincipalV2Args struct {
 
 // A collection of values returned by getWorkspaceIamExternalServicePrincipalV2.
 type GetWorkspaceIamExternalServicePrincipalV2Result struct {
-	// (string) - The parent account ID, from Databricks
+	// (string) - The ID of the account that contains the service principal
 	AccountId string `pulumi:"accountId"`
-	// (string) - The activity status of the service principal in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+	// (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
 	AccountSpStatus string `pulumi:"accountSpStatus"`
-	// (string) - Application ID of the service principal, from the customer's IdP
+	// (string) - The service principal's application ID, from your IdP
 	ApplicationId string `pulumi:"applicationId"`
-	// (string) - Display name of the service principal, from the customer's IdP
+	// (string) - The service principal's display name, from your IdP
 	DisplayName string `pulumi:"displayName"`
-	// (string) - The external ID of the service principal in the customer's IdP
+	// (string) - The ID of the service principal in your IdP
 	ExternalServicePrincipalId string `pulumi:"externalServicePrincipalId"`
-	// (string) - Internal servicePrincipalId of the service principal in Databricks
+	// (string) - The Databricks ID of the service principal. Use it as the `servicePrincipalId` in the
+	// service principal APIs
 	InternalId string `pulumi:"internalId"`
-	// (string) - The resource name of the external service principal. The format depends on
-	// the API that returned it:
-	// - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-	// - Workspace-scoped: external-service-principals/{external_service_principal_id}
+	// (string) - The resource name of the external service principal, in one of these formats:
+	// - Account APIs:
+	//   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+	// - Workspace APIs: `external-service-principals/{external_service_principal_id}`
 	Name           string                                                   `pulumi:"name"`
 	ProviderConfig *GetWorkspaceIamExternalServicePrincipalV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -103,10 +104,10 @@ func GetWorkspaceIamExternalServicePrincipalV2Output(ctx *pulumi.Context, args G
 
 // A collection of arguments for invoking getWorkspaceIamExternalServicePrincipalV2.
 type GetWorkspaceIamExternalServicePrincipalV2OutputArgs struct {
-	// The resource name of the external service principal. The format depends on
-	// the API that returned it:
-	// - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-	// - Workspace-scoped: external-service-principals/{external_service_principal_id}
+	// The resource name of the external service principal, in one of these formats:
+	// - Account APIs:
+	//   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+	// - Workspace APIs: `external-service-principals/{external_service_principal_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -131,40 +132,41 @@ func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) ToGetWorkspaceIam
 	return o
 }
 
-// (string) - The parent account ID, from Databricks
+// (string) - The ID of the account that contains the service principal
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (string) - The activity status of the service principal in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+// (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) AccountSpStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.AccountSpStatus }).(pulumi.StringOutput)
 }
 
-// (string) - Application ID of the service principal, from the customer's IdP
+// (string) - The service principal's application ID, from your IdP
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// (string) - Display name of the service principal, from the customer's IdP
+// (string) - The service principal's display name, from your IdP
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - The external ID of the service principal in the customer's IdP
+// (string) - The ID of the service principal in your IdP
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) ExternalServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.ExternalServicePrincipalId }).(pulumi.StringOutput)
 }
 
-// (string) - Internal servicePrincipalId of the service principal in Databricks
+// (string) - The Databricks ID of the service principal. Use it as the `servicePrincipalId` in the
+// service principal APIs
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) InternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.InternalId }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the external service principal. The format depends on
-// the API that returned it:
-// - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-// - Workspace-scoped: external-service-principals/{external_service_principal_id}
+// (string) - The resource name of the external service principal, in one of these formats:
+//   - Account APIs:
+//     `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+//   - Workspace APIs: `external-service-principals/{external_service_principal_id}`
 func (o GetWorkspaceIamExternalServicePrincipalV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2Result) string { return v.Name }).(pulumi.StringOutput)
 }

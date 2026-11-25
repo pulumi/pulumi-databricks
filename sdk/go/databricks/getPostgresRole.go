@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -68,7 +68,7 @@ type LookupPostgresRoleArgs struct {
 
 // A collection of values returned by getPostgresRole.
 type LookupPostgresRoleResult struct {
-	// (string)
+	// (string) - A timestamp indicating when the role was created
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Output only. The full resource path of the role.
 	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
@@ -79,11 +79,11 @@ type LookupPostgresRoleResult struct {
 	ProviderConfig *GetPostgresRoleProviderConfig `pulumi:"providerConfig"`
 	// (string) - Part of the resource name
 	RoleId string `pulumi:"roleId"`
-	// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+	// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
 	Spec GetPostgresRoleSpec `pulumi:"spec"`
 	// (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
 	Status GetPostgresRoleStatus `pulumi:"status"`
-	// (string)
+	// (string) - A timestamp indicating when the role was last updated
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -120,7 +120,7 @@ func (o LookupPostgresRoleResultOutput) ToLookupPostgresRoleResultOutputWithCont
 	return o
 }
 
-// (string)
+// (string) - A timestamp indicating when the role was created
 func (o LookupPostgresRoleResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -146,7 +146,7 @@ func (o LookupPostgresRoleResultOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) string { return v.RoleId }).(pulumi.StringOutput)
 }
 
-// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
 func (o LookupPostgresRoleResultOutput) Spec() GetPostgresRoleSpecOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) GetPostgresRoleSpec { return v.Spec }).(GetPostgresRoleSpecOutput)
 }
@@ -156,7 +156,7 @@ func (o LookupPostgresRoleResultOutput) Status() GetPostgresRoleStatusOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) GetPostgresRoleStatus { return v.Status }).(GetPostgresRoleStatusOutput)
 }
 
-// (string)
+// (string) - A timestamp indicating when the role was last updated
 func (o LookupPostgresRoleResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

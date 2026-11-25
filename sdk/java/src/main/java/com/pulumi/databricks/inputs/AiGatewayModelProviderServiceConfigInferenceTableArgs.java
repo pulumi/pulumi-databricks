@@ -56,7 +56,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
     }
 
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      * 
      */
@@ -64,7 +64,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
     private @Nullable Output<String> table;
 
     /**
-     * @return (string) - Resolved UC table for payload logs.
+     * @return (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      * 
      */
@@ -173,7 +173,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
         }
 
         /**
-         * @param table (string) - Resolved UC table for payload logs.
+         * @param table (string) - Resource name of the Unity Catalog table that receives the payload logs.
          * Format: `tables/{catalog}.{schema}.{table}`
          * 
          * @return builder
@@ -185,7 +185,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
         }
 
         /**
-         * @param table (string) - Resolved UC table for payload logs.
+         * @param table (string) - Resource name of the Unity Catalog table that receives the payload logs.
          * Format: `tables/{catalog}.{schema}.{table}`
          * 
          * @return builder

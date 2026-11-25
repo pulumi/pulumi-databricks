@@ -97,11 +97,13 @@ export class EnvironmentsDefaultWorkspaceBaseEnvironment extends pulumi.CustomRe
 
     /**
      * The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      */
     declare public readonly cpuWorkspaceBaseEnvironment: pulumi.Output<string | undefined>;
     /**
      * The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      */
     declare public readonly gpuWorkspaceBaseEnvironment: pulumi.Output<string | undefined>;
@@ -150,11 +152,13 @@ export class EnvironmentsDefaultWorkspaceBaseEnvironment extends pulumi.CustomRe
 export interface EnvironmentsDefaultWorkspaceBaseEnvironmentState {
     /**
      * The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      */
     cpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
     /**
      * The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      */
     gpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
@@ -175,11 +179,13 @@ export interface EnvironmentsDefaultWorkspaceBaseEnvironmentState {
 export interface EnvironmentsDefaultWorkspaceBaseEnvironmentArgs {
     /**
      * The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      */
     cpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
     /**
      * The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      */
     gpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;

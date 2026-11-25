@@ -51,14 +51,16 @@ public final class GetBudgetPoliciesPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The sort specification
+     * How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+     * order
      * 
      */
     @Import(name="sortSpec")
     private @Nullable GetBudgetPoliciesSortSpec sortSpec;
 
     /**
-     * @return The sort specification
+     * @return How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+     * order
      * 
      */
     public Optional<GetBudgetPoliciesSortSpec> sortSpec() {
@@ -116,7 +118,8 @@ public final class GetBudgetPoliciesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param sortSpec The sort specification
+         * @param sortSpec How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+         * order
          * 
          * @return builder
          * 

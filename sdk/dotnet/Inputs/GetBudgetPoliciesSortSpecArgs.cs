@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Descending { get; set; }
 
         /// <summary>
-        /// The filed to sort by. Possible values are: `POLICY_NAME`
+        /// The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
         /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }

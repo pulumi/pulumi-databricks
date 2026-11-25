@@ -18,14 +18,14 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     public static final WorkspaceIamDirectGroupMemberV2State Empty = new WorkspaceIamDirectGroupMemberV2State();
 
     /**
-     * (string) - Display name of the principal
+     * (string) - The member&#39;s display name
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return (string) - Display name of the principal
+     * @return (string) - The member&#39;s display name
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -33,14 +33,14 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * (string) - The external ID of the principal in the customer&#39;s IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return (string) - The external ID of the principal in the customer&#39;s IdP
+     * @return (string) - The ID of the member in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -48,14 +48,14 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (integer) - The Databricks ID of the group
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -63,14 +63,14 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      * 
      */
     @Import(name="membershipSource")
     private @Nullable Output<String> membershipSource;
 
     /**
-     * @return (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * @return (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      * 
      */
     public Optional<Output<String>> membershipSource() {
@@ -78,18 +78,18 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * @return (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -97,20 +97,18 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public Optional<Output<String>> parent() {
@@ -118,14 +116,14 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * Internal ID of the principal in Databricks
+     * The Databricks ID of the member
      * 
      */
     @Import(name="principalId")
     private @Nullable Output<String> principalId;
 
     /**
-     * @return Internal ID of the principal in Databricks
+     * @return The Databricks ID of the member
      * 
      */
     public Optional<Output<String>> principalId() {
@@ -133,14 +131,14 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
     }
 
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     @Import(name="principalType")
     private @Nullable Output<String> principalType;
 
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public Optional<Output<String>> principalType() {
@@ -195,7 +193,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param displayName (string) - Display name of the principal
+         * @param displayName (string) - The member&#39;s display name
          * 
          * @return builder
          * 
@@ -206,7 +204,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param displayName (string) - Display name of the principal
+         * @param displayName (string) - The member&#39;s display name
          * 
          * @return builder
          * 
@@ -216,7 +214,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param externalId (string) - The external ID of the principal in the customer&#39;s IdP
+         * @param externalId (string) - The ID of the member in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -227,7 +225,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param externalId (string) - The external ID of the principal in the customer&#39;s IdP
+         * @param externalId (string) - The ID of the member in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -237,7 +235,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param groupId (integer) - The internal ID of the group this member belongs to
+         * @param groupId (integer) - The Databricks ID of the group
          * 
          * @return builder
          * 
@@ -248,7 +246,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param groupId (integer) - The internal ID of the group this member belongs to
+         * @param groupId (integer) - The Databricks ID of the group
          * 
          * @return builder
          * 
@@ -258,7 +256,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param membershipSource (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+         * @param membershipSource (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
          * 
          * @return builder
          * 
@@ -269,7 +267,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param membershipSource (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+         * @param membershipSource (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
          * 
          * @return builder
          * 
@@ -279,9 +277,9 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param name (string) - The resource name of the group membership. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+         * @param name (string) - The resource name of the membership, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+         * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
          * 
          * @return builder
          * 
@@ -292,9 +290,9 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param name (string) - The resource name of the group membership. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-         * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+         * @param name (string) - The resource name of the membership, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+         * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
          * 
          * @return builder
          * 
@@ -304,10 +302,9 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param parent The resource name of the group that contains the membership. The format depends on the API
-         * that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param parent The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -318,10 +315,9 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param parent The resource name of the group that contains the membership. The format depends on the API
-         * that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param parent The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -331,7 +327,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param principalId Internal ID of the principal in Databricks
+         * @param principalId The Databricks ID of the member
          * 
          * @return builder
          * 
@@ -342,7 +338,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param principalId Internal ID of the principal in Databricks
+         * @param principalId The Databricks ID of the member
          * 
          * @return builder
          * 
@@ -352,7 +348,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param principalType (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+         * @param principalType (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
          * 
          * @return builder
          * 
@@ -363,7 +359,7 @@ public final class WorkspaceIamDirectGroupMemberV2State extends com.pulumi.resou
         }
 
         /**
-         * @param principalType (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+         * @param principalType (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
          * 
          * @return builder
          * 

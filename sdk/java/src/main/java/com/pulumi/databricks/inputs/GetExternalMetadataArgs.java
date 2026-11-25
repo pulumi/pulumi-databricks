@@ -18,14 +18,20 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
     public static final GetExternalMetadataArgs Empty = new GetExternalMetadataArgs();
 
     /**
-     * Name of the external metadata object
+     * Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the external metadata object
+     * @return Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     public Output<String> name() {
@@ -73,7 +79,10 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Name of the external metadata object
+         * @param name Name of the external metadata object. The name is unique within the metastore, must follow the
+         * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+         * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+         * refer to the object by this name
          * 
          * @return builder
          * 
@@ -84,7 +93,10 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Name of the external metadata object
+         * @param name Name of the external metadata object. The name is unique within the metastore, must follow the
+         * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+         * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+         * refer to the object by this name
          * 
          * @return builder
          * 

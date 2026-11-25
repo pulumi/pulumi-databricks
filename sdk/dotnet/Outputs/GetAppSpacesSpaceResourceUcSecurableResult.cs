@@ -14,11 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppSpacesSpaceResourceUcSecurableResult
     {
         /// <summary>
-        /// (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+        /// (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+        /// type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// (string)
+        /// (string) - Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+        /// three-level catalog.schema.object name
         /// </summary>
         public readonly string SecurableFullName;
         /// <summary>
@@ -27,7 +29,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string SecurableKind;
         /// <summary>
-        /// (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+        /// (string) - Kind of Unity Catalog securable that `SecurableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string SecurableType;
 

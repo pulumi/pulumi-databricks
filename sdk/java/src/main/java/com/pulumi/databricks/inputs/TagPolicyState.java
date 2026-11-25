@@ -33,9 +33,17 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * A description of the governed tag, such as its purpose or the meaning of its values
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return A description of the governed tag, such as its purpose or the meaning of its values
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -55,9 +63,17 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     * 
+     */
     @Import(name="tagKey")
     private @Nullable Output<String> tagKey;
 
+    /**
+     * @return The tag key that this policy governs. Tag keys are case-sensitive
+     * 
+     */
     public Optional<Output<String>> tagKey() {
         return Optional.ofNullable(this.tagKey);
     }
@@ -77,9 +93,19 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<TagPolicyValueArgs>> values;
 
+    /**
+     * @return The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     * 
+     */
     public Optional<Output<List<TagPolicyValueArgs>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -134,11 +160,23 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param description A description of the governed tag, such as its purpose or the meaning of its values
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description A description of the governed tag, such as its purpose or the meaning of its values
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -164,11 +202,23 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
             return providerConfig(Output.of(providerConfig));
         }
 
+        /**
+         * @param tagKey The tag key that this policy governs. Tag keys are case-sensitive
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagKey(@Nullable Output<String> tagKey) {
             $.tagKey = tagKey;
             return this;
         }
 
+        /**
+         * @param tagKey The tag key that this policy governs. Tag keys are case-sensitive
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagKey(String tagKey) {
             return tagKey(Output.of(tagKey));
         }
@@ -194,15 +244,36 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
             return updateTime(Output.of(updateTime));
         }
 
+        /**
+         * @param values The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+         * value must be unique. A policy without values defines a key-only governed tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<TagPolicyValueArgs>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+         * value must be unique. A policy without values defines a key-only governed tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<TagPolicyValueArgs> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+         * value must be unique. A policy without values defines a key-only governed tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(TagPolicyValueArgs... values) {
             return values(List.of(values));
         }

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceIamWorkspaceIdentityDetailV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceIamWorkspaceIdentityDetailV2Result>("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args ?? new GetWorkspaceIamWorkspaceIdentityDetailV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamWorkspaceIdentityDetailV2Result>("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args ?? new GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -106,8 +106,8 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceIdentityDetailV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the workspace identity detail.
-        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// The resource name of the workspace identity detail, in the format
+        /// `principals/{principal_id}/workspace-identity-detail`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -127,8 +127,8 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceIdentityDetailV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the workspace identity detail.
-        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// The resource name of the workspace identity detail, in the format
+        /// `principals/{principal_id}/workspace-identity-detail`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -150,25 +150,25 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamWorkspaceIdentityDetailV2Result
     {
         /// <summary>
-        /// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+        /// (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
         /// </summary>
         public readonly string AssignmentType;
         /// <summary>
-        /// (string) - The resource name of the workspace identity detail.
-        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// (string) - The resource name of the workspace identity detail, in the format
+        /// `principals/{principal_id}/workspace-identity-detail`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        /// (integer) - The Databricks ID of the user, service principal, or group
         /// </summary>
         public readonly string PrincipalId;
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         public readonly string PrincipalType;
         public readonly Outputs.GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+        /// (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         public readonly string WorkspaceIdentityStatus;
 

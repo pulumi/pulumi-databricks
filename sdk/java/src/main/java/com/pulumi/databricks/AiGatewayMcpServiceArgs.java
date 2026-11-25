@@ -53,14 +53,18 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name for the MCP service, e.g. &#34;myMcpService&#34;
+     * Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     @Import(name="mcpServiceId", required=true)
     private Output<String> mcpServiceId;
 
     /**
-     * @return Name for the MCP service, e.g. &#34;myMcpService&#34;
+     * @return Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     public Output<String> mcpServiceId() {
@@ -176,7 +180,9 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
+         * @param mcpServiceId Name of the MCP service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 
@@ -187,7 +193,9 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
+         * @param mcpServiceId Name of the MCP service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 

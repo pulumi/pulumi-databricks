@@ -56,6 +56,8 @@ func LookupEnvironmentsWorkspaceBaseEnvironment(ctx *pulumi.Context, args *Looku
 type LookupEnvironmentsWorkspaceBaseEnvironmentArgs struct {
 	// The resource name of the workspace base environment.
 	// Format: workspace-base-environments/{workspace-base-environment}
+	// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+	// `displayName` plus a random suffix when no ID is given
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig `pulumi:"providerConfig"`
@@ -63,7 +65,7 @@ type LookupEnvironmentsWorkspaceBaseEnvironmentArgs struct {
 
 // A collection of values returned by getEnvironmentsWorkspaceBaseEnvironment.
 type LookupEnvironmentsWorkspaceBaseEnvironmentResult struct {
-	// (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+	// (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType string `pulumi:"baseEnvironmentType"`
 	// (string) - Timestamp when the environment was created
 	CreateTime string `pulumi:"createTime"`
@@ -72,21 +74,26 @@ type LookupEnvironmentsWorkspaceBaseEnvironmentResult struct {
 	// (string) - Human-readable display name for the workspace base environment
 	DisplayName                  string `pulumi:"displayName"`
 	EffectiveBaseEnvironmentType string `pulumi:"effectiveBaseEnvironmentType"`
-	// (string) - The WSFS or UC Volumes path to the environment YAML file
+	// (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+	// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 	Filepath string `pulumi:"filepath"`
 	// (boolean) - Whether this is the default environment for the workspace
 	IsDefault bool `pulumi:"isDefault"`
 	// (string) - User ID of the last user who updated the environment
 	LastUpdatedUserId string `pulumi:"lastUpdatedUserId"`
-	// (string) - Status message providing additional details about the environment status
+	// (string) - Status message providing additional details about the environment status.
+	// When the status is `FAILED`, the message contains the build error
 	Message string `pulumi:"message"`
 	// (string) - The resource name of the workspace base environment.
 	// Format: workspace-base-environments/{workspace-base-environment}
+	// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+	// `displayName` plus a random suffix when no ID is given
 	Name           string                                                 `pulumi:"name"`
 	ProviderConfig *GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig `pulumi:"providerConfig"`
-	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
 	Spec GetEnvironmentsWorkspaceBaseEnvironmentSpec `pulumi:"spec"`
-	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+	// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+	// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status string `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -101,6 +108,8 @@ func LookupEnvironmentsWorkspaceBaseEnvironmentOutput(ctx *pulumi.Context, args 
 type LookupEnvironmentsWorkspaceBaseEnvironmentOutputArgs struct {
 	// The resource name of the workspace base environment.
 	// Format: workspace-base-environments/{workspace-base-environment}
+	// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+	// `displayName` plus a random suffix when no ID is given
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -125,7 +134,7 @@ func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) ToLookupEnvironm
 	return o
 }
 
-// (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+// (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) BaseEnvironmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.BaseEnvironmentType }).(pulumi.StringOutput)
 }
@@ -149,7 +158,8 @@ func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) EffectiveBaseEnv
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.EffectiveBaseEnvironmentType }).(pulumi.StringOutput)
 }
 
-// (string) - The WSFS or UC Volumes path to the environment YAML file
+// (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.Filepath }).(pulumi.StringOutput)
 }
@@ -164,13 +174,16 @@ func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) LastUpdatedUserI
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.LastUpdatedUserId }).(pulumi.StringOutput)
 }
 
-// (string) - Status message providing additional details about the environment status
+// (string) - Status message providing additional details about the environment status.
+// When the status is `FAILED`, the message contains the build error
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
 // (string) - The resource name of the workspace base environment.
 // Format: workspace-base-environments/{workspace-base-environment}
+// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+// `displayName` plus a random suffix when no ID is given
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -181,14 +194,15 @@ func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) ProviderConfig()
 	}).(GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrOutput)
 }
 
-// (EnvironmentSpec) - The environment specification containing version and dependencies
+// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Spec() GetEnvironmentsWorkspaceBaseEnvironmentSpecOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) GetEnvironmentsWorkspaceBaseEnvironmentSpec {
 		return v.Spec
 	}).(GetEnvironmentsWorkspaceBaseEnvironmentSpecOutput)
 }
 
-// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.Status }).(pulumi.StringOutput)
 }

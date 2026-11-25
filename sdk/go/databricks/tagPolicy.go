@@ -68,14 +68,18 @@ type TagPolicy struct {
 	pulumi.CustomResourceState
 
 	// (string) - Timestamp when the tag policy was created
-	CreateTime  pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// A description of the governed tag, such as its purpose or the meaning of its values
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Configure the provider for management through account provider.
 	ProviderConfig TagPolicyProviderConfigOutput `pulumi:"providerConfig"`
-	TagKey         pulumi.StringOutput           `pulumi:"tagKey"`
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey pulumi.StringOutput `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
-	UpdateTime pulumi.StringOutput       `pulumi:"updateTime"`
-	Values     TagPolicyValueArrayOutput `pulumi:"values"`
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+	// value must be unique. A policy without values defines a key-only governed tag
+	Values TagPolicyValueArrayOutput `pulumi:"values"`
 }
 
 // NewTagPolicy registers a new resource with the given unique name, arguments, and options.
@@ -112,26 +116,34 @@ func GetTagPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TagPolicy resources.
 type tagPolicyState struct {
 	// (string) - Timestamp when the tag policy was created
-	CreateTime  *string `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// A description of the governed tag, such as its purpose or the meaning of its values
 	Description *string `pulumi:"description"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *TagPolicyProviderConfig `pulumi:"providerConfig"`
-	TagKey         *string                  `pulumi:"tagKey"`
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey *string `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
-	UpdateTime *string          `pulumi:"updateTime"`
-	Values     []TagPolicyValue `pulumi:"values"`
+	UpdateTime *string `pulumi:"updateTime"`
+	// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+	// value must be unique. A policy without values defines a key-only governed tag
+	Values []TagPolicyValue `pulumi:"values"`
 }
 
 type TagPolicyState struct {
 	// (string) - Timestamp when the tag policy was created
-	CreateTime  pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// A description of the governed tag, such as its purpose or the meaning of its values
 	Description pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig TagPolicyProviderConfigPtrInput
-	TagKey         pulumi.StringPtrInput
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey pulumi.StringPtrInput
 	// (string) - Timestamp when the tag policy was last updated
 	UpdateTime pulumi.StringPtrInput
-	Values     TagPolicyValueArrayInput
+	// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+	// value must be unique. A policy without values defines a key-only governed tag
+	Values TagPolicyValueArrayInput
 }
 
 func (TagPolicyState) ElementType() reflect.Type {
@@ -145,20 +157,28 @@ func TagPolicyExists(ctx *pulumi.Context,
 }
 
 type tagPolicyArgs struct {
+	// A description of the governed tag, such as its purpose or the meaning of its values
 	Description *string `pulumi:"description"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *TagPolicyProviderConfig `pulumi:"providerConfig"`
-	TagKey         string                   `pulumi:"tagKey"`
-	Values         []TagPolicyValue         `pulumi:"values"`
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey string `pulumi:"tagKey"`
+	// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+	// value must be unique. A policy without values defines a key-only governed tag
+	Values []TagPolicyValue `pulumi:"values"`
 }
 
 // The set of arguments for constructing a TagPolicy resource.
 type TagPolicyArgs struct {
+	// A description of the governed tag, such as its purpose or the meaning of its values
 	Description pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig TagPolicyProviderConfigPtrInput
-	TagKey         pulumi.StringInput
-	Values         TagPolicyValueArrayInput
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey pulumi.StringInput
+	// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+	// value must be unique. A policy without values defines a key-only governed tag
+	Values TagPolicyValueArrayInput
 }
 
 func (TagPolicyArgs) ElementType() reflect.Type {
@@ -253,6 +273,7 @@ func (o TagPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// A description of the governed tag, such as its purpose or the meaning of its values
 func (o TagPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -262,6 +283,7 @@ func (o TagPolicyOutput) ProviderConfig() TagPolicyProviderConfigOutput {
 	return o.ApplyT(func(v *TagPolicy) TagPolicyProviderConfigOutput { return v.ProviderConfig }).(TagPolicyProviderConfigOutput)
 }
 
+// The tag key that this policy governs. Tag keys are case-sensitive
 func (o TagPolicyOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringOutput { return v.TagKey }).(pulumi.StringOutput)
 }
@@ -271,6 +293,8 @@ func (o TagPolicyOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+// value must be unique. A policy without values defines a key-only governed tag
 func (o TagPolicyOutput) Values() TagPolicyValueArrayOutput {
 	return o.ApplyT(func(v *TagPolicy) TagPolicyValueArrayOutput { return v.Values }).(TagPolicyValueArrayOutput)
 }

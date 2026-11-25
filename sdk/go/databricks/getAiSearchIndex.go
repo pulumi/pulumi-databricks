@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 //
@@ -78,13 +78,19 @@ type LookupAiSearchIndexResult struct {
 	// (string) - Name of the endpoint associated with the index. Ignored on create — the endpoint is
 	// taken from `CreateIndexRequest.parent`; populated only on output
 	Endpoint string `pulumi:"endpoint"`
-	// (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+	// (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+	// keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+	// create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
 	IndexSubtype string `pulumi:"indexSubtype"`
-	// (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+	// (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+	// `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+	// create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
 	IndexType string `pulumi:"indexType"`
-	// (string) - Name of the column
+	// (string) - Name of the column that holds the precomputed embedding vectors
 	Name string `pulumi:"name"`
-	// (string) - Primary key of the index. Set on create and immutable thereafter
+	// (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+	// (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+	// column. Set on create and immutable thereafter
 	PrimaryKey     string                          `pulumi:"primaryKey"`
 	ProviderConfig *GetAiSearchIndexProviderConfig `pulumi:"providerConfig"`
 	// (IndexStatus) - Current status of the index
@@ -150,22 +156,28 @@ func (o LookupAiSearchIndexResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+// (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+// keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+// create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
 func (o LookupAiSearchIndexResultOutput) IndexSubtype() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.IndexSubtype }).(pulumi.StringOutput)
 }
 
-// (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+// (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+// `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+// create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
 func (o LookupAiSearchIndexResultOutput) IndexType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.IndexType }).(pulumi.StringOutput)
 }
 
-// (string) - Name of the column
+// (string) - Name of the column that holds the precomputed embedding vectors
 func (o LookupAiSearchIndexResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - Primary key of the index. Set on create and immutable thereafter
+// (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+// (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+// column. Set on create and immutable thereafter
 func (o LookupAiSearchIndexResultOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -67,18 +67,20 @@ type LookupPostgresCatalogArgs struct {
 
 // A collection of values returned by getPostgresCatalog.
 type LookupPostgresCatalogResult struct {
-	// (string) - The part of the name, chosen by the user when the resource was created
+	// (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+	// last segment of the name field
 	CatalogId string `pulumi:"catalogId"`
 	// (string) - A timestamp indicating when the catalog was created
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Output only. The full resource path of the catalog.
 	Name           string                            `pulumi:"name"`
 	ProviderConfig *GetPostgresCatalogProviderConfig `pulumi:"providerConfig"`
-	// (CatalogCatalogSpec) - The desired state of the Catalog
+	// (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+	// the catalog is created
 	Spec GetPostgresCatalogSpec `pulumi:"spec"`
 	// (CatalogCatalogStatus) - The observed state of the Catalog
 	Status GetPostgresCatalogStatus `pulumi:"status"`
-	// (string) - System-generated unique identifier for the catalog
+	// (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
 	Uid string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the catalog was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -118,7 +120,8 @@ func (o LookupPostgresCatalogResultOutput) ToLookupPostgresCatalogResultOutputWi
 	return o
 }
 
-// (string) - The part of the name, chosen by the user when the resource was created
+// (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+// last segment of the name field
 func (o LookupPostgresCatalogResultOutput) CatalogId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresCatalogResult) string { return v.CatalogId }).(pulumi.StringOutput)
 }
@@ -137,7 +140,8 @@ func (o LookupPostgresCatalogResultOutput) ProviderConfig() GetPostgresCatalogPr
 	return o.ApplyT(func(v LookupPostgresCatalogResult) *GetPostgresCatalogProviderConfig { return v.ProviderConfig }).(GetPostgresCatalogProviderConfigPtrOutput)
 }
 
-// (CatalogCatalogSpec) - The desired state of the Catalog
+// (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+// the catalog is created
 func (o LookupPostgresCatalogResultOutput) Spec() GetPostgresCatalogSpecOutput {
 	return o.ApplyT(func(v LookupPostgresCatalogResult) GetPostgresCatalogSpec { return v.Spec }).(GetPostgresCatalogSpecOutput)
 }
@@ -147,7 +151,7 @@ func (o LookupPostgresCatalogResultOutput) Status() GetPostgresCatalogStatusOutp
 	return o.ApplyT(func(v LookupPostgresCatalogResult) GetPostgresCatalogStatus { return v.Status }).(GetPostgresCatalogStatusOutput)
 }
 
-// (string) - System-generated unique identifier for the catalog
+// (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
 func (o LookupPostgresCatalogResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresCatalogResult) string { return v.Uid }).(pulumi.StringOutput)
 }

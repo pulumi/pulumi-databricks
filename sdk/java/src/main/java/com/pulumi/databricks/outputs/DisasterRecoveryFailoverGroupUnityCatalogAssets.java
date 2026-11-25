@@ -15,40 +15,48 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
-     * @return UC catalogs to replicate
+     * @return Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      * 
      */
     private List<DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog> catalogs;
     /**
-     * @return The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs&#39; underlying storage
+     * @return Name of the workspace set whose workspaces run the data replication for the catalogs&#39;
+     * underlying storage. Must match the name of a workspace set in this failover group
      * 
      */
     private String dataReplicationWorkspaceSet;
     /**
-     * @return Location mappings - storage URI per region for each location
+     * @return Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      * 
      */
     private @Nullable List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping> locationMappings;
 
     private DisasterRecoveryFailoverGroupUnityCatalogAssets() {}
     /**
-     * @return UC catalogs to replicate
+     * @return Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      * 
      */
     public List<DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog> catalogs() {
         return this.catalogs;
     }
     /**
-     * @return The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs&#39; underlying storage
+     * @return Name of the workspace set whose workspaces run the data replication for the catalogs&#39;
+     * underlying storage. Must match the name of a workspace set in this failover group
      * 
      */
     public String dataReplicationWorkspaceSet() {
         return this.dataReplicationWorkspaceSet;
     }
     /**
-     * @return Location mappings - storage URI per region for each location
+     * @return Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      * 
      */
     public List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping> locationMappings() {

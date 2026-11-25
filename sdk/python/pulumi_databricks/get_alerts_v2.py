@@ -93,6 +93,7 @@ def get_alerts_v2(page_size: Optional[_builtins.int] = None,
     ```
 
 
+    :param _builtins.int page_size: Maximum number of alerts to return per page. Values above 100 are coerced to 100
     :param Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict', 'outputs.GetAlertsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -132,6 +133,7 @@ def get_alerts_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
     ```
 
 
+    :param _builtins.int page_size: Maximum number of alerts to return per page. Values above 100 are coerced to 100
     :param Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict', 'outputs.GetAlertsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

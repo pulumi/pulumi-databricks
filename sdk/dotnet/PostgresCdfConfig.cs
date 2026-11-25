@@ -126,6 +126,15 @@ namespace Pulumi.Databricks
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
 
+        /// <summary>
+        /// The service principal (application id) whose identity authorizes this
+        /// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        /// authorized as the creating identity. Changing it requires a new CdfConfig,
+        /// which writes to new Delta tables
+        /// </summary>
+        [Output("servicePrincipal")]
+        public Output<string?> ServicePrincipal { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a PostgresCdfConfig resource with the given unique name, arguments, and options.
@@ -213,6 +222,15 @@ namespace Pulumi.Databricks
         [Input("schema", required: true)]
         public Input<string> Schema { get; set; } = null!;
 
+        /// <summary>
+        /// The service principal (application id) whose identity authorizes this
+        /// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        /// authorized as the creating identity. Changing it requires a new CdfConfig,
+        /// which writes to new Delta tables
+        /// </summary>
+        [Input("servicePrincipal")]
+        public Input<string>? ServicePrincipal { get; set; }
+
         public PostgresCdfConfigArgs()
         {
         }
@@ -274,6 +292,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// The service principal (application id) whose identity authorizes this
+        /// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        /// authorized as the creating identity. Changing it requires a new CdfConfig,
+        /// which writes to new Delta tables
+        /// </summary>
+        [Input("servicePrincipal")]
+        public Input<string>? ServicePrincipal { get; set; }
 
         public PostgresCdfConfigState()
         {

@@ -121,8 +121,9 @@ namespace Pulumi.Databricks
         /// Resource name of the model service.
         /// Format: `model-services/{catalog}.{schema}.{model_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -145,8 +146,9 @@ namespace Pulumi.Databricks
         /// Resource name of the model service.
         /// Format: `model-services/{catalog}.{schema}.{model_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -182,11 +184,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model service
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - Owner of the model service
+        /// (string) - Username or group name of the model service owner
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
@@ -197,11 +199,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// (string) - Metastore hosting the model service
+        /// (string) - Unique identifier of the metastore that contains the model service
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string) - User-facing label for this destination, used in routing references
+        /// (string) - Label that identifies this destination. Names are compared
+        /// case-insensitively and must be unique within the primary destinations and
+        /// within the fallback destinations
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetAiGatewayModelServiceProviderConfigResult? ProviderConfig;
@@ -217,7 +221,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model service
         /// </summary>
         public readonly string UpdatedBy;
 

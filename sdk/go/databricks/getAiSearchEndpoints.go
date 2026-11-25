@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 //
@@ -54,9 +54,8 @@ func GetAiSearchEndpoints(ctx *pulumi.Context, args *GetAiSearchEndpointsArgs, o
 
 // A collection of arguments for invoking getAiSearchEndpoints.
 type GetAiSearchEndpointsArgs struct {
-	// Best-effort upper bound on the number of results to return. Honored as an upper
-	// bound by the shim: `pageSize` only narrows the legacy backend's response, never
-	// widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+	// Maximum number of endpoints to return in one page. The server applies its own page size
+	// limit, so a page can hold fewer endpoints than `pageSize` even when more remain
 	PageSize *int `pulumi:"pageSize"`
 	// The Workspace that owns this collection of endpoints.
 	// Format: `workspaces/{workspace_id}`
@@ -80,9 +79,8 @@ func GetAiSearchEndpointsOutput(ctx *pulumi.Context, args GetAiSearchEndpointsOu
 
 // A collection of arguments for invoking getAiSearchEndpoints.
 type GetAiSearchEndpointsOutputArgs struct {
-	// Best-effort upper bound on the number of results to return. Honored as an upper
-	// bound by the shim: `pageSize` only narrows the legacy backend's response, never
-	// widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+	// Maximum number of endpoints to return in one page. The server applies its own page size
+	// limit, so a page can hold fewer endpoints than `pageSize` even when more remain
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The Workspace that owns this collection of endpoints.
 	// Format: `workspaces/{workspace_id}`

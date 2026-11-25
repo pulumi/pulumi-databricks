@@ -13,24 +13,52 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppSpaceResource
     {
+        /// <summary>
+        /// Another app in the workspace that this app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceApp? App;
         public readonly Outputs.AppSpaceResourceDatabase? Database;
         /// <summary>
         /// The description of the app space
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// MLflow experiment the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceExperiment? Experiment;
+        /// <summary>
+        /// Genie space the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceGenieSpace? GenieSpace;
+        /// <summary>
+        /// Lakeflow job the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceJob? Job;
         /// <summary>
         /// The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
         /// It must be unique within the workspace
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Lakebase Autoscaling Postgres database the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourcePostgres? Postgres;
+        /// <summary>
+        /// Secret the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceSecret? Secret;
+        /// <summary>
+        /// Model serving endpoint the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceServingEndpoint? ServingEndpoint;
+        /// <summary>
+        /// SQL warehouse the app is granted access to
+        /// </summary>
         public readonly Outputs.AppSpaceResourceSqlWarehouse? SqlWarehouse;
+        /// <summary>
+        /// Unity Catalog securable (volume, table, function, connection or model service) the app is
+        /// granted a privilege on
+        /// </summary>
         public readonly Outputs.AppSpaceResourceUcSecurable? UcSecurable;
 
         [OutputConstructor]

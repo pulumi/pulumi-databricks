@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime
     {
+        /// <summary>
+        /// Hour of the day on a 24-hour clock
+        /// </summary>
         public readonly int? Hours;
+        /// <summary>
+        /// Minute of the hour
+        /// </summary>
         public readonly int? Minutes;
 
         [OutputConstructor]

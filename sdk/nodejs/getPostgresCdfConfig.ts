@@ -84,6 +84,13 @@ export interface GetPostgresCdfConfigResult {
      * Set at creation; the CdfConfig is immutable
      */
     readonly schema: string;
+    /**
+     * (string) - The service principal (application id) whose identity authorizes this
+     * change data feed's ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     */
+    readonly servicePrincipal: string;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

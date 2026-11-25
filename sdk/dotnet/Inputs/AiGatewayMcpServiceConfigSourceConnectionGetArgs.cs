@@ -24,8 +24,9 @@ namespace Pulumi.Databricks.Inputs
         /// (string) - Resource name of the MCP service.
         /// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `McpServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `McpServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

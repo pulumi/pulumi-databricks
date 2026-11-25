@@ -227,7 +227,8 @@ namespace Pulumi.Databricks
     public partial class DatabaseSyncedDatabaseTable : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (SyncedTableStatus) - Synced Table data synchronization status
+        /// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+        /// source, including the pipeline ID and the position of the last successful sync
         /// </summary>
         [Output("dataSynchronizationStatus")]
         public Output<Outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus> DataSynchronizationStatus { get; private set; } = null!;
@@ -242,8 +243,8 @@ namespace Pulumi.Databricks
         public Output<string> DatabaseInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        /// tables inside database catalogs is inferred database instance associated with the catalog.
+        /// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+        /// tables inside database catalogs it is the database instance associated with the catalog.
         /// This is an output only field that contains the value computed from the input field combined with
         /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
@@ -268,7 +269,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
+        /// If this database does not exist yet, it is created when `CreateDatabaseObjectsIfMissing` in `Spec` is true
         /// </summary>
         [Output("logicalDatabaseName")]
         public Output<string> LogicalDatabaseName { get; private set; } = null!;
@@ -285,6 +286,9 @@ namespace Pulumi.Databricks
         [Output("providerConfig")]
         public Output<Outputs.DatabaseSyncedDatabaseTableProviderConfig> ProviderConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the source table, the key columns and how the data synchronization pipeline runs
+        /// </summary>
         [Output("spec")]
         public Output<Outputs.DatabaseSyncedDatabaseTableSpec?> Spec { get; private set; } = null!;
 
@@ -361,7 +365,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
+        /// If this database does not exist yet, it is created when `CreateDatabaseObjectsIfMissing` in `Spec` is true
         /// </summary>
         [Input("logicalDatabaseName")]
         public Input<string>? LogicalDatabaseName { get; set; }
@@ -378,6 +382,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.DatabaseSyncedDatabaseTableProviderConfigArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Specifies the source table, the key columns and how the data synchronization pipeline runs
+        /// </summary>
         [Input("spec")]
         public Input<Inputs.DatabaseSyncedDatabaseTableSpecArgs>? Spec { get; set; }
 
@@ -390,7 +397,8 @@ namespace Pulumi.Databricks
     public sealed class DatabaseSyncedDatabaseTableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (SyncedTableStatus) - Synced Table data synchronization status
+        /// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+        /// source, including the pipeline ID and the position of the last successful sync
         /// </summary>
         [Input("dataSynchronizationStatus")]
         public Input<Inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusGetArgs>? DataSynchronizationStatus { get; set; }
@@ -405,8 +413,8 @@ namespace Pulumi.Databricks
         public Input<string>? DatabaseInstanceName { get; set; }
 
         /// <summary>
-        /// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        /// tables inside database catalogs is inferred database instance associated with the catalog.
+        /// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+        /// tables inside database catalogs it is the database instance associated with the catalog.
         /// This is an output only field that contains the value computed from the input field combined with
         /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
@@ -431,7 +439,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
+        /// If this database does not exist yet, it is created when `CreateDatabaseObjectsIfMissing` in `Spec` is true
         /// </summary>
         [Input("logicalDatabaseName")]
         public Input<string>? LogicalDatabaseName { get; set; }
@@ -448,6 +456,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.DatabaseSyncedDatabaseTableProviderConfigGetArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Specifies the source table, the key columns and how the data synchronization pipeline runs
+        /// </summary>
         [Input("spec")]
         public Input<Inputs.DatabaseSyncedDatabaseTableSpecGetArgs>? Spec { get; set; }
 

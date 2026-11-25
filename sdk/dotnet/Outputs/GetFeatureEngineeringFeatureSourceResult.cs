@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceFeatureViewSourceResult? FeatureViewSource;
         /// <summary>
+        /// (IcebergTableSource) - A Unity Catalog managed or foreign Iceberg table source
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureSourceIcebergTableSourceResult? IcebergTableSource;
+        /// <summary>
         /// (KafkaSource) - A Kafka stream data source
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult? KafkaSource;
@@ -49,6 +53,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeatureSourceFeatureViewSourceResult? featureViewSource,
 
+            Outputs.GetFeatureEngineeringFeatureSourceIcebergTableSourceResult? icebergTableSource,
+
             Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult? kafkaSource,
 
             Outputs.GetFeatureEngineeringFeatureSourceLatenessResult? lateness,
@@ -61,6 +67,7 @@ namespace Pulumi.Databricks.Outputs
         {
             DeltaTableSource = deltaTableSource;
             FeatureViewSource = featureViewSource;
+            IcebergTableSource = icebergTableSource;
             KafkaSource = kafkaSource;
             Lateness = lateness;
             RequestSource = requestSource;

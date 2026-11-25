@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertV2EvaluationThreshold {
+    /**
+     * @return Compare the source against another column of the query result
+     * 
+     */
     private @Nullable AlertV2EvaluationThresholdColumn column;
     private @Nullable AlertV2EvaluationThresholdValue value;
 
     private AlertV2EvaluationThreshold() {}
+    /**
+     * @return Compare the source against another column of the query result
+     * 
+     */
     public Optional<AlertV2EvaluationThresholdColumn> column() {
         return Optional.ofNullable(this.column);
     }

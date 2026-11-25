@@ -24,9 +24,12 @@ public final class PostgresSyncedTableSpec {
      */
     private @Nullable Boolean acceleratedSync;
     /**
-     * @return The full resource name the branch associated with the table.
+     * @return The full resource name of the branch that contains the synced table.
      * 
-     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;
+     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;.
+     * 
+     * A value must be specified when creating a synced table inside a standard catalog. Inside a
+     * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
      * 
      */
     private @Nullable String branch;
@@ -40,10 +43,11 @@ public final class PostgresSyncedTableSpec {
      */
     private @Nullable Boolean createDatabaseObjectsIfMissing;
     /**
-     * @return ID of an existing pipeline to bin-pack this synced table into.
+     * @return ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     private @Nullable String existingPipelineId;
@@ -56,27 +60,26 @@ public final class PostgresSyncedTableSpec {
      * @return Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     private @Nullable PostgresSyncedTableSpecNewPipelineSpec newPipelineSpec;
     /**
-     * @return The Postgres database name where the synced table will be created in.
-     * 
-     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-     * 
-     * A value must be specified when creating a synced table inside a Standard Catalog
+     * @return The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      * 
      */
     private @Nullable String postgresDatabase;
     /**
-     * @return Primary Key columns to be used for data insert/update in the destination
+     * @return Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      * 
      */
     private @Nullable List<String> primaryKeyColumns;
     /**
-     * @return Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     private @Nullable String schedulingPolicy;
@@ -113,9 +116,12 @@ public final class PostgresSyncedTableSpec {
         return Optional.ofNullable(this.acceleratedSync);
     }
     /**
-     * @return The full resource name the branch associated with the table.
+     * @return The full resource name of the branch that contains the synced table.
      * 
-     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;
+     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;.
+     * 
+     * A value must be specified when creating a synced table inside a standard catalog. Inside a
+     * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
      * 
      */
     public Optional<String> branch() {
@@ -133,10 +139,11 @@ public final class PostgresSyncedTableSpec {
         return Optional.ofNullable(this.createDatabaseObjectsIfMissing);
     }
     /**
-     * @return ID of an existing pipeline to bin-pack this synced table into.
+     * @return ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     public Optional<String> existingPipelineId() {
@@ -153,33 +160,32 @@ public final class PostgresSyncedTableSpec {
      * @return Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     public Optional<PostgresSyncedTableSpecNewPipelineSpec> newPipelineSpec() {
         return Optional.ofNullable(this.newPipelineSpec);
     }
     /**
-     * @return The Postgres database name where the synced table will be created in.
-     * 
-     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-     * 
-     * A value must be specified when creating a synced table inside a Standard Catalog
+     * @return The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      * 
      */
     public Optional<String> postgresDatabase() {
         return Optional.ofNullable(this.postgresDatabase);
     }
     /**
-     * @return Primary Key columns to be used for data insert/update in the destination
+     * @return Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      * 
      */
     public List<String> primaryKeyColumns() {
         return this.primaryKeyColumns == null ? List.of() : this.primaryKeyColumns;
     }
     /**
-     * @return Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     public Optional<String> schedulingPolicy() {

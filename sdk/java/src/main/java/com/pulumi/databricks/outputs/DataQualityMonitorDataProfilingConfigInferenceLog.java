@@ -15,22 +15,23 @@ import javax.annotation.Nullable;
 public final class DataQualityMonitorDataProfilingConfigInferenceLog {
     private List<String> granularities;
     /**
-     * @return Column for the label
+     * @return Column containing the ground truth for the model&#39;s predictions
      * 
      */
     private @Nullable String labelColumn;
     /**
-     * @return Column for the model identifier
+     * @return Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      * 
      */
     private String modelIdColumn;
     /**
-     * @return Column for the prediction
+     * @return Column containing the model&#39;s predicted values
      * 
      */
     private String predictionColumn;
     /**
-     * @return Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * @return The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      * 
      */
     private String problemType;
@@ -41,28 +42,29 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLog {
         return this.granularities;
     }
     /**
-     * @return Column for the label
+     * @return Column containing the ground truth for the model&#39;s predictions
      * 
      */
     public Optional<String> labelColumn() {
         return Optional.ofNullable(this.labelColumn);
     }
     /**
-     * @return Column for the model identifier
+     * @return Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      * 
      */
     public String modelIdColumn() {
         return this.modelIdColumn;
     }
     /**
-     * @return Column for the prediction
+     * @return Column containing the model&#39;s predicted values
      * 
      */
     public String predictionColumn() {
         return this.predictionColumn;
     }
     /**
-     * @return Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * @return The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      * 
      */
     public String problemType() {

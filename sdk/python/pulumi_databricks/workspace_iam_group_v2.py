@@ -27,8 +27,10 @@ class WorkspaceIamGroupV2Args:
         """
         The set of arguments for constructing a WorkspaceIamGroupV2 resource.
 
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
-        :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] external_id: The ID of the group in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] group_name: The display name of the group. It must be unique in the account, must not be blank, and must be
+               shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+               group that Databricks manages, such as `admins` or `users`
         :param pulumi.Input['WorkspaceIamGroupV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if external_id is not None:
@@ -42,7 +44,7 @@ class WorkspaceIamGroupV2Args:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ExternalId of the group in the customer's IdP
+        The ID of the group in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -54,7 +56,9 @@ class WorkspaceIamGroupV2Args:
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Display name of the group
+        The display name of the group. It must be unique in the account, must not be blank, and must be
+        shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+        group that Databricks manages, such as `admins` or `users`
         """
         return pulumi.get(self, "group_name")
 
@@ -88,15 +92,18 @@ class _WorkspaceIamGroupV2State:
         """
         Input properties used for looking up and filtering WorkspaceIamGroupV2 resources.
 
-        :param pulumi.Input[_builtins.str] account_id: (string) - The parent account ID for group in Databricks
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
-        :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
-        :param pulumi.Input[_builtins.str] group_name: Display name of the group
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group. The format depends on the API that returned it:
-               - Account-scoped: accounts/{account_id}/groups/{group_id}
-               - Workspace-scoped: groups/{group_id}
-        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-               account-scoped and workspace-scoped APIs return it
+        :param pulumi.Input[_builtins.str] account_id: (string) - The ID of the account that contains the group
+        :param pulumi.Input[_builtins.str] external_id: The ID of the group in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] group_id: (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+               is created, and it is the `{group_id}` segment of `name`
+        :param pulumi.Input[_builtins.str] group_name: The display name of the group. It must be unique in the account, must not be blank, and must be
+               shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+               group that Databricks manages, such as `admins` or `users`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group, in one of these formats:
+               - Account APIs: `accounts/{account_id}/groups/{group_id}`
+               - Workspace APIs: `groups/{group_id}`
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the group, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
         :param pulumi.Input['WorkspaceIamGroupV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if account_id is not None:
@@ -118,7 +125,7 @@ class _WorkspaceIamGroupV2State:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The parent account ID for group in Databricks
+        (string) - The ID of the account that contains the group
         """
         return pulumi.get(self, "account_id")
 
@@ -130,7 +137,7 @@ class _WorkspaceIamGroupV2State:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ExternalId of the group in the customer's IdP
+        The ID of the group in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -142,7 +149,8 @@ class _WorkspaceIamGroupV2State:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Internal group ID of the group in Databricks
+        (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+        is created, and it is the `{group_id}` segment of `name`
         """
         return pulumi.get(self, "group_id")
 
@@ -154,7 +162,9 @@ class _WorkspaceIamGroupV2State:
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Display name of the group
+        The display name of the group. It must be unique in the account, must not be blank, and must be
+        shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+        group that Databricks manages, such as `admins` or `users`
         """
         return pulumi.get(self, "group_name")
 
@@ -166,9 +176,9 @@ class _WorkspaceIamGroupV2State:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resource name of the group. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/groups/{group_id}
-        - Workspace-scoped: groups/{group_id}
+        (string) - The resource name of the group, in one of these formats:
+        - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        - Workspace APIs: `groups/{group_id}`
         """
         return pulumi.get(self, "name")
 
@@ -180,8 +190,8 @@ class _WorkspaceIamGroupV2State:
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-        account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the group, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -213,7 +223,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -237,8 +247,10 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
-        :param pulumi.Input[_builtins.str] group_name: Display name of the group
+        :param pulumi.Input[_builtins.str] external_id: The ID of the group in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] group_name: The display name of the group. It must be unique in the account, must not be blank, and must be
+               shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+               group that Databricks manages, such as `admins` or `users`
         :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
@@ -248,7 +260,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
                  args: Optional[WorkspaceIamGroupV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -328,15 +340,18 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: (string) - The parent account ID for group in Databricks
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
-        :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
-        :param pulumi.Input[_builtins.str] group_name: Display name of the group
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group. The format depends on the API that returned it:
-               - Account-scoped: accounts/{account_id}/groups/{group_id}
-               - Workspace-scoped: groups/{group_id}
-        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-               account-scoped and workspace-scoped APIs return it
+        :param pulumi.Input[_builtins.str] account_id: (string) - The ID of the account that contains the group
+        :param pulumi.Input[_builtins.str] external_id: The ID of the group in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] group_id: (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+               is created, and it is the `{group_id}` segment of `name`
+        :param pulumi.Input[_builtins.str] group_name: The display name of the group. It must be unique in the account, must not be blank, and must be
+               shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+               group that Databricks manages, such as `admins` or `users`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the group, in one of these formats:
+               - Account APIs: `accounts/{account_id}/groups/{group_id}`
+               - Workspace APIs: `groups/{group_id}`
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the group, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
         :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -376,7 +391,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The parent account ID for group in Databricks
+        (string) - The ID of the account that contains the group
         """
         return pulumi.get(self, "account_id")
 
@@ -384,7 +399,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        ExternalId of the group in the customer's IdP
+        The ID of the group in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -392,7 +407,8 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Internal group ID of the group in Databricks
+        (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+        is created, and it is the `{group_id}` segment of `name`
         """
         return pulumi.get(self, "group_id")
 
@@ -400,7 +416,9 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Display name of the group
+        The display name of the group. It must be unique in the account, must not be blank, and must be
+        shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+        group that Databricks manages, such as `admins` or `users`
         """
         return pulumi.get(self, "group_name")
 
@@ -408,9 +426,9 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the group. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/groups/{group_id}
-        - Workspace-scoped: groups/{group_id}
+        (string) - The resource name of the group, in one of these formats:
+        - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        - Workspace APIs: `groups/{group_id}`
         """
         return pulumi.get(self, "name")
 
@@ -418,8 +436,8 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-        account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the group, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 

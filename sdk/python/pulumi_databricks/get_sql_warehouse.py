@@ -287,7 +287,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="statementTimeout")
     def statement_timeout(self) -> _builtins.int:
         """
-        Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
         """
         return pulumi.get(self, "statement_timeout")
 
@@ -426,7 +426,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param _builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param _builtins.str state: The current state of the endpoint.
-    :param _builtins.int statement_timeout: Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+    :param _builtins.int statement_timeout: Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult'] tags: tags used for SQL warehouse resources.
     :param _builtins.str warehouse_type: SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
@@ -571,7 +571,7 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param _builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param _builtins.str state: The current state of the endpoint.
-    :param _builtins.int statement_timeout: Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+    :param _builtins.int statement_timeout: Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult'] tags: tags used for SQL warehouse resources.
     :param _builtins.str warehouse_type: SQL warehouse type: `PRO`, `CLASSIC`, or `REALTIME`. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """

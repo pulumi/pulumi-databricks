@@ -17,14 +17,14 @@ public final class PostgresSyncedTableStatusLastSyncArgs extends com.pulumi.reso
     public static final PostgresSyncedTableStatusLastSyncArgs Empty = new PostgresSyncedTableStatusLastSyncArgs();
 
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      * 
      */
     @Import(name="deltaTableSyncInfo")
     private @Nullable Output<PostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs> deltaTableSyncInfo;
 
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      * 
      */
     public Optional<Output<PostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs>> deltaTableSyncInfo() {
@@ -96,7 +96,7 @@ public final class PostgresSyncedTableStatusLastSyncArgs extends com.pulumi.reso
         }
 
         /**
-         * @param deltaTableSyncInfo (DeltaTableSyncInfo)
+         * @param deltaTableSyncInfo (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class PostgresSyncedTableStatusLastSyncArgs extends com.pulumi.reso
         }
 
         /**
-         * @param deltaTableSyncInfo (DeltaTableSyncInfo)
+         * @param deltaTableSyncInfo (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
          * 
          * @return builder
          * 

@@ -14,10 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class NotificationDestinationConfigDatabricksAppSlack
     {
         /// <summary>
-        /// Slack channel ID for notifications.
+        /// Slack channel ID notifications are posted to.
         /// </summary>
         public readonly string? ChannelId;
         public readonly bool? ChannelIdSet;
+        /// <summary>
+        /// Slack workspace (team) ID the Databricks app is installed in.
+        /// </summary>
         public readonly string? TeamId;
         public readonly bool? TeamIdSet;
 

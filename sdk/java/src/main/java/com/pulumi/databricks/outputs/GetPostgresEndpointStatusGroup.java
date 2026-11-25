@@ -12,8 +12,8 @@ import java.util.Objects;
 @CustomType
 public final class GetPostgresEndpointStatusGroup {
     /**
-     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max &gt; 1
+     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      * 
      */
     private Boolean enableReadableSecondaries;
@@ -33,8 +33,8 @@ public final class GetPostgresEndpointStatusGroup {
 
     private GetPostgresEndpointStatusGroup() {}
     /**
-     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max &gt; 1
+     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      * 
      */
     public Boolean enableReadableSecondaries() {

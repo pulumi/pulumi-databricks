@@ -37,7 +37,7 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs
 
     /**
      * Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      * 
      */
     @Import(name="apiKeyValue")
@@ -45,7 +45,7 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs
 
     /**
      * @return Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      * 
      */
     public Optional<Output<AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs>> apiKeyValue() {
@@ -104,7 +104,7 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs
 
         /**
          * @param apiKeyValue Secret value forwarded under the `apiKeyName` header on outbound
-         * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+         * requests. Supply the value in `api_key_value.plaintext`
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs
 
         /**
          * @param apiKeyValue Secret value forwarded under the `apiKeyName` header on outbound
-         * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+         * requests. Supply the value in `api_key_value.plaintext`
          * 
          * @return builder
          * 

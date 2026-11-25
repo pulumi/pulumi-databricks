@@ -21,9 +21,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? AcceleratedSync { get; set; }
 
         /// <summary>
-        /// The full resource name the branch associated with the table.
+        /// The full resource name of the branch that contains the synced table.
         /// 
-        /// Format: "projects/{project_id}/branches/{branch_id}"
+        /// Format: "projects/{project_id}/branches/{branch_id}".
+        /// 
+        /// A value must be specified when creating a synced table inside a standard catalog. Inside a
+        /// Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
@@ -39,10 +42,11 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? CreateDatabaseObjectsIfMissing { get; set; }
 
         /// <summary>
-        /// ID of an existing pipeline to bin-pack this synced table into.
+        /// ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+        /// table pipeline that runs continuously if and only if SchedulingPolicy is CONTINUOUS.
         /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// 
-        /// The pipeline used for the synced table is returned via the top level PipelineId attribute
+        /// The pipeline used for the synced table is returned in status.pipeline_id
         /// </summary>
         [Input("existingPipelineId")]
         public Input<string>? ExistingPipelineId { get; set; }
@@ -63,18 +67,15 @@ namespace Pulumi.Databricks.Inputs
         /// Specification for creating a new pipeline.
         /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// 
-        /// The pipeline used for the synced table is returned via the top level PipelineId attribute
+        /// The pipeline used for the synced table is returned in status.pipeline_id
         /// </summary>
         [Input("newPipelineSpec")]
         public Input<Inputs.PostgresSyncedTableSpecNewPipelineSpecGetArgs>? NewPipelineSpec { get; set; }
 
         /// <summary>
-        /// The Postgres database name where the synced table will be created in.
-        /// 
-        /// If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-        /// from the PostgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-        /// 
-        /// A value must be specified when creating a synced table inside a Standard Catalog
+        /// The name of the Postgres database where the synced table is created. A value must be specified
+        /// on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+        /// Postgres database of that catalog
         /// </summary>
         [Input("postgresDatabase")]
         public Input<string>? PostgresDatabase { get; set; }
@@ -83,7 +84,8 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _primaryKeyColumns;
 
         /// <summary>
-        /// Primary Key columns to be used for data insert/update in the destination
+        /// Primary Key columns to be used for data insert/update in the destination. At least one column
+        /// must be specified
         /// </summary>
         public InputList<string> PrimaryKeyColumns
         {
@@ -92,7 +94,8 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        /// Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+        /// https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
         /// </summary>
         [Input("schedulingPolicy")]
         public Input<string>? SchedulingPolicy { get; set; }

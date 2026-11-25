@@ -31,15 +31,15 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The name of the source branch from which this branch was created.
         /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
-        public readonly string? SourceBranch;
+        public readonly string SourceBranch;
         /// <summary>
         /// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         /// </summary>
-        public readonly string? SourceBranchLsn;
+        public readonly string SourceBranchLsn;
         /// <summary>
         /// (string) - The point in time on the source branch from which this branch was created
         /// </summary>
-        public readonly string? SourceBranchTime;
+        public readonly string SourceBranchTime;
         /// <summary>
         /// (string) - The snapshot this branch was restored from. Set only for branches created by
         /// restoring a snapshot; unset for all other branches.
@@ -60,11 +60,11 @@ namespace Pulumi.Databricks.Outputs
 
             bool? noExpiry,
 
-            string? sourceBranch,
+            string sourceBranch,
 
-            string? sourceBranchLsn,
+            string sourceBranchLsn,
 
-            string? sourceBranchTime,
+            string sourceBranchTime,
 
             string? sourceSnapshot,
 

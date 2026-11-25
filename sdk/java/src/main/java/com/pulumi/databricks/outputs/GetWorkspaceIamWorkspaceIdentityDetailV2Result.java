@@ -14,58 +14,58 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
     /**
-     * @return (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * @return (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      * 
      */
     private String assignmentType;
     /**
-     * @return (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * @return (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     private String name;
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * @return (integer) - The Databricks ID of the user, service principal, or group
      * 
      */
     private String principalId;
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     private String principalType;
     private @Nullable GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig providerConfig;
     /**
-     * @return (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     private String workspaceIdentityStatus;
 
     private GetWorkspaceIamWorkspaceIdentityDetailV2Result() {}
     /**
-     * @return (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * @return (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      * 
      */
     public String assignmentType() {
         return this.assignmentType;
     }
     /**
-     * @return (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * @return (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * @return (integer) - The Databricks ID of the user, service principal, or group
      * 
      */
     public String principalId() {
         return this.principalId;
     }
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public String principalType() {
@@ -75,7 +75,7 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Result {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public String workspaceIdentityStatus() {

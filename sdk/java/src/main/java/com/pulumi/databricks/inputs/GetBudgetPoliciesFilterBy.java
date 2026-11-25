@@ -16,16 +16,14 @@ public final class GetBudgetPoliciesFilterBy extends com.pulumi.resources.Invoke
     public static final GetBudgetPoliciesFilterBy Empty = new GetBudgetPoliciesFilterBy();
 
     /**
-     * The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * Deprecated: This field is ignored. Creator filtering will be removed in a future version
      * 
      */
     @Import(name="creatorUserId")
     private @Nullable Integer creatorUserId;
 
     /**
-     * @return The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * @return Deprecated: This field is ignored. Creator filtering will be removed in a future version
      * 
      */
     public Optional<Integer> creatorUserId() {
@@ -101,8 +99,7 @@ public final class GetBudgetPoliciesFilterBy extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param creatorUserId The policy creator user id to be filtered on.
-         * If unspecified, all policies will be returned
+         * @param creatorUserId Deprecated: This field is ignored. Creator filtering will be removed in a future version
          * 
          * @return builder
          * 

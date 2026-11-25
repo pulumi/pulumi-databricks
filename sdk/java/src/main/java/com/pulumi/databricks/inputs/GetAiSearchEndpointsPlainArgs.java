@@ -18,18 +18,16 @@ public final class GetAiSearchEndpointsPlainArgs extends com.pulumi.resources.In
     public static final GetAiSearchEndpointsPlainArgs Empty = new GetAiSearchEndpointsPlainArgs();
 
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of endpoints to return in one page. The server applies its own page size
+     * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * @return Maximum number of endpoints to return in one page. The server applies its own page size
+     * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
      * 
      */
     public Optional<Integer> pageSize() {
@@ -95,9 +93,8 @@ public final class GetAiSearchEndpointsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param pageSize Best-effort upper bound on the number of results to return. Honored as an upper
-         * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-         * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+         * @param pageSize Maximum number of endpoints to return in one page. The server applies its own page size
+         * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
          * 
          * @return builder
          * 

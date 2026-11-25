@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkspaceIamWorkspaceAssignmentV2ProviderConfig {
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     private @Nullable String workspaceId;
 
     private WorkspaceIamWorkspaceAssignmentV2ProviderConfig() {}
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public Optional<String> workspaceId() {

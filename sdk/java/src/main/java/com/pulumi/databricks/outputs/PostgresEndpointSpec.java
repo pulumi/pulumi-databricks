@@ -47,18 +47,19 @@ public final class PostgresEndpointSpec {
     private @Nullable PostgresEndpointSpecGroup group;
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
     private @Nullable Boolean noSuspension;
     /**
-     * @return (EndpointSettings)
+     * @return (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     private @Nullable PostgresEndpointSpecSettings settings;
     /**
-     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     private @Nullable String suspendTimeoutDuration;
@@ -105,7 +106,7 @@ public final class PostgresEndpointSpec {
     }
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
@@ -113,14 +114,15 @@ public final class PostgresEndpointSpec {
         return Optional.ofNullable(this.noSuspension);
     }
     /**
-     * @return (EndpointSettings)
+     * @return (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     public Optional<PostgresEndpointSpecSettings> settings() {
         return Optional.ofNullable(this.settings);
     }
     /**
-     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     public Optional<String> suspendTimeoutDuration() {

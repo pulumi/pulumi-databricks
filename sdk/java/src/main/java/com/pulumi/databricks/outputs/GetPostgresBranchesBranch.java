@@ -43,7 +43,7 @@ public final class GetPostgresBranchesBranch {
      */
     private @Nullable GetPostgresBranchesBranchProviderConfig providerConfig;
     /**
-     * @return (BranchSpec) - The spec contains the branch configuration
+     * @return (BranchSpec) - The spec contains the branch configuration.
      * 
      */
     private GetPostgresBranchesBranchSpec spec;
@@ -102,7 +102,7 @@ public final class GetPostgresBranchesBranch {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (BranchSpec) - The spec contains the branch configuration
+     * @return (BranchSpec) - The spec contains the branch configuration.
      * 
      */
     public GetPostgresBranchesBranchSpec spec() {

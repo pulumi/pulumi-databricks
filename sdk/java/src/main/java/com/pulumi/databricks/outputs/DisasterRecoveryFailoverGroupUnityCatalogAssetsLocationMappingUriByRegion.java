@@ -11,26 +11,28 @@ import java.util.Objects;
 @CustomType
 public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
     /**
-     * @return The region name
+     * @return Cloud region this URI applies to. Must be one of the failover group&#39;s regions
      * 
      */
     private String region;
     /**
-     * @return The storage URI for this region
+     * @return Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      * 
      */
     private String uri;
 
     private DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion() {}
     /**
-     * @return The region name
+     * @return Cloud region this URI applies to. Must be one of the failover group&#39;s regions
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return The storage URI for this region
+     * @return Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      * 
      */
     public String uri() {

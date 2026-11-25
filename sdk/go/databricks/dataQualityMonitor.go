@@ -106,10 +106,11 @@ import (
 type DataQualityMonitor struct {
 	pulumi.CustomResourceState
 
-	// Anomaly Detection Configuration, applicable to `schema` object types
+	// Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+	// the settings of the parent schema's monitor if the schema has one
 	AnomalyDetectionConfig DataQualityMonitorAnomalyDetectionConfigPtrOutput `pulumi:"anomalyDetectionConfig"`
-	// Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-	// must be present
+	// Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+	// or `snapshot` must be set
 	DataProfilingConfig DataQualityMonitorDataProfilingConfigPtrOutput `pulumi:"dataProfilingConfig"`
 	// The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	//
@@ -163,10 +164,11 @@ func GetDataQualityMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataQualityMonitor resources.
 type dataQualityMonitorState struct {
-	// Anomaly Detection Configuration, applicable to `schema` object types
+	// Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+	// the settings of the parent schema's monitor if the schema has one
 	AnomalyDetectionConfig *DataQualityMonitorAnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
-	// Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-	// must be present
+	// Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+	// or `snapshot` must be set
 	DataProfilingConfig *DataQualityMonitorDataProfilingConfig `pulumi:"dataProfilingConfig"`
 	// The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	//
@@ -185,10 +187,11 @@ type dataQualityMonitorState struct {
 }
 
 type DataQualityMonitorState struct {
-	// Anomaly Detection Configuration, applicable to `schema` object types
+	// Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+	// the settings of the parent schema's monitor if the schema has one
 	AnomalyDetectionConfig DataQualityMonitorAnomalyDetectionConfigPtrInput
-	// Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-	// must be present
+	// Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+	// or `snapshot` must be set
 	DataProfilingConfig DataQualityMonitorDataProfilingConfigPtrInput
 	// The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	//
@@ -217,10 +220,11 @@ func DataQualityMonitorExists(ctx *pulumi.Context,
 }
 
 type dataQualityMonitorArgs struct {
-	// Anomaly Detection Configuration, applicable to `schema` object types
+	// Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+	// the settings of the parent schema's monitor if the schema has one
 	AnomalyDetectionConfig *DataQualityMonitorAnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
-	// Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-	// must be present
+	// Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+	// or `snapshot` must be set
 	DataProfilingConfig *DataQualityMonitorDataProfilingConfig `pulumi:"dataProfilingConfig"`
 	// The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	//
@@ -240,10 +244,11 @@ type dataQualityMonitorArgs struct {
 
 // The set of arguments for constructing a DataQualityMonitor resource.
 type DataQualityMonitorArgs struct {
-	// Anomaly Detection Configuration, applicable to `schema` object types
+	// Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+	// the settings of the parent schema's monitor if the schema has one
 	AnomalyDetectionConfig DataQualityMonitorAnomalyDetectionConfigPtrInput
-	// Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-	// must be present
+	// Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+	// or `snapshot` must be set
 	DataProfilingConfig DataQualityMonitorDataProfilingConfigPtrInput
 	// The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	//
@@ -348,15 +353,16 @@ func (o DataQualityMonitorOutput) ToDataQualityMonitorOutputWithContext(ctx cont
 	return o
 }
 
-// Anomaly Detection Configuration, applicable to `schema` object types
+// Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+// the settings of the parent schema's monitor if the schema has one
 func (o DataQualityMonitorOutput) AnomalyDetectionConfig() DataQualityMonitorAnomalyDetectionConfigPtrOutput {
 	return o.ApplyT(func(v *DataQualityMonitor) DataQualityMonitorAnomalyDetectionConfigPtrOutput {
 		return v.AnomalyDetectionConfig
 	}).(DataQualityMonitorAnomalyDetectionConfigPtrOutput)
 }
 
-// Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-// must be present
+// Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+// or `snapshot` must be set
 func (o DataQualityMonitorOutput) DataProfilingConfig() DataQualityMonitorDataProfilingConfigPtrOutput {
 	return o.ApplyT(func(v *DataQualityMonitor) DataQualityMonitorDataProfilingConfigPtrOutput {
 		return v.DataProfilingConfig

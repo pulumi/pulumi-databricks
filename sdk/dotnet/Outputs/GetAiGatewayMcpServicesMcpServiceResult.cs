@@ -28,11 +28,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username or service principal application ID of the principal that created the MCP service
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - Owner of the MCP service
+        /// (string) - Username, group name, or service principal application ID of the MCP service owner
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// (string) - Metastore hosting the MCP service
+        /// (string) - Unique identifier of the metastore that contains the MCP service
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
@@ -60,7 +60,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username or service principal application ID of the principal that last updated the MCP
+        /// service
         /// </summary>
         public readonly string UpdatedBy;
 

@@ -24,14 +24,16 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     public static final AlertV2Args Empty = new AlertV2Args();
 
     /**
-     * Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      * 
      */
     @Import(name="customDescription")
     private @Nullable Output<String> customDescription;
 
     /**
-     * @return Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * @return Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      * 
      */
     public Optional<Output<String>> customDescription() {
@@ -39,14 +41,14 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      * 
      */
     @Import(name="customSummary")
     private @Nullable Output<String> customSummary;
 
     /**
-     * @return Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * @return Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      * 
      */
     public Optional<Output<String>> customSummary() {
@@ -99,9 +101,17 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         return this.displayName;
     }
 
+    /**
+     * Condition evaluated against the query result, and who is notified when it is met
+     * 
+     */
     @Import(name="evaluation", required=true)
     private Output<AlertV2EvaluationArgs> evaluation;
 
+    /**
+     * @return Condition evaluated against the query result, and who is notified when it is met
+     * 
+     */
     public Output<AlertV2EvaluationArgs> evaluation() {
         return this.evaluation;
     }
@@ -225,27 +235,35 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release.
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     @Import(name="runAsUserName")
     private @Nullable Output<String> runAsUserName;
 
     /**
-     * @return The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * @return Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     public Optional<Output<String>> runAsUserName() {
         return Optional.ofNullable(this.runAsUserName);
     }
 
+    /**
+     * Schedule on which the alert runs its query and evaluates the condition
+     * 
+     */
     @Import(name="schedule", required=true)
     private Output<AlertV2ScheduleArgs> schedule;
 
+    /**
+     * @return Schedule on which the alert runs its query and evaluates the condition
+     * 
+     */
     public Output<AlertV2ScheduleArgs> schedule() {
         return this.schedule;
     }
@@ -303,7 +321,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDescription Custom description for the alert. Interpreted according to `customTemplateFormat`
+         * @param customDescription Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+         * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
          * 
          * @return builder
          * 
@@ -314,7 +333,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDescription Custom description for the alert. Interpreted according to `customTemplateFormat`
+         * @param customDescription Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+         * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
          * 
          * @return builder
          * 
@@ -324,7 +344,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSummary Custom summary for the alert. Interpreted according to `customTemplateFormat`
+         * @param customSummary Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
          * 
          * @return builder
          * 
@@ -335,7 +355,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSummary Custom summary for the alert. Interpreted according to `customTemplateFormat`
+         * @param customSummary Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
          * 
          * @return builder
          * 
@@ -402,11 +422,23 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param evaluation Condition evaluated against the query result, and who is notified when it is met
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluation(Output<AlertV2EvaluationArgs> evaluation) {
             $.evaluation = evaluation;
             return this;
         }
 
+        /**
+         * @param evaluation Condition evaluated against the query result, and who is notified when it is met
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluation(AlertV2EvaluationArgs evaluation) {
             return evaluation(Output.of(evaluation));
         }
@@ -586,9 +618,9 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAsUserName The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-         * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+         * @param runAsUserName Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+         * The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
          * 
          * @return builder
          * 
@@ -599,9 +631,9 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAsUserName The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-         * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+         * @param runAsUserName Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+         * The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
          * 
          * @return builder
          * 
@@ -610,11 +642,23 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return runAsUserName(Output.of(runAsUserName));
         }
 
+        /**
+         * @param schedule Schedule on which the alert runs its query and evaluates the condition
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedule(Output<AlertV2ScheduleArgs> schedule) {
             $.schedule = schedule;
             return this;
         }
 
+        /**
+         * @param schedule Schedule on which the alert runs its query and evaluates the condition
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedule(AlertV2ScheduleArgs schedule) {
             return schedule(Output.of(schedule));
         }

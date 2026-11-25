@@ -117,6 +117,8 @@ def get_notification_destinations(display_name_contains: Optional[_builtins.str]
 
     :param _builtins.str display_name_contains: A **case-insensitive** substring to filter Notification Destinations by their display name.
     :param _builtins.str type: The type of the Notification Destination to filter by. Valid values are:
+           * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+           * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
            * `EMAIL` - Filters Notification Destinations of type Email.
            * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
            * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -174,6 +176,8 @@ def get_notification_destinations_output(display_name_contains: pulumi.Input[Opt
 
     :param _builtins.str display_name_contains: A **case-insensitive** substring to filter Notification Destinations by their display name.
     :param _builtins.str type: The type of the Notification Destination to filter by. Valid values are:
+           * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+           * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
            * `EMAIL` - Filters Notification Destinations of type Email.
            * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
            * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.

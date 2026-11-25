@@ -60,14 +60,17 @@ type Sandbox struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Metadata associated with the sandbox
+	// Tags and other metadata associated with the sandbox
 	Metadata SandboxMetadataPtrOutput `pulumi:"metadata"`
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigOutput `pulumi:"providerConfig"`
-	// Client-supplied ID that becomes the final path segment of the resource name
+	// Client-supplied ID that becomes the final path segment of the resource name. It must
+	// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+	// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+	// rejected
 	SandboxId pulumi.StringOutput `pulumi:"sandboxId"`
 	// The desired configuration of the sandbox, supplied by the caller at creation time
 	Spec SandboxSpecPtrOutput `pulumi:"spec"`
@@ -114,14 +117,17 @@ type sandboxState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`
-	// Metadata associated with the sandbox
+	// Tags and other metadata associated with the sandbox
 	Metadata *SandboxMetadata `pulumi:"metadata"`
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *SandboxProviderConfig `pulumi:"providerConfig"`
-	// Client-supplied ID that becomes the final path segment of the resource name
+	// Client-supplied ID that becomes the final path segment of the resource name. It must
+	// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+	// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+	// rejected
 	SandboxId *string `pulumi:"sandboxId"`
 	// The desired configuration of the sandbox, supplied by the caller at creation time
 	Spec *SandboxSpec `pulumi:"spec"`
@@ -136,14 +142,17 @@ type SandboxState struct {
 	CreateTime pulumi.StringPtrInput
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrInput
-	// Metadata associated with the sandbox
+	// Tags and other metadata associated with the sandbox
 	Metadata SandboxMetadataPtrInput
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigPtrInput
-	// Client-supplied ID that becomes the final path segment of the resource name
+	// Client-supplied ID that becomes the final path segment of the resource name. It must
+	// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+	// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+	// rejected
 	SandboxId pulumi.StringPtrInput
 	// The desired configuration of the sandbox, supplied by the caller at creation time
 	Spec SandboxSpecPtrInput
@@ -166,11 +175,14 @@ func SandboxExists(ctx *pulumi.Context,
 type sandboxArgs struct {
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName *string `pulumi:"displayName"`
-	// Metadata associated with the sandbox
+	// Tags and other metadata associated with the sandbox
 	Metadata *SandboxMetadata `pulumi:"metadata"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *SandboxProviderConfig `pulumi:"providerConfig"`
-	// Client-supplied ID that becomes the final path segment of the resource name
+	// Client-supplied ID that becomes the final path segment of the resource name. It must
+	// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+	// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+	// rejected
 	SandboxId string `pulumi:"sandboxId"`
 	// The desired configuration of the sandbox, supplied by the caller at creation time
 	Spec *SandboxSpec `pulumi:"spec"`
@@ -180,11 +192,14 @@ type sandboxArgs struct {
 type SandboxArgs struct {
 	// Human-readable display label for the sandbox. At most 256 characters
 	DisplayName pulumi.StringPtrInput
-	// Metadata associated with the sandbox
+	// Tags and other metadata associated with the sandbox
 	Metadata SandboxMetadataPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig SandboxProviderConfigPtrInput
-	// Client-supplied ID that becomes the final path segment of the resource name
+	// Client-supplied ID that becomes the final path segment of the resource name. It must
+	// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+	// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+	// rejected
 	SandboxId pulumi.StringInput
 	// The desired configuration of the sandbox, supplied by the caller at creation time
 	Spec SandboxSpecPtrInput
@@ -287,7 +302,7 @@ func (o SandboxOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sandbox) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Metadata associated with the sandbox
+// Tags and other metadata associated with the sandbox
 func (o SandboxOutput) Metadata() SandboxMetadataPtrOutput {
 	return o.ApplyT(func(v *Sandbox) SandboxMetadataPtrOutput { return v.Metadata }).(SandboxMetadataPtrOutput)
 }
@@ -303,7 +318,10 @@ func (o SandboxOutput) ProviderConfig() SandboxProviderConfigOutput {
 	return o.ApplyT(func(v *Sandbox) SandboxProviderConfigOutput { return v.ProviderConfig }).(SandboxProviderConfigOutput)
 }
 
-// Client-supplied ID that becomes the final path segment of the resource name
+// Client-supplied ID that becomes the final path segment of the resource name. It must
+// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+// rejected
 func (o SandboxOutput) SandboxId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sandbox) pulumi.StringOutput { return v.SandboxId }).(pulumi.StringOutput)
 }

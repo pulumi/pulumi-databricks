@@ -19,9 +19,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string QuartzCronExpression;
         /// <summary>
-        /// A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-        /// See `Java TimeZone &lt;http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html&gt;`_ for details.
-        /// The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+        /// The Java timezone ID in which the cron expression is evaluated. See
+        /// [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
         /// </summary>
         public readonly string TimezoneId;
 

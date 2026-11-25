@@ -14,38 +14,37 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult
     {
         /// <summary>
-        /// (string) - Display name of the principal
+        /// (string) - The member's display name
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The external ID of the principal in the customer's IdP
+        /// (string) - The ID of the member in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (integer) - The internal ID of the group this member belongs to
+        /// (integer) - The Databricks ID of the group
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        /// (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         /// </summary>
         public readonly string MembershipSource;
         /// <summary>
-        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// (string) - The resource name of the membership, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        /// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The parent resource name of the group whose direct members to list.
-        /// Format: accounts/{account_id}/groups/{group_id}
+        /// The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (integer) - Internal ID of the principal in Databricks
+        /// (integer) - The Databricks ID of the member
         /// </summary>
         public readonly int PrincipalId;
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         public readonly string PrincipalType;
 

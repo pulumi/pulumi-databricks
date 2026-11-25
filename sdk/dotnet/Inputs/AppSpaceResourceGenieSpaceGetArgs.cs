@@ -22,6 +22,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the Genie space
+        /// </summary>
         [Input("spaceId", required: true)]
         public Input<string> SpaceId { get; set; } = null!;
 

@@ -14,20 +14,20 @@ public final class GetAccountIamExternalServicePrincipalV2PlainArgs extends com.
     public static final GetAccountIamExternalServicePrincipalV2PlainArgs Empty = new GetAccountIamExternalServicePrincipalV2PlainArgs();
 
     /**
-     * The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * @return The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      * 
      */
     public String name() {
@@ -59,10 +59,10 @@ public final class GetAccountIamExternalServicePrincipalV2PlainArgs extends com.
         }
 
         /**
-         * @param name The resource name of the external service principal. The format depends on
-         * the API that returned it:
-         * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-         * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+         * @param name The resource name of the external service principal, in one of these formats:
+         * - Account APIs:
+         *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+         * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
          * 
          * @return builder
          * 

@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PostgresCdfConfigState;
 import com.pulumi.databricks.outputs.PostgresCdfConfigProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -218,6 +219,26 @@ public class PostgresCdfConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> schema() {
         return this.schema;
+    }
+    /**
+     * The service principal (application id) whose identity authorizes this
+     * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     * 
+     */
+    @Export(name="servicePrincipal", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> servicePrincipal;
+
+    /**
+     * @return The service principal (application id) whose identity authorizes this
+     * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     * 
+     */
+    public Output<Optional<String>> servicePrincipal() {
+        return Codegen.optional(this.servicePrincipal);
     }
 
     /**

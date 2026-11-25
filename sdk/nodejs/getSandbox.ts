@@ -61,7 +61,7 @@ export interface GetSandboxResult {
      */
     readonly displayName: string;
     /**
-     * (SandboxMetadata) - Metadata associated with the sandbox
+     * (SandboxMetadata) - Tags and other metadata associated with the sandbox
      */
     readonly metadata: outputs.GetSandboxMetadata;
     /**

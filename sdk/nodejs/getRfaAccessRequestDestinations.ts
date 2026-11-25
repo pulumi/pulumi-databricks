@@ -41,7 +41,7 @@ export function getRfaAccessRequestDestinations(args: GetRfaAccessRequestDestina
  */
 export interface GetRfaAccessRequestDestinationsArgs {
     /**
-     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * The full name of the securable, repeated from **securable**
      */
     fullName: string;
     /**
@@ -49,7 +49,7 @@ export interface GetRfaAccessRequestDestinationsArgs {
      */
     providerConfig?: inputs.GetRfaAccessRequestDestinationsProviderConfig;
     /**
-     * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * The type of the securable, repeated from **securable** as a plain string
      */
     securableType: string;
 }
@@ -83,7 +83,7 @@ export interface GetRfaAccessRequestDestinationsResult {
      */
     readonly securable: outputs.GetRfaAccessRequestDestinationsSecurable;
     /**
-     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * (string) - The type of the securable, repeated from **securable** as a plain string
      */
     readonly securableType: string;
 }
@@ -122,7 +122,7 @@ export function getRfaAccessRequestDestinationsOutput(args: GetRfaAccessRequestD
  */
 export interface GetRfaAccessRequestDestinationsOutputArgs {
     /**
-     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * The full name of the securable, repeated from **securable**
      */
     fullName: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface GetRfaAccessRequestDestinationsOutputArgs {
      */
     providerConfig?: pulumi.Input<inputs.GetRfaAccessRequestDestinationsProviderConfigArgs | undefined>;
     /**
-     * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * The type of the securable, repeated from **securable** as a plain string
      */
     securableType: pulumi.Input<string>;
 }

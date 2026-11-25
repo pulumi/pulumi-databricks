@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dimension of the embedding vector
+        /// Number of elements in each embedding vector. It must be positive
         /// </summary>
         [Input("embeddingDimension")]
         public Input<int>? EmbeddingDimension { get; set; }

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertV2EvaluationThresholdGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Compare the source against another column of the query result
+        /// </summary>
         [Input("column")]
         public Input<Inputs.AlertV2EvaluationThresholdColumnGetArgs>? Column { get; set; }
 

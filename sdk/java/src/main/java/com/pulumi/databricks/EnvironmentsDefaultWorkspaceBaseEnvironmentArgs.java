@@ -18,6 +18,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
     /**
      * The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -26,6 +27,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
     /**
      * @return The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -35,6 +37,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
     /**
      * The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -43,6 +46,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
     /**
      * @return The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -93,6 +97,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
         /**
          * @param cpuWorkspaceBaseEnvironment The default workspace base environment for CPU compute.
+         * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
          * Format: workspace-base-environments/{workspace_base_environment}
          * 
          * @return builder
@@ -105,6 +110,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
         /**
          * @param cpuWorkspaceBaseEnvironment The default workspace base environment for CPU compute.
+         * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
          * Format: workspace-base-environments/{workspace_base_environment}
          * 
          * @return builder
@@ -116,6 +122,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
         /**
          * @param gpuWorkspaceBaseEnvironment The default workspace base environment for GPU compute.
+         * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
          * Format: workspace-base-environments/{workspace_base_environment}
          * 
          * @return builder
@@ -128,6 +135,7 @@ public final class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs extends com.p
 
         /**
          * @param gpuWorkspaceBaseEnvironment The default workspace base environment for GPU compute.
+         * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
          * Format: workspace-base-environments/{workspace_base_environment}
          * 
          * @return builder

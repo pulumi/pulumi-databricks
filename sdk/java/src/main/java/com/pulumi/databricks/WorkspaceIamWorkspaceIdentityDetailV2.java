@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  * 
@@ -73,30 +73,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2")
 public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      * 
      */
     @Export(name="assignmentType", refs={String.class}, tree="[0]")
     private Output<String> assignmentType;
 
     /**
-     * @return (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * @return (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      * 
      */
     public Output<String> assignmentType() {
         return this.assignmentType;
     }
     /**
-     * (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * @return (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     public Output<String> name() {
@@ -117,28 +117,28 @@ public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.
         return this.parent;
     }
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (integer) - The Databricks ID of the user, service principal, or group
      * 
      */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * @return (integer) - The Databricks ID of the user, service principal, or group
      * 
      */
     public Output<String> principalId() {
         return this.principalId;
     }
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     @Export(name="principalType", refs={String.class}, tree="[0]")
     private Output<String> principalType;
 
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public Output<String> principalType() {
@@ -159,14 +159,14 @@ public class WorkspaceIamWorkspaceIdentityDetailV2 extends com.pulumi.resources.
         return this.providerConfig;
     }
     /**
-     * The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Export(name="workspaceIdentityStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workspaceIdentityStatus;
 
     /**
-     * @return The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Output<Optional<String>> workspaceIdentityStatus() {

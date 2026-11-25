@@ -27,7 +27,7 @@ public final class GetPostgresEndpointStatus {
      */
     private Double autoscalingLimitMinCu;
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * @return (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     private String currentState;
@@ -40,7 +40,7 @@ public final class GetPostgresEndpointStatus {
      */
     private Boolean disabled;
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The endpoint ID, which is the final segment of the endpoint&#39;s resource name
      * 
      */
     private String endpointId;
@@ -65,17 +65,18 @@ public final class GetPostgresEndpointStatus {
      */
     private String lastActiveTime;
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * @return (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     private String pendingState;
     /**
-     * @return (EndpointSettings)
+     * @return (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     private GetPostgresEndpointStatusSettings settings;
     /**
-     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     private String suspendTimeoutDuration;
@@ -97,7 +98,7 @@ public final class GetPostgresEndpointStatus {
         return this.autoscalingLimitMinCu;
     }
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * @return (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public String currentState() {
@@ -114,7 +115,7 @@ public final class GetPostgresEndpointStatus {
         return this.disabled;
     }
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The endpoint ID, which is the final segment of the endpoint&#39;s resource name
      * 
      */
     public String endpointId() {
@@ -149,21 +150,22 @@ public final class GetPostgresEndpointStatus {
         return this.lastActiveTime;
     }
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * @return (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public String pendingState() {
         return this.pendingState;
     }
     /**
-     * @return (EndpointSettings)
+     * @return (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     public GetPostgresEndpointStatusSettings settings() {
         return this.settings;
     }
     /**
-     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     public String suspendTimeoutDuration() {

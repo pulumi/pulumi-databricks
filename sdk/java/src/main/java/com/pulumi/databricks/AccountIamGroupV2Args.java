@@ -17,14 +17,14 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
     public static final AccountIamGroupV2Args Empty = new AccountIamGroupV2Args();
 
     /**
-     * ExternalId of the group in the customer&#39;s IdP
+     * The ID of the group in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the group in the customer&#39;s IdP
+     * @return The ID of the group in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -32,14 +32,18 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Display name of the group
+     * The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
-     * @return Display name of the group
+     * @return The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     public Optional<Output<String>> groupName() {
@@ -47,16 +51,16 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {
@@ -90,7 +94,7 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param externalId ExternalId of the group in the customer&#39;s IdP
+         * @param externalId The ID of the group in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -101,7 +105,7 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param externalId ExternalId of the group in the customer&#39;s IdP
+         * @param externalId The ID of the group in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -111,7 +115,9 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param groupName Display name of the group
+         * @param groupName The display name of the group. It must be unique in the account, must not be blank, and must be
+         * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+         * group that Databricks manages, such as `admins` or `users`
          * 
          * @return builder
          * 
@@ -122,7 +128,9 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param groupName Display name of the group
+         * @param groupName The display name of the group. It must be unique in the account, must not be blank, and must be
+         * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+         * group that Databricks manages, such as `admins` or `users`
          * 
          * @return builder
          * 
@@ -132,8 +140,8 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parent The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-         * account-scoped and workspace-scoped APIs return it
+         * @param parent The resource name of the account that contains the group, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -144,8 +152,8 @@ public final class AccountIamGroupV2Args extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parent The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-         * account-scoped and workspace-scoped APIs return it
+         * @param parent The resource name of the account that contains the group, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 

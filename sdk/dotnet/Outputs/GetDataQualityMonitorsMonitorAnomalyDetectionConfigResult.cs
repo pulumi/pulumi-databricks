@@ -14,11 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDataQualityMonitorsMonitorAnomalyDetectionConfigResult
     {
         /// <summary>
-        /// (list of string) - List of fully qualified table names to exclude from anomaly detection
+        /// (list of string) - List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
         /// </summary>
         public readonly ImmutableArray<string> ExcludedTableFullNames;
         /// <summary>
-        /// (NotificationSettings) - Field for specifying notification settings
+        /// (NotificationSettings) - Who to notify about this monitor's refreshes. Only `OnFailure` with
+        /// `EmailAddresses` is supported here
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsResult? NotificationSettings;
 

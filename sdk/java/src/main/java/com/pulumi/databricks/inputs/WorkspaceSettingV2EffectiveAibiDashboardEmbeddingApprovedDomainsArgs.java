@@ -16,9 +16,21 @@ public final class WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDoma
 
     public static final WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs Empty = new WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs();
 
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     * 
+     */
     @Import(name="approvedDomains")
     private @Nullable Output<List<String>> approvedDomains;
 
+    /**
+     * @return Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     * 
+     */
     public Optional<Output<List<String>>> approvedDomains() {
         return Optional.ofNullable(this.approvedDomains);
     }
@@ -47,15 +59,39 @@ public final class WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDoma
             $ = new WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param approvedDomains Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+         * domain. The list applies, and can only be changed, while the embedding access policy is
+         * ALLOW_APPROVED_DOMAINS
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvedDomains(@Nullable Output<List<String>> approvedDomains) {
             $.approvedDomains = approvedDomains;
             return this;
         }
 
+        /**
+         * @param approvedDomains Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+         * domain. The list applies, and can only be changed, while the embedding access policy is
+         * ALLOW_APPROVED_DOMAINS
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvedDomains(List<String> approvedDomains) {
             return approvedDomains(Output.of(approvedDomains));
         }
 
+        /**
+         * @param approvedDomains Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+         * domain. The list applies, and can only be changed, while the embedding access policy is
+         * ALLOW_APPROVED_DOMAINS
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvedDomains(String... approvedDomains) {
             return approvedDomains(List.of(approvedDomains));
         }

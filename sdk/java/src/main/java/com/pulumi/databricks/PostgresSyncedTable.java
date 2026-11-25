@@ -17,7 +17,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
@@ -202,30 +202,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/postgresSyncedTable:PostgresSyncedTable")
 public class PostgresSyncedTable extends com.pulumi.resources.CustomResource {
     /**
-     * (string)
+     * (string) - The time when the synced table was created
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (string)
+     * @return (string) - The time when the synced table was created
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * @return (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
      */
     public Output<String> name() {
@@ -274,14 +274,16 @@ public class PostgresSyncedTable extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     @Export(name="syncedTableId", refs={String.class}, tree="[0]")
     private Output<String> syncedTableId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     public Output<String> syncedTableId() {

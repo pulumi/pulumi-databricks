@@ -17,9 +17,10 @@ public final class AiSearchIndexDirectAccessIndexSpec {
     private @Nullable List<AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     private @Nullable List<AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     /**
-     * @return The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+     * @return The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+     * the primary key column and the embedding vector column
      * 
      */
     private @Nullable String schemaJson;
@@ -32,9 +33,10 @@ public final class AiSearchIndexDirectAccessIndexSpec {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
     /**
-     * @return The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+     * @return The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+     * the primary key column and the embedding vector column
      * 
      */
     public Optional<String> schemaJson() {

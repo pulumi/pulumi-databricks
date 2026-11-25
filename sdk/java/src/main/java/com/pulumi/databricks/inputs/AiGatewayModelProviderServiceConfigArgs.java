@@ -50,37 +50,89 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.allowAllTargets);
     }
 
+    /**
+     * Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+     * 
+     */
     @Import(name="amazonBedrock")
     private @Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockArgs> amazonBedrock;
 
+    /**
+     * @return Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigAmazonBedrockArgs>> amazonBedrock() {
         return Optional.ofNullable(this.amazonBedrock);
     }
 
+    /**
+     * Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+     * 
+     */
     @Import(name="anthropic")
     private @Nullable Output<AiGatewayModelProviderServiceConfigAnthropicArgs> anthropic;
 
+    /**
+     * @return Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigAnthropicArgs>> anthropic() {
         return Optional.ofNullable(this.anthropic);
     }
 
+    /**
+     * Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+     * 
+     */
     @Import(name="azureOpenai")
     private @Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiArgs> azureOpenai;
 
+    /**
+     * @return Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigAzureOpenaiArgs>> azureOpenai() {
         return Optional.ofNullable(this.azureOpenai);
     }
 
+    /**
+     * Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+     * 
+     */
     @Import(name="bedrockMantle")
     private @Nullable Output<AiGatewayModelProviderServiceConfigBedrockMantleArgs> bedrockMantle;
 
+    /**
+     * @return Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigBedrockMantleArgs>> bedrockMantle() {
         return Optional.ofNullable(this.bedrockMantle);
     }
 
+    /**
+     * Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+     * 
+     */
     @Import(name="custom")
     private @Nullable Output<AiGatewayModelProviderServiceConfigCustomArgs> custom;
 
+    /**
+     * @return Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigCustomArgs>> custom() {
         return Optional.ofNullable(this.custom);
     }
@@ -152,9 +204,19 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.forwardUnmanagedPaths);
     }
 
+    /**
+     * Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+     * 
+     */
     @Import(name="geminiEnterprise")
     private @Nullable Output<AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs> geminiEnterprise;
 
+    /**
+     * @return Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs>> geminiEnterprise() {
         return Optional.ofNullable(this.geminiEnterprise);
     }
@@ -178,16 +240,36 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.inferenceTable);
     }
 
+    /**
+     * Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+     * 
+     */
     @Import(name="microsoftFoundry")
     private @Nullable Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryArgs> microsoftFoundry;
 
+    /**
+     * @return Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryArgs>> microsoftFoundry() {
         return Optional.ofNullable(this.microsoftFoundry);
     }
 
+    /**
+     * Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * 
+     */
     @Import(name="openai")
     private @Nullable Output<AiGatewayModelProviderServiceConfigOpenaiArgs> openai;
 
+    /**
+     * @return Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     * 
+     */
     public Optional<Output<AiGatewayModelProviderServiceConfigOpenaiArgs>> openai() {
         return Optional.ofNullable(this.openai);
     }
@@ -339,47 +421,119 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
             return allowAllTargets(Output.of(allowAllTargets));
         }
 
+        /**
+         * @param amazonBedrock Configuration for Amazon Bedrock. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+         * 
+         * @return builder
+         * 
+         */
         public Builder amazonBedrock(@Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockArgs> amazonBedrock) {
             $.amazonBedrock = amazonBedrock;
             return this;
         }
 
+        /**
+         * @param amazonBedrock Configuration for Amazon Bedrock. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+         * 
+         * @return builder
+         * 
+         */
         public Builder amazonBedrock(AiGatewayModelProviderServiceConfigAmazonBedrockArgs amazonBedrock) {
             return amazonBedrock(Output.of(amazonBedrock));
         }
 
+        /**
+         * @param anthropic Configuration for Anthropic. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+         * 
+         * @return builder
+         * 
+         */
         public Builder anthropic(@Nullable Output<AiGatewayModelProviderServiceConfigAnthropicArgs> anthropic) {
             $.anthropic = anthropic;
             return this;
         }
 
+        /**
+         * @param anthropic Configuration for Anthropic. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+         * 
+         * @return builder
+         * 
+         */
         public Builder anthropic(AiGatewayModelProviderServiceConfigAnthropicArgs anthropic) {
             return anthropic(Output.of(anthropic));
         }
 
+        /**
+         * @param azureOpenai Configuration for Azure OpenAI. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureOpenai(@Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiArgs> azureOpenai) {
             $.azureOpenai = azureOpenai;
             return this;
         }
 
+        /**
+         * @param azureOpenai Configuration for Azure OpenAI. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureOpenai(AiGatewayModelProviderServiceConfigAzureOpenaiArgs azureOpenai) {
             return azureOpenai(Output.of(azureOpenai));
         }
 
+        /**
+         * @param bedrockMantle Configuration for Amazon Bedrock Mantle, with the same fields as
+         * `amazonBedrock`. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+         * 
+         * @return builder
+         * 
+         */
         public Builder bedrockMantle(@Nullable Output<AiGatewayModelProviderServiceConfigBedrockMantleArgs> bedrockMantle) {
             $.bedrockMantle = bedrockMantle;
             return this;
         }
 
+        /**
+         * @param bedrockMantle Configuration for Amazon Bedrock Mantle, with the same fields as
+         * `amazonBedrock`. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+         * 
+         * @return builder
+         * 
+         */
         public Builder bedrockMantle(AiGatewayModelProviderServiceConfigBedrockMantleArgs bedrockMantle) {
             return bedrockMantle(Output.of(bedrockMantle));
         }
 
+        /**
+         * @param custom Configuration for a custom OpenAI-compatible provider. Set this field when
+         * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+         * 
+         * @return builder
+         * 
+         */
         public Builder custom(@Nullable Output<AiGatewayModelProviderServiceConfigCustomArgs> custom) {
             $.custom = custom;
             return this;
         }
 
+        /**
+         * @param custom Configuration for a custom OpenAI-compatible provider. Set this field when
+         * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+         * 
+         * @return builder
+         * 
+         */
         public Builder custom(AiGatewayModelProviderServiceConfigCustomArgs custom) {
             return custom(Output.of(custom));
         }
@@ -469,11 +623,25 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
             return forwardUnmanagedPaths(Output.of(forwardUnmanagedPaths));
         }
 
+        /**
+         * @param geminiEnterprise Configuration for Google Gemini Enterprise. Set this field when
+         * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+         * 
+         * @return builder
+         * 
+         */
         public Builder geminiEnterprise(@Nullable Output<AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs> geminiEnterprise) {
             $.geminiEnterprise = geminiEnterprise;
             return this;
         }
 
+        /**
+         * @param geminiEnterprise Configuration for Google Gemini Enterprise. Set this field when
+         * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+         * 
+         * @return builder
+         * 
+         */
         public Builder geminiEnterprise(AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs geminiEnterprise) {
             return geminiEnterprise(Output.of(geminiEnterprise));
         }
@@ -503,20 +671,48 @@ public final class AiGatewayModelProviderServiceConfigArgs extends com.pulumi.re
             return inferenceTable(Output.of(inferenceTable));
         }
 
+        /**
+         * @param microsoftFoundry Configuration for Microsoft Foundry. Set this field when
+         * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftFoundry(@Nullable Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryArgs> microsoftFoundry) {
             $.microsoftFoundry = microsoftFoundry;
             return this;
         }
 
+        /**
+         * @param microsoftFoundry Configuration for Microsoft Foundry. Set this field when
+         * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftFoundry(AiGatewayModelProviderServiceConfigMicrosoftFoundryArgs microsoftFoundry) {
             return microsoftFoundry(Output.of(microsoftFoundry));
         }
 
+        /**
+         * @param openai Configuration for OpenAI. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+         * 
+         * @return builder
+         * 
+         */
         public Builder openai(@Nullable Output<AiGatewayModelProviderServiceConfigOpenaiArgs> openai) {
             $.openai = openai;
             return this;
         }
 
+        /**
+         * @param openai Configuration for OpenAI. Set this field when `providerType` is
+         * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+         * 
+         * @return builder
+         * 
+         */
         public Builder openai(AiGatewayModelProviderServiceConfigOpenaiArgs openai) {
             return openai(Output.of(openai));
         }

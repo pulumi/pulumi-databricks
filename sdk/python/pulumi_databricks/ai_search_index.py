@@ -32,17 +32,22 @@ class AiSearchIndexArgs:
         """
         The set of arguments for constructing a AiSearchIndex resource.
 
-        :param pulumi.Input[_builtins.str] index_type: Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        :param pulumi.Input[_builtins.str] index_type: Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+               `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+               create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] parent: The Endpoint where this Index will be created.
                Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
-        :param pulumi.Input[_builtins.str] primary_key: Primary key of the index. Set on create and immutable thereafter
+        :param pulumi.Input[_builtins.str] primary_key: Name of the column that uniquely identifies each row. It must exist in the source table
+               (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+               column. Set on create and immutable thereafter
         :param pulumi.Input['AiSearchIndexDeltaSyncIndexSpecArgs'] delta_sync_index_spec: Specification for a Delta Sync index. Set when `index_type` is `DELTA_SYNC`
         :param pulumi.Input['AiSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
-        :param pulumi.Input[_builtins.str] index_id: The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-               composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-               list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-               wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
-        :param pulumi.Input[_builtins.str] index_subtype: The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        :param pulumi.Input[_builtins.str] index_id: Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+               The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+               empty value
+        :param pulumi.Input[_builtins.str] index_subtype: Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+               keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+               create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         :param pulumi.Input['AiSearchIndexProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "index_type", index_type)
@@ -63,7 +68,9 @@ class AiSearchIndexArgs:
     @pulumi.getter(name="indexType")
     def index_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         """
         return pulumi.get(self, "index_type")
 
@@ -88,7 +95,9 @@ class AiSearchIndexArgs:
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> pulumi.Input[_builtins.str]:
         """
-        Primary key of the index. Set on create and immutable thereafter
+        Name of the column that uniquely identifies each row. It must exist in the source table
+        (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+        column. Set on create and immutable thereafter
         """
         return pulumi.get(self, "primary_key")
 
@@ -124,10 +133,9 @@ class AiSearchIndexArgs:
     @pulumi.getter(name="indexId")
     def index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-        composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-        list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+        The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+        empty value
         """
         return pulumi.get(self, "index_id")
 
@@ -139,7 +147,9 @@ class AiSearchIndexArgs:
     @pulumi.getter(name="indexSubtype")
     def index_subtype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         """
         return pulumi.get(self, "index_subtype")
 
@@ -183,12 +193,15 @@ class _AiSearchIndexState:
         :param pulumi.Input['AiSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] endpoint: (string) - Name of the endpoint associated with the index. Ignored on create — the endpoint is
                taken from `CreateIndexRequest.parent`; populated only on output
-        :param pulumi.Input[_builtins.str] index_id: The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-               composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-               list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-               wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
-        :param pulumi.Input[_builtins.str] index_subtype: The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
-        :param pulumi.Input[_builtins.str] index_type: Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        :param pulumi.Input[_builtins.str] index_id: Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+               The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+               empty value
+        :param pulumi.Input[_builtins.str] index_subtype: Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+               keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+               create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        :param pulumi.Input[_builtins.str] index_type: Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+               `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+               create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] name: (string) - Name of the AI Search index. Server-assigned full resource path
                (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
                `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
@@ -196,7 +209,9 @@ class _AiSearchIndexState:
                full `name` and returns it on the response
         :param pulumi.Input[_builtins.str] parent: The Endpoint where this Index will be created.
                Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
-        :param pulumi.Input[_builtins.str] primary_key: Primary key of the index. Set on create and immutable thereafter
+        :param pulumi.Input[_builtins.str] primary_key: Name of the column that uniquely identifies each row. It must exist in the source table
+               (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+               column. Set on create and immutable thereafter
         :param pulumi.Input['AiSearchIndexProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['AiSearchIndexStatusArgs'] status: (IndexStatus) - Current status of the index
         """
@@ -278,10 +293,9 @@ class _AiSearchIndexState:
     @pulumi.getter(name="indexId")
     def index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-        composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-        list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+        The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+        empty value
         """
         return pulumi.get(self, "index_id")
 
@@ -293,7 +307,9 @@ class _AiSearchIndexState:
     @pulumi.getter(name="indexSubtype")
     def index_subtype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         """
         return pulumi.get(self, "index_subtype")
 
@@ -305,7 +321,9 @@ class _AiSearchIndexState:
     @pulumi.getter(name="indexType")
     def index_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         """
         return pulumi.get(self, "index_type")
 
@@ -346,7 +364,9 @@ class _AiSearchIndexState:
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Primary key of the index. Set on create and immutable thereafter
+        Name of the column that uniquely identifies each row. It must exist in the source table
+        (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+        column. Set on create and immutable thereafter
         """
         return pulumi.get(self, "primary_key")
 
@@ -395,7 +415,7 @@ class AiSearchIndex(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -424,15 +444,20 @@ class AiSearchIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']] delta_sync_index_spec: Specification for a Delta Sync index. Set when `index_type` is `DELTA_SYNC`
         :param pulumi.Input[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
-        :param pulumi.Input[_builtins.str] index_id: The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-               composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-               list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-               wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
-        :param pulumi.Input[_builtins.str] index_subtype: The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
-        :param pulumi.Input[_builtins.str] index_type: Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        :param pulumi.Input[_builtins.str] index_id: Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+               The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+               empty value
+        :param pulumi.Input[_builtins.str] index_subtype: Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+               keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+               create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        :param pulumi.Input[_builtins.str] index_type: Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+               `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+               create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] parent: The Endpoint where this Index will be created.
                Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
-        :param pulumi.Input[_builtins.str] primary_key: Primary key of the index. Set on create and immutable thereafter
+        :param pulumi.Input[_builtins.str] primary_key: Name of the column that uniquely identifies each row. It must exist in the source table
+               (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+               column. Set on create and immutable thereafter
         :param pulumi.Input[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
@@ -442,7 +467,7 @@ class AiSearchIndex(pulumi.CustomResource):
                  args: AiSearchIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -551,12 +576,15 @@ class AiSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] endpoint: (string) - Name of the endpoint associated with the index. Ignored on create — the endpoint is
                taken from `CreateIndexRequest.parent`; populated only on output
-        :param pulumi.Input[_builtins.str] index_id: The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-               composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-               list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-               wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
-        :param pulumi.Input[_builtins.str] index_subtype: The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
-        :param pulumi.Input[_builtins.str] index_type: Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        :param pulumi.Input[_builtins.str] index_id: Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+               The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+               empty value
+        :param pulumi.Input[_builtins.str] index_subtype: Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+               keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+               create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        :param pulumi.Input[_builtins.str] index_type: Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+               `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+               create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] name: (string) - Name of the AI Search index. Server-assigned full resource path
                (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
                `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
@@ -564,7 +592,9 @@ class AiSearchIndex(pulumi.CustomResource):
                full `name` and returns it on the response
         :param pulumi.Input[_builtins.str] parent: The Endpoint where this Index will be created.
                Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
-        :param pulumi.Input[_builtins.str] primary_key: Primary key of the index. Set on create and immutable thereafter
+        :param pulumi.Input[_builtins.str] primary_key: Name of the column that uniquely identifies each row. It must exist in the source table
+               (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+               column. Set on create and immutable thereafter
         :param pulumi.Input[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['AiSearchIndexStatusArgs', 'AiSearchIndexStatusArgsDict', 'outputs.AiSearchIndexStatus']] status: (IndexStatus) - Current status of the index
         """
@@ -653,10 +683,9 @@ class AiSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="indexId")
     def index_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-        composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-        list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+        The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+        empty value
         """
         return pulumi.get(self, "index_id")
 
@@ -664,7 +693,9 @@ class AiSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="indexSubtype")
     def index_subtype(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         """
         return pulumi.get(self, "index_subtype")
 
@@ -672,7 +703,9 @@ class AiSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="indexType")
     def index_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         """
         return pulumi.get(self, "index_type")
 
@@ -701,7 +734,9 @@ class AiSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> pulumi.Output[_builtins.str]:
         """
-        Primary key of the index. Set on create and immutable thereafter
+        Name of the column that uniquely identifies each row. It must exist in the source table
+        (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+        column. Set on create and immutable thereafter
         """
         return pulumi.get(self, "primary_key")
 

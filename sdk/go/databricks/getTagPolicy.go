@@ -67,23 +67,25 @@ func LookupTagPolicy(ctx *pulumi.Context, args *LookupTagPolicyArgs, opts ...pul
 type LookupTagPolicyArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetTagPolicyProviderConfig `pulumi:"providerConfig"`
-	TagKey         string                      `pulumi:"tagKey"`
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey string `pulumi:"tagKey"`
 }
 
 // A collection of values returned by getTagPolicy.
 type LookupTagPolicyResult struct {
 	// (string) - Timestamp when the tag policy was created
 	CreateTime string `pulumi:"createTime"`
-	// (string)
+	// (string) - A description of the governed tag, such as its purpose or the meaning of its values
 	Description string `pulumi:"description"`
-	// (string)
+	// (string) - The unique identifier of the tag policy, generated when the policy is created
 	Id             string                      `pulumi:"id"`
 	ProviderConfig *GetTagPolicyProviderConfig `pulumi:"providerConfig"`
-	// (string)
+	// (string) - The tag key that this policy governs. Tag keys are case-sensitive
 	TagKey string `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
 	UpdateTime string `pulumi:"updateTime"`
-	// (list of Value)
+	// (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+	// value must be unique. A policy without values defines a key-only governed tag
 	Values []GetTagPolicyValue `pulumi:"values"`
 }
 
@@ -96,7 +98,8 @@ func LookupTagPolicyOutput(ctx *pulumi.Context, args LookupTagPolicyOutputArgs, 
 type LookupTagPolicyOutputArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig GetTagPolicyProviderConfigPtrInput `pulumi:"providerConfig"`
-	TagKey         pulumi.StringInput                 `pulumi:"tagKey"`
+	// The tag key that this policy governs. Tag keys are case-sensitive
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
 }
 
 func (LookupTagPolicyOutputArgs) ElementType() reflect.Type {
@@ -123,12 +126,12 @@ func (o LookupTagPolicyResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string)
+// (string) - A description of the governed tag, such as its purpose or the meaning of its values
 func (o LookupTagPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string)
+// (string) - The unique identifier of the tag policy, generated when the policy is created
 func (o LookupTagPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -137,7 +140,7 @@ func (o LookupTagPolicyResultOutput) ProviderConfig() GetTagPolicyProviderConfig
 	return o.ApplyT(func(v LookupTagPolicyResult) *GetTagPolicyProviderConfig { return v.ProviderConfig }).(GetTagPolicyProviderConfigPtrOutput)
 }
 
-// (string)
+// (string) - The tag key that this policy governs. Tag keys are case-sensitive
 func (o LookupTagPolicyResultOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.TagKey }).(pulumi.StringOutput)
 }
@@ -147,7 +150,8 @@ func (o LookupTagPolicyResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (list of Value)
+// (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+// value must be unique. A policy without values defines a key-only governed tag
 func (o LookupTagPolicyResultOutput) Values() GetTagPolicyValueArrayOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) []GetTagPolicyValue { return v.Values }).(GetTagPolicyValueArrayOutput)
 }

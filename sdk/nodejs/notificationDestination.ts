@@ -45,6 +45,39 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * `Databricks app in Slack` notification destination (the Databricks app must already be installed in your Slack workspace and connected to your Databricks workspace):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ndresource = new databricks.NotificationDestination("ndresource", {
+ *     displayName: "Notification Destination",
+ *     config: {
+ *         databricksAppSlack: {
+ *             teamId: "T0123456789",
+ *             channelId: "C0123456789",
+ *         },
+ *     },
+ * });
+ * ```
+ * `Databricks app in Microsoft Teams` notification destination (the Databricks app must already be installed in your Microsoft 365 tenant and connected to your Databricks workspace):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ndresource = new databricks.NotificationDestination("ndresource", {
+ *     displayName: "Notification Destination",
+ *     config: {
+ *         databricksAppTeams: {
+ *             tenantId: "00000000-0000-0000-0000-000000000000",
+ *             teamId: "00000000-0000-0000-0000-000000000000",
+ *             channelId: "19:abc123@thread.tacv2",
+ *         },
+ *     },
+ * });
+ * ```
  * `PagerDuty` notification destination:
  *
  * ```typescript

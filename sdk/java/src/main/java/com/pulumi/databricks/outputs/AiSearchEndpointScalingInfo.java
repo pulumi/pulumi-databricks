@@ -13,6 +13,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchEndpointScalingInfo {
     /**
+     * @return (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     * 
+     */
+    private @Nullable String delayedReason;
+    /**
+     * @return (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     * 
+     */
+    private @Nullable String estimatedCompletionTime;
+    /**
+     * @return (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     * 
+     */
+    private @Nullable Integer indexInitializationPercentage;
+    /**
+     * @return (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     * 
+     */
+    private @Nullable String phase;
+    /**
      * @return The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
      * 
@@ -23,8 +48,48 @@ public final class AiSearchEndpointScalingInfo {
      * 
      */
     private @Nullable String state;
+    /**
+     * @return (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     * 
+     */
+    private @Nullable String targetQpsChangeAllowedAfterTime;
 
     private AiSearchEndpointScalingInfo() {}
+    /**
+     * @return (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     * 
+     */
+    public Optional<String> delayedReason() {
+        return Optional.ofNullable(this.delayedReason);
+    }
+    /**
+     * @return (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     * 
+     */
+    public Optional<String> estimatedCompletionTime() {
+        return Optional.ofNullable(this.estimatedCompletionTime);
+    }
+    /**
+     * @return (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     * 
+     */
+    public Optional<Integer> indexInitializationPercentage() {
+        return Optional.ofNullable(this.indexInitializationPercentage);
+    }
+    /**
+     * @return (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     * 
+     */
+    public Optional<String> phase() {
+        return Optional.ofNullable(this.phase);
+    }
     /**
      * @return The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
@@ -40,6 +105,15 @@ public final class AiSearchEndpointScalingInfo {
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
+    /**
+     * @return (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     * 
+     */
+    public Optional<String> targetQpsChangeAllowedAfterTime() {
+        return Optional.ofNullable(this.targetQpsChangeAllowedAfterTime);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,15 +124,49 @@ public final class AiSearchEndpointScalingInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String delayedReason;
+        private @Nullable String estimatedCompletionTime;
+        private @Nullable Integer indexInitializationPercentage;
+        private @Nullable String phase;
         private @Nullable Integer requestedTargetQps;
         private @Nullable String state;
+        private @Nullable String targetQpsChangeAllowedAfterTime;
         public Builder() {}
         public Builder(AiSearchEndpointScalingInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.delayedReason = defaults.delayedReason;
+    	      this.estimatedCompletionTime = defaults.estimatedCompletionTime;
+    	      this.indexInitializationPercentage = defaults.indexInitializationPercentage;
+    	      this.phase = defaults.phase;
     	      this.requestedTargetQps = defaults.requestedTargetQps;
     	      this.state = defaults.state;
+    	      this.targetQpsChangeAllowedAfterTime = defaults.targetQpsChangeAllowedAfterTime;
         }
 
+        @CustomType.Setter
+        public Builder delayedReason(@Nullable String delayedReason) {
+
+            this.delayedReason = delayedReason;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder estimatedCompletionTime(@Nullable String estimatedCompletionTime) {
+
+            this.estimatedCompletionTime = estimatedCompletionTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder indexInitializationPercentage(@Nullable Integer indexInitializationPercentage) {
+
+            this.indexInitializationPercentage = indexInitializationPercentage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder phase(@Nullable String phase) {
+
+            this.phase = phase;
+            return this;
+        }
         @CustomType.Setter
         public Builder requestedTargetQps(@Nullable Integer requestedTargetQps) {
 
@@ -71,10 +179,21 @@ public final class AiSearchEndpointScalingInfo {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder targetQpsChangeAllowedAfterTime(@Nullable String targetQpsChangeAllowedAfterTime) {
+
+            this.targetQpsChangeAllowedAfterTime = targetQpsChangeAllowedAfterTime;
+            return this;
+        }
         public AiSearchEndpointScalingInfo build() {
             final var _resultValue = new AiSearchEndpointScalingInfo();
+            _resultValue.delayedReason = delayedReason;
+            _resultValue.estimatedCompletionTime = estimatedCompletionTime;
+            _resultValue.indexInitializationPercentage = indexInitializationPercentage;
+            _resultValue.phase = phase;
             _resultValue.requestedTargetQps = requestedTargetQps;
             _resultValue.state = state;
+            _resultValue.targetQpsChangeAllowedAfterTime = targetQpsChangeAllowedAfterTime;
             return _resultValue;
         }
     }

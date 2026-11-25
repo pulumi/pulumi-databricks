@@ -193,20 +193,23 @@ namespace Pulumi.Databricks
     public sealed class GetDataClassificationCatalogConfigResult
     {
         /// <summary>
-        /// (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
-        /// Empty list means no auto-tagging is enabled
+        /// (list of AutoTaggingConfig) - Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        /// metastore-level auto-tagging setting for its classification tag; tags without an entry
+        /// inherit the metastore-level setting
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataClassificationCatalogConfigAutoTagConfigResult> AutoTagConfigs;
         /// <summary>
         /// (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
-        /// If specified, all schemas except the specified ones will be scanned.
+        /// If specified, all schemas except the specified ones will be scanned, including schemas
+        /// created later.
         /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
         public readonly Outputs.GetDataClassificationCatalogConfigExcludedSchemasResult ExcludedSchemas;
         /// <summary>
         /// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
-        /// If specified, only listed schemas will be scanned.
+        /// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        /// until you add them to the list.
         /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>

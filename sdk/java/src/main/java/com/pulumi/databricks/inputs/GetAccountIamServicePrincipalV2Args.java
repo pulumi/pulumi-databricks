@@ -15,18 +15,18 @@ public final class GetAccountIamServicePrincipalV2Args extends com.pulumi.resour
     public static final GetAccountIamServicePrincipalV2Args Empty = new GetAccountIamServicePrincipalV2Args();
 
     /**
-     * The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * @return The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     public Output<String> name() {
@@ -58,9 +58,9 @@ public final class GetAccountIamServicePrincipalV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param name The resource name of the service principal. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-         * - Workspace-scoped: service-principals/{service_principal_id}
+         * @param name The resource name of the service principal, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+         * - Workspace APIs: `service-principals/{service_principal_id}`
          * 
          * @return builder
          * 
@@ -71,9 +71,9 @@ public final class GetAccountIamServicePrincipalV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param name The resource name of the service principal. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-         * - Workspace-scoped: service-principals/{service_principal_id}
+         * @param name The resource name of the service principal, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+         * - Workspace APIs: `service-principals/{service_principal_id}`
          * 
          * @return builder
          * 

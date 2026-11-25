@@ -17,14 +17,14 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
     public static final WorkspaceIamGroupV2State Empty = new WorkspaceIamGroupV2State();
 
     /**
-     * (string) - The parent account ID for group in Databricks
+     * (string) - The ID of the account that contains the group
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return (string) - The parent account ID for group in Databricks
+     * @return (string) - The ID of the account that contains the group
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ExternalId of the group in the customer&#39;s IdP
+     * The ID of the group in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the group in the customer&#39;s IdP
+     * @return The ID of the group in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -47,14 +47,16 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Internal group ID of the group in Databricks
+     * (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return (string) - Internal group ID of the group in Databricks
+     * @return (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -62,14 +64,18 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Display name of the group
+     * The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
-     * @return Display name of the group
+     * @return The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     public Optional<Output<String>> groupName() {
@@ -77,18 +83,18 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -96,16 +102,16 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Optional<Output<String>> parent() {
@@ -158,7 +164,7 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId (string) - The parent account ID for group in Databricks
+         * @param accountId (string) - The ID of the account that contains the group
          * 
          * @return builder
          * 
@@ -169,7 +175,7 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId (string) - The parent account ID for group in Databricks
+         * @param accountId (string) - The ID of the account that contains the group
          * 
          * @return builder
          * 
@@ -179,7 +185,7 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param externalId ExternalId of the group in the customer&#39;s IdP
+         * @param externalId The ID of the group in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -190,7 +196,7 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param externalId ExternalId of the group in the customer&#39;s IdP
+         * @param externalId The ID of the group in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -200,7 +206,8 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param groupId (string) - Internal group ID of the group in Databricks
+         * @param groupId (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+         * is created, and it is the `{group_id}` segment of `name`
          * 
          * @return builder
          * 
@@ -211,7 +218,8 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param groupId (string) - Internal group ID of the group in Databricks
+         * @param groupId (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+         * is created, and it is the `{group_id}` segment of `name`
          * 
          * @return builder
          * 
@@ -221,7 +229,9 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param groupName Display name of the group
+         * @param groupName The display name of the group. It must be unique in the account, must not be blank, and must be
+         * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+         * group that Databricks manages, such as `admins` or `users`
          * 
          * @return builder
          * 
@@ -232,7 +242,9 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param groupName Display name of the group
+         * @param groupName The display name of the group. It must be unique in the account, must not be blank, and must be
+         * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+         * group that Databricks manages, such as `admins` or `users`
          * 
          * @return builder
          * 
@@ -242,9 +254,9 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name (string) - The resource name of the group. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param name (string) - The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -255,9 +267,9 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name (string) - The resource name of the group. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param name (string) - The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -267,8 +279,8 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parent (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-         * account-scoped and workspace-scoped APIs return it
+         * @param parent (string) - The resource name of the account that contains the group, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -279,8 +291,8 @@ public final class WorkspaceIamGroupV2State extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parent (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-         * account-scoped and workspace-scoped APIs return it
+         * @param parent (string) - The resource name of the account that contains the group, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 

@@ -13,7 +13,9 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AgentKitManagedMemoryStoreStorageBackendGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string) - Backend-specific identifier. For Lakebase, this is the project ID
+        /// (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+        /// holds the store's entries, in the form
+        /// `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
         /// </summary>
         [Input("backendId")]
         public Input<string>? BackendId { get; set; }

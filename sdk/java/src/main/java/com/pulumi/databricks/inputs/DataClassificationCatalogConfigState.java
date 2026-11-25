@@ -21,16 +21,18 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
     public static final DataClassificationCatalogConfigState Empty = new DataClassificationCatalogConfigState();
 
     /**
-     * List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      * 
      */
     @Import(name="autoTagConfigs")
     private @Nullable Output<List<DataClassificationCatalogConfigAutoTagConfigArgs>> autoTagConfigs;
 
     /**
-     * @return List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * @return Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      * 
      */
     public Optional<Output<List<DataClassificationCatalogConfigAutoTagConfigArgs>>> autoTagConfigs() {
@@ -39,7 +41,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
     /**
      * Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -49,7 +52,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
     /**
      * @return Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -60,7 +64,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -70,7 +75,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
     /**
      * @return Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -95,14 +101,14 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
     }
 
     /**
-     * Parent resource in the format: catalogs/{catalog_name}
+     * Name of the catalog to enable, in the format catalogs/{catalog_name}
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return Parent resource in the format: catalogs/{catalog_name}
+     * @return Name of the catalog to enable, in the format catalogs/{catalog_name}
      * 
      */
     public Optional<Output<String>> parent() {
@@ -154,8 +160,9 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
         }
 
         /**
-         * @param autoTagConfigs List of auto-tagging configurations for this catalog.
-         * Empty list means no auto-tagging is enabled
+         * @param autoTagConfigs Auto-tagging configurations that apply to this catalog. Each entry overrides the
+         * metastore-level auto-tagging setting for its classification tag; tags without an entry
+         * inherit the metastore-level setting
          * 
          * @return builder
          * 
@@ -166,8 +173,9 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
         }
 
         /**
-         * @param autoTagConfigs List of auto-tagging configurations for this catalog.
-         * Empty list means no auto-tagging is enabled
+         * @param autoTagConfigs Auto-tagging configurations that apply to this catalog. Each entry overrides the
+         * metastore-level auto-tagging setting for its classification tag; tags without an entry
+         * inherit the metastore-level setting
          * 
          * @return builder
          * 
@@ -177,8 +185,9 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
         }
 
         /**
-         * @param autoTagConfigs List of auto-tagging configurations for this catalog.
-         * Empty list means no auto-tagging is enabled
+         * @param autoTagConfigs Auto-tagging configurations that apply to this catalog. Each entry overrides the
+         * metastore-level auto-tagging setting for its classification tag; tags without an entry
+         * inherit the metastore-level setting
          * 
          * @return builder
          * 
@@ -189,7 +198,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
         /**
          * @param excludedSchemas Schemas to exclude from the scan, each named relative to the parent catalog.
-         * If specified, all schemas except the specified ones will be scanned.
+         * If specified, all schemas except the specified ones will be scanned, including schemas
+         * created later.
          * Mutually exclusive with `includedSchemas`: only one may be set per request.
          * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
          * 
@@ -203,7 +213,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
         /**
          * @param excludedSchemas Schemas to exclude from the scan, each named relative to the parent catalog.
-         * If specified, all schemas except the specified ones will be scanned.
+         * If specified, all schemas except the specified ones will be scanned, including schemas
+         * created later.
          * Mutually exclusive with `includedSchemas`: only one may be set per request.
          * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
          * 
@@ -216,7 +227,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
         /**
          * @param includedSchemas Schemas to include in the scan, each named relative to the parent catalog.
-         * If specified, only listed schemas will be scanned.
+         * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+         * until you add them to the list.
          * Mutually exclusive with `excludedSchemas`: only one may be set per request.
          * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
          * 
@@ -230,7 +242,8 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
         /**
          * @param includedSchemas Schemas to include in the scan, each named relative to the parent catalog.
-         * If specified, only listed schemas will be scanned.
+         * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+         * until you add them to the list.
          * Mutually exclusive with `excludedSchemas`: only one may be set per request.
          * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
          * 
@@ -263,7 +276,7 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
         }
 
         /**
-         * @param parent Parent resource in the format: catalogs/{catalog_name}
+         * @param parent Name of the catalog to enable, in the format catalogs/{catalog_name}
          * 
          * @return builder
          * 
@@ -274,7 +287,7 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
         }
 
         /**
-         * @param parent Parent resource in the format: catalogs/{catalog_name}
+         * @param parent Name of the catalog to enable, in the format catalogs/{catalog_name}
          * 
          * @return builder
          * 

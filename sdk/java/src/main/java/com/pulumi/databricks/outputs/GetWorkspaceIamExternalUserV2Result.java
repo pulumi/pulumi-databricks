@@ -15,98 +15,96 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamExternalUserV2Result {
     /**
-     * @return (string) - The parent account ID, from Databricks
+     * @return (string) - The ID of the account that contains the user
      * 
      */
     private String accountId;
     /**
-     * @return (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     private String accountUserStatus;
     /**
-     * @return (string) - Display name of the user from the customer&#39;s IdP
+     * @return (string) - The user&#39;s given and family names from your IdP, separated by a space
      * 
      */
     private String displayName;
     /**
-     * @return (string) - The external ID of the user in the customer&#39;s IdP
+     * @return (string) - The ID of the user in your IdP
      * 
      */
     private String externalUserId;
     /**
-     * @return (FullName) - The full name of the user, from the customer&#39;s IdP
+     * @return (FullName) - The user&#39;s name, from your IdP
      * 
      */
     private GetWorkspaceIamExternalUserV2FullName fullName;
     /**
-     * @return (string) - Internal userId of the user in Databricks
+     * @return (string) - The Databricks ID of the user. Use it as the `userId` in the user APIs
      * 
      */
     private String internalId;
     /**
-     * @return (string) - The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * @return (string) - The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      * 
      */
     private String name;
     private @Nullable GetWorkspaceIamExternalUserV2ProviderConfig providerConfig;
     /**
-     * @return (string) - Username/email of the user, from Databricks
+     * @return (string) - The user&#39;s username, which is their email address
      * 
      */
     private String username;
 
     private GetWorkspaceIamExternalUserV2Result() {}
     /**
-     * @return (string) - The parent account ID, from Databricks
+     * @return (string) - The ID of the account that contains the user
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public String accountUserStatus() {
         return this.accountUserStatus;
     }
     /**
-     * @return (string) - Display name of the user from the customer&#39;s IdP
+     * @return (string) - The user&#39;s given and family names from your IdP, separated by a space
      * 
      */
     public String displayName() {
         return this.displayName;
     }
     /**
-     * @return (string) - The external ID of the user in the customer&#39;s IdP
+     * @return (string) - The ID of the user in your IdP
      * 
      */
     public String externalUserId() {
         return this.externalUserId;
     }
     /**
-     * @return (FullName) - The full name of the user, from the customer&#39;s IdP
+     * @return (FullName) - The user&#39;s name, from your IdP
      * 
      */
     public GetWorkspaceIamExternalUserV2FullName fullName() {
         return this.fullName;
     }
     /**
-     * @return (string) - Internal userId of the user in Databricks
+     * @return (string) - The Databricks ID of the user. Use it as the `userId` in the user APIs
      * 
      */
     public String internalId() {
         return this.internalId;
     }
     /**
-     * @return (string) - The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * @return (string) - The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      * 
      */
     public String name() {
@@ -116,7 +114,7 @@ public final class GetWorkspaceIamExternalUserV2Result {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - Username/email of the user, from Databricks
+     * @return (string) - The user&#39;s username, which is their email address
      * 
      */
     public String username() {

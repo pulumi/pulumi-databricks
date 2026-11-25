@@ -91,7 +91,8 @@ class GetAgentKitManagedMemoryEntriesResult:
     @pulumi.getter(name="sessionId")
     def session_id(self) -> Optional[_builtins.str]:
         """
-        (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+        (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        ignore this field on writes and omit it from responses. Until then, an omitted value means the
         entry applies across the actor's sessions
         """
         return pulumi.get(self, "session_id")
@@ -139,8 +140,9 @@ def get_agent_kit_managed_memory_entries(actor_id: Optional[_builtins.str] = Non
            `memory-stores/{managed_memory_store_id}`
     :param _builtins.str path_prefix: Optional path prefix used to restrict entries within the actor partition
     :param Union['GetAgentKitManagedMemoryEntriesProviderConfigArgs', 'GetAgentKitManagedMemoryEntriesProviderConfigArgsDict', 'outputs.GetAgentKitManagedMemoryEntriesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str session_id: Optional session identifier. When set, only entries with this exact `session_id` are
-           returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+    :param _builtins.str session_id: Deprecated: the service will ignore this filter. Until then, when set, only entries with
+           this exact `session_id` are returned, and omitted-session (cross-session) entries
+           are not included. Ignored when path is set
     :param _builtins.str view: Controls whether each returned entry includes memory content. Defaults to `FULL`. Possible values are: `MANAGED_MEMORY_ENTRY_VIEW_BASIC`, `MANAGED_MEMORY_ENTRY_VIEW_FULL`
     """
     __args__ = dict()
@@ -184,8 +186,9 @@ def get_agent_kit_managed_memory_entries_output(actor_id: pulumi.Input[Optional[
            `memory-stores/{managed_memory_store_id}`
     :param _builtins.str path_prefix: Optional path prefix used to restrict entries within the actor partition
     :param Union['GetAgentKitManagedMemoryEntriesProviderConfigArgs', 'GetAgentKitManagedMemoryEntriesProviderConfigArgsDict', 'outputs.GetAgentKitManagedMemoryEntriesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str session_id: Optional session identifier. When set, only entries with this exact `session_id` are
-           returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+    :param _builtins.str session_id: Deprecated: the service will ignore this filter. Until then, when set, only entries with
+           this exact `session_id` are returned, and omitted-session (cross-session) entries
+           are not included. Ignored when path is set
     :param _builtins.str view: Controls whether each returned entry includes memory content. Defaults to `FULL`. Possible values are: `MANAGED_MEMORY_ENTRY_VIEW_BASIC`, `MANAGED_MEMORY_ENTRY_VIEW_FULL`
     """
     __args__ = dict()

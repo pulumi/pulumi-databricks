@@ -40,6 +40,9 @@ namespace Pulumi.Databricks.Outputs
         /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
         /// </summary>
         public readonly string? Mode;
+        public readonly bool? ScanOmittedCountIsLowerBound;
+        public readonly int? ScanOmittedFindingsCount;
+        public readonly string? ScanStatus;
         /// <summary>
         /// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`GitRepository`/`GitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `DefaultSourceCodePath`.
         /// </summary>
@@ -73,6 +76,12 @@ namespace Pulumi.Databricks.Outputs
 
             string? mode,
 
+            bool? scanOmittedCountIsLowerBound,
+
+            int? scanOmittedFindingsCount,
+
+            string? scanStatus,
+
             string? sourceCodePath,
 
             Outputs.AppPendingDeploymentStatus? status,
@@ -88,6 +97,9 @@ namespace Pulumi.Databricks.Outputs
             GitSource = gitSource;
             HealthCheck = healthCheck;
             Mode = mode;
+            ScanOmittedCountIsLowerBound = scanOmittedCountIsLowerBound;
+            ScanOmittedFindingsCount = scanOmittedFindingsCount;
+            ScanStatus = scanStatus;
             SourceCodePath = sourceCodePath;
             Status = status;
             UpdateTime = updateTime;

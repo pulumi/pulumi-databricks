@@ -46,6 +46,13 @@ namespace Pulumi.Databricks.Outputs
         /// Set at creation; the CdfConfig is immutable
         /// </summary>
         public readonly string Schema;
+        /// <summary>
+        /// (string) - The service principal (application id) whose identity authorizes this
+        /// change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        /// authorized as the creating identity. Changing it requires a new CdfConfig,
+        /// which writes to new Delta tables
+        /// </summary>
+        public readonly string ServicePrincipal;
 
         [OutputConstructor]
         private GetPostgresCdfConfigsCdfConfigResult(
@@ -61,7 +68,9 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetPostgresCdfConfigsCdfConfigProviderConfigResult? providerConfig,
 
-            string schema)
+            string schema,
+
+            string servicePrincipal)
         {
             Catalog = catalog;
             CdfConfigId = cdfConfigId;
@@ -70,6 +79,7 @@ namespace Pulumi.Databricks.Outputs
             PostgresSchema = postgresSchema;
             ProviderConfig = providerConfig;
             Schema = schema;
+            ServicePrincipal = servicePrincipal;
         }
     }
 }

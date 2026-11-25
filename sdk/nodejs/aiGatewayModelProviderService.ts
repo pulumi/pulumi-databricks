@@ -101,11 +101,11 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model provider service
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * (string) - Owner of the model provider service
+     * (string) - Username or group name of the model provider service owner
      */
     declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
@@ -116,19 +116,23 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * (string) - Metastore hosting the provider service
+     * (string) - Unique identifier of the metastore that contains the model provider service
      */
     declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
-     * Name for the model provider service, e.g. "openaiProd"
+     * Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      */
     declare public readonly modelProviderServiceId: pulumi.Output<string>;
     /**
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -146,7 +150,7 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model provider service
      */
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
@@ -222,11 +226,11 @@ export interface AiGatewayModelProviderServiceState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model provider service
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Owner of the model provider service
+     * (string) - Username or group name of the model provider service owner
      */
     effectiveOwner?: pulumi.Input<string | undefined>;
     /**
@@ -237,19 +241,23 @@ export interface AiGatewayModelProviderServiceState {
      */
     etag?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Metastore hosting the provider service
+     * (string) - Unique identifier of the metastore that contains the model provider service
      */
     metastoreId?: pulumi.Input<string | undefined>;
     /**
-     * Name for the model provider service, e.g. "openaiProd"
+     * Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      */
     modelProviderServiceId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -267,7 +275,7 @@ export interface AiGatewayModelProviderServiceState {
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model provider service
      */
     updatedBy?: pulumi.Input<string | undefined>;
 }
@@ -287,7 +295,10 @@ export interface AiGatewayModelProviderServiceArgs {
      */
     config?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfig | undefined>;
     /**
-     * Name for the model provider service, e.g. "openaiProd"
+     * Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      */
     modelProviderServiceId: pulumi.Input<string>;
     /**

@@ -19,14 +19,14 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
     public static final PostgresSyncedTableState Empty = new PostgresSyncedTableState();
 
     /**
-     * (string)
+     * (string) - The time when the synced table was created
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return (string)
+     * @return (string) - The time when the synced table was created
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -34,16 +34,16 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * @return (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
      */
     public Optional<Output<String>> name() {
@@ -96,14 +96,16 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     @Import(name="syncedTableId")
     private @Nullable Output<String> syncedTableId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     public Optional<Output<String>> syncedTableId() {
@@ -156,7 +158,7 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime (string)
+         * @param createTime (string) - The time when the synced table was created
          * 
          * @return builder
          * 
@@ -167,7 +169,7 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime (string)
+         * @param createTime (string) - The time when the synced table was created
          * 
          * @return builder
          * 
@@ -177,8 +179,8 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name (string) - Output only. The Full resource name of the synced table in Postgres
-         * where (catalog, schema, table) are the UC entity names.
+         * @param name (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+         * names of the synced table.
          * 
          * @return builder
          * 
@@ -189,8 +191,8 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name (string) - Output only. The Full resource name of the synced table in Postgres
-         * where (catalog, schema, table) are the UC entity names.
+         * @param name (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+         * names of the synced table.
          * 
          * @return builder
          * 
@@ -263,7 +265,8 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param syncedTableId The part of the name, chosen by the user when the resource was created
+         * @param syncedTableId The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+         * It is the syncedTableId that was used to create the synced table and the last component of name
          * 
          * @return builder
          * 
@@ -274,7 +277,8 @@ public final class PostgresSyncedTableState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param syncedTableId The part of the name, chosen by the user when the resource was created
+         * @param syncedTableId The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+         * It is the syncedTableId that was used to create the synced table and the last component of name
          * 
          * @return builder
          * 

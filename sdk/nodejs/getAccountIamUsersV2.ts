@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -42,17 +42,17 @@ export function getAccountIamUsersV2(args: GetAccountIamUsersV2Args, opts?: pulu
  */
 export interface GetAccountIamUsersV2Args {
     /**
-     * Optional. Allows filtering users by username or external id
+     * Filters users by `username` or `externalId`, for example
+     * `username eq "someone@example.com"`. Put the value in quotes
      */
     filter?: string;
     /**
-     * The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      */
     pageSize?: number;
     /**
-     * The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`
      */
     parent: string;
 }
@@ -64,14 +64,14 @@ export interface GetAccountIamUsersV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
     /**
-     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     readonly parent: string;
     readonly users: outputs.GetAccountIamUsersV2User[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -106,17 +106,17 @@ export function getAccountIamUsersV2Output(args: GetAccountIamUsersV2OutputArgs,
  */
 export interface GetAccountIamUsersV2OutputArgs {
     /**
-     * Optional. Allows filtering users by username or external id
+     * Filters users by `username` or `externalId`, for example
+     * `username eq "someone@example.com"`. Put the value in quotes
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`
      */
     parent: pulumi.Input<string>;
 }

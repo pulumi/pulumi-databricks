@@ -63,7 +63,8 @@ namespace Pulumi.Databricks
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        /// Absolute, case-sensitive path identifying the entry within its actor and, until the
+        /// deprecated `SessionId` is ignored, its optional session.
         /// Paths must begin with `/` and must not contain empty, `.` or `..` segments
         /// </summary>
         [Output("path")]
@@ -76,14 +77,16 @@ namespace Pulumi.Databricks
         public Output<Outputs.AgentKitManagedMemoryEntryProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Optional identifier for the session associated with this memory entry. When omitted, the
+        /// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        /// ignore this field on writes and omit it from responses. Until then, an omitted value means the
         /// entry applies across the actor's sessions
         /// </summary>
         [Output("sessionId")]
         public Output<string?> SessionId { get; private set; } = null!;
 
         /// <summary>
-        /// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        /// Which writer created this entry. Caller sets this on Create; immutable after creation.
+        /// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         /// </summary>
         [Output("sourceType")]
         public Output<string?> SourceType { get; private set; } = null!;
@@ -172,7 +175,8 @@ namespace Pulumi.Databricks
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        /// Absolute, case-sensitive path identifying the entry within its actor and, until the
+        /// deprecated `SessionId` is ignored, its optional session.
         /// Paths must begin with `/` and must not contain empty, `.` or `..` segments
         /// </summary>
         [Input("path", required: true)]
@@ -185,14 +189,16 @@ namespace Pulumi.Databricks
         public Input<Inputs.AgentKitManagedMemoryEntryProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Optional identifier for the session associated with this memory entry. When omitted, the
+        /// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        /// ignore this field on writes and omit it from responses. Until then, an omitted value means the
         /// entry applies across the actor's sessions
         /// </summary>
         [Input("sessionId")]
         public Input<string>? SessionId { get; set; }
 
         /// <summary>
-        /// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        /// Which writer created this entry. Caller sets this on Create; immutable after creation.
+        /// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
@@ -251,7 +257,8 @@ namespace Pulumi.Databricks
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        /// Absolute, case-sensitive path identifying the entry within its actor and, until the
+        /// deprecated `SessionId` is ignored, its optional session.
         /// Paths must begin with `/` and must not contain empty, `.` or `..` segments
         /// </summary>
         [Input("path")]
@@ -264,14 +271,16 @@ namespace Pulumi.Databricks
         public Input<Inputs.AgentKitManagedMemoryEntryProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Optional identifier for the session associated with this memory entry. When omitted, the
+        /// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        /// ignore this field on writes and omit it from responses. Until then, an omitted value means the
         /// entry applies across the actor's sessions
         /// </summary>
         [Input("sessionId")]
         public Input<string>? SessionId { get; set; }
 
         /// <summary>
-        /// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        /// Which writer created this entry. Caller sets this on Create; immutable after creation.
+        /// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }

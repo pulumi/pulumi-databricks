@@ -14,11 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppSpacesSpaceResourceResult
     {
         /// <summary>
-        /// (AppResourceApp)
+        /// (AppResourceApp) - Another app in the workspace that this app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceAppResult? App;
         /// <summary>
-        /// (string)
+        /// (string) - Resource name of the database within the branch, in the form
+        /// `projects/{project}/branches/{branch}/databases/{database}`
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceDatabaseResult? Database;
         /// <summary>
@@ -26,15 +27,15 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// (AppResourceExperiment)
+        /// (AppResourceExperiment) - MLflow experiment the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceExperimentResult? Experiment;
         /// <summary>
-        /// (AppResourceGenieSpace)
+        /// (AppResourceGenieSpace) - Genie space the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceGenieSpaceResult? GenieSpace;
         /// <summary>
-        /// (AppResourceJob)
+        /// (AppResourceJob) - Lakeflow job the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceJobResult? Job;
         /// <summary>
@@ -42,23 +43,24 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (AppResourcePostgres)
+        /// (AppResourcePostgres) - Lakebase Autoscaling Postgres database the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourcePostgresResult? Postgres;
         /// <summary>
-        /// (AppResourceSecret)
+        /// (AppResourceSecret) - Secret the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceSecretResult? Secret;
         /// <summary>
-        /// (AppResourceServingEndpoint)
+        /// (AppResourceServingEndpoint) - Model serving endpoint the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceServingEndpointResult? ServingEndpoint;
         /// <summary>
-        /// (AppResourceSqlWarehouse)
+        /// (AppResourceSqlWarehouse) - SQL warehouse the app is granted access to
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceSqlWarehouseResult? SqlWarehouse;
         /// <summary>
-        /// (AppResourceUcSecurable)
+        /// (AppResourceUcSecurable) - Unity Catalog securable (volume, table, function, connection or model service) the app is
+        /// granted a privilege on
         /// </summary>
         public readonly Outputs.GetAppSpacesSpaceResourceUcSecurableResult? UcSecurable;
 

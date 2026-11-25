@@ -41,7 +41,7 @@ export function getAccountSettingV2(args: GetAccountSettingV2Args, opts?: pulumi
  */
 export interface GetAccountSettingV2Args {
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      */
     name: string;
 }
@@ -119,6 +119,10 @@ export interface GetAccountSettingV2Result {
      */
     readonly effectiveStringVal: outputs.GetAccountSettingV2EffectiveStringVal;
     /**
+     * (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     */
+    readonly effectiveWorkspaceDashboardTheme: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardTheme;
+    /**
      * (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      */
     readonly effectiveWorkspaceLabel: outputs.GetAccountSettingV2EffectiveWorkspaceLabel;
@@ -127,7 +131,7 @@ export interface GetAccountSettingV2Result {
      */
     readonly integerVal: outputs.GetAccountSettingV2IntegerVal;
     /**
-     * (string) - Name of the setting
+     * (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
      */
     readonly name: string;
     /**
@@ -146,6 +150,10 @@ export interface GetAccountSettingV2Result {
      * (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
     readonly stringVal: outputs.GetAccountSettingV2StringVal;
+    /**
+     * (DashboardTheme) - Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     */
+    readonly workspaceDashboardTheme: outputs.GetAccountSettingV2WorkspaceDashboardTheme;
     /**
      * (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
      */
@@ -186,7 +194,7 @@ export function getAccountSettingV2Output(args: GetAccountSettingV2OutputArgs, o
  */
 export interface GetAccountSettingV2OutputArgs {
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      */
     name: pulumi.Input<string>;
 }

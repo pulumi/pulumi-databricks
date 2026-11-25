@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountIamUserV2FullNameArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The user's family (last) name
+        /// </summary>
         [Input("familyName")]
         public Input<string>? FamilyName { get; set; }
 
+        /// <summary>
+        /// The user's given (first) name
+        /// </summary>
         [Input("givenName")]
         public Input<string>? GivenName { get; set; }
 

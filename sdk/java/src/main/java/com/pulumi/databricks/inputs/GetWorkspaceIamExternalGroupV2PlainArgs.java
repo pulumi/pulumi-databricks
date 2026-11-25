@@ -17,20 +17,18 @@ public final class GetWorkspaceIamExternalGroupV2PlainArgs extends com.pulumi.re
     public static final GetWorkspaceIamExternalGroupV2PlainArgs Empty = new GetWorkspaceIamExternalGroupV2PlainArgs();
 
     /**
-     * The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * @return The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      * 
      */
     public String name() {
@@ -78,10 +76,9 @@ public final class GetWorkspaceIamExternalGroupV2PlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The resource name of the external group. The format depends on the API that
-         * returned it:
-         * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-         * - Workspace-scoped: external-groups/{external_group_id}
+         * @param name The resource name of the external group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+         * - Workspace APIs: `external-groups/{external_group_id}`
          * 
          * @return builder
          * 

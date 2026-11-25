@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAiSearchEndpoint
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchEndpointResult>("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", args ?? new GetAiSearchEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchEndpointResult>("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", args ?? new GetAiSearchEndpointInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -106,10 +106,9 @@ namespace Pulumi.Databricks
     public sealed class GetAiSearchEndpointArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the AI Search endpoint. Server-assigned full resource path
-        /// (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-        /// user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-        /// the server composes the full `Name` and returns it on the response
+        /// Full resource name of the endpoint, in the form
+        /// `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+        /// from `Parent` and `EndpointId` and ignores any value supplied in the request body
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -129,10 +128,9 @@ namespace Pulumi.Databricks
     public sealed class GetAiSearchEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the AI Search endpoint. Server-assigned full resource path
-        /// (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-        /// user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-        /// the server composes the full `Name` and returns it on the response
+        /// Full resource name of the endpoint, in the form
+        /// `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+        /// from `Parent` and `EndpointId` and ignores any value supplied in the request body
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -154,7 +152,10 @@ namespace Pulumi.Databricks
     public sealed class GetAiSearchEndpointResult
     {
         /// <summary>
-        /// (string) - The user-selected budget policy id for the endpoint
+        /// (string) - ID of the serverless budget policy to apply to the endpoint. The caller must have
+        /// permission to use the policy. Set either this field or `UsagePolicyId`, not both.
+        /// Responses do not echo this field; they report the applied policy in
+        /// `EffectiveBudgetPolicyId`
         /// </summary>
         public readonly string BudgetPolicyId;
         /// <summary>
@@ -162,19 +163,21 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Creator of the endpoint
+        /// (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+        /// address; for any other principal, it is the principal's unique name
         /// </summary>
         public readonly string Creator;
         /// <summary>
-        /// (list of CustomTag) - The custom tags assigned to the endpoint
+        /// (list of CustomTag) - Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+        /// existing tags
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchEndpointCustomTagResult> CustomTags;
         /// <summary>
-        /// (string) - The budget policy id applied to the endpoint
+        /// (string) - ID of the budget policy that is currently applied to the endpoint
         /// </summary>
         public readonly string EffectiveBudgetPolicyId;
         /// <summary>
-        /// (EndpointStatus) - Current status of the endpoint
+        /// (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
         /// </summary>
         public readonly Outputs.GetAiSearchEndpointEndpointStatusResult EndpointStatus;
         /// <summary>
@@ -182,7 +185,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
-        /// (string) - Unique identifier of the endpoint
+        /// (string) - System-generated UUID that uniquely identifies the endpoint
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -190,14 +193,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int IndexCount;
         /// <summary>
-        /// (string) - User who last updated the endpoint
+        /// (string) - User name of the principal that last updated the endpoint, in the same format as `Creator`
         /// </summary>
         public readonly string LastUpdatedUser;
         /// <summary>
-        /// (string) - Name of the AI Search endpoint. Server-assigned full resource path
-        /// (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-        /// user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-        /// the server composes the full `Name` and returns it on the response
+        /// (string) - Full resource name of the endpoint, in the form
+        /// `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+        /// from `Parent` and `EndpointId` and ignores any value supplied in the request body
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetAiSearchEndpointProviderConfigResult? ProviderConfig;
@@ -212,7 +214,8 @@ namespace Pulumi.Databricks
         public readonly Outputs.GetAiSearchEndpointScalingInfoResult ScalingInfo;
         /// <summary>
         /// (integer) - Target QPS for the endpoint. Mutually exclusive with `ReplicaCount`. Best-effort;
-        /// the system does not guarantee this QPS will be achieved
+        /// the system does not guarantee this QPS will be achieved. Responses report the requested
+        /// value in `scaling_info.requested_target_qps`
         /// </summary>
         public readonly int TargetQps;
         /// <summary>
@@ -224,7 +227,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (string) - The usage policy id applied to the endpoint
+        /// (string) - ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+        /// as `BudgetPolicyId`, so set only one of the two
         /// </summary>
         public readonly string UsagePolicyId;
 

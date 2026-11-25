@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAiSearchIndexes
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchIndexesResult>("databricks:index/getAiSearchIndexes:getAiSearchIndexes", args ?? new GetAiSearchIndexesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchIndexesResult>("databricks:index/getAiSearchIndexes:getAiSearchIndexes", args ?? new GetAiSearchIndexesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -106,9 +106,7 @@ namespace Pulumi.Databricks
     public sealed class GetAiSearchIndexesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Best-effort upper bound on the number of results to return. Honored as an upper
-        /// bound by the shim: `PageSize` only narrows the legacy backend's response, never
-        /// widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+        /// Maximum number of indexes to return. When unset, every index on the endpoint is returned
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -135,9 +133,7 @@ namespace Pulumi.Databricks
     public sealed class GetAiSearchIndexesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Best-effort upper bound on the number of results to return. Honored as an upper
-        /// bound by the shim: `PageSize` only narrows the legacy backend's response, never
-        /// widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+        /// Maximum number of indexes to return. When unset, every index on the endpoint is returned
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

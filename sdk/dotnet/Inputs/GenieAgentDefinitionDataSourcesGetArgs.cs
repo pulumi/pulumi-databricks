@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.GenieAgentDefinitionDataSourcesTableGetArgs>? _tables;
 
         /// <summary>
-        /// Unity Catalog tables, views, and metric views, in the order they were added
+        /// Unity Catalog tables, views, and metric views, sorted by `Identifier`
         /// </summary>
         public InputList<Inputs.GenieAgentDefinitionDataSourcesTableGetArgs> Tables
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.GenieAgentDefinitionDataSourcesVolumeGetArgs>? _volumes;
 
         /// <summary>
-        /// Unity Catalog volumes, in the order they were added
+        /// Unity Catalog volumes, sorted by `Path`
         /// </summary>
         public InputList<Inputs.GenieAgentDefinitionDataSourcesVolumeGetArgs> Volumes
         {

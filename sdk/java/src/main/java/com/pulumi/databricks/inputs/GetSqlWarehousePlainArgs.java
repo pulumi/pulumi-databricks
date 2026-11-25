@@ -344,14 +344,14 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      * 
      */
     @Import(name="statementTimeout")
     private @Nullable Integer statementTimeout;
 
     /**
-     * @return Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * @return Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      * 
      */
     public Optional<Integer> statementTimeout() {
@@ -673,7 +673,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param statementTimeout Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+         * @param statementTimeout Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
          * 
          * @return builder
          * 

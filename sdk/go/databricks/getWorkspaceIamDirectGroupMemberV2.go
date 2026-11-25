@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -59,9 +59,9 @@ func LookupWorkspaceIamDirectGroupMemberV2(ctx *pulumi.Context, args *LookupWork
 
 // A collection of arguments for invoking getWorkspaceIamDirectGroupMemberV2.
 type LookupWorkspaceIamDirectGroupMemberV2Args struct {
-	// The resource name of the group membership. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-	// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+	// The resource name of the membership, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+	// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamDirectGroupMemberV2ProviderConfig `pulumi:"providerConfig"`
@@ -69,26 +69,25 @@ type LookupWorkspaceIamDirectGroupMemberV2Args struct {
 
 // A collection of values returned by getWorkspaceIamDirectGroupMemberV2.
 type LookupWorkspaceIamDirectGroupMemberV2Result struct {
-	// (string) - Display name of the principal
+	// (string) - The member's display name
 	DisplayName string `pulumi:"displayName"`
-	// (string) - The external ID of the principal in the customer's IdP
+	// (string) - The ID of the member in your identity provider (IdP)
 	ExternalId string `pulumi:"externalId"`
-	// (integer) - The internal ID of the group this member belongs to
+	// (integer) - The Databricks ID of the group
 	GroupId int `pulumi:"groupId"`
-	// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+	// (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
 	MembershipSource string `pulumi:"membershipSource"`
-	// (string) - The resource name of the group membership. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-	// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+	// (string) - The resource name of the membership, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+	// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
 	Name string `pulumi:"name"`
-	// (string) - The resource name of the group that contains the membership. The format depends on the API
-	// that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}
-	// - Workspace-scoped: groups/{group_id}
+	// (string) - The resource name of the group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+	// - Workspace APIs: `groups/{group_id}`
 	Parent string `pulumi:"parent"`
-	// (integer) - Internal ID of the principal in Databricks
+	// (integer) - The Databricks ID of the member
 	PrincipalId string `pulumi:"principalId"`
-	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	// (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 	PrincipalType  string                                            `pulumi:"principalType"`
 	ProviderConfig *GetWorkspaceIamDirectGroupMemberV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -100,9 +99,9 @@ func LookupWorkspaceIamDirectGroupMemberV2Output(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getWorkspaceIamDirectGroupMemberV2.
 type LookupWorkspaceIamDirectGroupMemberV2OutputArgs struct {
-	// The resource name of the group membership. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-	// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+	// The resource name of the membership, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+	// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamDirectGroupMemberV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -127,47 +126,46 @@ func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) ToLookupWorkspaceIamD
 	return o
 }
 
-// (string) - Display name of the principal
+// (string) - The member's display name
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - The external ID of the principal in the customer's IdP
+// (string) - The ID of the member in your identity provider (IdP)
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// (integer) - The internal ID of the group this member belongs to
+// (integer) - The Databricks ID of the group
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+// (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) MembershipSource() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.MembershipSource }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the group membership. The format depends on the API that returned it:
-// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+// (string) - The resource name of the membership, in one of these formats:
+// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the group that contains the membership. The format depends on the API
-// that returned it:
-// - Account-scoped: accounts/{account_id}/groups/{group_id}
-// - Workspace-scoped: groups/{group_id}
+// (string) - The resource name of the group, in one of these formats:
+// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+// - Workspace APIs: `groups/{group_id}`
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
 
-// (integer) - Internal ID of the principal in Databricks
+// (integer) - The Databricks ID of the member
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+// (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 func (o LookupWorkspaceIamDirectGroupMemberV2ResultOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamDirectGroupMemberV2Result) string { return v.PrincipalType }).(pulumi.StringOutput)
 }

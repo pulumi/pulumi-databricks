@@ -19,6 +19,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         public readonly string Permission;
+        /// <summary>
+        /// ID of the Genie space
+        /// </summary>
         public readonly string SpaceId;
 
         [OutputConstructor]

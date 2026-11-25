@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string)
+        /// (string) - A description of the governed tag, such as its purpose or the meaning of its values
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (string)
+        /// (string) - The unique identifier of the tag policy, generated when the policy is created
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetTagPoliciesTagPolicyProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string)
+        /// (string) - The tag key that this policy governs. Tag keys are case-sensitive
         /// </summary>
         public readonly string TagKey;
         /// <summary>
@@ -38,7 +38,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (list of Value)
+        /// (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        /// value must be unique. A policy without values defines a key-only governed tag
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTagPoliciesTagPolicyValueResult> Values;
 

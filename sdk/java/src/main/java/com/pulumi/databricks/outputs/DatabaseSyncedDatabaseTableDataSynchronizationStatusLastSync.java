@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync {
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      * 
      */
     private @Nullable DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo deltaTableSyncInfo;
@@ -34,7 +34,7 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync 
 
     private DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync() {}
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      * 
      */
     public Optional<DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo> deltaTableSyncInfo() {

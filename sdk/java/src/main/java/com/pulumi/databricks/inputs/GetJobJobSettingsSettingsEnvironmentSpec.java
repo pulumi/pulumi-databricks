@@ -43,6 +43,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
         return Optional.ofNullable(this.environmentVersion);
     }
 
+    @Import(name="imageUri")
+    private @Nullable String imageUri;
+
+    public Optional<String> imageUri() {
+        return Optional.ofNullable(this.imageUri);
+    }
+
     @Import(name="javaDependencies")
     private @Nullable List<String> javaDependencies;
 
@@ -64,6 +71,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
         this.client = $.client;
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
+        this.imageUri = $.imageUri;
         this.javaDependencies = $.javaDependencies;
         this.projectEnvironment = $.projectEnvironment;
     }
@@ -107,6 +115,11 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
 
         public Builder environmentVersion(@Nullable String environmentVersion) {
             $.environmentVersion = environmentVersion;
+            return this;
+        }
+
+        public Builder imageUri(@Nullable String imageUri) {
+            $.imageUri = imageUri;
             return this;
         }
 

@@ -18,14 +18,14 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
     public static final WorkspaceIamServicePrincipalV2Args Empty = new WorkspaceIamServicePrincipalV2Args();
 
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="accountSpStatus", required=true)
     private Output<String> accountSpStatus;
 
     /**
-     * @return The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Output<String> accountSpStatus() {
@@ -33,16 +33,18 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
     }
 
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * @return (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -50,14 +52,14 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
     }
 
     /**
-     * Display name of the service principal
+     * The service principal&#39;s display name
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return Display name of the service principal
+     * @return The service principal&#39;s display name
      * 
      */
     public Output<String> displayName() {
@@ -65,14 +67,14 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
     }
 
     /**
-     * ExternalId of the service principal in the customer&#39;s IdP
+     * The ID of the service principal in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the service principal in the customer&#39;s IdP
+     * @return The ID of the service principal in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -123,7 +125,7 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param accountSpStatus The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountSpStatus Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -134,7 +136,7 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param accountSpStatus The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountSpStatus Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -144,8 +146,9 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param applicationId (string) - Application ID of the service principal. Set at creation time and cannot be changed
-         * afterwards; when omitted, the server generates one
+         * @param applicationId (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+         * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+         * changed
          * 
          * @return builder
          * 
@@ -156,8 +159,9 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param applicationId (string) - Application ID of the service principal. Set at creation time and cannot be changed
-         * afterwards; when omitted, the server generates one
+         * @param applicationId (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+         * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+         * changed
          * 
          * @return builder
          * 
@@ -167,7 +171,7 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param displayName Display name of the service principal
+         * @param displayName The service principal&#39;s display name
          * 
          * @return builder
          * 
@@ -178,7 +182,7 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param displayName Display name of the service principal
+         * @param displayName The service principal&#39;s display name
          * 
          * @return builder
          * 
@@ -188,7 +192,7 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param externalId ExternalId of the service principal in the customer&#39;s IdP
+         * @param externalId The ID of the service principal in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -199,7 +203,7 @@ public final class WorkspaceIamServicePrincipalV2Args extends com.pulumi.resourc
         }
 
         /**
-         * @param externalId ExternalId of the service principal in the customer&#39;s IdP
+         * @param externalId The ID of the service principal in your identity provider (IdP)
          * 
          * @return builder
          * 

@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeResult
     {
         /// <summary>
-        /// (integer)
+        /// (integer) - Hour of the day on a 24-hour clock
         /// </summary>
         public readonly int? Hours;
         /// <summary>
-        /// (integer)
+        /// (integer) - Minute of the hour
         /// </summary>
         public readonly int? Minutes;
 

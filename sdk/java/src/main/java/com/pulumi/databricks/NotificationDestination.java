@@ -103,6 +103,87 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * `Databricks app in Slack` notification destination (the Databricks app must already be installed in your Slack workspace and connected to your Databricks workspace):
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.NotificationDestination;
+ * import com.pulumi.databricks.NotificationDestinationArgs;
+ * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+ * import com.pulumi.databricks.inputs.NotificationDestinationConfigDatabricksAppSlackArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ndresource = new NotificationDestination("ndresource", NotificationDestinationArgs.builder()
+ *             .displayName("Notification Destination")
+ *             .config(NotificationDestinationConfigArgs.builder()
+ *                 .databricksAppSlack(NotificationDestinationConfigDatabricksAppSlackArgs.builder()
+ *                     .teamId("T0123456789")
+ *                     .channelId("C0123456789")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * `Databricks app in Microsoft Teams` notification destination (the Databricks app must already be installed in your Microsoft 365 tenant and connected to your Databricks workspace):
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.NotificationDestination;
+ * import com.pulumi.databricks.NotificationDestinationArgs;
+ * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+ * import com.pulumi.databricks.inputs.NotificationDestinationConfigDatabricksAppTeamsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var ndresource = new NotificationDestination("ndresource", NotificationDestinationArgs.builder()
+ *             .displayName("Notification Destination")
+ *             .config(NotificationDestinationConfigArgs.builder()
+ *                 .databricksAppTeams(NotificationDestinationConfigDatabricksAppTeamsArgs.builder()
+ *                     .tenantId("00000000-0000-0000-0000-000000000000")
+ *                     .teamId("00000000-0000-0000-0000-000000000000")
+ *                     .channelId("19:abc123}{@literal @}{@code thread.tacv2")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * `PagerDuty` notification destination:
  * 
  * <pre>

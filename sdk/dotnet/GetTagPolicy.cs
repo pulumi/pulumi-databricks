@@ -138,6 +138,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Inputs.GetTagPolicyProviderConfigArgs? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// The tag key that this policy governs. Tag keys are case-sensitive
+        /// </summary>
         [Input("tagKey", required: true)]
         public string TagKey { get; set; } = null!;
 
@@ -155,6 +158,9 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.GetTagPolicyProviderConfigInputArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// The tag key that this policy governs. Tag keys are case-sensitive
+        /// </summary>
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
 
@@ -173,16 +179,16 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string)
+        /// (string) - A description of the governed tag, such as its purpose or the meaning of its values
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (string)
+        /// (string) - The unique identifier of the tag policy, generated when the policy is created
         /// </summary>
         public readonly string Id;
         public readonly Outputs.GetTagPolicyProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string)
+        /// (string) - The tag key that this policy governs. Tag keys are case-sensitive
         /// </summary>
         public readonly string TagKey;
         /// <summary>
@@ -190,7 +196,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (list of Value)
+        /// (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        /// value must be unique. A policy without values defines a key-only governed tag
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTagPolicyValueResult> Values;
 

@@ -21,25 +21,26 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Column for the label
+        /// Column containing the ground truth for the model's predictions
         /// </summary>
         [Input("labelColumn")]
         public Input<string>? LabelColumn { get; set; }
 
         /// <summary>
-        /// Column for the model identifier
+        /// Column containing the ID of the model that produced each prediction. A slice is created automatically for
+        /// each distinct model ID
         /// </summary>
         [Input("modelIdColumn", required: true)]
         public Input<string> ModelIdColumn { get; set; } = null!;
 
         /// <summary>
-        /// Column for the prediction
+        /// Column containing the model's predicted values
         /// </summary>
         [Input("predictionColumn", required: true)]
         public Input<string> PredictionColumn { get; set; } = null!;
 
         /// <summary>
-        /// Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+        /// The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
         /// </summary>
         [Input("problemType", required: true)]
         public Input<string> ProblemType { get; set; } = null!;

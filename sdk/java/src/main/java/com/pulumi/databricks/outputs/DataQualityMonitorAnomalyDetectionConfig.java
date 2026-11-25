@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DataQualityMonitorAnomalyDetectionConfig {
     /**
-     * @return List of fully qualified table names to exclude from anomaly detection
+     * @return List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      * 
      */
     private @Nullable List<String> excludedTableFullNames;
@@ -22,7 +22,7 @@ public final class DataQualityMonitorAnomalyDetectionConfig {
 
     private DataQualityMonitorAnomalyDetectionConfig() {}
     /**
-     * @return List of fully qualified table names to exclude from anomaly detection
+     * @return List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      * 
      */
     public List<String> excludedTableFullNames() {

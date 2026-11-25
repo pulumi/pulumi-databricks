@@ -18,18 +18,14 @@ public final class GetAiSearchIndexesPlainArgs extends com.pulumi.resources.Invo
     public static final GetAiSearchIndexesPlainArgs Empty = new GetAiSearchIndexesPlainArgs();
 
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of indexes to return. When unset, every index on the endpoint is returned
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * @return Maximum number of indexes to return. When unset, every index on the endpoint is returned
      * 
      */
     public Optional<Integer> pageSize() {
@@ -95,9 +91,7 @@ public final class GetAiSearchIndexesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param pageSize Best-effort upper bound on the number of results to return. Honored as an upper
-         * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-         * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+         * @param pageSize Maximum number of indexes to return. When unset, every index on the endpoint is returned
          * 
          * @return builder
          * 

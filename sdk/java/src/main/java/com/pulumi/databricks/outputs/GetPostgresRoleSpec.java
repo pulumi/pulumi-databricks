@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresRoleSpecAttributes;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresRoleSpec {
     /**
-     * @return (RoleAttributes) - The PG role attributes associated with the role
+     * @return (RoleAttributes) - The Postgres role attributes currently granted to the role
      * 
      */
     private @Nullable GetPostgresRoleSpecAttributes attributes;
     /**
-     * @return (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * @return (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      * 
      */
-    private @Nullable String authMethod;
+    private String authMethod;
     /**
-     * @return (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
-    private @Nullable String identityType;
+    private String identityType;
     /**
-     * @return (list of string) - An enum value for a standard role that this role is a member of
+     * @return (list of string) - The standard roles that the role is currently a member of
      * 
      */
     private @Nullable List<String> membershipRoles;
@@ -37,32 +38,32 @@ public final class GetPostgresRoleSpec {
      * @return (string) - The name of the Postgres role
      * 
      */
-    private @Nullable String postgresRole;
+    private String postgresRole;
 
     private GetPostgresRoleSpec() {}
     /**
-     * @return (RoleAttributes) - The PG role attributes associated with the role
+     * @return (RoleAttributes) - The Postgres role attributes currently granted to the role
      * 
      */
     public Optional<GetPostgresRoleSpecAttributes> attributes() {
         return Optional.ofNullable(this.attributes);
     }
     /**
-     * @return (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * @return (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      * 
      */
-    public Optional<String> authMethod() {
-        return Optional.ofNullable(this.authMethod);
+    public String authMethod() {
+        return this.authMethod;
     }
     /**
-     * @return (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
-    public Optional<String> identityType() {
-        return Optional.ofNullable(this.identityType);
+    public String identityType() {
+        return this.identityType;
     }
     /**
-     * @return (list of string) - An enum value for a standard role that this role is a member of
+     * @return (list of string) - The standard roles that the role is currently a member of
      * 
      */
     public List<String> membershipRoles() {
@@ -72,8 +73,8 @@ public final class GetPostgresRoleSpec {
      * @return (string) - The name of the Postgres role
      * 
      */
-    public Optional<String> postgresRole() {
-        return Optional.ofNullable(this.postgresRole);
+    public String postgresRole() {
+        return this.postgresRole;
     }
 
     public static Builder builder() {
@@ -86,10 +87,10 @@ public final class GetPostgresRoleSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetPostgresRoleSpecAttributes attributes;
-        private @Nullable String authMethod;
-        private @Nullable String identityType;
+        private String authMethod;
+        private String identityType;
         private @Nullable List<String> membershipRoles;
-        private @Nullable String postgresRole;
+        private String postgresRole;
         public Builder() {}
         public Builder(GetPostgresRoleSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -107,14 +108,18 @@ public final class GetPostgresRoleSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder authMethod(@Nullable String authMethod) {
-
+        public Builder authMethod(String authMethod) {
+            if (authMethod == null) {
+              throw new MissingRequiredPropertyException("GetPostgresRoleSpec", "authMethod");
+            }
             this.authMethod = authMethod;
             return this;
         }
         @CustomType.Setter
-        public Builder identityType(@Nullable String identityType) {
-
+        public Builder identityType(String identityType) {
+            if (identityType == null) {
+              throw new MissingRequiredPropertyException("GetPostgresRoleSpec", "identityType");
+            }
             this.identityType = identityType;
             return this;
         }
@@ -128,8 +133,10 @@ public final class GetPostgresRoleSpec {
             return membershipRoles(List.of(membershipRoles));
         }
         @CustomType.Setter
-        public Builder postgresRole(@Nullable String postgresRole) {
-
+        public Builder postgresRole(String postgresRole) {
+            if (postgresRole == null) {
+              throw new MissingRequiredPropertyException("GetPostgresRoleSpec", "postgresRole");
+            }
             this.postgresRole = postgresRole;
             return this;
         }

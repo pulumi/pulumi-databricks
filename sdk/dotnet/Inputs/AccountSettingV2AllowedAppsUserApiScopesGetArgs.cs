@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("allowedScopes")]
         private InputList<string>? _allowedScopes;
+
+        /// <summary>
+        /// OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+        /// the single entry * allows every supported scope and cannot be combined with other scopes. An
+        /// empty list disables user authorization for apps
+        /// </summary>
         public InputList<string> AllowedScopes
         {
             get => _allowedScopes ?? (_allowedScopes = new InputList<string>());

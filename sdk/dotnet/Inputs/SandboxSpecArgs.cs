@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class SandboxSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Compute configuration (size, inactivity timeout) requested for the sandbox
+        /// Compute settings requested for the sandbox, such as the inactivity timeout
         /// </summary>
         [Input("compute")]
         public Input<Inputs.SandboxSpecComputeArgs>? Compute { get; set; }
 
         /// <summary>
-        /// The execution environment to use for the sandbox
+        /// Software environment for the sandbox, such as the container image it runs
         /// </summary>
         [Input("environment")]
         public Input<Inputs.SandboxSpecEnvironmentArgs>? Environment { get; set; }

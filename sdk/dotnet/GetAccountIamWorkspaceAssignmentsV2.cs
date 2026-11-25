@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamWorkspaceAssignmentsV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamWorkspaceAssignmentsV2Result>("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", args ?? new GetAccountIamWorkspaceAssignmentsV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamWorkspaceAssignmentsV2Result>("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", args ?? new GetAccountIamWorkspaceAssignmentsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -46,15 +46,15 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamWorkspaceAssignmentsV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The maximum number of workspace assignments to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+        /// contain fewer assignments
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the workspace whose assignments to list.
-        /// Format: accounts/{account_id}/workspaces/{workspace_id}
+        /// The resource name of the workspace, in the format
+        /// `accounts/{account_id}/workspaces/{workspace_id}`
         /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
@@ -68,15 +68,15 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamWorkspaceAssignmentsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The maximum number of workspace assignments to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+        /// contain fewer assignments
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the workspace whose assignments to list.
-        /// Format: accounts/{account_id}/workspaces/{workspace_id}
+        /// The resource name of the workspace, in the format
+        /// `accounts/{account_id}/workspaces/{workspace_id}`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -93,9 +93,8 @@ namespace Pulumi.Databricks
     {
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The resource name of the workspace that contains the assignment,
-        /// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-        /// APIs return it
+        /// (string) - The resource name of the workspace, in the format
+        /// `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string Parent;
         public readonly ImmutableArray<Outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignmentResult> WorkspaceAssignments;

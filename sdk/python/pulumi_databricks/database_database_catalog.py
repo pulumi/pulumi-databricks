@@ -30,8 +30,12 @@ class DatabaseDatabaseCatalogArgs:
         The set of arguments for constructing a DatabaseDatabaseCatalog resource.
 
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
-        :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input[_builtins.str] database_name: The name of the Postgres database in the instance that the catalog registers. The database must
+               already exist unless create_database_if_not_exists is true. The system databases postgres,
+               databricks_system, template0 and template1 cannot be registered
+        :param pulumi.Input[_builtins.bool] create_database_if_not_exists: If true, the database named in database_name is created in the instance when it does not already
+               exist, with the calling user as its owner. Defaults to false
+        :param pulumi.Input[_builtins.str] name: The name of the catalog in Unity Catalog
         :param pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "database_instance_name", database_instance_name)
@@ -59,7 +63,9 @@ class DatabaseDatabaseCatalogArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the database (in an instance) associated with the catalog
+        The name of the Postgres database in the instance that the catalog registers. The database must
+        already exist unless create_database_if_not_exists is true. The system databases postgres,
+        databricks_system, template0 and template1 cannot be registered
         """
         return pulumi.get(self, "database_name")
 
@@ -70,6 +76,10 @@ class DatabaseDatabaseCatalogArgs:
     @_builtins.property
     @pulumi.getter(name="createDatabaseIfNotExists")
     def create_database_if_not_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, the database named in database_name is created in the instance when it does not already
+        exist, with the calling user as its owner. Defaults to false
+        """
         return pulumi.get(self, "create_database_if_not_exists")
 
     @create_database_if_not_exists.setter
@@ -80,7 +90,7 @@ class DatabaseDatabaseCatalogArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the catalog in UC
+        The name of the catalog in Unity Catalog
         """
         return pulumi.get(self, "name")
 
@@ -113,11 +123,15 @@ class _DatabaseDatabaseCatalogState:
         """
         Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
 
+        :param pulumi.Input[_builtins.bool] create_database_if_not_exists: If true, the database named in database_name is created in the instance when it does not already
+               exist, with the calling user as its owner. Defaults to false
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
-        :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input[_builtins.str] database_name: The name of the Postgres database in the instance that the catalog registers. The database must
+               already exist unless create_database_if_not_exists is true. The system databases postgres,
+               databricks_system, template0 and template1 cannot be registered
+        :param pulumi.Input[_builtins.str] name: The name of the catalog in Unity Catalog
         :param pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] uid: (string)
+        :param pulumi.Input[_builtins.str] uid: (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         """
         if create_database_if_not_exists is not None:
             pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
@@ -135,6 +149,10 @@ class _DatabaseDatabaseCatalogState:
     @_builtins.property
     @pulumi.getter(name="createDatabaseIfNotExists")
     def create_database_if_not_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, the database named in database_name is created in the instance when it does not already
+        exist, with the calling user as its owner. Defaults to false
+        """
         return pulumi.get(self, "create_database_if_not_exists")
 
     @create_database_if_not_exists.setter
@@ -157,7 +175,9 @@ class _DatabaseDatabaseCatalogState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the database (in an instance) associated with the catalog
+        The name of the Postgres database in the instance that the catalog registers. The database must
+        already exist unless create_database_if_not_exists is true. The system databases postgres,
+        databricks_system, template0 and template1 cannot be registered
         """
         return pulumi.get(self, "database_name")
 
@@ -169,7 +189,7 @@ class _DatabaseDatabaseCatalogState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the catalog in UC
+        The name of the catalog in Unity Catalog
         """
         return pulumi.get(self, "name")
 
@@ -193,7 +213,7 @@ class _DatabaseDatabaseCatalogState:
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string)
+        (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         """
         return pulumi.get(self, "uid")
 
@@ -268,9 +288,13 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] create_database_if_not_exists: If true, the database named in database_name is created in the instance when it does not already
+               exist, with the calling user as its owner. Defaults to false
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
-        :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input[_builtins.str] database_name: The name of the Postgres database in the instance that the catalog registers. The database must
+               already exist unless create_database_if_not_exists is true. The system databases postgres,
+               databricks_system, template0 and template1 cannot be registered
+        :param pulumi.Input[_builtins.str] name: The name of the catalog in Unity Catalog
         :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
@@ -393,11 +417,15 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] create_database_if_not_exists: If true, the database named in database_name is created in the instance when it does not already
+               exist, with the calling user as its owner. Defaults to false
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
-        :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input[_builtins.str] database_name: The name of the Postgres database in the instance that the catalog registers. The database must
+               already exist unless create_database_if_not_exists is true. The system databases postgres,
+               databricks_system, template0 and template1 cannot be registered
+        :param pulumi.Input[_builtins.str] name: The name of the catalog in Unity Catalog
         :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] uid: (string)
+        :param pulumi.Input[_builtins.str] uid: (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -432,6 +460,10 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createDatabaseIfNotExists")
     def create_database_if_not_exists(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, the database named in database_name is created in the instance when it does not already
+        exist, with the calling user as its owner. Defaults to false
+        """
         return pulumi.get(self, "create_database_if_not_exists")
 
     @_builtins.property
@@ -446,7 +478,9 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the database (in an instance) associated with the catalog
+        The name of the Postgres database in the instance that the catalog registers. The database must
+        already exist unless create_database_if_not_exists is true. The system databases postgres,
+        databricks_system, template0 and template1 cannot be registered
         """
         return pulumi.get(self, "database_name")
 
@@ -454,7 +488,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the catalog in UC
+        The name of the catalog in Unity Catalog
         """
         return pulumi.get(self, "name")
 
@@ -470,7 +504,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[_builtins.str]:
         """
-        (string)
+        (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         """
         return pulumi.get(self, "uid")
 

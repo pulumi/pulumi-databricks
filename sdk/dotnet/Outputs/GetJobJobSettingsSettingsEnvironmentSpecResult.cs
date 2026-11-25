@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Client;
         public readonly ImmutableArray<string> Dependencies;
         public readonly string? EnvironmentVersion;
+        public readonly string? ImageUri;
         public readonly ImmutableArray<string> JavaDependencies;
         public readonly string? ProjectEnvironment;
 
@@ -30,6 +31,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? environmentVersion,
 
+            string? imageUri,
+
             ImmutableArray<string> javaDependencies,
 
             string? projectEnvironment)
@@ -38,6 +41,7 @@ namespace Pulumi.Databricks.Outputs
             Client = client;
             Dependencies = dependencies;
             EnvironmentVersion = environmentVersion;
+            ImageUri = imageUri;
             JavaDependencies = javaDependencies;
             ProjectEnvironment = projectEnvironment;
         }

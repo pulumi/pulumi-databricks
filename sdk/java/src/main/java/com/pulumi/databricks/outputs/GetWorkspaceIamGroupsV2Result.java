@@ -20,8 +20,8 @@ public final class GetWorkspaceIamGroupsV2Result {
     private List<GetWorkspaceIamGroupsV2Group> groups;
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     private @Nullable String parent;
@@ -38,8 +38,8 @@ public final class GetWorkspaceIamGroupsV2Result {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Optional<String> parent() {

@@ -109,7 +109,7 @@ namespace Pulumi.Databricks
     public sealed class GetRfaAccessRequestDestinationsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        /// The full name of the securable, repeated from **securable**
         /// </summary>
         [Input("fullName", required: true)]
         public string FullName { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
         public Inputs.GetRfaAccessRequestDestinationsProviderConfigArgs? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        /// The type of the securable, repeated from **securable** as a plain string
         /// </summary>
         [Input("securableType", required: true)]
         public string SecurableType { get; set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Databricks
     public sealed class GetRfaAccessRequestDestinationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        /// The full name of the securable, repeated from **securable**
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetRfaAccessRequestDestinationsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        /// The type of the securable, repeated from **securable** as a plain string
         /// </summary>
         [Input("securableType", required: true)]
         public Input<string> SecurableType { get; set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetRfaAccessRequestDestinationsSecurableResult Securable;
         /// <summary>
-        /// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        /// (string) - The type of the securable, repeated from **securable** as a plain string
         /// </summary>
         public readonly string SecurableType;
 

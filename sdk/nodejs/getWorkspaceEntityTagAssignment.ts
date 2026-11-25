@@ -91,7 +91,7 @@ export interface GetWorkspaceEntityTagAssignmentResult {
      */
     readonly tagKey: string;
     /**
-     * (string) - The value of the tag
+     * (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
      */
     readonly tagValue: string;
 }

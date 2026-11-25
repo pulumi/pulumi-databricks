@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
     /// 
@@ -156,14 +156,14 @@ namespace Pulumi.Databricks
     public partial class PostgresSyncedTable : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (string)
+        /// (string) - The time when the synced table was created
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Output only. The Full resource name of the synced table in Postgres
-        /// where (catalog, schema, table) are the UC entity names.
+        /// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        /// names of the synced table.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -187,7 +187,8 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresSyncedTableStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        /// It is the SyncedTableId that was used to create the synced table and the last component of name
         /// </summary>
         [Output("syncedTableId")]
         public Output<string> SyncedTableId { get; private set; } = null!;
@@ -257,7 +258,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresSyncedTableSpecArgs>? Spec { get; set; }
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        /// It is the SyncedTableId that was used to create the synced table and the last component of name
         /// </summary>
         [Input("syncedTableId", required: true)]
         public Input<string> SyncedTableId { get; set; } = null!;
@@ -271,14 +273,14 @@ namespace Pulumi.Databricks
     public sealed class PostgresSyncedTableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string)
+        /// (string) - The time when the synced table was created
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - Output only. The Full resource name of the synced table in Postgres
-        /// where (catalog, schema, table) are the UC entity names.
+        /// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        /// names of the synced table.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -302,7 +304,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresSyncedTableStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        /// It is the SyncedTableId that was used to create the synced table and the last component of name
         /// </summary>
         [Input("syncedTableId")]
         public Input<string>? SyncedTableId { get; set; }

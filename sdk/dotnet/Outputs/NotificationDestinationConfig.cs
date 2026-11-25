@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfig
     {
+        /// <summary>
+        /// The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigDatabricksAppSlack? DatabricksAppSlack;
+        /// <summary>
+        /// The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigDatabricksAppTeams? DatabricksAppTeams;
         /// <summary>
         /// The email configuration of the Notification Destination. It must contain the following:

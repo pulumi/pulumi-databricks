@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Secret value forwarded under the `ApiKeyName` header on outbound
-        /// requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+        /// requests. Supply the value in `api_key_value.plaintext`
         /// </summary>
         [Input("apiKeyValue")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs>? ApiKeyValue { get; set; }

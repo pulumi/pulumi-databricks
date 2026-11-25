@@ -17,9 +17,19 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
 
     public static final DatabaseDatabaseCatalogState Empty = new DatabaseDatabaseCatalogState();
 
+    /**
+     * If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     * 
+     */
     @Import(name="createDatabaseIfNotExists")
     private @Nullable Output<Boolean> createDatabaseIfNotExists;
 
+    /**
+     * @return If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     * 
+     */
     public Optional<Output<Boolean>> createDatabaseIfNotExists() {
         return Optional.ofNullable(this.createDatabaseIfNotExists);
     }
@@ -40,14 +50,18 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
     }
 
     /**
-     * The name of the database (in an instance) associated with the catalog
+     * The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return The name of the database (in an instance) associated with the catalog
+     * @return The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -55,14 +69,14 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
     }
 
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the catalog in UC
+     * @return The name of the catalog in Unity Catalog
      * 
      */
     public Optional<Output<String>> name() {
@@ -85,14 +99,14 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
     }
 
     /**
-     * (string)
+     * (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string)
+     * @return (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      * 
      */
     public Optional<Output<String>> uid() {
@@ -128,11 +142,25 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
             $ = new DatabaseDatabaseCatalogState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createDatabaseIfNotExists If true, the database named in databaseName is created in the instance when it does not already
+         * exist, with the calling user as its owner. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
         public Builder createDatabaseIfNotExists(@Nullable Output<Boolean> createDatabaseIfNotExists) {
             $.createDatabaseIfNotExists = createDatabaseIfNotExists;
             return this;
         }
 
+        /**
+         * @param createDatabaseIfNotExists If true, the database named in databaseName is created in the instance when it does not already
+         * exist, with the calling user as its owner. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
         public Builder createDatabaseIfNotExists(Boolean createDatabaseIfNotExists) {
             return createDatabaseIfNotExists(Output.of(createDatabaseIfNotExists));
         }
@@ -159,7 +187,9 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param databaseName The name of the database (in an instance) associated with the catalog
+         * @param databaseName The name of the Postgres database in the instance that the catalog registers. The database must
+         * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+         * databricks_system, template0 and template1 cannot be registered
          * 
          * @return builder
          * 
@@ -170,7 +200,9 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param databaseName The name of the database (in an instance) associated with the catalog
+         * @param databaseName The name of the Postgres database in the instance that the catalog registers. The database must
+         * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+         * databricks_system, template0 and template1 cannot be registered
          * 
          * @return builder
          * 
@@ -180,7 +212,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the catalog in UC
+         * @param name The name of the catalog in Unity Catalog
          * 
          * @return builder
          * 
@@ -191,7 +223,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the catalog in UC
+         * @param name The name of the catalog in Unity Catalog
          * 
          * @return builder
          * 
@@ -222,7 +254,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uid (string)
+         * @param uid (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
          * 
          * @return builder
          * 
@@ -233,7 +265,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uid (string)
+         * @param uid (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
          * 
          * @return builder
          * 

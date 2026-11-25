@@ -20,8 +20,9 @@ public final class GetAiGatewayModelProviderServicePlainArgs extends com.pulumi.
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     @Import(name="name", required=true)
@@ -31,8 +32,9 @@ public final class GetAiGatewayModelProviderServicePlainArgs extends com.pulumi.
      * @return Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     public String name() {
@@ -83,8 +85,9 @@ public final class GetAiGatewayModelProviderServicePlainArgs extends com.pulumi.
          * @param name Resource name of the provider service.
          * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelProviderServiceId`; it is required and immutable on
+         * Update, Get, and Delete
          * 
          * @return builder
          * 

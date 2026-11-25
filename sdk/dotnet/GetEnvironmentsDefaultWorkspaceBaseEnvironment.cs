@@ -157,11 +157,13 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// (string) - The default workspace base environment for CPU compute.
+        /// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         public readonly string CpuWorkspaceBaseEnvironment;
         /// <summary>
         /// (string) - The default workspace base environment for GPU compute.
+        /// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         public readonly string GpuWorkspaceBaseEnvironment;

@@ -87,13 +87,14 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Custom description for the alert. Interpreted according to `CustomTemplateFormat`
+        /// Custom description for the alert, used as the notification body. Interpreted according to `CustomTemplateFormat`.
+        /// The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         /// </summary>
         [Output("customDescription")]
         public Output<string?> CustomDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
+        /// Custom summary for the alert, used as the notification subject. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Output("customSummary")]
         public Output<string?> CustomSummary { get; private set; } = null!;
@@ -126,11 +127,14 @@ namespace Pulumi.Databricks
         [Output("effectiveRunAs")]
         public Output<Outputs.AlertV2EffectiveRunAs> EffectiveRunAs { get; private set; } = null!;
 
+        /// <summary>
+        /// Condition evaluated against the query result, and who is notified when it is met
+        /// </summary>
         [Output("evaluation")]
         public Output<Outputs.AlertV2Evaluation> Evaluation { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        /// (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
@@ -192,13 +196,16 @@ namespace Pulumi.Databricks
         public Output<Outputs.AlertV2RunAs?> RunAs { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release.
         /// The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
         [Output("runAsUserName")]
         public Output<string?> RunAsUserName { get; private set; } = null!;
 
+        /// <summary>
+        /// Schedule on which the alert runs its query and evaluates the condition
+        /// </summary>
         [Output("schedule")]
         public Output<Outputs.AlertV2Schedule> Schedule { get; private set; } = null!;
 
@@ -261,13 +268,14 @@ namespace Pulumi.Databricks
     public sealed class AlertV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom description for the alert. Interpreted according to `CustomTemplateFormat`
+        /// Custom description for the alert, used as the notification body. Interpreted according to `CustomTemplateFormat`.
+        /// The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
         /// <summary>
-        /// Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
+        /// Custom summary for the alert, used as the notification subject. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
@@ -292,6 +300,9 @@ namespace Pulumi.Databricks
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Condition evaluated against the query result, and who is notified when it is met
+        /// </summary>
         [Input("evaluation", required: true)]
         public Input<Inputs.AlertV2EvaluationArgs> Evaluation { get; set; } = null!;
 
@@ -352,13 +363,16 @@ namespace Pulumi.Databricks
         public Input<Inputs.AlertV2RunAsArgs>? RunAs { get; set; }
 
         /// <summary>
+        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release.
         /// The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
+        /// <summary>
+        /// Schedule on which the alert runs its query and evaluates the condition
+        /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.AlertV2ScheduleArgs> Schedule { get; set; } = null!;
 
@@ -383,13 +397,14 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Custom description for the alert. Interpreted according to `CustomTemplateFormat`
+        /// Custom description for the alert, used as the notification body. Interpreted according to `CustomTemplateFormat`.
+        /// The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
         /// <summary>
-        /// Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
+        /// Custom summary for the alert, used as the notification subject. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
@@ -422,11 +437,14 @@ namespace Pulumi.Databricks
         [Input("effectiveRunAs")]
         public Input<Inputs.AlertV2EffectiveRunAsGetArgs>? EffectiveRunAs { get; set; }
 
+        /// <summary>
+        /// Condition evaluated against the query result, and who is notified when it is met
+        /// </summary>
         [Input("evaluation")]
         public Input<Inputs.AlertV2EvaluationGetArgs>? Evaluation { get; set; }
 
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        /// (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }
@@ -494,13 +512,16 @@ namespace Pulumi.Databricks
         public Input<Inputs.AlertV2RunAsGetArgs>? RunAs { get; set; }
 
         /// <summary>
+        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release.
         /// The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
+        /// <summary>
+        /// Schedule on which the alert runs its query and evaluates the condition
+        /// </summary>
         [Input("schedule")]
         public Input<Inputs.AlertV2ScheduleGetArgs>? Schedule { get; set; }
 

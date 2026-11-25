@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class WorkspaceSettingV2EffectiveWorkspaceLabel
     {
         public readonly string? Color;
+        /// <summary>
+        /// Text of the label shown next to the workspace name in the top navigation bar. An empty string
+        /// means no label is set
+        /// </summary>
         public readonly string? Label;
 
         [OutputConstructor]

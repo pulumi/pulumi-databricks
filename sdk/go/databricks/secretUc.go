@@ -40,13 +40,9 @@ import (
 //			_, err := databricks.NewSecretUc(ctx, "example", &databricks.SecretUcArgs{
 //				CatalogName: pulumi.String("my_catalog"),
 //				SchemaName:  pulumi.String("my_schema"),
-//				Secret: []map[string]string{
-//					{
-//						"name":    "my_secret",
-//						"value":   "secret_value",
-//						"comment": "My secret for external service authentication",
-//					},
-//				},
+//				Name:        pulumi.String("my_secret"),
+//				Value:       pulumi.String("secret_value"),
+//				Comment:     pulumi.String("My secret for external service authentication"),
 //			})
 //			if err != nil {
 //				return err

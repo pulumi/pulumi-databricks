@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresDatabase
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -184,7 +184,7 @@ namespace Pulumi.Databricks
         public readonly string Parent;
         public readonly Outputs.GetPostgresDatabaseProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (DatabaseDatabaseSpec) - The desired state of the Database
+        /// (DatabaseDatabaseSpec) - The desired state of the Database.
         /// </summary>
         public readonly Outputs.GetPostgresDatabaseSpecResult Spec;
         /// <summary>

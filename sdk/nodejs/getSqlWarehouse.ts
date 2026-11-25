@@ -167,7 +167,7 @@ export interface GetSqlWarehouseArgs {
      */
     state?: string;
     /**
-     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      */
     statementTimeout?: number;
     /**
@@ -268,7 +268,7 @@ export interface GetSqlWarehouseResult {
      */
     readonly state: string;
     /**
-     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      */
     readonly statementTimeout: number;
     /**
@@ -441,7 +441,7 @@ export interface GetSqlWarehouseOutputArgs {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      */
     statementTimeout?: pulumi.Input<number | undefined>;
     /**

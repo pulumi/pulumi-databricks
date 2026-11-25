@@ -14,30 +14,29 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamExternalGroupV2Result {
     /**
-     * @return (string) - The parent account ID, from Databricks
+     * @return (string) - The ID of the account that contains the group
      * 
      */
     private String accountId;
     /**
-     * @return (string) - Display name of the group from the customer&#39;s IdP
+     * @return (string) - The name of the group, from your IdP. It&#39;s the same as the group&#39;s `groupName`
      * 
      */
     private String displayName;
     /**
-     * @return (string) - The external ID of the group in the customer&#39;s IdP
+     * @return (string) - The ID of the group in your IdP
      * 
      */
     private String externalGroupId;
     /**
-     * @return (string) - Internal groupId of the group in Databricks
+     * @return (string) - The Databricks ID of the group. Use it as the `groupId` in the group APIs
      * 
      */
     private String internalId;
     /**
-     * @return (string) - The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * @return (string) - The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      * 
      */
     private String name;
@@ -45,38 +44,37 @@ public final class GetWorkspaceIamExternalGroupV2Result {
 
     private GetWorkspaceIamExternalGroupV2Result() {}
     /**
-     * @return (string) - The parent account ID, from Databricks
+     * @return (string) - The ID of the account that contains the group
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (string) - Display name of the group from the customer&#39;s IdP
+     * @return (string) - The name of the group, from your IdP. It&#39;s the same as the group&#39;s `groupName`
      * 
      */
     public String displayName() {
         return this.displayName;
     }
     /**
-     * @return (string) - The external ID of the group in the customer&#39;s IdP
+     * @return (string) - The ID of the group in your IdP
      * 
      */
     public String externalGroupId() {
         return this.externalGroupId;
     }
     /**
-     * @return (string) - Internal groupId of the group in Databricks
+     * @return (string) - The Databricks ID of the group. Use it as the `groupId` in the group APIs
      * 
      */
     public String internalId() {
         return this.internalId;
     }
     /**
-     * @return (string) - The resource name of the external group. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-     * - Workspace-scoped: external-groups/{external_group_id}
+     * @return (string) - The resource name of the external group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+     * - Workspace APIs: `external-groups/{external_group_id}`
      * 
      */
     public String name() {

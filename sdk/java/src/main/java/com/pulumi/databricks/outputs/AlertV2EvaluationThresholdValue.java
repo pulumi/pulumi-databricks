@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertV2EvaluationThresholdValue {
+    /**
+     * @return Boolean threshold, for boolean columns
+     * 
+     */
     private @Nullable Boolean boolValue;
+    /**
+     * @return Numeric threshold, for numeric columns
+     * 
+     */
     private @Nullable Double doubleValue;
+    /**
+     * @return String threshold, for string or timestamp columns
+     * 
+     */
     private @Nullable String stringValue;
 
     private AlertV2EvaluationThresholdValue() {}
+    /**
+     * @return Boolean threshold, for boolean columns
+     * 
+     */
     public Optional<Boolean> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
+    /**
+     * @return Numeric threshold, for numeric columns
+     * 
+     */
     public Optional<Double> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
+    /**
+     * @return String threshold, for string or timestamp columns
+     * 
+     */
     public Optional<String> stringValue() {
         return Optional.ofNullable(this.stringValue);
     }

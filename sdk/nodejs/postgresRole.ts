@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -22,9 +22,9 @@ import * as utilities from "./utilities";
  *
  * If you're unsure of the exact value, find the role in the Lakebase UI (or list the branch's roles with the Postgres API) and read its `roleId` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
  *
- * `replaceExisting = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+ * `replaceExisting = true` only affects the initial adoption. After the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual role**, not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
  *
- * `spec.membership_roles` overwrites the role's memberships on every apply. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
+ * When Pulumi updates a Role with a non-null spec, `spec.membership_roles` replaces its memberships. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -241,7 +241,7 @@ export class PostgresRole extends pulumi.CustomResource {
     }
 
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was created
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -267,7 +267,9 @@ export class PostgresRole extends pulumi.CustomResource {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role's existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -279,15 +281,19 @@ export class PostgresRole extends pulumi.CustomResource {
      */
     declare public readonly roleId: pulumi.Output<string>;
     /**
-     * The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
-    declare public readonly spec: pulumi.Output<outputs.PostgresRoleSpec>;
+    declare public readonly spec: pulumi.Output<outputs.PostgresRoleSpec | undefined>;
     /**
      * (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresRoleStatus>;
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was last updated
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -338,7 +344,7 @@ export class PostgresRole extends pulumi.CustomResource {
  */
 export interface PostgresRoleState {
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was created
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
@@ -364,7 +370,9 @@ export interface PostgresRoleState {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role's existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -376,7 +384,11 @@ export interface PostgresRoleState {
      */
     roleId?: pulumi.Input<string | undefined>;
     /**
-     * The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresRoleSpec | undefined>;
     /**
@@ -384,7 +396,7 @@ export interface PostgresRoleState {
      */
     status?: pulumi.Input<inputs.PostgresRoleStatus | undefined>;
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was last updated
      */
     updateTime?: pulumi.Input<string | undefined>;
 }
@@ -411,7 +423,9 @@ export interface PostgresRoleArgs {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role's existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -423,7 +437,11 @@ export interface PostgresRoleArgs {
      */
     roleId?: pulumi.Input<string | undefined>;
     /**
-     * The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresRoleSpec | undefined>;
 }

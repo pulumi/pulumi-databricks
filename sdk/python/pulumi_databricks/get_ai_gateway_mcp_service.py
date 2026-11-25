@@ -93,7 +93,7 @@ class GetAiGatewayMcpServiceResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> _builtins.str:
         """
-        (string) - Creator identity
+        (string) - Username or service principal application ID of the principal that created the MCP service
         """
         return pulumi.get(self, "created_by")
 
@@ -101,7 +101,7 @@ class GetAiGatewayMcpServiceResult:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> _builtins.str:
         """
-        (string) - Owner of the MCP service
+        (string) - Username, group name, or service principal application ID of the MCP service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -120,7 +120,7 @@ class GetAiGatewayMcpServiceResult:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> _builtins.str:
         """
-        (string) - Metastore hosting the MCP service
+        (string) - Unique identifier of the metastore that contains the MCP service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -150,7 +150,8 @@ class GetAiGatewayMcpServiceResult:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> _builtins.str:
         """
-        (string) - Identity of the last updater
+        (string) - Username or service principal application ID of the principal that last updated the MCP
+        service
         """
         return pulumi.get(self, "updated_by")
 
@@ -200,8 +201,9 @@ def get_ai_gateway_mcp_service(name: Optional[_builtins.str] = None,
     :param _builtins.str name: Resource name of the MCP service.
            Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
            Each `{...}` component is capped at 255 characters individually.
-           Server-derived on Create from `parent` +
-           `mcp_service_id`; required and immutable on Update/Get/Delete
+           The server derives the name on Create from
+           `parent` and `mcp_service_id`; it is required and immutable on Update,
+           Get, and Delete
     :param Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -248,8 +250,9 @@ def get_ai_gateway_mcp_service_output(name: pulumi.Input[Optional[_builtins.str]
     :param _builtins.str name: Resource name of the MCP service.
            Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
            Each `{...}` component is capped at 255 characters individually.
-           Server-derived on Create from `parent` +
-           `mcp_service_id`; required and immutable on Update/Get/Delete
+           The server derives the name on Create from
+           `parent` and `mcp_service_id`; it is required and immutable on Update,
+           Get, and Delete
     :param Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

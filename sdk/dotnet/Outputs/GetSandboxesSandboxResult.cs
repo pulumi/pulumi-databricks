@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (SandboxMetadata) - Metadata associated with the sandbox
+        /// (SandboxMetadata) - Tags and other metadata associated with the sandbox
         /// </summary>
         public readonly Outputs.GetSandboxesSandboxMetadataResult Metadata;
         /// <summary>

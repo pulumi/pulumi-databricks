@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
     public sealed class GetAccountSettingV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the setting
+        /// Name of the setting. The settings metadata endpoint lists the names available at each scope
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
     public sealed class GetAccountSettingV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the setting
+        /// Name of the setting. The settings metadata endpoint lists the names available at each scope
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -216,6 +216,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveStringValResult EffectiveStringVal;
         /// <summary>
+        /// (DashboardTheme) - Effective setting value for the WorkspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeResult EffectiveWorkspaceDashboardTheme;
+        /// <summary>
         /// (WorkspaceLabelMessage) - Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveWorkspaceLabelResult EffectiveWorkspaceLabel;
@@ -224,7 +228,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountSettingV2IntegerValResult IntegerVal;
         /// <summary>
-        /// (string) - Name of the setting
+        /// (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -243,6 +247,10 @@ namespace Pulumi.Databricks
         /// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check EffectiveStringVal for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2StringValResult StringVal;
+        /// <summary>
+        /// (DashboardTheme) - Setting value for the WorkspaceDashboardTheme setting. This is the setting value set by consumers. Check EffectiveWorkspaceDashboardTheme for the final setting value
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2WorkspaceDashboardThemeResult WorkspaceDashboardTheme;
         /// <summary>
         /// (WorkspaceLabelMessage) - Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
         /// </summary>
@@ -284,6 +292,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetAccountSettingV2EffectiveStringValResult effectiveStringVal,
 
+            Outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeResult effectiveWorkspaceDashboardTheme,
+
             Outputs.GetAccountSettingV2EffectiveWorkspaceLabelResult effectiveWorkspaceLabel,
 
             Outputs.GetAccountSettingV2IntegerValResult integerVal,
@@ -297,6 +307,8 @@ namespace Pulumi.Databricks
             Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult restrictWorkspaceAdmins,
 
             Outputs.GetAccountSettingV2StringValResult stringVal,
+
+            Outputs.GetAccountSettingV2WorkspaceDashboardThemeResult workspaceDashboardTheme,
 
             Outputs.GetAccountSettingV2WorkspaceLabelResult workspaceLabel)
         {
@@ -317,6 +329,7 @@ namespace Pulumi.Databricks
             EffectivePersonalCompute = effectivePersonalCompute;
             EffectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             EffectiveStringVal = effectiveStringVal;
+            EffectiveWorkspaceDashboardTheme = effectiveWorkspaceDashboardTheme;
             EffectiveWorkspaceLabel = effectiveWorkspaceLabel;
             IntegerVal = integerVal;
             Name = name;
@@ -324,6 +337,7 @@ namespace Pulumi.Databricks
             PersonalCompute = personalCompute;
             RestrictWorkspaceAdmins = restrictWorkspaceAdmins;
             StringVal = stringVal;
+            WorkspaceDashboardTheme = workspaceDashboardTheme;
             WorkspaceLabel = workspaceLabel;
         }
     }

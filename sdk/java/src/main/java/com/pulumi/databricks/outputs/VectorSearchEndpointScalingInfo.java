@@ -12,14 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchEndpointScalingInfo {
+    private @Nullable String delayedReason;
+    private @Nullable Integer estimatedCompletionTimestamp;
+    private @Nullable Integer indexInitializationPercentage;
+    private @Nullable String phase;
     private @Nullable Integer requestedTargetQps;
     /**
      * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      * 
      */
     private @Nullable String state;
+    private @Nullable Integer targetQpsChangeAllowedAfterTimestamp;
 
     private VectorSearchEndpointScalingInfo() {}
+    public Optional<String> delayedReason() {
+        return Optional.ofNullable(this.delayedReason);
+    }
+    public Optional<Integer> estimatedCompletionTimestamp() {
+        return Optional.ofNullable(this.estimatedCompletionTimestamp);
+    }
+    public Optional<Integer> indexInitializationPercentage() {
+        return Optional.ofNullable(this.indexInitializationPercentage);
+    }
+    public Optional<String> phase() {
+        return Optional.ofNullable(this.phase);
+    }
     public Optional<Integer> requestedTargetQps() {
         return Optional.ofNullable(this.requestedTargetQps);
     }
@@ -29,6 +46,9 @@ public final class VectorSearchEndpointScalingInfo {
      */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
+    }
+    public Optional<Integer> targetQpsChangeAllowedAfterTimestamp() {
+        return Optional.ofNullable(this.targetQpsChangeAllowedAfterTimestamp);
     }
 
     public static Builder builder() {
@@ -40,15 +60,49 @@ public final class VectorSearchEndpointScalingInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String delayedReason;
+        private @Nullable Integer estimatedCompletionTimestamp;
+        private @Nullable Integer indexInitializationPercentage;
+        private @Nullable String phase;
         private @Nullable Integer requestedTargetQps;
         private @Nullable String state;
+        private @Nullable Integer targetQpsChangeAllowedAfterTimestamp;
         public Builder() {}
         public Builder(VectorSearchEndpointScalingInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.delayedReason = defaults.delayedReason;
+    	      this.estimatedCompletionTimestamp = defaults.estimatedCompletionTimestamp;
+    	      this.indexInitializationPercentage = defaults.indexInitializationPercentage;
+    	      this.phase = defaults.phase;
     	      this.requestedTargetQps = defaults.requestedTargetQps;
     	      this.state = defaults.state;
+    	      this.targetQpsChangeAllowedAfterTimestamp = defaults.targetQpsChangeAllowedAfterTimestamp;
         }
 
+        @CustomType.Setter
+        public Builder delayedReason(@Nullable String delayedReason) {
+
+            this.delayedReason = delayedReason;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder estimatedCompletionTimestamp(@Nullable Integer estimatedCompletionTimestamp) {
+
+            this.estimatedCompletionTimestamp = estimatedCompletionTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder indexInitializationPercentage(@Nullable Integer indexInitializationPercentage) {
+
+            this.indexInitializationPercentage = indexInitializationPercentage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder phase(@Nullable String phase) {
+
+            this.phase = phase;
+            return this;
+        }
         @CustomType.Setter
         public Builder requestedTargetQps(@Nullable Integer requestedTargetQps) {
 
@@ -61,10 +115,21 @@ public final class VectorSearchEndpointScalingInfo {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder targetQpsChangeAllowedAfterTimestamp(@Nullable Integer targetQpsChangeAllowedAfterTimestamp) {
+
+            this.targetQpsChangeAllowedAfterTimestamp = targetQpsChangeAllowedAfterTimestamp;
+            return this;
+        }
         public VectorSearchEndpointScalingInfo build() {
             final var _resultValue = new VectorSearchEndpointScalingInfo();
+            _resultValue.delayedReason = delayedReason;
+            _resultValue.estimatedCompletionTimestamp = estimatedCompletionTimestamp;
+            _resultValue.indexInitializationPercentage = indexInitializationPercentage;
+            _resultValue.phase = phase;
             _resultValue.requestedTargetQps = requestedTargetQps;
             _resultValue.state = state;
+            _resultValue.targetQpsChangeAllowedAfterTimestamp = targetQpsChangeAllowedAfterTimestamp;
             return _resultValue;
         }
     }

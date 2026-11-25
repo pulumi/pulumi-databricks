@@ -14,8 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetBudgetPoliciesFilterByResult
     {
         /// <summary>
-        /// The policy creator user id to be filtered on.
-        /// If unspecified, all policies will be returned
+        /// Deprecated: This field is ignored. Creator filtering will be removed in a future version
         /// </summary>
         public readonly int? CreatorUserId;
         /// <summary>

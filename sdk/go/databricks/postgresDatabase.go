@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -22,9 +22,9 @@ import (
 //
 // A database named `databricks-postgres` (Postgres name `databricksPostgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
 //
-// `replaceExisting = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+// `replaceExisting = true` only affects the initial adoption. After the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual database** (and its data), not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
 //
-// `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `<branch-name>/roles/<role_id>`.
+// Include `spec.role` in a non-null Pulumi spec. To preserve ownership, use the current owner's full Role resource name from the same branch, written as `<branch-name>/roles/<role_id>`.
 //
 // ```go
 // package main
@@ -64,6 +64,7 @@ import (
 //				Parent:     production.Name,
 //				Spec: &databricks.PostgresDatabaseSpecArgs{
 //					PostgresDatabase: pulumi.String("databricks_postgres"),
+//					Role:             pulumi.String("projects/my-project/branches/production/roles/jane-doe"),
 //				},
 //				ReplaceExisting: pulumi.Bool(true),
 //			})
@@ -86,6 +87,8 @@ import (
 // package main
 //
 // import (
+//
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -110,6 +113,9 @@ import (
 //				Parent:     child.Name,
 //				Spec: &databricks.PostgresDatabaseSpecArgs{
 //					PostgresDatabase: pulumi.String("databricks_postgres"),
+//					Role: child.Name.ApplyT(func(name string) (string, error) {
+//						return fmt.Sprintf("%v/roles/jane-doe", name), nil
+//					}).(pulumi.StringOutput),
 //				},
 //				ReplaceExisting: pulumi.Bool(true),
 //			})
@@ -124,7 +130,7 @@ import (
 //
 // ### Database Owned by a Specific Role
 //
-// Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+// `spec.role` is required when creating a database and must reference a role in the same branch.
 //
 // ```go
 // package main
@@ -186,6 +192,7 @@ import (
 //				Parent:     pulumi.Any(main.Name),
 //				Spec: &databricks.PostgresDatabaseSpecArgs{
 //					PostgresDatabase: pulumi.String("analytics_v2"),
+//					Role:             pulumi.String("projects/my-project/branches/main/roles/app-owner"),
 //				},
 //			})
 //			if err != nil {
@@ -288,10 +295,15 @@ type PostgresDatabase struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresDatabaseProviderConfigOutput `pulumi:"providerConfig"`
 	// If true, update the database if it already exists instead of returning an
-	// error
+	// error. This requires `databaseId` to be set. Without `databaseId`, the request
+	// follows the normal create path and fails if the database name already exists
 	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
-	// The desired state of the Database
-	Spec PostgresDatabaseSpecOutput `pulumi:"spec"`
+	// The desired state of the Database.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
+	Spec PostgresDatabaseSpecPtrOutput `pulumi:"spec"`
 	// (DatabaseDatabaseStatus) - The observed state of the Database
 	Status PostgresDatabaseStatusOutput `pulumi:"status"`
 	// (string) - A timestamp indicating when the database was last updated
@@ -344,9 +356,14 @@ type postgresDatabaseState struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresDatabaseProviderConfig `pulumi:"providerConfig"`
 	// If true, update the database if it already exists instead of returning an
-	// error
+	// error. This requires `databaseId` to be set. Without `databaseId`, the request
+	// follows the normal create path and fails if the database name already exists
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
-	// The desired state of the Database
+	// The desired state of the Database.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec *PostgresDatabaseSpec `pulumi:"spec"`
 	// (DatabaseDatabaseStatus) - The observed state of the Database
 	Status *PostgresDatabaseStatus `pulumi:"status"`
@@ -368,9 +385,14 @@ type PostgresDatabaseState struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresDatabaseProviderConfigPtrInput
 	// If true, update the database if it already exists instead of returning an
-	// error
+	// error. This requires `databaseId` to be set. Without `databaseId`, the request
+	// follows the normal create path and fails if the database name already exists
 	ReplaceExisting pulumi.BoolPtrInput
-	// The desired state of the Database
+	// The desired state of the Database.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec PostgresDatabaseSpecPtrInput
 	// (DatabaseDatabaseStatus) - The observed state of the Database
 	Status PostgresDatabaseStatusPtrInput
@@ -397,9 +419,14 @@ type postgresDatabaseArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresDatabaseProviderConfig `pulumi:"providerConfig"`
 	// If true, update the database if it already exists instead of returning an
-	// error
+	// error. This requires `databaseId` to be set. Without `databaseId`, the request
+	// follows the normal create path and fails if the database name already exists
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
-	// The desired state of the Database
+	// The desired state of the Database.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec *PostgresDatabaseSpec `pulumi:"spec"`
 }
 
@@ -413,9 +440,14 @@ type PostgresDatabaseArgs struct {
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresDatabaseProviderConfigPtrInput
 	// If true, update the database if it already exists instead of returning an
-	// error
+	// error. This requires `databaseId` to be set. Without `databaseId`, the request
+	// follows the normal create path and fails if the database name already exists
 	ReplaceExisting pulumi.BoolPtrInput
-	// The desired state of the Database
+	// The desired state of the Database.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec PostgresDatabaseSpecPtrInput
 }
 
@@ -534,14 +566,19 @@ func (o PostgresDatabaseOutput) ProviderConfig() PostgresDatabaseProviderConfigO
 }
 
 // If true, update the database if it already exists instead of returning an
-// error
+// error. This requires `databaseId` to be set. Without `databaseId`, the request
+// follows the normal create path and fails if the database name already exists
 func (o PostgresDatabaseOutput) ReplaceExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PostgresDatabase) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
-// The desired state of the Database
-func (o PostgresDatabaseOutput) Spec() PostgresDatabaseSpecOutput {
-	return o.ApplyT(func(v *PostgresDatabase) PostgresDatabaseSpecOutput { return v.Spec }).(PostgresDatabaseSpecOutput)
+// The desired state of the Database.
+//
+// Read the resource's current values from `status`, rather than `spec`.
+// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+// unmanaged fields
+func (o PostgresDatabaseOutput) Spec() PostgresDatabaseSpecPtrOutput {
+	return o.ApplyT(func(v *PostgresDatabase) PostgresDatabaseSpecPtrOutput { return v.Spec }).(PostgresDatabaseSpecPtrOutput)
 }
 
 // (DatabaseDatabaseStatus) - The observed state of the Database

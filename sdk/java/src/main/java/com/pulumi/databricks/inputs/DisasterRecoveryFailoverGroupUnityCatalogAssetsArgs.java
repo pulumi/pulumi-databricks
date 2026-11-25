@@ -20,14 +20,18 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
     public static final DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs Empty = new DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs();
 
     /**
-     * UC catalogs to replicate
+     * Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      * 
      */
     @Import(name="catalogs", required=true)
     private Output<List<DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs>> catalogs;
 
     /**
-     * @return UC catalogs to replicate
+     * @return Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      * 
      */
     public Output<List<DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalogArgs>> catalogs() {
@@ -35,16 +39,16 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
     }
 
     /**
-     * The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs&#39; underlying storage
+     * Name of the workspace set whose workspaces run the data replication for the catalogs&#39;
+     * underlying storage. Must match the name of a workspace set in this failover group
      * 
      */
     @Import(name="dataReplicationWorkspaceSet", required=true)
     private Output<String> dataReplicationWorkspaceSet;
 
     /**
-     * @return The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs&#39; underlying storage
+     * @return Name of the workspace set whose workspaces run the data replication for the catalogs&#39;
+     * underlying storage. Must match the name of a workspace set in this failover group
      * 
      */
     public Output<String> dataReplicationWorkspaceSet() {
@@ -52,14 +56,18 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
     }
 
     /**
-     * Location mappings - storage URI per region for each location
+     * Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      * 
      */
     @Import(name="locationMappings")
     private @Nullable Output<List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs>> locationMappings;
 
     /**
-     * @return Location mappings - storage URI per region for each location
+     * @return Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      * 
      */
     public Optional<Output<List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingArgs>>> locationMappings() {
@@ -93,7 +101,9 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param catalogs UC catalogs to replicate
+         * @param catalogs Unity Catalog catalogs to replicate, including their metadata and managed table data.
+         * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+         * until the catalog has been replicated
          * 
          * @return builder
          * 
@@ -104,7 +114,9 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param catalogs UC catalogs to replicate
+         * @param catalogs Unity Catalog catalogs to replicate, including their metadata and managed table data.
+         * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+         * until the catalog has been replicated
          * 
          * @return builder
          * 
@@ -114,7 +126,9 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param catalogs UC catalogs to replicate
+         * @param catalogs Unity Catalog catalogs to replicate, including their metadata and managed table data.
+         * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+         * until the catalog has been replicated
          * 
          * @return builder
          * 
@@ -124,8 +138,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param dataReplicationWorkspaceSet The workspace set whose workspaces will be used for data replication
-         * of all UC catalogs&#39; underlying storage
+         * @param dataReplicationWorkspaceSet Name of the workspace set whose workspaces run the data replication for the catalogs&#39;
+         * underlying storage. Must match the name of a workspace set in this failover group
          * 
          * @return builder
          * 
@@ -136,8 +150,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param dataReplicationWorkspaceSet The workspace set whose workspaces will be used for data replication
-         * of all UC catalogs&#39; underlying storage
+         * @param dataReplicationWorkspaceSet Name of the workspace set whose workspaces run the data replication for the catalogs&#39;
+         * underlying storage. Must match the name of a workspace set in this failover group
          * 
          * @return builder
          * 
@@ -147,7 +161,9 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param locationMappings Location mappings - storage URI per region for each location
+         * @param locationMappings Storage location mappings. Each mapping pairs a storage path used by the replicated
+         * catalogs in one region with the corresponding path in the other region, so that
+         * replicated data is written to the matching storage in the secondary region
          * 
          * @return builder
          * 
@@ -158,7 +174,9 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param locationMappings Location mappings - storage URI per region for each location
+         * @param locationMappings Storage location mappings. Each mapping pairs a storage path used by the replicated
+         * catalogs in one region with the corresponding path in the other region, so that
+         * replicated data is written to the matching storage in the secondary region
          * 
          * @return builder
          * 
@@ -168,7 +186,9 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs extends c
         }
 
         /**
-         * @param locationMappings Location mappings - storage URI per region for each location
+         * @param locationMappings Storage location mappings. Each mapping pairs a storage path used by the replicated
+         * catalogs in one region with the corresponding path in the other region, so that
+         * replicated data is written to the matching storage in the secondary region
          * 
          * @return builder
          * 

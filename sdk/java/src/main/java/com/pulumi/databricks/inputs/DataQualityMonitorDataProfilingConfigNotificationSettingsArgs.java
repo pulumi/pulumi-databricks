@@ -17,14 +17,16 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs
     public static final DataQualityMonitorDataProfilingConfigNotificationSettingsArgs Empty = new DataQualityMonitorDataProfilingConfigNotificationSettingsArgs();
 
     /**
-     * Destinations to send notifications on failure/timeout
+     * Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      * 
      */
     @Import(name="onFailure")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs> onFailure;
 
     /**
-     * @return Destinations to send notifications on failure/timeout
+     * @return Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      * 
      */
     public Optional<Output<DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs>> onFailure() {
@@ -76,7 +78,8 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs
         }
 
         /**
-         * @param onFailure Destinations to send notifications on failure/timeout
+         * @param onFailure Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+         * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
          * 
          * @return builder
          * 
@@ -87,7 +90,8 @@ public final class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs
         }
 
         /**
-         * @param onFailure Destinations to send notifications on failure/timeout
+         * @param onFailure Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+         * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
          * 
          * @return builder
          * 

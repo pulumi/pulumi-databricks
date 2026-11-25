@@ -12,12 +12,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkspaceSettingV2WorkspaceLabel {
     private @Nullable String color;
+    /**
+     * @return Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     * 
+     */
     private @Nullable String label;
 
     private WorkspaceSettingV2WorkspaceLabel() {}
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
+    /**
+     * @return Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     * 
+     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -48,10 +48,9 @@ export function getWorkspaceIamExternalUserV2(args: GetWorkspaceIamExternalUserV
  */
 export interface GetWorkspaceIamExternalUserV2Args {
     /**
-     * The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      */
     name: string;
     /**
@@ -65,44 +64,43 @@ export interface GetWorkspaceIamExternalUserV2Args {
  */
 export interface GetWorkspaceIamExternalUserV2Result {
     /**
-     * (string) - The parent account ID, from Databricks
+     * (string) - The ID of the account that contains the user
      */
     readonly accountId: string;
     /**
-     * (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     readonly accountUserStatus: string;
     /**
-     * (string) - Display name of the user from the customer's IdP
+     * (string) - The user's given and family names from your IdP, separated by a space
      */
     readonly displayName: string;
     /**
-     * (string) - The external ID of the user in the customer's IdP
+     * (string) - The ID of the user in your IdP
      */
     readonly externalUserId: string;
     /**
-     * (FullName) - The full name of the user, from the customer's IdP
+     * (FullName) - The user's name, from your IdP
      */
     readonly fullName: outputs.GetWorkspaceIamExternalUserV2FullName;
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user. Use it as the `userId` in the user APIs
      */
     readonly internalId: string;
     /**
-     * (string) - The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * (string) - The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetWorkspaceIamExternalUserV2ProviderConfig;
     /**
-     * (string) - Username/email of the user, from Databricks
+     * (string) - The user's username, which is their email address
      */
     readonly username: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -143,10 +141,9 @@ export function getWorkspaceIamExternalUserV2Output(args: GetWorkspaceIamExterna
  */
 export interface GetWorkspaceIamExternalUserV2OutputArgs {
     /**
-     * The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      */
     name: pulumi.Input<string>;
     /**

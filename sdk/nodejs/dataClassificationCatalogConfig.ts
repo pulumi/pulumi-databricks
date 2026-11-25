@@ -105,20 +105,23 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
     }
 
     /**
-     * List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      */
     declare public readonly autoTagConfigs: pulumi.Output<outputs.DataClassificationCatalogConfigAutoTagConfig[] | undefined>;
     /**
      * Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     declare public readonly excludedSchemas: pulumi.Output<outputs.DataClassificationCatalogConfigExcludedSchemas | undefined>;
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
@@ -128,7 +131,7 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * Parent resource in the format: catalogs/{catalog_name}
+     * Name of the catalog to enable, in the format catalogs/{catalog_name}
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
@@ -177,20 +180,23 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
  */
 export interface DataClassificationCatalogConfigState {
     /**
-     * List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      */
     autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
     /**
      * Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     excludedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigExcludedSchemas | undefined>;
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
@@ -200,7 +206,7 @@ export interface DataClassificationCatalogConfigState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Parent resource in the format: catalogs/{catalog_name}
+     * Name of the catalog to enable, in the format catalogs/{catalog_name}
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -214,26 +220,29 @@ export interface DataClassificationCatalogConfigState {
  */
 export interface DataClassificationCatalogConfigArgs {
     /**
-     * List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      */
     autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
     /**
      * Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     excludedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigExcludedSchemas | undefined>;
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas | undefined>;
     /**
-     * Parent resource in the format: catalogs/{catalog_name}
+     * Name of the catalog to enable, in the format catalogs/{catalog_name}
      */
     parent: pulumi.Input<string>;
     /**

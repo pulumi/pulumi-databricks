@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresCatalogResult {
     /**
-     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * @return (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     private String catalogId;
@@ -32,7 +33,8 @@ public final class GetPostgresCatalogResult {
     private String name;
     private @Nullable GetPostgresCatalogProviderConfig providerConfig;
     /**
-     * @return (CatalogCatalogSpec) - The desired state of the Catalog
+     * @return (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     private GetPostgresCatalogSpec spec;
@@ -42,7 +44,7 @@ public final class GetPostgresCatalogResult {
      */
     private GetPostgresCatalogStatus status;
     /**
-     * @return (string) - System-generated unique identifier for the catalog
+     * @return (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      * 
      */
     private String uid;
@@ -54,7 +56,8 @@ public final class GetPostgresCatalogResult {
 
     private GetPostgresCatalogResult() {}
     /**
-     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * @return (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     public String catalogId() {
@@ -78,7 +81,8 @@ public final class GetPostgresCatalogResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (CatalogCatalogSpec) - The desired state of the Catalog
+     * @return (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     public GetPostgresCatalogSpec spec() {
@@ -92,7 +96,7 @@ public final class GetPostgresCatalogResult {
         return this.status;
     }
     /**
-     * @return (string) - System-generated unique identifier for the catalog
+     * @return (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      * 
      */
     public String uid() {

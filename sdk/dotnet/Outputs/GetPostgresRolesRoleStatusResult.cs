@@ -14,19 +14,19 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresRolesRoleStatusResult
     {
         /// <summary>
-        /// (RoleAttributes) - The PG role attributes associated with the role
+        /// (RoleAttributes) - The Postgres role attributes currently granted to the role
         /// </summary>
         public readonly Outputs.GetPostgresRolesRoleStatusAttributesResult? Attributes;
         /// <summary>
-        /// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+        /// (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
         /// </summary>
         public readonly string? AuthMethod;
         /// <summary>
-        /// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         public readonly string? IdentityType;
         /// <summary>
-        /// (list of string) - An enum value for a standard role that this role is a member of
+        /// (list of string) - The standard roles that the role is currently a member of
         /// </summary>
         public readonly ImmutableArray<string> MembershipRoles;
         /// <summary>

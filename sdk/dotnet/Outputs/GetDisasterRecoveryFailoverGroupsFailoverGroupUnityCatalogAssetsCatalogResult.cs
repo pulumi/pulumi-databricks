@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsCatalogResult
     {
         /// <summary>
-        /// (string) - Resource name for this workspace set
+        /// (string) - Identifier of the workspace set, unique within the failover group and referenced by
+        /// unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
         /// </summary>
         public readonly string Name;
 

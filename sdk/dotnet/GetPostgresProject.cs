@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresProject
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresProjectResult>("databricks:index/getPostgresProject:getPostgresProject", args ?? new GetPostgresProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresProjectResult>("databricks:index/getPostgresProject:getPostgresProject", args ?? new GetPostgresProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - Part of the resource name
+        /// (string) - The project ID, which is the final segment of the project's resource name
         /// </summary>
         public readonly string ProjectId;
         public readonly Outputs.GetPostgresProjectProviderConfigResult? ProviderConfig;
@@ -205,15 +205,19 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string PurgeTime;
         /// <summary>
-        /// (ProjectSpec) - The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+        /// (ProjectSpec) - The desired configuration of the project. The fields under `Spec` are the ones that can be
+        /// changed after creation, except `PgVersion`, which is fixed when the project is created. See
+        /// `Status` for the configuration that is currently in effect.
         /// </summary>
         public readonly Outputs.GetPostgresProjectSpecResult Spec;
         /// <summary>
-        /// (ProjectStatus) - The current status of a Project
+        /// (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+        /// system
         /// </summary>
         public readonly Outputs.GetPostgresProjectStatusResult Status;
         /// <summary>
-        /// (string) - System-generated unique ID for the project
+        /// (string) - A system-generated UUID that identifies the project. Unlike `Name`, it is not derived from the
+        /// user-chosen project ID
         /// </summary>
         public readonly string Uid;
         /// <summary>

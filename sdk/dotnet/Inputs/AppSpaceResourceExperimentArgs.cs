@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppSpaceResourceExperimentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of the MLflow experiment
+        /// </summary>
         [Input("experimentId", required: true)]
         public Input<string> ExperimentId { get; set; } = null!;
 

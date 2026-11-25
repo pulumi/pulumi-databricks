@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class WorkspaceIamUserV2FullName
     {
+        /// <summary>
+        /// The user's family (last) name
+        /// </summary>
         public readonly string? FamilyName;
+        /// <summary>
+        /// The user's given (first) name
+        /// </summary>
         public readonly string? GivenName;
 
         [OutputConstructor]

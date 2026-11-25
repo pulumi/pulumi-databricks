@@ -59,8 +59,8 @@ class GetWorkspaceIamServicePrincipalsV2Result:
     @pulumi.getter
     def parent(self) -> Optional[_builtins.str]:
         """
-        (string) - The resource name of the account that contains the service principal,
-        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the service principal, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -94,7 +94,7 @@ def get_workspace_iam_service_principals_v2(filter: Optional[_builtins.str] = No
                                             provider_config: Optional[Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult']] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamServicePrincipalsV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -114,11 +114,13 @@ def get_workspace_iam_service_principals_v2(filter: Optional[_builtins.str] = No
     ```
 
 
-    :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
-    :param _builtins.int page_size: The maximum number of SPs to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-           defaults to the account of the calling workspace, and any other account is rejected
+    :param _builtins.str filter: Filters service principals by `application_id` or `external_id`, for example
+           `application_id eq "<application-id>"`. Put the value in quotes
+    :param _builtins.int page_size: The maximum number of service principals to return, up to 1000. The default is 1000. A page
+           can contain fewer service principals
+    :param _builtins.str parent: The resource name of the account to list service principals in, in the format
+           `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+           account is rejected
     :param Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -141,7 +143,7 @@ def get_workspace_iam_service_principals_v2_output(filter: pulumi.Input[Optional
                                                    provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult']]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamServicePrincipalsV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -161,11 +163,13 @@ def get_workspace_iam_service_principals_v2_output(filter: pulumi.Input[Optional
     ```
 
 
-    :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
-    :param _builtins.int page_size: The maximum number of SPs to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-           defaults to the account of the calling workspace, and any other account is rejected
+    :param _builtins.str filter: Filters service principals by `application_id` or `external_id`, for example
+           `application_id eq "<application-id>"`. Put the value in quotes
+    :param _builtins.int page_size: The maximum number of service principals to return, up to 1000. The default is 1000. A page
+           can contain fewer service principals
+    :param _builtins.str parent: The resource name of the account to list service principals in, in the format
+           `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+           account is rejected
     :param Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

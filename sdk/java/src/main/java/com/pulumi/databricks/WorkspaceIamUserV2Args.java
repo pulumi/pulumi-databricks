@@ -19,14 +19,16 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
     public static final WorkspaceIamUserV2Args Empty = new WorkspaceIamUserV2Args();
 
     /**
-     * The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="accountUserStatus", required=true)
     private Output<String> accountUserStatus;
 
     /**
-     * @return The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Output<String> accountUserStatus() {
@@ -34,23 +36,31 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ExternalId of the user in the customer&#39;s IdP
+     * The ID of the user in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the user in the customer&#39;s IdP
+     * @return The ID of the user in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * The user&#39;s name
+     * 
+     */
     @Import(name="fullName", required=true)
     private Output<WorkspaceIamUserV2FullNameArgs> fullName;
 
+    /**
+     * @return The user&#39;s name
+     * 
+     */
     public Output<WorkspaceIamUserV2FullNameArgs> fullName() {
         return this.fullName;
     }
@@ -71,14 +81,16 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Username/email of the user
+     * The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return Username/email of the user
+     * @return The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     public Output<String> username() {
@@ -114,7 +126,8 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountUserStatus The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountUserStatus Whether the user is active in the account. New users are active unless you set this to
+         * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -125,7 +138,8 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountUserStatus The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountUserStatus Whether the user is active in the account. New users are active unless you set this to
+         * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -135,7 +149,7 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalId ExternalId of the user in the customer&#39;s IdP
+         * @param externalId The ID of the user in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -146,7 +160,7 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalId ExternalId of the user in the customer&#39;s IdP
+         * @param externalId The ID of the user in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -155,11 +169,23 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param fullName The user&#39;s name
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(Output<WorkspaceIamUserV2FullNameArgs> fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param fullName The user&#39;s name
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(WorkspaceIamUserV2FullNameArgs fullName) {
             return fullName(Output.of(fullName));
         }
@@ -186,7 +212,8 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param username Username/email of the user
+         * @param username The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+         * created
          * 
          * @return builder
          * 
@@ -197,7 +224,8 @@ public final class WorkspaceIamUserV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param username Username/email of the user
+         * @param username The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+         * created
          * 
          * @return builder
          * 

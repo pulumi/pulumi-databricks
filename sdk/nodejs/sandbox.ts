@@ -82,7 +82,7 @@ export class Sandbox extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
-     * Metadata associated with the sandbox
+     * Tags and other metadata associated with the sandbox
      */
     declare public readonly metadata: pulumi.Output<outputs.SandboxMetadata | undefined>;
     /**
@@ -95,7 +95,10 @@ export class Sandbox extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.SandboxProviderConfig>;
     /**
-     * Client-supplied ID that becomes the final path segment of the resource name
+     * Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      */
     declare public readonly sandboxId: pulumi.Output<string>;
     /**
@@ -166,7 +169,7 @@ export interface SandboxState {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
-     * Metadata associated with the sandbox
+     * Tags and other metadata associated with the sandbox
      */
     metadata?: pulumi.Input<inputs.SandboxMetadata | undefined>;
     /**
@@ -179,7 +182,10 @@ export interface SandboxState {
      */
     providerConfig?: pulumi.Input<inputs.SandboxProviderConfig | undefined>;
     /**
-     * Client-supplied ID that becomes the final path segment of the resource name
+     * Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      */
     sandboxId?: pulumi.Input<string | undefined>;
     /**
@@ -205,7 +211,7 @@ export interface SandboxArgs {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
-     * Metadata associated with the sandbox
+     * Tags and other metadata associated with the sandbox
      */
     metadata?: pulumi.Input<inputs.SandboxMetadata | undefined>;
     /**
@@ -213,7 +219,10 @@ export interface SandboxArgs {
      */
     providerConfig?: pulumi.Input<inputs.SandboxProviderConfig | undefined>;
     /**
-     * Client-supplied ID that becomes the final path segment of the resource name
+     * Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      */
     sandboxId: pulumi.Input<string>;
     /**

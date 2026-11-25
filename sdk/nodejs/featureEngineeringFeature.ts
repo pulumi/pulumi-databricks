@@ -174,6 +174,10 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+     */
+    declare public /*out*/ readonly outputTypeText: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringFeatureProviderConfig>;
@@ -217,6 +221,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["inputs"] = state?.inputs;
             resourceInputs["lineageContext"] = state?.lineageContext;
             resourceInputs["name"] = state?.name;
+            resourceInputs["outputTypeText"] = state?.outputTypeText;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["source"] = state?.source;
@@ -248,6 +253,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputTypeText"] = undefined /*out*/;
             resourceInputs["schemaName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -302,6 +308,10 @@ export interface FeatureEngineeringFeatureState {
      * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+     */
+    outputTypeText?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */

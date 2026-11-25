@@ -13,16 +13,16 @@ namespace Pulumi.Databricks.Inputs
     public sealed class DataQualityMonitorDataProfilingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field for specifying the absolute path to a custom directory to store data-monitoring
-        /// assets. Normally prepopulated to a default user location via UI and Python APIs
+        /// The absolute workspace path of the directory where the monitor's assets, such as
+        /// the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
         /// </summary>
         [Input("assetsDir")]
         public Input<string>? AssetsDir { get; set; }
 
         /// <summary>
-        /// Baseline table name.
-        /// Baseline data is used to compute drift from the data in the monitored `TableName`.
-        /// The baseline table and the monitored table shall have the same schema
+        /// The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+        /// Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+        /// schema
         /// </summary>
         [Input("baselineTableName")]
         public Input<string>? BaselineTableName { get; set; }
@@ -31,7 +31,8 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.DataQualityMonitorDataProfilingConfigCustomMetricArgs>? _customMetrics;
 
         /// <summary>
-        /// Custom metrics
+        /// Custom metrics to compute in addition to the built-in ones. See
+        /// [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
         /// </summary>
         public InputList<Inputs.DataQualityMonitorDataProfilingConfigCustomMetricArgs> CustomMetrics
         {
@@ -49,7 +50,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? EffectiveWarehouseId { get; set; }
 
         /// <summary>
-        /// `Analysis Configuration` for monitoring inference log tables
+        /// Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+        /// computed per time window and include model quality metrics
         /// </summary>
         [Input("inferenceLog")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigInferenceLogArgs>? InferenceLog { get; set; }
@@ -67,7 +69,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsArgs>? NotificationSettings { get; set; }
 
         /// <summary>
-        /// ID of the schema where output tables are created
+        /// The UUID of the Unity Catalog schema where the profile and drift metrics tables
+        /// are created
         /// </summary>
         [Input("outputSchemaId", required: true)]
         public Input<string> OutputSchemaId { get; set; } = null!;
@@ -76,7 +79,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ProfileMetricsTableName { get; set; }
 
         /// <summary>
-        /// The cron schedule
+        /// The schedule on which the monitor refreshes its metrics. Refreshes can also be
+        /// triggered on demand through the Refresh resource
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigScheduleArgs>? Schedule { get; set; }
@@ -93,7 +97,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// List of column expressions to slice data with for targeted analysis. The data is grouped by
         /// each expression independently, resulting in a separate slice for each predicate and its
-        /// complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+        /// complements. For example `slicing_exprs=["Col1", "Col2 " pulumi-lang-go="&gt; 10"]` will generate the following
         /// slices: two slices for `Col2 &gt; 10` (True and False), and one slice per unique value in
         /// `Col1`. For high-cardinality columns, only the top 100 unique values by frequency will
         /// generate slices
@@ -105,7 +109,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// `Analysis Configuration` for monitoring snapshot tables
+        /// Profiles the full contents of the table. Metrics are computed over all rows at each refresh
         /// </summary>
         [Input("snapshot")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigSnapshotArgs>? Snapshot { get; set; }
@@ -114,14 +118,15 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// `Analysis Configuration` for monitoring time series tables
+        /// Profiles a time series table. Metrics are computed per time window, as defined by `TimestampColumn`
+        /// and `Granularities`
         /// </summary>
         [Input("timeSeries")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigTimeSeriesArgs>? TimeSeries { get; set; }
 
         /// <summary>
-        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-        /// warehouse will be used
+        /// The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+        /// caller can access is used
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

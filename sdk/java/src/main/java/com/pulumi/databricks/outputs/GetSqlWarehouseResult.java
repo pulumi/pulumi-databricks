@@ -122,7 +122,7 @@ public final class GetSqlWarehouseResult {
      */
     private String state;
     /**
-     * @return Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * @return Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      * 
      */
     private Integer statementTimeout;
@@ -288,7 +288,7 @@ public final class GetSqlWarehouseResult {
         return this.state;
     }
     /**
-     * @return Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+     * @return Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
      * 
      */
     public Integer statementTimeout() {

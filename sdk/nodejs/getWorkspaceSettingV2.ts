@@ -11,20 +11,17 @@ import * as utilities from "./utilities";
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
  *
- * This data source can be used to get a single account setting.
+ * This data source can be used to get a single workspace setting.
  *
  * ## Example Usage
  *
- * Referring to a setting by id
+ * Referring to a setting by name
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceSettingV2({
  *     name: "llm_proxy_partner_powered",
- *     booleanVal: {
- *         value: false,
- *     },
  * });
  * ```
  */
@@ -41,7 +38,7 @@ export function getWorkspaceSettingV2(args: GetWorkspaceSettingV2Args, opts?: pu
  */
 export interface GetWorkspaceSettingV2Args {
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      */
     name: string;
     /**
@@ -123,6 +120,10 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly effectiveStringVal: outputs.GetWorkspaceSettingV2EffectiveStringVal;
     /**
+     * (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     */
+    readonly effectiveWorkspaceDashboardTheme: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardTheme;
+    /**
      * (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      */
     readonly effectiveWorkspaceLabel: outputs.GetWorkspaceSettingV2EffectiveWorkspaceLabel;
@@ -131,7 +132,7 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly integerVal: outputs.GetWorkspaceSettingV2IntegerVal;
     /**
-     * (string) - Name of the setting
+     * (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
      */
     readonly name: string;
     /**
@@ -152,6 +153,10 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly stringVal: outputs.GetWorkspaceSettingV2StringVal;
     /**
+     * (DashboardTheme) - Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     */
+    readonly workspaceDashboardTheme: outputs.GetWorkspaceSettingV2WorkspaceDashboardTheme;
+    /**
      * (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
      */
     readonly workspaceLabel: outputs.GetWorkspaceSettingV2WorkspaceLabel;
@@ -161,20 +166,17 @@ export interface GetWorkspaceSettingV2Result {
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
  *
- * This data source can be used to get a single account setting.
+ * This data source can be used to get a single workspace setting.
  *
  * ## Example Usage
  *
- * Referring to a setting by id
+ * Referring to a setting by name
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = databricks.getWorkspaceSettingV2({
  *     name: "llm_proxy_partner_powered",
- *     booleanVal: {
- *         value: false,
- *     },
  * });
  * ```
  */
@@ -191,7 +193,7 @@ export function getWorkspaceSettingV2Output(args: GetWorkspaceSettingV2OutputArg
  */
 export interface GetWorkspaceSettingV2OutputArgs {
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      */
     name: pulumi.Input<string>;
     /**

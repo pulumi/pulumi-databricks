@@ -36,15 +36,18 @@ class AgentKitManagedMemoryEntryArgs:
         :param pulumi.Input[_builtins.str] actor_id: Customer-provided identifier for the actor whose memory this entry represents
         :param pulumi.Input[_builtins.str] parent: Memory store that will contain the entry, in the form
                `memory-stores/{managed_memory_store_id}`
-        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and, until the
+               deprecated `session_id` is ignored, its optional session.
                Paths must begin with `/` and must not contain empty, `.` or `..` segments
         :param pulumi.Input[_builtins.str] content: Optional free-form memory content
         :param pulumi.Input[_builtins.str] description: Human-readable description of the memory entry
         :param pulumi.Input[_builtins.str] managed_memory_entry_id: Optional caller-selected memory entry ID. The service generates an ID when omitted
         :param pulumi.Input['AgentKitManagedMemoryEntryProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] session_id: Optional identifier for the session associated with this memory entry. When omitted, the
+        :param pulumi.Input[_builtins.str] session_id: Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+               ignore this field on writes and omit it from responses. Until then, an omitted value means the
                entry applies across the actor's sessions
-        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation.
+               The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         """
         pulumi.set(__self__, "actor_id", actor_id)
         pulumi.set(__self__, "parent", parent)
@@ -91,7 +94,8 @@ class AgentKitManagedMemoryEntryArgs:
     @pulumi.getter
     def path(self) -> pulumi.Input[_builtins.str]:
         """
-        Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        Absolute, case-sensitive path identifying the entry within its actor and, until the
+        deprecated `session_id` is ignored, its optional session.
         Paths must begin with `/` and must not contain empty, `.` or `..` segments
         """
         return pulumi.get(self, "path")
@@ -152,7 +156,8 @@ class AgentKitManagedMemoryEntryArgs:
     @pulumi.getter(name="sessionId")
     def session_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional identifier for the session associated with this memory entry. When omitted, the
+        Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        ignore this field on writes and omit it from responses. Until then, an omitted value means the
         entry applies across the actor's sessions
         """
         return pulumi.get(self, "session_id")
@@ -165,7 +170,8 @@ class AgentKitManagedMemoryEntryArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        Which writer created this entry. Caller sets this on Create; immutable after creation.
+        The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         """
         return pulumi.get(self, "source_type")
 
@@ -202,12 +208,15 @@ class _AgentKitManagedMemoryEntryState:
                Required for updates; assigned by the service on creation
         :param pulumi.Input[_builtins.str] parent: Memory store that will contain the entry, in the form
                `memory-stores/{managed_memory_store_id}`
-        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and, until the
+               deprecated `session_id` is ignored, its optional session.
                Paths must begin with `/` and must not contain empty, `.` or `..` segments
         :param pulumi.Input['AgentKitManagedMemoryEntryProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] session_id: Optional identifier for the session associated with this memory entry. When omitted, the
+        :param pulumi.Input[_builtins.str] session_id: Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+               ignore this field on writes and omit it from responses. Until then, an omitted value means the
                entry applies across the actor's sessions
-        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation.
+               The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time when the entry was last updated
         """
         if actor_id is not None:
@@ -326,7 +335,8 @@ class _AgentKitManagedMemoryEntryState:
     @pulumi.getter
     def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        Absolute, case-sensitive path identifying the entry within its actor and, until the
+        deprecated `session_id` is ignored, its optional session.
         Paths must begin with `/` and must not contain empty, `.` or `..` segments
         """
         return pulumi.get(self, "path")
@@ -351,7 +361,8 @@ class _AgentKitManagedMemoryEntryState:
     @pulumi.getter(name="sessionId")
     def session_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional identifier for the session associated with this memory entry. When omitted, the
+        Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        ignore this field on writes and omit it from responses. Until then, an omitted value means the
         entry applies across the actor's sessions
         """
         return pulumi.get(self, "session_id")
@@ -364,7 +375,8 @@ class _AgentKitManagedMemoryEntryState:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        Which writer created this entry. Caller sets this on Create; immutable after creation.
+        The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         """
         return pulumi.get(self, "source_type")
 
@@ -415,12 +427,15 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] managed_memory_entry_id: Optional caller-selected memory entry ID. The service generates an ID when omitted
         :param pulumi.Input[_builtins.str] parent: Memory store that will contain the entry, in the form
                `memory-stores/{managed_memory_store_id}`
-        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and, until the
+               deprecated `session_id` is ignored, its optional session.
                Paths must begin with `/` and must not contain empty, `.` or `..` segments
         :param pulumi.Input[Union['AgentKitManagedMemoryEntryProviderConfigArgs', 'AgentKitManagedMemoryEntryProviderConfigArgsDict', 'outputs.AgentKitManagedMemoryEntryProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] session_id: Optional identifier for the session associated with this memory entry. When omitted, the
+        :param pulumi.Input[_builtins.str] session_id: Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+               ignore this field on writes and omit it from responses. Until then, an omitted value means the
                entry applies across the actor's sessions
-        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation.
+               The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         """
         ...
     @overload
@@ -524,12 +539,15 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
                Required for updates; assigned by the service on creation
         :param pulumi.Input[_builtins.str] parent: Memory store that will contain the entry, in the form
                `memory-stores/{managed_memory_store_id}`
-        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        :param pulumi.Input[_builtins.str] path: Absolute, case-sensitive path identifying the entry within its actor and, until the
+               deprecated `session_id` is ignored, its optional session.
                Paths must begin with `/` and must not contain empty, `.` or `..` segments
         :param pulumi.Input[Union['AgentKitManagedMemoryEntryProviderConfigArgs', 'AgentKitManagedMemoryEntryProviderConfigArgsDict', 'outputs.AgentKitManagedMemoryEntryProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] session_id: Optional identifier for the session associated with this memory entry. When omitted, the
+        :param pulumi.Input[_builtins.str] session_id: Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+               ignore this field on writes and omit it from responses. Until then, an omitted value means the
                entry applies across the actor's sessions
-        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        :param pulumi.Input[_builtins.str] source_type: Which writer created this entry. Caller sets this on Create; immutable after creation.
+               The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time when the entry was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -643,7 +661,8 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[_builtins.str]:
         """
-        Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        Absolute, case-sensitive path identifying the entry within its actor and, until the
+        deprecated `session_id` is ignored, its optional session.
         Paths must begin with `/` and must not contain empty, `.` or `..` segments
         """
         return pulumi.get(self, "path")
@@ -660,7 +679,8 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
     @pulumi.getter(name="sessionId")
     def session_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Optional identifier for the session associated with this memory entry. When omitted, the
+        Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        ignore this field on writes and omit it from responses. Until then, an omitted value means the
         entry applies across the actor's sessions
         """
         return pulumi.get(self, "session_id")
@@ -669,7 +689,8 @@ class AgentKitManagedMemoryEntry(pulumi.CustomResource):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        Which writer created this entry. Caller sets this on Create; immutable after creation.
+        The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         """
         return pulumi.get(self, "source_type")
 

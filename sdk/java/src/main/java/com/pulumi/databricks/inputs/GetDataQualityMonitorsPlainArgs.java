@@ -15,9 +15,17 @@ public final class GetDataQualityMonitorsPlainArgs extends com.pulumi.resources.
 
     public static final GetDataQualityMonitorsPlainArgs Empty = new GetDataQualityMonitorsPlainArgs();
 
+    /**
+     * The maximum number of monitors to return in one page
+     * 
+     */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
+    /**
+     * @return The maximum number of monitors to return in one page
+     * 
+     */
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -62,6 +70,12 @@ public final class GetDataQualityMonitorsPlainArgs extends com.pulumi.resources.
             $ = new GetDataQualityMonitorsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pageSize The maximum number of monitors to return in one page
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
             return this;

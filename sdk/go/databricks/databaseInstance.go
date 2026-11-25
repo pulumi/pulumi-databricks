@@ -155,7 +155,8 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
-	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+	// creating an instance
 	Capacity pulumi.StringPtrOutput `pulumi:"capacity"`
 	// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
 	// parent instance
@@ -164,9 +165,10 @@ type DatabaseInstance struct {
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator pulumi.StringOutput `pulumi:"creator"`
-	// Custom tags associated with the instance. This field is only included on create and update responses
+	// Custom tags associated with the instance. This field is only included on create and update responses.
+	// An instance can have at most 10 tags; keys must be unique ignoring case
 	CustomTags DatabaseInstanceCustomTagArrayOutput `pulumi:"customTags"`
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity pulumi.StringOutput `pulumi:"effectiveCapacity"`
@@ -202,15 +204,19 @@ type DatabaseInstance struct {
 	EffectiveUsagePolicyId pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin pulumi.BoolOutput `pulumi:"enablePgNativeLogin"`
-	// Whether to enable secondaries to serve read-only traffic. Defaults to false
+	// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+	// nodeCount greater than 1
 	EnableReadableSecondaries pulumi.BoolOutput `pulumi:"enableReadableSecondaries"`
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
 	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
-	// The ref of the parent instance. This is only available if the instance is
-	// child instance.
+	// The ref of the parent instance. This is only available if the instance is a
+	// child instance. A child instance inherits customTags and usagePolicyId from
+	// its parent and cannot set them.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrOutput `pulumi:"parentInstanceRef"`
@@ -218,8 +224,8 @@ type DatabaseInstance struct {
 	PgVersion pulumi.StringOutput `pulumi:"pgVersion"`
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseInstanceProviderConfigOutput `pulumi:"providerConfig"`
-	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-	// of false will throw a bad request
+	// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+	// false returns a bad request
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
@@ -232,7 +238,9 @@ type DatabaseInstance struct {
 	RetentionWindowInDays pulumi.IntOutput `pulumi:"retentionWindowInDays"`
 	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Whether to stop the instance. An input only param, see effectiveStopped for the output
+	// Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+	// instance cannot be created in the stopped state; set this field on update to stop or start
+	// the instance
 	Stopped pulumi.BoolOutput `pulumi:"stopped"`
 	// (string) - Id of the ref database instance
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -270,7 +278,8 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
-	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+	// creating an instance
 	Capacity *string `pulumi:"capacity"`
 	// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
 	// parent instance
@@ -279,9 +288,10 @@ type databaseInstanceState struct {
 	CreationTime *string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator *string `pulumi:"creator"`
-	// Custom tags associated with the instance. This field is only included on create and update responses
+	// Custom tags associated with the instance. This field is only included on create and update responses.
+	// An instance can have at most 10 tags; keys must be unique ignoring case
 	CustomTags []DatabaseInstanceCustomTag `pulumi:"customTags"`
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity *string `pulumi:"effectiveCapacity"`
@@ -317,15 +327,19 @@ type databaseInstanceState struct {
 	EffectiveUsagePolicyId *string `pulumi:"effectiveUsagePolicyId"`
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
-	// Whether to enable secondaries to serve read-only traffic. Defaults to false
+	// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+	// nodeCount greater than 1
 	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name *string `pulumi:"name"`
 	// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
 	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
 	NodeCount *int `pulumi:"nodeCount"`
-	// The ref of the parent instance. This is only available if the instance is
-	// child instance.
+	// The ref of the parent instance. This is only available if the instance is a
+	// child instance. A child instance inherits customTags and usagePolicyId from
+	// its parent and cannot set them.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef *DatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
@@ -333,8 +347,8 @@ type databaseInstanceState struct {
 	PgVersion *string `pulumi:"pgVersion"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseInstanceProviderConfig `pulumi:"providerConfig"`
-	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-	// of false will throw a bad request
+	// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+	// false returns a bad request
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
@@ -347,7 +361,9 @@ type databaseInstanceState struct {
 	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
 	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State *string `pulumi:"state"`
-	// Whether to stop the instance. An input only param, see effectiveStopped for the output
+	// Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+	// instance cannot be created in the stopped state; set this field on update to stop or start
+	// the instance
 	Stopped *bool `pulumi:"stopped"`
 	// (string) - Id of the ref database instance
 	Uid *string `pulumi:"uid"`
@@ -356,7 +372,8 @@ type databaseInstanceState struct {
 }
 
 type DatabaseInstanceState struct {
-	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+	// creating an instance
 	Capacity pulumi.StringPtrInput
 	// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
 	// parent instance
@@ -365,9 +382,10 @@ type DatabaseInstanceState struct {
 	CreationTime pulumi.StringPtrInput
 	// (string) - The email of the creator of the instance
 	Creator pulumi.StringPtrInput
-	// Custom tags associated with the instance. This field is only included on create and update responses
+	// Custom tags associated with the instance. This field is only included on create and update responses.
+	// An instance can have at most 10 tags; keys must be unique ignoring case
 	CustomTags DatabaseInstanceCustomTagArrayInput
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity pulumi.StringPtrInput
@@ -403,15 +421,19 @@ type DatabaseInstanceState struct {
 	EffectiveUsagePolicyId pulumi.StringPtrInput
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin pulumi.BoolPtrInput
-	// Whether to enable secondaries to serve read-only traffic. Defaults to false
+	// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+	// nodeCount greater than 1
 	EnableReadableSecondaries pulumi.BoolPtrInput
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name pulumi.StringPtrInput
 	// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
 	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
 	NodeCount pulumi.IntPtrInput
-	// The ref of the parent instance. This is only available if the instance is
-	// child instance.
+	// The ref of the parent instance. This is only available if the instance is a
+	// child instance. A child instance inherits customTags and usagePolicyId from
+	// its parent and cannot set them.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrInput
@@ -419,8 +441,8 @@ type DatabaseInstanceState struct {
 	PgVersion pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseInstanceProviderConfigPtrInput
-	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-	// of false will throw a bad request
+	// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+	// false returns a bad request
 	PurgeOnDelete pulumi.BoolPtrInput
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
@@ -433,7 +455,9 @@ type DatabaseInstanceState struct {
 	RetentionWindowInDays pulumi.IntPtrInput
 	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringPtrInput
-	// Whether to stop the instance. An input only param, see effectiveStopped for the output
+	// Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+	// instance cannot be created in the stopped state; set this field on update to stop or start
+	// the instance
 	Stopped pulumi.BoolPtrInput
 	// (string) - Id of the ref database instance
 	Uid pulumi.StringPtrInput
@@ -452,34 +476,42 @@ func DatabaseInstanceExists(ctx *pulumi.Context,
 }
 
 type databaseInstanceArgs struct {
-	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+	// creating an instance
 	Capacity *string `pulumi:"capacity"`
-	// Custom tags associated with the instance. This field is only included on create and update responses
+	// Custom tags associated with the instance. This field is only included on create and update responses.
+	// An instance can have at most 10 tags; keys must be unique ignoring case
 	CustomTags []DatabaseInstanceCustomTag `pulumi:"customTags"`
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
-	// Whether to enable secondaries to serve read-only traffic. Defaults to false
+	// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+	// nodeCount greater than 1
 	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name *string `pulumi:"name"`
 	// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
 	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
 	NodeCount *int `pulumi:"nodeCount"`
-	// The ref of the parent instance. This is only available if the instance is
-	// child instance.
+	// The ref of the parent instance. This is only available if the instance is a
+	// child instance. A child instance inherits customTags and usagePolicyId from
+	// its parent and cannot set them.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef *DatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseInstanceProviderConfig `pulumi:"providerConfig"`
-	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-	// of false will throw a bad request
+	// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+	// false returns a bad request
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// The retention window for the instance. This is the time window in days
 	// for which the historical data is retained. The default value is 7 days.
 	// Valid values are 2 to 35 days
 	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
-	// Whether to stop the instance. An input only param, see effectiveStopped for the output
+	// Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+	// instance cannot be created in the stopped state; set this field on update to stop or start
+	// the instance
 	Stopped *bool `pulumi:"stopped"`
 	// The desired usage policy to associate with the instance
 	UsagePolicyId *string `pulumi:"usagePolicyId"`
@@ -487,34 +519,42 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+	// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+	// creating an instance
 	Capacity pulumi.StringPtrInput
-	// Custom tags associated with the instance. This field is only included on create and update responses
+	// Custom tags associated with the instance. This field is only included on create and update responses.
+	// An instance can have at most 10 tags; keys must be unique ignoring case
 	CustomTags DatabaseInstanceCustomTagArrayInput
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin pulumi.BoolPtrInput
-	// Whether to enable secondaries to serve read-only traffic. Defaults to false
+	// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+	// nodeCount greater than 1
 	EnableReadableSecondaries pulumi.BoolPtrInput
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name pulumi.StringPtrInput
 	// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
 	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
 	NodeCount pulumi.IntPtrInput
-	// The ref of the parent instance. This is only available if the instance is
-	// child instance.
+	// The ref of the parent instance. This is only available if the instance is a
+	// child instance. A child instance inherits customTags and usagePolicyId from
+	// its parent and cannot set them.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseInstanceProviderConfigPtrInput
-	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-	// of false will throw a bad request
+	// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+	// false returns a bad request
 	PurgeOnDelete pulumi.BoolPtrInput
 	// The retention window for the instance. This is the time window in days
 	// for which the historical data is retained. The default value is 7 days.
 	// Valid values are 2 to 35 days
 	RetentionWindowInDays pulumi.IntPtrInput
-	// Whether to stop the instance. An input only param, see effectiveStopped for the output
+	// Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+	// instance cannot be created in the stopped state; set this field on update to stop or start
+	// the instance
 	Stopped pulumi.BoolPtrInput
 	// The desired usage policy to associate with the instance
 	UsagePolicyId pulumi.StringPtrInput
@@ -607,7 +647,8 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+// creating an instance
 func (o DatabaseInstanceOutput) Capacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.Capacity }).(pulumi.StringPtrOutput)
 }
@@ -628,12 +669,13 @@ func (o DatabaseInstanceOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// Custom tags associated with the instance. This field is only included on create and update responses
+// Custom tags associated with the instance. This field is only included on create and update responses.
+// An instance can have at most 10 tags; keys must be unique ignoring case
 func (o DatabaseInstanceOutput) CustomTags() DatabaseInstanceCustomTagArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceCustomTagArrayOutput { return v.CustomTags }).(DatabaseInstanceCustomTagArrayOutput)
 }
 
-// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
 // This is an output only field that contains the value computed from the input field combined with
 // server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveCapacity() pulumi.StringOutput {
@@ -696,12 +738,15 @@ func (o DatabaseInstanceOutput) EnablePgNativeLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EnablePgNativeLogin }).(pulumi.BoolOutput)
 }
 
-// Whether to enable secondaries to serve read-only traffic. Defaults to false
+// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+// nodeCount greater than 1
 func (o DatabaseInstanceOutput) EnableReadableSecondaries() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
 }
 
-// The name of the instance. This is the unique identifier for the instance
+// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+// consecutive hyphens
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -712,8 +757,9 @@ func (o DatabaseInstanceOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
 
-// The ref of the parent instance. This is only available if the instance is
-// child instance.
+// The ref of the parent instance. This is only available if the instance is a
+// child instance. A child instance inherits customTags and usagePolicyId from
+// its parent and cannot set them.
 // Input: For specifying the parent instance to create a child instance. Optional.
 // Output: Only populated if provided as input to create a child instance
 func (o DatabaseInstanceOutput) ParentInstanceRef() DatabaseInstanceParentInstanceRefPtrOutput {
@@ -730,8 +776,8 @@ func (o DatabaseInstanceOutput) ProviderConfig() DatabaseInstanceProviderConfigO
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceProviderConfigOutput { return v.ProviderConfig }).(DatabaseInstanceProviderConfigOutput)
 }
 
-// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-// of false will throw a bad request
+// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+// false returns a bad request
 func (o DatabaseInstanceOutput) PurgeOnDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
 }
@@ -759,7 +805,9 @@ func (o DatabaseInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Whether to stop the instance. An input only param, see effectiveStopped for the output
+// Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+// instance cannot be created in the stopped state; set this field on update to stop or start
+// the instance
 func (o DatabaseInstanceOutput) Stopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.Stopped }).(pulumi.BoolOutput)
 }

@@ -43,8 +43,9 @@ export interface GetAiGatewayMcpServiceArgs {
      * Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -72,11 +73,11 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly createTime: string;
     /**
-     * (string) - Creator identity
+     * (string) - Username or service principal application ID of the principal that created the MCP service
      */
     readonly createdBy: string;
     /**
-     * (string) - Owner of the MCP service
+     * (string) - Username, group name, or service principal application ID of the MCP service owner
      */
     readonly effectiveOwner: string;
     /**
@@ -87,7 +88,7 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly etag: string;
     /**
-     * (string) - Metastore hosting the MCP service
+     * (string) - Unique identifier of the metastore that contains the MCP service
      */
     readonly metastoreId: string;
     /**
@@ -101,7 +102,8 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly updateTime: string;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      */
     readonly updatedBy: string;
 }
@@ -142,8 +144,9 @@ export interface GetAiGatewayMcpServiceOutputArgs {
      * Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: pulumi.Input<string>;
     /**

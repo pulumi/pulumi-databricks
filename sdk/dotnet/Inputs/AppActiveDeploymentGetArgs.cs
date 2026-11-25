@@ -67,6 +67,15 @@ namespace Pulumi.Databricks.Inputs
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        [Input("scanOmittedCountIsLowerBound")]
+        public Input<bool>? ScanOmittedCountIsLowerBound { get; set; }
+
+        [Input("scanOmittedFindingsCount")]
+        public Input<int>? ScanOmittedFindingsCount { get; set; }
+
+        [Input("scanStatus")]
+        public Input<string>? ScanStatus { get; set; }
+
         /// <summary>
         /// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`GitRepository`/`GitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `DefaultSourceCodePath`.
         /// </summary>

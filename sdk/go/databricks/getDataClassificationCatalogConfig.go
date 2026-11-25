@@ -79,16 +79,19 @@ type LookupDataClassificationCatalogConfigArgs struct {
 
 // A collection of values returned by getDataClassificationCatalogConfig.
 type LookupDataClassificationCatalogConfigResult struct {
-	// (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
-	// Empty list means no auto-tagging is enabled
+	// (list of AutoTaggingConfig) - Auto-tagging configurations that apply to this catalog. Each entry overrides the
+	// metastore-level auto-tagging setting for its classification tag; tags without an entry
+	// inherit the metastore-level setting
 	AutoTagConfigs []GetDataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
 	// (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
-	// If specified, all schemas except the specified ones will be scanned.
+	// If specified, all schemas except the specified ones will be scanned, including schemas
+	// created later.
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas GetDataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
 	// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
-	// If specified, only listed schemas will be scanned.
+	// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+	// until you add them to the list.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas GetDataClassificationCatalogConfigIncludedSchemas `pulumi:"includedSchemas"`
@@ -129,8 +132,9 @@ func (o LookupDataClassificationCatalogConfigResultOutput) ToLookupDataClassific
 	return o
 }
 
-// (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
-// Empty list means no auto-tagging is enabled
+// (list of AutoTaggingConfig) - Auto-tagging configurations that apply to this catalog. Each entry overrides the
+// metastore-level auto-tagging setting for its classification tag; tags without an entry
+// inherit the metastore-level setting
 func (o LookupDataClassificationCatalogConfigResultOutput) AutoTagConfigs() GetDataClassificationCatalogConfigAutoTagConfigArrayOutput {
 	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) []GetDataClassificationCatalogConfigAutoTagConfig {
 		return v.AutoTagConfigs
@@ -138,7 +142,8 @@ func (o LookupDataClassificationCatalogConfigResultOutput) AutoTagConfigs() GetD
 }
 
 // (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
-// If specified, all schemas except the specified ones will be scanned.
+// If specified, all schemas except the specified ones will be scanned, including schemas
+// created later.
 // Mutually exclusive with `includedSchemas`: only one may be set per request.
 // If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 func (o LookupDataClassificationCatalogConfigResultOutput) ExcludedSchemas() GetDataClassificationCatalogConfigExcludedSchemasOutput {
@@ -148,7 +153,8 @@ func (o LookupDataClassificationCatalogConfigResultOutput) ExcludedSchemas() Get
 }
 
 // (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
-// If specified, only listed schemas will be scanned.
+// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+// until you add them to the list.
 // Mutually exclusive with `excludedSchemas`: only one may be set per request.
 // If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 func (o LookupDataClassificationCatalogConfigResultOutput) IncludedSchemas() GetDataClassificationCatalogConfigIncludedSchemasOutput {

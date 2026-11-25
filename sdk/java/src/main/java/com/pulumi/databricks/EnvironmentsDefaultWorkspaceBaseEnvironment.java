@@ -141,6 +141,7 @@ import javax.annotation.Nullable;
 public class EnvironmentsDefaultWorkspaceBaseEnvironment extends com.pulumi.resources.CustomResource {
     /**
      * The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -149,6 +150,7 @@ public class EnvironmentsDefaultWorkspaceBaseEnvironment extends com.pulumi.reso
 
     /**
      * @return The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -157,6 +159,7 @@ public class EnvironmentsDefaultWorkspaceBaseEnvironment extends com.pulumi.reso
     }
     /**
      * The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -165,6 +168,7 @@ public class EnvironmentsDefaultWorkspaceBaseEnvironment extends com.pulumi.reso
 
     /**
      * @return The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */

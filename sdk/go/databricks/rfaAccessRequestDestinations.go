@@ -82,13 +82,13 @@ type RfaAccessRequestDestinations struct {
 	DestinationSourceSecurable RfaAccessRequestDestinationsDestinationSourceSecurableOutput `pulumi:"destinationSourceSecurable"`
 	// The access request destinations for the securable
 	Destinations RfaAccessRequestDestinationsDestinationArrayOutput `pulumi:"destinations"`
-	// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	// (string) - The full name of the securable, repeated from **securable**
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig RfaAccessRequestDestinationsProviderConfigOutput `pulumi:"providerConfig"`
 	// The securable for which the access request destinations are being modified or read
 	Securable RfaAccessRequestDestinationsSecurableOutput `pulumi:"securable"`
-	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	// (string) - The type of the securable, repeated from **securable** as a plain string
 	SecurableType pulumi.StringOutput `pulumi:"securableType"`
 }
 
@@ -133,13 +133,13 @@ type rfaAccessRequestDestinationsState struct {
 	DestinationSourceSecurable *RfaAccessRequestDestinationsDestinationSourceSecurable `pulumi:"destinationSourceSecurable"`
 	// The access request destinations for the securable
 	Destinations []RfaAccessRequestDestinationsDestination `pulumi:"destinations"`
-	// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	// (string) - The full name of the securable, repeated from **securable**
 	FullName *string `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *RfaAccessRequestDestinationsProviderConfig `pulumi:"providerConfig"`
 	// The securable for which the access request destinations are being modified or read
 	Securable *RfaAccessRequestDestinationsSecurable `pulumi:"securable"`
-	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	// (string) - The type of the securable, repeated from **securable** as a plain string
 	SecurableType *string `pulumi:"securableType"`
 }
 
@@ -152,13 +152,13 @@ type RfaAccessRequestDestinationsState struct {
 	DestinationSourceSecurable RfaAccessRequestDestinationsDestinationSourceSecurablePtrInput
 	// The access request destinations for the securable
 	Destinations RfaAccessRequestDestinationsDestinationArrayInput
-	// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	// (string) - The full name of the securable, repeated from **securable**
 	FullName pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig RfaAccessRequestDestinationsProviderConfigPtrInput
 	// The securable for which the access request destinations are being modified or read
 	Securable RfaAccessRequestDestinationsSecurablePtrInput
-	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	// (string) - The type of the securable, repeated from **securable** as a plain string
 	SecurableType pulumi.StringPtrInput
 }
 
@@ -299,7 +299,7 @@ func (o RfaAccessRequestDestinationsOutput) Destinations() RfaAccessRequestDesti
 	}).(RfaAccessRequestDestinationsDestinationArrayOutput)
 }
 
-// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+// (string) - The full name of the securable, repeated from **securable**
 func (o RfaAccessRequestDestinationsOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RfaAccessRequestDestinations) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
@@ -316,7 +316,7 @@ func (o RfaAccessRequestDestinationsOutput) Securable() RfaAccessRequestDestinat
 	return o.ApplyT(func(v *RfaAccessRequestDestinations) RfaAccessRequestDestinationsSecurableOutput { return v.Securable }).(RfaAccessRequestDestinationsSecurableOutput)
 }
 
-// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+// (string) - The type of the securable, repeated from **securable** as a plain string
 func (o RfaAccessRequestDestinationsOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RfaAccessRequestDestinations) pulumi.StringOutput { return v.SecurableType }).(pulumi.StringOutput)
 }

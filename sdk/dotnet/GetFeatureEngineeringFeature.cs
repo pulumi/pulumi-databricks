@@ -201,6 +201,10 @@ namespace Pulumi.Databricks
         /// backwards compatibility but is deprecated; migrate to dot notation
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY&lt;STRING&gt;", "STRUCT&lt;name:STRING&gt;")
+        /// </summary>
+        public readonly string OutputTypeText;
         public readonly Outputs.GetFeatureEngineeringFeatureProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - Name of parent schema relative to its parent catalog
@@ -243,6 +247,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            string outputTypeText,
+
             Outputs.GetFeatureEngineeringFeatureProviderConfigResult? providerConfig,
 
             string schemaName,
@@ -264,6 +270,7 @@ namespace Pulumi.Databricks
             Inputs = inputs;
             LineageContext = lineageContext;
             Name = name;
+            OutputTypeText = outputTypeText;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;
             Source = source;

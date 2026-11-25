@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountIamExternalUserV2FullNameResult
     {
         /// <summary>
-        /// (string) - The family (last) name of the user, from the customer's IdP
+        /// (string) - The user's family (last) name
         /// </summary>
         public readonly string FamilyName;
         /// <summary>
-        /// (string) - The given (first) name of the user, from the customer's IdP
+        /// (string) - The user's given (first) name
         /// </summary>
         public readonly string GivenName;
 

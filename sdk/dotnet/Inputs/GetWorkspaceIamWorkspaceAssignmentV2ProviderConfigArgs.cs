@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (integer) - The workspace ID where the principal is assigned
+        /// (integer) - The ID of the workspace
         /// </summary>
         [Input("workspaceId", required: true)]
         public Input<string> WorkspaceId { get; set; } = null!;

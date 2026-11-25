@@ -18,14 +18,14 @@ public final class GetWorkspaceSettingV2Args extends com.pulumi.resources.Invoke
     public static final GetWorkspaceSettingV2Args Empty = new GetWorkspaceSettingV2Args();
 
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the setting
+     * @return Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public Output<String> name() {
@@ -73,7 +73,7 @@ public final class GetWorkspaceSettingV2Args extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetWorkspaceSettingV2Args extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 

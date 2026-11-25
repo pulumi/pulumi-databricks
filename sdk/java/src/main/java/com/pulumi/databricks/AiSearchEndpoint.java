@@ -22,7 +22,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  * 
@@ -68,14 +68,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/aiSearchEndpoint:AiSearchEndpoint")
 public class AiSearchEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The user-selected budget policy id for the endpoint
+     * ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      * 
      */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
     /**
-     * @return The user-selected budget policy id for the endpoint
+     * @return ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      * 
      */
     public Output<Optional<String>> budgetPolicyId() {
@@ -96,76 +102,80 @@ public class AiSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * (string) - Creator of the endpoint
+     * (string) - User name of the principal that created the endpoint. For a user, it is the user&#39;s email
+     * address; for any other principal, it is the principal&#39;s unique name
      * 
      */
     @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
     /**
-     * @return (string) - Creator of the endpoint
+     * @return (string) - User name of the principal that created the endpoint. For a user, it is the user&#39;s email
+     * address; for any other principal, it is the principal&#39;s unique name
      * 
      */
     public Output<String> creator() {
         return this.creator;
     }
     /**
-     * The custom tags assigned to the endpoint
+     * Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+     * existing tags
      * 
      */
     @Export(name="customTags", refs={List.class,AiSearchEndpointCustomTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AiSearchEndpointCustomTag>> customTags;
 
     /**
-     * @return The custom tags assigned to the endpoint
+     * @return Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+     * existing tags
      * 
      */
     public Output<Optional<List<AiSearchEndpointCustomTag>>> customTags() {
         return Codegen.optional(this.customTags);
     }
     /**
-     * (string) - The budget policy id applied to the endpoint
+     * (string) - ID of the budget policy that is currently applied to the endpoint
      * 
      */
     @Export(name="effectiveBudgetPolicyId", refs={String.class}, tree="[0]")
     private Output<String> effectiveBudgetPolicyId;
 
     /**
-     * @return (string) - The budget policy id applied to the endpoint
+     * @return (string) - ID of the budget policy that is currently applied to the endpoint
      * 
      */
     public Output<String> effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
     /**
-     * The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      * 
      */
     @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
-     * @return The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * @return Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      * 
      */
     public Output<String> endpointId() {
         return this.endpointId;
     }
     /**
-     * (EndpointStatus) - Current status of the endpoint
+     * (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      * 
      */
     @Export(name="endpointStatus", refs={AiSearchEndpointEndpointStatus.class}, tree="[0]")
     private Output<AiSearchEndpointEndpointStatus> endpointStatus;
 
     /**
-     * @return (EndpointStatus) - Current status of the endpoint
+     * @return (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      * 
      */
     public Output<AiSearchEndpointEndpointStatus> endpointStatus() {
@@ -200,34 +210,32 @@ public class AiSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.indexCount;
     }
     /**
-     * (string) - User who last updated the endpoint
+     * (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      * 
      */
     @Export(name="lastUpdatedUser", refs={String.class}, tree="[0]")
     private Output<String> lastUpdatedUser;
 
     /**
-     * @return (string) - User who last updated the endpoint
+     * @return (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      * 
      */
     public Output<String> lastUpdatedUser() {
         return this.lastUpdatedUser;
     }
     /**
-     * (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * @return (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      * 
      */
     public Output<String> name() {
@@ -295,7 +303,8 @@ public class AiSearchEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      * 
      */
     @Export(name="targetQps", refs={Integer.class}, tree="[0]")
@@ -303,7 +312,8 @@ public class AiSearchEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      * 
      */
     public Output<Optional<Integer>> targetQps() {
@@ -338,14 +348,16 @@ public class AiSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * The usage policy id applied to the endpoint
+     * ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      * 
      */
     @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usagePolicyId;
 
     /**
-     * @return The usage policy id applied to the endpoint
+     * @return ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      * 
      */
     public Output<Optional<String>> usagePolicyId() {

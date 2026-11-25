@@ -18,14 +18,16 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
     public static final GetWorkspaceIamServicePrincipalsV2Args Empty = new GetWorkspaceIamServicePrincipalsV2Args();
 
     /**
-     * Optional. Allows filtering service principals by application id or external id
+     * Filters service principals by `applicationId` or `externalId`, for example
+     * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
      * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
     /**
-     * @return Optional. Allows filtering service principals by application id or external id
+     * @return Filters service principals by `applicationId` or `externalId`, for example
+     * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
      * 
      */
     public Optional<Output<String>> filter() {
@@ -33,16 +35,16 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
     }
 
     /**
-     * The maximum number of SPs to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of service principals to return, up to 1000. The default is 1000. A page
+     * can contain fewer service principals
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return The maximum number of SPs to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of service principals to return, up to 1000. The default is 1000. A page
+     * can contain fewer service principals
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -50,16 +52,18 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
     }
 
     /**
-     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+     * account is rejected
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * @return The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+     * account is rejected
      * 
      */
     public Optional<Output<String>> parent() {
@@ -109,7 +113,8 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param filter Optional. Allows filtering service principals by application id or external id
+         * @param filter Filters service principals by `applicationId` or `externalId`, for example
+         * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
          * 
          * @return builder
          * 
@@ -120,7 +125,8 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param filter Optional. Allows filtering service principals by application id or external id
+         * @param filter Filters service principals by `applicationId` or `externalId`, for example
+         * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
          * 
          * @return builder
          * 
@@ -130,8 +136,8 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param pageSize The maximum number of SPs to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of service principals to return, up to 1000. The default is 1000. A page
+         * can contain fewer service principals
          * 
          * @return builder
          * 
@@ -142,8 +148,8 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param pageSize The maximum number of SPs to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of service principals to return, up to 1000. The default is 1000. A page
+         * can contain fewer service principals
          * 
          * @return builder
          * 
@@ -153,8 +159,9 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param parent The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-         * defaults to the account of the calling workspace, and any other account is rejected
+         * @param parent The resource name of the account to list service principals in, in the format
+         * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+         * account is rejected
          * 
          * @return builder
          * 
@@ -165,8 +172,9 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param parent The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-         * defaults to the account of the calling workspace, and any other account is rejected
+         * @param parent The resource name of the account to list service principals in, in the format
+         * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+         * account is rejected
          * 
          * @return builder
          * 

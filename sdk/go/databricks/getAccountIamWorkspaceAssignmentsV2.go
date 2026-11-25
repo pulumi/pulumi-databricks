@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -28,20 +28,19 @@ func GetAccountIamWorkspaceAssignmentsV2(ctx *pulumi.Context, args *GetAccountIa
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentsV2.
 type GetAccountIamWorkspaceAssignmentsV2Args struct {
-	// The maximum number of workspace assignments to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+	// contain fewer assignments
 	PageSize *int `pulumi:"pageSize"`
-	// The parent resource name of the workspace whose assignments to list.
-	// Format: accounts/{account_id}/workspaces/{workspace_id}
+	// The resource name of the workspace, in the format
+	// `accounts/{account_id}/workspaces/{workspace_id}`
 	Parent string `pulumi:"parent"`
 }
 
 // A collection of values returned by getAccountIamWorkspaceAssignmentsV2.
 type GetAccountIamWorkspaceAssignmentsV2Result struct {
 	PageSize *int `pulumi:"pageSize"`
-	// (string) - The resource name of the workspace that contains the assignment,
-	// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-	// APIs return it
+	// (string) - The resource name of the workspace, in the format
+	// `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
 	Parent               string                                                   `pulumi:"parent"`
 	WorkspaceAssignments []GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment `pulumi:"workspaceAssignments"`
 }
@@ -53,11 +52,11 @@ func GetAccountIamWorkspaceAssignmentsV2Output(ctx *pulumi.Context, args GetAcco
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentsV2.
 type GetAccountIamWorkspaceAssignmentsV2OutputArgs struct {
-	// The maximum number of workspace assignments to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+	// contain fewer assignments
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// The parent resource name of the workspace whose assignments to list.
-	// Format: accounts/{account_id}/workspaces/{workspace_id}
+	// The resource name of the workspace, in the format
+	// `accounts/{account_id}/workspaces/{workspace_id}`
 	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
@@ -84,9 +83,8 @@ func (o GetAccountIamWorkspaceAssignmentsV2ResultOutput) PageSize() pulumi.IntPt
 	return o.ApplyT(func(v GetAccountIamWorkspaceAssignmentsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The resource name of the workspace that contains the assignment,
-// `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-// APIs return it
+// (string) - The resource name of the workspace, in the format
+// `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
 func (o GetAccountIamWorkspaceAssignmentsV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamWorkspaceAssignmentsV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }

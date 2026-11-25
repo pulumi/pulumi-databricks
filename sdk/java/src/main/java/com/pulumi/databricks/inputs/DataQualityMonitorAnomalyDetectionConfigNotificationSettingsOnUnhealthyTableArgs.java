@@ -18,9 +18,9 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
     public static final DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs Empty = new DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTableArgs();
 
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      * 
      */
@@ -28,9 +28,9 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
     private @Nullable Output<List<String>> destinationIds;
 
     /**
-     * @return The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * @return The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      * 
      */
@@ -56,14 +56,16 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
     }
 
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      * 
      */
     @Import(name="emailAddresses")
     private @Nullable Output<List<String>> emailAddresses;
 
     /**
-     * @return The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * @return The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      * 
      */
     public Optional<Output<List<String>>> emailAddresses() {
@@ -97,9 +99,9 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
         }
 
         /**
-         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-         * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-         * 25 destination IDs is supported.
+         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+         * EventBridge) to send the notification to. The destinations must already exist in the
+         * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
          * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
          * 
          * @return builder
@@ -111,9 +113,9 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
         }
 
         /**
-         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-         * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-         * 25 destination IDs is supported.
+         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+         * EventBridge) to send the notification to. The destinations must already exist in the
+         * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
          * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
          * 
          * @return builder
@@ -124,9 +126,9 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
         }
 
         /**
-         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-         * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-         * 25 destination IDs is supported.
+         * @param destinationIds The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+         * EventBridge) to send the notification to. The destinations must already exist in the
+         * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
          * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
          * 
          * @return builder
@@ -171,7 +173,8 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
         }
 
         /**
-         * @param emailAddresses The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+         * @param emailAddresses The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+         * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
          * 
          * @return builder
          * 
@@ -182,7 +185,8 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
         }
 
         /**
-         * @param emailAddresses The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+         * @param emailAddresses The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+         * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
          * 
          * @return builder
          * 
@@ -192,7 +196,8 @@ public final class DataQualityMonitorAnomalyDetectionConfigNotificationSettingsO
         }
 
         /**
-         * @param emailAddresses The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+         * @param emailAddresses The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+         * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
          * 
          * @return builder
          * 

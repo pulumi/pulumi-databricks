@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -32,7 +32,8 @@ func GetPostgresProjects(ctx *pulumi.Context, args *GetPostgresProjectsArgs, opt
 
 // A collection of arguments for invoking getPostgresProjects.
 type GetPostgresProjectsArgs struct {
-	// Upper bound for items returned. Cannot be negative. The maximum value is 100
+	// Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+	// page size are reduced to that maximum
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
@@ -57,7 +58,8 @@ func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutp
 
 // A collection of arguments for invoking getPostgresProjects.
 type GetPostgresProjectsOutputArgs struct {
-	// Upper bound for items returned. Cannot be negative. The maximum value is 100
+	// Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+	// page size are reduced to that maximum
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetPostgresProjectsProviderConfigPtrInput `pulumi:"providerConfig"`

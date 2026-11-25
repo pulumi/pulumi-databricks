@@ -69,6 +69,57 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// `Databricks app in Slack` notification destination (the Databricks app must already be installed in your Slack workspace and connected to your Databricks workspace):
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             DatabricksAppSlack = new Databricks.Inputs.NotificationDestinationConfigDatabricksAppSlackArgs
+    ///             {
+    ///                 TeamId = "T0123456789",
+    ///                 ChannelId = "C0123456789",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// `Databricks app in Microsoft Teams` notification destination (the Databricks app must already be installed in your Microsoft 365 tenant and connected to your Databricks workspace):
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             DatabricksAppTeams = new Databricks.Inputs.NotificationDestinationConfigDatabricksAppTeamsArgs
+    ///             {
+    ///                 TenantId = "00000000-0000-0000-0000-000000000000",
+    ///                 TeamId = "00000000-0000-0000-0000-000000000000",
+    ///                 ChannelId = "19:abc123@thread.tacv2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// `PagerDuty` notification destination:
     /// 
     /// ```csharp

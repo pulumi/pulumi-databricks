@@ -43,7 +43,7 @@ public final class GetPostgresDatabasesDatabase {
      */
     private @Nullable GetPostgresDatabasesDatabaseProviderConfig providerConfig;
     /**
-     * @return (DatabaseDatabaseSpec) - The desired state of the Database
+     * @return (DatabaseDatabaseSpec) - The desired state of the Database.
      * 
      */
     private GetPostgresDatabasesDatabaseSpec spec;
@@ -97,7 +97,7 @@ public final class GetPostgresDatabasesDatabase {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (DatabaseDatabaseSpec) - The desired state of the Database
+     * @return (DatabaseDatabaseSpec) - The desired state of the Database.
      * 
      */
     public GetPostgresDatabasesDatabaseSpec spec() {

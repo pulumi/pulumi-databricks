@@ -44,6 +44,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         return Optional.ofNullable(this.environmentVersion);
     }
 
+    @Import(name="imageUri")
+    private @Nullable Output<String> imageUri;
+
+    public Optional<Output<String>> imageUri() {
+        return Optional.ofNullable(this.imageUri);
+    }
+
     @Import(name="javaDependencies")
     private @Nullable Output<List<String>> javaDependencies;
 
@@ -65,6 +72,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         this.client = $.client;
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
+        this.imageUri = $.imageUri;
         this.javaDependencies = $.javaDependencies;
         this.projectEnvironment = $.projectEnvironment;
     }
@@ -125,6 +133,15 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
 
         public Builder environmentVersion(String environmentVersion) {
             return environmentVersion(Output.of(environmentVersion));
+        }
+
+        public Builder imageUri(@Nullable Output<String> imageUri) {
+            $.imageUri = imageUri;
+            return this;
+        }
+
+        public Builder imageUri(String imageUri) {
+            return imageUri(Output.of(imageUri));
         }
 
         public Builder javaDependencies(@Nullable Output<List<String>> javaDependencies) {

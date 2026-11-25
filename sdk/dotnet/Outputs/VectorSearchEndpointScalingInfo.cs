@@ -13,20 +13,40 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchEndpointScalingInfo
     {
+        public readonly string? DelayedReason;
+        public readonly int? EstimatedCompletionTimestamp;
+        public readonly int? IndexInitializationPercentage;
+        public readonly string? Phase;
         public readonly int? RequestedTargetQps;
         /// <summary>
         /// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
         /// </summary>
         public readonly string? State;
+        public readonly int? TargetQpsChangeAllowedAfterTimestamp;
 
         [OutputConstructor]
         private VectorSearchEndpointScalingInfo(
+            string? delayedReason,
+
+            int? estimatedCompletionTimestamp,
+
+            int? indexInitializationPercentage,
+
+            string? phase,
+
             int? requestedTargetQps,
 
-            string? state)
+            string? state,
+
+            int? targetQpsChangeAllowedAfterTimestamp)
         {
+            DelayedReason = delayedReason;
+            EstimatedCompletionTimestamp = estimatedCompletionTimestamp;
+            IndexInitializationPercentage = indexInitializationPercentage;
+            Phase = phase;
             RequestedTargetQps = requestedTargetQps;
             State = state;
+            TargetQpsChangeAllowedAfterTimestamp = targetQpsChangeAllowedAfterTimestamp;
         }
     }
 }

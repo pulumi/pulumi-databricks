@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
     /// 
@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
     /// 
     /// A read-write endpoint named `Primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `ReplaceExisting = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `EndpointId` will be available in later versions.
     /// 
-    /// Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `Disabled` or `SuspendTimeoutDuration` fields in `Spec`.
+    /// For this implicitly created read-write Endpoint, Pulumi manages updates only. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `Disabled` or `SuspendTimeoutDuration` fields in `Spec`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -137,6 +137,7 @@ namespace Pulumi.Databricks
     ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
     ///             Disabled = true,
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     /// });
@@ -154,13 +155,14 @@ namespace Pulumi.Databricks
     /// {
     ///     var alwaysOn = new Databricks.PostgresEndpoint("always_on", new()
     ///     {
-    ///         EndpointId = "always-on",
+    ///         EndpointId = "primary",
     ///         Parent = dev.Name,
     ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
     ///         {
     ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
     ///             NoSuspension = true,
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     /// });
@@ -325,7 +327,7 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The endpoint ID chosen when the endpoint was created. It is the final segment of `Name`
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
@@ -351,25 +353,34 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresEndpointProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// If true, update the endpoint if it already exists instead of returning an error
+        /// If true, update the endpoint if it already exists instead of returning an error. The request's
+        /// `spec.endpoint_type` must match the existing endpoint's type, and the other `Spec` fields are applied
+        /// as an update. Use this to configure the read-write endpoint that was created together with the branch
         /// </summary>
         [Output("replaceExisting")]
         public Output<bool?> ReplaceExisting { get; private set; } = null!;
 
         /// <summary>
-        /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        /// The desired configuration of the endpoint. Every field under `Spec` except `EndpointType` can be
+        /// changed after creation. See `Status` for the configuration that is currently in effect.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Output("spec")]
-        public Output<Outputs.PostgresEndpointSpec> Spec { get; private set; } = null!;
+        public Output<Outputs.PostgresEndpointSpec?> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// (EndpointStatus) - Current operational status of the compute endpoint
+        /// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        /// system, including the hostnames to connect to
         /// </summary>
         [Output("status")]
         public Output<Outputs.PostgresEndpointStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - System-generated unique ID for the endpoint
+        /// (string) - A system-generated ID that identifies the endpoint. Unlike `Name`, it is not derived from the
+        /// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -427,7 +438,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The endpoint ID chosen when the endpoint was created. It is the final segment of `Name`
         /// </summary>
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
@@ -446,13 +457,20 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresEndpointProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// If true, update the endpoint if it already exists instead of returning an error
+        /// If true, update the endpoint if it already exists instead of returning an error. The request's
+        /// `spec.endpoint_type` must match the existing endpoint's type, and the other `Spec` fields are applied
+        /// as an update. Use this to configure the read-write endpoint that was created together with the branch
         /// </summary>
         [Input("replaceExisting")]
         public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
-        /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        /// The desired configuration of the endpoint. Every field under `Spec` except `EndpointType` can be
+        /// changed after creation. See `Status` for the configuration that is currently in effect.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresEndpointSpecArgs>? Spec { get; set; }
@@ -472,7 +490,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The endpoint ID chosen when the endpoint was created. It is the final segment of `Name`
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
@@ -498,25 +516,34 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// If true, update the endpoint if it already exists instead of returning an error
+        /// If true, update the endpoint if it already exists instead of returning an error. The request's
+        /// `spec.endpoint_type` must match the existing endpoint's type, and the other `Spec` fields are applied
+        /// as an update. Use this to configure the read-write endpoint that was created together with the branch
         /// </summary>
         [Input("replaceExisting")]
         public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
-        /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        /// The desired configuration of the endpoint. Every field under `Spec` except `EndpointType` can be
+        /// changed after creation. See `Status` for the configuration that is currently in effect.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresEndpointSpecGetArgs>? Spec { get; set; }
 
         /// <summary>
-        /// (EndpointStatus) - Current operational status of the compute endpoint
+        /// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        /// system, including the hostnames to connect to
         /// </summary>
         [Input("status")]
         public Input<Inputs.PostgresEndpointStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// (string) - System-generated unique ID for the endpoint
+        /// (string) - A system-generated ID that identifies the endpoint. Unlike `Name`, it is not derived from the
+        /// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

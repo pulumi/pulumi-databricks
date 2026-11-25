@@ -89,11 +89,11 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - Creator identity
+     * (string) - Username or service principal application ID of the principal that created the MCP service
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * (string) - Owner of the MCP service
+     * (string) - Username, group name, or service principal application ID of the MCP service owner
      */
     declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
@@ -104,19 +104,22 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * Name for the MCP service, e.g. "myMcpService"
+     * Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      */
     declare public readonly mcpServiceId: pulumi.Output<string>;
     /**
-     * (string) - Metastore hosting the MCP service
+     * (string) - Unique identifier of the metastore that contains the MCP service
      */
     declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
      * (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -134,7 +137,8 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      */
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
@@ -210,11 +214,11 @@ export interface AiGatewayMcpServiceState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Creator identity
+     * (string) - Username or service principal application ID of the principal that created the MCP service
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Owner of the MCP service
+     * (string) - Username, group name, or service principal application ID of the MCP service owner
      */
     effectiveOwner?: pulumi.Input<string | undefined>;
     /**
@@ -225,19 +229,22 @@ export interface AiGatewayMcpServiceState {
      */
     etag?: pulumi.Input<string | undefined>;
     /**
-     * Name for the MCP service, e.g. "myMcpService"
+     * Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      */
     mcpServiceId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Metastore hosting the MCP service
+     * (string) - Unique identifier of the metastore that contains the MCP service
      */
     metastoreId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -255,7 +262,8 @@ export interface AiGatewayMcpServiceState {
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      */
     updatedBy?: pulumi.Input<string | undefined>;
 }
@@ -275,7 +283,9 @@ export interface AiGatewayMcpServiceArgs {
      */
     config?: pulumi.Input<inputs.AiGatewayMcpServiceConfig | undefined>;
     /**
-     * Name for the MCP service, e.g. "myMcpService"
+     * Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      */
     mcpServiceId: pulumi.Input<string>;
     /**

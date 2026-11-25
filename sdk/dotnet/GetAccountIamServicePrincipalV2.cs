@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamServicePrincipalV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamServicePrincipalV2Result>("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", args ?? new GetAccountIamServicePrincipalV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamServicePrincipalV2Result>("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", args ?? new GetAccountIamServicePrincipalV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -112,9 +112,9 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the service principal. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// The resource name of the service principal, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+        /// - Workspace APIs: `service-principals/{service_principal_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -128,9 +128,9 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the service principal. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// The resource name of the service principal, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+        /// - Workspace APIs: `service-principals/{service_principal_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -146,39 +146,40 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalV2Result
     {
         /// <summary>
-        /// (string) - The parent account ID for the service principal in Databricks
+        /// (string) - The ID of the account that contains the service principal
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         public readonly string AccountSpStatus;
         /// <summary>
-        /// (string) - Application ID of the service principal. Set at creation time and cannot be changed
-        /// afterwards; when omitted, the server generates one
+        /// (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+        /// service principal, Databricks generates one. It must be unique in the account and can't be
+        /// changed
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// (string) - Display name of the service principal
+        /// (string) - The service principal's display name
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - ExternalId of the service principal in the customer's IdP
+        /// (string) - The ID of the service principal in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// (string) - The resource name of the service principal, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+        /// - Workspace APIs: `service-principals/{service_principal_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The resource name of the account that contains the service principal,
-        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// (string) - The resource name of the account that contains the service principal, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (string) - Internal service principal ID of the service principal in Databricks
+        /// (string) - The Databricks ID of the service principal
         /// </summary>
         public readonly string ServicePrincipalId;
 

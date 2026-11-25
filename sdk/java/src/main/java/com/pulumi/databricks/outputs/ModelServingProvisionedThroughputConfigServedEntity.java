@@ -35,6 +35,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
      * 
      */
     private Integer provisionedModelUnits;
+    private @Nullable String ptTerm;
 
     private ModelServingProvisionedThroughputConfigServedEntity() {}
     public Optional<Boolean> burstScalingEnabled() {
@@ -68,6 +69,9 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
     public Integer provisionedModelUnits() {
         return this.provisionedModelUnits;
     }
+    public Optional<String> ptTerm() {
+        return Optional.ofNullable(this.ptTerm);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -83,6 +87,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
         private String entityVersion;
         private @Nullable String name;
         private Integer provisionedModelUnits;
+        private @Nullable String ptTerm;
         public Builder() {}
         public Builder(ModelServingProvisionedThroughputConfigServedEntity defaults) {
     	      Objects.requireNonNull(defaults);
@@ -91,6 +96,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
     	      this.entityVersion = defaults.entityVersion;
     	      this.name = defaults.name;
     	      this.provisionedModelUnits = defaults.provisionedModelUnits;
+    	      this.ptTerm = defaults.ptTerm;
         }
 
         @CustomType.Setter
@@ -129,6 +135,12 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
             this.provisionedModelUnits = provisionedModelUnits;
             return this;
         }
+        @CustomType.Setter
+        public Builder ptTerm(@Nullable String ptTerm) {
+
+            this.ptTerm = ptTerm;
+            return this;
+        }
         public ModelServingProvisionedThroughputConfigServedEntity build() {
             final var _resultValue = new ModelServingProvisionedThroughputConfigServedEntity();
             _resultValue.burstScalingEnabled = burstScalingEnabled;
@@ -136,6 +148,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
             _resultValue.entityVersion = entityVersion;
             _resultValue.name = name;
             _resultValue.provisionedModelUnits = provisionedModelUnits;
+            _resultValue.ptTerm = ptTerm;
             return _resultValue;
         }
     }

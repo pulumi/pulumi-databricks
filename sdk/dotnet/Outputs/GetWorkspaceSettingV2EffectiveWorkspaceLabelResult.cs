@@ -14,11 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceSettingV2EffectiveWorkspaceLabelResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+        /// and pink. It is an empty string when no label is set
         /// </summary>
         public readonly string? Color;
         /// <summary>
-        /// (string)
+        /// (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+        /// means no label is set
         /// </summary>
         public readonly string? Label;
 

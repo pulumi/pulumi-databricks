@@ -95,7 +95,9 @@ type LookupFeatureEngineeringFeatureResult struct {
 	// is what will be present in materialized tables and expected to match at query time.
 	// Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
 	// backwards compatibility but is deprecated; migrate to dot notation
-	Name           string                                      `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+	OutputTypeText string                                      `pulumi:"outputTypeText"`
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// (string) - Name of parent schema relative to its parent catalog
 	SchemaName string `pulumi:"schemaName"`
@@ -204,6 +206,11 @@ func (o LookupFeatureEngineeringFeatureResultOutput) LineageContext() GetFeature
 // backwards compatibility but is deprecated; migrate to dot notation
 func (o LookupFeatureEngineeringFeatureResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+func (o LookupFeatureEngineeringFeatureResultOutput) OutputTypeText() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.OutputTypeText }).(pulumi.StringOutput)
 }
 
 func (o LookupFeatureEngineeringFeatureResultOutput) ProviderConfig() GetFeatureEngineeringFeatureProviderConfigPtrOutput {

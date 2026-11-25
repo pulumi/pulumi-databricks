@@ -47,15 +47,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
- * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
- * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
- * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
  */
 export class App extends pulumi.CustomResource {
     /**
@@ -108,10 +99,16 @@ export class App extends pulumi.CustomResource {
      * The Budget Policy ID set for this resource.
      */
     declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
+    /**
+     * Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+     */
     declare public readonly computeMaxInstances: pulumi.Output<number | undefined>;
+    /**
+     * Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+     */
     declare public readonly computeMinInstances: pulumi.Output<number | undefined>;
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
      */
     declare public readonly computeSize: pulumi.Output<string>;
     /**
@@ -139,6 +136,7 @@ export class App extends pulumi.CustomResource {
      * The effective budget policy ID.
      */
     declare public /*out*/ readonly effectiveBudgetPolicyId: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveResources: pulumi.Output<outputs.AppEffectiveResource[]>;
     /**
      * The effective usage policy ID.
      */
@@ -200,6 +198,16 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly telemetryExportDestinations: pulumi.Output<outputs.AppTelemetryExportDestination[] | undefined>;
     /**
+     * The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app's thumbnail.
+     */
+    declare public /*out*/ readonly thumbnailMd5: pulumi.Output<string>;
+    /**
+     * Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+     *
+     * > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+     */
+    declare public readonly thumbnailPath: pulumi.Output<string | undefined>;
+    /**
      * The URL of the thumbnail image for the app.
      */
     declare public /*out*/ readonly thumbnailUrl: pulumi.Output<string>;
@@ -250,6 +258,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultSourceCodePath"] = state?.defaultSourceCodePath;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveBudgetPolicyId"] = state?.effectiveBudgetPolicyId;
+            resourceInputs["effectiveResources"] = state?.effectiveResources;
             resourceInputs["effectiveUsagePolicyId"] = state?.effectiveUsagePolicyId;
             resourceInputs["effectiveUserApiScopes"] = state?.effectiveUserApiScopes;
             resourceInputs["forwardUserAccessToken"] = state?.forwardUserAccessToken;
@@ -268,6 +277,8 @@ export class App extends pulumi.CustomResource {
             resourceInputs["sourceCodePath"] = state?.sourceCodePath;
             resourceInputs["space"] = state?.space;
             resourceInputs["telemetryExportDestinations"] = state?.telemetryExportDestinations;
+            resourceInputs["thumbnailMd5"] = state?.thumbnailMd5;
+            resourceInputs["thumbnailPath"] = state?.thumbnailPath;
             resourceInputs["thumbnailUrl"] = state?.thumbnailUrl;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updater"] = state?.updater;
@@ -291,6 +302,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["sourceCodePath"] = args?.sourceCodePath;
             resourceInputs["space"] = args?.space;
             resourceInputs["telemetryExportDestinations"] = args?.telemetryExportDestinations;
+            resourceInputs["thumbnailPath"] = args?.thumbnailPath;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["userApiScopes"] = args?.userApiScopes;
             resourceInputs["activeDeployment"] = undefined /*out*/;
@@ -301,6 +313,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultGitSource"] = undefined /*out*/;
             resourceInputs["defaultSourceCodePath"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
+            resourceInputs["effectiveResources"] = undefined /*out*/;
             resourceInputs["effectiveUsagePolicyId"] = undefined /*out*/;
             resourceInputs["effectiveUserApiScopes"] = undefined /*out*/;
             resourceInputs["oauth2AppClientId"] = undefined /*out*/;
@@ -309,6 +322,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["servicePrincipalClientId"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;
             resourceInputs["servicePrincipalName"] = undefined /*out*/;
+            resourceInputs["thumbnailMd5"] = undefined /*out*/;
             resourceInputs["thumbnailUrl"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["updater"] = undefined /*out*/;
@@ -335,10 +349,16 @@ export interface AppState {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+     */
     computeMaxInstances?: pulumi.Input<number | undefined>;
+    /**
+     * Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+     */
     computeMinInstances?: pulumi.Input<number | undefined>;
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
      */
     computeSize?: pulumi.Input<string | undefined>;
     /**
@@ -366,6 +386,7 @@ export interface AppState {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId?: pulumi.Input<string | undefined>;
+    effectiveResources?: pulumi.Input<pulumi.Input<inputs.AppEffectiveResource>[] | undefined>;
     /**
      * The effective usage policy ID.
      */
@@ -427,6 +448,16 @@ export interface AppState {
      */
     telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
     /**
+     * The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app's thumbnail.
+     */
+    thumbnailMd5?: pulumi.Input<string | undefined>;
+    /**
+     * Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+     *
+     * > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+     */
+    thumbnailPath?: pulumi.Input<string | undefined>;
+    /**
      * The URL of the thumbnail image for the app.
      */
     thumbnailUrl?: pulumi.Input<string | undefined>;
@@ -460,10 +491,16 @@ export interface AppArgs {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+     */
     computeMaxInstances?: pulumi.Input<number | undefined>;
+    /**
+     * Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+     */
     computeMinInstances?: pulumi.Input<number | undefined>;
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
      */
     computeSize?: pulumi.Input<string | undefined>;
     /**
@@ -498,6 +535,12 @@ export interface AppArgs {
      * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
      */
     telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
+    /**
+     * Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+     *
+     * > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+     */
+    thumbnailPath?: pulumi.Input<string | undefined>;
     /**
      * The Usage Policy ID set for this resource.
      */

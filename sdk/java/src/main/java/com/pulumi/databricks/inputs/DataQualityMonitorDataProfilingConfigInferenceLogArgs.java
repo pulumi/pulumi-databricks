@@ -25,14 +25,14 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
     }
 
     /**
-     * Column for the label
+     * Column containing the ground truth for the model&#39;s predictions
      * 
      */
     @Import(name="labelColumn")
     private @Nullable Output<String> labelColumn;
 
     /**
-     * @return Column for the label
+     * @return Column containing the ground truth for the model&#39;s predictions
      * 
      */
     public Optional<Output<String>> labelColumn() {
@@ -40,14 +40,16 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
     }
 
     /**
-     * Column for the model identifier
+     * Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      * 
      */
     @Import(name="modelIdColumn", required=true)
     private Output<String> modelIdColumn;
 
     /**
-     * @return Column for the model identifier
+     * @return Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      * 
      */
     public Output<String> modelIdColumn() {
@@ -55,14 +57,14 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
     }
 
     /**
-     * Column for the prediction
+     * Column containing the model&#39;s predicted values
      * 
      */
     @Import(name="predictionColumn", required=true)
     private Output<String> predictionColumn;
 
     /**
-     * @return Column for the prediction
+     * @return Column containing the model&#39;s predicted values
      * 
      */
     public Output<String> predictionColumn() {
@@ -70,14 +72,14 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
     }
 
     /**
-     * Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      * 
      */
     @Import(name="problemType", required=true)
     private Output<String> problemType;
 
     /**
-     * @return Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * @return The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      * 
      */
     public Output<String> problemType() {
@@ -134,7 +136,7 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param labelColumn Column for the label
+         * @param labelColumn Column containing the ground truth for the model&#39;s predictions
          * 
          * @return builder
          * 
@@ -145,7 +147,7 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param labelColumn Column for the label
+         * @param labelColumn Column containing the ground truth for the model&#39;s predictions
          * 
          * @return builder
          * 
@@ -155,7 +157,8 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param modelIdColumn Column for the model identifier
+         * @param modelIdColumn Column containing the ID of the model that produced each prediction. A slice is created automatically for
+         * each distinct model ID
          * 
          * @return builder
          * 
@@ -166,7 +169,8 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param modelIdColumn Column for the model identifier
+         * @param modelIdColumn Column containing the ID of the model that produced each prediction. A slice is created automatically for
+         * each distinct model ID
          * 
          * @return builder
          * 
@@ -176,7 +180,7 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param predictionColumn Column for the prediction
+         * @param predictionColumn Column containing the model&#39;s predicted values
          * 
          * @return builder
          * 
@@ -187,7 +191,7 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param predictionColumn Column for the prediction
+         * @param predictionColumn Column containing the model&#39;s predicted values
          * 
          * @return builder
          * 
@@ -197,7 +201,7 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param problemType Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+         * @param problemType The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
          * 
          * @return builder
          * 
@@ -208,7 +212,7 @@ public final class DataQualityMonitorDataProfilingConfigInferenceLogArgs extends
         }
 
         /**
-         * @param problemType Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+         * @param problemType The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
          * 
          * @return builder
          * 

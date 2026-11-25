@@ -38,22 +38,28 @@ public final class GetAiSearchIndexesIndex {
      */
     private String endpoint;
     /**
-     * @return (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * @return (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
     private String indexSubtype;
     /**
-     * @return (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * @return (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      * 
      */
     private String indexType;
     /**
-     * @return (string) - Name of the column
+     * @return (string) - Name of the column that holds the precomputed embedding vectors
      * 
      */
     private String name;
     /**
-     * @return (string) - Primary key of the index. Set on create and immutable thereafter
+     * @return (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      * 
      */
     private String primaryKey;
@@ -99,28 +105,34 @@ public final class GetAiSearchIndexesIndex {
         return this.endpoint;
     }
     /**
-     * @return (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * @return (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
     public String indexSubtype() {
         return this.indexSubtype;
     }
     /**
-     * @return (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * @return (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      * 
      */
     public String indexType() {
         return this.indexType;
     }
     /**
-     * @return (string) - Name of the column
+     * @return (string) - Name of the column that holds the precomputed embedding vectors
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (string) - Primary key of the index. Set on create and immutable thereafter
+     * @return (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      * 
      */
     public String primaryKey() {

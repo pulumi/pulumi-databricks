@@ -18,7 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? ForcedForComplianceMode;
         /// <summary>
-        /// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+        /// (boolean) - The feature is unavailable because the workspace does not have the Enhanced Security and
+        /// Compliance entitlement
         /// </summary>
         public readonly bool? UnavailableForDisabledEntitlement;
         /// <summary>

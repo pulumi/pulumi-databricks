@@ -17,14 +17,14 @@ public final class NotificationDestinationConfigDatabricksAppSlackArgs extends c
     public static final NotificationDestinationConfigDatabricksAppSlackArgs Empty = new NotificationDestinationConfigDatabricksAppSlackArgs();
 
     /**
-     * Slack channel ID for notifications.
+     * Slack channel ID notifications are posted to.
      * 
      */
     @Import(name="channelId")
     private @Nullable Output<String> channelId;
 
     /**
-     * @return Slack channel ID for notifications.
+     * @return Slack channel ID notifications are posted to.
      * 
      */
     public Optional<Output<String>> channelId() {
@@ -38,9 +38,17 @@ public final class NotificationDestinationConfigDatabricksAppSlackArgs extends c
         return Optional.ofNullable(this.channelIdSet);
     }
 
+    /**
+     * Slack workspace (team) ID the Databricks app is installed in.
+     * 
+     */
     @Import(name="teamId")
     private @Nullable Output<String> teamId;
 
+    /**
+     * @return Slack workspace (team) ID the Databricks app is installed in.
+     * 
+     */
     public Optional<Output<String>> teamId() {
         return Optional.ofNullable(this.teamId);
     }
@@ -80,7 +88,7 @@ public final class NotificationDestinationConfigDatabricksAppSlackArgs extends c
         }
 
         /**
-         * @param channelId Slack channel ID for notifications.
+         * @param channelId Slack channel ID notifications are posted to.
          * 
          * @return builder
          * 
@@ -91,7 +99,7 @@ public final class NotificationDestinationConfigDatabricksAppSlackArgs extends c
         }
 
         /**
-         * @param channelId Slack channel ID for notifications.
+         * @param channelId Slack channel ID notifications are posted to.
          * 
          * @return builder
          * 
@@ -109,11 +117,23 @@ public final class NotificationDestinationConfigDatabricksAppSlackArgs extends c
             return channelIdSet(Output.of(channelIdSet));
         }
 
+        /**
+         * @param teamId Slack workspace (team) ID the Databricks app is installed in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(@Nullable Output<String> teamId) {
             $.teamId = teamId;
             return this;
         }
 
+        /**
+         * @param teamId Slack workspace (team) ID the Databricks app is installed in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(String teamId) {
             return teamId(Output.of(teamId));
         }

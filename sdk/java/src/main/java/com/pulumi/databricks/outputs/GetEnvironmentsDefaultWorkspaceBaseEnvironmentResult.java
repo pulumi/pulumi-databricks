@@ -15,12 +15,14 @@ import javax.annotation.Nullable;
 public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
     /**
      * @return (string) - The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
     private String cpuWorkspaceBaseEnvironment;
     /**
      * @return (string) - The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -36,6 +38,7 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
     private GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult() {}
     /**
      * @return (string) - The default workspace base environment for CPU compute.
+     * If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */
@@ -44,6 +47,7 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
     }
     /**
      * @return (string) - The default workspace base environment for GPU compute.
+     * If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
      * Format: workspace-base-environments/{workspace_base_environment}
      * 
      */

@@ -48,7 +48,7 @@ public final class GetRfaAccessRequestDestinationsResult {
      */
     private GetRfaAccessRequestDestinationsSecurable securable;
     /**
-     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * @return (string) - The type of the securable, repeated from **securable** as a plain string
      * 
      */
     private String securableType;
@@ -96,7 +96,7 @@ public final class GetRfaAccessRequestDestinationsResult {
         return this.securable;
     }
     /**
-     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * @return (string) - The type of the securable, repeated from **securable** as a plain string
      * 
      */
     public String securableType() {

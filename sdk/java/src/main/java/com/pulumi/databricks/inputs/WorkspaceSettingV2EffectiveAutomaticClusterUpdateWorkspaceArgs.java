@@ -17,37 +17,89 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArg
 
     public static final WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs Empty = new WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs();
 
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     * 
+     */
     @Import(name="canToggle")
     private @Nullable Output<Boolean> canToggle;
 
+    /**
+     * @return Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     * 
+     */
     public Optional<Output<Boolean>> canToggle() {
         return Optional.ofNullable(this.canToggle);
     }
 
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     * 
+     */
     @Import(name="enablementDetails")
     private @Nullable Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs> enablementDetails;
 
+    /**
+     * @return Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     * 
+     */
     public Optional<Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs>> enablementDetails() {
         return Optional.ofNullable(this.enablementDetails);
     }
 
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     * 
+     */
     @Import(name="maintenanceWindow")
     private @Nullable Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs> maintenanceWindow;
 
+    /**
+     * @return When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     * 
+     */
     public Optional<Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
 
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     * 
+     */
     @Import(name="restartEvenIfNoUpdatesAvailable")
     private @Nullable Output<Boolean> restartEvenIfNoUpdatesAvailable;
 
+    /**
+     * @return Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     * 
+     */
     public Optional<Output<Boolean>> restartEvenIfNoUpdatesAvailable() {
         return Optional.ofNullable(this.restartEvenIfNoUpdatesAvailable);
     }
@@ -80,47 +132,119 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArg
             $ = new WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param canToggle Whether the workspace can change the enabled state. Databricks computes this value: it is false
+         * when the compliance security profile forces the feature on or when the workspace lacks the
+         * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+         * 
+         * @return builder
+         * 
+         */
         public Builder canToggle(@Nullable Output<Boolean> canToggle) {
             $.canToggle = canToggle;
             return this;
         }
 
+        /**
+         * @param canToggle Whether the workspace can change the enabled state. Databricks computes this value: it is false
+         * when the compliance security profile forces the feature on or when the workspace lacks the
+         * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+         * 
+         * @return builder
+         * 
+         */
         public Builder canToggle(Boolean canToggle) {
             return canToggle(Output.of(canToggle));
         }
 
+        /**
+         * @param enabled Whether automatic cluster update is enabled for the workspace. The effective value is always
+         * true while the compliance security profile is enabled on the workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether automatic cluster update is enabled for the workspace. The effective value is always
+         * true while the compliance security profile is enabled on the workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param enablementDetails Why the feature is forced on or unavailable. Databricks sets these details for information only;
+         * they do not determine whether the feature is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enablementDetails(@Nullable Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs> enablementDetails) {
             $.enablementDetails = enablementDetails;
             return this;
         }
 
+        /**
+         * @param enablementDetails Why the feature is forced on or unavailable. Databricks sets these details for information only;
+         * they do not determine whether the feature is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enablementDetails(WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs enablementDetails) {
             return enablementDetails(Output.of(enablementDetails));
         }
 
+        /**
+         * @param maintenanceWindow When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+         * 01:00 UTC
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceWindow(@Nullable Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs> maintenanceWindow) {
             $.maintenanceWindow = maintenanceWindow;
             return this;
         }
 
+        /**
+         * @param maintenanceWindow When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+         * 01:00 UTC
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceWindow(WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs maintenanceWindow) {
             return maintenanceWindow(Output.of(maintenanceWindow));
         }
 
+        /**
+         * @param restartEvenIfNoUpdatesAvailable Whether compute resources restart during every maintenance window even when no update is
+         * available. When false, they restart only when an update is available
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartEvenIfNoUpdatesAvailable(@Nullable Output<Boolean> restartEvenIfNoUpdatesAvailable) {
             $.restartEvenIfNoUpdatesAvailable = restartEvenIfNoUpdatesAvailable;
             return this;
         }
 
+        /**
+         * @param restartEvenIfNoUpdatesAvailable Whether compute resources restart during every maintenance window even when no update is
+         * available. When false, they restart only when an update is available
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartEvenIfNoUpdatesAvailable(Boolean restartEvenIfNoUpdatesAvailable) {
             return restartEvenIfNoUpdatesAvailable(Output.of(restartEvenIfNoUpdatesAvailable));
         }

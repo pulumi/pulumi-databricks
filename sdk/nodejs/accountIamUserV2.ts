@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -76,35 +76,40 @@ export class AccountIamUserV2 extends pulumi.CustomResource {
     }
 
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
-     * The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     declare public readonly accountUserStatus: pulumi.Output<string>;
     /**
-     * ExternalId of the user in the customer's IdP
+     * The ID of the user in your identity provider (IdP)
      */
     declare public readonly externalId: pulumi.Output<string | undefined>;
+    /**
+     * The user's name
+     */
     declare public readonly fullName: pulumi.Output<outputs.AccountIamUserV2FullName>;
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      */
     declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
-     * Username/email of the user
+     * The user's username, which is their email address. It can't be changed after the user is
+     * created
      */
     declare public readonly username: pulumi.Output<string>;
 
@@ -162,35 +167,40 @@ export class AccountIamUserV2 extends pulumi.CustomResource {
  */
 export interface AccountIamUserV2State {
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountUserStatus?: pulumi.Input<string | undefined>;
     /**
-     * ExternalId of the user in the customer's IdP
+     * The ID of the user in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * The user's name
+     */
     fullName?: pulumi.Input<inputs.AccountIamUserV2FullName | undefined>;
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     parent?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      */
     userId?: pulumi.Input<string | undefined>;
     /**
-     * Username/email of the user
+     * The user's username, which is their email address. It can't be changed after the user is
+     * created
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -200,21 +210,26 @@ export interface AccountIamUserV2State {
  */
 export interface AccountIamUserV2Args {
     /**
-     * The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountUserStatus: pulumi.Input<string>;
     /**
-     * ExternalId of the user in the customer's IdP
+     * The ID of the user in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * The user's name
+     */
     fullName: pulumi.Input<inputs.AccountIamUserV2FullName>;
     /**
-     * The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     parent: pulumi.Input<string>;
     /**
-     * Username/email of the user
+     * The user's username, which is their email address. It can't be changed after the user is
+     * created
      */
     username: pulumi.Input<string>;
 }

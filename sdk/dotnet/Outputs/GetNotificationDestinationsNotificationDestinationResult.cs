@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetNotificationDestinationsNotificationDestinationResult
     {
         /// <summary>
-        /// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+        /// The type of the notification destination. Possible values are `DATABRICKS_APP_SLACK`, `DATABRICKS_APP_TEAMS`, `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
         /// </summary>
         public readonly string? DestinationType;
         /// <summary>

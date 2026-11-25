@@ -187,6 +187,7 @@ type Pipeline struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrOutput   `pulumi:"target"`
+	Testing PipelineTestingPtrOutput `pulumi:"testing"`
 	Trigger PipelineTriggerPtrOutput `pulumi:"trigger"`
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url           pulumi.StringOutput    `pulumi:"url"`
@@ -287,6 +288,7 @@ type pipelineState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  *string          `pulumi:"target"`
+	Testing *PipelineTesting `pulumi:"testing"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url           *string `pulumi:"url"`
@@ -358,6 +360,7 @@ type PipelineState struct {
 	Tags pulumi.StringMapInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrInput
+	Testing PipelineTestingPtrInput
 	Trigger PipelineTriggerPtrInput
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url           pulumi.StringPtrInput
@@ -439,6 +442,7 @@ type pipelineArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  *string          `pulumi:"target"`
+	Testing *PipelineTesting `pulumi:"testing"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url           *string `pulumi:"url"`
@@ -511,6 +515,7 @@ type PipelineArgs struct {
 	Tags pulumi.StringMapInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrInput
+	Testing PipelineTestingPtrInput
 	Trigger PipelineTriggerPtrInput
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url           pulumi.StringPtrInput
@@ -786,6 +791,10 @@ func (o PipelineOutput) Tags() pulumi.StringMapOutput {
 // The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 func (o PipelineOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineOutput) Testing() PipelineTestingPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineTestingPtrOutput { return v.Testing }).(PipelineTestingPtrOutput)
 }
 
 func (o PipelineOutput) Trigger() PipelineTriggerPtrOutput {

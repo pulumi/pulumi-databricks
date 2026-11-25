@@ -19,14 +19,14 @@ public final class GetPostgresEndpointsArgs extends com.pulumi.resources.InvokeA
     public static final GetPostgresEndpointsArgs Empty = new GetPostgresEndpointsArgs();
 
     /**
-     * Upper bound for items returned. Cannot be negative
+     * Upper bound for the number of endpoints returned. If set, the value must be at least 10
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Upper bound for items returned. Cannot be negative
+     * @return Upper bound for the number of endpoints returned. If set, the value must be at least 10
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -92,7 +92,7 @@ public final class GetPostgresEndpointsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param pageSize Upper bound for items returned. Cannot be negative
+         * @param pageSize Upper bound for the number of endpoints returned. If set, the value must be at least 10
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetPostgresEndpointsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param pageSize Upper bound for items returned. Cannot be negative
+         * @param pageSize Upper bound for the number of endpoints returned. If set, the value must be at least 10
          * 
          * @return builder
          * 

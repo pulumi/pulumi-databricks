@@ -42,7 +42,7 @@ export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pul
  */
 export interface GetDatabaseInstancesArgs {
     /**
-     * Upper bound for items returned. The maximum value is 100
+     * Upper bound for items returned. Defaults to 100, which is also the maximum value
      */
     pageSize?: number;
     /**
@@ -95,7 +95,7 @@ export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs
  */
 export interface GetDatabaseInstancesOutputArgs {
     /**
-     * Upper bound for items returned. The maximum value is 100
+     * Upper bound for items returned. Defaults to 100, which is also the maximum value
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

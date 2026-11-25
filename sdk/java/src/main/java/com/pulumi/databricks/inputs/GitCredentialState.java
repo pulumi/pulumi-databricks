@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GitCredentialProviderConfigArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,18 +109,50 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      * 
      */
     @Import(name="personalAccessToken")
     private @Nullable Output<String> personalAccessToken;
 
     /**
-     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      * 
      */
     public Optional<Output<String>> personalAccessToken() {
         return Optional.ofNullable(this.personalAccessToken);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     * 
+     */
+    @Import(name="personalAccessTokenWo")
+    private @Nullable Output<String> personalAccessTokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     * 
+     */
+    public Optional<Output<String>> personalAccessTokenWo() {
+        return Optional.ofNullable(this.personalAccessTokenWo);
+    }
+
+    /**
+     * Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     * 
+     */
+    @Import(name="personalAccessTokenWoVersion")
+    private @Nullable Output<Integer> personalAccessTokenWoVersion;
+
+    /**
+     * @return Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     * 
+     */
+    public Optional<Output<Integer>> personalAccessTokenWoVersion() {
+        return Optional.ofNullable(this.personalAccessTokenWoVersion);
     }
 
     /**
@@ -162,6 +195,8 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         this.isDefaultForProvider = $.isDefaultForProvider;
         this.name = $.name;
         this.personalAccessToken = $.personalAccessToken;
+        this.personalAccessTokenWo = $.personalAccessTokenWo;
+        this.personalAccessTokenWoVersion = $.personalAccessTokenWoVersion;
         this.principalId = $.principalId;
         this.providerConfig = $.providerConfig;
     }
@@ -311,7 +346,7 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
          * 
          * @return builder
          * 
@@ -322,13 +357,57 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
          * 
          * @return builder
          * 
          */
         public Builder personalAccessToken(String personalAccessToken) {
             return personalAccessToken(Output.of(personalAccessToken));
+        }
+
+        /**
+         * @param personalAccessTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalAccessTokenWo(@Nullable Output<String> personalAccessTokenWo) {
+            $.personalAccessTokenWo = personalAccessTokenWo;
+            return this;
+        }
+
+        /**
+         * @param personalAccessTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalAccessTokenWo(String personalAccessTokenWo) {
+            return personalAccessTokenWo(Output.of(personalAccessTokenWo));
+        }
+
+        /**
+         * @param personalAccessTokenWoVersion Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalAccessTokenWoVersion(@Nullable Output<Integer> personalAccessTokenWoVersion) {
+            $.personalAccessTokenWoVersion = personalAccessTokenWoVersion;
+            return this;
+        }
+
+        /**
+         * @param personalAccessTokenWoVersion Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalAccessTokenWoVersion(Integer personalAccessTokenWoVersion) {
+            return personalAccessTokenWoVersion(Output.of(personalAccessTokenWoVersion));
         }
 
         /**

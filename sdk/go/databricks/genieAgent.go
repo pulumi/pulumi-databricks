@@ -16,7 +16,7 @@ import (
 //
 // A Genie Agent is a no-code, AI/BI-powered analytics experience that lets business users ask questions of their data in natural language. Analysts configure a Genie Agent with a SQL warehouse and a `definition` attribute (the tables, instructions, and sample questions that ground the agent); business users then query it conversationally.
 //
-// This resource manages the full lifecycle of a Genie Agent — create, update, and delete. The service returns `definition` exactly as it was applied, so the value never drifts; a definition the service would store differently is rejected with `INVALID_PARAMETER_VALUE`. In particular: write multi-line text (such as SQL or an instruction) as a single string, omit empty strings rather than setting them, list sample questions in `id` order, benchmark questions in descending `id` order, and MCP connections sorted by `mcpConnection`, and give every entry that has an `id` a unique 32-character lowercase hexadecimal value. Each column config must name a column that exists in its table, and a column config may set `displayName` only where column display names are enabled for the workspace; otherwise the apply is rejected with `INVALID_PARAMETER_VALUE`.
+// This resource manages the full lifecycle of a Genie Agent — create, update, and delete. The service returns `definition` exactly as it was applied, so the value never drifts; a definition the service would store differently is rejected with `INVALID_PARAMETER_VALUE`. In particular: write multi-line text (such as SQL or an instruction) as a single string, omit empty strings rather than setting them, list tables in `identifier` order, column configs in `column` order, volumes in `path` order, MCP connections in `mcpConnection` order, benchmark questions in descending `id` order, and every other list whose entries have an `id` (such as sample questions and text instructions) in `id` order, and give every entry that has an `id` a unique 32-character lowercase hexadecimal value. Each column config must name a column that exists in its table, and a column config may set `displayName` only where column display names are enabled for the workspace; otherwise the apply is rejected with `INVALID_PARAMETER_VALUE`.
 //
 // ## Example Usage
 //
@@ -51,6 +51,9 @@ import (
 //					DataSources: &databricks.GenieAgentDefinitionDataSourcesArgs{
 //						Tables: databricks.GenieAgentDefinitionDataSourcesTableArray{
 //							&databricks.GenieAgentDefinitionDataSourcesTableArgs{
+//								Identifier: pulumi.String("main.sales.customers"),
+//							},
+//							&databricks.GenieAgentDefinitionDataSourcesTableArgs{
 //								Identifier:  pulumi.String("main.sales.orders"),
 //								Description: pulumi.String("One row per order, with order date, amount, and customer."),
 //								ColumnConfigs: databricks.GenieAgentDefinitionDataSourcesTableColumnConfigArray{
@@ -60,9 +63,6 @@ import (
 //										EnableEntityMatching:   pulumi.Bool(true),
 //									},
 //								},
-//							},
-//							&databricks.GenieAgentDefinitionDataSourcesTableArgs{
-//								Identifier: pulumi.String("main.sales.customers"),
 //							},
 //						},
 //					},

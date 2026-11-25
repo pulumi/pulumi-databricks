@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.VectorSearchIndexStatusFailedStatusArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,20 @@ import javax.annotation.Nullable;
 public final class VectorSearchIndexStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final VectorSearchIndexStatusArgs Empty = new VectorSearchIndexStatusArgs();
+
+    @Import(name="detailedState")
+    private @Nullable Output<String> detailedState;
+
+    public Optional<Output<String>> detailedState() {
+        return Optional.ofNullable(this.detailedState);
+    }
+
+    @Import(name="failedStatus")
+    private @Nullable Output<VectorSearchIndexStatusFailedStatusArgs> failedStatus;
+
+    public Optional<Output<VectorSearchIndexStatusFailedStatusArgs>> failedStatus() {
+        return Optional.ofNullable(this.failedStatus);
+    }
 
     /**
      * Index API Url to be used to perform operations on the index
@@ -80,6 +95,8 @@ public final class VectorSearchIndexStatusArgs extends com.pulumi.resources.Reso
     private VectorSearchIndexStatusArgs() {}
 
     private VectorSearchIndexStatusArgs(VectorSearchIndexStatusArgs $) {
+        this.detailedState = $.detailedState;
+        this.failedStatus = $.failedStatus;
         this.indexUrl = $.indexUrl;
         this.indexedRowCount = $.indexedRowCount;
         this.message = $.message;
@@ -102,6 +119,24 @@ public final class VectorSearchIndexStatusArgs extends com.pulumi.resources.Reso
 
         public Builder(VectorSearchIndexStatusArgs defaults) {
             $ = new VectorSearchIndexStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder detailedState(@Nullable Output<String> detailedState) {
+            $.detailedState = detailedState;
+            return this;
+        }
+
+        public Builder detailedState(String detailedState) {
+            return detailedState(Output.of(detailedState));
+        }
+
+        public Builder failedStatus(@Nullable Output<VectorSearchIndexStatusFailedStatusArgs> failedStatus) {
+            $.failedStatus = failedStatus;
+            return this;
+        }
+
+        public Builder failedStatus(VectorSearchIndexStatusFailedStatusArgs failedStatus) {
+            return failedStatus(Output.of(failedStatus));
         }
 
         /**

@@ -36,16 +36,18 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
     }
 
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Defaults to false
+     * Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+     * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+     * UpdateFailoverGroup
      * 
      */
     @Import(name="replicateWorkspaceAssets")
     private @Nullable Output<Boolean> replicateWorkspaceAssets;
 
     /**
-     * @return Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Defaults to false
+     * @return Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+     * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+     * UpdateFailoverGroup
      * 
      */
     public Optional<Output<Boolean>> replicateWorkspaceAssets() {
@@ -55,7 +57,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
     /**
      * Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-     * The referenced stable URLs must already exist (via CreateStableUrl)
+     * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+     * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+     * enabled, an update can attach or detach one stable URL at a time
      * 
      */
     @Import(name="stableUrlNames")
@@ -64,7 +68,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
     /**
      * @return Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-     * The referenced stable URLs must already exist (via CreateStableUrl)
+     * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+     * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+     * enabled, an update can attach or detach one stable URL at a time
      * 
      */
     public Optional<Output<List<String>>> stableUrlNames() {
@@ -72,16 +78,20 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
     }
 
     /**
-     * Workspace IDs in this set. The system derives and validates regions.
-     * All workspaces must be in the Mission Critical tier
+     * IDs of the two workspaces in this set, one in each of the failover group&#39;s regions. The
+     * system derives and validates each workspace&#39;s region. Both workspaces must belong to the
+     * account and have the Mission Critical add-on enabled, and they cannot be changed after
+     * creation
      * 
      */
     @Import(name="workspaceIds", required=true)
     private Output<List<String>> workspaceIds;
 
     /**
-     * @return Workspace IDs in this set. The system derives and validates regions.
-     * All workspaces must be in the Mission Critical tier
+     * @return IDs of the two workspaces in this set, one in each of the failover group&#39;s regions. The
+     * system derives and validates each workspace&#39;s region. Both workspaces must belong to the
+     * account and have the Mission Critical add-on enabled, and they cannot be changed after
+     * creation
      * 
      */
     public Output<List<String>> workspaceIds() {
@@ -139,8 +149,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-         * Defaults to false
+         * @param replicateWorkspaceAssets Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+         * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+         * UpdateFailoverGroup
          * 
          * @return builder
          * 
@@ -151,8 +162,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-         * Defaults to false
+         * @param replicateWorkspaceAssets Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+         * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+         * UpdateFailoverGroup
          * 
          * @return builder
          * 
@@ -164,7 +176,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         /**
          * @param stableUrlNames Resource names of stable URLs associated with this workspace set.
          * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-         * The referenced stable URLs must already exist (via CreateStableUrl)
+         * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+         * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+         * enabled, an update can attach or detach one stable URL at a time
          * 
          * @return builder
          * 
@@ -177,7 +191,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         /**
          * @param stableUrlNames Resource names of stable URLs associated with this workspace set.
          * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-         * The referenced stable URLs must already exist (via CreateStableUrl)
+         * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+         * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+         * enabled, an update can attach or detach one stable URL at a time
          * 
          * @return builder
          * 
@@ -189,7 +205,9 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         /**
          * @param stableUrlNames Resource names of stable URLs associated with this workspace set.
          * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-         * The referenced stable URLs must already exist (via CreateStableUrl)
+         * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+         * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+         * enabled, an update can attach or detach one stable URL at a time
          * 
          * @return builder
          * 
@@ -199,8 +217,10 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param workspaceIds Workspace IDs in this set. The system derives and validates regions.
-         * All workspaces must be in the Mission Critical tier
+         * @param workspaceIds IDs of the two workspaces in this set, one in each of the failover group&#39;s regions. The
+         * system derives and validates each workspace&#39;s region. Both workspaces must belong to the
+         * account and have the Mission Critical add-on enabled, and they cannot be changed after
+         * creation
          * 
          * @return builder
          * 
@@ -211,8 +231,10 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param workspaceIds Workspace IDs in this set. The system derives and validates regions.
-         * All workspaces must be in the Mission Critical tier
+         * @param workspaceIds IDs of the two workspaces in this set, one in each of the failover group&#39;s regions. The
+         * system derives and validates each workspace&#39;s region. Both workspaces must belong to the
+         * account and have the Mission Critical add-on enabled, and they cannot be changed after
+         * creation
          * 
          * @return builder
          * 
@@ -222,8 +244,10 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param workspaceIds Workspace IDs in this set. The system derives and validates regions.
-         * All workspaces must be in the Mission Critical tier
+         * @param workspaceIds IDs of the two workspaces in this set, one in each of the failover group&#39;s regions. The
+         * system derives and validates each workspace&#39;s region. Both workspaces must belong to the
+         * account and have the Mission Critical add-on enabled, and they cannot be changed after
+         * creation
          * 
          * @return builder
          * 

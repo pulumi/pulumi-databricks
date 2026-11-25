@@ -17,14 +17,14 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
     public static final SandboxSpecArgs Empty = new SandboxSpecArgs();
 
     /**
-     * Compute configuration (size, inactivity timeout) requested for the sandbox
+     * Compute settings requested for the sandbox, such as the inactivity timeout
      * 
      */
     @Import(name="compute")
     private @Nullable Output<SandboxSpecComputeArgs> compute;
 
     /**
-     * @return Compute configuration (size, inactivity timeout) requested for the sandbox
+     * @return Compute settings requested for the sandbox, such as the inactivity timeout
      * 
      */
     public Optional<Output<SandboxSpecComputeArgs>> compute() {
@@ -32,14 +32,14 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The execution environment to use for the sandbox
+     * Software environment for the sandbox, such as the container image it runs
      * 
      */
     @Import(name="environment")
     private @Nullable Output<SandboxSpecEnvironmentArgs> environment;
 
     /**
-     * @return The execution environment to use for the sandbox
+     * @return Software environment for the sandbox, such as the container image it runs
      * 
      */
     public Optional<Output<SandboxSpecEnvironmentArgs>> environment() {
@@ -72,7 +72,7 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compute Compute configuration (size, inactivity timeout) requested for the sandbox
+         * @param compute Compute settings requested for the sandbox, such as the inactivity timeout
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compute Compute configuration (size, inactivity timeout) requested for the sandbox
+         * @param compute Compute settings requested for the sandbox, such as the inactivity timeout
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The execution environment to use for the sandbox
+         * @param environment Software environment for the sandbox, such as the container image it runs
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SandboxSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The execution environment to use for the sandbox
+         * @param environment Software environment for the sandbox, such as the container image it runs
          * 
          * @return builder
          * 

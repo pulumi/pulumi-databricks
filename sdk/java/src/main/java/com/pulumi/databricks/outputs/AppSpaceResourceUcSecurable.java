@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpaceResourceUcSecurable {
     private String permission;
+    /**
+     * @return Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
+     * 
+     */
     private String securableFullName;
     /**
      * @return (string) - The securable kind from Unity Catalog.
@@ -21,7 +26,7 @@ public final class AppSpaceResourceUcSecurable {
      */
     private @Nullable String securableKind;
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * @return Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
@@ -30,6 +35,11 @@ public final class AppSpaceResourceUcSecurable {
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
+     * 
+     */
     public String securableFullName() {
         return this.securableFullName;
     }
@@ -42,7 +52,7 @@ public final class AppSpaceResourceUcSecurable {
         return Optional.ofNullable(this.securableKind);
     }
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * @return Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

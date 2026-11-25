@@ -27,12 +27,14 @@ import com.pulumi.databricks.outputs.AccountSettingV2EffectiveOperationalEmailCu
 import com.pulumi.databricks.outputs.AccountSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveRestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveStringVal;
+import com.pulumi.databricks.outputs.AccountSettingV2EffectiveWorkspaceDashboardTheme;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveWorkspaceLabel;
 import com.pulumi.databricks.outputs.AccountSettingV2IntegerVal;
 import com.pulumi.databricks.outputs.AccountSettingV2OperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.AccountSettingV2PersonalCompute;
 import com.pulumi.databricks.outputs.AccountSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.AccountSettingV2StringVal;
+import com.pulumi.databricks.outputs.AccountSettingV2WorkspaceDashboardTheme;
 import com.pulumi.databricks.outputs.AccountSettingV2WorkspaceLabel;
 import java.lang.String;
 import java.util.Optional;
@@ -329,6 +331,20 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
         return this.effectiveStringVal;
     }
     /**
+     * (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    @Export(name="effectiveWorkspaceDashboardTheme", refs={AccountSettingV2EffectiveWorkspaceDashboardTheme.class}, tree="[0]")
+    private Output<AccountSettingV2EffectiveWorkspaceDashboardTheme> effectiveWorkspaceDashboardTheme;
+
+    /**
+     * @return (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    public Output<AccountSettingV2EffectiveWorkspaceDashboardTheme> effectiveWorkspaceDashboardTheme() {
+        return this.effectiveWorkspaceDashboardTheme;
+    }
+    /**
      * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      * 
      */
@@ -357,14 +373,14 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.integerVal);
     }
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the setting
+     * @return Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public Output<String> name() {
@@ -425,6 +441,20 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AccountSettingV2StringVal>> stringVal() {
         return Codegen.optional(this.stringVal);
+    }
+    /**
+     * Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    @Export(name="workspaceDashboardTheme", refs={AccountSettingV2WorkspaceDashboardTheme.class}, tree="[0]")
+    private Output</* @Nullable */ AccountSettingV2WorkspaceDashboardTheme> workspaceDashboardTheme;
+
+    /**
+     * @return Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    public Output<Optional<AccountSettingV2WorkspaceDashboardTheme>> workspaceDashboardTheme() {
+        return Codegen.optional(this.workspaceDashboardTheme);
     }
     /**
      * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value

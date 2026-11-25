@@ -12,7 +12,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AgentKitManagedMemoryStoreStorageBackend {
     /**
-     * @return (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * @return (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store&#39;s entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      * 
      */
     private @Nullable String backendId;
@@ -24,7 +26,9 @@ public final class AgentKitManagedMemoryStoreStorageBackend {
 
     private AgentKitManagedMemoryStoreStorageBackend() {}
     /**
-     * @return (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * @return (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store&#39;s entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      * 
      */
     public Optional<String> backendId() {

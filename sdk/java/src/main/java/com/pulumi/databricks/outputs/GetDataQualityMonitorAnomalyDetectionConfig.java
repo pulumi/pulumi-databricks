@@ -14,26 +14,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataQualityMonitorAnomalyDetectionConfig {
     /**
-     * @return (list of string) - List of fully qualified table names to exclude from anomaly detection
+     * @return (list of string) - List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      * 
      */
     private @Nullable List<String> excludedTableFullNames;
     /**
-     * @return (NotificationSettings) - Field for specifying notification settings
+     * @return (NotificationSettings) - Who to notify about this monitor&#39;s refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      * 
      */
     private @Nullable GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings notificationSettings;
 
     private GetDataQualityMonitorAnomalyDetectionConfig() {}
     /**
-     * @return (list of string) - List of fully qualified table names to exclude from anomaly detection
+     * @return (list of string) - List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      * 
      */
     public List<String> excludedTableFullNames() {
         return this.excludedTableFullNames == null ? List.of() : this.excludedTableFullNames;
     }
     /**
-     * @return (NotificationSettings) - Field for specifying notification settings
+     * @return (NotificationSettings) - Who to notify about this monitor&#39;s refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      * 
      */
     public Optional<GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings> notificationSettings() {

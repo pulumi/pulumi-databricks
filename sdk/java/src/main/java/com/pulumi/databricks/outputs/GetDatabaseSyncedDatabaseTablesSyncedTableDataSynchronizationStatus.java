@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatus {
     /**
-     * @return (SyncedTableContinuousUpdateStatus)
+     * @return (SyncedTableContinuousUpdateStatus) - Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      * 
      */
     private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatus continuousUpdateStatus;
@@ -28,7 +29,8 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronization
      */
     private String detailedState;
     /**
-     * @return (SyncedTableFailedStatus)
+     * @return (SyncedTableFailedStatus) - Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
      * 
      */
     private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatus failedStatus;
@@ -49,19 +51,23 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronization
      */
     private String pipelineId;
     /**
-     * @return (SyncedTableProvisioningStatus)
+     * @return (SyncedTableProvisioningStatus) - Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
      * 
      */
     private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatus provisioningStatus;
     /**
-     * @return (SyncedTableTriggeredUpdateStatus)
+     * @return (SyncedTableTriggeredUpdateStatus) - Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      * 
      */
     private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatus triggeredUpdateStatus;
 
     private GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatus() {}
     /**
-     * @return (SyncedTableContinuousUpdateStatus)
+     * @return (SyncedTableContinuousUpdateStatus) - Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      * 
      */
     public Optional<GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatus> continuousUpdateStatus() {
@@ -75,7 +81,8 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronization
         return this.detailedState;
     }
     /**
-     * @return (SyncedTableFailedStatus)
+     * @return (SyncedTableFailedStatus) - Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
      * 
      */
     public Optional<GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatus> failedStatus() {
@@ -104,14 +111,17 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronization
         return this.pipelineId;
     }
     /**
-     * @return (SyncedTableProvisioningStatus)
+     * @return (SyncedTableProvisioningStatus) - Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
      * 
      */
     public Optional<GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatus> provisioningStatus() {
         return Optional.ofNullable(this.provisioningStatus);
     }
     /**
-     * @return (SyncedTableTriggeredUpdateStatus)
+     * @return (SyncedTableTriggeredUpdateStatus) - Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      * 
      */
     public Optional<GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatus> triggeredUpdateStatus() {

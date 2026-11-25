@@ -13,7 +13,9 @@ namespace Pulumi.Databricks.Inputs
     public sealed class SandboxSpecComputeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Idle duration after which the sandbox is automatically terminated
+        /// Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+        /// auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+        /// UpdateSandbox
         /// </summary>
         [Input("inactivityTimeout")]
         public Input<string>? InactivityTimeout { get; set; }

@@ -88,7 +88,8 @@ public final class AgentKitManagedMemoryStoreState extends com.pulumi.resources.
     /**
      * Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+     * after creation
      * 
      */
     @Import(name="managedMemoryStoreId")
@@ -97,7 +98,8 @@ public final class AgentKitManagedMemoryStoreState extends com.pulumi.resources.
     /**
      * @return Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+     * after creation
      * 
      */
     public Optional<Output<String>> managedMemoryStoreId() {
@@ -325,7 +327,8 @@ public final class AgentKitManagedMemoryStoreState extends com.pulumi.resources.
         /**
          * @param managedMemoryStoreId Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
          * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-         * letter or digit
+         * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+         * after creation
          * 
          * @return builder
          * 
@@ -338,7 +341,8 @@ public final class AgentKitManagedMemoryStoreState extends com.pulumi.resources.
         /**
          * @param managedMemoryStoreId Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
          * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-         * letter or digit
+         * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+         * after creation
          * 
          * @return builder
          * 

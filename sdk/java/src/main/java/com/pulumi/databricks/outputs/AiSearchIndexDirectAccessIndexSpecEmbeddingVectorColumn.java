@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
-     * @return Dimension of the embedding vector
+     * @return Number of elements in each embedding vector. It must be positive
      * 
      */
     private @Nullable Integer embeddingDimension;
@@ -29,7 +29,7 @@ public final class AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 
     private AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn() {}
     /**
-     * @return Dimension of the embedding vector
+     * @return Number of elements in each embedding vector. It must be positive
      * 
      */
     public Optional<Integer> embeddingDimension() {

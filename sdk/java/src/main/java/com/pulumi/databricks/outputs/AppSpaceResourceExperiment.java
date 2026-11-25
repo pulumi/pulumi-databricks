@@ -10,10 +10,18 @@ import java.util.Objects;
 
 @CustomType
 public final class AppSpaceResourceExperiment {
+    /**
+     * @return ID of the MLflow experiment
+     * 
+     */
     private String experimentId;
     private String permission;
 
     private AppSpaceResourceExperiment() {}
+    /**
+     * @return ID of the MLflow experiment
+     * 
+     */
     public String experimentId() {
         return this.experimentId;
     }

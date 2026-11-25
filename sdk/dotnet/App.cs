@@ -64,15 +64,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are used in the same context:
-    /// 
-    /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-    /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
-    /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-    /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
     /// </summary>
     [DatabricksResourceType("databricks:index/app:App")]
     public partial class App : global::Pulumi.CustomResource
@@ -95,14 +86,20 @@ namespace Pulumi.Databricks
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum number of app instances the app is configured to run. Must be set together with `ComputeMinInstances`. Omitting both disables horizontal scaling.
+        /// </summary>
         [Output("computeMaxInstances")]
         public Output<int?> ComputeMaxInstances { get; private set; } = null!;
 
+        /// <summary>
+        /// Minimum number of app instances the app is configured to run. Must be set together with `ComputeMaxInstances`.
+        /// </summary>
         [Output("computeMinInstances")]
         public Output<int?> ComputeMinInstances { get; private set; } = null!;
 
         /// <summary>
-        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         /// </summary>
         [Output("computeSize")]
         public Output<string> ComputeSize { get; private set; } = null!;
@@ -145,6 +142,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
+
+        [Output("effectiveResources")]
+        public Output<ImmutableArray<Outputs.AppEffectiveResource>> EffectiveResources { get; private set; } = null!;
 
         /// <summary>
         /// The effective usage policy ID.
@@ -243,6 +243,20 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.AppTelemetryExportDestination>> TelemetryExportDestinations { get; private set; } = null!;
 
         /// <summary>
+        /// The MD5 hash of the file in `ThumbnailPath` that was last uploaded as the app's thumbnail.
+        /// </summary>
+        [Output("thumbnailMd5")]
+        public Output<string> ThumbnailMd5 { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `ThumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+        /// 
+        /// &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`ComputeMinInstances`/`ComputeMaxInstances`) cannot be combined with a change to `ComputeSize` or `GitRepository` in the same apply.
+        /// </summary>
+        [Output("thumbnailPath")]
+        public Output<string?> ThumbnailPath { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the thumbnail image for the app.
         /// </summary>
         [Output("thumbnailUrl")]
@@ -330,14 +344,20 @@ namespace Pulumi.Databricks
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
+        /// <summary>
+        /// Maximum number of app instances the app is configured to run. Must be set together with `ComputeMinInstances`. Omitting both disables horizontal scaling.
+        /// </summary>
         [Input("computeMaxInstances")]
         public Input<int>? ComputeMaxInstances { get; set; }
 
+        /// <summary>
+        /// Minimum number of app instances the app is configured to run. Must be set together with `ComputeMaxInstances`.
+        /// </summary>
         [Input("computeMinInstances")]
         public Input<int>? ComputeMinInstances { get; set; }
 
         /// <summary>
-        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         /// </summary>
         [Input("computeSize")]
         public Input<string>? ComputeSize { get; set; }
@@ -409,6 +429,14 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `ThumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+        /// 
+        /// &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`ComputeMinInstances`/`ComputeMaxInstances`) cannot be combined with a change to `ComputeSize` or `GitRepository` in the same apply.
+        /// </summary>
+        [Input("thumbnailPath")]
+        public Input<string>? ThumbnailPath { get; set; }
+
+        /// <summary>
         /// The Usage Policy ID set for this resource.
         /// </summary>
         [Input("usagePolicyId")]
@@ -452,14 +480,20 @@ namespace Pulumi.Databricks
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
+        /// <summary>
+        /// Maximum number of app instances the app is configured to run. Must be set together with `ComputeMinInstances`. Omitting both disables horizontal scaling.
+        /// </summary>
         [Input("computeMaxInstances")]
         public Input<int>? ComputeMaxInstances { get; set; }
 
+        /// <summary>
+        /// Minimum number of app instances the app is configured to run. Must be set together with `ComputeMaxInstances`.
+        /// </summary>
         [Input("computeMinInstances")]
         public Input<int>? ComputeMinInstances { get; set; }
 
         /// <summary>
-        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         /// </summary>
         [Input("computeSize")]
         public Input<string>? ComputeSize { get; set; }
@@ -502,6 +536,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("effectiveBudgetPolicyId")]
         public Input<string>? EffectiveBudgetPolicyId { get; set; }
+
+        [Input("effectiveResources")]
+        private InputList<Inputs.AppEffectiveResourceGetArgs>? _effectiveResources;
+        public InputList<Inputs.AppEffectiveResourceGetArgs> EffectiveResources
+        {
+            get => _effectiveResources ?? (_effectiveResources = new InputList<Inputs.AppEffectiveResourceGetArgs>());
+            set => _effectiveResources = value;
+        }
 
         /// <summary>
         /// The effective usage policy ID.
@@ -616,6 +658,20 @@ namespace Pulumi.Databricks
             get => _telemetryExportDestinations ?? (_telemetryExportDestinations = new InputList<Inputs.AppTelemetryExportDestinationGetArgs>());
             set => _telemetryExportDestinations = value;
         }
+
+        /// <summary>
+        /// The MD5 hash of the file in `ThumbnailPath` that was last uploaded as the app's thumbnail.
+        /// </summary>
+        [Input("thumbnailMd5")]
+        public Input<string>? ThumbnailMd5 { get; set; }
+
+        /// <summary>
+        /// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `ThumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+        /// 
+        /// &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`ComputeMinInstances`/`ComputeMaxInstances`) cannot be combined with a change to `ComputeSize` or `GitRepository` in the same apply.
+        /// </summary>
+        [Input("thumbnailPath")]
+        public Input<string>? ThumbnailPath { get; set; }
 
         /// <summary>
         /// The URL of the thumbnail image for the app.

@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  * 
@@ -128,48 +128,54 @@ public class AiSearchIndex extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
-     * The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-     * composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-     * list `indexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+     * The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+     * empty value
      * 
      */
     @Export(name="indexId", refs={String.class}, tree="[0]")
     private Output<String> indexId;
 
     /**
-     * @return The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-     * composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-     * list `indexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * @return Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+     * The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+     * empty value
      * 
      */
     public Output<String> indexId() {
         return this.indexId;
     }
     /**
-     * The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
     @Export(name="indexSubtype", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> indexSubtype;
 
     /**
-     * @return The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * @return Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
     public Output<Optional<String>> indexSubtype() {
         return Codegen.optional(this.indexSubtype);
     }
     /**
-     * Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      * 
      */
     @Export(name="indexType", refs={String.class}, tree="[0]")
     private Output<String> indexType;
 
     /**
-     * @return Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * @return Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      * 
      */
     public Output<String> indexType() {
@@ -214,14 +220,18 @@ public class AiSearchIndex extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * Primary key of the index. Set on create and immutable thereafter
+     * Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      * 
      */
     @Export(name="primaryKey", refs={String.class}, tree="[0]")
     private Output<String> primaryKey;
 
     /**
-     * @return Primary key of the index. Set on create and immutable thereafter
+     * @return Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      * 
      */
     public Output<String> primaryKey() {

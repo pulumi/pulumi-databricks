@@ -244,6 +244,37 @@ class NotificationDestination(pulumi.CustomResource):
                 },
             })
         ```
+        `Databricks app in Slack` notification destination (the Databricks app must already be installed in your Slack workspace and connected to your Databricks workspace):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "databricks_app_slack": {
+                    "team_id": "T0123456789",
+                    "channel_id": "C0123456789",
+                },
+            })
+        ```
+        `Databricks app in Microsoft Teams` notification destination (the Databricks app must already be installed in your Microsoft 365 tenant and connected to your Databricks workspace):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "databricks_app_teams": {
+                    "tenant_id": "00000000-0000-0000-0000-000000000000",
+                    "team_id": "00000000-0000-0000-0000-000000000000",
+                    "channel_id": "19:abc123@thread.tacv2",
+                },
+            })
+        ```
         `PagerDuty` notification destination:
 
         ```python
@@ -338,6 +369,37 @@ class NotificationDestination(pulumi.CustomResource):
             config={
                 "slack": {
                     "url": "https://hooks.slack.com/services/...",
+                },
+            })
+        ```
+        `Databricks app in Slack` notification destination (the Databricks app must already be installed in your Slack workspace and connected to your Databricks workspace):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "databricks_app_slack": {
+                    "team_id": "T0123456789",
+                    "channel_id": "C0123456789",
+                },
+            })
+        ```
+        `Databricks app in Microsoft Teams` notification destination (the Databricks app must already be installed in your Microsoft 365 tenant and connected to your Databricks workspace):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "databricks_app_teams": {
+                    "tenant_id": "00000000-0000-0000-0000-000000000000",
+                    "team_id": "00000000-0000-0000-0000-000000000000",
+                    "channel_id": "19:abc123@thread.tacv2",
                 },
             })
         ```

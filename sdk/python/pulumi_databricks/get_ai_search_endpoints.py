@@ -80,7 +80,7 @@ def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
                             provider_config: Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchEndpointsResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -98,9 +98,8 @@ def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper
-           bound by the shim: `page_size` only narrows the legacy backend's response, never
-           widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+    :param _builtins.int page_size: Maximum number of endpoints to return in one page. The server applies its own page size
+           limit, so a page can hold fewer endpoints than `page_size` even when more remain
     :param _builtins.str parent: The Workspace that owns this collection of endpoints.
            Format: `workspaces/{workspace_id}`
     :param Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
@@ -122,7 +121,7 @@ def get_ai_search_endpoints_output(page_size: pulumi.Input[Optional[Optional[_bu
                                    provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchEndpointsResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -140,9 +139,8 @@ def get_ai_search_endpoints_output(page_size: pulumi.Input[Optional[Optional[_bu
     ```
 
 
-    :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper
-           bound by the shim: `page_size` only narrows the legacy backend's response, never
-           widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+    :param _builtins.int page_size: Maximum number of endpoints to return in one page. The server applies its own page size
+           limit, so a page can hold fewer endpoints than `page_size` even when more remain
     :param _builtins.str parent: The Workspace that owns this collection of endpoints.
            Format: `workspaces/{workspace_id}`
     :param Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult'] provider_config: Configure the provider for management through account provider.

@@ -10,6 +10,8 @@ import com.pulumi.databricks.inputs.AppActiveDeploymentEnvVarArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentGitSourceArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentHealthCheckArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentStatusArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -132,6 +134,27 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.mode);
     }
 
+    @Import(name="scanOmittedCountIsLowerBound")
+    private @Nullable Output<Boolean> scanOmittedCountIsLowerBound;
+
+    public Optional<Output<Boolean>> scanOmittedCountIsLowerBound() {
+        return Optional.ofNullable(this.scanOmittedCountIsLowerBound);
+    }
+
+    @Import(name="scanOmittedFindingsCount")
+    private @Nullable Output<Integer> scanOmittedFindingsCount;
+
+    public Optional<Output<Integer>> scanOmittedFindingsCount() {
+        return Optional.ofNullable(this.scanOmittedFindingsCount);
+    }
+
+    @Import(name="scanStatus")
+    private @Nullable Output<String> scanStatus;
+
+    public Optional<Output<String>> scanStatus() {
+        return Optional.ofNullable(this.scanStatus);
+    }
+
     /**
      * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
@@ -189,6 +212,9 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         this.gitSource = $.gitSource;
         this.healthCheck = $.healthCheck;
         this.mode = $.mode;
+        this.scanOmittedCountIsLowerBound = $.scanOmittedCountIsLowerBound;
+        this.scanOmittedFindingsCount = $.scanOmittedFindingsCount;
+        this.scanStatus = $.scanStatus;
         this.sourceCodePath = $.sourceCodePath;
         this.status = $.status;
         this.updateTime = $.updateTime;
@@ -371,6 +397,33 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
          */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
+        }
+
+        public Builder scanOmittedCountIsLowerBound(@Nullable Output<Boolean> scanOmittedCountIsLowerBound) {
+            $.scanOmittedCountIsLowerBound = scanOmittedCountIsLowerBound;
+            return this;
+        }
+
+        public Builder scanOmittedCountIsLowerBound(Boolean scanOmittedCountIsLowerBound) {
+            return scanOmittedCountIsLowerBound(Output.of(scanOmittedCountIsLowerBound));
+        }
+
+        public Builder scanOmittedFindingsCount(@Nullable Output<Integer> scanOmittedFindingsCount) {
+            $.scanOmittedFindingsCount = scanOmittedFindingsCount;
+            return this;
+        }
+
+        public Builder scanOmittedFindingsCount(Integer scanOmittedFindingsCount) {
+            return scanOmittedFindingsCount(Output.of(scanOmittedFindingsCount));
+        }
+
+        public Builder scanStatus(@Nullable Output<String> scanStatus) {
+            $.scanStatus = scanStatus;
+            return this;
+        }
+
+        public Builder scanStatus(String scanStatus) {
+            return scanStatus(Output.of(scanStatus));
         }
 
         /**

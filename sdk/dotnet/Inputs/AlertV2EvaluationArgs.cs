@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AlertV2EvaluationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+        /// Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         /// </summary>
         [Input("comparisonOperator", required: true)]
         public Input<string> ComparisonOperator { get; set; } = null!;
 
         /// <summary>
-        /// Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        /// Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         [Input("emptyResultState")]
         public Input<string>? EmptyResultState { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AlertV2EvaluationSourceArgs> Source { get; set; } = null!;
 
         /// <summary>
-        /// (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        /// (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Threshold to user for alert evaluation, can be a column or a value
+        /// Threshold to compare the source column against, either another column or a fixed value. Not needed when `ComparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
         /// </summary>
         [Input("threshold")]
         public Input<Inputs.AlertV2EvaluationThresholdArgs>? Threshold { get; set; }

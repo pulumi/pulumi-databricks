@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -172,10 +172,10 @@ import (
 type PostgresSyncedTable struct {
 	pulumi.CustomResourceState
 
-	// (string)
+	// (string) - The time when the synced table was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// (string) - Output only. The Full resource name of the synced table in Postgres
-	// where (catalog, schema, table) are the UC entity names.
+	// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+	// names of the synced table.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSyncedTableProviderConfigOutput `pulumi:"providerConfig"`
@@ -183,7 +183,8 @@ type PostgresSyncedTable struct {
 	Spec PostgresSyncedTableSpecOutput `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status PostgresSyncedTableStatusOutput `pulumi:"status"`
-	// The part of the name, chosen by the user when the resource was created
+	// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+	// It is the syncedTableId that was used to create the synced table and the last component of name
 	SyncedTableId pulumi.StringOutput `pulumi:"syncedTableId"`
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -222,10 +223,10 @@ func GetPostgresSyncedTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PostgresSyncedTable resources.
 type postgresSyncedTableState struct {
-	// (string)
+	// (string) - The time when the synced table was created
 	CreateTime *string `pulumi:"createTime"`
-	// (string) - Output only. The Full resource name of the synced table in Postgres
-	// where (catalog, schema, table) are the UC entity names.
+	// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+	// names of the synced table.
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresSyncedTableProviderConfig `pulumi:"providerConfig"`
@@ -233,17 +234,18 @@ type postgresSyncedTableState struct {
 	Spec *PostgresSyncedTableSpec `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status *PostgresSyncedTableStatus `pulumi:"status"`
-	// The part of the name, chosen by the user when the resource was created
+	// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+	// It is the syncedTableId that was used to create the synced table and the last component of name
 	SyncedTableId *string `pulumi:"syncedTableId"`
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid *string `pulumi:"uid"`
 }
 
 type PostgresSyncedTableState struct {
-	// (string)
+	// (string) - The time when the synced table was created
 	CreateTime pulumi.StringPtrInput
-	// (string) - Output only. The Full resource name of the synced table in Postgres
-	// where (catalog, schema, table) are the UC entity names.
+	// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+	// names of the synced table.
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSyncedTableProviderConfigPtrInput
@@ -251,7 +253,8 @@ type PostgresSyncedTableState struct {
 	Spec PostgresSyncedTableSpecPtrInput
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status PostgresSyncedTableStatusPtrInput
-	// The part of the name, chosen by the user when the resource was created
+	// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+	// It is the syncedTableId that was used to create the synced table and the last component of name
 	SyncedTableId pulumi.StringPtrInput
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid pulumi.StringPtrInput
@@ -272,7 +275,8 @@ type postgresSyncedTableArgs struct {
 	ProviderConfig *PostgresSyncedTableProviderConfig `pulumi:"providerConfig"`
 	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec *PostgresSyncedTableSpec `pulumi:"spec"`
-	// The part of the name, chosen by the user when the resource was created
+	// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+	// It is the syncedTableId that was used to create the synced table and the last component of name
 	SyncedTableId string `pulumi:"syncedTableId"`
 }
 
@@ -282,7 +286,8 @@ type PostgresSyncedTableArgs struct {
 	ProviderConfig PostgresSyncedTableProviderConfigPtrInput
 	// Configuration details of the synced table, such as the source table, scheduling policy, etc
 	Spec PostgresSyncedTableSpecPtrInput
-	// The part of the name, chosen by the user when the resource was created
+	// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+	// It is the syncedTableId that was used to create the synced table and the last component of name
 	SyncedTableId pulumi.StringInput
 }
 
@@ -373,13 +378,13 @@ func (o PostgresSyncedTableOutput) ToPostgresSyncedTableOutputWithContext(ctx co
 	return o
 }
 
-// (string)
+// (string) - The time when the synced table was created
 func (o PostgresSyncedTableOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Output only. The Full resource name of the synced table in Postgres
-// where (catalog, schema, table) are the UC entity names.
+// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+// names of the synced table.
 func (o PostgresSyncedTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -399,7 +404,8 @@ func (o PostgresSyncedTableOutput) Status() PostgresSyncedTableStatusOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) PostgresSyncedTableStatusOutput { return v.Status }).(PostgresSyncedTableStatusOutput)
 }
 
-// The part of the name, chosen by the user when the resource was created
+// The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+// It is the syncedTableId that was used to create the synced table and the last component of name
 func (o PostgresSyncedTableOutput) SyncedTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) pulumi.StringOutput { return v.SyncedTableId }).(pulumi.StringOutput)
 }

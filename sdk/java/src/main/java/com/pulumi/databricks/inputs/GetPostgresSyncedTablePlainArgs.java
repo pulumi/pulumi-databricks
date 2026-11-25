@@ -17,24 +17,24 @@ public final class GetPostgresSyncedTablePlainArgs extends com.pulumi.resources.
     public static final GetPostgresSyncedTablePlainArgs Empty = new GetPostgresSyncedTablePlainArgs();
 
     /**
-     * Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
-     * Format &#34;synced_tables/{catalog}.{schema}.{table}&#34;
+     * Format: &#34;synced_tables/{catalog}.{schema}.{table}&#34;.
      * 
-     * For the corresponding source table in the Unity catalog look for the &#34;sourceTableFullName&#34; attribute
+     * For the corresponding source table in Unity Catalog, look for the &#34;sourceTableFullName&#34; attribute
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * @return The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
-     * Format &#34;synced_tables/{catalog}.{schema}.{table}&#34;
+     * Format: &#34;synced_tables/{catalog}.{schema}.{table}&#34;.
      * 
-     * For the corresponding source table in the Unity catalog look for the &#34;sourceTableFullName&#34; attribute
+     * For the corresponding source table in Unity Catalog, look for the &#34;sourceTableFullName&#34; attribute
      * 
      */
     public String name() {
@@ -82,12 +82,12 @@ public final class GetPostgresSyncedTablePlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Output only. The Full resource name of the synced table in Postgres
-         * where (catalog, schema, table) are the UC entity names.
+         * @param name The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+         * names of the synced table.
          * 
-         * Format &#34;synced_tables/{catalog}.{schema}.{table}&#34;
+         * Format: &#34;synced_tables/{catalog}.{schema}.{table}&#34;.
          * 
-         * For the corresponding source table in the Unity catalog look for the &#34;sourceTableFullName&#34; attribute
+         * For the corresponding source table in Unity Catalog, look for the &#34;sourceTableFullName&#34; attribute
          * 
          * @return builder
          * 

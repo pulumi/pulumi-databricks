@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -42,17 +42,19 @@ export function getWorkspaceIamServicePrincipalsV2(args?: GetWorkspaceIamService
  */
 export interface GetWorkspaceIamServicePrincipalsV2Args {
     /**
-     * Optional. Allows filtering service principals by application id or external id
+     * Filters service principals by `applicationId` or `externalId`, for example
+     * `applicationId eq "<application-id>"`. Put the value in quotes
      */
     filter?: string;
     /**
-     * The maximum number of SPs to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of service principals to return, up to 1000. The default is 1000. A page
+     * can contain fewer service principals
      */
     pageSize?: number;
     /**
-     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+     * account is rejected
      */
     parent?: string;
     /**
@@ -68,15 +70,15 @@ export interface GetWorkspaceIamServicePrincipalsV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
     /**
-     * (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfig;
     readonly servicePrincipals: outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipal[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -111,17 +113,19 @@ export function getWorkspaceIamServicePrincipalsV2Output(args?: GetWorkspaceIamS
  */
 export interface GetWorkspaceIamServicePrincipalsV2OutputArgs {
     /**
-     * Optional. Allows filtering service principals by application id or external id
+     * Filters service principals by `applicationId` or `externalId`, for example
+     * `applicationId eq "<application-id>"`. Put the value in quotes
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * The maximum number of SPs to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of service principals to return, up to 1000. The default is 1000. A page
+     * can contain fewer service principals
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+     * account is rejected
      */
     parent?: pulumi.Input<string | undefined>;
     /**

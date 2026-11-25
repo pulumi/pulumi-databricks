@@ -17,16 +17,16 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs extends com
     public static final GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs Empty = new GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs();
 
     /**
-     * The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * @return The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     public String name() {
@@ -74,8 +74,8 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs extends com
         }
 
         /**
-         * @param name The resource name of the workspace identity detail.
-         * Format: principals/{principal_id}/workspace-identity-detail
+         * @param name The resource name of the workspace identity detail, in the format
+         * `principals/{principal_id}/workspace-identity-detail`
          * 
          * @return builder
          * 

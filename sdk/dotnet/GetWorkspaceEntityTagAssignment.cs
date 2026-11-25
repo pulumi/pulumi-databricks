@@ -248,7 +248,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string TagKey;
         /// <summary>
-        /// (string) - The value of the tag
+        /// (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
         /// </summary>
         public readonly string TagValue;
 

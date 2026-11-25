@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class NotificationDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+        /// </summary>
         [Input("databricksAppSlack")]
         public Input<Inputs.NotificationDestinationConfigDatabricksAppSlackArgs>? DatabricksAppSlack { get; set; }
 
+        /// <summary>
+        /// The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+        /// </summary>
         [Input("databricksAppTeams")]
         public Input<Inputs.NotificationDestinationConfigDatabricksAppTeamsArgs>? DatabricksAppTeams { get; set; }
 

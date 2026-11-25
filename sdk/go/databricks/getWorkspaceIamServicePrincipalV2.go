@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -58,9 +58,9 @@ func LookupWorkspaceIamServicePrincipalV2(ctx *pulumi.Context, args *LookupWorks
 
 // A collection of arguments for invoking getWorkspaceIamServicePrincipalV2.
 type LookupWorkspaceIamServicePrincipalV2Args struct {
-	// The resource name of the service principal. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-	// - Workspace-scoped: service-principals/{service_principal_id}
+	// The resource name of the service principal, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+	// - Workspace APIs: `service-principals/{service_principal_id}`
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamServicePrincipalV2ProviderConfig `pulumi:"providerConfig"`
@@ -68,26 +68,27 @@ type LookupWorkspaceIamServicePrincipalV2Args struct {
 
 // A collection of values returned by getWorkspaceIamServicePrincipalV2.
 type LookupWorkspaceIamServicePrincipalV2Result struct {
-	// (string) - The parent account ID for the service principal in Databricks
+	// (string) - The ID of the account that contains the service principal
 	AccountId string `pulumi:"accountId"`
-	// (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+	// (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
 	AccountSpStatus string `pulumi:"accountSpStatus"`
-	// (string) - Application ID of the service principal. Set at creation time and cannot be changed
-	// afterwards; when omitted, the server generates one
+	// (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+	// service principal, Databricks generates one. It must be unique in the account and can't be
+	// changed
 	ApplicationId string `pulumi:"applicationId"`
-	// (string) - Display name of the service principal
+	// (string) - The service principal's display name
 	DisplayName string `pulumi:"displayName"`
-	// (string) - ExternalId of the service principal in the customer's IdP
+	// (string) - The ID of the service principal in your identity provider (IdP)
 	ExternalId string `pulumi:"externalId"`
-	// (string) - The resource name of the service principal. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-	// - Workspace-scoped: service-principals/{service_principal_id}
+	// (string) - The resource name of the service principal, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+	// - Workspace APIs: `service-principals/{service_principal_id}`
 	Name string `pulumi:"name"`
-	// (string) - The resource name of the account that contains the service principal,
-	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	// (string) - The resource name of the account that contains the service principal, in the format
+	// `accounts/{account_id}`. Workspace APIs return the same format
 	Parent         string                                           `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamServicePrincipalV2ProviderConfig `pulumi:"providerConfig"`
-	// (string) - Internal service principal ID of the service principal in Databricks
+	// (string) - The Databricks ID of the service principal
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
@@ -98,9 +99,9 @@ func LookupWorkspaceIamServicePrincipalV2Output(ctx *pulumi.Context, args Lookup
 
 // A collection of arguments for invoking getWorkspaceIamServicePrincipalV2.
 type LookupWorkspaceIamServicePrincipalV2OutputArgs struct {
-	// The resource name of the service principal. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-	// - Workspace-scoped: service-principals/{service_principal_id}
+	// The resource name of the service principal, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+	// - Workspace APIs: `service-principals/{service_principal_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamServicePrincipalV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -125,41 +126,42 @@ func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) ToLookupWorkspaceIamSe
 	return o
 }
 
-// (string) - The parent account ID for the service principal in Databricks
+// (string) - The ID of the account that contains the service principal
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+// (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) AccountSpStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.AccountSpStatus }).(pulumi.StringOutput)
 }
 
-// (string) - Application ID of the service principal. Set at creation time and cannot be changed
-// afterwards; when omitted, the server generates one
+// (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+// service principal, Databricks generates one. It must be unique in the account and can't be
+// changed
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// (string) - Display name of the service principal
+// (string) - The service principal's display name
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - ExternalId of the service principal in the customer's IdP
+// (string) - The ID of the service principal in your identity provider (IdP)
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the service principal. The format depends on the API that returned it:
-// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-// - Workspace-scoped: service-principals/{service_principal_id}
+// (string) - The resource name of the service principal, in one of these formats:
+// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+// - Workspace APIs: `service-principals/{service_principal_id}`
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the account that contains the service principal,
-// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+// (string) - The resource name of the account that contains the service principal, in the format
+// `accounts/{account_id}`. Workspace APIs return the same format
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }
@@ -170,7 +172,7 @@ func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) ProviderConfig() GetWo
 	}).(GetWorkspaceIamServicePrincipalV2ProviderConfigPtrOutput)
 }
 
-// (string) - Internal service principal ID of the service principal in Databricks
+// (string) - The Databricks ID of the service principal
 func (o LookupWorkspaceIamServicePrincipalV2ResultOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamServicePrincipalV2Result) string { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

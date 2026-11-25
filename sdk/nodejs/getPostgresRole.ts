@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -57,7 +57,7 @@ export interface GetPostgresRoleArgs {
  */
 export interface GetPostgresRoleResult {
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was created
      */
     readonly createTime: string;
     /**
@@ -76,7 +76,7 @@ export interface GetPostgresRoleResult {
      */
     readonly roleId: string;
     /**
-     * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
      */
     readonly spec: outputs.GetPostgresRoleSpec;
     /**
@@ -84,12 +84,12 @@ export interface GetPostgresRoleResult {
      */
     readonly status: outputs.GetPostgresRoleStatus;
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was last updated
      */
     readonly updateTime: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -48,10 +48,10 @@ export function getWorkspaceIamExternalServicePrincipalV2(args: GetWorkspaceIamE
  */
 export interface GetWorkspaceIamExternalServicePrincipalV2Args {
     /**
-     * The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      */
     name: string;
     /**
@@ -65,40 +65,41 @@ export interface GetWorkspaceIamExternalServicePrincipalV2Args {
  */
 export interface GetWorkspaceIamExternalServicePrincipalV2Result {
     /**
-     * (string) - The parent account ID, from Databricks
+     * (string) - The ID of the account that contains the service principal
      */
     readonly accountId: string;
     /**
-     * (string) - The activity status of the service principal in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     readonly accountSpStatus: string;
     /**
-     * (string) - Application ID of the service principal, from the customer's IdP
+     * (string) - The service principal's application ID, from your IdP
      */
     readonly applicationId: string;
     /**
-     * (string) - Display name of the service principal, from the customer's IdP
+     * (string) - The service principal's display name, from your IdP
      */
     readonly displayName: string;
     /**
-     * (string) - The external ID of the service principal in the customer's IdP
+     * (string) - The ID of the service principal in your IdP
      */
     readonly externalServicePrincipalId: string;
     /**
-     * (string) - Internal servicePrincipalId of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal. Use it as the `servicePrincipalId` in the
+     * service principal APIs
      */
     readonly internalId: string;
     /**
-     * (string) - The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * (string) - The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfig;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -139,10 +140,10 @@ export function getWorkspaceIamExternalServicePrincipalV2Output(args: GetWorkspa
  */
 export interface GetWorkspaceIamExternalServicePrincipalV2OutputArgs {
     /**
-     * The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      */
     name: pulumi.Input<string>;
     /**

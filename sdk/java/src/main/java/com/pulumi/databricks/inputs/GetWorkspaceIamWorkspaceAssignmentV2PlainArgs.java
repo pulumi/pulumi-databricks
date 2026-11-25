@@ -17,18 +17,20 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2PlainArgs extends com.pul
     public static final GetWorkspaceIamWorkspaceAssignmentV2PlainArgs Empty = new GetWorkspaceIamWorkspaceAssignmentV2PlainArgs();
 
     /**
-     * The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * @return The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      * 
      */
     public String name() {
@@ -76,9 +78,10 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2PlainArgs extends com.pul
         }
 
         /**
-         * @param name The resource name of the workspace assignment. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-         * - Workspace-scoped: workspace-assignments/{principal_id}
+         * @param name The resource name of the assignment, in one of these formats:
+         * - Account APIs:
+         *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+         * - Workspace APIs: `workspace-assignments/{principal_id}`
          * 
          * @return builder
          * 

@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DisasterRecoveryFailoverGroupInitialReplicationProgress {
     /**
-     * @return (integer) - Percent complete, 0-100
+     * @return (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      * 
      */
     private @Nullable Integer completed;
 
     private DisasterRecoveryFailoverGroupInitialReplicationProgress() {}
     /**
-     * @return (integer) - Percent complete, 0-100
+     * @return (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      * 
      */
     public Optional<Integer> completed() {

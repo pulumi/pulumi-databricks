@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -40,9 +40,7 @@ export function getAiSearchIndexes(args: GetAiSearchIndexesArgs, opts?: pulumi.I
  */
 export interface GetAiSearchIndexesArgs {
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend's response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of indexes to return. When unset, every index on the endpoint is returned
      */
     pageSize?: number;
     /**
@@ -66,7 +64,7 @@ export interface GetAiSearchIndexesResult {
     readonly providerConfig?: outputs.GetAiSearchIndexesProviderConfig;
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -99,9 +97,7 @@ export function getAiSearchIndexesOutput(args: GetAiSearchIndexesOutputArgs, opt
  */
 export interface GetAiSearchIndexesOutputArgs {
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend's response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of indexes to return. When unset, every index on the endpoint is returned
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

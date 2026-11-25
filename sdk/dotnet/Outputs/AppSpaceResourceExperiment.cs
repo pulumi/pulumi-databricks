@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppSpaceResourceExperiment
     {
+        /// <summary>
+        /// ID of the MLflow experiment
+        /// </summary>
         public readonly string ExperimentId;
         public readonly string Permission;
 

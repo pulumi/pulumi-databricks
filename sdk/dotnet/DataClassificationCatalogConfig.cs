@@ -95,15 +95,17 @@ namespace Pulumi.Databricks
     public partial class DataClassificationCatalogConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of auto-tagging configurations for this catalog.
-        /// Empty list means no auto-tagging is enabled
+        /// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        /// metastore-level auto-tagging setting for its classification tag; tags without an entry
+        /// inherit the metastore-level setting
         /// </summary>
         [Output("autoTagConfigs")]
         public Output<ImmutableArray<Outputs.DataClassificationCatalogConfigAutoTagConfig>> AutoTagConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Schemas to exclude from the scan, each named relative to the parent catalog.
-        /// If specified, all schemas except the specified ones will be scanned.
+        /// If specified, all schemas except the specified ones will be scanned, including schemas
+        /// created later.
         /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
@@ -112,7 +114,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Schemas to include in the scan, each named relative to the parent catalog.
-        /// If specified, only listed schemas will be scanned.
+        /// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        /// until you add them to the list.
         /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
@@ -126,7 +129,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Parent resource in the format: catalogs/{catalog_name}
+        /// Name of the catalog to enable, in the format catalogs/{catalog_name}
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -187,8 +190,9 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DataClassificationCatalogConfigAutoTagConfigArgs>? _autoTagConfigs;
 
         /// <summary>
-        /// List of auto-tagging configurations for this catalog.
-        /// Empty list means no auto-tagging is enabled
+        /// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        /// metastore-level auto-tagging setting for its classification tag; tags without an entry
+        /// inherit the metastore-level setting
         /// </summary>
         public InputList<Inputs.DataClassificationCatalogConfigAutoTagConfigArgs> AutoTagConfigs
         {
@@ -198,7 +202,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Schemas to exclude from the scan, each named relative to the parent catalog.
-        /// If specified, all schemas except the specified ones will be scanned.
+        /// If specified, all schemas except the specified ones will be scanned, including schemas
+        /// created later.
         /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
@@ -207,7 +212,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Schemas to include in the scan, each named relative to the parent catalog.
-        /// If specified, only listed schemas will be scanned.
+        /// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        /// until you add them to the list.
         /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
@@ -215,7 +221,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.DataClassificationCatalogConfigIncludedSchemasArgs>? IncludedSchemas { get; set; }
 
         /// <summary>
-        /// Parent resource in the format: catalogs/{catalog_name}
+        /// Name of the catalog to enable, in the format catalogs/{catalog_name}
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -238,8 +244,9 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DataClassificationCatalogConfigAutoTagConfigGetArgs>? _autoTagConfigs;
 
         /// <summary>
-        /// List of auto-tagging configurations for this catalog.
-        /// Empty list means no auto-tagging is enabled
+        /// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        /// metastore-level auto-tagging setting for its classification tag; tags without an entry
+        /// inherit the metastore-level setting
         /// </summary>
         public InputList<Inputs.DataClassificationCatalogConfigAutoTagConfigGetArgs> AutoTagConfigs
         {
@@ -249,7 +256,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Schemas to exclude from the scan, each named relative to the parent catalog.
-        /// If specified, all schemas except the specified ones will be scanned.
+        /// If specified, all schemas except the specified ones will be scanned, including schemas
+        /// created later.
         /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
@@ -258,7 +266,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Schemas to include in the scan, each named relative to the parent catalog.
-        /// If specified, only listed schemas will be scanned.
+        /// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        /// until you add them to the list.
         /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
         /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
@@ -272,7 +281,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Parent resource in the format: catalogs/{catalog_name}
+        /// Name of the catalog to enable, in the format catalogs/{catalog_name}
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

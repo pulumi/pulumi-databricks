@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Part of the resource name
+        /// (string) - The endpoint ID, which is the final segment of the endpoint's resource name
         /// </summary>
         public readonly string EndpointId;
         /// <summary>
@@ -36,15 +36,18 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        /// (EndpointSpec) - The desired configuration of the endpoint. Every field under `Spec` except `EndpointType` can be
+        /// changed after creation. See `Status` for the configuration that is currently in effect.
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointSpecResult Spec;
         /// <summary>
-        /// (EndpointStatus) - Current operational status of the compute endpoint
+        /// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        /// system, including the hostnames to connect to
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointStatusResult Status;
         /// <summary>
-        /// (string) - System-generated unique ID for the endpoint
+        /// (string) - A system-generated ID that identifies the endpoint. Unlike `Name`, it is not derived from the
+        /// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         /// </summary>
         public readonly string Uid;
         /// <summary>

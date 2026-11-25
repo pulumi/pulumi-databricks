@@ -37,7 +37,9 @@ public final class GetAiGatewayModelServicesModelServiceConfigRoutingDestination
      */
     private Boolean isDeleted;
     /**
-     * @return (string) - User-facing label for this destination, used in routing references
+     * @return (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      * 
      */
     private String name;
@@ -87,7 +89,9 @@ public final class GetAiGatewayModelServicesModelServiceConfigRoutingDestination
         return this.isDeleted;
     }
     /**
-     * @return (string) - User-facing label for this destination, used in routing references
+     * @return (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      * 
      */
     public String name() {

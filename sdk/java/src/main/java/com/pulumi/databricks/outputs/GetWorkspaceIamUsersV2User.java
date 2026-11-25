@@ -15,35 +15,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamUsersV2User {
     /**
-     * @return (string) - The accountId parent of the user in Databricks
+     * @return (string) - The ID of the account that contains the user
      * 
      */
     private String accountId;
     /**
-     * @return (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     private String accountUserStatus;
     /**
-     * @return (string) - ExternalId of the user in the customer&#39;s IdP
+     * @return (string) - The ID of the user in your identity provider (IdP)
      * 
      */
     private String externalId;
     /**
-     * @return (UserFullName)
+     * @return (UserFullName) - The user&#39;s name
      * 
      */
     private GetWorkspaceIamUsersV2UserFullName fullName;
     /**
-     * @return (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * @return (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     private String name;
     /**
-     * @return The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * @return The resource name of the account to list users in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      * 
      */
     private String parent;
@@ -53,57 +54,59 @@ public final class GetWorkspaceIamUsersV2User {
      */
     private @Nullable GetWorkspaceIamUsersV2UserProviderConfig providerConfig;
     /**
-     * @return (string) - Internal userId of the user in Databricks
+     * @return (string) - The Databricks ID of the user
      * 
      */
     private String userId;
     /**
-     * @return (string) - Username/email of the user
+     * @return (string) - The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     private String username;
 
     private GetWorkspaceIamUsersV2User() {}
     /**
-     * @return (string) - The accountId parent of the user in Databricks
+     * @return (string) - The ID of the account that contains the user
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public String accountUserStatus() {
         return this.accountUserStatus;
     }
     /**
-     * @return (string) - ExternalId of the user in the customer&#39;s IdP
+     * @return (string) - The ID of the user in your identity provider (IdP)
      * 
      */
     public String externalId() {
         return this.externalId;
     }
     /**
-     * @return (UserFullName)
+     * @return (UserFullName) - The user&#39;s name
      * 
      */
     public GetWorkspaceIamUsersV2UserFullName fullName() {
         return this.fullName;
     }
     /**
-     * @return (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * @return (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * @return The resource name of the account to list users in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      * 
      */
     public String parent() {
@@ -117,14 +120,15 @@ public final class GetWorkspaceIamUsersV2User {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - Internal userId of the user in Databricks
+     * @return (string) - The Databricks ID of the user
      * 
      */
     public String userId() {
         return this.userId;
     }
     /**
-     * @return (string) - Username/email of the user
+     * @return (string) - The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     public String username() {

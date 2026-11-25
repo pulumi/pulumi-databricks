@@ -35,14 +35,26 @@ public final class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs extends 
     }
 
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job&#39;s runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * @return Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job&#39;s runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      * 
      */
     public Output<String> status() {
@@ -98,7 +110,13 @@ public final class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs extends 
         }
 
         /**
-         * @param status Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+         * @param status Controls what workspace admins can do with service principal tokens and job identities. With
+         * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+         * in the workspace, change a job owner to any workspace user, and set a job&#39;s runAs identity to
+         * any workspace user or to a service principal they have the Service Principal User role on. With
+         * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+         * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+         * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
          * 
          * @return builder
          * 
@@ -109,7 +127,13 @@ public final class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs extends 
         }
 
         /**
-         * @param status Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+         * @param status Controls what workspace admins can do with service principal tokens and job identities. With
+         * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+         * in the workspace, change a job owner to any workspace user, and set a job&#39;s runAs identity to
+         * any workspace user or to a service principal they have the Service Principal User role on. With
+         * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+         * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+         * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
          * 
          * @return builder
          * 

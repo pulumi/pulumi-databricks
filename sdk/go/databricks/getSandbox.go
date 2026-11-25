@@ -68,7 +68,7 @@ type LookupSandboxResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Human-readable display label for the sandbox. At most 256 characters
 	DisplayName string `pulumi:"displayName"`
-	// (SandboxMetadata) - Metadata associated with the sandbox
+	// (SandboxMetadata) - Tags and other metadata associated with the sandbox
 	Metadata GetSandboxMetadata `pulumi:"metadata"`
 	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
 	// `sandboxId`; any value supplied in a create or update request body is ignored
@@ -125,7 +125,7 @@ func (o LookupSandboxResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSandboxResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (SandboxMetadata) - Metadata associated with the sandbox
+// (SandboxMetadata) - Tags and other metadata associated with the sandbox
 func (o LookupSandboxResultOutput) Metadata() GetSandboxMetadataOutput {
 	return o.ApplyT(func(v LookupSandboxResult) GetSandboxMetadata { return v.Metadata }).(GetSandboxMetadataOutput)
 }

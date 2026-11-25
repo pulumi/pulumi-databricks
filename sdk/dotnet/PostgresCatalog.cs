@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
     /// 
@@ -89,7 +89,8 @@ namespace Pulumi.Databricks
     public partial class PostgresCatalog : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        /// last segment of the name field
         /// </summary>
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
@@ -113,7 +114,8 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresCatalogProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The desired state of the Catalog
+        /// The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        /// the catalog is created
         /// </summary>
         [Output("spec")]
         public Output<Outputs.PostgresCatalogSpec> Spec { get; private set; } = null!;
@@ -125,7 +127,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresCatalogStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - System-generated unique identifier for the catalog
+        /// (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -183,7 +185,8 @@ namespace Pulumi.Databricks
     public sealed class PostgresCatalogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        /// last segment of the name field
         /// </summary>
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -195,7 +198,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresCatalogProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The desired state of the Catalog
+        /// The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        /// the catalog is created
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresCatalogSpecArgs>? Spec { get; set; }
@@ -209,7 +213,8 @@ namespace Pulumi.Databricks
     public sealed class PostgresCatalogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        /// last segment of the name field
         /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
@@ -233,7 +238,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresCatalogProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The desired state of the Catalog
+        /// The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        /// the catalog is created
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresCatalogSpecGetArgs>? Spec { get; set; }
@@ -245,7 +251,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresCatalogStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// (string) - System-generated unique identifier for the catalog
+        /// (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

@@ -87,11 +87,13 @@ type WorkspaceSettingV2 struct {
 	EffectiveRestrictWorkspaceAdmins WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal WorkspaceSettingV2EffectiveStringValOutput `pulumi:"effectiveStringVal"`
+	// (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+	EffectiveWorkspaceDashboardTheme WorkspaceSettingV2EffectiveWorkspaceDashboardThemeOutput `pulumi:"effectiveWorkspaceDashboardTheme"`
 	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
 	EffectiveWorkspaceLabel WorkspaceSettingV2EffectiveWorkspaceLabelPtrOutput `pulumi:"effectiveWorkspaceLabel"`
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal WorkspaceSettingV2IntegerValPtrOutput `pulumi:"integerVal"`
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
 	OperationalEmailCustomRecipient WorkspaceSettingV2OperationalEmailCustomRecipientPtrOutput `pulumi:"operationalEmailCustomRecipient"`
@@ -103,6 +105,8 @@ type WorkspaceSettingV2 struct {
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal WorkspaceSettingV2StringValPtrOutput `pulumi:"stringVal"`
+	// Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+	WorkspaceDashboardTheme WorkspaceSettingV2WorkspaceDashboardThemePtrOutput `pulumi:"workspaceDashboardTheme"`
 	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
 	WorkspaceLabel WorkspaceSettingV2WorkspaceLabelPtrOutput `pulumi:"workspaceLabel"`
 }
@@ -171,11 +175,13 @@ type workspaceSettingV2State struct {
 	EffectiveRestrictWorkspaceAdmins *WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal *WorkspaceSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
+	// (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+	EffectiveWorkspaceDashboardTheme *WorkspaceSettingV2EffectiveWorkspaceDashboardTheme `pulumi:"effectiveWorkspaceDashboardTheme"`
 	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
 	EffectiveWorkspaceLabel *WorkspaceSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal *WorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name *string `pulumi:"name"`
 	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
 	OperationalEmailCustomRecipient *WorkspaceSettingV2OperationalEmailCustomRecipient `pulumi:"operationalEmailCustomRecipient"`
@@ -187,6 +193,8 @@ type workspaceSettingV2State struct {
 	RestrictWorkspaceAdmins *WorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal *WorkspaceSettingV2StringVal `pulumi:"stringVal"`
+	// Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+	WorkspaceDashboardTheme *WorkspaceSettingV2WorkspaceDashboardTheme `pulumi:"workspaceDashboardTheme"`
 	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
 	WorkspaceLabel *WorkspaceSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
@@ -226,11 +234,13 @@ type WorkspaceSettingV2State struct {
 	EffectiveRestrictWorkspaceAdmins WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal WorkspaceSettingV2EffectiveStringValPtrInput
+	// (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+	EffectiveWorkspaceDashboardTheme WorkspaceSettingV2EffectiveWorkspaceDashboardThemePtrInput
 	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
 	EffectiveWorkspaceLabel WorkspaceSettingV2EffectiveWorkspaceLabelPtrInput
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal WorkspaceSettingV2IntegerValPtrInput
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name pulumi.StringPtrInput
 	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
 	OperationalEmailCustomRecipient WorkspaceSettingV2OperationalEmailCustomRecipientPtrInput
@@ -242,6 +252,8 @@ type WorkspaceSettingV2State struct {
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrInput
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal WorkspaceSettingV2StringValPtrInput
+	// Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+	WorkspaceDashboardTheme WorkspaceSettingV2WorkspaceDashboardThemePtrInput
 	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
 	WorkspaceLabel WorkspaceSettingV2WorkspaceLabelPtrInput
 }
@@ -283,7 +295,7 @@ type workspaceSettingV2Args struct {
 	EffectiveWorkspaceLabel *WorkspaceSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal *WorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name *string `pulumi:"name"`
 	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
 	OperationalEmailCustomRecipient *WorkspaceSettingV2OperationalEmailCustomRecipient `pulumi:"operationalEmailCustomRecipient"`
@@ -295,6 +307,8 @@ type workspaceSettingV2Args struct {
 	RestrictWorkspaceAdmins *WorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal *WorkspaceSettingV2StringVal `pulumi:"stringVal"`
+	// Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+	WorkspaceDashboardTheme *WorkspaceSettingV2WorkspaceDashboardTheme `pulumi:"workspaceDashboardTheme"`
 	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
 	WorkspaceLabel *WorkspaceSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
@@ -327,7 +341,7 @@ type WorkspaceSettingV2Args struct {
 	EffectiveWorkspaceLabel WorkspaceSettingV2EffectiveWorkspaceLabelPtrInput
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal WorkspaceSettingV2IntegerValPtrInput
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name pulumi.StringPtrInput
 	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
 	OperationalEmailCustomRecipient WorkspaceSettingV2OperationalEmailCustomRecipientPtrInput
@@ -339,6 +353,8 @@ type WorkspaceSettingV2Args struct {
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrInput
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal WorkspaceSettingV2StringValPtrInput
+	// Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+	WorkspaceDashboardTheme WorkspaceSettingV2WorkspaceDashboardThemePtrInput
 	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
 	WorkspaceLabel WorkspaceSettingV2WorkspaceLabelPtrInput
 }
@@ -541,6 +557,13 @@ func (o WorkspaceSettingV2Output) EffectiveStringVal() WorkspaceSettingV2Effecti
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveStringValOutput { return v.EffectiveStringVal }).(WorkspaceSettingV2EffectiveStringValOutput)
 }
 
+// (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+func (o WorkspaceSettingV2Output) EffectiveWorkspaceDashboardTheme() WorkspaceSettingV2EffectiveWorkspaceDashboardThemeOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveWorkspaceDashboardThemeOutput {
+		return v.EffectiveWorkspaceDashboardTheme
+	}).(WorkspaceSettingV2EffectiveWorkspaceDashboardThemeOutput)
+}
+
 // Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
 func (o WorkspaceSettingV2Output) EffectiveWorkspaceLabel() WorkspaceSettingV2EffectiveWorkspaceLabelPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveWorkspaceLabelPtrOutput {
@@ -553,7 +576,7 @@ func (o WorkspaceSettingV2Output) IntegerVal() WorkspaceSettingV2IntegerValPtrOu
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2IntegerValPtrOutput { return v.IntegerVal }).(WorkspaceSettingV2IntegerValPtrOutput)
 }
 
-// Name of the setting
+// Name of the setting. The settings metadata endpoint lists the names available at each scope
 func (o WorkspaceSettingV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -585,6 +608,13 @@ func (o WorkspaceSettingV2Output) RestrictWorkspaceAdmins() WorkspaceSettingV2Re
 // Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o WorkspaceSettingV2Output) StringVal() WorkspaceSettingV2StringValPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2StringValPtrOutput { return v.StringVal }).(WorkspaceSettingV2StringValPtrOutput)
+}
+
+// Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+func (o WorkspaceSettingV2Output) WorkspaceDashboardTheme() WorkspaceSettingV2WorkspaceDashboardThemePtrOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2WorkspaceDashboardThemePtrOutput {
+		return v.WorkspaceDashboardTheme
+	}).(WorkspaceSettingV2WorkspaceDashboardThemePtrOutput)
 }
 
 // Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value

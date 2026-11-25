@@ -186,14 +186,14 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -493,7 +493,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The part of the name, chosen by the user when the resource was created
+         * @param projectId The project ID chosen when the project was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The part of the name, chosen by the user when the resource was created
+         * @param projectId The project ID chosen when the project was created. It is the final segment of `name`
          * 
          * @return builder
          * 

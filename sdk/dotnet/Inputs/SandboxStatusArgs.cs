@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class SandboxStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+        /// (string) - Lifecycle state of the sandbox.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

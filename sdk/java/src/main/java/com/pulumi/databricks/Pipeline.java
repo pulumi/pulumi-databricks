@@ -23,6 +23,7 @@ import com.pulumi.databricks.outputs.PipelineNotification;
 import com.pulumi.databricks.outputs.PipelineProviderConfig;
 import com.pulumi.databricks.outputs.PipelineRestartWindow;
 import com.pulumi.databricks.outputs.PipelineRunAs;
+import com.pulumi.databricks.outputs.PipelineTesting;
 import com.pulumi.databricks.outputs.PipelineTrigger;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -572,6 +573,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> target() {
         return Codegen.optional(this.target);
+    }
+    @Export(name="testing", refs={PipelineTesting.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineTesting> testing;
+
+    public Output<Optional<PipelineTesting>> testing() {
+        return Codegen.optional(this.testing);
     }
     @Export(name="trigger", refs={PipelineTrigger.class}, tree="[0]")
     private Output</* @Nullable */ PipelineTrigger> trigger;

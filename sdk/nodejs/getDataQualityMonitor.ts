@@ -80,12 +80,13 @@ export interface GetDataQualityMonitorArgs {
  */
 export interface GetDataQualityMonitorResult {
     /**
-     * (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+     * (AnomalyDetectionConfig) - Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema's monitor if the schema has one
      */
     readonly anomalyDetectionConfig: outputs.GetDataQualityMonitorAnomalyDetectionConfig;
     /**
-     * (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * (DataProfilingConfig) - Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      */
     readonly dataProfilingConfig: outputs.GetDataQualityMonitorDataProfilingConfig;
     /**

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresBranch
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresBranchResult>("databricks:index/getPostgresBranch:getPostgresBranch", args ?? new GetPostgresBranchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresBranchResult>("databricks:index/getPostgresBranch:getPostgresBranch", args ?? new GetPostgresBranchInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -181,7 +181,7 @@ namespace Pulumi.Databricks
         public readonly string Parent;
         public readonly Outputs.GetPostgresBranchProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (BranchSpec) - The spec contains the branch configuration
+        /// (BranchSpec) - The spec contains the branch configuration.
         /// </summary>
         public readonly Outputs.GetPostgresBranchSpecResult Spec;
         /// <summary>

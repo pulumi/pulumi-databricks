@@ -26,16 +26,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     public static final DataQualityMonitorDataProfilingConfigArgs Empty = new DataQualityMonitorDataProfilingConfigArgs();
 
     /**
-     * Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * The absolute workspace path of the directory where the monitor&#39;s assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      * 
      */
     @Import(name="assetsDir")
     private @Nullable Output<String> assetsDir;
 
     /**
-     * @return Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * @return The absolute workspace path of the directory where the monitor&#39;s assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      * 
      */
     public Optional<Output<String>> assetsDir() {
@@ -43,18 +43,18 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      * 
      */
     @Import(name="baselineTableName")
     private @Nullable Output<String> baselineTableName;
 
     /**
-     * @return Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * @return The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      * 
      */
     public Optional<Output<String>> baselineTableName() {
@@ -62,14 +62,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * Custom metrics
+     * Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      * 
      */
     @Import(name="customMetrics")
     private @Nullable Output<List<DataQualityMonitorDataProfilingConfigCustomMetricArgs>> customMetrics;
 
     /**
-     * @return Custom metrics
+     * @return Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      * 
      */
     public Optional<Output<List<DataQualityMonitorDataProfilingConfigCustomMetricArgs>>> customMetrics() {
@@ -98,14 +100,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * `Analysis Configuration` for monitoring inference log tables
+     * Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      * 
      */
     @Import(name="inferenceLog")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigInferenceLogArgs> inferenceLog;
 
     /**
-     * @return `Analysis Configuration` for monitoring inference log tables
+     * @return Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      * 
      */
     public Optional<Output<DataQualityMonitorDataProfilingConfigInferenceLogArgs>> inferenceLog() {
@@ -141,14 +145,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * ID of the schema where output tables are created
+     * The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      * 
      */
     @Import(name="outputSchemaId", required=true)
     private Output<String> outputSchemaId;
 
     /**
-     * @return ID of the schema where output tables are created
+     * @return The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      * 
      */
     public Output<String> outputSchemaId() {
@@ -163,14 +169,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * The cron schedule
+     * The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigScheduleArgs> schedule;
 
     /**
-     * @return The cron schedule
+     * @return The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      * 
      */
     public Optional<Output<DataQualityMonitorDataProfilingConfigScheduleArgs>> schedule() {
@@ -195,7 +203,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+     * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
      * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
@@ -207,7 +215,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     /**
      * @return List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+     * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
      * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
@@ -218,14 +226,14 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * `Analysis Configuration` for monitoring snapshot tables
+     * Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      * 
      */
     @Import(name="snapshot")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigSnapshotArgs> snapshot;
 
     /**
-     * @return `Analysis Configuration` for monitoring snapshot tables
+     * @return Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      * 
      */
     public Optional<Output<DataQualityMonitorDataProfilingConfigSnapshotArgs>> snapshot() {
@@ -240,14 +248,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * `Analysis Configuration` for monitoring time series tables
+     * Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      * 
      */
     @Import(name="timeSeries")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigTimeSeriesArgs> timeSeries;
 
     /**
-     * @return `Analysis Configuration` for monitoring time series tables
+     * @return Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      * 
      */
     public Optional<Output<DataQualityMonitorDataProfilingConfigTimeSeriesArgs>> timeSeries() {
@@ -255,16 +265,16 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
     }
 
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      * 
      */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
     /**
-     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * @return The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -315,8 +325,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param assetsDir Field for specifying the absolute path to a custom directory to store data-monitoring
-         * assets. Normally prepopulated to a default user location via UI and Python APIs
+         * @param assetsDir The absolute workspace path of the directory where the monitor&#39;s assets, such as
+         * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
          * 
          * @return builder
          * 
@@ -327,8 +337,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param assetsDir Field for specifying the absolute path to a custom directory to store data-monitoring
-         * assets. Normally prepopulated to a default user location via UI and Python APIs
+         * @param assetsDir The absolute workspace path of the directory where the monitor&#39;s assets, such as
+         * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
          * 
          * @return builder
          * 
@@ -338,9 +348,9 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param baselineTableName Baseline table name.
-         * Baseline data is used to compute drift from the data in the monitored `tableName`.
-         * The baseline table and the monitored table shall have the same schema
+         * @param baselineTableName The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+         * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+         * schema
          * 
          * @return builder
          * 
@@ -351,9 +361,9 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param baselineTableName Baseline table name.
-         * Baseline data is used to compute drift from the data in the monitored `tableName`.
-         * The baseline table and the monitored table shall have the same schema
+         * @param baselineTableName The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+         * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+         * schema
          * 
          * @return builder
          * 
@@ -363,7 +373,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param customMetrics Custom metrics
+         * @param customMetrics Custom metrics to compute in addition to the built-in ones. See
+         * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
          * 
          * @return builder
          * 
@@ -374,7 +385,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param customMetrics Custom metrics
+         * @param customMetrics Custom metrics to compute in addition to the built-in ones. See
+         * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
          * 
          * @return builder
          * 
@@ -384,7 +396,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param customMetrics Custom metrics
+         * @param customMetrics Custom metrics to compute in addition to the built-in ones. See
+         * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
          * 
          * @return builder
          * 
@@ -421,7 +434,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param inferenceLog `Analysis Configuration` for monitoring inference log tables
+         * @param inferenceLog Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+         * computed per time window and include model quality metrics
          * 
          * @return builder
          * 
@@ -432,7 +446,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param inferenceLog `Analysis Configuration` for monitoring inference log tables
+         * @param inferenceLog Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+         * computed per time window and include model quality metrics
          * 
          * @return builder
          * 
@@ -478,7 +493,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param outputSchemaId ID of the schema where output tables are created
+         * @param outputSchemaId The UUID of the Unity Catalog schema where the profile and drift metrics tables
+         * are created
          * 
          * @return builder
          * 
@@ -489,7 +505,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param outputSchemaId ID of the schema where output tables are created
+         * @param outputSchemaId The UUID of the Unity Catalog schema where the profile and drift metrics tables
+         * are created
          * 
          * @return builder
          * 
@@ -508,7 +525,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param schedule The cron schedule
+         * @param schedule The schedule on which the monitor refreshes its metrics. Refreshes can also be
+         * triggered on demand through the Refresh resource
          * 
          * @return builder
          * 
@@ -519,7 +537,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param schedule The cron schedule
+         * @param schedule The schedule on which the monitor refreshes its metrics. Refreshes can also be
+         * triggered on demand through the Refresh resource
          * 
          * @return builder
          * 
@@ -552,7 +571,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         /**
          * @param slicingExprs List of column expressions to slice data with for targeted analysis. The data is grouped by
          * each expression independently, resulting in a separate slice for each predicate and its
-         * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+         * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
          * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
          * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
          * generate slices
@@ -568,7 +587,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         /**
          * @param slicingExprs List of column expressions to slice data with for targeted analysis. The data is grouped by
          * each expression independently, resulting in a separate slice for each predicate and its
-         * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+         * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
          * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
          * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
          * generate slices
@@ -583,7 +602,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         /**
          * @param slicingExprs List of column expressions to slice data with for targeted analysis. The data is grouped by
          * each expression independently, resulting in a separate slice for each predicate and its
-         * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+         * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
          * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
          * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
          * generate slices
@@ -596,7 +615,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param snapshot `Analysis Configuration` for monitoring snapshot tables
+         * @param snapshot Profiles the full contents of the table. Metrics are computed over all rows at each refresh
          * 
          * @return builder
          * 
@@ -607,7 +626,7 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param snapshot `Analysis Configuration` for monitoring snapshot tables
+         * @param snapshot Profiles the full contents of the table. Metrics are computed over all rows at each refresh
          * 
          * @return builder
          * 
@@ -626,7 +645,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param timeSeries `Analysis Configuration` for monitoring time series tables
+         * @param timeSeries Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+         * and `granularities`
          * 
          * @return builder
          * 
@@ -637,7 +657,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param timeSeries `Analysis Configuration` for monitoring time series tables
+         * @param timeSeries Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+         * and `granularities`
          * 
          * @return builder
          * 
@@ -647,8 +668,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-         * warehouse will be used
+         * @param warehouseId The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+         * caller can access is used
          * 
          * @return builder
          * 
@@ -659,8 +680,8 @@ public final class DataQualityMonitorDataProfilingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-         * warehouse will be used
+         * @param warehouseId The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+         * caller can access is used
          * 
          * @return builder
          * 

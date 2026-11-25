@@ -91,7 +91,8 @@ public class AgentKitManagedMemoryStore extends com.pulumi.resources.CustomResou
     /**
      * Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+     * after creation
      * 
      */
     @Export(name="managedMemoryStoreId", refs={String.class}, tree="[0]")
@@ -100,7 +101,8 @@ public class AgentKitManagedMemoryStore extends com.pulumi.resources.CustomResou
     /**
      * @return Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store&#39;s `name` and cannot be changed
+     * after creation
      * 
      */
     public Output<String> managedMemoryStoreId() {

@@ -35,7 +35,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// (SyncedTablePipelineProgress)
+        /// (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+        /// triggered or snapshot synced table
         /// </summary>
         public readonly Outputs.GetPostgresSyncedTableStatusOngoingSyncProgressResult OngoingSyncProgress;
         /// <summary>

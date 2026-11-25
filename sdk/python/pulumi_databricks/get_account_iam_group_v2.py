@@ -50,7 +50,7 @@ class GetAccountIamGroupV2Result:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        (string) - The parent account ID for group in Databricks
+        (string) - The ID of the account that contains the group
         """
         return pulumi.get(self, "account_id")
 
@@ -58,7 +58,7 @@ class GetAccountIamGroupV2Result:
     @pulumi.getter(name="externalId")
     def external_id(self) -> _builtins.str:
         """
-        (string) - ExternalId of the group in the customer's IdP
+        (string) - The ID of the group in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -66,7 +66,8 @@ class GetAccountIamGroupV2Result:
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.str:
         """
-        (string) - Internal group ID of the group in Databricks
+        (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+        is created, and it is the `{group_id}` segment of `name`
         """
         return pulumi.get(self, "group_id")
 
@@ -74,7 +75,9 @@ class GetAccountIamGroupV2Result:
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
         """
-        (string) - Display name of the group
+        (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+        shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+        group that Databricks manages, such as `admins` or `users`
         """
         return pulumi.get(self, "group_name")
 
@@ -82,9 +85,9 @@ class GetAccountIamGroupV2Result:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the group. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/groups/{group_id}
-        - Workspace-scoped: groups/{group_id}
+        (string) - The resource name of the group, in one of these formats:
+        - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        - Workspace APIs: `groups/{group_id}`
         """
         return pulumi.get(self, "name")
 
@@ -92,8 +95,8 @@ class GetAccountIamGroupV2Result:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-        account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the group, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -115,7 +118,7 @@ class AwaitableGetAccountIamGroupV2Result(GetAccountIamGroupV2Result):
 def get_account_iam_group_v2(name: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamGroupV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -135,9 +138,9 @@ def get_account_iam_group_v2(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The resource name of the group. The format depends on the API that returned it:
-           - Account-scoped: accounts/{account_id}/groups/{group_id}
-           - Workspace-scoped: groups/{group_id}
+    :param _builtins.str name: The resource name of the group, in one of these formats:
+           - Account APIs: `accounts/{account_id}/groups/{group_id}`
+           - Workspace APIs: `groups/{group_id}`
     """
     __args__ = dict()
     __args__['name'] = name
@@ -154,7 +157,7 @@ def get_account_iam_group_v2(name: Optional[_builtins.str] = None,
 def get_account_iam_group_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamGroupV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -174,9 +177,9 @@ def get_account_iam_group_v2_output(name: pulumi.Input[Optional[_builtins.str]] 
     ```
 
 
-    :param _builtins.str name: The resource name of the group. The format depends on the API that returned it:
-           - Account-scoped: accounts/{account_id}/groups/{group_id}
-           - Workspace-scoped: groups/{group_id}
+    :param _builtins.str name: The resource name of the group, in one of these formats:
+           - Account APIs: `accounts/{account_id}/groups/{group_id}`
+           - Workspace APIs: `groups/{group_id}`
     """
     __args__ = dict()
     __args__['name'] = name

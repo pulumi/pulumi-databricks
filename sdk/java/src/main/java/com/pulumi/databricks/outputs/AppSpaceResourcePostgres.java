@@ -11,11 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpaceResourcePostgres {
+    /**
+     * @return Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
+     * 
+     */
     private @Nullable String branch;
     private @Nullable String database;
     private @Nullable String permission;
 
     private AppSpaceResourcePostgres() {}
+    /**
+     * @return Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
+     * 
+     */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }

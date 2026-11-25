@@ -17,14 +17,14 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
     public static final GetDatabaseDatabaseCatalogPlainArgs Empty = new GetDatabaseDatabaseCatalogPlainArgs();
 
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the catalog in UC
+     * @return The name of the catalog in Unity Catalog
      * 
      */
     public String name() {
@@ -72,7 +72,7 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The name of the catalog in UC
+         * @param name The name of the catalog in Unity Catalog
          * 
          * @return builder
          * 

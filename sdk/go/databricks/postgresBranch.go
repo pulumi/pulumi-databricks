@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -22,7 +22,7 @@ import (
 //
 // A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
 //
-// Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
+// For this implicitly created root Branch, Pulumi manages updates only. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
 //
 // ```go
 // package main
@@ -126,7 +126,9 @@ import (
 //
 // ```
 //
-// ### Branch with Expiration (TTL)
+// ### <a id="branch-with-expiration-ttl"></a>Branch with an Absolute Expiration
+//
+// Prefer to use a fixed future `expireTime` instead of relative `ttl`. Reapplying a relative TTL recalculates the deadline from the update time and can extend the branch's lifetime. Replace the example timestamp with your intended deadline.
 //
 // ```go
 // package main
@@ -144,7 +146,7 @@ import (
 //				BranchId: pulumi.String("temp-feature-test"),
 //				Parent:   pulumi.Any(this.Name),
 //				Spec: &databricks.PostgresBranchSpecArgs{
-//					Ttl: pulumi.String("604800s"),
+//					ExpireTime: pulumi.String("2030-01-01T00:00:00Z"),
 //				},
 //			})
 //			if err != nil {
@@ -210,8 +212,12 @@ type PostgresBranch struct {
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
-	// The spec contains the branch configuration
-	Spec PostgresBranchSpecOutput `pulumi:"spec"`
+	// The spec contains the branch configuration.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
+	Spec PostgresBranchSpecPtrOutput `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
 	Status PostgresBranchStatusOutput `pulumi:"status"`
 	// (string) - System-generated unique ID for the branch
@@ -275,7 +281,11 @@ type postgresBranchState struct {
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
-	// The spec contains the branch configuration
+	// The spec contains the branch configuration.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec *PostgresBranchSpec `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
 	Status *PostgresBranchStatus `pulumi:"status"`
@@ -305,7 +315,11 @@ type PostgresBranchState struct {
 	PurgeOnDelete pulumi.BoolPtrInput
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrInput
-	// The spec contains the branch configuration
+	// The spec contains the branch configuration.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec PostgresBranchSpecPtrInput
 	// (BranchStatus) - The current status of a Branch
 	Status PostgresBranchStatusPtrInput
@@ -340,7 +354,11 @@ type postgresBranchArgs struct {
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
-	// The spec contains the branch configuration
+	// The spec contains the branch configuration.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec *PostgresBranchSpec `pulumi:"spec"`
 }
 
@@ -360,7 +378,11 @@ type PostgresBranchArgs struct {
 	PurgeOnDelete pulumi.BoolPtrInput
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrInput
-	// The spec contains the branch configuration
+	// The spec contains the branch configuration.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec PostgresBranchSpecPtrInput
 }
 
@@ -491,9 +513,13 @@ func (o PostgresBranchOutput) ReplaceExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PostgresBranch) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
-// The spec contains the branch configuration
-func (o PostgresBranchOutput) Spec() PostgresBranchSpecOutput {
-	return o.ApplyT(func(v *PostgresBranch) PostgresBranchSpecOutput { return v.Spec }).(PostgresBranchSpecOutput)
+// The spec contains the branch configuration.
+//
+// Read the resource's current values from `status`, rather than `spec`.
+// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+// unmanaged fields
+func (o PostgresBranchOutput) Spec() PostgresBranchSpecPtrOutput {
+	return o.ApplyT(func(v *PostgresBranch) PostgresBranchSpecPtrOutput { return v.Spec }).(PostgresBranchSpecPtrOutput)
 }
 
 // (BranchStatus) - The current status of a Branch

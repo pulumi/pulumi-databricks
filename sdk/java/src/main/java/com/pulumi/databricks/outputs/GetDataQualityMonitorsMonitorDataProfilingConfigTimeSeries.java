@@ -17,7 +17,7 @@ public final class GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries {
      */
     private List<String> granularities;
     /**
-     * @return (string) - Column for the timestamp
+     * @return (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      * 
      */
     private String timestampColumn;
@@ -31,7 +31,7 @@ public final class GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries {
         return this.granularities;
     }
     /**
-     * @return (string) - Column for the timestamp
+     * @return (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      * 
      */
     public String timestampColumn() {

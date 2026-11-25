@@ -19,27 +19,28 @@ public final class GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLog 
      */
     private List<String> granularities;
     /**
-     * @return (string) - Column for the label
+     * @return (string) - Column containing the ground truth for the model&#39;s predictions
      * 
      */
     private @Nullable String labelColumn;
     /**
-     * @return (string) - Column for the model identifier
+     * @return (string) - Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      * 
      */
     private String modelIdColumn;
     /**
-     * @return (string) - Column for the prediction
+     * @return (string) - Column containing the model&#39;s predicted values
      * 
      */
     private String predictionColumn;
     /**
-     * @return (string) - Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * @return (string) - The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      * 
      */
     private String problemType;
     /**
-     * @return (string) - Column for the timestamp
+     * @return (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      * 
      */
     private String timestampColumn;
@@ -53,35 +54,36 @@ public final class GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLog 
         return this.granularities;
     }
     /**
-     * @return (string) - Column for the label
+     * @return (string) - Column containing the ground truth for the model&#39;s predictions
      * 
      */
     public Optional<String> labelColumn() {
         return Optional.ofNullable(this.labelColumn);
     }
     /**
-     * @return (string) - Column for the model identifier
+     * @return (string) - Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      * 
      */
     public String modelIdColumn() {
         return this.modelIdColumn;
     }
     /**
-     * @return (string) - Column for the prediction
+     * @return (string) - Column containing the model&#39;s predicted values
      * 
      */
     public String predictionColumn() {
         return this.predictionColumn;
     }
     /**
-     * @return (string) - Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * @return (string) - The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      * 
      */
     public String problemType() {
         return this.problemType;
     }
     /**
-     * @return (string) - Column for the timestamp
+     * @return (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      * 
      */
     public String timestampColumn() {

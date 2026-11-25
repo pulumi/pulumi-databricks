@@ -129,30 +129,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/dataQualityMonitor:DataQualityMonitor")
 public class DataQualityMonitor extends com.pulumi.resources.CustomResource {
     /**
-     * Anomaly Detection Configuration, applicable to `schema` object types
+     * Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema&#39;s monitor if the schema has one
      * 
      */
     @Export(name="anomalyDetectionConfig", refs={DataQualityMonitorAnomalyDetectionConfig.class}, tree="[0]")
     private Output</* @Nullable */ DataQualityMonitorAnomalyDetectionConfig> anomalyDetectionConfig;
 
     /**
-     * @return Anomaly Detection Configuration, applicable to `schema` object types
+     * @return Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema&#39;s monitor if the schema has one
      * 
      */
     public Output<Optional<DataQualityMonitorAnomalyDetectionConfig>> anomalyDetectionConfig() {
         return Codegen.optional(this.anomalyDetectionConfig);
     }
     /**
-     * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      * 
      */
     @Export(name="dataProfilingConfig", refs={DataQualityMonitorDataProfilingConfig.class}, tree="[0]")
     private Output</* @Nullable */ DataQualityMonitorDataProfilingConfig> dataProfilingConfig;
 
     /**
-     * @return Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * @return Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      * 
      */
     public Output<Optional<DataQualityMonitorDataProfilingConfig>> dataProfilingConfig() {

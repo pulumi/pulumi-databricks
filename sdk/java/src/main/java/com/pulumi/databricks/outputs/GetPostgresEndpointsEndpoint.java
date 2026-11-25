@@ -21,7 +21,7 @@ public final class GetPostgresEndpointsEndpoint {
      */
     private String createTime;
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The endpoint ID, which is the final segment of the endpoint&#39;s resource name
      * 
      */
     private String endpointId;
@@ -43,17 +43,20 @@ public final class GetPostgresEndpointsEndpoint {
      */
     private @Nullable GetPostgresEndpointsEndpointProviderConfig providerConfig;
     /**
-     * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * @return (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
      * 
      */
     private GetPostgresEndpointsEndpointSpec spec;
     /**
-     * @return (EndpointStatus) - Current operational status of the compute endpoint
+     * @return (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      * 
      */
     private GetPostgresEndpointsEndpointStatus status;
     /**
-     * @return (string) - System-generated unique ID for the endpoint
+     * @return (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
      * 
      */
     private String uid;
@@ -72,7 +75,7 @@ public final class GetPostgresEndpointsEndpoint {
         return this.createTime;
     }
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The endpoint ID, which is the final segment of the endpoint&#39;s resource name
      * 
      */
     public String endpointId() {
@@ -102,21 +105,24 @@ public final class GetPostgresEndpointsEndpoint {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * @return (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
      * 
      */
     public GetPostgresEndpointsEndpointSpec spec() {
         return this.spec;
     }
     /**
-     * @return (EndpointStatus) - Current operational status of the compute endpoint
+     * @return (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      * 
      */
     public GetPostgresEndpointsEndpointStatus status() {
         return this.status;
     }
     /**
-     * @return (string) - System-generated unique ID for the endpoint
+     * @return (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
      * 
      */
     public String uid() {

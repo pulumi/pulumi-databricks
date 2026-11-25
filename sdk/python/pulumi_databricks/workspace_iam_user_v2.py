@@ -29,9 +29,12 @@ class WorkspaceIamUserV2Args:
         """
         The set of arguments for constructing a WorkspaceIamUserV2 resource.
 
-        :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] username: Username/email of the user
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
+        :param pulumi.Input[_builtins.str] account_user_status: Whether the user is active in the account. New users are active unless you set this to
+               `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input['WorkspaceIamUserV2FullNameArgs'] full_name: The user's name
+        :param pulumi.Input[_builtins.str] username: The user's username, which is their email address. It can't be changed after the user is
+               created
+        :param pulumi.Input[_builtins.str] external_id: The ID of the user in your identity provider (IdP)
         :param pulumi.Input['WorkspaceIamUserV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "account_user_status", account_user_status)
@@ -46,7 +49,8 @@ class WorkspaceIamUserV2Args:
     @pulumi.getter(name="accountUserStatus")
     def account_user_status(self) -> pulumi.Input[_builtins.str]:
         """
-        The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        Whether the user is active in the account. New users are active unless you set this to
+        `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_user_status")
 
@@ -57,6 +61,9 @@ class WorkspaceIamUserV2Args:
     @_builtins.property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input['WorkspaceIamUserV2FullNameArgs']:
+        """
+        The user's name
+        """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
@@ -67,7 +74,8 @@ class WorkspaceIamUserV2Args:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        Username/email of the user
+        The user's username, which is their email address. It can't be changed after the user is
+        created
         """
         return pulumi.get(self, "username")
 
@@ -79,7 +87,7 @@ class WorkspaceIamUserV2Args:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ExternalId of the user in the customer's IdP
+        The ID of the user in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -115,17 +123,20 @@ class _WorkspaceIamUserV2State:
         """
         Input properties used for looking up and filtering WorkspaceIamUserV2 resources.
 
-        :param pulumi.Input[_builtins.str] account_id: (string) - The accountId parent of the user in Databricks
-        :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the user. The format depends on the API that returned it:
-               - Account-scoped: accounts/{account_id}/users/{user_id}
-               - Workspace-scoped: users/{user_id}
-        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-               account-scoped and workspace-scoped APIs return it
+        :param pulumi.Input[_builtins.str] account_id: (string) - The ID of the account that contains the user
+        :param pulumi.Input[_builtins.str] account_user_status: Whether the user is active in the account. New users are active unless you set this to
+               `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] external_id: The ID of the user in your identity provider (IdP)
+        :param pulumi.Input['WorkspaceIamUserV2FullNameArgs'] full_name: The user's name
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the user, in one of these formats:
+               - Account APIs: `accounts/{account_id}/users/{user_id}`
+               - Workspace APIs: `users/{user_id}`
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the user, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
         :param pulumi.Input['WorkspaceIamUserV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] user_id: (string) - Internal userId of the user in Databricks
-        :param pulumi.Input[_builtins.str] username: Username/email of the user
+        :param pulumi.Input[_builtins.str] user_id: (string) - The Databricks ID of the user
+        :param pulumi.Input[_builtins.str] username: The user's username, which is their email address. It can't be changed after the user is
+               created
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -150,7 +161,7 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The accountId parent of the user in Databricks
+        (string) - The ID of the account that contains the user
         """
         return pulumi.get(self, "account_id")
 
@@ -162,7 +173,8 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter(name="accountUserStatus")
     def account_user_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        Whether the user is active in the account. New users are active unless you set this to
+        `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_user_status")
 
@@ -174,7 +186,7 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ExternalId of the user in the customer's IdP
+        The ID of the user in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -185,6 +197,9 @@ class _WorkspaceIamUserV2State:
     @_builtins.property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[Optional['WorkspaceIamUserV2FullNameArgs']]:
+        """
+        The user's name
+        """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
@@ -195,9 +210,9 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resource name of the user. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/users/{user_id}
-        - Workspace-scoped: users/{user_id}
+        (string) - The resource name of the user, in one of these formats:
+        - Account APIs: `accounts/{account_id}/users/{user_id}`
+        - Workspace APIs: `users/{user_id}`
         """
         return pulumi.get(self, "name")
 
@@ -209,8 +224,8 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the user, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -234,7 +249,7 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Internal userId of the user in Databricks
+        (string) - The Databricks ID of the user
         """
         return pulumi.get(self, "user_id")
 
@@ -246,7 +261,8 @@ class _WorkspaceIamUserV2State:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Username/email of the user
+        The user's username, which is their email address. It can't be changed after the user is
+        created
         """
         return pulumi.get(self, "username")
 
@@ -268,7 +284,7 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -298,10 +314,13 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
+        :param pulumi.Input[_builtins.str] account_user_status: Whether the user is active in the account. New users are active unless you set this to
+               `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] external_id: The ID of the user in your identity provider (IdP)
+        :param pulumi.Input[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict', 'outputs.WorkspaceIamUserV2FullName']] full_name: The user's name
         :param pulumi.Input[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] username: Username/email of the user
+        :param pulumi.Input[_builtins.str] username: The user's username, which is their email address. It can't be changed after the user is
+               created
         """
         ...
     @overload
@@ -310,7 +329,7 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
                  args: WorkspaceIamUserV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -408,17 +427,20 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: (string) - The accountId parent of the user in Databricks
-        :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the user. The format depends on the API that returned it:
-               - Account-scoped: accounts/{account_id}/users/{user_id}
-               - Workspace-scoped: users/{user_id}
-        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-               account-scoped and workspace-scoped APIs return it
+        :param pulumi.Input[_builtins.str] account_id: (string) - The ID of the account that contains the user
+        :param pulumi.Input[_builtins.str] account_user_status: Whether the user is active in the account. New users are active unless you set this to
+               `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] external_id: The ID of the user in your identity provider (IdP)
+        :param pulumi.Input[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict', 'outputs.WorkspaceIamUserV2FullName']] full_name: The user's name
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the user, in one of these formats:
+               - Account APIs: `accounts/{account_id}/users/{user_id}`
+               - Workspace APIs: `users/{user_id}`
+        :param pulumi.Input[_builtins.str] parent: (string) - The resource name of the account that contains the user, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
         :param pulumi.Input[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] user_id: (string) - Internal userId of the user in Databricks
-        :param pulumi.Input[_builtins.str] username: Username/email of the user
+        :param pulumi.Input[_builtins.str] user_id: (string) - The Databricks ID of the user
+        :param pulumi.Input[_builtins.str] username: The user's username, which is their email address. It can't be changed after the user is
+               created
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -463,7 +485,7 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The accountId parent of the user in Databricks
+        (string) - The ID of the account that contains the user
         """
         return pulumi.get(self, "account_id")
 
@@ -471,7 +493,8 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
     @pulumi.getter(name="accountUserStatus")
     def account_user_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        Whether the user is active in the account. New users are active unless you set this to
+        `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_user_status")
 
@@ -479,22 +502,25 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        ExternalId of the user in the customer's IdP
+        The ID of the user in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
     @_builtins.property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output['outputs.WorkspaceIamUserV2FullName']:
+        """
+        The user's name
+        """
         return pulumi.get(self, "full_name")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the user. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/users/{user_id}
-        - Workspace-scoped: users/{user_id}
+        (string) - The resource name of the user, in one of these formats:
+        - Account APIs: `accounts/{account_id}/users/{user_id}`
+        - Workspace APIs: `users/{user_id}`
         """
         return pulumi.get(self, "name")
 
@@ -502,8 +528,8 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the user, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -519,7 +545,7 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Internal userId of the user in Databricks
+        (string) - The Databricks ID of the user
         """
         return pulumi.get(self, "user_id")
 
@@ -527,7 +553,8 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        Username/email of the user
+        The user's username, which is their email address. It can't be changed after the user is
+        created
         """
         return pulumi.get(self, "username")
 

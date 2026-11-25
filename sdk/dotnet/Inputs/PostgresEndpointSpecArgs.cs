@@ -48,20 +48,21 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
-        /// Should be set to true when provided.
+        /// The value must be true when provided.
         /// Mutually exclusive with `SuspendTimeoutDuration`
         /// </summary>
         [Input("noSuspension")]
         public Input<bool>? NoSuspension { get; set; }
 
         /// <summary>
-        /// (EndpointSettings)
+        /// (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
         /// </summary>
         [Input("settings")]
         public Input<Inputs.PostgresEndpointSpecSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+        /// automatic suspension is disabled
         /// </summary>
         [Input("suspendTimeoutDuration")]
         public Input<string>? SuspendTimeoutDuration { get; set; }

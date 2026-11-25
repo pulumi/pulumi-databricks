@@ -129,28 +129,28 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model service
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model service
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * (string) - Owner of the model service
+     * (string) - Username or group name of the model service owner
      * 
      */
     @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
     private Output<String> effectiveOwner;
 
     /**
-     * @return (string) - Owner of the model service
+     * @return (string) - Username or group name of the model service owner
      * 
      */
     public Output<String> effectiveOwner() {
@@ -177,28 +177,32 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * (string) - Metastore hosting the model service
+     * (string) - Unique identifier of the metastore that contains the model service
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return (string) - Metastore hosting the model service
+     * @return (string) - Unique identifier of the metastore that contains the model service
      * 
      */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
     /**
-     * Name for the model service, e.g. &#34;myModelService&#34;
+     * Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     @Export(name="modelServiceId", refs={String.class}, tree="[0]")
     private Output<String> modelServiceId;
 
     /**
-     * @return Name for the model service, e.g. &#34;myModelService&#34;
+     * @return Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     public Output<String> modelServiceId() {
@@ -208,8 +212,9 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -219,8 +224,9 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
      * @return (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     public Output<String> name() {
@@ -293,14 +299,14 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model service
      * 
      */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model service
      * 
      */
     public Output<String> updatedBy() {

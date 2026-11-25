@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  * 
@@ -70,118 +70,114 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2")
 public class WorkspaceIamWorkspaceAssignmentV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (string) - The account ID parent of the workspace where the principal is assigned
+     * (string) - The ID of the account that contains the workspace
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return (string) - The account ID parent of the workspace where the principal is assigned
+     * @return (string) - The ID of the account that contains the workspace
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      * 
      */
     @Export(name="effectiveEntitlements", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> effectiveEntitlements;
 
     /**
-     * @return (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * @return (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      * 
      */
     public Output<List<String>> effectiveEntitlements() {
         return this.effectiveEntitlements;
     }
     /**
-     * Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     @Export(name="entitlements", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> entitlements;
 
     /**
-     * @return Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * @return The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     public Output<Optional<List<String>>> entitlements() {
         return Codegen.optional(this.entitlements);
     }
     /**
-     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * @return (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * (string) - The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * (string) - The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * @return (string) - The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {
         return this.parent;
     }
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * @return The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     public Output<String> principalId() {
         return this.principalId;
     }
     /**
-     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     @Export(name="principalType", refs={String.class}, tree="[0]")
     private Output<String> principalType;
 
     /**
-     * @return (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public Output<String> principalType() {
@@ -202,14 +198,14 @@ public class WorkspaceIamWorkspaceAssignmentV2 extends com.pulumi.resources.Cust
         return this.providerConfig;
     }
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      * 
      */
     @Export(name="workspaceId", refs={String.class}, tree="[0]")
     private Output<String> workspaceId;
 
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public Output<String> workspaceId() {

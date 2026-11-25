@@ -15,20 +15,18 @@ public final class GetAccountIamExternalUserV2Args extends com.pulumi.resources.
     public static final GetAccountIamExternalUserV2Args Empty = new GetAccountIamExternalUserV2Args();
 
     /**
-     * The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The resource name of the external user. The format depends on the API that
-     * returned it:
-     * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-     * - Workspace-scoped: external-users/{external_user_id}
+     * @return The resource name of the external user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+     * - Workspace APIs: `external-users/{external_user_id}`
      * 
      */
     public Output<String> name() {
@@ -60,10 +58,9 @@ public final class GetAccountIamExternalUserV2Args extends com.pulumi.resources.
         }
 
         /**
-         * @param name The resource name of the external user. The format depends on the API that
-         * returned it:
-         * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-         * - Workspace-scoped: external-users/{external_user_id}
+         * @param name The resource name of the external user, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+         * - Workspace APIs: `external-users/{external_user_id}`
          * 
          * @return builder
          * 
@@ -74,10 +71,9 @@ public final class GetAccountIamExternalUserV2Args extends com.pulumi.resources.
         }
 
         /**
-         * @param name The resource name of the external user. The format depends on the API that
-         * returned it:
-         * - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-         * - Workspace-scoped: external-users/{external_user_id}
+         * @param name The resource name of the external user, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+         * - Workspace APIs: `external-users/{external_user_id}`
          * 
          * @return builder
          * 

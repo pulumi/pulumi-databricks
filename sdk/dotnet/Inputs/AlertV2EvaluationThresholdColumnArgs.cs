@@ -13,11 +13,15 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AlertV2EvaluationThresholdColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        /// Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+        /// If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         /// </summary>
         [Input("aggregation")]
         public Input<string>? Aggregation { get; set; }
 
+        /// <summary>
+        /// Label for the column in notifications. Defaults to `Name`
+        /// </summary>
         [Input("display")]
         public Input<string>? Display { get; set; }
 

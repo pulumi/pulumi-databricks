@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ConnectionEnvironmentSettingsArgs;
 import com.pulumi.databricks.inputs.ConnectionProviderConfigArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -95,6 +96,42 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can&#39;t be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     * 
+     * &gt; Pulumi can&#39;t detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren&#39;t stored in the state. Changing `optionsWo` alone doesn&#39;t show up in the plan either: increment `optionsWoVersion` to apply it.
+     * 
+     */
+    @Import(name="optionsWo")
+    private @Nullable Output<String> optionsWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can&#39;t be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     * 
+     * &gt; Pulumi can&#39;t detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren&#39;t stored in the state. Changing `optionsWo` alone doesn&#39;t show up in the plan either: increment `optionsWoVersion` to apply it.
+     * 
+     */
+    public Optional<Output<String>> optionsWo() {
+        return Optional.ofNullable(this.optionsWo);
+    }
+
+    /**
+     * Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     * 
+     */
+    @Import(name="optionsWoVersion")
+    private @Nullable Output<Integer> optionsWoVersion;
+
+    /**
+     * @return Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     * 
+     */
+    public Optional<Output<Integer>> optionsWoVersion() {
+        return Optional.ofNullable(this.optionsWoVersion);
+    }
+
+    /**
      * Username of current owner of the connection.
      * 
      */
@@ -169,9 +206,17 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret&#39;s value is supplied as the value of that option. A key can&#39;t appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     * 
+     */
     @Import(name="secrets")
     private @Nullable Output<Map<String,String>> secrets;
 
+    /**
+     * @return A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret&#39;s value is supplied as the value of that option. A key can&#39;t appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     * 
+     */
     public Optional<Output<Map<String,String>>> secrets() {
         return Optional.ofNullable(this.secrets);
     }
@@ -184,6 +229,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.environmentSettings = $.environmentSettings;
         this.name = $.name;
         this.options = $.options;
+        this.optionsWo = $.optionsWo;
+        this.optionsWoVersion = $.optionsWoVersion;
         this.owner = $.owner;
         this.parent = $.parent;
         this.properties = $.properties;
@@ -316,6 +363,54 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param optionsWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can&#39;t be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+         * 
+         * &gt; Pulumi can&#39;t detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren&#39;t stored in the state. Changing `optionsWo` alone doesn&#39;t show up in the plan either: increment `optionsWoVersion` to apply it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsWo(@Nullable Output<String> optionsWo) {
+            $.optionsWo = optionsWo;
+            return this;
+        }
+
+        /**
+         * @param optionsWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can&#39;t be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+         * 
+         * &gt; Pulumi can&#39;t detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren&#39;t stored in the state. Changing `optionsWo` alone doesn&#39;t show up in the plan either: increment `optionsWoVersion` to apply it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsWo(String optionsWo) {
+            return optionsWo(Output.of(optionsWo));
+        }
+
+        /**
+         * @param optionsWoVersion Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsWoVersion(@Nullable Output<Integer> optionsWoVersion) {
+            $.optionsWoVersion = optionsWoVersion;
+            return this;
+        }
+
+        /**
+         * @param optionsWoVersion Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsWoVersion(Integer optionsWoVersion) {
+            return optionsWoVersion(Output.of(optionsWoVersion));
+        }
+
+        /**
          * @param owner Username of current owner of the connection.
          * 
          * @return builder
@@ -420,11 +515,23 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param secrets A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret&#39;s value is supplied as the value of that option. A key can&#39;t appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secrets(@Nullable Output<Map<String,String>> secrets) {
             $.secrets = secrets;
             return this;
         }
 
+        /**
+         * @param secrets A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret&#39;s value is supplied as the value of that option. A key can&#39;t appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secrets(Map<String,String> secrets) {
             return secrets(Output.of(secrets));
         }

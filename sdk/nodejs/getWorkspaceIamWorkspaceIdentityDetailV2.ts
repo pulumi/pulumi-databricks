@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -39,8 +39,8 @@ export function getWorkspaceIamWorkspaceIdentityDetailV2(args: GetWorkspaceIamWo
  */
 export interface GetWorkspaceIamWorkspaceIdentityDetailV2Args {
     /**
-     * The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      */
     name: string;
     /**
@@ -54,30 +54,30 @@ export interface GetWorkspaceIamWorkspaceIdentityDetailV2Args {
  */
 export interface GetWorkspaceIamWorkspaceIdentityDetailV2Result {
     /**
-     * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      */
     readonly assignmentType: string;
     /**
-     * (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      */
     readonly name: string;
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (integer) - The Databricks ID of the user, service principal, or group
      */
     readonly principalId: string;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     readonly principalType: string;
     readonly providerConfig?: outputs.GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig;
     /**
-     * (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     readonly workspaceIdentityStatus: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -109,8 +109,8 @@ export function getWorkspaceIamWorkspaceIdentityDetailV2Output(args: GetWorkspac
  */
 export interface GetWorkspaceIamWorkspaceIdentityDetailV2OutputArgs {
     /**
-     * The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      */
     name: pulumi.Input<string>;
     /**

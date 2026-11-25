@@ -28,6 +28,8 @@ class GitCredentialArgs:
                  is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['GitCredentialProviderConfigArgs']] = None):
         """
@@ -39,7 +41,10 @@ class GitCredentialArgs:
         :param pulumi.Input[_builtins.str] git_username: user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
-        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
+        :param pulumi.Input[_builtins.str] personal_access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        :param pulumi.Input[_builtins.int] personal_access_token_wo_version: Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
         :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input['GitCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -56,6 +61,10 @@ class GitCredentialArgs:
             pulumi.set(__self__, "name", name)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
+        if personal_access_token_wo is not None:
+            pulumi.set(__self__, "personal_access_token_wo", personal_access_token_wo)
+        if personal_access_token_wo_version is not None:
+            pulumi.set(__self__, "personal_access_token_wo_version", personal_access_token_wo_version)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
         if provider_config is not None:
@@ -137,13 +146,38 @@ class GitCredentialArgs:
     @pulumi.getter(name="personalAccessToken")
     def personal_access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
         """
         return pulumi.get(self, "personal_access_token")
 
     @personal_access_token.setter
     def personal_access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "personal_access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="personalAccessTokenWo")
+    def personal_access_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        """
+        return pulumi.get(self, "personal_access_token_wo")
+
+    @personal_access_token_wo.setter
+    def personal_access_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "personal_access_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="personalAccessTokenWoVersion")
+    def personal_access_token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
+        """
+        return pulumi.get(self, "personal_access_token_wo_version")
+
+    @personal_access_token_wo_version.setter
+    def personal_access_token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "personal_access_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -180,6 +214,8 @@ class _GitCredentialState:
                  is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['GitCredentialProviderConfigArgs']] = None):
         """
@@ -191,7 +227,10 @@ class _GitCredentialState:
         :param pulumi.Input[_builtins.str] git_username: user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
-        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
+        :param pulumi.Input[_builtins.str] personal_access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        :param pulumi.Input[_builtins.int] personal_access_token_wo_version: Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
         :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input['GitCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -209,6 +248,10 @@ class _GitCredentialState:
             pulumi.set(__self__, "name", name)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
+        if personal_access_token_wo is not None:
+            pulumi.set(__self__, "personal_access_token_wo", personal_access_token_wo)
+        if personal_access_token_wo_version is not None:
+            pulumi.set(__self__, "personal_access_token_wo_version", personal_access_token_wo_version)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
         if provider_config is not None:
@@ -290,13 +333,38 @@ class _GitCredentialState:
     @pulumi.getter(name="personalAccessToken")
     def personal_access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
         """
         return pulumi.get(self, "personal_access_token")
 
     @personal_access_token.setter
     def personal_access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "personal_access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="personalAccessTokenWo")
+    def personal_access_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        """
+        return pulumi.get(self, "personal_access_token_wo")
+
+    @personal_access_token_wo.setter
+    def personal_access_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "personal_access_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="personalAccessTokenWoVersion")
+    def personal_access_token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
+        """
+        return pulumi.get(self, "personal_access_token_wo_version")
+
+    @personal_access_token_wo_version.setter
+    def personal_access_token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "personal_access_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
@@ -336,6 +404,8 @@ class GitCredential(pulumi.CustomResource):
                  is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']]] = None,
                  __props__=None):
@@ -345,6 +415,8 @@ class GitCredential(pulumi.CustomResource):
         This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
 
         > This resource can only be used with a workspace-level provider!
+
+        > **Note** Write-Only argument `personal_access_token_wo` is available to use in place of `personal_access_token`. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
 
         ## Example Usage
 
@@ -360,6 +432,21 @@ class GitCredential(pulumi.CustomResource):
             git_username="myuser",
             git_provider="azureDevOpsServices",
             personal_access_token="sometoken")
+        ```
+
+        ### Git credential that uses a write-only personal access token
+
+        Use `personal_access_token_wo` to avoid storing the token in the Pulumi state. The value can come from an ephemeral resource or a variable. Increment `personal_access_token_wo_version` whenever the token needs to be updated:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ado = databricks.GitCredential("ado",
+            git_username="myuser",
+            git_provider="azureDevOpsServices",
+            personal_access_token_wo=ado_pat,
+            personal_access_token_wo_version=1)
         ```
 
         ### Git credential configuration for Azure Service Principal and Azure DevOps
@@ -403,7 +490,10 @@ class GitCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] git_username: user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
-        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
+        :param pulumi.Input[_builtins.str] personal_access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        :param pulumi.Input[_builtins.int] personal_access_token_wo_version: Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
         :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -420,6 +510,8 @@ class GitCredential(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+        > **Note** Write-Only argument `personal_access_token_wo` is available to use in place of `personal_access_token`. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+
         ## Example Usage
 
         ### Git credential that uses personal access token
@@ -434,6 +526,21 @@ class GitCredential(pulumi.CustomResource):
             git_username="myuser",
             git_provider="azureDevOpsServices",
             personal_access_token="sometoken")
+        ```
+
+        ### Git credential that uses a write-only personal access token
+
+        Use `personal_access_token_wo` to avoid storing the token in the Pulumi state. The value can come from an ephemeral resource or a variable. Increment `personal_access_token_wo_version` whenever the token needs to be updated:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ado = databricks.GitCredential("ado",
+            git_username="myuser",
+            git_provider="azureDevOpsServices",
+            personal_access_token_wo=ado_pat,
+            personal_access_token_wo_version=1)
         ```
 
         ### Git credential configuration for Azure Service Principal and Azure DevOps
@@ -491,6 +598,8 @@ class GitCredential(pulumi.CustomResource):
                  is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']]] = None,
                  __props__=None):
@@ -511,9 +620,11 @@ class GitCredential(pulumi.CustomResource):
             __props__.__dict__["is_default_for_provider"] = is_default_for_provider
             __props__.__dict__["name"] = name
             __props__.__dict__["personal_access_token"] = None if personal_access_token is None else pulumi.Output.secret(personal_access_token)
+            __props__.__dict__["personal_access_token_wo"] = None if personal_access_token_wo is None else pulumi.Output.secret(personal_access_token_wo)
+            __props__.__dict__["personal_access_token_wo_version"] = personal_access_token_wo_version
             __props__.__dict__["principal_id"] = principal_id
             __props__.__dict__["provider_config"] = provider_config
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["personalAccessToken"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["personalAccessToken", "personalAccessTokenWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GitCredential, __self__).__init__(
             'databricks:index/gitCredential:GitCredential',
@@ -532,6 +643,8 @@ class GitCredential(pulumi.CustomResource):
             is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']]] = None) -> 'GitCredential':
         """
@@ -547,7 +660,10 @@ class GitCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] git_username: user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
-        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
+        :param pulumi.Input[_builtins.str] personal_access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        :param pulumi.Input[_builtins.int] personal_access_token_wo_version: Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
         :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -562,6 +678,8 @@ class GitCredential(pulumi.CustomResource):
         __props__.__dict__["is_default_for_provider"] = is_default_for_provider
         __props__.__dict__["name"] = name
         __props__.__dict__["personal_access_token"] = personal_access_token
+        __props__.__dict__["personal_access_token_wo"] = personal_access_token_wo
+        __props__.__dict__["personal_access_token_wo_version"] = personal_access_token_wo_version
         __props__.__dict__["principal_id"] = principal_id
         __props__.__dict__["provider_config"] = provider_config
         return GitCredential(resource_name, opts=opts, __props__=__props__)
@@ -576,6 +694,8 @@ class GitCredential(pulumi.CustomResource):
             is_default_for_provider: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict', 'outputs.GitCredentialProviderConfig']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
@@ -586,6 +706,8 @@ class GitCredential(pulumi.CustomResource):
         __props__["isDefaultForProvider"] = is_default_for_provider
         __props__["name"] = name
         __props__["personalAccessToken"] = personal_access_token
+        __props__["personalAccessTokenWo"] = personal_access_token_wo
+        __props__["personalAccessTokenWoVersion"] = personal_access_token_wo_version
         __props__["principalId"] = principal_id
         __props__["providerConfig"] = provider_config
         return pulumi.runtime.exists_resource(None, 'databricks:index/gitCredential:GitCredential', id, __props__, opts or pulumi.ResourceOptions())
@@ -642,9 +764,26 @@ class GitCredential(pulumi.CustomResource):
     @pulumi.getter(name="personalAccessToken")
     def personal_access_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personal_access_token_wo`.
         """
         return pulumi.get(self, "personal_access_token")
+
+    @_builtins.property
+    @pulumi.getter(name="personalAccessTokenWo")
+    def personal_access_token_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative to `personal_access_token`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personal_access_token_wo_version`. When set, `personal_access_token` is not sourced from environment variables, and a token previously stored in `personal_access_token` is removed from the state.
+        """
+        return pulumi.get(self, "personal_access_token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="personalAccessTokenWoVersion")
+    def personal_access_token_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Use together with `personal_access_token_wo` to trigger an update. Increment this value (starting at 1) when an update to `personal_access_token_wo` is required.
+        """
+        return pulumi.get(self, "personal_access_token_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="principalId")

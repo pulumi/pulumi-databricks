@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly double AutoscalingLimitMinCu;
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+        /// (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         public readonly string CurrentState;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
-        /// (string) - Part of the resource name
+        /// (string) - The endpoint ID, which is the final segment of the endpoint's resource name
         /// </summary>
         public readonly string EndpointId;
         /// <summary>
@@ -54,15 +54,16 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string LastActiveTime;
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+        /// (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         public readonly string PendingState;
         /// <summary>
-        /// (EndpointSettings)
+        /// (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointStatusSettingsResult Settings;
         /// <summary>
-        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+        /// automatic suspension is disabled
         /// </summary>
         public readonly string SuspendTimeoutDuration;
 

@@ -29,7 +29,9 @@ class AiGatewayModelServiceArgs:
         """
         The set of arguments for constructing a AiGatewayModelService resource.
 
-        :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
+        :param pulumi.Input[_builtins.str] model_service_id: Name of the model service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -52,7 +54,9 @@ class AiGatewayModelServiceArgs:
     @pulumi.getter(name="modelServiceId")
     def model_service_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Name for the model service, e.g. "my_model_service"
+        Name of the model service within the parent schema. The name must not
+        contain periods, spaces, forward slashes, percent signs, or control characters,
+        and it is stored in lowercase
         """
         return pulumi.get(self, "model_service_id")
 
@@ -138,19 +142,22 @@ class _AiGatewayModelServiceState:
                Required on Create. On Update, provide this field when `update_mask`
                contains `config` or one of its subpaths
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the model service was created
-        :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model service
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the model service
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Username or group name of the model service owner
         :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
                Delete conditional, pass the last-read value in that request's `etag`
                field. In REST responses, this value is a base64 string; URL-encode it when
                setting the `etag` query parameter
-        :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the model service
-        :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
+        :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore that contains the model service
+        :param pulumi.Input[_builtins.str] model_service_id: Name of the model service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the model service.
                Format: `model-services/{catalog}.{schema}.{model_service}`.
                Each `{...}` component is capped at 255 characters individually.
-               Server-derived on Create from `parent` +
-               `model_service_id`; required and immutable on Update/Get/Delete
+               The server derives the name on Create from
+               `parent` and `model_service_id`; it is required and immutable on Update,
+               Get, and Delete
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -160,7 +167,7 @@ class _AiGatewayModelServiceState:
                `mlflow/v1/chat/completions`. Derived from the backing models and providers
                at read time
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the model service was last modified
-        :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
+        :param pulumi.Input[_builtins.str] updated_by: (string) - Username of the user who last updated the model service
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -233,7 +240,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Creator identity
+        (string) - Username of the user who created the model service
         """
         return pulumi.get(self, "created_by")
 
@@ -245,7 +252,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Owner of the model service
+        (string) - Username or group name of the model service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -272,7 +279,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Metastore hosting the model service
+        (string) - Unique identifier of the metastore that contains the model service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -284,7 +291,9 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="modelServiceId")
     def model_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name for the model service, e.g. "my_model_service"
+        Name of the model service within the parent schema. The name must not
+        contain periods, spaces, forward slashes, percent signs, or control characters,
+        and it is stored in lowercase
         """
         return pulumi.get(self, "model_service_id")
 
@@ -299,8 +308,9 @@ class _AiGatewayModelServiceState:
         (string) - Resource name of the model service.
         Format: `model-services/{catalog}.{schema}.{model_service}`.
         Each `{...}` component is capped at 255 characters individually.
-        Server-derived on Create from `parent` +
-        `model_service_id`; required and immutable on Update/Get/Delete
+        The server derives the name on Create from
+        `parent` and `model_service_id`; it is required and immutable on Update,
+        Get, and Delete
         """
         return pulumi.get(self, "name")
 
@@ -365,7 +375,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Identity of the last updater
+        (string) - Username of the user who last updated the model service
         """
         return pulumi.get(self, "updated_by")
 
@@ -428,7 +438,9 @@ class AiGatewayModelService(pulumi.CustomResource):
         :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']] config: Destinations, routing, rate limits, and payload logging configuration.
                Required on Create. On Update, provide this field when `update_mask`
                contains `config` or one of its subpaths
-        :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
+        :param pulumi.Input[_builtins.str] model_service_id: Name of the model service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -559,19 +571,22 @@ class AiGatewayModelService(pulumi.CustomResource):
                Required on Create. On Update, provide this field when `update_mask`
                contains `config` or one of its subpaths
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the model service was created
-        :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model service
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the model service
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Username or group name of the model service owner
         :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
                Delete conditional, pass the last-read value in that request's `etag`
                field. In REST responses, this value is a base64 string; URL-encode it when
                setting the `etag` query parameter
-        :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the model service
-        :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
+        :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore that contains the model service
+        :param pulumi.Input[_builtins.str] model_service_id: Name of the model service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the model service.
                Format: `model-services/{catalog}.{schema}.{model_service}`.
                Each `{...}` component is capped at 255 characters individually.
-               Server-derived on Create from `parent` +
-               `model_service_id`; required and immutable on Update/Get/Delete
+               The server derives the name on Create from
+               `parent` and `model_service_id`; it is required and immutable on Update,
+               Get, and Delete
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -581,7 +596,7 @@ class AiGatewayModelService(pulumi.CustomResource):
                `mlflow/v1/chat/completions`. Derived from the backing models and providers
                at read time
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the model service was last modified
-        :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
+        :param pulumi.Input[_builtins.str] updated_by: (string) - Username of the user who last updated the model service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -667,7 +682,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Creator identity
+        (string) - Username of the user who created the model service
         """
         return pulumi.get(self, "created_by")
 
@@ -675,7 +690,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Owner of the model service
+        (string) - Username or group name of the model service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -694,7 +709,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Metastore hosting the model service
+        (string) - Unique identifier of the metastore that contains the model service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -702,7 +717,9 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="modelServiceId")
     def model_service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Name for the model service, e.g. "my_model_service"
+        Name of the model service within the parent schema. The name must not
+        contain periods, spaces, forward slashes, percent signs, or control characters,
+        and it is stored in lowercase
         """
         return pulumi.get(self, "model_service_id")
 
@@ -713,8 +730,9 @@ class AiGatewayModelService(pulumi.CustomResource):
         (string) - Resource name of the model service.
         Format: `model-services/{catalog}.{schema}.{model_service}`.
         Each `{...}` component is capped at 255 characters individually.
-        Server-derived on Create from `parent` +
-        `model_service_id`; required and immutable on Update/Get/Delete
+        The server derives the name on Create from
+        `parent` and `model_service_id`; it is required and immutable on Update,
+        Get, and Delete
         """
         return pulumi.get(self, "name")
 
@@ -759,7 +777,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Identity of the last updater
+        (string) - Username of the user who last updated the model service
         """
         return pulumi.get(self, "updated_by")
 

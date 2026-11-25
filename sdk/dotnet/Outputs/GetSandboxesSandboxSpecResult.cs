@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetSandboxesSandboxSpecResult
     {
         /// <summary>
-        /// (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+        /// (ComputeSpec) - Compute settings requested for the sandbox, such as the inactivity timeout
         /// </summary>
         public readonly Outputs.GetSandboxesSandboxSpecComputeResult? Compute;
         /// <summary>
-        /// (EnvironmentSpec) - The execution environment to use for the sandbox
+        /// (EnvironmentSpec) - Software environment for the sandbox, such as the container image it runs
         /// </summary>
         public readonly Outputs.GetSandboxesSandboxSpecEnvironmentResult? Environment;
 

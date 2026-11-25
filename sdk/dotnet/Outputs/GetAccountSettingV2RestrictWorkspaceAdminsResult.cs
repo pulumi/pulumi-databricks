@@ -19,7 +19,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? DisableGovTagCreation;
         /// <summary>
-        /// (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        /// (string) - Controls what workspace admins can do with service principal tokens and job identities. With
+        /// ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+        /// in the workspace, change a job owner to any workspace user, and set a job's RunAs identity to
+        /// any workspace user or to a service principal they have the Service Principal User role on. With
+        /// RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+        /// Service Principal User role on, change a job owner to themselves, and set RunAs to themselves
+        /// or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
         /// </summary>
         public readonly string Status;
 

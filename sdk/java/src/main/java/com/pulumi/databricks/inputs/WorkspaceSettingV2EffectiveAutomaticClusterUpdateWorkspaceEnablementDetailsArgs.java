@@ -31,14 +31,16 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEna
     }
 
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      * 
      */
     @Import(name="unavailableForDisabledEntitlement")
     private @Nullable Output<Boolean> unavailableForDisabledEntitlement;
 
     /**
-     * @return The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * @return The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      * 
      */
     public Optional<Output<Boolean>> unavailableForDisabledEntitlement() {
@@ -108,7 +110,8 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEna
         }
 
         /**
-         * @param unavailableForDisabledEntitlement The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+         * @param unavailableForDisabledEntitlement The feature is unavailable because the workspace does not have the Enhanced Security and
+         * Compliance entitlement
          * 
          * @return builder
          * 
@@ -119,7 +122,8 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEna
         }
 
         /**
-         * @param unavailableForDisabledEntitlement The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+         * @param unavailableForDisabledEntitlement The feature is unavailable because the workspace does not have the Enhanced Security and
+         * Compliance entitlement
          * 
          * @return builder
          * 

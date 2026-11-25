@@ -16,14 +16,18 @@ public final class SandboxSpecComputeArgs extends com.pulumi.resources.ResourceA
     public static final SandboxSpecComputeArgs Empty = new SandboxSpecComputeArgs();
 
     /**
-     * Idle duration after which the sandbox is automatically terminated
+     * Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      * 
      */
     @Import(name="inactivityTimeout")
     private @Nullable Output<String> inactivityTimeout;
 
     /**
-     * @return Idle duration after which the sandbox is automatically terminated
+     * @return Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      * 
      */
     public Optional<Output<String>> inactivityTimeout() {
@@ -55,7 +59,9 @@ public final class SandboxSpecComputeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param inactivityTimeout Idle duration after which the sandbox is automatically terminated
+         * @param inactivityTimeout Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+         * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+         * UpdateSandbox
          * 
          * @return builder
          * 
@@ -66,7 +72,9 @@ public final class SandboxSpecComputeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param inactivityTimeout Idle duration after which the sandbox is automatically terminated
+         * @param inactivityTimeout Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+         * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+         * UpdateSandbox
          * 
          * @return builder
          * 

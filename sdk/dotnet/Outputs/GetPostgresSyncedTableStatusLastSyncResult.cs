@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresSyncedTableStatusLastSyncResult
     {
         /// <summary>
-        /// (DeltaTableSyncInfo)
+        /// (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
         /// </summary>
         public readonly Outputs.GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoResult DeltaTableSyncInfo;
         /// <summary>

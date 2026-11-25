@@ -53,14 +53,20 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
     }
 
     /**
-     * Name for the model provider service, e.g. &#34;openaiProd&#34;
+     * Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      * 
      */
     @Import(name="modelProviderServiceId", required=true)
     private Output<String> modelProviderServiceId;
 
     /**
-     * @return Name for the model provider service, e.g. &#34;openaiProd&#34;
+     * @return Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      * 
      */
     public Output<String> modelProviderServiceId() {
@@ -176,7 +182,10 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param modelProviderServiceId Name for the model provider service, e.g. &#34;openaiProd&#34;
+         * @param modelProviderServiceId Name of the model provider service within the parent schema. The name must
+         * not contain periods, spaces, forward slashes, percent signs, or control
+         * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+         * characters. It is stored in lowercase
          * 
          * @return builder
          * 
@@ -187,7 +196,10 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param modelProviderServiceId Name for the model provider service, e.g. &#34;openaiProd&#34;
+         * @param modelProviderServiceId Name of the model provider service within the parent schema. The name must
+         * not contain periods, spaces, forward slashes, percent signs, or control
+         * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+         * characters. It is stored in lowercase
          * 
          * @return builder
          * 

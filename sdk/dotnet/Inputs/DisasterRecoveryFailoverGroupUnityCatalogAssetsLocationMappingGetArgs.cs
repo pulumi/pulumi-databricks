@@ -23,7 +23,8 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionGetArgs>? _uriByRegions;
 
         /// <summary>
-        /// URI for each region. Each entry maps a region name to a storage URI
+        /// The storage URI of this location in each region, with exactly one entry per region of the
+        /// failover group
         /// </summary>
         public InputList<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionGetArgs> UriByRegions
         {

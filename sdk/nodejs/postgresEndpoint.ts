@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
  *
- * Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
+ * For this implicitly created read-write Endpoint, Pulumi manages updates only. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,6 +98,7 @@ import * as utilities from "./utilities";
  *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
  *         disabled: true,
  *     },
+ *     replaceExisting: true,
  * });
  * ```
  *
@@ -108,12 +109,13 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const alwaysOn = new databricks.PostgresEndpoint("always_on", {
- *     endpointId: "always-on",
+ *     endpointId: "primary",
  *     parent: dev.name,
  *     spec: {
  *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
  *         noSuspension: true,
  *     },
+ *     replaceExisting: true,
  * });
  * ```
  *
@@ -273,7 +275,7 @@ export class PostgresEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      */
     declare public readonly endpointId: pulumi.Output<string>;
     /**
@@ -291,19 +293,28 @@ export class PostgresEndpoint extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresEndpointProviderConfig>;
     /**
-     * If true, update the endpoint if it already exists instead of returning an error
+     * If true, update the endpoint if it already exists instead of returning an error. The request's
+     * `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      */
     declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
     /**
-     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
-    declare public readonly spec: pulumi.Output<outputs.PostgresEndpointSpec>;
+    declare public readonly spec: pulumi.Output<outputs.PostgresEndpointSpec | undefined>;
     /**
-     * (EndpointStatus) - Current operational status of the compute endpoint
+     * (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresEndpointStatus>;
     /**
-     * (string) - System-generated unique ID for the endpoint
+     * (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
@@ -367,7 +378,7 @@ export interface PostgresEndpointState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
@@ -385,19 +396,28 @@ export interface PostgresEndpointState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig | undefined>;
     /**
-     * If true, update the endpoint if it already exists instead of returning an error
+     * If true, update the endpoint if it already exists instead of returning an error. The request's
+     * `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      */
     replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
-     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresEndpointSpec | undefined>;
     /**
-     * (EndpointStatus) - Current operational status of the compute endpoint
+     * (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      */
     status?: pulumi.Input<inputs.PostgresEndpointStatus | undefined>;
     /**
-     * (string) - System-generated unique ID for the endpoint
+     * (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
      */
     uid?: pulumi.Input<string | undefined>;
     /**
@@ -411,7 +431,7 @@ export interface PostgresEndpointState {
  */
 export interface PostgresEndpointArgs {
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      */
     endpointId: pulumi.Input<string>;
     /**
@@ -424,11 +444,18 @@ export interface PostgresEndpointArgs {
      */
     providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig | undefined>;
     /**
-     * If true, update the endpoint if it already exists instead of returning an error
+     * If true, update the endpoint if it already exists instead of returning an error. The request's
+     * `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      */
     replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
-     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresEndpointSpec | undefined>;
 }

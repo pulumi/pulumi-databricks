@@ -116,16 +116,20 @@ import (
 type DatabaseDatabaseCatalog struct {
 	pulumi.CustomResourceState
 
+	// If true, the database named in databaseName is created in the instance when it does not already
+	// exist, with the calling user as its owner. Defaults to false
 	CreateDatabaseIfNotExists pulumi.BoolOutput `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName pulumi.StringOutput `pulumi:"databaseInstanceName"`
-	// The name of the database (in an instance) associated with the catalog
+	// The name of the Postgres database in the instance that the catalog registers. The database must
+	// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+	// databricks_system, template0 and template1 cannot be registered
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseDatabaseCatalogProviderConfigOutput `pulumi:"providerConfig"`
-	// (string)
+	// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
@@ -165,30 +169,38 @@ func GetDatabaseDatabaseCatalog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
 type databaseDatabaseCatalogState struct {
+	// If true, the database named in databaseName is created in the instance when it does not already
+	// exist, with the calling user as its owner. Defaults to false
 	CreateDatabaseIfNotExists *bool `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName *string `pulumi:"databaseInstanceName"`
-	// The name of the database (in an instance) associated with the catalog
+	// The name of the Postgres database in the instance that the catalog registers. The database must
+	// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+	// databricks_system, template0 and template1 cannot be registered
 	DatabaseName *string `pulumi:"databaseName"`
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
-	// (string)
+	// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
 	Uid *string `pulumi:"uid"`
 }
 
 type DatabaseDatabaseCatalogState struct {
+	// If true, the database named in databaseName is created in the instance when it does not already
+	// exist, with the calling user as its owner. Defaults to false
 	CreateDatabaseIfNotExists pulumi.BoolPtrInput
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName pulumi.StringPtrInput
-	// The name of the database (in an instance) associated with the catalog
+	// The name of the Postgres database in the instance that the catalog registers. The database must
+	// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+	// databricks_system, template0 and template1 cannot be registered
 	DatabaseName pulumi.StringPtrInput
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseDatabaseCatalogProviderConfigPtrInput
-	// (string)
+	// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
 	Uid pulumi.StringPtrInput
 }
 
@@ -203,12 +215,16 @@ func DatabaseDatabaseCatalogExists(ctx *pulumi.Context,
 }
 
 type databaseDatabaseCatalogArgs struct {
+	// If true, the database named in databaseName is created in the instance when it does not already
+	// exist, with the calling user as its owner. Defaults to false
 	CreateDatabaseIfNotExists *bool `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
-	// The name of the database (in an instance) associated with the catalog
+	// The name of the Postgres database in the instance that the catalog registers. The database must
+	// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+	// databricks_system, template0 and template1 cannot be registered
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
@@ -216,12 +232,16 @@ type databaseDatabaseCatalogArgs struct {
 
 // The set of arguments for constructing a DatabaseDatabaseCatalog resource.
 type DatabaseDatabaseCatalogArgs struct {
+	// If true, the database named in databaseName is created in the instance when it does not already
+	// exist, with the calling user as its owner. Defaults to false
 	CreateDatabaseIfNotExists pulumi.BoolPtrInput
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName pulumi.StringInput
-	// The name of the database (in an instance) associated with the catalog
+	// The name of the Postgres database in the instance that the catalog registers. The database must
+	// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+	// databricks_system, template0 and template1 cannot be registered
 	DatabaseName pulumi.StringInput
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseDatabaseCatalogProviderConfigPtrInput
@@ -314,6 +334,8 @@ func (o DatabaseDatabaseCatalogOutput) ToDatabaseDatabaseCatalogOutputWithContex
 	return o
 }
 
+// If true, the database named in databaseName is created in the instance when it does not already
+// exist, with the calling user as its owner. Defaults to false
 func (o DatabaseDatabaseCatalogOutput) CreateDatabaseIfNotExists() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.BoolOutput { return v.CreateDatabaseIfNotExists }).(pulumi.BoolOutput)
 }
@@ -323,12 +345,14 @@ func (o DatabaseDatabaseCatalogOutput) DatabaseInstanceName() pulumi.StringOutpu
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.DatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// The name of the database (in an instance) associated with the catalog
+// The name of the Postgres database in the instance that the catalog registers. The database must
+// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+// databricks_system, template0 and template1 cannot be registered
 func (o DatabaseDatabaseCatalogOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The name of the catalog in UC
+// The name of the catalog in Unity Catalog
 func (o DatabaseDatabaseCatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -338,7 +362,7 @@ func (o DatabaseDatabaseCatalogOutput) ProviderConfig() DatabaseDatabaseCatalogP
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) DatabaseDatabaseCatalogProviderConfigOutput { return v.ProviderConfig }).(DatabaseDatabaseCatalogProviderConfigOutput)
 }
 
-// (string)
+// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
 func (o DatabaseDatabaseCatalogOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

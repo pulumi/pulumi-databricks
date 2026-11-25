@@ -40,7 +40,8 @@ public final class GetPostgresSyncedTableStatus {
      */
     private String message;
     /**
-     * @return (SyncedTablePipelineProgress)
+     * @return (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      * 
      */
     private GetPostgresSyncedTableStatusOngoingSyncProgress ongoingSyncProgress;
@@ -103,7 +104,8 @@ public final class GetPostgresSyncedTableStatus {
         return this.message;
     }
     /**
-     * @return (SyncedTablePipelineProgress)
+     * @return (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      * 
      */
     public GetPostgresSyncedTableStatusOngoingSyncProgress ongoingSyncProgress() {

@@ -12,26 +12,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceSettingV2WorkspaceLabel {
     /**
-     * @return (string)
+     * @return (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
      * 
      */
     private @Nullable String color;
     /**
-     * @return (string)
+     * @return (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
      * 
      */
     private @Nullable String label;
 
     private GetWorkspaceSettingV2WorkspaceLabel() {}
     /**
-     * @return (string)
+     * @return (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
      * 
      */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
     /**
-     * @return (string)
+     * @return (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
      * 
      */
     public Optional<String> label() {

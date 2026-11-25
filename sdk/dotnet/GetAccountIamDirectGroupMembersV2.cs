@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamDirectGroupMembersV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamDirectGroupMembersV2Result>("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", args ?? new GetAccountIamDirectGroupMembersV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamDirectGroupMembersV2Result>("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", args ?? new GetAccountIamDirectGroupMembersV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -112,15 +112,14 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamDirectGroupMembersV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The maximum number of members to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+        /// fewer members
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the group whose direct members to list.
-        /// Format: accounts/{account_id}/groups/{group_id}
+        /// The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
         /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
@@ -134,15 +133,14 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamDirectGroupMembersV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The maximum number of members to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+        /// fewer members
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the group whose direct members to list.
-        /// Format: accounts/{account_id}/groups/{group_id}
+        /// The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -160,10 +158,9 @@ namespace Pulumi.Databricks
         public readonly ImmutableArray<Outputs.GetAccountIamDirectGroupMembersV2DirectGroupMemberResult> DirectGroupMembers;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The resource name of the group that contains the membership. The format depends on the API
-        /// that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// (string) - The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         public readonly string Parent;
 

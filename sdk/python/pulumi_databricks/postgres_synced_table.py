@@ -27,7 +27,8 @@ class PostgresSyncedTableArgs:
         """
         The set of arguments for constructing a PostgresSyncedTable resource.
 
-        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] synced_table_id: The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+               It is the synced_table_id that was used to create the synced table and the last component of name
         :param pulumi.Input['PostgresSyncedTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         """
@@ -41,7 +42,8 @@ class PostgresSyncedTableArgs:
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        It is the synced_table_id that was used to create the synced table and the last component of name
         """
         return pulumi.get(self, "synced_table_id")
 
@@ -87,13 +89,14 @@ class _PostgresSyncedTableState:
         """
         Input properties used for looking up and filtering PostgresSyncedTable resources.
 
-        :param pulumi.Input[_builtins.str] create_time: (string)
-        :param pulumi.Input[_builtins.str] name: (string) - Output only. The Full resource name of the synced table in Postgres
-               where (catalog, schema, table) are the UC entity names.
+        :param pulumi.Input[_builtins.str] create_time: (string) - The time when the synced table was created
+        :param pulumi.Input[_builtins.str] name: (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+               names of the synced table.
         :param pulumi.Input['PostgresSyncedTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         :param pulumi.Input['PostgresSyncedTableStatusArgs'] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
-        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] synced_table_id: The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+               It is the synced_table_id that was used to create the synced table and the last component of name
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
         """
         if create_time is not None:
@@ -115,7 +118,7 @@ class _PostgresSyncedTableState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string)
+        (string) - The time when the synced table was created
         """
         return pulumi.get(self, "create_time")
 
@@ -127,8 +130,8 @@ class _PostgresSyncedTableState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Output only. The Full resource name of the synced table in Postgres
-        where (catalog, schema, table) are the UC entity names.
+        (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        names of the synced table.
         """
         return pulumi.get(self, "name")
 
@@ -176,7 +179,8 @@ class _PostgresSyncedTableState:
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        It is the synced_table_id that was used to create the synced table and the last component of name
         """
         return pulumi.get(self, "synced_table_id")
 
@@ -208,7 +212,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
                  synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -305,7 +309,8 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
-        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] synced_table_id: The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+               It is the synced_table_id that was used to create the synced table and the last component of name
         """
         ...
     @overload
@@ -314,7 +319,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
                  args: PostgresSyncedTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -467,13 +472,14 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: (string)
-        :param pulumi.Input[_builtins.str] name: (string) - Output only. The Full resource name of the synced table in Postgres
-               where (catalog, schema, table) are the UC entity names.
+        :param pulumi.Input[_builtins.str] create_time: (string) - The time when the synced table was created
+        :param pulumi.Input[_builtins.str] name: (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+               names of the synced table.
         :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc
         :param pulumi.Input[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict', 'outputs.PostgresSyncedTableStatus']] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
-        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] synced_table_id: The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+               It is the synced_table_id that was used to create the synced table and the last component of name
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -513,7 +519,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string)
+        (string) - The time when the synced table was created
         """
         return pulumi.get(self, "create_time")
 
@@ -521,8 +527,8 @@ class PostgresSyncedTable(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Output only. The Full resource name of the synced table in Postgres
-        where (catalog, schema, table) are the UC entity names.
+        (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        names of the synced table.
         """
         return pulumi.get(self, "name")
 
@@ -554,7 +560,8 @@ class PostgresSyncedTable(pulumi.CustomResource):
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        It is the synced_table_id that was used to create the synced table and the last component of name
         """
         return pulumi.get(self, "synced_table_id")
 

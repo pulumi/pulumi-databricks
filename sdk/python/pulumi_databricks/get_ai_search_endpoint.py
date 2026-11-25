@@ -88,7 +88,10 @@ class GetAiSearchEndpointResult:
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> _builtins.str:
         """
-        (string) - The user-selected budget policy id for the endpoint
+        (string) - ID of the serverless budget policy to apply to the endpoint. The caller must have
+        permission to use the policy. Set either this field or `usage_policy_id`, not both.
+        Responses do not echo this field; they report the applied policy in
+        `effective_budget_policy_id`
         """
         return pulumi.get(self, "budget_policy_id")
 
@@ -104,7 +107,8 @@ class GetAiSearchEndpointResult:
     @pulumi.getter
     def creator(self) -> _builtins.str:
         """
-        (string) - Creator of the endpoint
+        (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+        address; for any other principal, it is the principal's unique name
         """
         return pulumi.get(self, "creator")
 
@@ -112,7 +116,8 @@ class GetAiSearchEndpointResult:
     @pulumi.getter(name="customTags")
     def custom_tags(self) -> Sequence['outputs.GetAiSearchEndpointCustomTagResult']:
         """
-        (list of CustomTag) - The custom tags assigned to the endpoint
+        (list of CustomTag) - Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+        existing tags
         """
         return pulumi.get(self, "custom_tags")
 
@@ -120,7 +125,7 @@ class GetAiSearchEndpointResult:
     @pulumi.getter(name="effectiveBudgetPolicyId")
     def effective_budget_policy_id(self) -> _builtins.str:
         """
-        (string) - The budget policy id applied to the endpoint
+        (string) - ID of the budget policy that is currently applied to the endpoint
         """
         return pulumi.get(self, "effective_budget_policy_id")
 
@@ -128,7 +133,7 @@ class GetAiSearchEndpointResult:
     @pulumi.getter(name="endpointStatus")
     def endpoint_status(self) -> 'outputs.GetAiSearchEndpointEndpointStatusResult':
         """
-        (EndpointStatus) - Current status of the endpoint
+        (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
         """
         return pulumi.get(self, "endpoint_status")
 
@@ -144,7 +149,7 @@ class GetAiSearchEndpointResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        (string) - Unique identifier of the endpoint
+        (string) - System-generated UUID that uniquely identifies the endpoint
         """
         return pulumi.get(self, "id")
 
@@ -160,7 +165,7 @@ class GetAiSearchEndpointResult:
     @pulumi.getter(name="lastUpdatedUser")
     def last_updated_user(self) -> _builtins.str:
         """
-        (string) - User who last updated the endpoint
+        (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
         """
         return pulumi.get(self, "last_updated_user")
 
@@ -168,10 +173,9 @@ class GetAiSearchEndpointResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - Name of the AI Search endpoint. Server-assigned full resource path
-        (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-        user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-        the server composes the full `name` and returns it on the response
+        (string) - Full resource name of the endpoint, in the form
+        `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+        from `parent` and `endpoint_id` and ignores any value supplied in the request body
         """
         return pulumi.get(self, "name")
 
@@ -202,7 +206,8 @@ class GetAiSearchEndpointResult:
     def target_qps(self) -> _builtins.int:
         """
         (integer) - Target QPS for the endpoint. Mutually exclusive with `replica_count`. Best-effort;
-        the system does not guarantee this QPS will be achieved
+        the system does not guarantee this QPS will be achieved. Responses report the requested
+        value in `scaling_info.requested_target_qps`
         """
         return pulumi.get(self, "target_qps")
 
@@ -226,7 +231,8 @@ class GetAiSearchEndpointResult:
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> _builtins.str:
         """
-        (string) - The usage policy id applied to the endpoint
+        (string) - ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+        as `budget_policy_id`, so set only one of the two
         """
         return pulumi.get(self, "usage_policy_id")
 
@@ -261,7 +267,7 @@ def get_ai_search_endpoint(name: Optional[_builtins.str] = None,
                            provider_config: Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchEndpointResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -279,10 +285,9 @@ def get_ai_search_endpoint(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: Name of the AI Search endpoint. Server-assigned full resource path
-           (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-           user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-           the server composes the full `name` and returns it on the response
+    :param _builtins.str name: Full resource name of the endpoint, in the form
+           `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+           from `parent` and `endpoint_id` and ignores any value supplied in the request body
     :param Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -314,7 +319,7 @@ def get_ai_search_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = 
                                   provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchEndpointResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -332,10 +337,9 @@ def get_ai_search_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = 
     ```
 
 
-    :param _builtins.str name: Name of the AI Search endpoint. Server-assigned full resource path
-           (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-           user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-           the server composes the full `name` and returns it on the response
+    :param _builtins.str name: Full resource name of the endpoint, in the form
+           `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+           from `parent` and `endpoint_id` and ignores any value supplied in the request body
     :param Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

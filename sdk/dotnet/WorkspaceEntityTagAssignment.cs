@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         public Output<string> TagKey { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the tag
+        /// The value of the tag. If the value is omitted, the tag is assigned with its key only
         /// </summary>
         [Output("tagValue")]
         public Output<string?> TagValue { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Databricks
         public Input<string> TagKey { get; set; } = null!;
 
         /// <summary>
-        /// The value of the tag
+        /// The value of the tag. If the value is omitted, the tag is assigned with its key only
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.Databricks
         public Input<string>? TagKey { get; set; }
 
         /// <summary>
-        /// The value of the tag
+        /// The value of the tag. If the value is omitted, the tag is assigned with its key only
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }

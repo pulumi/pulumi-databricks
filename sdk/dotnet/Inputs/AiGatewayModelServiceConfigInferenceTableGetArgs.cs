@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// (string) - Resolved UC table for payload logs.
+        /// (string) - Resource name of the Unity Catalog table that receives the payload logs.
         /// Format: `tables/{catalog}.{schema}.{table}`
         /// </summary>
         [Input("table")]

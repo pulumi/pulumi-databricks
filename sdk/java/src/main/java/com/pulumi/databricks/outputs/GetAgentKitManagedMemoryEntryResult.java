@@ -41,20 +41,23 @@ public final class GetAgentKitManagedMemoryEntryResult {
      */
     private String name;
     /**
-     * @return (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * @return (string) - Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      * 
      */
     private String path;
     private @Nullable GetAgentKitManagedMemoryEntryProviderConfig providerConfig;
     /**
-     * @return (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+     * @return (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
     private String sessionId;
     /**
-     * @return (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * @return (string) - Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      * 
      */
     private String sourceType;
@@ -103,7 +106,8 @@ public final class GetAgentKitManagedMemoryEntryResult {
         return this.name;
     }
     /**
-     * @return (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * @return (string) - Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      * 
      */
@@ -114,7 +118,8 @@ public final class GetAgentKitManagedMemoryEntryResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+     * @return (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
@@ -122,7 +127,8 @@ public final class GetAgentKitManagedMemoryEntryResult {
         return this.sessionId;
     }
     /**
-     * @return (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * @return (string) - Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      * 
      */
     public String sourceType() {

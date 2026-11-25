@@ -18,16 +18,16 @@ public final class PostgresEndpointStatusGroupArgs extends com.pulumi.resources.
     public static final PostgresEndpointStatusGroupArgs Empty = new PostgresEndpointStatusGroupArgs();
 
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max &gt; 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      * 
      */
     @Import(name="enableReadableSecondaries")
     private @Nullable Output<Boolean> enableReadableSecondaries;
 
     /**
-     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max &gt; 1
+     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      * 
      */
     public Optional<Output<Boolean>> enableReadableSecondaries() {
@@ -75,8 +75,8 @@ public final class PostgresEndpointStatusGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enableReadableSecondaries (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-         * by specifying size.max &gt; 1
+         * @param enableReadableSecondaries (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+         * one compute (`max` greater than 1)
          * 
          * @return builder
          * 
@@ -87,8 +87,8 @@ public final class PostgresEndpointStatusGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enableReadableSecondaries (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-         * by specifying size.max &gt; 1
+         * @param enableReadableSecondaries (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+         * one compute (`max` greater than 1)
          * 
          * @return builder
          * 

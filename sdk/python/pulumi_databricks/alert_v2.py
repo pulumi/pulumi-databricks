@@ -39,10 +39,13 @@ class AlertV2Args:
         The set of arguments for constructing a AlertV2 resource.
 
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
+        :param pulumi.Input['AlertV2EvaluationArgs'] evaluation: Condition evaluated against the query result, and who is notified when it is met
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input['AlertV2ScheduleArgs'] schedule: Schedule on which the alert runs its query and evaluates the condition
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+               The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -71,9 +74,9 @@ class AlertV2Args:
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
                  If not specified, the alert will run as the request user
-        :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-               Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        :param pulumi.Input[_builtins.str] run_as_user_name: Deprecated: Use `run_as` field instead. This field will be removed in a future release.
+               The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "evaluation", evaluation)
@@ -114,6 +117,9 @@ class AlertV2Args:
     @_builtins.property
     @pulumi.getter
     def evaluation(self) -> pulumi.Input['AlertV2EvaluationArgs']:
+        """
+        Condition evaluated against the query result, and who is notified when it is met
+        """
         return pulumi.get(self, "evaluation")
 
     @evaluation.setter
@@ -135,6 +141,9 @@ class AlertV2Args:
     @_builtins.property
     @pulumi.getter
     def schedule(self) -> pulumi.Input['AlertV2ScheduleArgs']:
+        """
+        Schedule on which the alert runs its query and evaluates the condition
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -157,7 +166,8 @@ class AlertV2Args:
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom description for the alert. Interpreted according to `custom_template_format`
+        Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+        The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         """
         return pulumi.get(self, "custom_description")
 
@@ -169,7 +179,7 @@ class AlertV2Args:
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom summary for the alert. Interpreted according to `custom_template_format`
+        Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -275,9 +285,9 @@ class AlertV2Args:
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Deprecated: Use `run_as` field instead. This field will be removed in a future release.
         The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -312,8 +322,9 @@ class _AlertV2State:
         Input properties used for looking up and filtering AlertV2 resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+               The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -327,7 +338,8 @@ class _AlertV2State:
         :param pulumi.Input['AlertV2EffectiveRunAsArgs'] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
                This is an output-only field that shows the resolved run-as identity after applying
                permissions and defaults
-        :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        :param pulumi.Input['AlertV2EvaluationArgs'] evaluation: Condition evaluated against the query result, and who is notified when it is met
+        :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
@@ -349,9 +361,10 @@ class _AlertV2State:
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
                  If not specified, the alert will run as the request user
-        :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-               Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        :param pulumi.Input[_builtins.str] run_as_user_name: Deprecated: Use `run_as` field instead. This field will be removed in a future release.
+               The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        :param pulumi.Input['AlertV2ScheduleArgs'] schedule: Schedule on which the alert runs its query and evaluates the condition
         :param pulumi.Input[_builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
@@ -410,7 +423,8 @@ class _AlertV2State:
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom description for the alert. Interpreted according to `custom_template_format`
+        Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+        The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         """
         return pulumi.get(self, "custom_description")
 
@@ -422,7 +436,7 @@ class _AlertV2State:
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom summary for the alert. Interpreted according to `custom_template_format`
+        Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -479,6 +493,9 @@ class _AlertV2State:
     @_builtins.property
     @pulumi.getter
     def evaluation(self) -> pulumi.Input[Optional['AlertV2EvaluationArgs']]:
+        """
+        Condition evaluated against the query result, and who is notified when it is met
+        """
         return pulumi.get(self, "evaluation")
 
     @evaluation.setter
@@ -489,7 +506,7 @@ class _AlertV2State:
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         """
         return pulumi.get(self, "lifecycle_state")
 
@@ -599,9 +616,9 @@ class _AlertV2State:
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Deprecated: Use `run_as` field instead. This field will be removed in a future release.
         The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -612,6 +629,9 @@ class _AlertV2State:
     @_builtins.property
     @pulumi.getter
     def schedule(self) -> pulumi.Input[Optional['AlertV2ScheduleArgs']]:
+        """
+        Schedule on which the alert runs its query and evaluates the condition
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -717,8 +737,9 @@ class AlertV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+               The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -729,6 +750,7 @@ class AlertV2(pulumi.CustomResource):
                When unset, the API applies no default. Responses omit the field unless a format is stored,
                and a template with no format is rendered as HTML. Possible values are: `HTML`, `MARKDOWN`
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']] evaluation: Condition evaluated against the query result, and who is notified when it is met
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
                Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
@@ -749,9 +771,10 @@ class AlertV2(pulumi.CustomResource):
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
                  If not specified, the alert will run as the request user
-        :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-               Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        :param pulumi.Input[_builtins.str] run_as_user_name: Deprecated: Use `run_as` field instead. This field will be removed in a future release.
+               The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        :param pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict', 'outputs.AlertV2Schedule']] schedule: Schedule on which the alert runs its query and evaluates the condition
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         ...
@@ -915,8 +938,9 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
-        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. Interpreted according to `custom_template_format`
-        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. Interpreted according to `custom_template_format`
+        :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+               The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
+        :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         :param pulumi.Input[_builtins.str] custom_template_format: The format used to interpret the `custom_summary` and `custom_description` templates.
                
                `HTML` treats both templates as HTML with Mustache `{{VARIABLE_NAME}}` placeholders.
@@ -930,7 +954,8 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict', 'outputs.AlertV2EffectiveRunAs']] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
                This is an output-only field that shows the resolved run-as identity after applying
                permissions and defaults
-        :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        :param pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']] evaluation: Condition evaluated against the query result, and who is notified when it is met
+        :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
@@ -952,9 +977,10 @@ class AlertV2(pulumi.CustomResource):
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
                  If not specified, the alert will run as the request user
-        :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-               Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        :param pulumi.Input[_builtins.str] run_as_user_name: Deprecated: Use `run_as` field instead. This field will be removed in a future release.
+               The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        :param pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict', 'outputs.AlertV2Schedule']] schedule: Schedule on which the alert runs its query and evaluates the condition
         :param pulumi.Input[_builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
@@ -1039,7 +1065,8 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Custom description for the alert. Interpreted according to `custom_template_format`
+        Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+        The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         """
         return pulumi.get(self, "custom_description")
 
@@ -1047,7 +1074,7 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Custom summary for the alert. Interpreted according to `custom_template_format`
+        Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -1088,13 +1115,16 @@ class AlertV2(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def evaluation(self) -> pulumi.Output['outputs.AlertV2Evaluation']:
+        """
+        Condition evaluated against the query result, and who is notified when it is met
+        """
         return pulumi.get(self, "evaluation")
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         """
         return pulumi.get(self, "lifecycle_state")
 
@@ -1172,15 +1202,18 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        Deprecated: Use `run_as` field instead. This field will be removed in a future release.
         The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 
     @_builtins.property
     @pulumi.getter
     def schedule(self) -> pulumi.Output['outputs.AlertV2Schedule']:
+        """
+        Schedule on which the alert runs its query and evaluates the condition
+        """
         return pulumi.get(self, "schedule")
 
     @_builtins.property

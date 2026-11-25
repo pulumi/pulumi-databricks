@@ -33,12 +33,12 @@ public final class GetAiGatewayModelServicesModelService {
      */
     private String createTime;
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model service
      * 
      */
     private String createdBy;
     /**
-     * @return (string) - Owner of the model service
+     * @return (string) - Username or group name of the model service owner
      * 
      */
     private String effectiveOwner;
@@ -51,12 +51,14 @@ public final class GetAiGatewayModelServicesModelService {
      */
     private String etag;
     /**
-     * @return (string) - Metastore hosting the model service
+     * @return (string) - Unique identifier of the metastore that contains the model service
      * 
      */
     private String metastoreId;
     /**
-     * @return (string) - User-facing label for this destination, used in routing references
+     * @return (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      * 
      */
     private String name;
@@ -79,7 +81,7 @@ public final class GetAiGatewayModelServicesModelService {
      */
     private String updateTime;
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model service
      * 
      */
     private String updatedBy;
@@ -109,14 +111,14 @@ public final class GetAiGatewayModelServicesModelService {
         return this.createTime;
     }
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model service
      * 
      */
     public String createdBy() {
         return this.createdBy;
     }
     /**
-     * @return (string) - Owner of the model service
+     * @return (string) - Username or group name of the model service owner
      * 
      */
     public String effectiveOwner() {
@@ -133,14 +135,16 @@ public final class GetAiGatewayModelServicesModelService {
         return this.etag;
     }
     /**
-     * @return (string) - Metastore hosting the model service
+     * @return (string) - Unique identifier of the metastore that contains the model service
      * 
      */
     public String metastoreId() {
         return this.metastoreId;
     }
     /**
-     * @return (string) - User-facing label for this destination, used in routing references
+     * @return (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      * 
      */
     public String name() {
@@ -171,7 +175,7 @@ public final class GetAiGatewayModelServicesModelService {
         return this.updateTime;
     }
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model service
      * 
      */
     public String updatedBy() {

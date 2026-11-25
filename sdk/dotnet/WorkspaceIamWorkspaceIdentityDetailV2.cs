@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
     /// 
@@ -52,14 +52,14 @@ namespace Pulumi.Databricks
     public partial class WorkspaceIamWorkspaceIdentityDetailV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+        /// (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
         /// </summary>
         [Output("assignmentType")]
         public Output<string> AssignmentType { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the workspace identity detail.
-        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// (string) - The resource name of the workspace identity detail, in the format
+        /// `principals/{principal_id}/workspace-identity-detail`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -71,13 +71,13 @@ namespace Pulumi.Databricks
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        /// (integer) - The Databricks ID of the user, service principal, or group
         /// </summary>
         [Output("principalId")]
         public Output<string> PrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         [Output("principalType")]
         public Output<string> PrincipalType { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+        /// Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         [Output("workspaceIdentityStatus")]
         public Output<string?> WorkspaceIdentityStatus { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+        /// Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         [Input("workspaceIdentityStatus")]
         public Input<string>? WorkspaceIdentityStatus { get; set; }
@@ -167,14 +167,14 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceIamWorkspaceIdentityDetailV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+        /// (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
         /// </summary>
         [Input("assignmentType")]
         public Input<string>? AssignmentType { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the workspace identity detail.
-        /// Format: principals/{principal_id}/workspace-identity-detail
+        /// (string) - The resource name of the workspace identity detail, in the format
+        /// `principals/{principal_id}/workspace-identity-detail`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -186,13 +186,13 @@ namespace Pulumi.Databricks
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        /// (integer) - The Databricks ID of the user, service principal, or group
         /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         [Input("principalType")]
         public Input<string>? PrincipalType { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+        /// Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         [Input("workspaceIdentityStatus")]
         public Input<string>? WorkspaceIdentityStatus { get; set; }

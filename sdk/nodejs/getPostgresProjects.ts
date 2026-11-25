@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -40,7 +40,8 @@ export function getPostgresProjects(args?: GetPostgresProjectsArgs, opts?: pulum
  */
 export interface GetPostgresProjectsArgs {
     /**
-     * Upper bound for items returned. Cannot be negative. The maximum value is 100
+     * Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+     * page size are reduced to that maximum
      */
     pageSize?: number;
     /**
@@ -65,7 +66,7 @@ export interface GetPostgresProjectsResult {
     readonly showDeleted?: boolean;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -98,7 +99,8 @@ export function getPostgresProjectsOutput(args?: GetPostgresProjectsOutputArgs, 
  */
 export interface GetPostgresProjectsOutputArgs {
     /**
-     * Upper bound for items returned. Cannot be negative. The maximum value is 100
+     * Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+     * page size are reduced to that maximum
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

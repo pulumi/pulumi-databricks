@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
     /// 
@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
     /// 
     /// A root branch named `Production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `ReplaceExisting = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `BranchId` will be available in later versions.
     /// 
-    /// Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
+    /// For this implicitly created root Branch, Pulumi manages updates only. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,7 +103,9 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ### Branch with Expiration (TTL)
+    /// ### &lt;a id="branch-with-expiration-ttl"&gt;&lt;/a&gt;Branch with an Absolute Expiration
+    /// 
+    /// Prefer to use a fixed future `ExpireTime` instead of relative `Ttl`. Reapplying a relative TTL recalculates the deadline from the update time and can extend the branch's lifetime. Replace the example timestamp with your intended deadline.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -119,7 +121,7 @@ namespace Pulumi.Databricks
     ///         Parent = @this.Name,
     ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
     ///         {
-    ///             Ttl = "604800s",
+    ///             ExpireTime = "2030-01-01T00:00:00Z",
     ///         },
     ///     });
     /// 
@@ -203,10 +205,14 @@ namespace Pulumi.Databricks
         public Output<bool?> ReplaceExisting { get; private set; } = null!;
 
         /// <summary>
-        /// The spec contains the branch configuration
+        /// The spec contains the branch configuration.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Output("spec")]
-        public Output<Outputs.PostgresBranchSpec> Spec { get; private set; } = null!;
+        public Output<Outputs.PostgresBranchSpec?> Spec { get; private set; } = null!;
 
         /// <summary>
         /// (BranchStatus) - The current status of a Branch
@@ -307,7 +313,11 @@ namespace Pulumi.Databricks
         public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
-        /// The spec contains the branch configuration
+        /// The spec contains the branch configuration.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresBranchSpecArgs>? Spec { get; set; }
@@ -368,7 +378,11 @@ namespace Pulumi.Databricks
         public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
-        /// The spec contains the branch configuration
+        /// The spec contains the branch configuration.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresBranchSpecGetArgs>? Spec { get; set; }

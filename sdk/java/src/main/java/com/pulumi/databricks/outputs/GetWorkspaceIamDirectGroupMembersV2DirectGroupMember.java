@@ -15,45 +15,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
     /**
-     * @return (string) - Display name of the principal
+     * @return (string) - The member&#39;s display name
      * 
      */
     private String displayName;
     /**
-     * @return (string) - The external ID of the principal in the customer&#39;s IdP
+     * @return (string) - The ID of the member in your identity provider (IdP)
      * 
      */
     private String externalId;
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (integer) - The Databricks ID of the group
      * 
      */
     private Integer groupId;
     /**
-     * @return (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * @return (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      * 
      */
     private String membershipSource;
     /**
-     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * @return (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     private String name;
     /**
-     * @return The parent resource name of the group whose direct members to list.
-     * Format: groups/{group_id}
+     * @return The resource name of the group, in the format `groups/{group_id}`
      * 
      */
     private String parent;
     /**
-     * @return (integer) - Internal ID of the principal in Databricks
+     * @return (integer) - The Databricks ID of the member
      * 
      */
     private Integer principalId;
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     private String principalType;
@@ -65,59 +64,58 @@ public final class GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
 
     private GetWorkspaceIamDirectGroupMembersV2DirectGroupMember() {}
     /**
-     * @return (string) - Display name of the principal
+     * @return (string) - The member&#39;s display name
      * 
      */
     public String displayName() {
         return this.displayName;
     }
     /**
-     * @return (string) - The external ID of the principal in the customer&#39;s IdP
+     * @return (string) - The ID of the member in your identity provider (IdP)
      * 
      */
     public String externalId() {
         return this.externalId;
     }
     /**
-     * @return (integer) - The internal ID of the group this member belongs to
+     * @return (integer) - The Databricks ID of the group
      * 
      */
     public Integer groupId() {
         return this.groupId;
     }
     /**
-     * @return (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * @return (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      * 
      */
     public String membershipSource() {
         return this.membershipSource;
     }
     /**
-     * @return (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * @return (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The parent resource name of the group whose direct members to list.
-     * Format: groups/{group_id}
+     * @return The resource name of the group, in the format `groups/{group_id}`
      * 
      */
     public String parent() {
         return this.parent;
     }
     /**
-     * @return (integer) - Internal ID of the principal in Databricks
+     * @return (integer) - The Databricks ID of the member
      * 
      */
     public Integer principalId() {
         return this.principalId;
     }
     /**
-     * @return (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public String principalType() {

@@ -14,9 +14,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
     /**
-     * @return (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * @return (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      * 
      */
     private String plaintext;
@@ -33,9 +34,10 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey() {}
     /**
-     * @return (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * @return (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      * 
      */
     public String plaintext() {

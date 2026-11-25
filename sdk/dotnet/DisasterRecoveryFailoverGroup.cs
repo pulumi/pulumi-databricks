@@ -89,14 +89,16 @@ namespace Pulumi.Databricks
         public Output<string> FailoverGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - True if errors currently block the replication point
+        /// (boolean) - True when replication errors are preventing the replication point from advancing.
+        /// Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+        /// errors are listed in the system.replication.states system table
         /// </summary>
         [Output("hasReplicationPointBlockingErrors")]
         public Output<bool> HasReplicationPointBlockingErrors { get; private set; } = null!;
 
         /// <summary>
         /// Initial primary region. Used only in Create requests to set the starting
-        /// primary region. Not returned in responses
+        /// primary region, and must be one of the regions in `Regions`. Not returned in responses
         /// </summary>
         [Output("initialPrimaryRegion")]
         public Output<string> InitialPrimaryRegion { get; private set; } = null!;
@@ -121,25 +123,35 @@ namespace Pulumi.Databricks
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// List of all regions participating in this failover group
+        /// The two cloud regions that participate in this failover group, the primary and the
+        /// secondary. Each workspace set contains one workspace in each region
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The latest point in time to which data has been replicated
+        /// (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+        /// secondary region. Data written after this point might not exist in the secondary yet and
+        /// can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+        /// replicated, this is the older of the two replication points. Not populated until the
+        /// first replication point exists, and not populated in ListFailoverGroups responses
         /// </summary>
         [Output("replicationPoint")]
         public Output<string> ReplicationPoint { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+        /// (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+        /// replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+        /// while replication is in steady state and failover is available, and FAILING_OVER while a
+        /// failover is in progress; the `*_FAILED` values mean that the last operation did not
+        /// complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Unity Catalog replication configuration
+        /// Unity Catalog replication configuration: the catalogs to replicate and the storage
+        /// location mappings for their data. Omit it to replicate workspace assets only
         /// </summary>
         [Output("unityCatalogAssets")]
         public Output<Outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets?> UnityCatalogAssets { get; private set; } = null!;
@@ -151,7 +163,8 @@ namespace Pulumi.Databricks
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Workspace sets, each containing workspaces that replicate to each other
+        /// Workspace sets, each containing workspaces that replicate to each other. A failover group
+        /// currently supports exactly one workspace set
         /// </summary>
         [Output("workspaceSets")]
         public Output<ImmutableArray<Outputs.DisasterRecoveryFailoverGroupWorkspaceSet>> WorkspaceSets { get; private set; } = null!;
@@ -211,7 +224,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Initial primary region. Used only in Create requests to set the starting
-        /// primary region. Not returned in responses
+        /// primary region, and must be one of the regions in `Regions`. Not returned in responses
         /// </summary>
         [Input("initialPrimaryRegion", required: true)]
         public Input<string> InitialPrimaryRegion { get; set; } = null!;
@@ -226,7 +239,8 @@ namespace Pulumi.Databricks
         private InputList<string>? _regions;
 
         /// <summary>
-        /// List of all regions participating in this failover group
+        /// The two cloud regions that participate in this failover group, the primary and the
+        /// secondary. Each workspace set contains one workspace in each region
         /// </summary>
         public InputList<string> Regions
         {
@@ -235,7 +249,8 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Unity Catalog replication configuration
+        /// Unity Catalog replication configuration: the catalogs to replicate and the storage
+        /// location mappings for their data. Omit it to replicate workspace assets only
         /// </summary>
         [Input("unityCatalogAssets")]
         public Input<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs>? UnityCatalogAssets { get; set; }
@@ -244,7 +259,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DisasterRecoveryFailoverGroupWorkspaceSetArgs>? _workspaceSets;
 
         /// <summary>
-        /// Workspace sets, each containing workspaces that replicate to each other
+        /// Workspace sets, each containing workspaces that replicate to each other. A failover group
+        /// currently supports exactly one workspace set
         /// </summary>
         public InputList<Inputs.DisasterRecoveryFailoverGroupWorkspaceSetArgs> WorkspaceSets
         {
@@ -287,14 +303,16 @@ namespace Pulumi.Databricks
         public Input<string>? FailoverGroupId { get; set; }
 
         /// <summary>
-        /// (boolean) - True if errors currently block the replication point
+        /// (boolean) - True when replication errors are preventing the replication point from advancing.
+        /// Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+        /// errors are listed in the system.replication.states system table
         /// </summary>
         [Input("hasReplicationPointBlockingErrors")]
         public Input<bool>? HasReplicationPointBlockingErrors { get; set; }
 
         /// <summary>
         /// Initial primary region. Used only in Create requests to set the starting
-        /// primary region. Not returned in responses
+        /// primary region, and must be one of the regions in `Regions`. Not returned in responses
         /// </summary>
         [Input("initialPrimaryRegion")]
         public Input<string>? InitialPrimaryRegion { get; set; }
@@ -322,7 +340,8 @@ namespace Pulumi.Databricks
         private InputList<string>? _regions;
 
         /// <summary>
-        /// List of all regions participating in this failover group
+        /// The two cloud regions that participate in this failover group, the primary and the
+        /// secondary. Each workspace set contains one workspace in each region
         /// </summary>
         public InputList<string> Regions
         {
@@ -331,19 +350,28 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (string) - The latest point in time to which data has been replicated
+        /// (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+        /// secondary region. Data written after this point might not exist in the secondary yet and
+        /// can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+        /// replicated, this is the older of the two replication points. Not populated until the
+        /// first replication point exists, and not populated in ListFailoverGroups responses
         /// </summary>
         [Input("replicationPoint")]
         public Input<string>? ReplicationPoint { get; set; }
 
         /// <summary>
-        /// (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+        /// (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+        /// replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+        /// while replication is in steady state and failover is available, and FAILING_OVER while a
+        /// failover is in progress; the `*_FAILED` values mean that the last operation did not
+        /// complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Unity Catalog replication configuration
+        /// Unity Catalog replication configuration: the catalogs to replicate and the storage
+        /// location mappings for their data. Omit it to replicate workspace assets only
         /// </summary>
         [Input("unityCatalogAssets")]
         public Input<Inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsGetArgs>? UnityCatalogAssets { get; set; }
@@ -358,7 +386,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DisasterRecoveryFailoverGroupWorkspaceSetGetArgs>? _workspaceSets;
 
         /// <summary>
-        /// Workspace sets, each containing workspaces that replicate to each other
+        /// Workspace sets, each containing workspaces that replicate to each other. A failover group
+        /// currently supports exactly one workspace set
         /// </summary>
         public InputList<Inputs.DisasterRecoveryFailoverGroupWorkspaceSetGetArgs> WorkspaceSets
         {

@@ -24,7 +24,7 @@ public final class GetPostgresSyncedTableSpec {
      */
     private @Nullable Boolean acceleratedSync;
     /**
-     * @return (string) - The full resource name the branch associated with the table.
+     * @return (string) - The full resource name of the branch that contains the synced table.
      * 
      */
     private @Nullable String branch;
@@ -36,7 +36,8 @@ public final class GetPostgresSyncedTableSpec {
      */
     private @Nullable Boolean createDatabaseObjectsIfMissing;
     /**
-     * @return (string) - ID of an existing pipeline to bin-pack this synced table into.
+     * @return (string) - ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
@@ -53,17 +54,21 @@ public final class GetPostgresSyncedTableSpec {
      */
     private @Nullable GetPostgresSyncedTableSpecNewPipelineSpec newPipelineSpec;
     /**
-     * @return (string) - The Postgres database name where the synced table will be created in.
+     * @return (string) - The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      * 
      */
     private @Nullable String postgresDatabase;
     /**
-     * @return (list of string) - Primary Key columns to be used for data insert/update in the destination
+     * @return (list of string) - Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      * 
      */
     private @Nullable List<String> primaryKeyColumns;
     /**
-     * @return (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return (string) - Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     private @Nullable String schedulingPolicy;
@@ -95,7 +100,7 @@ public final class GetPostgresSyncedTableSpec {
         return Optional.ofNullable(this.acceleratedSync);
     }
     /**
-     * @return (string) - The full resource name the branch associated with the table.
+     * @return (string) - The full resource name of the branch that contains the synced table.
      * 
      */
     public Optional<String> branch() {
@@ -111,7 +116,8 @@ public final class GetPostgresSyncedTableSpec {
         return Optional.ofNullable(this.createDatabaseObjectsIfMissing);
     }
     /**
-     * @return (string) - ID of an existing pipeline to bin-pack this synced table into.
+     * @return (string) - ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
@@ -134,21 +140,25 @@ public final class GetPostgresSyncedTableSpec {
         return Optional.ofNullable(this.newPipelineSpec);
     }
     /**
-     * @return (string) - The Postgres database name where the synced table will be created in.
+     * @return (string) - The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      * 
      */
     public Optional<String> postgresDatabase() {
         return Optional.ofNullable(this.postgresDatabase);
     }
     /**
-     * @return (list of string) - Primary Key columns to be used for data insert/update in the destination
+     * @return (list of string) - Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      * 
      */
     public List<String> primaryKeyColumns() {
         return this.primaryKeyColumns == null ? List.of() : this.primaryKeyColumns;
     }
     /**
-     * @return (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return (string) - Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     public Optional<String> schedulingPolicy() {

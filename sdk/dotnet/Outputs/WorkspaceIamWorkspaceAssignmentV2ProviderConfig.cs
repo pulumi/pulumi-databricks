@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class WorkspaceIamWorkspaceAssignmentV2ProviderConfig
     {
         /// <summary>
-        /// (integer) - The workspace ID where the principal is assigned
+        /// (integer) - The ID of the workspace
         /// </summary>
         public readonly string? WorkspaceId;
 

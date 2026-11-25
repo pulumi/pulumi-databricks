@@ -13,7 +13,9 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        /// Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+        /// domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+        /// Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         /// </summary>
         [Input("accessPolicyType", required: true)]
         public Input<string> AccessPolicyType { get; set; } = null!;

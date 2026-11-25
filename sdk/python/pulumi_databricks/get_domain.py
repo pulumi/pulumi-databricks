@@ -211,7 +211,7 @@ def get_domain(name: Optional[_builtins.str] = None,
                provider_config: Optional[Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict', 'outputs.GetDomainProviderConfigResult']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/domains)
 
@@ -258,7 +258,7 @@ def get_domain_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                       provider_config: pulumi.Input[Optional[Optional[Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict', 'outputs.GetDomainProviderConfigResult']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/domains)
 

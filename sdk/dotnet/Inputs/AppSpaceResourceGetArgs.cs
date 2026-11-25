@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppSpaceResourceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Another app in the workspace that this app is granted access to
+        /// </summary>
         [Input("app")]
         public Input<Inputs.AppSpaceResourceAppGetArgs>? App { get; set; }
 
@@ -24,12 +27,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// MLflow experiment the app is granted access to
+        /// </summary>
         [Input("experiment")]
         public Input<Inputs.AppSpaceResourceExperimentGetArgs>? Experiment { get; set; }
 
+        /// <summary>
+        /// Genie space the app is granted access to
+        /// </summary>
         [Input("genieSpace")]
         public Input<Inputs.AppSpaceResourceGenieSpaceGetArgs>? GenieSpace { get; set; }
 
+        /// <summary>
+        /// Lakeflow job the app is granted access to
+        /// </summary>
         [Input("job")]
         public Input<Inputs.AppSpaceResourceJobGetArgs>? Job { get; set; }
 
@@ -40,18 +52,34 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Lakebase Autoscaling Postgres database the app is granted access to
+        /// </summary>
         [Input("postgres")]
         public Input<Inputs.AppSpaceResourcePostgresGetArgs>? Postgres { get; set; }
 
+        /// <summary>
+        /// Secret the app is granted access to
+        /// </summary>
         [Input("secret")]
         public Input<Inputs.AppSpaceResourceSecretGetArgs>? Secret { get; set; }
 
+        /// <summary>
+        /// Model serving endpoint the app is granted access to
+        /// </summary>
         [Input("servingEndpoint")]
         public Input<Inputs.AppSpaceResourceServingEndpointGetArgs>? ServingEndpoint { get; set; }
 
+        /// <summary>
+        /// SQL warehouse the app is granted access to
+        /// </summary>
         [Input("sqlWarehouse")]
         public Input<Inputs.AppSpaceResourceSqlWarehouseGetArgs>? SqlWarehouse { get; set; }
 
+        /// <summary>
+        /// Unity Catalog securable (volume, table, function, connection or model service) the app is
+        /// granted a privilege on
+        /// </summary>
         [Input("ucSecurable")]
         public Input<Inputs.AppSpaceResourceUcSecurableGetArgs>? UcSecurable { get; set; }
 

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkspaceIamUserV2FullName {
+    /**
+     * @return The user&#39;s family (last) name
+     * 
+     */
     private @Nullable String familyName;
+    /**
+     * @return The user&#39;s given (first) name
+     * 
+     */
     private @Nullable String givenName;
 
     private WorkspaceIamUserV2FullName() {}
+    /**
+     * @return The user&#39;s family (last) name
+     * 
+     */
     public Optional<String> familyName() {
         return Optional.ofNullable(this.familyName);
     }
+    /**
+     * @return The user&#39;s given (first) name
+     * 
+     */
     public Optional<String> givenName() {
         return Optional.ofNullable(this.givenName);
     }

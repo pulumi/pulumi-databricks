@@ -57,7 +57,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        (string) - The parent account ID, from Databricks
+        (string) - The ID of the account that contains the user
         """
         return pulumi.get(self, "account_id")
 
@@ -65,7 +65,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter(name="accountUserStatus")
     def account_user_status(self) -> _builtins.str:
         """
-        (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_user_status")
 
@@ -73,7 +73,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
         """
-        (string) - Display name of the user from the customer's IdP
+        (string) - The user's given and family names from your IdP, separated by a space
         """
         return pulumi.get(self, "display_name")
 
@@ -81,7 +81,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter(name="externalUserId")
     def external_user_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the user in the customer's IdP
+        (string) - The ID of the user in your IdP
         """
         return pulumi.get(self, "external_user_id")
 
@@ -89,7 +89,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter(name="fullName")
     def full_name(self) -> 'outputs.GetAccountIamExternalUserV2FullNameResult':
         """
-        (FullName) - The full name of the user, from the customer's IdP
+        (FullName) - The user's name, from your IdP
         """
         return pulumi.get(self, "full_name")
 
@@ -97,7 +97,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter(name="internalId")
     def internal_id(self) -> _builtins.str:
         """
-        (string) - Internal userId of the user in Databricks
+        (string) - The Databricks ID of the user. Use it as the `user_id` in the user APIs
         """
         return pulumi.get(self, "internal_id")
 
@@ -105,10 +105,9 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the external user. The format depends on the API that
-        returned it:
-        - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-        - Workspace-scoped: external-users/{external_user_id}
+        (string) - The resource name of the external user, in one of these formats:
+        - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+        - Workspace APIs: `external-users/{external_user_id}`
         """
         return pulumi.get(self, "name")
 
@@ -116,7 +115,7 @@ class GetAccountIamExternalUserV2Result:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        (string) - Username/email of the user, from Databricks
+        (string) - The user's username, which is their email address
         """
         return pulumi.get(self, "username")
 
@@ -140,7 +139,7 @@ class AwaitableGetAccountIamExternalUserV2Result(GetAccountIamExternalUserV2Resu
 def get_account_iam_external_user_v2(name: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamExternalUserV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -164,10 +163,9 @@ def get_account_iam_external_user_v2(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The resource name of the external user. The format depends on the API that
-           returned it:
-           - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-           - Workspace-scoped: external-users/{external_user_id}
+    :param _builtins.str name: The resource name of the external user, in one of these formats:
+           - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+           - Workspace APIs: `external-users/{external_user_id}`
     """
     __args__ = dict()
     __args__['name'] = name
@@ -186,7 +184,7 @@ def get_account_iam_external_user_v2(name: Optional[_builtins.str] = None,
 def get_account_iam_external_user_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamExternalUserV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -210,10 +208,9 @@ def get_account_iam_external_user_v2_output(name: pulumi.Input[Optional[_builtin
     ```
 
 
-    :param _builtins.str name: The resource name of the external user. The format depends on the API that
-           returned it:
-           - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-           - Workspace-scoped: external-users/{external_user_id}
+    :param _builtins.str name: The resource name of the external user, in one of these formats:
+           - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+           - Workspace APIs: `external-users/{external_user_id}`
     """
     __args__ = dict()
     __args__['name'] = name

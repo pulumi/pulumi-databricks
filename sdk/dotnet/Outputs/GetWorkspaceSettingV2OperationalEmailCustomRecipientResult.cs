@@ -14,7 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceSettingV2OperationalEmailCustomRecipientResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - Email address that receives this workspace's operational emails in addition to the workspace
+        /// admins. Use a distribution list address to reach several people. An empty string clears the
+        /// additional recipient
         /// </summary>
         public readonly string? Email;
 

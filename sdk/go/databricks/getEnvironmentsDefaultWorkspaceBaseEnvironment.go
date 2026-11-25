@@ -65,9 +65,11 @@ type LookupEnvironmentsDefaultWorkspaceBaseEnvironmentArgs struct {
 // A collection of values returned by getEnvironmentsDefaultWorkspaceBaseEnvironment.
 type LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult struct {
 	// (string) - The default workspace base environment for CPU compute.
+	// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	CpuWorkspaceBaseEnvironment string `pulumi:"cpuWorkspaceBaseEnvironment"`
 	// (string) - The default workspace base environment for GPU compute.
+	// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment string `pulumi:"gpuWorkspaceBaseEnvironment"`
 	// (string) - The resource name of this singleton resource.
@@ -110,6 +112,7 @@ func (o LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput) ToLookupE
 }
 
 // (string) - The default workspace base environment for CPU compute.
+// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 // Format: workspace-base-environments/{workspace_base_environment}
 func (o LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput) CpuWorkspaceBaseEnvironment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult) string {
@@ -118,6 +121,7 @@ func (o LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput) CpuWorksp
 }
 
 // (string) - The default workspace base environment for GPU compute.
+// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 // Format: workspace-base-environments/{workspace_base_environment}
 func (o LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput) GpuWorkspaceBaseEnvironment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult) string {

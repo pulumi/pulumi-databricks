@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow
     {
+        /// <summary>
+        /// Schedule anchored to a day of the week, either every week or on given weeks of the month
+        /// </summary>
         public readonly Outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule? WeekDayBasedSchedule;
 
         [OutputConstructor]

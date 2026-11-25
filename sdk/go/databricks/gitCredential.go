@@ -18,6 +18,8 @@ import (
 //
 // > This resource can only be used with a workspace-level provider!
 //
+// > **Note** Write-Only argument `personalAccessTokenWo` is available to use in place of `personalAccessToken`. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+//
 // ## Example Usage
 //
 // ### Git credential that uses personal access token
@@ -40,6 +42,37 @@ import (
 //				GitUsername:         pulumi.String("myuser"),
 //				GitProvider:         pulumi.String("azureDevOpsServices"),
 //				PersonalAccessToken: pulumi.String("sometoken"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Git credential that uses a write-only personal access token
+//
+// Use `personalAccessTokenWo` to avoid storing the token in the Pulumi state. The value can come from an ephemeral resource or a variable. Increment `personalAccessTokenWoVersion` whenever the token needs to be updated:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGitCredential(ctx, "ado", &databricks.GitCredentialArgs{
+//				GitUsername:                  pulumi.String("myuser"),
+//				GitProvider:                  pulumi.String("azureDevOpsServices"),
+//				PersonalAccessTokenWo:        pulumi.Any(adoPat),
+//				PersonalAccessTokenWoVersion: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -129,8 +162,13 @@ type GitCredential struct {
 	IsDefaultForProvider pulumi.BoolPtrOutput `pulumi:"isDefaultForProvider"`
 	// the name of the git credential, used for identification and ease of lookup.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+	PersonalAccessTokenWo pulumi.StringPtrOutput `pulumi:"personalAccessTokenWo"`
+	// Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+	PersonalAccessTokenWoVersion pulumi.IntPtrOutput `pulumi:"personalAccessTokenWoVersion"`
 	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
 	PrincipalId pulumi.StringPtrOutput `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -150,8 +188,12 @@ func NewGitCredential(ctx *pulumi.Context,
 	if args.PersonalAccessToken != nil {
 		args.PersonalAccessToken = pulumi.ToSecret(args.PersonalAccessToken).(pulumi.StringPtrInput)
 	}
+	if args.PersonalAccessTokenWo != nil {
+		args.PersonalAccessTokenWo = pulumi.ToSecret(args.PersonalAccessTokenWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"personalAccessToken",
+		"personalAccessTokenWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -189,8 +231,13 @@ type gitCredentialState struct {
 	IsDefaultForProvider *bool `pulumi:"isDefaultForProvider"`
 	// the name of the git credential, used for identification and ease of lookup.
 	Name *string `pulumi:"name"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+	PersonalAccessTokenWo *string `pulumi:"personalAccessTokenWo"`
+	// Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+	PersonalAccessTokenWoVersion *int `pulumi:"personalAccessTokenWoVersion"`
 	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
 	PrincipalId *string `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -210,8 +257,13 @@ type GitCredentialState struct {
 	IsDefaultForProvider pulumi.BoolPtrInput
 	// the name of the git credential, used for identification and ease of lookup.
 	Name pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
 	PersonalAccessToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+	PersonalAccessTokenWo pulumi.StringPtrInput
+	// Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+	PersonalAccessTokenWoVersion pulumi.IntPtrInput
 	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
 	PrincipalId pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -241,8 +293,13 @@ type gitCredentialArgs struct {
 	IsDefaultForProvider *bool `pulumi:"isDefaultForProvider"`
 	// the name of the git credential, used for identification and ease of lookup.
 	Name *string `pulumi:"name"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+	PersonalAccessTokenWo *string `pulumi:"personalAccessTokenWo"`
+	// Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+	PersonalAccessTokenWoVersion *int `pulumi:"personalAccessTokenWoVersion"`
 	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
 	PrincipalId *string `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -263,8 +320,13 @@ type GitCredentialArgs struct {
 	IsDefaultForProvider pulumi.BoolPtrInput
 	// the name of the git credential, used for identification and ease of lookup.
 	Name pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
 	PersonalAccessToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+	PersonalAccessTokenWo pulumi.StringPtrInput
+	// Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+	PersonalAccessTokenWoVersion pulumi.IntPtrInput
 	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
 	PrincipalId pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
@@ -388,9 +450,20 @@ func (o GitCredentialOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
 func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+func (o GitCredentialOutput) PersonalAccessTokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessTokenWo }).(pulumi.StringPtrOutput)
+}
+
+// Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+func (o GitCredentialOutput) PersonalAccessTokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GitCredential) pulumi.IntPtrOutput { return v.PersonalAccessTokenWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.

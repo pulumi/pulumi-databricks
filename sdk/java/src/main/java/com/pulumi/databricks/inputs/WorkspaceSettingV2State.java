@@ -22,6 +22,7 @@ import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveOperationalEmailC
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectivePersonalComputeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveStringValArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveWorkspaceLabelArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2IntegerValArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2OperationalEmailCustomRecipientArgs;
@@ -29,6 +30,7 @@ import com.pulumi.databricks.inputs.WorkspaceSettingV2PersonalComputeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2ProviderConfigArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2RestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2StringValArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2WorkspaceDashboardThemeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2WorkspaceLabelArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -296,6 +298,21 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
     }
 
     /**
+     * (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    @Import(name="effectiveWorkspaceDashboardTheme")
+    private @Nullable Output<WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs> effectiveWorkspaceDashboardTheme;
+
+    /**
+     * @return (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs>> effectiveWorkspaceDashboardTheme() {
+        return Optional.ofNullable(this.effectiveWorkspaceDashboardTheme);
+    }
+
+    /**
      * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      * 
      */
@@ -326,14 +343,14 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the setting
+     * @return Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public Optional<Output<String>> name() {
@@ -416,6 +433,21 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
     }
 
     /**
+     * Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    @Import(name="workspaceDashboardTheme")
+    private @Nullable Output<WorkspaceSettingV2WorkspaceDashboardThemeArgs> workspaceDashboardTheme;
+
+    /**
+     * @return Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2WorkspaceDashboardThemeArgs>> workspaceDashboardTheme() {
+        return Optional.ofNullable(this.workspaceDashboardTheme);
+    }
+
+    /**
      * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
      * 
      */
@@ -450,6 +482,7 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         this.effectivePersonalCompute = $.effectivePersonalCompute;
         this.effectiveRestrictWorkspaceAdmins = $.effectiveRestrictWorkspaceAdmins;
         this.effectiveStringVal = $.effectiveStringVal;
+        this.effectiveWorkspaceDashboardTheme = $.effectiveWorkspaceDashboardTheme;
         this.effectiveWorkspaceLabel = $.effectiveWorkspaceLabel;
         this.integerVal = $.integerVal;
         this.name = $.name;
@@ -458,6 +491,7 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         this.providerConfig = $.providerConfig;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
         this.stringVal = $.stringVal;
+        this.workspaceDashboardTheme = $.workspaceDashboardTheme;
         this.workspaceLabel = $.workspaceLabel;
     }
 
@@ -837,6 +871,27 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param effectiveWorkspaceDashboardTheme (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceDashboardTheme(@Nullable Output<WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs> effectiveWorkspaceDashboardTheme) {
+            $.effectiveWorkspaceDashboardTheme = effectiveWorkspaceDashboardTheme;
+            return this;
+        }
+
+        /**
+         * @param effectiveWorkspaceDashboardTheme (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceDashboardTheme(WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs effectiveWorkspaceDashboardTheme) {
+            return effectiveWorkspaceDashboardTheme(Output.of(effectiveWorkspaceDashboardTheme));
+        }
+
+        /**
          * @param effectiveWorkspaceLabel Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
          * 
          * @return builder
@@ -879,7 +934,7 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -890,7 +945,7 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -1002,6 +1057,27 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
          */
         public Builder stringVal(WorkspaceSettingV2StringValArgs stringVal) {
             return stringVal(Output.of(stringVal));
+        }
+
+        /**
+         * @param workspaceDashboardTheme Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceDashboardTheme(@Nullable Output<WorkspaceSettingV2WorkspaceDashboardThemeArgs> workspaceDashboardTheme) {
+            $.workspaceDashboardTheme = workspaceDashboardTheme;
+            return this;
+        }
+
+        /**
+         * @param workspaceDashboardTheme Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceDashboardTheme(WorkspaceSettingV2WorkspaceDashboardThemeArgs workspaceDashboardTheme) {
+            return workspaceDashboardTheme(Output.of(workspaceDashboardTheme));
         }
 
         /**

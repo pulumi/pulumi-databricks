@@ -17,18 +17,18 @@ public final class GetWorkspaceIamGroupV2PlainArgs extends com.pulumi.resources.
     public static final GetWorkspaceIamGroupV2PlainArgs Empty = new GetWorkspaceIamGroupV2PlainArgs();
 
     /**
-     * The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public String name() {
@@ -76,9 +76,9 @@ public final class GetWorkspaceIamGroupV2PlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The resource name of the group. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param name The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 

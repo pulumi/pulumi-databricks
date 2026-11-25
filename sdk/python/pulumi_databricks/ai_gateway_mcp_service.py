@@ -29,7 +29,9 @@ class AiGatewayMcpServiceArgs:
         """
         The set of arguments for constructing a AiGatewayMcpService resource.
 
-        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name of the MCP service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -52,7 +54,9 @@ class AiGatewayMcpServiceArgs:
     @pulumi.getter(name="mcpServiceId")
     def mcp_service_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Name for the MCP service, e.g. "my_mcp_service"
+        Name of the MCP service within the parent schema. The name must not
+        contain periods, spaces, forward slashes, percent signs, or control characters,
+        and it is stored in lowercase
         """
         return pulumi.get(self, "mcp_service_id")
 
@@ -137,25 +141,29 @@ class _AiGatewayMcpServiceState:
                provide this field when `update_mask` contains `config` or one of its
                subpaths
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the MCP service was created
-        :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the MCP service
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username or service principal application ID of the principal that created the MCP service
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Username, group name, or service principal application ID of the MCP service owner
         :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
                Delete conditional, pass the last-read value in that request's `etag`
                field. In REST responses, this value is a base64 string; URL-encode it when
                setting the `etag` query parameter
-        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
-        :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the MCP service
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name of the MCP service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
+        :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore that contains the MCP service
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
                Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
                Each `{...}` component is capped at 255 characters individually.
-               Server-derived on Create from `parent` +
-               `mcp_service_id`; required and immutable on Update/Get/Delete
+               The server derives the name on Create from
+               `parent` and `mcp_service_id`; it is required and immutable on Update,
+               Get, and Delete
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayMcpServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the MCP service was last modified
-        :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
+        :param pulumi.Input[_builtins.str] updated_by: (string) - Username or service principal application ID of the principal that last updated the MCP
+               service
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -226,7 +234,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Creator identity
+        (string) - Username or service principal application ID of the principal that created the MCP service
         """
         return pulumi.get(self, "created_by")
 
@@ -238,7 +246,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Owner of the MCP service
+        (string) - Username, group name, or service principal application ID of the MCP service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -265,7 +273,9 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="mcpServiceId")
     def mcp_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name for the MCP service, e.g. "my_mcp_service"
+        Name of the MCP service within the parent schema. The name must not
+        contain periods, spaces, forward slashes, percent signs, or control characters,
+        and it is stored in lowercase
         """
         return pulumi.get(self, "mcp_service_id")
 
@@ -277,7 +287,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Metastore hosting the MCP service
+        (string) - Unique identifier of the metastore that contains the MCP service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -292,8 +302,9 @@ class _AiGatewayMcpServiceState:
         (string) - Resource name of the MCP service.
         Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
         Each `{...}` component is capped at 255 characters individually.
-        Server-derived on Create from `parent` +
-        `mcp_service_id`; required and immutable on Update/Get/Delete
+        The server derives the name on Create from
+        `parent` and `mcp_service_id`; it is required and immutable on Update,
+        Get, and Delete
         """
         return pulumi.get(self, "name")
 
@@ -343,7 +354,8 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Identity of the last updater
+        (string) - Username or service principal application ID of the principal that last updated the MCP
+        service
         """
         return pulumi.get(self, "updated_by")
 
@@ -399,7 +411,9 @@ class AiGatewayMcpService(pulumi.CustomResource):
         :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict', 'outputs.AiGatewayMcpServiceConfig']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
                provide this field when `update_mask` contains `config` or one of its
                subpaths
-        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name of the MCP service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -521,25 +535,29 @@ class AiGatewayMcpService(pulumi.CustomResource):
                provide this field when `update_mask` contains `config` or one of its
                subpaths
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the MCP service was created
-        :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the MCP service
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username or service principal application ID of the principal that created the MCP service
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Username, group name, or service principal application ID of the MCP service owner
         :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
                Delete conditional, pass the last-read value in that request's `etag`
                field. In REST responses, this value is a base64 string; URL-encode it when
                setting the `etag` query parameter
-        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
-        :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the MCP service
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name of the MCP service within the parent schema. The name must not
+               contain periods, spaces, forward slashes, percent signs, or control characters,
+               and it is stored in lowercase
+        :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore that contains the MCP service
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
                Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
                Each `{...}` component is capped at 255 characters individually.
-               Server-derived on Create from `parent` +
-               `mcp_service_id`; required and immutable on Update/Get/Delete
+               The server derives the name on Create from
+               `parent` and `mcp_service_id`; it is required and immutable on Update,
+               Get, and Delete
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict', 'outputs.AiGatewayMcpServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the MCP service was last modified
-        :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
+        :param pulumi.Input[_builtins.str] updated_by: (string) - Username or service principal application ID of the principal that last updated the MCP
+               service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -622,7 +640,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Creator identity
+        (string) - Username or service principal application ID of the principal that created the MCP service
         """
         return pulumi.get(self, "created_by")
 
@@ -630,7 +648,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Owner of the MCP service
+        (string) - Username, group name, or service principal application ID of the MCP service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -649,7 +667,9 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="mcpServiceId")
     def mcp_service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Name for the MCP service, e.g. "my_mcp_service"
+        Name of the MCP service within the parent schema. The name must not
+        contain periods, spaces, forward slashes, percent signs, or control characters,
+        and it is stored in lowercase
         """
         return pulumi.get(self, "mcp_service_id")
 
@@ -657,7 +677,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Metastore hosting the MCP service
+        (string) - Unique identifier of the metastore that contains the MCP service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -668,8 +688,9 @@ class AiGatewayMcpService(pulumi.CustomResource):
         (string) - Resource name of the MCP service.
         Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
         Each `{...}` component is capped at 255 characters individually.
-        Server-derived on Create from `parent` +
-        `mcp_service_id`; required and immutable on Update/Get/Delete
+        The server derives the name on Create from
+        `parent` and `mcp_service_id`; it is required and immutable on Update,
+        Get, and Delete
         """
         return pulumi.get(self, "name")
 
@@ -703,7 +724,8 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Identity of the last updater
+        (string) - Username or service principal application ID of the principal that last updated the MCP
+        service
         """
         return pulumi.get(self, "updated_by")
 

@@ -28,6 +28,10 @@ public final class AlertV2EvaluationNotification {
      * 
      */
     private @Nullable Integer retriggerSeconds;
+    /**
+     * @return Users and notification destinations that receive notifications
+     * 
+     */
     private @Nullable List<AlertV2EvaluationNotificationSubscription> subscriptions;
 
     private AlertV2EvaluationNotification() {}
@@ -53,6 +57,10 @@ public final class AlertV2EvaluationNotification {
     public Optional<Integer> retriggerSeconds() {
         return Optional.ofNullable(this.retriggerSeconds);
     }
+    /**
+     * @return Users and notification destinations that receive notifications
+     * 
+     */
     public List<AlertV2EvaluationNotificationSubscription> subscriptions() {
         return this.subscriptions == null ? List.of() : this.subscriptions;
     }

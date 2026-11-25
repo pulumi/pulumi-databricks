@@ -44,7 +44,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// (SyncedTablePipelineProgress)
+        /// (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+        /// triggered or snapshot synced table
         /// </summary>
         [Input("ongoingSyncProgress")]
         public Input<Inputs.PostgresSyncedTableStatusOngoingSyncProgressGetArgs>? OngoingSyncProgress { get; set; }

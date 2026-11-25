@@ -55,7 +55,7 @@ class GetPostgresSyncedTableResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        (string)
+        (string) - The time when the synced table was created
         """
         return pulumi.get(self, "create_time")
 
@@ -63,8 +63,8 @@ class GetPostgresSyncedTableResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - Output only. The Full resource name of the synced table in Postgres
-        where (catalog, schema, table) are the UC entity names.
+        (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        names of the synced table.
         """
         return pulumi.get(self, "name")
 
@@ -93,7 +93,8 @@ class GetPostgresSyncedTableResult:
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> _builtins.str:
         """
-        (string) - The part of the name, chosen by the user when the resource was created
+        (string) - The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        It is the synced_table_id that was used to create the synced table and the last component of name
         """
         return pulumi.get(self, "synced_table_id")
 
@@ -125,7 +126,7 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
                               provider_config: Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresSyncedTableResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -144,12 +145,12 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: Output only. The Full resource name of the synced table in Postgres
-           where (catalog, schema, table) are the UC entity names.
+    :param _builtins.str name: The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+           names of the synced table.
            
-           Format "synced_tables/{catalog}.{schema}.{table}"
+           Format: "synced_tables/{catalog}.{schema}.{table}".
            
-           For the corresponding source table in the Unity catalog look for the "source_table_full_name" attribute
+           For the corresponding source table in Unity Catalog, look for the "source_table_full_name" attribute
     :param Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -170,7 +171,7 @@ def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]]
                                      provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresSyncedTableResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -189,12 +190,12 @@ def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]]
     ```
 
 
-    :param _builtins.str name: Output only. The Full resource name of the synced table in Postgres
-           where (catalog, schema, table) are the UC entity names.
+    :param _builtins.str name: The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+           names of the synced table.
            
-           Format "synced_tables/{catalog}.{schema}.{table}"
+           Format: "synced_tables/{catalog}.{schema}.{table}".
            
-           For the corresponding source table in the Unity catalog look for the "source_table_full_name" attribute
+           For the corresponding source table in Unity Catalog, look for the "source_table_full_name" attribute
     :param Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

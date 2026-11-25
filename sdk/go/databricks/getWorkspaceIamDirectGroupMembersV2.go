@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -58,11 +58,10 @@ func GetWorkspaceIamDirectGroupMembersV2(ctx *pulumi.Context, args *GetWorkspace
 
 // A collection of arguments for invoking getWorkspaceIamDirectGroupMembersV2.
 type GetWorkspaceIamDirectGroupMembersV2Args struct {
-	// The maximum number of members to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+	// fewer members
 	PageSize *int `pulumi:"pageSize"`
-	// The parent resource name of the group whose direct members to list.
-	// Format: groups/{group_id}
+	// The resource name of the group, in the format `groups/{group_id}`
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamDirectGroupMembersV2ProviderConfig `pulumi:"providerConfig"`
@@ -72,10 +71,9 @@ type GetWorkspaceIamDirectGroupMembersV2Args struct {
 type GetWorkspaceIamDirectGroupMembersV2Result struct {
 	DirectGroupMembers []GetWorkspaceIamDirectGroupMembersV2DirectGroupMember `pulumi:"directGroupMembers"`
 	PageSize           *int                                                   `pulumi:"pageSize"`
-	// (string) - The resource name of the group that contains the membership. The format depends on the API
-	// that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}
-	// - Workspace-scoped: groups/{group_id}
+	// (string) - The resource name of the group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+	// - Workspace APIs: `groups/{group_id}`
 	Parent         string                                             `pulumi:"parent"`
 	ProviderConfig *GetWorkspaceIamDirectGroupMembersV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -87,11 +85,10 @@ func GetWorkspaceIamDirectGroupMembersV2Output(ctx *pulumi.Context, args GetWork
 
 // A collection of arguments for invoking getWorkspaceIamDirectGroupMembersV2.
 type GetWorkspaceIamDirectGroupMembersV2OutputArgs struct {
-	// The maximum number of members to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+	// fewer members
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// The parent resource name of the group whose direct members to list.
-	// Format: groups/{group_id}
+	// The resource name of the group, in the format `groups/{group_id}`
 	Parent pulumi.StringInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -126,10 +123,9 @@ func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) PageSize() pulumi.IntPt
 	return o.ApplyT(func(v GetWorkspaceIamDirectGroupMembersV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The resource name of the group that contains the membership. The format depends on the API
-// that returned it:
-// - Account-scoped: accounts/{account_id}/groups/{group_id}
-// - Workspace-scoped: groups/{group_id}
+// (string) - The resource name of the group, in one of these formats:
+// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+// - Workspace APIs: `groups/{group_id}`
 func (o GetWorkspaceIamDirectGroupMembersV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamDirectGroupMembersV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }

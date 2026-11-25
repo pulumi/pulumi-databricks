@@ -100,17 +100,23 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseDatabaseCatalog.__pulumiType;
     }
 
+    /**
+     * If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     */
     declare public readonly createDatabaseIfNotExists: pulumi.Output<boolean>;
     /**
      * The name of the DatabaseInstance housing the database
      */
     declare public readonly databaseInstanceName: pulumi.Output<string>;
     /**
-     * The name of the database (in an instance) associated with the catalog
+     * The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      */
     declare public readonly databaseName: pulumi.Output<string>;
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -118,7 +124,7 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.DatabaseDatabaseCatalogProviderConfig>;
     /**
-     * (string)
+     * (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
 
@@ -165,17 +171,23 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
  */
 export interface DatabaseDatabaseCatalogState {
+    /**
+     * If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     */
     createDatabaseIfNotExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the DatabaseInstance housing the database
      */
     databaseInstanceName?: pulumi.Input<string | undefined>;
     /**
-     * The name of the database (in an instance) associated with the catalog
+     * The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      */
     databaseName?: pulumi.Input<string | undefined>;
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -183,7 +195,7 @@ export interface DatabaseDatabaseCatalogState {
      */
     providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig | undefined>;
     /**
-     * (string)
+     * (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      */
     uid?: pulumi.Input<string | undefined>;
 }
@@ -192,17 +204,23 @@ export interface DatabaseDatabaseCatalogState {
  * The set of arguments for constructing a DatabaseDatabaseCatalog resource.
  */
 export interface DatabaseDatabaseCatalogArgs {
+    /**
+     * If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     */
     createDatabaseIfNotExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the DatabaseInstance housing the database
      */
     databaseInstanceName: pulumi.Input<string>;
     /**
-     * The name of the database (in an instance) associated with the catalog
+     * The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      */
     databaseName: pulumi.Input<string>;
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      */
     name?: pulumi.Input<string | undefined>;
     /**

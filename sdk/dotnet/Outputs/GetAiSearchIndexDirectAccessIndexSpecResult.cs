@@ -14,17 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiSearchIndexDirectAccessIndexSpecResult
     {
         /// <summary>
-        /// (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+        /// (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+        /// embeddings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnResult> EmbeddingSourceColumns;
         /// <summary>
-        /// (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+        /// (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+        /// cannot be the primary key
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnResult> EmbeddingVectorColumns;
         /// <summary>
-        /// (string) - The schema of the index in JSON format. Supported types are `Integer`, `Long`,
-        /// `Float`, `Double`, `Boolean`, `String`, `Date`, `Timestamp`. Supported types for
-        /// vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+        /// (string) - The schema of the index in JSON format, mapping each column name to its type. Supported
+        /// types are `Integer`, `Long`, `Float`, `Double`, `Boolean`, `String`, `Date`, `Timestamp`.
+        /// Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+        /// the primary key column and the embedding vector column
         /// </summary>
         public readonly string? SchemaJson;
 

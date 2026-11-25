@@ -15,16 +15,32 @@ public final class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWin
 
     public static final AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs Empty = new AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs();
 
+    /**
+     * Hour of the day on a 24-hour clock
+     * 
+     */
     @Import(name="hours")
     private @Nullable Output<Integer> hours;
 
+    /**
+     * @return Hour of the day on a 24-hour clock
+     * 
+     */
     public Optional<Output<Integer>> hours() {
         return Optional.ofNullable(this.hours);
     }
 
+    /**
+     * Minute of the hour
+     * 
+     */
     @Import(name="minutes")
     private @Nullable Output<Integer> minutes;
 
+    /**
+     * @return Minute of the hour
+     * 
+     */
     public Optional<Output<Integer>> minutes() {
         return Optional.ofNullable(this.minutes);
     }
@@ -54,20 +70,44 @@ public final class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWin
             $ = new AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hours Hour of the day on a 24-hour clock
+         * 
+         * @return builder
+         * 
+         */
         public Builder hours(@Nullable Output<Integer> hours) {
             $.hours = hours;
             return this;
         }
 
+        /**
+         * @param hours Hour of the day on a 24-hour clock
+         * 
+         * @return builder
+         * 
+         */
         public Builder hours(Integer hours) {
             return hours(Output.of(hours));
         }
 
+        /**
+         * @param minutes Minute of the hour
+         * 
+         * @return builder
+         * 
+         */
         public Builder minutes(@Nullable Output<Integer> minutes) {
             $.minutes = minutes;
             return this;
         }
 
+        /**
+         * @param minutes Minute of the hour
+         * 
+         * @return builder
+         * 
+         */
         public Builder minutes(Integer minutes) {
             return minutes(Output.of(minutes));
         }

@@ -36,24 +36,32 @@ class DatabaseInstanceArgs:
         """
         The set of arguments for constructing a DatabaseInstance resource.
 
-        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+               creating an instance
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses.
+               An instance can have at most 10 tags; keys must be unique ignoring case
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
-        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
-        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+               node_count greater than 1
+        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+               characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+               consecutive hyphens
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
                1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
-        :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
-               child instance.
+        :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is a
+               child instance. A child instance inherits custom_tags and usage_policy_id from
+               its parent and cannot set them.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input['DatabaseInstanceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-               of false will throw a bad request
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+               false returns a bad request
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
-        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output. An
+               instance cannot be created in the stopped state; set this field on update to stop or start
+               the instance
         :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
         if capacity is not None:
@@ -85,7 +93,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        creating an instance
         """
         return pulumi.get(self, "capacity")
 
@@ -97,7 +106,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="customTags")
     def custom_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]]:
         """
-        Custom tags associated with the instance. This field is only included on create and update responses
+        Custom tags associated with the instance. This field is only included on create and update responses.
+        An instance can have at most 10 tags; keys must be unique ignoring case
         """
         return pulumi.get(self, "custom_tags")
 
@@ -121,7 +131,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="enableReadableSecondaries")
     def enable_readable_secondaries(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to enable secondaries to serve read-only traffic. Defaults to false
+        Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        node_count greater than 1
         """
         return pulumi.get(self, "enable_readable_secondaries")
 
@@ -133,7 +144,9 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the instance. This is the unique identifier for the instance
+        The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        consecutive hyphens
         """
         return pulumi.get(self, "name")
 
@@ -158,8 +171,9 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="parentInstanceRef")
     def parent_instance_ref(self) -> pulumi.Input[Optional['DatabaseInstanceParentInstanceRefArgs']]:
         """
-        The ref of the parent instance. This is only available if the instance is
-        child instance.
+        The ref of the parent instance. This is only available if the instance is a
+        child instance. A child instance inherits custom_tags and usage_policy_id from
+        its parent and cannot set them.
         Input: For specifying the parent instance to create a child instance. Optional.
         Output: Only populated if provided as input to create a child instance
         """
@@ -185,8 +199,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-        of false will throw a bad request
+        Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+        false returns a bad request
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -212,7 +226,9 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def stopped(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to stop the instance. An input only param, see effective_stopped for the output
+        Whether to stop the instance. An input only param, see effective_stopped for the output. An
+        instance cannot be created in the stopped state; set this field on update to stop or start
+        the instance
         """
         return pulumi.get(self, "stopped")
 
@@ -267,13 +283,15 @@ class _DatabaseInstanceState:
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
 
-        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+               creating an instance
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
                parent instance
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
-        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses.
+               An instance can have at most 10 tags; keys must be unique ignoring case
+        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
@@ -300,18 +318,22 @@ class _DatabaseInstanceState:
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
-        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
-        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+               node_count greater than 1
+        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+               characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+               consecutive hyphens
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
                1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
-        :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
-               child instance.
+        :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is a
+               child instance. A child instance inherits custom_tags and usage_policy_id from
+               its parent and cannot set them.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
         :param pulumi.Input['DatabaseInstanceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-               of false will throw a bad request
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+               false returns a bad request
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
                enable_readable_secondaries is true
         :param pulumi.Input[_builtins.str] read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
@@ -319,7 +341,9 @@ class _DatabaseInstanceState:
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output. An
+               instance cannot be created in the stopped state; set this field on update to stop or start
+               the instance
         :param pulumi.Input[_builtins.str] uid: (string) - Id of the ref database instance
         :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
@@ -384,7 +408,8 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        creating an instance
         """
         return pulumi.get(self, "capacity")
 
@@ -433,7 +458,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="customTags")
     def custom_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]]:
         """
-        Custom tags associated with the instance. This field is only included on create and update responses
+        Custom tags associated with the instance. This field is only included on create and update responses.
+        An instance can have at most 10 tags; keys must be unique ignoring case
         """
         return pulumi.get(self, "custom_tags")
 
@@ -445,7 +471,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveCapacity")
     def effective_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
         This is an output only field that contains the value computed from the input field combined with
         server side defaults. Use the field without the effective_ prefix to set the value
         """
@@ -571,7 +597,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="enableReadableSecondaries")
     def enable_readable_secondaries(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to enable secondaries to serve read-only traffic. Defaults to false
+        Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        node_count greater than 1
         """
         return pulumi.get(self, "enable_readable_secondaries")
 
@@ -583,7 +610,9 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the instance. This is the unique identifier for the instance
+        The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        consecutive hyphens
         """
         return pulumi.get(self, "name")
 
@@ -608,8 +637,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="parentInstanceRef")
     def parent_instance_ref(self) -> pulumi.Input[Optional['DatabaseInstanceParentInstanceRefArgs']]:
         """
-        The ref of the parent instance. This is only available if the instance is
-        child instance.
+        The ref of the parent instance. This is only available if the instance is a
+        child instance. A child instance inherits custom_tags and usage_policy_id from
+        its parent and cannot set them.
         Input: For specifying the parent instance to create a child instance. Optional.
         Output: Only populated if provided as input to create a child instance
         """
@@ -647,8 +677,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-        of false will throw a bad request
+        Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+        false returns a bad request
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -711,7 +741,9 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def stopped(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to stop the instance. An input only param, see effective_stopped for the output
+        Whether to stop the instance. An input only param, see effective_stopped for the output. An
+        instance cannot be created in the stopped state; set this field on update to stop or start
+        the instance
         """
         return pulumi.get(self, "stopped")
 
@@ -845,24 +877,32 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+               creating an instance
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses.
+               An instance can have at most 10 tags; keys must be unique ignoring case
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
-        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
-        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+               node_count greater than 1
+        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+               characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+               consecutive hyphens
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
                1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
-        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
-               child instance.
+        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is a
+               child instance. A child instance inherits custom_tags and usage_policy_id from
+               its parent and cannot set them.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-               of false will throw a bad request
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+               false returns a bad request
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
-        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output. An
+               instance cannot be created in the stopped state; set this field on update to stop or start
+               the instance
         :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
         ...
@@ -1060,13 +1100,15 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+               creating an instance
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict', 'outputs.DatabaseInstanceChildInstanceRef']]]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
                parent instance
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
-        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses.
+               An instance can have at most 10 tags; keys must be unique ignoring case
+        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict', 'outputs.DatabaseInstanceEffectiveCustomTag']]]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
@@ -1093,18 +1135,22 @@ class DatabaseInstance(pulumi.CustomResource):
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
-        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
-        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+               node_count greater than 1
+        :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+               characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+               consecutive hyphens
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
                1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
-        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
-               child instance.
+        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is a
+               child instance. A child instance inherits custom_tags and usage_policy_id from
+               its parent and cannot set them.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
         :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-               of false will throw a bad request
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+               false returns a bad request
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
                enable_readable_secondaries is true
         :param pulumi.Input[_builtins.str] read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
@@ -1112,7 +1158,9 @@ class DatabaseInstance(pulumi.CustomResource):
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output. An
+               instance cannot be created in the stopped state; set this field on update to stop or start
+               the instance
         :param pulumi.Input[_builtins.str] uid: (string) - Id of the ref database instance
         :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
@@ -1216,7 +1264,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def capacity(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        creating an instance
         """
         return pulumi.get(self, "capacity")
 
@@ -1249,7 +1298,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="customTags")
     def custom_tags(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceCustomTag']]:
         """
-        Custom tags associated with the instance. This field is only included on create and update responses
+        Custom tags associated with the instance. This field is only included on create and update responses.
+        An instance can have at most 10 tags; keys must be unique ignoring case
         """
         return pulumi.get(self, "custom_tags")
 
@@ -1257,7 +1307,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveCapacity")
     def effective_capacity(self) -> pulumi.Output[_builtins.str]:
         """
-        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
         This is an output only field that contains the value computed from the input field combined with
         server side defaults. Use the field without the effective_ prefix to set the value
         """
@@ -1347,7 +1397,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="enableReadableSecondaries")
     def enable_readable_secondaries(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to enable secondaries to serve read-only traffic. Defaults to false
+        Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        node_count greater than 1
         """
         return pulumi.get(self, "enable_readable_secondaries")
 
@@ -1355,7 +1406,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the instance. This is the unique identifier for the instance
+        The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        consecutive hyphens
         """
         return pulumi.get(self, "name")
 
@@ -1372,8 +1425,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="parentInstanceRef")
     def parent_instance_ref(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceParentInstanceRef']]:
         """
-        The ref of the parent instance. This is only available if the instance is
-        child instance.
+        The ref of the parent instance. This is only available if the instance is a
+        child instance. A child instance inherits custom_tags and usage_policy_id from
+        its parent and cannot set them.
         Input: For specifying the parent instance to create a child instance. Optional.
         Output: Only populated if provided as input to create a child instance
         """
@@ -1399,8 +1453,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-        of false will throw a bad request
+        Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+        false returns a bad request
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -1443,7 +1497,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def stopped(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to stop the instance. An input only param, see effective_stopped for the output
+        Whether to stop the instance. An input only param, see effective_stopped for the output. An
+        instance cannot be created in the stopped state; set this field on update to stop or start
+        the instance
         """
         return pulumi.get(self, "stopped")
 

@@ -102,14 +102,14 @@ public class Sandbox extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Metadata associated with the sandbox
+     * Tags and other metadata associated with the sandbox
      * 
      */
     @Export(name="metadata", refs={SandboxMetadata.class}, tree="[0]")
     private Output</* @Nullable */ SandboxMetadata> metadata;
 
     /**
-     * @return Metadata associated with the sandbox
+     * @return Tags and other metadata associated with the sandbox
      * 
      */
     public Output<Optional<SandboxMetadata>> metadata() {
@@ -146,14 +146,20 @@ public class Sandbox extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * Client-supplied ID that becomes the final path segment of the resource name
+     * Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      * 
      */
     @Export(name="sandboxId", refs={String.class}, tree="[0]")
     private Output<String> sandboxId;
 
     /**
-     * @return Client-supplied ID that becomes the final path segment of the resource name
+     * @return Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      * 
      */
     public Output<String> sandboxId() {

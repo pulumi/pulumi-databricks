@@ -17,7 +17,7 @@ public final class GetExternalMetadatasPlainArgs extends com.pulumi.resources.In
 
     /**
      * Specifies the maximum number of external metadata objects to return in a single response.
-     * The value must be less than or equal to 1000
+     * The value must be less than or equal to 1000. Defaults to 1000 when omitted
      * 
      */
     @Import(name="pageSize")
@@ -25,7 +25,7 @@ public final class GetExternalMetadatasPlainArgs extends com.pulumi.resources.In
 
     /**
      * @return Specifies the maximum number of external metadata objects to return in a single response.
-     * The value must be less than or equal to 1000
+     * The value must be less than or equal to 1000. Defaults to 1000 when omitted
      * 
      */
     public Optional<Integer> pageSize() {
@@ -74,7 +74,7 @@ public final class GetExternalMetadatasPlainArgs extends com.pulumi.resources.In
 
         /**
          * @param pageSize Specifies the maximum number of external metadata objects to return in a single response.
-         * The value must be less than or equal to 1000
+         * The value must be less than or equal to 1000. Defaults to 1000 when omitted
          * 
          * @return builder
          * 

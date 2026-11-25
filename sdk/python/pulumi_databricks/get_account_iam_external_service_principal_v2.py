@@ -53,7 +53,7 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        (string) - The parent account ID, from Databricks
+        (string) - The ID of the account that contains the service principal
         """
         return pulumi.get(self, "account_id")
 
@@ -61,7 +61,7 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter(name="accountSpStatus")
     def account_sp_status(self) -> _builtins.str:
         """
-        (string) - The activity status of the service principal in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_sp_status")
 
@@ -69,7 +69,7 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> _builtins.str:
         """
-        (string) - Application ID of the service principal, from the customer's IdP
+        (string) - The service principal's application ID, from your IdP
         """
         return pulumi.get(self, "application_id")
 
@@ -77,7 +77,7 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
         """
-        (string) - Display name of the service principal, from the customer's IdP
+        (string) - The service principal's display name, from your IdP
         """
         return pulumi.get(self, "display_name")
 
@@ -85,7 +85,7 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter(name="externalServicePrincipalId")
     def external_service_principal_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the service principal in the customer's IdP
+        (string) - The ID of the service principal in your IdP
         """
         return pulumi.get(self, "external_service_principal_id")
 
@@ -93,7 +93,8 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter(name="internalId")
     def internal_id(self) -> _builtins.str:
         """
-        (string) - Internal servicePrincipalId of the service principal in Databricks
+        (string) - The Databricks ID of the service principal. Use it as the `service_principal_id` in the
+        service principal APIs
         """
         return pulumi.get(self, "internal_id")
 
@@ -101,10 +102,10 @@ class GetAccountIamExternalServicePrincipalV2Result:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the external service principal. The format depends on
-        the API that returned it:
-        - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-        - Workspace-scoped: external-service-principals/{external_service_principal_id}
+        (string) - The resource name of the external service principal, in one of these formats:
+        - Account APIs:
+          `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+        - Workspace APIs: `external-service-principals/{external_service_principal_id}`
         """
         return pulumi.get(self, "name")
 
@@ -127,7 +128,7 @@ class AwaitableGetAccountIamExternalServicePrincipalV2Result(GetAccountIamExtern
 def get_account_iam_external_service_principal_v2(name: Optional[_builtins.str] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamExternalServicePrincipalV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -151,10 +152,10 @@ def get_account_iam_external_service_principal_v2(name: Optional[_builtins.str] 
     ```
 
 
-    :param _builtins.str name: The resource name of the external service principal. The format depends on
-           the API that returned it:
-           - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-           - Workspace-scoped: external-service-principals/{external_service_principal_id}
+    :param _builtins.str name: The resource name of the external service principal, in one of these formats:
+           - Account APIs:
+             `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+           - Workspace APIs: `external-service-principals/{external_service_principal_id}`
     """
     __args__ = dict()
     __args__['name'] = name
@@ -172,7 +173,7 @@ def get_account_iam_external_service_principal_v2(name: Optional[_builtins.str] 
 def get_account_iam_external_service_principal_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamExternalServicePrincipalV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -196,10 +197,10 @@ def get_account_iam_external_service_principal_v2_output(name: pulumi.Input[Opti
     ```
 
 
-    :param _builtins.str name: The resource name of the external service principal. The format depends on
-           the API that returned it:
-           - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-           - Workspace-scoped: external-service-principals/{external_service_principal_id}
+    :param _builtins.str name: The resource name of the external service principal, in one of these formats:
+           - Account APIs:
+             `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+           - Workspace APIs: `external-service-principals/{external_service_principal_id}`
     """
     __args__ = dict()
     __args__['name'] = name

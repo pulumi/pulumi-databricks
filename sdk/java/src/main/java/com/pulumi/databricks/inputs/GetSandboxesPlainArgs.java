@@ -15,9 +15,19 @@ public final class GetSandboxesPlainArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetSandboxesPlainArgs Empty = new GetSandboxesPlainArgs();
 
+    /**
+     * Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+     * up to 1000 sandboxes; values above 5000 are reduced to 5000
+     * 
+     */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
+    /**
+     * @return Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+     * up to 1000 sandboxes; values above 5000 are reduced to 5000
+     * 
+     */
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -62,6 +72,13 @@ public final class GetSandboxesPlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetSandboxesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pageSize Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+         * up to 1000 sandboxes; values above 5000 are reduced to 5000
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
             return this;

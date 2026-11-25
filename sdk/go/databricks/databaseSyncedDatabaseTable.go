@@ -243,15 +243,16 @@ import (
 type DatabaseSyncedDatabaseTable struct {
 	pulumi.CustomResourceState
 
-	// (SyncedTableStatus) - Synced Table data synchronization status
+	// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+	// source, including the pipeline ID and the position of the last successful sync
 	DataSynchronizationStatus DatabaseSyncedDatabaseTableDataSynchronizationStatusOutput `pulumi:"dataSynchronizationStatus"`
 	// Name of the target database instance. This is required when creating synced database tables in standard catalogs.
 	// This is optional when creating synced database tables in registered catalogs. If this field is specified
 	// when creating synced database tables in registered catalogs, the database instance name MUST
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName pulumi.StringOutput `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+	// tables inside database catalogs it is the database instance associated with the catalog.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName pulumi.StringOutput `pulumi:"effectiveDatabaseInstanceName"`
@@ -268,13 +269,14 @@ type DatabaseSyncedDatabaseTable struct {
 	//
 	// When creating a synced table in a standard catalog, this field is required.
 	// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+	// If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
 	LogicalDatabaseName pulumi.StringOutput `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseSyncedDatabaseTableProviderConfigOutput `pulumi:"providerConfig"`
-	Spec           DatabaseSyncedDatabaseTableSpecPtrOutput        `pulumi:"spec"`
+	// Specifies the source table, the key columns and how the data synchronization pipeline runs
+	Spec DatabaseSyncedDatabaseTableSpecPtrOutput `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -311,15 +313,16 @@ func GetDatabaseSyncedDatabaseTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseSyncedDatabaseTable resources.
 type databaseSyncedDatabaseTableState struct {
-	// (SyncedTableStatus) - Synced Table data synchronization status
+	// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+	// source, including the pipeline ID and the position of the last successful sync
 	DataSynchronizationStatus *DatabaseSyncedDatabaseTableDataSynchronizationStatus `pulumi:"dataSynchronizationStatus"`
 	// Name of the target database instance. This is required when creating synced database tables in standard catalogs.
 	// This is optional when creating synced database tables in registered catalogs. If this field is specified
 	// when creating synced database tables in registered catalogs, the database instance name MUST
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName *string `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+	// tables inside database catalogs it is the database instance associated with the catalog.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName *string `pulumi:"effectiveDatabaseInstanceName"`
@@ -336,13 +339,14 @@ type databaseSyncedDatabaseTableState struct {
 	//
 	// When creating a synced table in a standard catalog, this field is required.
 	// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+	// If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
 	LogicalDatabaseName *string `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
-	Spec           *DatabaseSyncedDatabaseTableSpec           `pulumi:"spec"`
+	// Specifies the source table, the key columns and how the data synchronization pipeline runs
+	Spec *DatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -350,15 +354,16 @@ type databaseSyncedDatabaseTableState struct {
 }
 
 type DatabaseSyncedDatabaseTableState struct {
-	// (SyncedTableStatus) - Synced Table data synchronization status
+	// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+	// source, including the pipeline ID and the position of the last successful sync
 	DataSynchronizationStatus DatabaseSyncedDatabaseTableDataSynchronizationStatusPtrInput
 	// Name of the target database instance. This is required when creating synced database tables in standard catalogs.
 	// This is optional when creating synced database tables in registered catalogs. If this field is specified
 	// when creating synced database tables in registered catalogs, the database instance name MUST
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName pulumi.StringPtrInput
-	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+	// tables inside database catalogs it is the database instance associated with the catalog.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName pulumi.StringPtrInput
@@ -375,13 +380,14 @@ type DatabaseSyncedDatabaseTableState struct {
 	//
 	// When creating a synced table in a standard catalog, this field is required.
 	// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+	// If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
 	LogicalDatabaseName pulumi.StringPtrInput
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseSyncedDatabaseTableProviderConfigPtrInput
-	Spec           DatabaseSyncedDatabaseTableSpecPtrInput
+	// Specifies the source table, the key columns and how the data synchronization pipeline runs
+	Spec DatabaseSyncedDatabaseTableSpecPtrInput
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -413,13 +419,14 @@ type databaseSyncedDatabaseTableArgs struct {
 	//
 	// When creating a synced table in a standard catalog, this field is required.
 	// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+	// If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
 	LogicalDatabaseName *string `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
-	Spec           *DatabaseSyncedDatabaseTableSpec           `pulumi:"spec"`
+	// Specifies the source table, the key columns and how the data synchronization pipeline runs
+	Spec *DatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
@@ -438,13 +445,14 @@ type DatabaseSyncedDatabaseTableArgs struct {
 	//
 	// When creating a synced table in a standard catalog, this field is required.
 	// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+	// If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
 	LogicalDatabaseName pulumi.StringPtrInput
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseSyncedDatabaseTableProviderConfigPtrInput
-	Spec           DatabaseSyncedDatabaseTableSpecPtrInput
+	// Specifies the source table, the key columns and how the data synchronization pipeline runs
+	Spec DatabaseSyncedDatabaseTableSpecPtrInput
 }
 
 func (DatabaseSyncedDatabaseTableArgs) ElementType() reflect.Type {
@@ -534,7 +542,8 @@ func (o DatabaseSyncedDatabaseTableOutput) ToDatabaseSyncedDatabaseTableOutputWi
 	return o
 }
 
-// (SyncedTableStatus) - Synced Table data synchronization status
+// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+// source, including the pipeline ID and the position of the last successful sync
 func (o DatabaseSyncedDatabaseTableOutput) DataSynchronizationStatus() DatabaseSyncedDatabaseTableDataSynchronizationStatusOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) DatabaseSyncedDatabaseTableDataSynchronizationStatusOutput {
 		return v.DataSynchronizationStatus
@@ -549,8 +558,8 @@ func (o DatabaseSyncedDatabaseTableOutput) DatabaseInstanceName() pulumi.StringO
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringOutput { return v.DatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-// tables inside database catalogs is inferred database instance associated with the catalog.
+// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+// tables inside database catalogs it is the database instance associated with the catalog.
 // This is an output only field that contains the value computed from the input field combined with
 // server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseSyncedDatabaseTableOutput) EffectiveDatabaseInstanceName() pulumi.StringOutput {
@@ -573,7 +582,7 @@ func (o DatabaseSyncedDatabaseTableOutput) EffectiveLogicalDatabaseName() pulumi
 //
 // When creating a synced table in a standard catalog, this field is required.
 // In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+// If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
 func (o DatabaseSyncedDatabaseTableOutput) LogicalDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringOutput { return v.LogicalDatabaseName }).(pulumi.StringOutput)
 }
@@ -590,6 +599,7 @@ func (o DatabaseSyncedDatabaseTableOutput) ProviderConfig() DatabaseSyncedDataba
 	}).(DatabaseSyncedDatabaseTableProviderConfigOutput)
 }
 
+// Specifies the source table, the key columns and how the data synchronization pipeline runs
 func (o DatabaseSyncedDatabaseTableOutput) Spec() DatabaseSyncedDatabaseTableSpecPtrOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) DatabaseSyncedDatabaseTableSpecPtrOutput { return v.Spec }).(DatabaseSyncedDatabaseTableSpecPtrOutput)
 }

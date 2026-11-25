@@ -82,7 +82,8 @@ export class AgentKitManagedMemoryEntry extends pulumi.CustomResource {
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      */
     declare public readonly path: pulumi.Output<string>;
@@ -91,12 +92,14 @@ export class AgentKitManagedMemoryEntry extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.AgentKitManagedMemoryEntryProviderConfig>;
     /**
-     * Optional identifier for the session associated with this memory entry. When omitted, the
+     * Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor's sessions
      */
     declare public readonly sessionId: pulumi.Output<string | undefined>;
     /**
-     * Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      */
     declare public readonly sourceType: pulumi.Output<string | undefined>;
     /**
@@ -194,7 +197,8 @@ export interface AgentKitManagedMemoryEntryState {
      */
     parent?: pulumi.Input<string | undefined>;
     /**
-     * Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      */
     path?: pulumi.Input<string | undefined>;
@@ -203,12 +207,14 @@ export interface AgentKitManagedMemoryEntryState {
      */
     providerConfig?: pulumi.Input<inputs.AgentKitManagedMemoryEntryProviderConfig | undefined>;
     /**
-     * Optional identifier for the session associated with this memory entry. When omitted, the
+     * Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor's sessions
      */
     sessionId?: pulumi.Input<string | undefined>;
     /**
-     * Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      */
     sourceType?: pulumi.Input<string | undefined>;
     /**
@@ -243,7 +249,8 @@ export interface AgentKitManagedMemoryEntryArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      */
     path: pulumi.Input<string>;
@@ -252,12 +259,14 @@ export interface AgentKitManagedMemoryEntryArgs {
      */
     providerConfig?: pulumi.Input<inputs.AgentKitManagedMemoryEntryProviderConfig | undefined>;
     /**
-     * Optional identifier for the session associated with this memory entry. When omitted, the
+     * Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor's sessions
      */
     sessionId?: pulumi.Input<string | undefined>;
     /**
-     * Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      */
     sourceType?: pulumi.Input<string | undefined>;
 }

@@ -13,9 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
     /**
-     * @return Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * @return Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      * 
      */
     private @Nullable String plaintext;
@@ -32,9 +33,10 @@ public final class AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAcce
 
     private AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey() {}
     /**
-     * @return Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * @return Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      * 
      */
     public Optional<String> plaintext() {

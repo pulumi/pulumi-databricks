@@ -43,8 +43,9 @@ export interface GetAiGatewayModelServiceArgs {
      * Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -72,11 +73,11 @@ export interface GetAiGatewayModelServiceResult {
      */
     readonly createTime: string;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model service
      */
     readonly createdBy: string;
     /**
-     * (string) - Owner of the model service
+     * (string) - Username or group name of the model service owner
      */
     readonly effectiveOwner: string;
     /**
@@ -87,11 +88,13 @@ export interface GetAiGatewayModelServiceResult {
      */
     readonly etag: string;
     /**
-     * (string) - Metastore hosting the model service
+     * (string) - Unique identifier of the metastore that contains the model service
      */
     readonly metastoreId: string;
     /**
-     * (string) - User-facing label for this destination, used in routing references
+     * (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetAiGatewayModelServiceProviderConfig;
@@ -107,7 +110,7 @@ export interface GetAiGatewayModelServiceResult {
      */
     readonly updateTime: string;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model service
      */
     readonly updatedBy: string;
 }
@@ -148,8 +151,9 @@ export interface GetAiGatewayModelServiceOutputArgs {
      * Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: pulumi.Input<string>;
     /**

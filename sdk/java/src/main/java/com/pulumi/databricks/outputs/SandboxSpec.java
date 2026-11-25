@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SandboxSpec {
     /**
-     * @return Compute configuration (size, inactivity timeout) requested for the sandbox
+     * @return Compute settings requested for the sandbox, such as the inactivity timeout
      * 
      */
     private @Nullable SandboxSpecCompute compute;
     /**
-     * @return The execution environment to use for the sandbox
+     * @return Software environment for the sandbox, such as the container image it runs
      * 
      */
     private @Nullable SandboxSpecEnvironment environment;
 
     private SandboxSpec() {}
     /**
-     * @return Compute configuration (size, inactivity timeout) requested for the sandbox
+     * @return Compute settings requested for the sandbox, such as the inactivity timeout
      * 
      */
     public Optional<SandboxSpecCompute> compute() {
         return Optional.ofNullable(this.compute);
     }
     /**
-     * @return The execution environment to use for the sandbox
+     * @return Software environment for the sandbox, such as the container image it runs
      * 
      */
     public Optional<SandboxSpecEnvironment> environment() {

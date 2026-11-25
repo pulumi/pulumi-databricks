@@ -57,7 +57,7 @@ func GetExternalMetadatas(ctx *pulumi.Context, args *GetExternalMetadatasArgs, o
 // A collection of arguments for invoking getExternalMetadatas.
 type GetExternalMetadatasArgs struct {
 	// Specifies the maximum number of external metadata objects to return in a single response.
-	// The value must be less than or equal to 1000
+	// The value must be less than or equal to 1000. Defaults to 1000 when omitted
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetExternalMetadatasProviderConfig `pulumi:"providerConfig"`
@@ -78,7 +78,7 @@ func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOu
 // A collection of arguments for invoking getExternalMetadatas.
 type GetExternalMetadatasOutputArgs struct {
 	// Specifies the maximum number of external metadata objects to return in a single response.
-	// The value must be less than or equal to 1000
+	// The value must be less than or equal to 1000. Defaults to 1000 when omitted
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetExternalMetadatasProviderConfigPtrInput `pulumi:"providerConfig"`

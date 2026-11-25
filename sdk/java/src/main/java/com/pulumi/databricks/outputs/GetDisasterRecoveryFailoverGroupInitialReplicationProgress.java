@@ -11,14 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetDisasterRecoveryFailoverGroupInitialReplicationProgress {
     /**
-     * @return (integer) - Percent complete, 0-100
+     * @return (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      * 
      */
     private Integer completed;
 
     private GetDisasterRecoveryFailoverGroupInitialReplicationProgress() {}
     /**
-     * @return (integer) - Percent complete, 0-100
+     * @return (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      * 
      */
     public Integer completed() {

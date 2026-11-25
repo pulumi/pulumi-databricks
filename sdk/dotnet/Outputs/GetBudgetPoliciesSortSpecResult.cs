@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? Descending;
         /// <summary>
-        /// The filed to sort by. Possible values are: `POLICY_NAME`
+        /// The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
         /// </summary>
         public readonly string? Field;
 

@@ -42,6 +42,9 @@ export function getAlertsV2(args?: GetAlertsV2Args, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getAlertsV2.
  */
 export interface GetAlertsV2Args {
+    /**
+     * Maximum number of alerts to return per page. Values above 100 are coerced to 100
+     */
     pageSize?: number;
     /**
      * Configure the provider for management through account provider.
@@ -93,6 +96,9 @@ export function getAlertsV2Output(args?: GetAlertsV2OutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAlertsV2.
  */
 export interface GetAlertsV2OutputArgs {
+    /**
+     * Maximum number of alerts to return per page. Values above 100 are coerced to 100
+     */
     pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.

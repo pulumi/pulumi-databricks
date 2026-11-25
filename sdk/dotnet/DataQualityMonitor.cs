@@ -94,14 +94,15 @@ namespace Pulumi.Databricks
     public partial class DataQualityMonitor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Anomaly Detection Configuration, applicable to `Schema` object types
+        /// Anomaly detection settings. Required when `ObjectType` is `Schema`. When reading a `Table` monitor, this holds
+        /// the settings of the parent schema's monitor if the schema has one
         /// </summary>
         [Output("anomalyDetectionConfig")]
         public Output<Outputs.DataQualityMonitorAnomalyDetectionConfig?> AnomalyDetectionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Data Profiling Configuration, applicable to `Table` object types. Exactly one `Analysis Configuration`
-        /// must be present
+        /// Data profiling settings. Required when `ObjectType` is `Table`. Exactly one of `InferenceLog`, `TimeSeries`
+        /// or `Snapshot` must be set
         /// </summary>
         [Output("dataProfilingConfig")]
         public Output<Outputs.DataQualityMonitorDataProfilingConfig?> DataProfilingConfig { get; private set; } = null!;
@@ -179,14 +180,15 @@ namespace Pulumi.Databricks
     public sealed class DataQualityMonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Anomaly Detection Configuration, applicable to `Schema` object types
+        /// Anomaly detection settings. Required when `ObjectType` is `Schema`. When reading a `Table` monitor, this holds
+        /// the settings of the parent schema's monitor if the schema has one
         /// </summary>
         [Input("anomalyDetectionConfig")]
         public Input<Inputs.DataQualityMonitorAnomalyDetectionConfigArgs>? AnomalyDetectionConfig { get; set; }
 
         /// <summary>
-        /// Data Profiling Configuration, applicable to `Table` object types. Exactly one `Analysis Configuration`
-        /// must be present
+        /// Data profiling settings. Required when `ObjectType` is `Table`. Exactly one of `InferenceLog`, `TimeSeries`
+        /// or `Snapshot` must be set
         /// </summary>
         [Input("dataProfilingConfig")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigArgs>? DataProfilingConfig { get; set; }
@@ -226,14 +228,15 @@ namespace Pulumi.Databricks
     public sealed class DataQualityMonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Anomaly Detection Configuration, applicable to `Schema` object types
+        /// Anomaly detection settings. Required when `ObjectType` is `Schema`. When reading a `Table` monitor, this holds
+        /// the settings of the parent schema's monitor if the schema has one
         /// </summary>
         [Input("anomalyDetectionConfig")]
         public Input<Inputs.DataQualityMonitorAnomalyDetectionConfigGetArgs>? AnomalyDetectionConfig { get; set; }
 
         /// <summary>
-        /// Data Profiling Configuration, applicable to `Table` object types. Exactly one `Analysis Configuration`
-        /// must be present
+        /// Data profiling settings. Required when `ObjectType` is `Table`. Exactly one of `InferenceLog`, `TimeSeries`
+        /// or `Snapshot` must be set
         /// </summary>
         [Input("dataProfilingConfig")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigGetArgs>? DataProfilingConfig { get; set; }

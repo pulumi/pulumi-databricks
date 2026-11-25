@@ -64,11 +64,12 @@ export interface GetAlertV2Result {
      */
     readonly createTime: string;
     /**
-     * (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * (string) - Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      */
     readonly customDescription: string;
     /**
-     * (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      */
     readonly customSummary: string;
     /**
@@ -86,7 +87,7 @@ export interface GetAlertV2Result {
      */
     readonly effectiveRunAs: outputs.GetAlertV2EffectiveRunAs;
     /**
-     * (AlertV2Evaluation)
+     * (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
      */
     readonly evaluation: outputs.GetAlertV2Evaluation;
     /**
@@ -94,7 +95,7 @@ export interface GetAlertV2Result {
      */
     readonly id: string;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+     * (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
      */
     readonly lifecycleState: string;
     /**
@@ -123,13 +124,13 @@ export interface GetAlertV2Result {
      */
     readonly runAs: outputs.GetAlertV2RunAs;
     /**
-     * (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * (string, deprecated) - Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
     readonly runAsUserName: string;
     /**
-     * (CronSchedule)
+     * (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
      */
     readonly schedule: outputs.GetAlertV2Schedule;
     /**

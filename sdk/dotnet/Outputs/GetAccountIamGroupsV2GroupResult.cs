@@ -14,30 +14,32 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountIamGroupsV2GroupResult
     {
         /// <summary>
-        /// (string) - The parent account ID for group in Databricks
+        /// (string) - The ID of the account that contains the group
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - ExternalId of the group in the customer's IdP
+        /// (string) - The ID of the group in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (string) - Internal group ID of the group in Databricks
+        /// (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+        /// is created, and it is the `{group_id}` segment of `Name`
         /// </summary>
         public readonly string GroupId;
         /// <summary>
-        /// (string) - Display name of the group
+        /// (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+        /// shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+        /// group that Databricks manages, such as `Admins` or `Users`
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// (string) - The resource name of the group. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// (string) - The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The parent resource name of the account whose groups to list.
-        /// Format: accounts/{account_id}
+        /// The resource name of the account to list groups in, in the format `accounts/{account_id}`
         /// </summary>
         public readonly string Parent;
 

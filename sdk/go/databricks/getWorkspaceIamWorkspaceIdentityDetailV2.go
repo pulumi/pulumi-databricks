@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -56,8 +56,8 @@ func LookupWorkspaceIamWorkspaceIdentityDetailV2(ctx *pulumi.Context, args *Look
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceIdentityDetailV2.
 type LookupWorkspaceIamWorkspaceIdentityDetailV2Args struct {
-	// The resource name of the workspace identity detail.
-	// Format: principals/{principal_id}/workspace-identity-detail
+	// The resource name of the workspace identity detail, in the format
+	// `principals/{principal_id}/workspace-identity-detail`
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig `pulumi:"providerConfig"`
@@ -65,17 +65,17 @@ type LookupWorkspaceIamWorkspaceIdentityDetailV2Args struct {
 
 // A collection of values returned by getWorkspaceIamWorkspaceIdentityDetailV2.
 type LookupWorkspaceIamWorkspaceIdentityDetailV2Result struct {
-	// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+	// (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
 	AssignmentType string `pulumi:"assignmentType"`
-	// (string) - The resource name of the workspace identity detail.
-	// Format: principals/{principal_id}/workspace-identity-detail
+	// (string) - The resource name of the workspace identity detail, in the format
+	// `principals/{principal_id}/workspace-identity-detail`
 	Name string `pulumi:"name"`
-	// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+	// (integer) - The Databricks ID of the user, service principal, or group
 	PrincipalId string `pulumi:"principalId"`
-	// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	// (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 	PrincipalType  string                                                  `pulumi:"principalType"`
 	ProviderConfig *GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig `pulumi:"providerConfig"`
-	// (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+	// (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
 	WorkspaceIdentityStatus string `pulumi:"workspaceIdentityStatus"`
 }
 
@@ -86,8 +86,8 @@ func LookupWorkspaceIamWorkspaceIdentityDetailV2Output(ctx *pulumi.Context, args
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceIdentityDetailV2.
 type LookupWorkspaceIamWorkspaceIdentityDetailV2OutputArgs struct {
-	// The resource name of the workspace identity detail.
-	// Format: principals/{principal_id}/workspace-identity-detail
+	// The resource name of the workspace identity detail, in the format
+	// `principals/{principal_id}/workspace-identity-detail`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -112,23 +112,23 @@ func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) ToLookupWorkspa
 	return o
 }
 
-// (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+// (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
 func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) AssignmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.AssignmentType }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the workspace identity detail.
-// Format: principals/{principal_id}/workspace-identity-detail
+// (string) - The resource name of the workspace identity detail, in the format
+// `principals/{principal_id}/workspace-identity-detail`
 func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (integer) - The internal ID of the principal (user/sp/group) in Databricks
+// (integer) - The Databricks ID of the user, service principal, or group
 func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+// (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
 func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.PrincipalType }).(pulumi.StringOutput)
 }
@@ -139,7 +139,7 @@ func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) ProviderConfig(
 	}).(GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigPtrOutput)
 }
 
-// (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+// (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
 func (o LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput) WorkspaceIdentityStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceIamWorkspaceIdentityDetailV2Result) string { return v.WorkspaceIdentityStatus }).(pulumi.StringOutput)
 }

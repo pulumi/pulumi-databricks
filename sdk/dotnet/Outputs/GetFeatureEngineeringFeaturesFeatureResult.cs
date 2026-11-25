@@ -68,6 +68,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY&lt;STRING&gt;", "STRUCT&lt;name:STRING&gt;")
+        /// </summary>
+        public readonly string OutputTypeText;
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult? ProviderConfig;
@@ -112,6 +116,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            string outputTypeText,
+
             Outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult? providerConfig,
 
             string schemaName,
@@ -133,6 +139,7 @@ namespace Pulumi.Databricks.Outputs
             Inputs = inputs;
             LineageContext = lineageContext;
             Name = name;
+            OutputTypeText = outputTypeText;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;
             Source = source;

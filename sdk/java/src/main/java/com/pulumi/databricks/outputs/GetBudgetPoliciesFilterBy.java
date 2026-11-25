@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetBudgetPoliciesFilterBy {
     /**
-     * @return The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * @return Deprecated: This field is ignored. Creator filtering will be removed in a future version
      * 
      */
     private @Nullable Integer creatorUserId;
@@ -37,8 +36,7 @@ public final class GetBudgetPoliciesFilterBy {
 
     private GetBudgetPoliciesFilterBy() {}
     /**
-     * @return The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * @return Deprecated: This field is ignored. Creator filtering will be removed in a future version
      * 
      */
     public Optional<Integer> creatorUserId() {

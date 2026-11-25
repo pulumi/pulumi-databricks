@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceIamUserV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceIamUserV2Result>("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", args ?? new GetWorkspaceIamUserV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamUserV2Result>("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", args ?? new GetWorkspaceIamUserV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -112,9 +112,9 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamUserV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the user. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/users/{user_id}
-        /// - Workspace-scoped: users/{user_id}
+        /// The resource name of the user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/users/{user_id}`
+        /// - Workspace APIs: `users/{user_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -134,9 +134,9 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamUserV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the user. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/users/{user_id}
-        /// - Workspace-scoped: users/{user_id}
+        /// The resource name of the user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/users/{user_id}`
+        /// - Workspace APIs: `users/{user_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -158,39 +158,41 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamUserV2Result
     {
         /// <summary>
-        /// (string) - The accountId parent of the user in Databricks
+        /// (string) - The ID of the account that contains the user
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// (string) - Whether the user is active in the account. New users are active unless you set this to
+        /// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         public readonly string AccountUserStatus;
         /// <summary>
-        /// (string) - ExternalId of the user in the customer's IdP
+        /// (string) - The ID of the user in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (UserFullName)
+        /// (UserFullName) - The user's name
         /// </summary>
         public readonly Outputs.GetWorkspaceIamUserV2FullNameResult FullName;
         /// <summary>
-        /// (string) - The resource name of the user. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/users/{user_id}
-        /// - Workspace-scoped: users/{user_id}
+        /// (string) - The resource name of the user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/users/{user_id}`
+        /// - Workspace APIs: `users/{user_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// (string) - The resource name of the account that contains the user, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string Parent;
         public readonly Outputs.GetWorkspaceIamUserV2ProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - Internal userId of the user in Databricks
+        /// (string) - The Databricks ID of the user
         /// </summary>
         public readonly string UserId;
         /// <summary>
-        /// (string) - Username/email of the user
+        /// (string) - The user's username, which is their email address. It can't be changed after the user is
+        /// created
         /// </summary>
         public readonly string Username;
 

@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
+ * &gt; **Note** Write-Only argument `optionsWo` is available to supply sensitive options (such as `password`, `clientSecret`, private keys or certificates) without storing them in the Pulumi state. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+ * 
  * Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
  * 
  * - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
@@ -334,6 +336,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Create a connection to a MySQL database without storing credentials in the Pulumi state
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mysql = new Connection("mysql", ConnectionArgs.builder()
+ *             .name("mysql_connection")
+ *             .connectionType("MYSQL")
+ *             .options(Map.ofEntries(
+ *                 Map.entry("host", "test.mysql.database.azure.com"),
+ *                 Map.entry("port", "3306")
+ *             ))
+ *             .optionsWo(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("user", mysqlUser),
+ *                     jsonProperty("password", mysqlPassword)
+ *                 )))
+ *             .optionsWoVersion(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Create a Kafka connection using mTLS, with the client private key and other credentials read from an ephemeral resource, so they are never stored in the plan or state
+ * 
  */
 @ResourceType(type="databricks:index/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
@@ -492,6 +541,40 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can&#39;t be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     * 
+     * &gt; Pulumi can&#39;t detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren&#39;t stored in the state. Changing `optionsWo` alone doesn&#39;t show up in the plan either: increment `optionsWoVersion` to apply it.
+     * 
+     */
+    @Export(name="optionsWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> optionsWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can&#39;t be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     * 
+     * &gt; Pulumi can&#39;t detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren&#39;t stored in the state. Changing `optionsWo` alone doesn&#39;t show up in the plan either: increment `optionsWoVersion` to apply it.
+     * 
+     */
+    public Output<Optional<String>> optionsWo() {
+        return Codegen.optional(this.optionsWo);
+    }
+    /**
+     * Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     * 
+     */
+    @Export(name="optionsWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> optionsWoVersion;
+
+    /**
+     * @return Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     * 
+     */
+    public Output<Optional<Integer>> optionsWoVersion() {
+        return Codegen.optional(this.optionsWoVersion);
+    }
+    /**
      * Username of current owner of the connection.
      * 
      */
@@ -575,9 +658,17 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<Boolean> readOnly() {
         return this.readOnly;
     }
+    /**
+     * A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret&#39;s value is supplied as the value of that option. A key can&#39;t appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     * 
+     */
     @Export(name="secrets", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> secrets;
 
+    /**
+     * @return A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret&#39;s value is supplied as the value of that option. A key can&#39;t appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     * 
+     */
     public Output<Optional<Map<String,String>>> secrets() {
         return Codegen.optional(this.secrets);
     }
@@ -678,7 +769,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "options"
+                "options",
+                "optionsWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

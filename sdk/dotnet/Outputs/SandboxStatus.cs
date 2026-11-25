@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SandboxStatus
     {
         /// <summary>
-        /// (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+        /// (string) - Lifecycle state of the sandbox.
         /// </summary>
         public readonly string? State;
 

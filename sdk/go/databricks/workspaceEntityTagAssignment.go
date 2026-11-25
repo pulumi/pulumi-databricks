@@ -84,7 +84,7 @@ type WorkspaceEntityTagAssignment struct {
 	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigOutput `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
-	// The value of the tag
+	// The value of the tag. If the value is omitted, the tag is assigned with its key only
 	TagValue pulumi.StringPtrOutput `pulumi:"tagValue"`
 }
 
@@ -135,7 +135,7 @@ type workspaceEntityTagAssignmentState struct {
 	ProviderConfig *WorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey *string `pulumi:"tagKey"`
-	// The value of the tag
+	// The value of the tag. If the value is omitted, the tag is assigned with its key only
 	TagValue *string `pulumi:"tagValue"`
 }
 
@@ -148,7 +148,7 @@ type WorkspaceEntityTagAssignmentState struct {
 	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrInput
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringPtrInput
-	// The value of the tag
+	// The value of the tag. If the value is omitted, the tag is assigned with its key only
 	TagValue pulumi.StringPtrInput
 }
 
@@ -171,7 +171,7 @@ type workspaceEntityTagAssignmentArgs struct {
 	ProviderConfig *WorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
-	// The value of the tag
+	// The value of the tag. If the value is omitted, the tag is assigned with its key only
 	TagValue *string `pulumi:"tagValue"`
 }
 
@@ -185,7 +185,7 @@ type WorkspaceEntityTagAssignmentArgs struct {
 	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrInput
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringInput
-	// The value of the tag
+	// The value of the tag. If the value is omitted, the tag is assigned with its key only
 	TagValue pulumi.StringPtrInput
 }
 
@@ -298,7 +298,7 @@ func (o WorkspaceEntityTagAssignmentOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringOutput { return v.TagKey }).(pulumi.StringOutput)
 }
 
-// The value of the tag
+// The value of the tag. If the value is omitted, the tag is assigned with its key only
 func (o WorkspaceEntityTagAssignmentOutput) TagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringPtrOutput { return v.TagValue }).(pulumi.StringPtrOutput)
 }

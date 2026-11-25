@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
     /// 
@@ -25,9 +25,9 @@ namespace Pulumi.Databricks
     /// 
     /// If you're unsure of the exact value, find the role in the Lakebase UI (or list the branch's roles with the Postgres API) and read its `RoleId` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `ReplaceExisting = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
     /// 
-    /// `ReplaceExisting = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+    /// `ReplaceExisting = true` only affects the initial adoption. After the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual role**, not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
     /// 
-    /// `spec.membership_roles` overwrites the role's memberships on every apply. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
+    /// When Pulumi updates a Role with a non-null spec, `spec.membership_roles` replaces its memberships. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -287,7 +287,7 @@ namespace Pulumi.Databricks
     public partial class PostgresRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was created
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -321,7 +321,9 @@ namespace Pulumi.Databricks
         /// Attributes omitted from the request retain their current values.
         /// Set an attribute explicitly to false to disable it.
         /// `IdentityType`, `AuthMethod`, and `PostgresRole` retain their
-        /// existing values; supplied values for these fields are ignored.
+        /// existing values. Omit these fields or supply their current values.
+        /// A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+        /// the entire request, including changes to mutable fields.
         /// `MembershipRoles` is overwritten, not merged. Leaving
         /// `MembershipRoles` empty clears all of the role's existing memberships,
         /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -337,10 +339,14 @@ namespace Pulumi.Databricks
         public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
-        /// The spec contains the role configuration, including identity type, authentication method, and role attributes
+        /// The spec contains the role configuration, including identity type, authentication method, and role attributes.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Output("spec")]
-        public Output<Outputs.PostgresRoleSpec> Spec { get; private set; } = null!;
+        public Output<Outputs.PostgresRoleSpec?> Spec { get; private set; } = null!;
 
         /// <summary>
         /// (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -349,7 +355,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresRoleStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was last updated
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -422,7 +428,9 @@ namespace Pulumi.Databricks
         /// Attributes omitted from the request retain their current values.
         /// Set an attribute explicitly to false to disable it.
         /// `IdentityType`, `AuthMethod`, and `PostgresRole` retain their
-        /// existing values; supplied values for these fields are ignored.
+        /// existing values. Omit these fields or supply their current values.
+        /// A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+        /// the entire request, including changes to mutable fields.
         /// `MembershipRoles` is overwritten, not merged. Leaving
         /// `MembershipRoles` empty clears all of the role's existing memberships,
         /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -438,7 +446,11 @@ namespace Pulumi.Databricks
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// The spec contains the role configuration, including identity type, authentication method, and role attributes
+        /// The spec contains the role configuration, including identity type, authentication method, and role attributes.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresRoleSpecArgs>? Spec { get; set; }
@@ -452,7 +464,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was created
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -486,7 +498,9 @@ namespace Pulumi.Databricks
         /// Attributes omitted from the request retain their current values.
         /// Set an attribute explicitly to false to disable it.
         /// `IdentityType`, `AuthMethod`, and `PostgresRole` retain their
-        /// existing values; supplied values for these fields are ignored.
+        /// existing values. Omit these fields or supply their current values.
+        /// A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+        /// the entire request, including changes to mutable fields.
         /// `MembershipRoles` is overwritten, not merged. Leaving
         /// `MembershipRoles` empty clears all of the role's existing memberships,
         /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -502,7 +516,11 @@ namespace Pulumi.Databricks
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// The spec contains the role configuration, including identity type, authentication method, and role attributes
+        /// The spec contains the role configuration, including identity type, authentication method, and role attributes.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresRoleSpecGetArgs>? Spec { get; set; }
@@ -514,7 +532,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresRoleStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was last updated
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

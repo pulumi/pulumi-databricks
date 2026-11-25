@@ -17,14 +17,14 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
     public static final GetRfaAccessRequestDestinationsPlainArgs Empty = new GetRfaAccessRequestDestinationsPlainArgs();
 
     /**
-     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * The full name of the securable, repeated from **securable**
      * 
      */
     @Import(name="fullName", required=true)
     private String fullName;
 
     /**
-     * @return The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * @return The full name of the securable, repeated from **securable**
      * 
      */
     public String fullName() {
@@ -47,14 +47,14 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
     }
 
     /**
-     * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * The type of the securable, repeated from **securable** as a plain string
      * 
      */
     @Import(name="securableType", required=true)
     private String securableType;
 
     /**
-     * @return The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * @return The type of the securable, repeated from **securable** as a plain string
      * 
      */
     public String securableType() {
@@ -88,7 +88,7 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param fullName The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * @param fullName The full name of the securable, repeated from **securable**
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param securableType The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+         * @param securableType The type of the securable, repeated from **securable** as a plain string
          * 
          * @return builder
          * 

@@ -21,8 +21,9 @@ public final class GetAiGatewayModelServiceArgs extends com.pulumi.resources.Inv
      * Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     @Import(name="name", required=true)
@@ -32,8 +33,9 @@ public final class GetAiGatewayModelServiceArgs extends com.pulumi.resources.Inv
      * @return Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     public Output<String> name() {
@@ -84,8 +86,9 @@ public final class GetAiGatewayModelServiceArgs extends com.pulumi.resources.Inv
          * @param name Resource name of the model service.
          * Format: `model-services/{catalog}.{schema}.{model_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelServiceId`; it is required and immutable on Update,
+         * Get, and Delete
          * 
          * @return builder
          * 
@@ -99,8 +102,9 @@ public final class GetAiGatewayModelServiceArgs extends com.pulumi.resources.Inv
          * @param name Resource name of the model service.
          * Format: `model-services/{catalog}.{schema}.{model_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelServiceId`; it is required and immutable on Update,
+         * Get, and Delete
          * 
          * @return builder
          * 

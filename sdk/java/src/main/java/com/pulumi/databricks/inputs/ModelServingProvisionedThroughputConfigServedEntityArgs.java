@@ -85,6 +85,13 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
         return this.provisionedModelUnits;
     }
 
+    @Import(name="ptTerm")
+    private @Nullable Output<String> ptTerm;
+
+    public Optional<Output<String>> ptTerm() {
+        return Optional.ofNullable(this.ptTerm);
+    }
+
     private ModelServingProvisionedThroughputConfigServedEntityArgs() {}
 
     private ModelServingProvisionedThroughputConfigServedEntityArgs(ModelServingProvisionedThroughputConfigServedEntityArgs $) {
@@ -93,6 +100,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
         this.entityVersion = $.entityVersion;
         this.name = $.name;
         this.provisionedModelUnits = $.provisionedModelUnits;
+        this.ptTerm = $.ptTerm;
     }
 
     public static Builder builder() {
@@ -204,6 +212,15 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
          */
         public Builder provisionedModelUnits(Integer provisionedModelUnits) {
             return provisionedModelUnits(Output.of(provisionedModelUnits));
+        }
+
+        public Builder ptTerm(@Nullable Output<String> ptTerm) {
+            $.ptTerm = ptTerm;
+            return this;
+        }
+
+        public Builder ptTerm(String ptTerm) {
+            return ptTerm(Output.of(ptTerm));
         }
 
         public ModelServingProvisionedThroughputConfigServedEntityArgs build() {

@@ -51,6 +51,9 @@ export interface GetTagPolicyArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetTagPolicyProviderConfig;
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     */
     tagKey: string;
 }
 
@@ -63,16 +66,16 @@ export interface GetTagPolicyResult {
      */
     readonly createTime: string;
     /**
-     * (string)
+     * (string) - A description of the governed tag, such as its purpose or the meaning of its values
      */
     readonly description: string;
     /**
-     * (string)
+     * (string) - The unique identifier of the tag policy, generated when the policy is created
      */
     readonly id: string;
     readonly providerConfig?: outputs.GetTagPolicyProviderConfig;
     /**
-     * (string)
+     * (string) - The tag key that this policy governs. Tag keys are case-sensitive
      */
     readonly tagKey: string;
     /**
@@ -80,7 +83,8 @@ export interface GetTagPolicyResult {
      */
     readonly updateTime: string;
     /**
-     * (list of Value)
+     * (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
      */
     readonly values: outputs.GetTagPolicyValue[];
 }
@@ -129,5 +133,8 @@ export interface GetTagPolicyOutputArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.GetTagPolicyProviderConfigArgs | undefined>;
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     */
     tagKey: pulumi.Input<string>;
 }

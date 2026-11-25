@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresRole
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresRoleResult>("databricks:index/getPostgresRole:getPostgresRole", args ?? new GetPostgresRoleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresRoleResult>("databricks:index/getPostgresRole:getPostgresRole", args ?? new GetPostgresRoleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -168,7 +168,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresRoleResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -187,7 +187,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string RoleId;
         /// <summary>
-        /// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+        /// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
         /// </summary>
         public readonly Outputs.GetPostgresRoleSpecResult Spec;
         /// <summary>
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetPostgresRoleStatusResult Status;
         /// <summary>
-        /// (string)
+        /// (string) - A timestamp indicating when the role was last updated
         /// </summary>
         public readonly string UpdateTime;
 

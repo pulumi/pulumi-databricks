@@ -35,14 +35,14 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     public Optional<Output<String>> endpointId() {
@@ -99,14 +99,18 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If true, update the endpoint if it already exists instead of returning an error
+     * If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+     * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      * 
      */
     @Import(name="replaceExisting")
     private @Nullable Output<Boolean> replaceExisting;
 
     /**
-     * @return If true, update the endpoint if it already exists instead of returning an error
+     * @return If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+     * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      * 
      */
     public Optional<Output<Boolean>> replaceExisting() {
@@ -114,14 +118,24 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresEndpointSpecArgs> spec;
 
     /**
-     * @return The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * @return The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresEndpointSpecArgs>> spec() {
@@ -129,14 +143,16 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (EndpointStatus) - Current operational status of the compute endpoint
+     * (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      * 
      */
     @Import(name="status")
     private @Nullable Output<PostgresEndpointStatusArgs> status;
 
     /**
-     * @return (EndpointStatus) - Current operational status of the compute endpoint
+     * @return (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      * 
      */
     public Optional<Output<PostgresEndpointStatusArgs>> status() {
@@ -144,14 +160,16 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - System-generated unique ID for the endpoint
+     * (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string) - System-generated unique ID for the endpoint
+     * @return (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
      * 
      */
     public Optional<Output<String>> uid() {
@@ -228,7 +246,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointId The part of the name, chosen by the user when the resource was created
+         * @param endpointId The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -239,7 +257,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointId The part of the name, chosen by the user when the resource was created
+         * @param endpointId The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -316,7 +334,9 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error
+         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+         * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+         * as an update. Use this to configure the read-write endpoint that was created together with the branch
          * 
          * @return builder
          * 
@@ -327,7 +347,9 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error
+         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+         * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+         * as an update. Use this to configure the read-write endpoint that was created together with the branch
          * 
          * @return builder
          * 
@@ -337,7 +359,12 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+         * @param spec The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+         * changed after creation. See `status` for the configuration that is currently in effect.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -348,7 +375,12 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+         * @param spec The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+         * changed after creation. See `status` for the configuration that is currently in effect.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -358,7 +390,8 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status (EndpointStatus) - Current operational status of the compute endpoint
+         * @param status (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+         * system, including the hostnames to connect to
          * 
          * @return builder
          * 
@@ -369,7 +402,8 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status (EndpointStatus) - Current operational status of the compute endpoint
+         * @param status (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+         * system, including the hostnames to connect to
          * 
          * @return builder
          * 
@@ -379,7 +413,8 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param uid (string) - System-generated unique ID for the endpoint
+         * @param uid (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+         * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
          * 
          * @return builder
          * 
@@ -390,7 +425,8 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param uid (string) - System-generated unique ID for the endpoint
+         * @param uid (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+         * user-chosen endpoint ID. The endpoint&#39;s connection hostnames are based on this ID
          * 
          * @return builder
          * 

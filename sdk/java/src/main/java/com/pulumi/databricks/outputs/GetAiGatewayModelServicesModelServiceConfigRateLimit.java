@@ -27,7 +27,7 @@ public final class GetAiGatewayModelServicesModelServiceConfigRateLimit {
      */
     private @Nullable String principal;
     /**
-     * @return (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * @return (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      * 
      */
     private String renewalPeriod;
@@ -63,7 +63,7 @@ public final class GetAiGatewayModelServicesModelServiceConfigRateLimit {
         return Optional.ofNullable(this.principal);
     }
     /**
-     * @return (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * @return (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      * 
      */
     public String renewalPeriod() {

@@ -19,14 +19,16 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
     public static final PostgresCatalogState Empty = new PostgresCatalogState();
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     @Import(name="catalogId")
     private @Nullable Output<String> catalogId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     public Optional<Output<String>> catalogId() {
@@ -79,14 +81,16 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The desired state of the Catalog
+     * The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresCatalogSpecArgs> spec;
 
     /**
-     * @return The desired state of the Catalog
+     * @return The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     public Optional<Output<PostgresCatalogSpecArgs>> spec() {
@@ -109,14 +113,14 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string) - System-generated unique identifier for the catalog
+     * (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string) - System-generated unique identifier for the catalog
+     * @return (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      * 
      */
     public Optional<Output<String>> uid() {
@@ -170,7 +174,8 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param catalogId The part of the name, chosen by the user when the resource was created
+         * @param catalogId The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+         * last segment of the name field
          * 
          * @return builder
          * 
@@ -181,7 +186,8 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param catalogId The part of the name, chosen by the user when the resource was created
+         * @param catalogId The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+         * last segment of the name field
          * 
          * @return builder
          * 
@@ -254,7 +260,8 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The desired state of the Catalog
+         * @param spec The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+         * the catalog is created
          * 
          * @return builder
          * 
@@ -265,7 +272,8 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The desired state of the Catalog
+         * @param spec The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+         * the catalog is created
          * 
          * @return builder
          * 
@@ -296,7 +304,7 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uid (string) - System-generated unique identifier for the catalog
+         * @param uid (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
          * 
          * @return builder
          * 
@@ -307,7 +315,7 @@ public final class PostgresCatalogState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uid (string) - System-generated unique identifier for the catalog
+         * @param uid (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
          * 
          * @return builder
          * 

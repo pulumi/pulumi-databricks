@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetAppAppActiveDeployment;
 import com.pulumi.databricks.outputs.GetAppAppAppStatus;
 import com.pulumi.databricks.outputs.GetAppAppComputeStatus;
 import com.pulumi.databricks.outputs.GetAppAppDefaultGitSource;
+import com.pulumi.databricks.outputs.GetAppAppEffectiveResource;
 import com.pulumi.databricks.outputs.GetAppAppGitRepository;
 import com.pulumi.databricks.outputs.GetAppAppGitSource;
 import com.pulumi.databricks.outputs.GetAppAppPendingDeployment;
@@ -77,6 +78,7 @@ public final class GetAppApp {
      * 
      */
     private String effectiveBudgetPolicyId;
+    private List<GetAppAppEffectiveResource> effectiveResources;
     /**
      * @return The effective usage policy ID.
      * 
@@ -265,6 +267,9 @@ public final class GetAppApp {
     public String effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    public List<GetAppAppEffectiveResource> effectiveResources() {
+        return this.effectiveResources;
+    }
     /**
      * @return The effective usage policy ID.
      * 
@@ -441,6 +446,7 @@ public final class GetAppApp {
         private String defaultSourceCodePath;
         private @Nullable String description;
         private String effectiveBudgetPolicyId;
+        private List<GetAppAppEffectiveResource> effectiveResources;
         private String effectiveUsagePolicyId;
         private List<String> effectiveUserApiScopes;
         private @Nullable Boolean forwardUserAccessToken;
@@ -480,6 +486,7 @@ public final class GetAppApp {
     	      this.defaultSourceCodePath = defaults.defaultSourceCodePath;
     	      this.description = defaults.description;
     	      this.effectiveBudgetPolicyId = defaults.effectiveBudgetPolicyId;
+    	      this.effectiveResources = defaults.effectiveResources;
     	      this.effectiveUsagePolicyId = defaults.effectiveUsagePolicyId;
     	      this.effectiveUserApiScopes = defaults.effectiveUserApiScopes;
     	      this.forwardUserAccessToken = defaults.forwardUserAccessToken;
@@ -598,6 +605,17 @@ public final class GetAppApp {
             }
             this.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveResources(List<GetAppAppEffectiveResource> effectiveResources) {
+            if (effectiveResources == null) {
+              throw new MissingRequiredPropertyException("GetAppApp", "effectiveResources");
+            }
+            this.effectiveResources = effectiveResources;
+            return this;
+        }
+        public Builder effectiveResources(GetAppAppEffectiveResource... effectiveResources) {
+            return effectiveResources(List.of(effectiveResources));
         }
         @CustomType.Setter
         public Builder effectiveUsagePolicyId(String effectiveUsagePolicyId) {
@@ -796,6 +814,7 @@ public final class GetAppApp {
             _resultValue.defaultSourceCodePath = defaultSourceCodePath;
             _resultValue.description = description;
             _resultValue.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            _resultValue.effectiveResources = effectiveResources;
             _resultValue.effectiveUsagePolicyId = effectiveUsagePolicyId;
             _resultValue.effectiveUserApiScopes = effectiveUserApiScopes;
             _resultValue.forwardUserAccessToken = forwardUserAccessToken;

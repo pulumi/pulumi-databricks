@@ -66,15 +66,16 @@ type LookupDatabaseSyncedDatabaseTableArgs struct {
 
 // A collection of values returned by getDatabaseSyncedDatabaseTable.
 type LookupDatabaseSyncedDatabaseTableResult struct {
-	// (SyncedTableStatus) - Synced Table data synchronization status
+	// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+	// source, including the pipeline ID and the position of the last successful sync
 	DataSynchronizationStatus GetDatabaseSyncedDatabaseTableDataSynchronizationStatus `pulumi:"dataSynchronizationStatus"`
 	// (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
 	// This is optional when creating synced database tables in registered catalogs. If this field is specified
 	// when creating synced database tables in registered catalogs, the database instance name MUST
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+	// tables inside database catalogs it is the database instance associated with the catalog.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName string `pulumi:"effectiveDatabaseInstanceName"`
@@ -87,7 +88,7 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 	// (string) - Full three-part (catalog, schema, table) name of the table
 	Name           string                                        `pulumi:"name"`
 	ProviderConfig *GetDatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
-	// (SyncedTableSpec)
+	// (SyncedTableSpec) - Specifies the source table, the key columns and how the data synchronization pipeline runs
 	Spec GetDatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
@@ -127,7 +128,8 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) ToLookupDatabaseSyncedDat
 	return o
 }
 
-// (SyncedTableStatus) - Synced Table data synchronization status
+// (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+// source, including the pipeline ID and the position of the last successful sync
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) DataSynchronizationStatus() GetDatabaseSyncedDatabaseTableDataSynchronizationStatusOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) GetDatabaseSyncedDatabaseTableDataSynchronizationStatus {
 		return v.DataSynchronizationStatus
@@ -142,8 +144,8 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) DatabaseInstanceName() pu
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.DatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-// tables inside database catalogs is inferred database instance associated with the catalog.
+// (string) - The name of the database instance that this table is registered to. This field is always returned; for
+// tables inside database catalogs it is the database instance associated with the catalog.
 // This is an output only field that contains the value computed from the input field combined with
 // server side defaults. Use the field without the effective_ prefix to set the value
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) EffectiveDatabaseInstanceName() pulumi.StringOutput {
@@ -173,7 +175,7 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) ProviderConfig() GetDatab
 	}).(GetDatabaseSyncedDatabaseTableProviderConfigPtrOutput)
 }
 
-// (SyncedTableSpec)
+// (SyncedTableSpec) - Specifies the source table, the key columns and how the data synchronization pipeline runs
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) Spec() GetDatabaseSyncedDatabaseTableSpecOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) GetDatabaseSyncedDatabaseTableSpec { return v.Spec }).(GetDatabaseSyncedDatabaseTableSpecOutput)
 }

@@ -22,7 +22,7 @@ public final class GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingSourceColum
      */
     private @Nullable String modelEndpointNameForQuery;
     /**
-     * @return (string) - Name of the column
+     * @return (string) - Name of the column that holds the precomputed embedding vectors
      * 
      */
     private @Nullable String name;
@@ -43,7 +43,7 @@ public final class GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingSourceColum
         return Optional.ofNullable(this.modelEndpointNameForQuery);
     }
     /**
-     * @return (string) - Name of the column
+     * @return (string) - Name of the column that holds the precomputed embedding vectors
      * 
      */
     public Optional<String> name() {

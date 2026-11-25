@@ -22,26 +22,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataQualityMonitorDataProfilingConfig {
     /**
-     * @return (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * @return (string) - The absolute workspace path of the directory where the monitor&#39;s assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      * 
      */
     private @Nullable String assetsDir;
     /**
-     * @return (string) - Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * @return (string) - The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      * 
      */
     private @Nullable String baselineTableName;
     /**
-     * @return (list of DataProfilingCustomMetric) - Custom metrics
+     * @return (list of DataProfilingCustomMetric) - Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      * 
      */
     private @Nullable List<GetDataQualityMonitorDataProfilingConfigCustomMetric> customMetrics;
     /**
-     * @return (string) - Id of dashboard that visualizes the computed metrics.
-     * This can be empty if the monitor is in PENDING state
+     * @return (string) - The ID of the dashboard that visualizes the computed metrics. It is empty while
+     * the monitor is pending, when the dashboard was skipped with `skipBuiltinDashboard`, or when the caller is in
+     * a different workspace from the one where the monitor was created
      * 
      */
     private String dashboardId;
@@ -56,7 +58,8 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      */
     private String effectiveWarehouseId;
     /**
-     * @return (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+     * @return (InferenceLogConfig) - Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      * 
      */
     private @Nullable GetDataQualityMonitorDataProfilingConfigInferenceLog inferenceLog;
@@ -73,17 +76,19 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      */
     private Integer monitorVersion;
     /**
-     * @return (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+     * @return (string) - The fully qualified name of the monitored table. Format: `catalog.schema.table_name`
      * 
      */
     private String monitoredTableName;
     /**
-     * @return (NotificationSettings) - Field for specifying notification settings
+     * @return (NotificationSettings) - Who to notify about this monitor&#39;s refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      * 
      */
     private @Nullable GetDataQualityMonitorDataProfilingConfigNotificationSettings notificationSettings;
     /**
-     * @return (string) - ID of the schema where output tables are created
+     * @return (string) - The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      * 
      */
     private String outputSchemaId;
@@ -93,7 +98,8 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      */
     private String profileMetricsTableName;
     /**
-     * @return (CronSchedule) - The cron schedule
+     * @return (CronSchedule) - The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      * 
      */
     private @Nullable GetDataQualityMonitorDataProfilingConfigSchedule schedule;
@@ -105,7 +111,7 @@ public final class GetDataQualityMonitorDataProfilingConfig {
     /**
      * @return (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+     * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
      * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
@@ -113,55 +119,62 @@ public final class GetDataQualityMonitorDataProfilingConfig {
      */
     private @Nullable List<String> slicingExprs;
     /**
-     * @return (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+     * @return (SnapshotConfig) - Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      * 
      */
     private @Nullable GetDataQualityMonitorDataProfilingConfigSnapshot snapshot;
     /**
-     * @return (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+     * @return (string) - The status of the monitor. `DATA_PROFILING_STATUS_PENDING` means the monitor&#39;s
+     * assets are being created or updated. `DATA_PROFILING_STATUS_ACTIVE` means the monitor is ready and can be
+     * refreshed. `DATA_PROFILING_STATUS_FAILED` and `DATA_PROFILING_STATUS_ERROR` mean the monitor is not
+     * operational, and `latestMonitorFailureMessage` describes the cause when one was recorded.
+     * `DATA_PROFILING_STATUS_DELETE_PENDING` means the monitor is being deleted. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
      * 
      */
     private String status;
     /**
-     * @return (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+     * @return (TimeSeriesConfig) - Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      * 
      */
     private @Nullable GetDataQualityMonitorDataProfilingConfigTimeSeries timeSeries;
     /**
-     * @return (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * @return (string) - The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      * 
      */
     private String warehouseId;
 
     private GetDataQualityMonitorDataProfilingConfig() {}
     /**
-     * @return (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * @return (string) - The absolute workspace path of the directory where the monitor&#39;s assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      * 
      */
     public Optional<String> assetsDir() {
         return Optional.ofNullable(this.assetsDir);
     }
     /**
-     * @return (string) - Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * @return (string) - The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      * 
      */
     public Optional<String> baselineTableName() {
         return Optional.ofNullable(this.baselineTableName);
     }
     /**
-     * @return (list of DataProfilingCustomMetric) - Custom metrics
+     * @return (list of DataProfilingCustomMetric) - Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      * 
      */
     public List<GetDataQualityMonitorDataProfilingConfigCustomMetric> customMetrics() {
         return this.customMetrics == null ? List.of() : this.customMetrics;
     }
     /**
-     * @return (string) - Id of dashboard that visualizes the computed metrics.
-     * This can be empty if the monitor is in PENDING state
+     * @return (string) - The ID of the dashboard that visualizes the computed metrics. It is empty while
+     * the monitor is pending, when the dashboard was skipped with `skipBuiltinDashboard`, or when the caller is in
+     * a different workspace from the one where the monitor was created
      * 
      */
     public String dashboardId() {
@@ -182,7 +195,8 @@ public final class GetDataQualityMonitorDataProfilingConfig {
         return this.effectiveWarehouseId;
     }
     /**
-     * @return (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+     * @return (InferenceLogConfig) - Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      * 
      */
     public Optional<GetDataQualityMonitorDataProfilingConfigInferenceLog> inferenceLog() {
@@ -205,21 +219,23 @@ public final class GetDataQualityMonitorDataProfilingConfig {
         return this.monitorVersion;
     }
     /**
-     * @return (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+     * @return (string) - The fully qualified name of the monitored table. Format: `catalog.schema.table_name`
      * 
      */
     public String monitoredTableName() {
         return this.monitoredTableName;
     }
     /**
-     * @return (NotificationSettings) - Field for specifying notification settings
+     * @return (NotificationSettings) - Who to notify about this monitor&#39;s refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      * 
      */
     public Optional<GetDataQualityMonitorDataProfilingConfigNotificationSettings> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
     /**
-     * @return (string) - ID of the schema where output tables are created
+     * @return (string) - The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      * 
      */
     public String outputSchemaId() {
@@ -233,7 +249,8 @@ public final class GetDataQualityMonitorDataProfilingConfig {
         return this.profileMetricsTableName;
     }
     /**
-     * @return (CronSchedule) - The cron schedule
+     * @return (CronSchedule) - The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      * 
      */
     public Optional<GetDataQualityMonitorDataProfilingConfigSchedule> schedule() {
@@ -249,7 +266,7 @@ public final class GetDataQualityMonitorDataProfilingConfig {
     /**
      * @return (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+     * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
      * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
@@ -259,29 +276,34 @@ public final class GetDataQualityMonitorDataProfilingConfig {
         return this.slicingExprs == null ? List.of() : this.slicingExprs;
     }
     /**
-     * @return (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+     * @return (SnapshotConfig) - Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      * 
      */
     public Optional<GetDataQualityMonitorDataProfilingConfigSnapshot> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }
     /**
-     * @return (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+     * @return (string) - The status of the monitor. `DATA_PROFILING_STATUS_PENDING` means the monitor&#39;s
+     * assets are being created or updated. `DATA_PROFILING_STATUS_ACTIVE` means the monitor is ready and can be
+     * refreshed. `DATA_PROFILING_STATUS_FAILED` and `DATA_PROFILING_STATUS_ERROR` mean the monitor is not
+     * operational, and `latestMonitorFailureMessage` describes the cause when one was recorded.
+     * `DATA_PROFILING_STATUS_DELETE_PENDING` means the monitor is being deleted. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+     * @return (TimeSeriesConfig) - Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      * 
      */
     public Optional<GetDataQualityMonitorDataProfilingConfigTimeSeries> timeSeries() {
         return Optional.ofNullable(this.timeSeries);
     }
     /**
-     * @return (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * @return (string) - The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      * 
      */
     public String warehouseId() {

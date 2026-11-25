@@ -18,14 +18,14 @@ public final class EnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulumi.r
     public static final EnvironmentsWorkspaceBaseEnvironmentArgs Empty = new EnvironmentsWorkspaceBaseEnvironmentArgs();
 
     /**
-     * The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      * 
      */
     @Import(name="baseEnvironmentType")
     private @Nullable Output<String> baseEnvironmentType;
 
     /**
-     * @return The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * @return The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      * 
      */
     public Optional<Output<String>> baseEnvironmentType() {
@@ -48,14 +48,16 @@ public final class EnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulumi.r
     }
 
     /**
-     * The WSFS or UC Volumes path to the environment YAML file
+     * The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      * 
      */
     @Import(name="filepath")
     private @Nullable Output<String> filepath;
 
     /**
-     * @return The WSFS or UC Volumes path to the environment YAML file
+     * @return The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      * 
      */
     public Optional<Output<String>> filepath() {
@@ -125,7 +127,7 @@ public final class EnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulumi.r
         }
 
         /**
-         * @param baseEnvironmentType The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+         * @param baseEnvironmentType The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
          * 
          * @return builder
          * 
@@ -136,7 +138,7 @@ public final class EnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulumi.r
         }
 
         /**
-         * @param baseEnvironmentType The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+         * @param baseEnvironmentType The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
          * 
          * @return builder
          * 
@@ -167,7 +169,8 @@ public final class EnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulumi.r
         }
 
         /**
-         * @param filepath The WSFS or UC Volumes path to the environment YAML file
+         * @param filepath The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+         * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
          * 
          * @return builder
          * 
@@ -178,7 +181,8 @@ public final class EnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulumi.r
         }
 
         /**
-         * @param filepath The WSFS or UC Volumes path to the environment YAML file
+         * @param filepath The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+         * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
          * 
          * @return builder
          * 

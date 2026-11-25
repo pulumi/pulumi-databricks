@@ -12,17 +12,40 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class NotificationDestinationConfigDatabricksAppSlackArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Slack channel ID for notifications.
-        /// </summary>
         [Input("channelId")]
-        public Input<string>? ChannelId { get; set; }
+        private Input<string>? _channelId;
+
+        /// <summary>
+        /// Slack channel ID notifications are posted to.
+        /// </summary>
+        public Input<string>? ChannelId
+        {
+            get => _channelId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _channelId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("channelIdSet")]
         public Input<bool>? ChannelIdSet { get; set; }
 
         [Input("teamId")]
-        public Input<string>? TeamId { get; set; }
+        private Input<string>? _teamId;
+
+        /// <summary>
+        /// Slack workspace (team) ID the Databricks app is installed in.
+        /// </summary>
+        public Input<string>? TeamId
+        {
+            get => _teamId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _teamId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("teamIdSet")]
         public Input<bool>? TeamIdSet { get; set; }

@@ -18,10 +18,9 @@ public final class GetAccountIamDirectGroupMembersV2Result {
     private List<GetAccountIamDirectGroupMembersV2DirectGroupMember> directGroupMembers;
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     private String parent;
@@ -34,10 +33,9 @@ public final class GetAccountIamDirectGroupMembersV2Result {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public String parent() {

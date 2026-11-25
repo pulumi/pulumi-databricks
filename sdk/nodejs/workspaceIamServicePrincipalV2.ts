@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -71,35 +71,36 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
     }
 
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     declare public readonly accountSpStatus: pulumi.Output<string>;
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can't be
+     * changed
      */
     declare public readonly applicationId: pulumi.Output<string>;
     /**
-     * Display name of the service principal
+     * The service principal's display name
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
-     * ExternalId of the service principal in the customer's IdP
+     * The ID of the service principal in your identity provider (IdP)
      */
     declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     declare public /*out*/ readonly parent: pulumi.Output<string>;
     /**
@@ -107,7 +108,7 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceIamServicePrincipalV2ProviderConfig>;
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      */
     declare public /*out*/ readonly servicePrincipalId: pulumi.Output<string>;
 
@@ -161,35 +162,36 @@ export class WorkspaceIamServicePrincipalV2 extends pulumi.CustomResource {
  */
 export interface WorkspaceIamServicePrincipalV2State {
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountSpStatus?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can't be
+     * changed
      */
     applicationId?: pulumi.Input<string | undefined>;
     /**
-     * Display name of the service principal
+     * The service principal's display name
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
-     * ExternalId of the service principal in the customer's IdP
+     * The ID of the service principal in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -197,7 +199,7 @@ export interface WorkspaceIamServicePrincipalV2State {
      */
     providerConfig?: pulumi.Input<inputs.WorkspaceIamServicePrincipalV2ProviderConfig | undefined>;
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      */
     servicePrincipalId?: pulumi.Input<string | undefined>;
 }
@@ -207,20 +209,21 @@ export interface WorkspaceIamServicePrincipalV2State {
  */
 export interface WorkspaceIamServicePrincipalV2Args {
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountSpStatus: pulumi.Input<string>;
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can't be
+     * changed
      */
     applicationId?: pulumi.Input<string | undefined>;
     /**
-     * Display name of the service principal
+     * The service principal's display name
      */
     displayName: pulumi.Input<string>;
     /**
-     * ExternalId of the service principal in the customer's IdP
+     * The ID of the service principal in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
     /**

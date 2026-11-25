@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertV2EvaluationThreshold
     {
+        /// <summary>
+        /// Compare the source against another column of the query result
+        /// </summary>
         public readonly Outputs.AlertV2EvaluationThresholdColumn? Column;
         public readonly Outputs.AlertV2EvaluationThresholdValue? Value;
 

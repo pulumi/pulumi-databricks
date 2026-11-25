@@ -20,6 +20,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulum
     /**
      * The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      * 
      */
     @Import(name="name", required=true)
@@ -28,6 +30,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulum
     /**
      * @return The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      * 
      */
     public Output<String> name() {
@@ -77,6 +81,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulum
         /**
          * @param name The resource name of the workspace base environment.
          * Format: workspace-base-environments/{workspace-base-environment}
+         * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+         * `displayName` plus a random suffix when no ID is given
          * 
          * @return builder
          * 
@@ -89,6 +95,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentArgs extends com.pulum
         /**
          * @param name The resource name of the workspace base environment.
          * Format: workspace-base-environments/{workspace-base-environment}
+         * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+         * `displayName` plus a random suffix when no ID is given
          * 
          * @return builder
          * 

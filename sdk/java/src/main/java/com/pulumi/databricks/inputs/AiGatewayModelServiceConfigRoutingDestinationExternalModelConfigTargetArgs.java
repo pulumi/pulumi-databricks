@@ -41,18 +41,18 @@ public final class AiGatewayModelServiceConfigRoutingDestinationExternalModelCon
     }
 
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      * 
      */
     @Import(name="model", required=true)
     private Output<String> model;
 
     /**
-     * @return (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * @return (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      * 
      */
     public Output<String> model() {
@@ -140,9 +140,9 @@ public final class AiGatewayModelServiceConfigRoutingDestinationExternalModelCon
         }
 
         /**
-         * @param model (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-         * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-         * Create/Update time
+         * @param model (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+         * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+         * Serving when the model service is created or updated
          * 
          * @return builder
          * 
@@ -153,9 +153,9 @@ public final class AiGatewayModelServiceConfigRoutingDestinationExternalModelCon
         }
 
         /**
-         * @param model (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-         * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-         * Create/Update time
+         * @param model (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+         * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+         * Serving when the model service is created or updated
          * 
          * @return builder
          * 

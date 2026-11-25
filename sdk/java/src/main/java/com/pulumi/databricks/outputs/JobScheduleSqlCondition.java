@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobScheduleSqlCondition {
-    private String sqlQueryId;
+    private @Nullable String sqlQueryId;
     private @Nullable String triggerMode;
     private String warehouseId;
 
     private JobScheduleSqlCondition() {}
-    public String sqlQueryId() {
-        return this.sqlQueryId;
+    public Optional<String> sqlQueryId() {
+        return Optional.ofNullable(this.sqlQueryId);
     }
     public Optional<String> triggerMode() {
         return Optional.ofNullable(this.triggerMode);
@@ -36,7 +36,7 @@ public final class JobScheduleSqlCondition {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String sqlQueryId;
+        private @Nullable String sqlQueryId;
         private @Nullable String triggerMode;
         private String warehouseId;
         public Builder() {}
@@ -48,10 +48,8 @@ public final class JobScheduleSqlCondition {
         }
 
         @CustomType.Setter
-        public Builder sqlQueryId(String sqlQueryId) {
-            if (sqlQueryId == null) {
-              throw new MissingRequiredPropertyException("JobScheduleSqlCondition", "sqlQueryId");
-            }
+        public Builder sqlQueryId(@Nullable String sqlQueryId) {
+
             this.sqlQueryId = sqlQueryId;
             return this;
         }

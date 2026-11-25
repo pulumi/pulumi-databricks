@@ -21,23 +21,29 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? AllowAllTargets;
         /// <summary>
-        /// (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+        /// (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockResult? AmazonBedrock;
         /// <summary>
-        /// (ModelProviderServiceConfigAnthropicProviderConfig)
+        /// (ModelProviderServiceConfigAnthropicProviderConfig) - Configuration for Anthropic. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicResult? Anthropic;
         /// <summary>
-        /// (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+        /// (ModelProviderServiceConfigAzureOpenAiProviderConfig) - Configuration for Azure OpenAI. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiResult? AzureOpenai;
         /// <summary>
-        /// (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+        /// (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock Mantle, with the same fields as
+        /// `AmazonBedrock`. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleResult? BedrockMantle;
         /// <summary>
-        /// (ModelProviderServiceConfigCustomProviderConfig)
+        /// (ModelProviderServiceConfigCustomProviderConfig) - Configuration for a custom OpenAI-compatible provider. Set this field when
+        /// `ProviderType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomResult? Custom;
         /// <summary>
@@ -64,7 +70,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? ForwardUnmanagedPaths;
         /// <summary>
-        /// (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+        /// (ModelProviderServiceConfigGeminiEnterpriseProviderConfig) - Configuration for Google Gemini Enterprise. Set this field when
+        /// `ProviderType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseResult? GeminiEnterprise;
         /// <summary>
@@ -74,11 +81,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigInferenceTableResult? InferenceTable;
         /// <summary>
-        /// (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+        /// (ModelProviderServiceConfigMicrosoftFoundryProviderConfig) - Configuration for Microsoft Foundry. Set this field when
+        /// `ProviderType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryResult? MicrosoftFoundry;
         /// <summary>
-        /// (ModelProviderServiceConfigOpenAiProviderConfig)
+        /// (ModelProviderServiceConfigOpenAiProviderConfig) - Configuration for OpenAI. Set this field when `ProviderType` is
+        /// `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiResult? Openai;
         /// <summary>
