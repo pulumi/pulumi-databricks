@@ -436,17 +436,22 @@ func Provider() tfbridge.ProviderInfo {
 
 	// This is another instance of pulumi/pulumi-terraform-bridge#2803 where
 	// generated nested field metadata lands on .Fields instead of .Elem.Fields.
-	// The "ids" traversal above creates the ingress and ingress_dry_run
-	// SchemaInfo paths by visiting their nested principal_id fields.
+	// The traversals above create SchemaInfo paths for nested properties (such as
+	// principal_id or workspace_id) of the fields listed below.
+	nestedFieldsToFix := map[string][]string{
+		"databricks_account_network_policy": {"ingress", "ingress_dry_run"},
+		"databricks_lakewatch_alert_config": {"security_alert_export_config", "system_alert_export_config"},
+	}
 	prov.P.ResourcesMap().Range(func(key string, _ shim.Resource) bool {
-		if key != "databricks_account_network_policy" {
+		fieldNames, ok := nestedFieldsToFix[key]
+		if !ok {
 			return true
 		}
 		resInfo, ok := prov.Resources[key]
 		if !ok {
 			return true
 		}
-		for _, fieldName := range []string{"ingress", "ingress_dry_run"} {
+		for _, fieldName := range fieldNames {
 			moveFieldsToElemRecursive(resInfo.Fields[fieldName])
 		}
 		return true

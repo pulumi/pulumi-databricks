@@ -1005,6 +1005,9 @@
                             }
                         }
                     },
+                    "effective_resources": {
+                        "maxItemsOne": false
+                    },
                     "effective_user_api_scopes": {
                         "maxItemsOne": false
                     },
@@ -1068,6 +1071,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "databricks_assume_group_restricted_sharing_group": {
+                "current": "databricks:index/assumeGroupRestrictedSharingGroup:AssumeGroupRestrictedSharingGroup",
+                "majorVersion": 1
             },
             "databricks_automatic_cluster_update_workspace_setting": {
                 "current": "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting",
@@ -4181,6 +4188,66 @@
                     }
                 }
             },
+            "databricks_lakewatch_alert_config": {
+                "current": "databricks:index/lakewatchAlertConfig:LakewatchAlertConfig",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_common_config": {
+                "current": "databricks:index/lakewatchCommonConfig:LakewatchCommonConfig",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_datasource": {
+                "current": "databricks:index/lakewatchDatasource:LakewatchDatasource",
+                "majorVersion": 1,
+                "fields": {
+                    "autoloader": {
+                        "fields": {
+                            "override_partition_columns": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "parsers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_datasource_config": {
+                "current": "databricks:index/lakewatchDatasourceConfig:LakewatchDatasourceConfig",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_parser": {
+                "current": "databricks:index/lakewatchParser:LakewatchParser",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_parser_version": {
+                "current": "databricks:index/lakewatchParserVersion:LakewatchParserVersion",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_rule": {
+                "current": "databricks:index/lakewatchRule:LakewatchRule",
+                "majorVersion": 1,
+                "fields": {
+                    "mitre": {
+                        "maxItemsOne": false
+                    },
+                    "references": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_rule_config": {
+                "current": "databricks:index/lakewatchRuleConfig:LakewatchRuleConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "detection_categories": {
+                        "maxItemsOne": false
+                    },
+                    "effective_detection_categories": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_library": {
                 "current": "databricks:index/library:Library",
                 "majorVersion": 1,
@@ -6152,6 +6219,33 @@
                     "run_as": {
                         "maxItemsOne": true
                     },
+                    "testing": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "environment": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dependencies": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "sources": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "glob": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "trigger": {
                         "maxItemsOne": true,
                         "elem": {
@@ -7144,7 +7238,21 @@
                         "maxItemsOne": true
                     },
                     "status": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "failed_status": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "last_processed_commit_timestamp": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -9165,6 +9273,9 @@
                                     }
                                 }
                             },
+                            "effective_resources": {
+                                "maxItemsOne": false
+                            },
                             "effective_user_api_scopes": {
                                 "maxItemsOne": false
                             },
@@ -9246,6 +9357,9 @@
                                         }
                                     }
                                 },
+                                "effective_resources": {
+                                    "maxItemsOne": false
+                                },
                                 "effective_user_api_scopes": {
                                     "maxItemsOne": false
                                 },
@@ -9303,6 +9417,19 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "databricks_assume_group_restricted_sharing_group": {
+                "current": "databricks:index/getAssumeGroupRestrictedSharingGroup:getAssumeGroupRestrictedSharingGroup",
+                "majorVersion": 1
+            },
+            "databricks_assume_group_restricted_sharing_groups": {
+                "current": "databricks:index/getAssumeGroupRestrictedSharingGroups:getAssumeGroupRestrictedSharingGroups",
+                "majorVersion": 1,
+                "fields": {
+                    "restricted_sharing_groups": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -12194,6 +12321,176 @@
                     }
                 }
             },
+            "databricks_lakewatch_alert_config": {
+                "current": "databricks:index/getLakewatchAlertConfig:getLakewatchAlertConfig",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_builtin_parser": {
+                "current": "databricks:index/getLakewatchBuiltinParser:getLakewatchBuiltinParser",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_builtin_parser_version": {
+                "current": "databricks:index/getLakewatchBuiltinParserVersion:getLakewatchBuiltinParserVersion",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_builtin_parser_versions": {
+                "current": "databricks:index/getLakewatchBuiltinParserVersions:getLakewatchBuiltinParserVersions",
+                "majorVersion": 1,
+                "fields": {
+                    "builtin_parser_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_lakewatch_builtin_parsers": {
+                "current": "databricks:index/getLakewatchBuiltinParsers:getLakewatchBuiltinParsers",
+                "majorVersion": 1,
+                "fields": {
+                    "builtin_parsers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_lakewatch_common_config": {
+                "current": "databricks:index/getLakewatchCommonConfig:getLakewatchCommonConfig",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_datasource": {
+                "current": "databricks:index/getLakewatchDatasource:getLakewatchDatasource",
+                "majorVersion": 1,
+                "fields": {
+                    "autoloader": {
+                        "fields": {
+                            "override_partition_columns": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "parsers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_datasource_config": {
+                "current": "databricks:index/getLakewatchDatasourceConfig:getLakewatchDatasourceConfig",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_datasources": {
+                "current": "databricks:index/getLakewatchDatasources:getLakewatchDatasources",
+                "majorVersion": 1,
+                "fields": {
+                    "datasources": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "autoloader": {
+                                    "fields": {
+                                        "override_partition_columns": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "parsers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_lakewatch_parser": {
+                "current": "databricks:index/getLakewatchParser:getLakewatchParser",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_parser_version": {
+                "current": "databricks:index/getLakewatchParserVersion:getLakewatchParserVersion",
+                "majorVersion": 1
+            },
+            "databricks_lakewatch_parser_versions": {
+                "current": "databricks:index/getLakewatchParserVersions:getLakewatchParserVersions",
+                "majorVersion": 1,
+                "fields": {
+                    "parser_versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_parsers": {
+                "current": "databricks:index/getLakewatchParsers:getLakewatchParsers",
+                "majorVersion": 1,
+                "fields": {
+                    "parsers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_rule": {
+                "current": "databricks:index/getLakewatchRule:getLakewatchRule",
+                "majorVersion": 1,
+                "fields": {
+                    "mitre": {
+                        "maxItemsOne": false
+                    },
+                    "references": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_rule_config": {
+                "current": "databricks:index/getLakewatchRuleConfig:getLakewatchRuleConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "detection_categories": {
+                        "maxItemsOne": false
+                    },
+                    "effective_detection_categories": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_lakewatch_rules": {
+                "current": "databricks:index/getLakewatchRules:getLakewatchRules",
+                "majorVersion": 1,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "mitre": {
+                                    "maxItemsOne": false
+                                },
+                                "references": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_materialized_features_feature_tag": {
                 "current": "databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag",
                 "majorVersion": 1
@@ -13951,6 +14248,11 @@
             "databricks_app": {},
             "databricks_app_space": {},
             "databricks_apps_settings_custom_template": {},
+            "databricks_assume_group_restricted_sharing_group": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_budget_policy": {},
             "databricks_data_classification_catalog_config": {
                 "computeID": {
@@ -14014,6 +14316,46 @@
             },
             "databricks_knowledge_assistant": {},
             "databricks_knowledge_assistant_knowledge_source": {},
+            "databricks_lakewatch_alert_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_common_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_datasource": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_datasource_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_parser": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_parser_version": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_rule": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_lakewatch_rule_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_library": {
                 "fields": {
                     "id": {
@@ -14282,6 +14624,7 @@
             "databricks:index/appSpace:AppSpace": 1,
             "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate": 1,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
+            "databricks:index/assumeGroupRestrictedSharingGroup:AssumeGroupRestrictedSharingGroup": 1,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
             "databricks:index/budget:Budget": 0,
             "databricks:index/budgetPolicy:BudgetPolicy": 1,
@@ -14335,6 +14678,14 @@
             "databricks:index/knowledgeAssistant:KnowledgeAssistant": 1,
             "databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource": 1,
             "databricks:index/lakehouseMonitor:LakehouseMonitor": 0,
+            "databricks:index/lakewatchAlertConfig:LakewatchAlertConfig": 1,
+            "databricks:index/lakewatchCommonConfig:LakewatchCommonConfig": 1,
+            "databricks:index/lakewatchDatasource:LakewatchDatasource": 1,
+            "databricks:index/lakewatchDatasourceConfig:LakewatchDatasourceConfig": 1,
+            "databricks:index/lakewatchParser:LakewatchParser": 1,
+            "databricks:index/lakewatchParserVersion:LakewatchParserVersion": 1,
+            "databricks:index/lakewatchRule:LakewatchRule": 1,
+            "databricks:index/lakewatchRuleConfig:LakewatchRuleConfig": 1,
             "databricks:index/library:Library": 1,
             "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag": 1,
             "databricks:index/metastore:Metastore": 0,
@@ -14480,6 +14831,8 @@
             "databricks:index/getApps:getApps": 1,
             "databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate": 1,
             "databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates": 1,
+            "databricks:index/getAssumeGroupRestrictedSharingGroup:getAssumeGroupRestrictedSharingGroup": 1,
+            "databricks:index/getAssumeGroupRestrictedSharingGroups:getAssumeGroupRestrictedSharingGroups": 1,
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": 0,
             "databricks:index/getAwsBucketPolicy:getAwsBucketPolicy": 0,
             "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy": 0,
@@ -14541,6 +14894,22 @@
             "databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource": 1,
             "databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources": 1,
             "databricks:index/getKnowledgeAssistants:getKnowledgeAssistants": 1,
+            "databricks:index/getLakewatchAlertConfig:getLakewatchAlertConfig": 1,
+            "databricks:index/getLakewatchBuiltinParser:getLakewatchBuiltinParser": 1,
+            "databricks:index/getLakewatchBuiltinParserVersion:getLakewatchBuiltinParserVersion": 1,
+            "databricks:index/getLakewatchBuiltinParserVersions:getLakewatchBuiltinParserVersions": 1,
+            "databricks:index/getLakewatchBuiltinParsers:getLakewatchBuiltinParsers": 1,
+            "databricks:index/getLakewatchCommonConfig:getLakewatchCommonConfig": 1,
+            "databricks:index/getLakewatchDatasource:getLakewatchDatasource": 1,
+            "databricks:index/getLakewatchDatasourceConfig:getLakewatchDatasourceConfig": 1,
+            "databricks:index/getLakewatchDatasources:getLakewatchDatasources": 1,
+            "databricks:index/getLakewatchParser:getLakewatchParser": 1,
+            "databricks:index/getLakewatchParserVersion:getLakewatchParserVersion": 1,
+            "databricks:index/getLakewatchParserVersions:getLakewatchParserVersions": 1,
+            "databricks:index/getLakewatchParsers:getLakewatchParsers": 1,
+            "databricks:index/getLakewatchRule:getLakewatchRule": 1,
+            "databricks:index/getLakewatchRuleConfig:getLakewatchRuleConfig": 1,
+            "databricks:index/getLakewatchRules:getLakewatchRules": 1,
             "databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag": 1,
             "databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags": 1,
             "databricks:index/getMetastore:getMetastore": 0,
@@ -17622,6 +17991,9 @@
             "databricks_artifact_allowlist": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_assume_group_restricted_sharing_group": [
+                "provider_config.workspace_id"
+            ],
             "databricks_automatic_cluster_update_workspace_setting": [
                 "provider_config.$.workspace_id"
             ],
@@ -17780,6 +18152,32 @@
             ],
             "databricks_lakehouse_monitor": [
                 "provider_config.$.workspace_id"
+            ],
+            "databricks_lakewatch_alert_config": [
+                "provider_config.workspace_id",
+                "security_alert_export_config.workspace_id",
+                "system_alert_export_config.workspace_id"
+            ],
+            "databricks_lakewatch_common_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_datasource": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_datasource_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_parser": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_parser_version": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_rule": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_rule_config": [
+                "provider_config.workspace_id"
             ],
             "databricks_library": [
                 "provider_config.$.workspace_id"
@@ -18148,6 +18546,13 @@
                 "provider_config.workspace_id",
                 "templates.$.provider_config.workspace_id"
             ],
+            "databricks_assume_group_restricted_sharing_group": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_assume_group_restricted_sharing_groups": [
+                "provider_config.workspace_id",
+                "restricted_sharing_groups.$.provider_config.workspace_id"
+            ],
             "databricks_catalog": [
                 "provider_config.$.workspace_id"
             ],
@@ -18309,6 +18714,62 @@
             "databricks_knowledge_assistants": [
                 "knowledge_assistants.$.provider_config.workspace_id",
                 "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_alert_config": [
+                "provider_config.workspace_id",
+                "security_alert_export_config.workspace_id",
+                "system_alert_export_config.workspace_id"
+            ],
+            "databricks_lakewatch_builtin_parser": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_builtin_parser_version": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_builtin_parser_versions": [
+                "builtin_parser_versions.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_builtin_parsers": [
+                "builtin_parsers.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_common_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_datasource": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_datasource_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_datasources": [
+                "datasources.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_parser": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_parser_version": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_parser_versions": [
+                "parser_versions.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_parsers": [
+                "parsers.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_rule": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_rule_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_lakewatch_rules": [
+                "provider_config.workspace_id",
+                "rules.$.provider_config.workspace_id"
             ],
             "databricks_materialized_features_feature_tag": [
                 "provider_config.workspace_id"
